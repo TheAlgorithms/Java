@@ -12,129 +12,120 @@ import java.util.*;
  */
 public class AStarSearch {
 
-	static class Node implements Comparable<Node> {
-		int id;
-		double g; // Cost from start
-		double h; // Heuristic to goal
-		double f; // Total cost = g + h
-		Node parent;
+    @FunctionalInterface
+    public interface Heuristic {
+        double estimate(int node, int goal);
+    }
 
-		Node(int id, double g, double h, Node parent) {
-			this.id = id;
-			this.g = g;
-			this.h = h;
-			this.f = g + h;
-			this.parent = parent;
-		}
+    static class Node implements Comparable<Node> {
+        int id;
+        double g; // Cost from start
+        double h; // Heuristic to goal
+        double f; // Total cost = g + h
+        Node parent;
 
-		@Override
-		public int compareTo(Node o) {
-			return Double.compare(this.f, o.f);
-		}
-	}
+        Node(int id, double g, double h, Node parent) {
+            this.id = id;
+            this.g = g;
+            this.h = h;
+            this.f = g + h;
+            this.parent = parent;
+        }
 
-	private final Map<Integer, List<int[]>> graph;
+        @Override
+        public int compareTo(Node o) {
+            return Double.compare(this.f, o.f);
+        }
 
-	public AStarSearch() {
-		graph = new HashMap<>();
-	}
+        @Override
+        public boolean equals(Object o) {
+            if (this == o) return true;
+            if (!(o instanceof Node)) return false;
+            Node node = (Node) o;
+            return id == node.id;
+        }
 
-	/**
-	 * Adds an undirected edge between nodes u and v with the given weight.
-	 */
-	public void addEdge(int u, int v, int weight) {
-		graph.computeIfAbsent(u, k -> new ArrayList<>()).add(new int[]{v, weight});
-		graph.computeIfAbsent(v, k -> new ArrayList<>()).add(new int[]{u, weight});
-	}
+        @Override
+        public int hashCode() {
+            return Objects.hash(id);
+        }
+    }
 
-	/**
-	 * Heuristic function (simplified for numeric nodes).
-	 */
-	private double heuristic(int node, int goal) {
-		return Math.abs(goal - node);
-	}
+    private final Map<Integer, List<int[]>> graph;
+    private final Heuristic heuristic;
 
-	/**
-	 * Finds the shortest path from start to goal using A* algorithm.
-	 *
-	 * @param start starting node
-	 * @param goal  goal node
-	 * @return list of nodes representing the shortest path
-	 */
-	public List<Integer> findPath(int start, int goal) {
-		PriorityQueue<Node> openSet = new PriorityQueue<>();
-		Map<Integer, Double> gScore = new HashMap<>();
-		Set<Integer> closedSet = new HashSet<>();
+    /**
+     * Constructor with default heuristic (|goal - node|).
+     */
+    public AStarSearch() {
+        this.graph = new HashMap<>();
+        this.heuristic = (node, goal) -> Math.abs(goal - node);
+    }
 
-		openSet.add(new Node(start, 0, heuristic(start, goal), null));
-		gScore.put(start, 0.0);
+    /**
+     * Constructor with custom heuristic.
+     */
+    public AStarSearch(Heuristic heuristic) {
+        this.graph = new HashMap<>();
+        this.heuristic = heuristic;
+    }
 
-		while (!openSet.isEmpty()) {
-			Node current = openSet.poll();
+    /**
+     * Adds an undirected edge between nodes u and v with the given weight.
+     */
+    public void addEdge(int u, int v, int weight) {
+        graph.computeIfAbsent(u, k -> new ArrayList<>()).add(new int[]{v, weight});
+        graph.computeIfAbsent(v, k -> new ArrayList<>()).add(new int[]{u, weight});
+    }
 
-			if (current.id == goal) {
-				return reconstructPath(current);
-			}
+    /**
+     * Finds the shortest path from start to goal using A* algorithm.
+     *
+     * @param start starting node
+     * @param goal  goal node
+     * @return list of nodes representing the shortest path
+     */
+    public List<Integer> findPath(int start, int goal) {
+        PriorityQueue<Node> openSet = new PriorityQueue<>();
+        Map<Integer, Double> gScore = new HashMap<>();
+        Set<Integer> closedSet = new HashSet<>();
 
-			closedSet.add(current.id);
+        openSet.add(new Node(start, 0, heuristic.estimate(start, goal), null));
+        gScore.put(start, 0.0);
 
-			for (int[] edge : graph.getOrDefault(current.id, new ArrayList<>())) {
-				int neighbor = edge[0];
-				double tentativeG = current.g + edge[1];
+        while (!openSet.isEmpty()) {
+            Node current = openSet.poll();
 
-				if (closedSet.contains(neighbor)) continue;
+            if (current.id == goal) return reconstructPath(current);
 
-				if (tentativeG < gScore.getOrDefault(neighbor, Double.MAX_VALUE)) {
-					gScore.put(neighbor, tentativeG);
-					Node next = new Node(neighbor, tentativeG, heuristic(neighbor, goal), current);
-					openSet.add(next);
-				}
-			}
-		}
-		return Collections.emptyList();
-	}
+            closedSet.add(current.id);
 
-	/**
-	 * Reconstructs path by following parent nodes.
-	 */
-	private List<Integer> reconstructPath(Node node) {
-		List<Integer> path = new ArrayList<>();
-		while (node != null) {
-			path.add(node.id);
-			node = node.parent;
-		}
-		Collections.reverse(path);
-		return path;
-	}
+            for (int[] edge : graph.getOrDefault(current.id, new ArrayList<>())) {
+                int neighbor = edge[0];
+                double tentativeG = current.g + edge[1];
 
-	/** Dynamic usage: reads graph and start/goal from input */
-	public static void main(String[] args) {
-		Scanner sc = new Scanner(System.in);
-		AStarSearch aStar = new AStarSearch();
+                if (closedSet.contains(neighbor)) continue;
 
-		System.out.print("Enter number of edges: ");
-		int edges = sc.nextInt();
+                if (tentativeG < gScore.getOrDefault(neighbor, Double.MAX_VALUE)) {
+                    gScore.put(neighbor, tentativeG);
+                    Node next = new Node(neighbor, tentativeG, heuristic.estimate(neighbor, goal), current);
+                    openSet.add(next);
+                }
+            }
+        }
+        return Collections.emptyList();
+    }
 
-		System.out.println("Enter edges in format: u v weight");
-		for (int i = 0; i < edges; i++) {
-			int u = sc.nextInt();
-			int v = sc.nextInt();
-			int w = sc.nextInt();
-			aStar.addEdge(u, v, w);
-		}
-
-		System.out.print("Enter start node: ");
-		int start = sc.nextInt();
-
-		System.out.print("Enter goal node: ");
-		int goal = sc.nextInt();
-
-		List<Integer> path = aStar.findPath(start, goal);
-		if (path.isEmpty()) {
-			System.out.println("No path found from " + start + " → " + goal);
-		} else {
-			System.out.println("Shortest path from " + start + " → " + goal + ": " + path);
-		}
-		sc.close();
-	}
+    /**
+     * Reconstructs path by following parent nodes.
+     */
+    private List<Integer> reconstructPath(Node node) {
+        List<Integer> path = new ArrayList<>();
+        while (node != null) {
+            path.add(node.id);
+            node = node.parent;
+        }
+        Collections.reverse(path);
+        return path;
+    }
 }
