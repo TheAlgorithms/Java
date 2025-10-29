@@ -6,7 +6,7 @@ import java.util.*;
  * A* Search Algorithm for shortest pathfinding.
  *
  * <p>Commonly used in games, navigation, and robotics.
- * Combines Dijkstra’s Algorithm and heuristic estimation.</p>
+ * Combines Dijkstra's Algorithm and heuristic estimation.</p>
  *
  * <p>Reference: https://en.wikipedia.org/wiki/A*_search_algorithm</p>
  */
@@ -14,9 +14,9 @@ public class AStarSearch {
 
     static class Node implements Comparable<Node> {
         int id;
-        double g; // Cost from start
-        double h; // Heuristic to goal
-        double f; // Total cost = g + h
+        double g; // cost from start
+        double h; // heuristic to goal
+        double f; // total cost = g + h
         Node parent;
 
         Node(int id, double g, double h, Node parent) {
@@ -28,8 +28,8 @@ public class AStarSearch {
         }
 
         @Override
-        public int compareTo(Node o) {
-            return Double.compare(this.f, o.f);
+        public int compareTo(Node other) {
+            return Double.compare(this.f, other.f);
         }
     }
 
@@ -39,13 +39,17 @@ public class AStarSearch {
         graph = new HashMap<>();
     }
 
-    /** Adds an undirected edge between nodes u and v with the given weight. */
+    /**
+     * Adds an undirected edge between nodes u and v with the given weight.
+     */
     public void addEdge(int u, int v, int weight) {
-        graph.computeIfAbsent(u, k -> new ArrayList<>()).add(new int[]{v, weight});
-        graph.computeIfAbsent(v, k -> new ArrayList<>()).add(new int[]{u, weight});
+        graph.computeIfAbsent(u, k -> new ArrayList<>()).add(new int[] {v, weight});
+        graph.computeIfAbsent(v, k -> new ArrayList<>()).add(new int[] {u, weight});
     }
 
-    /** Heuristic function (simplified for numeric nodes). */
+    /**
+     * Heuristic function (simplified for numeric nodes).
+     */
     private double heuristic(int node, int goal) {
         return Math.abs(goal - node);
     }
@@ -54,7 +58,7 @@ public class AStarSearch {
      * Finds the shortest path from start to goal using A* algorithm.
      *
      * @param start starting node
-     * @param goal  goal node
+     * @param goal goal node
      * @return list of nodes representing the shortest path
      */
     public List<Integer> findPath(int start, int goal) {
@@ -74,7 +78,7 @@ public class AStarSearch {
 
             closedSet.add(current.id);
 
-            for (int[] edge : graph.getOrDefault(current.id, new ArrayList<>())) {
+            for (int[] edge : graph.getOrDefault(current.id, Collections.emptyList())) {
                 int neighbor = edge[0];
                 double tentativeG = current.g + edge[1];
 
@@ -89,11 +93,12 @@ public class AStarSearch {
                 }
             }
         }
-
         return Collections.emptyList();
     }
 
-    /** Reconstructs path by following parent nodes. */
+    /**
+     * Reconstructs path by following parent nodes.
+     */
     private List<Integer> reconstructPath(Node node) {
         List<Integer> path = new ArrayList<>();
         while (node != null) {
