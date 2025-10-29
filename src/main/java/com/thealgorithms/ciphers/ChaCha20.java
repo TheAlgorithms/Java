@@ -64,10 +64,10 @@ public final class ChaCha20 {
     /**
      * Performs the core ChaCha20 processing (XOR with keystream).
      *
-     * @param key        The 32-byte key.
-     * @param nonce      The 12-byte nonce.
-     * @param data       Plaintext or Ciphertext.
-     * @param counter    The initial block counter.
+     * @param key     The 32-byte key.
+     * @param nonce   The 12-byte nonce.
+     * @param data    Plaintext or Ciphertext.
+     * @param counter The initial block counter.
      * @return The result of XORing data with the generated keystream.
      */
     private static byte[] process(final byte[] key, final byte[] nonce, final byte[] data, final int counter) {
@@ -92,10 +92,10 @@ public final class ChaCha20 {
     /**
      * Generates a 64-byte ChaCha20 keystream block.
      *
-     * @param key       The 32-byte key.
-     * @param nonce     The 12-byte nonce.
-     * @param counter   The block counter.
-     * @param output    The 64-byte array to store the generated block.
+     * @param key     The 32-byte key.
+     * @param nonce   The 12-byte nonce.
+     * @param counter The block counter.
+     * @param output  The 64-byte array to store the generated block.
      */
     private static void generateChaCha20Block(final byte[] key, final byte[] nonce, final int counter, final byte[] output) {
         int[] state = initializeState(key, nonce, counter);
