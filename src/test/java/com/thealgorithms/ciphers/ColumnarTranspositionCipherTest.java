@@ -1,10 +1,5 @@
 package com.thealgorithms.ciphers;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertNotEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
-
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -22,10 +17,10 @@ public class ColumnarTranspositionCipherTest {
     @Test
     public void testEncryption() {
         String encryptedText = ColumnarTranspositionCipher.encrypt(plaintext, keyword);
-        assertNotNull(encryptedText, "The encrypted text should not be null.");
-        assertFalse(encryptedText.isEmpty(), "The encrypted text should not be empty.");
+        Assertions.assertNotNull(encryptedText, "The encrypted text should not be null.");
+        Assertions.assertFalse(encryptedText.isEmpty(), "The encrypted text should not be empty.");
         // Check if the encrypted text is different from the plaintext
-        assertNotEquals(plaintext, encryptedText, "The encrypted text should be different from the plaintext.");
+        Assertions.assertNotEquals(plaintext, encryptedText, "The encrypted text should be different from the plaintext.");
     }
 
     @Test
@@ -33,8 +28,8 @@ public class ColumnarTranspositionCipherTest {
         String encryptedText = ColumnarTranspositionCipher.encrypt(plaintext, keyword);
         String decryptedText = ColumnarTranspositionCipher.decrypt();
 
-        assertEquals(plaintext.replaceAll(" ", ""), decryptedText.replaceAll(" ", ""), "The decrypted text should match the original plaintext, ignoring spaces.");
-        assertEquals(encryptedText, ColumnarTranspositionCipher.encrypt(plaintext, keyword), "The encrypted text should be the same when encrypted again.");
+        Assertions.assertEquals(plaintext.replaceAll(" ", ""), decryptedText.replaceAll(" ", ""), "The decrypted text should match the original plaintext, ignoring spaces.");
+        Assertions.assertEquals(encryptedText, ColumnarTranspositionCipher.encrypt(plaintext, keyword), "The encrypted text should be the same when encrypted again.");
     }
 
     @Test
@@ -42,8 +37,8 @@ public class ColumnarTranspositionCipherTest {
         String longText = "This is a significantly longer piece of text to test the encryption and decryption capabilities of the Columnar Transposition Cipher. It should handle long strings gracefully.";
         String encryptedText = ColumnarTranspositionCipher.encrypt(longText, keyword);
         String decryptedText = ColumnarTranspositionCipher.decrypt();
-        assertEquals(longText.replaceAll(" ", ""), decryptedText.replaceAll(" ", ""), "The decrypted text should match the original long plaintext, ignoring spaces.");
-        assertEquals(encryptedText, ColumnarTranspositionCipher.encrypt(longText, keyword), "The encrypted text should be the same when encrypted again.");
+        Assertions.assertEquals(longText.replaceAll(" ", ""), decryptedText.replaceAll(" ", ""), "The decrypted text should match the original long plaintext, ignoring spaces.");
+        Assertions.assertEquals(encryptedText, ColumnarTranspositionCipher.encrypt(longText, keyword), "The encrypted text should be the same when encrypted again.");
     }
 
     @Test
