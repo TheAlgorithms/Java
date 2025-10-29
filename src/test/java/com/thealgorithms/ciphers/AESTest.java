@@ -7,7 +7,7 @@ import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import java.math.BigInteger;
 import org.junit.jupiter.api.Test;
 
-public class MyAESTest {
+public class AESTest {
     @Test
     void testScheduleCore() {
         BigInteger input = new BigInteger("1a2b3c4d", 16);
