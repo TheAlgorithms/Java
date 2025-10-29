@@ -15,7 +15,7 @@ import java.util.Set;
  * @author Your Name
  * @version 1.0
  */
-public final class AStar {
+public final class AStarSearch {
 
     /**
      * Represents a node in the graph for A* algorithm.
@@ -54,7 +54,7 @@ public final class AStar {
     /**
      * Constructs an empty graph.
      */
-    public AStar() {
+    public AStarSearch() {
         graph = new HashMap<>();
     }
 
