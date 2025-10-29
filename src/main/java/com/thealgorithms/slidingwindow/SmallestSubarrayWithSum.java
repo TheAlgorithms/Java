@@ -14,7 +14,8 @@ package com.thealgorithms.slidingwindow;
 public final class SmallestSubarrayWithSum {
 
     // Prevent instantiation
-    private SmallestSubarrayWithSum() {}
+    private SmallestSubarrayWithSum() {
+    }
 
     /**
      * Returns the minimal length of a contiguous subarray of which
@@ -44,4 +45,3 @@ public final class SmallestSubarrayWithSum {
         return minLen == Integer.MAX_VALUE ? 0 : minLen;
     }
 }
-
