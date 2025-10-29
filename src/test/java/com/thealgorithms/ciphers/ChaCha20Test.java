@@ -4,6 +4,7 @@ import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
+import java.util.Arrays; // Added import
 import org.junit.jupiter.api.Test;
 
 public class ChaCha20Test {
@@ -11,12 +12,8 @@ public class ChaCha20Test {
     // Test vector from RFC 8439, Section 2.4.2.
     private static final byte[] RFC8439_KEY = hexStringToByteArray("000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f");
     private static final byte[] RFC8439_NONCE = hexStringToByteArray("000000000000004a00000000"); // Counter = 1, Nonce = 00000000 0000004a 00000000
-    private static final byte[] RFC8439_PLAINTEXT_64 = hexStringToByteArray(
-        "4c616469657320616e642047656e746c656d656e206f662074686520636c617373206f66202739393a204966204920636f756c64206f6666657220796f75206f6e6c79206f6e652074697020666f7220746865206675747572652c2073756e73637265656e20776f756c642062652069742e"
-    );
-    private static final byte[] RFC8439_CIPHERTEXT_64 = hexStringToByteArray(
-        "6e2e359a2568f98041ba0728dd0d6981e97e7aec1d4360c20a27afccfd9fae0bf91b65c5524733ab8f58375fcd4af034bd16adec164f7a2bda3dc0343a99a46c8b4172421b505877c570b1351d530635359a37e5f1797b596a78c149d5d9963e696f8c792374c4314c67d163f97205463f668f438a0c20a3a7187"
-    );
+    private static final byte[] RFC8439_PLAINTEXT_64 = hexStringToByteArray("4c616469657320616e642047656e746c656d656e206f662074686520636c617373206f66202739393a204966204920636f756c64206f6666657220796f75206f6e6c79206f6e652074697020666f7220746865206675747572652c2073756e73637265656e20776f756c642062652069742e");
+    private static final byte[] RFC8439_CIPHERTEXT_64 = hexStringToByteArray("6e2e359a2568f98041ba0728dd0d6981e97e7aec1d4360c20a27afccfd9fae0bf91b65c5524733ab8f58375fcd4af034bd16adec164f7a2bda3dc0343a99a46c8b4172421b505877c570b1351d530635359a37e5f1797b596a78c149d5d9963e696f8c792374c4314c67d163f97205463f668f438a0c20a3a7187");
 
     // Test vector from RFC 8439, Section 2.4.2 for 114 bytes
     private static final byte[] RFC8439_PLAINTEXT_114 = Arrays.copyOf(RFC8439_PLAINTEXT_64, 114);
