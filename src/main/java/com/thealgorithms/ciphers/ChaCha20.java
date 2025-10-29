@@ -199,3 +199,4 @@ public final class ChaCha20 {
         }
     }
 }
+
