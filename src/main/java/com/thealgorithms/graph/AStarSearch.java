@@ -27,26 +27,26 @@ import java.util.Set;
  * Space Complexity: O(V + E)
  * </p>
  */
-public class AStarSearch {
+public final class AStarSearch {
 
-    private static class Node implements Comparable<Node> {
+    private static final class Node implements Comparable<Node> {
         private final int id;
-        private final double g; // cost from start
-        private final double h; // heuristic to goal
-        private final double f; // total cost = g + h
+        private final double costFromStart;
+        private final double heuristicCost;
+        private final double totalCost;
         private final Node parent;
 
-        Node(int id, double g, double h, Node parent) {
+        Node(int id, double costFromStart, double heuristicCost, Node parent) {
             this.id = id;
-            this.g = g;
-            this.h = h;
-            this.f = g + h;
+            this.costFromStart = costFromStart;
+            this.heuristicCost = heuristicCost;
+            this.totalCost = costFromStart + heuristicCost;
             this.parent = parent;
         }
 
         @Override
         public int compareTo(Node other) {
-            return Double.compare(this.f, other.f);
+            return Double.compare(this.totalCost, other.totalCost);
         }
     }
 
@@ -72,12 +72,12 @@ public class AStarSearch {
     /**
      * Heuristic function for A* (simplified as absolute difference).
      *
-     * @param node current node
-     * @param goal goal node
+     * @param currentNode current node
+     * @param goalNode goal node
      * @return heuristic estimate
      */
-    private double heuristic(int node, int goal) {
-        return Math.abs(goal - node);
+    private double heuristic(int currentNode, int goalNode) {
+        return Math.abs(goalNode - currentNode);
     }
 
     /**
@@ -102,16 +102,22 @@ public class AStarSearch {
             }
 
             closedSet.add(current.id);
-            for (int[] edge : graph.getOrDefault(current.id, new ArrayList<>())) {
+            
+            List<int[]> edges = graph.getOrDefault(current.id, Collections.emptyList());
+            for (int[] edge : edges) {
                 int neighbor = edge[0];
-                double tentativeG = current.g + edge[1];
+                double edgeWeight = edge[1];
+                double tentativeG = current.costFromStart + edgeWeight;
+                
                 if (closedSet.contains(neighbor)) {
                     continue;
                 }
 
-                if (tentativeG < gScore.getOrDefault(neighbor, Double.MAX_VALUE)) {
+                double currentGScore = gScore.getOrDefault(neighbor, Double.MAX_VALUE);
+                if (tentativeG < currentGScore) {
                     gScore.put(neighbor, tentativeG);
-                    openSet.add(new Node(neighbor, tentativeG, heuristic(neighbor, goal), current));
+                    double neighborHeuristic = heuristic(neighbor, goal);
+                    openSet.add(new Node(neighbor, tentativeG, neighborHeuristic, current));
                 }
             }
         }
@@ -126,15 +132,20 @@ public class AStarSearch {
      */
     private List<Integer> reconstructPath(Node node) {
         List<Integer> path = new ArrayList<>();
-        while (node != null) {
-            path.add(node.id);
-            node = node.parent;
+        Node current = node;
+        while (current != null) {
+            path.add(current.id);
+            current = current.parent;
         }
         Collections.reverse(path);
         return path;
     }
 
-    /** Reads input dynamically and runs A* algorithm. */
+    /**
+     * Main method to demonstrate A* algorithm with user input.
+     *
+     * @param args command line arguments
+     */
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         AStarSearch aStar = new AStarSearch();
