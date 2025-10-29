@@ -7,28 +7,19 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.PriorityQueue;
-import java.util.Scanner;
 import java.util.Set;
 
 /**
  * Implementation of the A* Search Algorithm for shortest path finding.
  *
- * <p>
- * A* combines Dijkstra's algorithm with a heuristic to efficiently find the
- * shortest path in weighted graphs.
- * </p>
- *
- * <p>
- * Reference: https://en.wikipedia.org/wiki/A*_search_algorithm
- * </p>
- *
- * <p>
- * Time Complexity: O(E + V log V) with a binary heap priority queue.
- * Space Complexity: O(V + E)
- * </p>
+ * @author Your Name
+ * @version 1.0
  */
-public final class AStarSearch {
+public final class AStar {
 
+    /**
+     * Represents a node in the graph for A* algorithm.
+     */
     private static final class Node implements Comparable<Node> {
         private final int id;
         private final double costFromStart;
@@ -36,6 +27,14 @@ public final class AStarSearch {
         private final double totalCost;
         private final Node parent;
 
+        /**
+         * Constructs a new Node.
+         *
+         * @param id the node identifier
+         * @param costFromStart the cost from start node to this node
+         * @param heuristicCost the heuristic cost from this node to goal
+         * @param parent the parent node
+         */
         Node(int id, double costFromStart, double heuristicCost, Node parent) {
             this.id = id;
             this.costFromStart = costFromStart;
@@ -52,8 +51,10 @@ public final class AStarSearch {
 
     private final Map<Integer, List<int[]>> graph;
 
-    /** Constructs an empty graph. */
-    public AStarSearch() {
+    /**
+     * Constructs an empty graph.
+     */
+    public AStar() {
         graph = new HashMap<>();
     }
 
@@ -88,11 +89,15 @@ public final class AStarSearch {
      * @return list of nodes representing the shortest path
      */
     public List<Integer> findPath(int start, int goal) {
+        if (start == goal) {
+            return List.of(start);
+        }
+
         PriorityQueue<Node> openSet = new PriorityQueue<>();
         Map<Integer, Double> gScore = new HashMap<>();
         Set<Integer> closedSet = new HashSet<>();
 
-        openSet.add(new Node(start, 0, heuristic(start, goal), null));
+        openSet.add(new Node(start, 0.0, heuristic(start, goal), null));
         gScore.put(start, 0.0);
 
         while (!openSet.isEmpty()) {
@@ -102,13 +107,13 @@ public final class AStarSearch {
             }
 
             closedSet.add(current.id);
-            
+
             List<int[]> edges = graph.getOrDefault(current.id, Collections.emptyList());
             for (int[] edge : edges) {
                 int neighbor = edge[0];
                 double edgeWeight = edge[1];
                 double tentativeG = current.costFromStart + edgeWeight;
-                
+
                 if (closedSet.contains(neighbor)) {
                     continue;
                 }
@@ -139,38 +144,5 @@ public final class AStarSearch {
         }
         Collections.reverse(path);
         return path;
-    }
-
-    /**
-     * Main method to demonstrate A* algorithm with user input.
-     *
-     * @param args command line arguments
-     */
-    public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        AStarSearch aStar = new AStarSearch();
-
-        System.out.print("Enter number of edges: ");
-        int edges = sc.nextInt();
-        System.out.println("Enter edges in format: u v weight");
-        for (int i = 0; i < edges; i++) {
-            int u = sc.nextInt();
-            int v = sc.nextInt();
-            int w = sc.nextInt();
-            aStar.addEdge(u, v, w);
-        }
-
-        System.out.print("Enter start node: ");
-        int start = sc.nextInt();
-        System.out.print("Enter goal node: ");
-        int goal = sc.nextInt();
-
-        List<Integer> path = aStar.findPath(start, goal);
-        if (path.isEmpty()) {
-            System.out.println("No path found from " + start + " → " + goal);
-        } else {
-            System.out.println("Shortest path from " + start + " → " + goal + ": " + path);
-        }
-        sc.close();
     }
 }
