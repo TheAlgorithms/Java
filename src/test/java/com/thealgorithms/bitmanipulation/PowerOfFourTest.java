@@ -4,7 +4,7 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 /**
- * Unit tests for PowerOfFour class.
+ * Unit tests for {@link PowerOfFour}.
  */
 public final class PowerOfFourTest {
 
@@ -30,4 +30,3 @@ public final class PowerOfFourTest {
         Assertions.assertFalse(PowerOfFour.isPowerOfFour(-16));
     }
 }
-

@@ -5,9 +5,9 @@ package com.thealgorithms.bitmanipulation;
  */
 public final class PowerOfFour {
 
-    // Private constructor to prevent instantiation
+    /** Private constructor to prevent instantiation. */
     private PowerOfFour() {
-        throw new AssertionError("Cannot instantiate utility class");
+        throw new AssertionError("Cannot instantiate utility class.");
     }
 
     /**
