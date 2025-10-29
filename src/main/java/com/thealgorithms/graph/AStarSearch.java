@@ -1,4 +1,4 @@
-package com.thealgorithms.graph;
+package com.thealgorithms.graphs;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -7,14 +7,14 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.PriorityQueue;
-import java.util.Set;
 import java.util.Scanner;
+import java.util.Set;
 
 /**
- * Implementation of the A* Search Algorithm for shortest pathfinding.
+ * Implementation of the A* Search Algorithm for shortest path finding.
  *
  * <p>
- * A* combines Dijkstra’s algorithm with a heuristic to efficiently find the
+ * A* combines Dijkstra's algorithm with a heuristic to efficiently find the
  * shortest path in weighted graphs.
  * </p>
  *
@@ -23,18 +23,18 @@ import java.util.Scanner;
  * </p>
  *
  * <p>
- * Time Complexity: O(E + V log V) with a binary heap priority queue.<br>
+ * Time Complexity: O(E + V log V) with a binary heap priority queue.
  * Space Complexity: O(V + E)
  * </p>
  */
 public class AStarSearch {
 
     private static class Node implements Comparable<Node> {
-        int id;
-        double g; // cost from start
-        double h; // heuristic to goal
-        double f; // total cost = g + h
-        Node parent;
+        private final int id;
+        private final double g; // cost from start
+        private final double h; // heuristic to goal
+        private final double f; // total cost = g + h
+        private final Node parent;
 
         Node(int id, double g, double h, Node parent) {
             this.id = id;
@@ -65,8 +65,8 @@ public class AStarSearch {
      * @param weight edge weight
      */
     public void addEdge(int u, int v, int weight) {
-        graph.computeIfAbsent(u, k -> new ArrayList<>()).add(new int[]{v, weight});
-        graph.computeIfAbsent(v, k -> new ArrayList<>()).add(new int[]{u, weight});
+        graph.computeIfAbsent(u, k -> new ArrayList<>()).add(new int[] {v, weight});
+        graph.computeIfAbsent(v, k -> new ArrayList<>()).add(new int[] {u, weight});
     }
 
     /**
