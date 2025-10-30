@@ -1,0 +1,10 @@
+global:
+  db_url: "jdbc:mysql://localhost:3306/main"
+  jwt_secret: "default_secret"
+  vault_key: "global_vault_key"
+
+services:
+  serviceA:
+    jwt_secret: "serviceA_secret"
+  serviceB:
+    db_url: "jdbc:postgresql://localhost:5432/serviceB"
