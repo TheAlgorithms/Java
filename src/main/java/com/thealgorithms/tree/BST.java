@@ -27,7 +27,7 @@ public class BST {
 
     // Root of the BST
     // the first of Node tree
-    //0->
+    // 0->
     private Node root;
 
     /** Create an empty BST. */
@@ -196,10 +196,12 @@ public class BST {
     }
 
     private void printInorderRecursive(Node node) {
-        if (node == null) return;
-        printInorderRecursive(node.left);      // left
-        System.out.print(node.key + " ");      // node
-        printInorderRecursive(node.right);     // right
+        if (node == null) {
+            return;
+        }
+        printInorderRecursive(node.left); // left
+        System.out.print(node.key + " "); // node
+        printInorderRecursive(node.right); // right
     }
 
     /**
@@ -213,10 +215,12 @@ public class BST {
     }
 
     private void printPreorderRecursive(Node node) {
-        if (node == null) return;
-        System.out.print(node.key + " ");      // node
-        printPreorderRecursive(node.left);     // left
-        printPreorderRecursive(node.right);    // right
+        if (node == null) {
+            return;
+        }
+        System.out.print(node.key + " "); // node
+        printPreorderRecursive(node.left); // left
+        printPreorderRecursive(node.right); // right
     }
 
     /**
@@ -230,20 +234,24 @@ public class BST {
     }
 
     private void printPostorderRecursive(Node node) {
-        if (node == null) return;
-        printPostorderRecursive(node.left);    // left
-        printPostorderRecursive(node.right);   // right
-        System.out.print(node.key + " ");      // node
+        if (node == null) {
+            return;
+        }
+        printPostorderRecursive(node.left); // left
+        printPostorderRecursive(node.right); // right
+        System.out.print(node.key + " "); // node
     }
 
-    public List<Integer> inorderList() {
+        public List<Integer> inorderList() {
         List<Integer> result = new ArrayList<>();
         inorderToList(root, result);
         return result;
     }
 
     private void inorderToList(Node node, List<Integer> out) {
-        if (node == null) return;
+        if (node == null) {
+            return;
+        }
         inorderToList(node.left, out);
         out.add(node.key);
         inorderToList(node.right, out);
@@ -274,5 +282,41 @@ public class BST {
         postorderToList(node.left, out);
         postorderToList(node.right, out);
         out.add(node.key);
+    }
+
+    public static void main(String[] args) {
+        BST bst = new BST();
+
+        // Insert values
+        int[] values = {50, 30, 70, 20, 40, 60, 80};
+        for (int v : values) {
+            bst.insert(v);
+        }
+
+        bst.printInorder();
+        bst.printPreorder();
+        bst.printPostorder();
+
+        System.out.println("Inorder List: " + bst.inorderList());
+        System.out.println("Preorder List: " + bst.preorderList());
+        System.out.println("Postorder List: " + bst.postorderList());
+
+
+        System.out.println("Search 40: " + bst.search(40)); // true
+        System.out.println("Search 99: " + bst.search(99)); // false
+
+
+        System.out.println("Min: " + bst.findMin()); // 20
+        System.out.println("Max: " + bst.findMax()); // 80
+
+
+        bst.delete(20);
+        System.out.println("After deleting 20 (leaf): " + bst.inorderList());
+
+        bst.delete(30);
+        System.out.println("After deleting 30 (one child): " + bst.inorderList());
+
+        bst.delete(50);
+        System.out.println("After deleting 50 (two children): " + bst.inorderList());
     }
 }

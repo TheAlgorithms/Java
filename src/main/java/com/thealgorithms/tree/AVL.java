@@ -122,7 +122,9 @@ public class AVL {
      */
     private Node insertRecursive(Node node, int key) {
         // Step 1: Perform standard BST insert
-        if (node == null) return new Node(key);
+        if (node == null) {
+            return new Node(key);
+        }
 
         if (key < node.key)
             node.left = insertRecursive(node.left, key);
@@ -245,8 +247,8 @@ public class AVL {
         int balance = getBalance(node);
 
         // Case 1: Left Left (LL)
-        if (balance > 1 && getBalance(node.left) >= 0)
-            return rightRotate(node);
+        if (balance > 1 && getBalance(node.left) >= 0) return rightRotate(node);
+
 
         // Case 2: Left Right (LR)
         if (balance > 1 && getBalance(node.left) < 0) {
@@ -255,8 +257,8 @@ public class AVL {
         }
 
         // Case 3: Right Right (RR)
-        if (balance < -1 && getBalance(node.right) <= 0)
-            return leftRotate(node);
+        if (balance < -1 && getBalance(node.right) <= 0) return leftRotate(node);
+
 
         // Case 4: Right Left (RL)
         if (balance < -1 && getBalance(node.right) > 0) {
@@ -287,42 +289,54 @@ public class AVL {
     /* ======================== TRAVERSALS ======================== */
 
     private void printInorderRecursive(Node node) {
-        if (node == null) return;
+        if (node == null) {
+            return;
+        }
         printInorderRecursive(node.left);
         System.out.print(node.key + " ");
         printInorderRecursive(node.right);
     }
 
     private void printPreorderRecursive(Node node) {
-        if (node == null) return;
+        if (node == null) {
+            return;
+        }
         System.out.print(node.key + " ");
         printPreorderRecursive(node.left);
         printPreorderRecursive(node.right);
     }
 
     private void printPostorderRecursive(Node node) {
-        if (node == null) return;
+        if (node == null) {
+            return;
+        }
         printPostorderRecursive(node.left);
         printPostorderRecursive(node.right);
         System.out.print(node.key + " ");
     }
 
     private void inorderToList(Node node, List<Integer> out) {
-        if (node == null) return;
+        if (node == null) {
+            return;
+        }
         inorderToList(node.left, out);
         out.add(node.key);
         inorderToList(node.right, out);
     }
 
     private void preorderToList(Node node, List<Integer> out) {
-        if (node == null) return;
+        if (node == null) {
+            return;
+        }
         out.add(node.key);
         preorderToList(node.left, out);
         preorderToList(node.right, out);
     }
 
     private void postorderToList(Node node, List<Integer> out) {
-        if (node == null) return;
+        if (node == null) {
+            return;
+        }
         postorderToList(node.left, out);
         postorderToList(node.right, out);
         out.add(node.key);
@@ -337,7 +351,7 @@ public class AVL {
         for (int v : values) avl.insert(v);
 
         // Display traversals
-        avl.printInorder();   // should show sorted order
+        avl.printInorder(); // should show sorted order
         avl.printPreorder();
         avl.printPostorder();
 
