@@ -15,7 +15,8 @@ public class BSTTest {
             this.key = key;
             this.left = null;
             this.right = null;
-        }    }
+        }
+    }
 
     private Node root;
 
