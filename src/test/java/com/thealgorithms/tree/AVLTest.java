@@ -14,80 +14,89 @@ public class AVLTest {
         Node(int key) {
             this.key = key;
             this.height = 1; // new node is initially added at leaf
-            this.left = this.right = null;
+            this.left = null;
+            this.right = null;
         }
     }
 
     private Node root;
 
     public AVLTest() {
-        root = null;
+        this.root = null;
     }
 
     public void insert(int key) {
-        root = insertRecursive(root, key);
+        this.root = insertRecursive(this.root, key);
     }
 
     public void delete(int key) {
-        root = deleteRecursive(root, key);
+        this.root = deleteRecursive(this.root, key);
     }
 
     public boolean search(int key) {
-        return searchRecursive(root, key);
+        return searchRecursive(this.root, key);
     }
 
     public int findMin() {
-        if (root == null) throw new NoSuchElementException("AVL is empty");
-        return findMinNode(root).key;
+        if (this.root == null) {
+            throw new NoSuchElementException("AVL is empty");
+        }
+        return findMinNode(this.root).key;
     }
 
     public int findMax() {
-        if (root == null) throw new NoSuchElementException("AVL is empty");
-        Node cur = root;
-        while (cur.right != null) cur = cur.right;
+        if (this.root == null) {
+            throw new NoSuchElementException("AVL is empty");
+        }
+        Node cur = this.root;
+        while (cur.right != null) {
+            cur = cur.right;
+        }
         return cur.key;
     }
 
     public void printInorder() {
         System.out.print("Inorder: ");
-        printInorderRecursive(root);
+        printInorderRecursive(this.root);
         System.out.println();
     }
 
     public void printPreorder() {
         System.out.print("Preorder: ");
-        printPreorderRecursive(root);
+        printPreorderRecursive(this.root);
         System.out.println();
     }
 
     public void printPostorder() {
         System.out.print("Postorder: ");
-        printPostorderRecursive(root);
+        printPostorderRecursive(this.root);
         System.out.println();
     }
 
     public List<Integer> inorderList() {
         List<Integer> res = new ArrayList<>();
-        inorderToList(root, res);
+        inorderToList(this.root, res);
         return res;
     }
 
     public List<Integer> preorderList() {
         List<Integer> res = new ArrayList<>();
-        preorderToList(root, res);
+        preorderToList(this.root, res);
         return res;
     }
 
     public List<Integer> postorderList() {
         List<Integer> res = new ArrayList<>();
-        postorderToList(root, res);
+        postorderToList(this.root, res);
         return res;
     }
 
     /* Recursive helpers */
 
     private Node insertRecursive(Node node, int key) {
-        if (node == null) return new Node(key);
+        if (node == null) {
+            return new Node(key);
+        }
 
         if (key < node.key) {
             node.left = insertRecursive(node.left, key);
@@ -125,21 +134,33 @@ public class AVLTest {
             }
         }
 
-        if (node == null) return null;
+        if (node == null) {
+            return null;
+        }
 
         updateHeight(node);
         return balanceNode(node);
     }
 
     private boolean searchRecursive(Node node, int key) {
-        if (node == null) return false;
-        if (key == node.key) return true;
-        return key < node.key ? searchRecursive(node.left, key) : searchRecursive(node.right, key);
+        if (node == null) {
+            return false;
+        }
+        if (key == node.key) {
+            return true;
+        }
+        if (key < node.key) {
+            return searchRecursive(node.left, key);
+        } else {
+            return searchRecursive(node.right, key);
+        }
     }
 
     private Node findMinNode(Node node) {
         Node cur = node;
-        while (cur.left != null) cur = cur.left;
+        while (cur.left != null) {
+            cur = cur.left;
+        }
         return cur;
     }
 
@@ -179,7 +200,7 @@ public class AVLTest {
         }
 
         if (balance > 1 && getBalance(node.left) < 0) {
-            node.left = leftRotate(node.left); // LR: left then right
+            node.left = leftRotate(node.left); // LR
             return rightRotate(node);
         }
 
@@ -188,7 +209,7 @@ public class AVLTest {
         }
 
         if (balance < -1 && getBalance(node.right) > 0) {
-            node.right = rightRotate(node.right); // RL: right then left
+            node.right = rightRotate(node.right); // RL
             return leftRotate(node);
         }
 
@@ -196,7 +217,10 @@ public class AVLTest {
     }
 
     private int height(Node node) {
-        return node == null ? 0 : node.height;
+        if (node == null) {
+            return 0;
+        }
+        return node.height;
     }
 
     private void updateHeight(Node node) {
@@ -204,50 +228,97 @@ public class AVLTest {
     }
 
     private int getBalance(Node node) {
-        return node == null ? 0 : height(node.left) - height(node.right);
+        if (node == null) {
+            return 0;
+        }
+        return height(node.left) - height(node.right);
     }
 
     /* ============ Traversal helpers ============ */
 
     private void printInorderRecursive(Node node) {
-        if (node == null) return;
+        if (node == null) {
+            return;
+        }
         printInorderRecursive(node.left);
         System.out.print(node.key + " ");
         printInorderRecursive(node.right);
     }
 
     private void printPreorderRecursive(Node node) {
-        if (node == null) return;
+        if (node == null) {
+            return;
+        }
         System.out.print(node.key + " ");
         printPreorderRecursive(node.left);
         printPreorderRecursive(node.right);
     }
 
     private void printPostorderRecursive(Node node) {
-        if (node == null) return;
+        if (node == null) {
+            return;
+        }
         printPostorderRecursive(node.left);
         printPostorderRecursive(node.right);
         System.out.print(node.key + " ");
     }
 
     private void inorderToList(Node node, List<Integer> out) {
-        if (node == null) return;
+        if (node == null) {
+            return;
+        }
         inorderToList(node.left, out);
         out.add(node.key);
         inorderToList(node.right, out);
     }
 
     private void preorderToList(Node node, List<Integer> out) {
-        if (node == null) return;
+        if (node == null) {
+            return;
+        }
         out.add(node.key);
         preorderToList(node.left, out);
         preorderToList(node.right, out);
     }
 
     private void postorderToList(Node node, List<Integer> out) {
-        if (node == null) return;
+        if (node == null) {
+            return;
+        }
         postorderToList(node.left, out);
         postorderToList(node.right, out);
         out.add(node.key);
+    }
+    public static void main(String[] args) {
+        AVL avl = new AVL();
+
+        int[] values = {30, 20, 40, 10, 25, 35, 50, 5, 15, 27, 45, 60};
+
+        for (int v : values) {
+            avl.insert(v);
+        }
+
+        avl.printInorder();
+        avl.printPreorder();
+        avl.printPostorder();
+
+        System.out.println("Inorder List: " + avl.inorderList());
+        System.out.println("Preorder List: " + avl.preorderList());
+        System.out.println("Postorder List: " + avl.postorderList());
+
+        System.out.println("Search 27: " + avl.search(27));
+        System.out.println("Search 99: " + avl.search(99));
+
+        System.out.println("Min: " + avl.findMin());
+        System.out.println("Max: " + avl.findMax());
+
+        avl.delete(10);
+        System.out.println("After deleting 10: " + avl.inorderList());
+
+        avl.delete(30);
+        System.out.println("After deleting 30: " + avl.inorderList());
+
+        avl.delete(40);
+        System.out.println("After deleting 40: " + avl.inorderList());
     }
 }
