@@ -1,3 +1,9 @@
+/*
+ * TheAlgorithms (https://github.com/TheAlgorithms/Java)
+ * Author: Shewale41
+ * This file is licensed under the MIT License.
+ */
+
 package com.thealgorithms.datastructures.trees;
 
 import java.util.ArrayList;
