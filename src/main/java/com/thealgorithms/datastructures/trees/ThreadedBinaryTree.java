@@ -59,7 +59,8 @@ public final class ThreadedBinaryTree {
 
         Node current = root;
         Node parent = null;
-        while (current != null) {
+
+        while (true) {
             parent = current;
             if (value < current.value) {
                 if (!current.leftIsThread && current.left != null) {
