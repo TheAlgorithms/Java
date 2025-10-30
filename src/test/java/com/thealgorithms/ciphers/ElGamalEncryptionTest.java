@@ -1,8 +1,9 @@
 package com.thealgorithms.ciphers;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-
 import org.junit.jupiter.api.Test;
+import java.lang.reflect.Constructor;
+import java.lang.reflect.Modifier;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 /**
  * Unit tests for {@link ElGamalEncryption}.
@@ -11,8 +12,6 @@ public class ElGamalEncryptionTest {
 
     @Test
     void testEncryptionDecryption() {
-        // Basic functional test (simulated output check)
-        // Since ElGamal uses randomization, we only verify successful execution
         try {
             ElGamalEncryption.runElGamal("Hello", 64);
         } catch (Exception e) {
@@ -21,14 +20,9 @@ public class ElGamalEncryptionTest {
     }
 
     @Test
-    void testUtilityConstructor() {
-        // Ensures the utility class constructor is private
-        try {
-            var constructor = ElGamalEncryption.class.getDeclaredConstructor();
-            constructor.setAccessible(true);
-            constructor.newInstance();
-        } catch (Exception e) {
-            assertEquals("Utility class", e.getCause().getMessage());
-        }
+    void testUtilityConstructor() throws NoSuchMethodException {
+        Constructor<ElGamalEncryption> constructor = ElGamalEncryption.class.getDeclaredConstructor();
+        assertTrue(Modifier.isPrivate(constructor.getModifiers()),
+                "Utility class constructor should be private");
     }
 }
