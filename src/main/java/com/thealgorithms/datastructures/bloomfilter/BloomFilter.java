@@ -1,5 +1,6 @@
 package com.thealgorithms.datastructures.bloomfilter;
 
+import java.lang.reflect.Array;
 import java.util.Arrays;
 import java.util.BitSet;
 
@@ -127,7 +128,7 @@ public class BloomFilter<T> {
          * @return the computed hash value
          */
         public int compute(T key) {
-            return index * contentHash(key);
+            return index*contentHash(key);
         }
 
         /**
@@ -147,31 +148,31 @@ public class BloomFilter<T> {
             }
             return sum;
         }
-
         /**
          * Computes a content-based hash for arrays; falls back to ASCII-sum of String value otherwise.
          */
         private int contentHash(Object key) {
-            if (key instanceof int[]) {
-                return Arrays.hashCode((int[]) key);
-            } else if (key instanceof long[]) {
-                return Arrays.hashCode((long[]) key);
-            } else if (key instanceof byte[]) {
-                return Arrays.hashCode((byte[]) key);
-            } else if (key instanceof short[]) {
-                return Arrays.hashCode((short[]) key);
-            } else if (key instanceof char[]) {
-                return Arrays.hashCode((char[]) key);
-            } else if (key instanceof boolean[]) {
-                return Arrays.hashCode((boolean[]) key);
-            } else if (key instanceof float[]) {
-                return Arrays.hashCode((float[]) key);
-            } else if (key instanceof double[]) {
-                return Arrays.hashCode((double[]) key);
-            } else if (key instanceof Object[]) {
-                return Arrays.deepHashCode((Object[]) key);
+            String keyString;
+            if (key != null && key.getClass().isArray()) {
+                if (key instanceof Object[] objects) {
+                    keyString = Arrays.deepToString(objects);
+                }
+                else {
+                    int length = Array.getLength(key);
+                    StringBuilder sb = new StringBuilder("[");
+                    for (int i = 0; i < length; i++) {
+                        sb.append(Array.get(key, i));
+                        if (i < length - 1) {
+                            sb.append(", ");
+                        }
+                    }
+                    sb.append("]");
+                    keyString = sb.toString();
+                }
+            } else {
+                keyString = String.valueOf(key);
             }
-            return asciiString(String.valueOf(key));
+            return asciiString(String.valueOf(keyString));
         }
     }
 }
