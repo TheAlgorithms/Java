@@ -1,6 +1,12 @@
-package com.thealgorithms.cryptography;
+/*
+ * TheAlgorithms (https://github.com/TheAlgorithms/Java)
+ * Author: Shewale41
+ * This file is licensed under the MIT License.
+ */
 
-import static org.junit.jupiter.api.Assertions.*;
+package com.thealgorithms.ciphers;
+
+import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 
 import org.junit.jupiter.api.Test;
 
@@ -11,14 +17,12 @@ public class ElGamalEncryptionTest {
 
     @Test
     void testEncryptionDecryption() {
-        // This test ensures encryption-decryption consistency
         String message = "Hello";
-        ElGamalEncryption.runElGamal(message, 32);
-        assertTrue(true); // Basic run test - manual verification for output
+        assertDoesNotThrow(() -> ElGamalEncryption.runElGamal(message, 32));
     }
 
     @Test
-    void testDifferentBitLengths() {
+    void testWithDifferentBitLengths() {
         assertDoesNotThrow(() -> ElGamalEncryption.runElGamal("Test", 16));
         assertDoesNotThrow(() -> ElGamalEncryption.runElGamal("Secure", 64));
     }
