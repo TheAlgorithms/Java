@@ -1,6 +1,7 @@
 package com.thealgorithms.bitmanipulation;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+
 import org.junit.jupiter.api.Test;
 
 /**
@@ -10,13 +11,13 @@ public class CountTotalSetBitsTest {
 
     @Test
     void testSmallNumbers() {
-        assertEquals(4, CountTotalSetBits.countTotalSetBits(3));  // 1->1,2->1,3->2
-        assertEquals(5, CountTotalSetBits.countTotalSetBits(4));  // 1,2,3,4 -> total 5
+        assertEquals(4, CountTotalSetBits.countTotalSetBits(3)); // 1->1,2->1,3->2
+        assertEquals(5, CountTotalSetBits.countTotalSetBits(4)); // 1,2,3,4 -> total 5
     }
 
     @Test
     void testPowerOfTwo() {
-        assertEquals(12, CountTotalSetBits.countTotalSetBits(7));  // from 1 to 7
+        assertEquals(12, CountTotalSetBits.countTotalSetBits(7)); // from 1 to 7
     }
 
     @Test
