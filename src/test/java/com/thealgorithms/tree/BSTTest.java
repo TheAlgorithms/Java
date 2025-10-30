@@ -27,7 +27,7 @@ public class BSTTest {
 
     // Root of the BST
     // the first of Node tree
-    //0->
+    // 0->
     private Node root;
 
     /** Create an empty BST. */
@@ -182,7 +182,6 @@ public class BSTTest {
         return current.key;
     }
 
-
     /**
      * Print inorder traversal (Left, Node, Right).
      * InOrder -> Left, key, Right
@@ -197,9 +196,9 @@ public class BSTTest {
         if (node == null) {
             return;
         }
-        printInorderRecursive(node.left);      // left
-        System.out.print(node.key + " ");      // node
-        printInorderRecursive(node.right);     // right
+        printInorderRecursive(node.left); // left
+        System.out.print(node.key + " "); // node
+        printInorderRecursive(node.right); // right
     }
 
     /**
@@ -216,9 +215,9 @@ public class BSTTest {
         if (node == null) {
             return;
         }
-        System.out.print(node.key + " ");      // node
-        printPreorderRecursive(node.left);     // left
-        printPreorderRecursive(node.right);    // right
+        System.out.print(node.key + " "); // node
+        printPreorderRecursive(node.left); // left
+        printPreorderRecursive(node.right); // right
     }
 
     /**
@@ -235,9 +234,9 @@ public class BSTTest {
         if (node == null) {
             return;
         }
-        printPostorderRecursive(node.left);    // left
-        printPostorderRecursive(node.right);   // right
-        System.out.print(node.key + " ");      // node
+        printPostorderRecursive(node.left); // left
+        printPostorderRecursive(node.right); // right
+        System.out.print(node.key + " "); // node
     }
 
     public List<Integer> inorderList() {
@@ -254,7 +253,6 @@ public class BSTTest {
         out.add(node.key);
         inorderToList(node.right, out);
     }
-
 
     public List<Integer> preorderList() {
         List<Integer> result = new ArrayList<>();

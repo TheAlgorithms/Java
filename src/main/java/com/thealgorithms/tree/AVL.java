@@ -113,7 +113,6 @@ public class AVL {
         return res;
     }
 
-
     /**
      * Recursive insert:
      * 1. Insert key like a normal BST
@@ -249,7 +248,6 @@ public class AVL {
         // Case 1: Left Left (LL)
         if (balance > 1 && getBalance(node.left) >= 0) return rightRotate(node);
 
-
         // Case 2: Left Right (LR)
         if (balance > 1 && getBalance(node.left) < 0) {
             node.left = leftRotate(node.left);
@@ -258,7 +256,6 @@ public class AVL {
 
         // Case 3: Right Right (RR)
         if (balance < -1 && getBalance(node.right) <= 0) return leftRotate(node);
-
 
         // Case 4: Right Left (RL)
         if (balance < -1 && getBalance(node.right) > 0) {

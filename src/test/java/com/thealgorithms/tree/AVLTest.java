@@ -91,11 +91,9 @@ public class AVLTest {
 
         if (key < node.key) {
             node.left = insertRecursive(node.left, key);
-        }
-        else if (key > node.key) {
+        } else if (key > node.key) {
             node.right = insertRecursive(node.right, key);
-        }
-        else {
+        } else {
             return node; // duplicates ignored
             }
 
@@ -110,11 +108,9 @@ public class AVLTest {
 
         if (key < node.key) {
             node.left = deleteRecursive(node.left, key);
-        }
-        else if (key > node.key) {
+        } else if (key > node.key) {
             node.right = deleteRecursive(node.right, key);
-        }
-        else {
+        } else {
             if (node.left == null || node.right == null) {
                 Node temp = (node.left != null) ? node.left : node.right;
                 if (temp == null) {

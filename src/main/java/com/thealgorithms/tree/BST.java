@@ -184,7 +184,6 @@ public class BST {
         return current.key;
     }
 
-
     /**
      * Print inorder traversal (Left, Node, Right).
      * InOrder -> Left, key, Right
@@ -242,7 +241,7 @@ public class BST {
         System.out.print(node.key + " "); // node
     }
 
-        public List<Integer> inorderList() {
+    public List<Integer> inorderList() {
         List<Integer> result = new ArrayList<>();
         inorderToList(root, result);
         return result;
@@ -256,7 +255,6 @@ public class BST {
         out.add(node.key);
         inorderToList(node.right, out);
     }
-
 
     public List<Integer> preorderList() {
         List<Integer> result = new ArrayList<>();
@@ -301,14 +299,11 @@ public class BST {
         System.out.println("Preorder List: " + bst.preorderList());
         System.out.println("Postorder List: " + bst.postorderList());
 
-
         System.out.println("Search 40: " + bst.search(40)); // true
         System.out.println("Search 99: " + bst.search(99)); // false
 
-
         System.out.println("Min: " + bst.findMin()); // 20
         System.out.println("Max: " + bst.findMax()); // 80
-
 
         bst.delete(20);
         System.out.println("After deleting 20 (leaf): " + bst.inorderList());
