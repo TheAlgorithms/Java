@@ -1,9 +1,10 @@
 package com.thealgorithms.ciphers;
 
-import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Modifier;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import org.junit.jupiter.api.Test;
 
 /**
  * Unit tests for {@link ElGamalEncryption}.
@@ -22,7 +23,6 @@ public class ElGamalEncryptionTest {
     @Test
     void testUtilityConstructor() throws NoSuchMethodException {
         Constructor<ElGamalEncryption> constructor = ElGamalEncryption.class.getDeclaredConstructor();
-        assertTrue(Modifier.isPrivate(constructor.getModifiers()),
-                "Utility class constructor should be private");
+        assertTrue(Modifier.isPrivate(constructor.getModifiers()), "Utility class constructor should be private");
     }
 }

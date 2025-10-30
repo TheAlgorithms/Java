@@ -26,7 +26,7 @@ public final class ElGamalEncryption {
      * @param message the plaintext message to encrypt
      * @param bitLength the bit length for prime generation
      */
-    @SuppressWarnings({ "PMD.SystemPrintln", "PMD.DataflowAnomalyAnalysis" })
+    @SuppressWarnings({"PMD.SystemPrintln", "PMD.DataflowAnomalyAnalysis"})
     public static void runElGamal(final String message, final int bitLength) {
         final BigInteger p = BigInteger.probablePrime(bitLength, RANDOM);
         final BigInteger g = new BigInteger("2");
