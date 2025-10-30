@@ -9,11 +9,12 @@ public class AVLTest {
     private static class Node {
         int key;
         int height;
-        Node left, right;
+        Node left;
+        Node right;
 
         Node(int key) {
             this.key = key;
-            this.height = 1; // new node is initially added at leaf
+            this.height = 1;
             this.left = null;
             this.right = null;
         }
@@ -168,10 +169,10 @@ public class AVLTest {
 
     private Node rightRotate(Node y) {
         Node x = y.left;
-        Node T2 = x.right;
+        Node t2 = x.right;
 
         x.right = y;
-        y.left = T2;
+        y.left = t2;
 
         updateHeight(y);
         updateHeight(x);
@@ -181,10 +182,10 @@ public class AVLTest {
 
     private Node leftRotate(Node x) {
         Node y = x.right;
-        Node T2 = y.left;
+        Node t2 = y.left;
 
         y.left = x;
-        x.right = T2;
+        x.right = t2;
 
         updateHeight(x);
         updateHeight(y);

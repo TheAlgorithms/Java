@@ -8,13 +8,14 @@ public class BSTTest {
 
     private static class Node {
         int key;
-        Node left, right;
+        Node left;
+        Node right;
 
         Node(int key) {
             this.key = key;
-            left = right = null;
-        }
-    }
+            this.left = null;
+            this.right = null;
+        }    }
 
     private Node root;
 
