@@ -95,7 +95,7 @@ public class AVLTest {
             node.right = insertRecursive(node.right, key);
         } else {
             return node; // duplicates ignored
-            }
+        }
 
         updateHeight(node);
         return balanceNode(node);
