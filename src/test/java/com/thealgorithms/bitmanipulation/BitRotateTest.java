@@ -1,9 +1,10 @@
 package com.thealgorithms.bitmanipulation;
 
+import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
+
 import org.junit.jupiter.api.Test;
 
 /**
@@ -151,16 +152,14 @@ public class BitRotateTest {
     @Test
     public void testRotateLeftNegativeShift() {
         // Negative shifts should throw IllegalArgumentException
-        Exception exception = assertThrows(IllegalArgumentException.class, 
-            () -> BitRotate.rotateLeft(42, -1));
+        Exception exception = assertThrows(IllegalArgumentException.class, () -> BitRotate.rotateLeft(42, -1));
         assertTrue(exception.getMessage().contains("negative"));
     }
 
     @Test
     public void testRotateRightNegativeShift() {
         // Negative shifts should throw IllegalArgumentException
-        Exception exception = assertThrows(IllegalArgumentException.class, 
-            () -> BitRotate.rotateRight(42, -5));
+        Exception exception = assertThrows(IllegalArgumentException.class, () -> BitRotate.rotateRight(42, -5));
         assertTrue(exception.getMessage().contains("negative"));
     }
 
@@ -171,10 +170,10 @@ public class BitRotateTest {
         // Rotating left then right by same amount should return original value
         int original = 0x12345678;
         int shift = 7;
-        
+
         int leftRotated = BitRotate.rotateLeft(original, shift);
         int restored = BitRotate.rotateRight(leftRotated, shift);
-        
+
         assertEquals(original, restored);
     }
 
@@ -183,10 +182,10 @@ public class BitRotateTest {
         // Rotating right then left by same amount should return original value
         int original = 0x9ABCDEF0;
         int shift = 13;
-        
+
         int rightRotated = BitRotate.rotateRight(original, shift);
         int restored = BitRotate.rotateLeft(rightRotated, shift);
-        
+
         assertEquals(original, restored);
     }
 
