@@ -166,7 +166,7 @@
         <profile> <!-- Use with `mvn clean test -Pdev` to generate PIT coverage reports for your tests -->
             <id>dev</id>
 
-            <properties> <!-- Change these to select target -->
+            <properties> <!-- Modify this section to change target(s) -->
                 <modulename>datastructures</modulename>
                 <packagename>trees</packagename>
                 <classname>AVLSimple</classname>
