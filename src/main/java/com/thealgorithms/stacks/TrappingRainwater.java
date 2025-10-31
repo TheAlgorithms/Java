@@ -1,4 +1,4 @@
-package com.thealgorithms.searches;
+package com.thealgorithms.stacks;
 /**
  * Trapping Rainwater Problem
  * Given an array of non-negative integers representing the height of bars,

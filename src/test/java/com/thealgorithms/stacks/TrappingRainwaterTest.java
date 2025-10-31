@@ -1,4 +1,4 @@
-package com.thealgorithms.searches;
+package com.thealgorithms.stacks;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
