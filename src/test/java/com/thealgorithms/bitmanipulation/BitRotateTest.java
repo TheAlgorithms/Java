@@ -1,19 +1,23 @@
 package com.thealgorithms.bitmanipulation;
 
-import static org.junit.jupiter.api.Assertions.*;
-
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import org.junit.jupiter.api.Test;
 
 /**
  * Unit tests for BitRotate class covering typical, boundary, and edge cases.
  * Tests verify correct behavior for 32-bit circular bit rotations.
+ *
+ * @author Yajunesh
  */
 public class BitRotateTest {
 
     // ===== rotateLeft Tests =====
 
     @Test
-    void testRotateLeftBasic() {
+    public void testRotateLeftBasic() {
         // Basic left rotation
         assertEquals(0b00000000_00000000_00000000_00000010, BitRotate.rotateLeft(1, 1));
         assertEquals(0b00000000_00000000_00000000_00000100, BitRotate.rotateLeft(1, 2));
@@ -21,7 +25,7 @@ public class BitRotateTest {
     }
 
     @Test
-    void testRotateLeftWithCarry() {
+    public void testRotateLeftWithCarry() {
         // Test bits carrying from left to right
         // Binary: 10000000_00000000_00000000_00000001
         int value = 0x80000001;
@@ -35,7 +39,7 @@ public class BitRotateTest {
     }
 
     @Test
-    void testRotateLeftShift32() {
+    public void testRotateLeftShift32() {
         // Shift of 32 should be same as shift of 0 (modulo behavior)
         int value = 0x12345678;
         assertEquals(value, BitRotate.rotateLeft(value, 32));
@@ -44,7 +48,7 @@ public class BitRotateTest {
     }
 
     @Test
-    void testRotateLeftShiftNormalization() {
+    public void testRotateLeftShiftNormalization() {
         // Test that shifts > 32 are properly normalized
         int value = 1;
         assertEquals(BitRotate.rotateLeft(value, 1), BitRotate.rotateLeft(value, 33));
@@ -52,7 +56,7 @@ public class BitRotateTest {
     }
 
     @Test
-    void testRotateLeftZeroShift() {
+    public void testRotateLeftZeroShift() {
         // Zero shift should return original value
         int value = 0xABCD1234;
         assertEquals(value, BitRotate.rotateLeft(value, 0));
@@ -61,7 +65,7 @@ public class BitRotateTest {
     // ===== rotateRight Tests =====
 
     @Test
-    void testRotateRightBasic() {
+    public void testRotateRightBasic() {
         // Basic right rotation
         assertEquals(0b10000000_00000000_00000000_00000000, BitRotate.rotateRight(1, 1));
         assertEquals(0b01000000_00000000_00000000_00000000, BitRotate.rotateRight(1, 2));
@@ -69,7 +73,7 @@ public class BitRotateTest {
     }
 
     @Test
-    void testRotateRightWithCarry() {
+    public void testRotateRightWithCarry() {
         // Test bits carrying from right to left
         // Binary: 00000000_00000000_00000000_00000011
         int value = 3;
@@ -83,7 +87,7 @@ public class BitRotateTest {
     }
 
     @Test
-    void testRotateRightShift32() {
+    public void testRotateRightShift32() {
         // Shift of 32 should be same as shift of 0 (modulo behavior)
         int value = 0x9ABCDEF0;
         assertEquals(value, BitRotate.rotateRight(value, 32));
@@ -92,7 +96,7 @@ public class BitRotateTest {
     }
 
     @Test
-    void testRotateRightShiftNormalization() {
+    public void testRotateRightShiftNormalization() {
         // Test that shifts > 32 are properly normalized
         int value = 1;
         assertEquals(BitRotate.rotateRight(value, 1), BitRotate.rotateRight(value, 33));
@@ -100,7 +104,7 @@ public class BitRotateTest {
     }
 
     @Test
-    void testRotateRightZeroShift() {
+    public void testRotateRightZeroShift() {
         // Zero shift should return original value
         int value = 0xDEADBEEF;
         assertEquals(value, BitRotate.rotateRight(value, 0));
@@ -109,7 +113,7 @@ public class BitRotateTest {
     // ===== Edge Case Tests =====
 
     @Test
-    void testRotateLeftMaxValue() {
+    public void testRotateLeftMaxValue() {
         // Test with maximum integer value
         int value = Integer.MAX_VALUE; // 0x7FFFFFFF
         int rotated = BitRotate.rotateLeft(value, 1);
@@ -118,7 +122,7 @@ public class BitRotateTest {
     }
 
     @Test
-    void testRotateRightMinValue() {
+    public void testRotateRightMinValue() {
         // Test with minimum integer value (treated as unsigned)
         int value = Integer.MIN_VALUE; // 0x80000000
         int rotated = BitRotate.rotateRight(value, 1);
@@ -127,7 +131,7 @@ public class BitRotateTest {
     }
 
     @Test
-    void testRotateAllOnes() {
+    public void testRotateAllOnes() {
         // Test with all bits set
         int value = 0xFFFFFFFF; // All ones
         assertEquals(value, BitRotate.rotateLeft(value, 13));
@@ -135,7 +139,7 @@ public class BitRotateTest {
     }
 
     @Test
-    void testRotateAllZeros() {
+    public void testRotateAllZeros() {
         // Test with all bits zero
         int value = 0x00000000;
         assertEquals(value, BitRotate.rotateLeft(value, 15));
@@ -145,49 +149,58 @@ public class BitRotateTest {
     // ===== Exception Tests =====
 
     @Test
-    void testRotateLeftNegativeShift() {
+    public void testRotateLeftNegativeShift() {
         // Negative shifts should throw IllegalArgumentException
-        Exception exception = assertThrows(IllegalArgumentException.class, () -> BitRotate.rotateLeft(42, -1));
+        Exception exception = assertThrows(IllegalArgumentException.class, 
+            () -> BitRotate.rotateLeft(42, -1));
         assertTrue(exception.getMessage().contains("negative"));
     }
 
     @Test
-    void testRotateRightNegativeShift() {
+    public void testRotateRightNegativeShift() {
         // Negative shifts should throw IllegalArgumentException
-        Exception exception = assertThrows(IllegalArgumentException.class, () -> BitRotate.rotateRight(42, -5));
+        Exception exception = assertThrows(IllegalArgumentException.class, 
+            () -> BitRotate.rotateRight(42, -5));
         assertTrue(exception.getMessage().contains("negative"));
     }
 
     // ===== Complementary Operations Test =====
 
     @Test
-    void testRotateLeftRightComposition() {
+    public void testRotateLeftRightComposition() {
         // Rotating left then right by same amount should return original value
         int original = 0x12345678;
         int shift = 7;
-
+        
         int leftRotated = BitRotate.rotateLeft(original, shift);
         int restored = BitRotate.rotateRight(leftRotated, shift);
-
+        
         assertEquals(original, restored);
     }
 
     @Test
-    void testRotateRightLeftComposition() {
+    public void testRotateRightLeftComposition() {
         // Rotating right then left by same amount should return original value
         int original = 0x9ABCDEF0;
         int shift = 13;
-
+        
         int rightRotated = BitRotate.rotateRight(original, shift);
         int restored = BitRotate.rotateLeft(rightRotated, shift);
-
+        
         assertEquals(original, restored);
     }
 
     @Test
-    void testRotateLeft31IsSameAsRotateRight1() {
+    public void testRotateLeft31IsSameAsRotateRight1() {
         // Rotating left by 31 should be same as rotating right by 1
         int value = 0x55555555;
         assertEquals(BitRotate.rotateLeft(value, 31), BitRotate.rotateRight(value, 1));
+    }
+
+    @Test
+    public void testTraversals() {
+        // Test that methods don't throw exceptions
+        assertDoesNotThrow(() -> BitRotate.rotateLeft(1, 1));
+        assertDoesNotThrow(() -> BitRotate.rotateRight(1, 1));
     }
 }
