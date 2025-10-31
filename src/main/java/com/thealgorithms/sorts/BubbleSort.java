@@ -3,6 +3,7 @@ package com.thealgorithms.sorts;
 /**
  * @author Varun Upadhyay (https://github.com/varunu28)
  * @author Podshivalov Nikita (https://github.com/nikitap492)
+ * @author Born-as-Harsha (https://github.com/Born-as-Harsha)
  * @see SortAlgorithm
  */
 class BubbleSort implements SortAlgorithm {
