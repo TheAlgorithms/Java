@@ -20,7 +20,7 @@ public final class JugglerSequence {
      *
      * @param inputNumber Number from which juggler sequence is to be started
      */
-    public static void jugglerSequence(int inputNumber) {
+    public static String jugglerSequence(int inputNumber) {
         // Copy method argument to a local variable
         int n = inputNumber;
         List<String> seq = new ArrayList<>();
@@ -43,7 +43,8 @@ public final class JugglerSequence {
             seq.add(n + "");
         }
         String res = String.join(",", seq);
-        System.out.println(res);
+        System.out.print(res + "\n");
+        return res; 
     }
 
     // Driver code
