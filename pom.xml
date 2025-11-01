@@ -67,30 +67,22 @@
                 </configuration>
             </plugin>
             <plugin>
-    <groupId>org.apache.maven.plugins</groupId>
-    <artifactId>maven-compiler-plugin</artifactId>
-    <version>3.14.1</version>
-    <configuration>
-        <release>21</release>
-        <fork>true</fork>
-        <executable>${JAVA_HOME}/bin/javac</executable>
-        <compilerArgs>
-            <arg>-Xlint:all</arg>
-            <arg>-Xlint:-auxiliaryclass</arg>
-            <arg>-Werror</arg>
-        </compilerArgs>
-    </configuration>
-    </plugin>
-      <plugin>
-    <groupId>org.apache.maven.plugins</groupId>
-    <artifactId>maven-compiler-plugin</artifactId>
-    <version>3.13.0</version>
-    <configuration>
-        <release>21</release>
-        <jdkToolchain>
-            <version>21</version>
-        </jdkToolchain>
-    </configuration>
+   
+     <groupId>org.apache.maven.plugins</groupId>
+  <artifactId>maven-compiler-plugin</artifactId>
+  <version>3.14.1</version>
+  <configuration>
+    <release>21</release>
+    <fork>true</fork>
+    <compilerArgs>
+      <arg>-Xlint:all</arg>
+      <arg>-Xlint:-auxiliaryclass</arg>
+      <arg>-Werror</arg>
+    </compilerArgs>
+    <jdkToolchain>
+      <version>21</version>
+    </jdkToolchain>
+  </configuration>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
