@@ -20,7 +20,7 @@ public final class JugglerSequence {
      *
      * @param inputNumber Number from which juggler sequence is to be started
      */
-    public static String jugglerSequence(int inputNumber) {
+    public static void jugglerSequence(int inputNumber) {
         // Copy method argument to a local variable
         int n = inputNumber;
         List<String> seq = new ArrayList<>();
