@@ -20,7 +20,7 @@
             <dependency>
                 <groupId>org.junit</groupId>
                 <artifactId>junit-bom</artifactId>
-                <version>6.0.1</version>
+                <version>6.0.0</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
@@ -67,22 +67,36 @@
                 </configuration>
             </plugin>
             <plugin>
-   
-     <groupId>org.apache.maven.plugins</groupId>
-  <artifactId>maven-compiler-plugin</artifactId>
-  <version>3.14.1</version>
-  <configuration>
-    <release>21</release>
-    <fork>true</fork>
-    <compilerArgs>
-      <arg>-Xlint:all</arg>
-      <arg>-Xlint:-auxiliaryclass</arg>
-      <arg>-Werror</arg>
-    </compilerArgs>
-    <jdkToolchain>
-      <version>21</version>
-    </jdkToolchain>
-  </configuration>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.14.1</version>
+                <configuration>
+                    <release>21</release>
+                    <compilerArgs>
+                        <arg>-Xlint:all</arg>
+                        <arg>-Xlint:-auxiliaryclass</arg>
+                        <arg>-Werror</arg>
+                    </compilerArgs>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.jacoco</groupId>
+                <artifactId>jacoco-maven-plugin</artifactId>
+                <version>0.8.14</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>prepare-agent</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>generate-code-coverage-report</id>
+                        <phase>test</phase>
+                        <goals>
+                            <goal>report</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -139,25 +153,6 @@
                     <excludeFromFailureFile>pmd-exclude.properties</excludeFromFailureFile>
                 </configuration>
             </plugin>
-            <plugin>
-    <groupId>org.jacoco</groupId>
-    <artifactId>jacoco-maven-plugin</artifactId>
-    <version>0.8.14</version>
-    <executions>
-        <execution>
-            <goals>
-                <goal>prepare-agent</goal>
-            </goals>
-        </execution>
-        <execution>
-            <id>generate-code-coverage-report</id>
-            <phase>test</phase>
-            <goals>
-                <goal>report</goal>
-            </goals>
-        </execution>
-    </executions>
-</plugin>
         </plugins>
     </build>
 </project>
