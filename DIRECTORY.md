@@ -173,6 +173,7 @@
             - 📄 [FordFulkerson](src/main/java/com/thealgorithms/datastructures/graphs/FordFulkerson.java)
             - 📄 [Graphs](src/main/java/com/thealgorithms/datastructures/graphs/Graphs.java)
             - 📄 [HamiltonianCycle](src/main/java/com/thealgorithms/datastructures/graphs/HamiltonianCycle.java)
+            - 📄 [HierholzerAlgorithm](src/main/java/com/thealgorithms/graph/HierholzerAlgorithm.java)
             - 📄 [JohnsonsAlgorithm](src/main/java/com/thealgorithms/datastructures/graphs/JohnsonsAlgorithm.java)
             - 📄 [KahnsAlgorithm](src/main/java/com/thealgorithms/datastructures/graphs/KahnsAlgorithm.java)
             - 📄 [Kosaraju](src/main/java/com/thealgorithms/datastructures/graphs/Kosaraju.java)
