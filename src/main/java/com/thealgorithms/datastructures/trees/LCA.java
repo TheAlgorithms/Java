@@ -7,26 +7,26 @@ public final class LCA {
     private LCA() {
     }
 
-    private static final Scanner SCANNER = new Scanner(System.in);
-
     public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
         // The adjacency list representation of a tree:
         ArrayList<ArrayList<Integer>> adj = new ArrayList<>();
 
         // v is the number of vertices and e is the number of edges
-        int v = SCANNER.nextInt();
+        int v = scanner.nextInt();
         int e = v - 1;
 
         for (int i = 0; i < v; i++) {
-            adj.add(new ArrayList<Integer>());
+            adj.add(new ArrayList<>());
         }
 
         // Storing the given tree as an adjacency list
         int to;
         int from;
         for (int i = 0; i < e; i++) {
-            to = SCANNER.nextInt();
-            from = SCANNER.nextInt();
+            to = scanner.nextInt();
+            from = scanner.nextInt();
 
             adj.get(to).add(from);
             adj.get(from).add(to);
@@ -42,8 +42,8 @@ public final class LCA {
         dfs(adj, 0, -1, parent, depth);
 
         // Inputting the two vertices whose LCA is to be calculated
-        int v1 = SCANNER.nextInt();
-        int v2 = SCANNER.nextInt();
+        int v1 = scanner.nextInt();
+        int v2 = scanner.nextInt();
 
         // Outputting the LCA
         System.out.println(getLCA(v1, v2, depth, parent));
