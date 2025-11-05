@@ -3,7 +3,7 @@ package com.thealgorithms.others;
 import java.util.Scanner;
 
 /**
- * This file contains an implementation of BANKER'S ALGORITM Wikipedia:
+ * This file contains an implementation of BANKER'S ALGORITHM Wikipedia:
  * https://en.wikipedia.org/wiki/Banker%27s_algorithm
  *
  * The algorithm for finding out whether or not a system is in a safe state can
