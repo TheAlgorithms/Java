@@ -32,8 +32,8 @@ public final class IterativeFloodFill {
      * Iteratively fill the 2D image with new color
      *
      * @param image    The image to be filled
-     * @param x        The x co-ordinate at which color is to be filled
-     * @param y        The y co-ordinate at which color is to be filled
+     * @param x        The x coordinate at which color is to be filled
+     * @param y        The y coordinate at which color is to be filled
      * @param newColor The new color which to be filled in the image
      * @param oldColor The old color which is to be replaced in the image
      * @see <a href=https://www.geeksforgeeks.org/dsa/flood-fill-algorithm>FloodFill BFS<a/>
@@ -86,8 +86,8 @@ public final class IterativeFloodFill {
      * Checks if a pixel should be skipped during flood fill operation.
      *
      * @param image    The image to get boundaries
-     * @param x        The x co-ordinate of pixel to check
-     * @param y        The y co-ordinate of pixel to check
+     * @param x        The x coordinate of pixel to check
+     * @param y        The y coordinate of pixel to check
      * @param oldColor The old color which is to be replaced in the image
      * @return {@code true} if pixel should be skipped, else {@code false}
      */
