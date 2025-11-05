@@ -16,7 +16,7 @@ public final class TurkishToLatinConversion {
      * 2. Replace all turkish characters with their corresponding latin characters
      * 3. Return the converted string
      *
-     * @param param String paramter
+     * @param param String parameter
      * @return String
      */
     public static String convertTurkishToLatin(String param) {

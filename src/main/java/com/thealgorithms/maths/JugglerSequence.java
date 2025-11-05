@@ -43,7 +43,7 @@ public final class JugglerSequence {
             seq.add(n + "");
         }
         String res = String.join(",", seq);
-        System.out.println(res);
+        System.out.print(res + "\n");
     }
 
     // Driver code
