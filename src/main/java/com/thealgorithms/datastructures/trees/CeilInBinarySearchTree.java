@@ -21,7 +21,7 @@ import com.thealgorithms.datastructures.trees.BinaryTree.Node;
  *
  * Solution 1: Brute Force Solution: Do an inorder traversal and save result
  * into an array. Iterate over the array to get an element equal to or greater
- * than current key. Time Complexity: O(n) Space Complexity: O(n) for auxillary
+ * than current key. Time Complexity: O(n) Space Complexity: O(n) for auxiliary
  * array to save inorder representation of tree.
  * <p>
  * <p>
@@ -29,7 +29,7 @@ import com.thealgorithms.datastructures.trees.BinaryTree.Node;
  * into an array.Since array is sorted do a binary search over the array to get
  * an element equal to or greater than current key. Time Complexity: O(n) for
  * traversal of tree and O(lg(n)) for binary search in array. Total = O(n) Space
- * Complexity: O(n) for auxillary array to save inorder representation of tree.
+ * Complexity: O(n) for auxiliary array to save inorder representation of tree.
  * <p>
  * <p>
  * Solution 3: Optimal We can do a DFS search on given tree in following
