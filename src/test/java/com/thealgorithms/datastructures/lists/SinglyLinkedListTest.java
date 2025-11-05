@@ -214,10 +214,10 @@ public class SinglyLinkedListTest {
 
     @Test
     void readWithEnhancedForLoopTest() {
-        final var expeced = new ArrayList<Integer>(Arrays.asList(10, 20, 30));
+        final var expected = new ArrayList<Integer>(Arrays.asList(10, 20, 30));
 
         SinglyLinkedList list = new SinglyLinkedList();
-        for (final var x : expeced) {
+        for (final var x : expected) {
             list.insert(x);
         }
 
@@ -226,7 +226,7 @@ public class SinglyLinkedListTest {
             readElements.add(x);
         }
 
-        assertEquals(readElements, expeced);
+        assertEquals(readElements, expected);
     }
 
     @Test
