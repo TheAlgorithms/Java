@@ -13,7 +13,7 @@ package com.thealgorithms.conversions;
  *   <li>-40 °C = -40 °F</li>
  * </ul>
  */
-public class TemperatureConverter {
+public final class TemperatureConverter {
 
     private TemperatureConverter() {
     }
@@ -137,5 +137,4 @@ public class TemperatureConverter {
         }
         return (1.8 * (value - 273.15) + 32) + "°F";
     }
-
 }
