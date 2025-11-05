@@ -1,9 +1,9 @@
 package com.thealgorithms.conversions;
 
-import org.junit.jupiter.api.Test;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
+
+import org.junit.jupiter.api.Test;
 
 public class TemperatureConverterTest {
 
@@ -69,15 +69,11 @@ public class TemperatureConverterTest {
 
     @Test
     public void testAbsoluteZeroAndBelow() {
-
         assertThrows(IllegalArgumentException.class, () -> TemperatureConverter.celsiusToFahrenheit(-300.0));
         assertThrows(IllegalArgumentException.class, () -> TemperatureConverter.celsiusToKelvin("-300°C"));
-
         assertThrows(IllegalArgumentException.class, () -> TemperatureConverter.fahrenheitToCelsius(-500.0));
         assertThrows(IllegalArgumentException.class, () -> TemperatureConverter.fahrenheitToKelvin("-500°F"));
-
         assertThrows(IllegalArgumentException.class, () -> TemperatureConverter.kelvinToCelsius(-1.0));
         assertThrows(IllegalArgumentException.class, () -> TemperatureConverter.kelvinToFahrenheit("-1 K"));
     }
-
 }
