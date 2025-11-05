@@ -59,12 +59,12 @@ public class TemperatureCoverterTest {
 
     @Test
     public void testValidKelvinToFahrenheit() {
-        assertEquals(-457.6, TemperatureConverter.kelvinToFahrenheit(1.0));
-        assertEquals(-221.8, TemperatureConverter.kelvinToFahrenheit(132.0));
-        assertEquals(-441.40000000000003, TemperatureConverter.kelvinToFahrenheit(10.0));
-        assertEquals("-457.6°F", TemperatureConverter.kelvinToFahrenheit("1.0 K"));
-        assertEquals("-221.8°F", TemperatureConverter.kelvinToFahrenheit("132.0 K"));
-        assertEquals("-441.40000000000003°F", TemperatureConverter.kelvinToFahrenheit("10.0 K"));
+        assertEquals(-457.86999999999995, TemperatureConverter.kelvinToFahrenheit(1.0));
+        assertEquals(-222.06999999999996, TemperatureConverter.kelvinToFahrenheit(132.0));
+        assertEquals(-441.66999999999996, TemperatureConverter.kelvinToFahrenheit(10.0));
+        assertEquals("-457.86999999999995°F", TemperatureConverter.kelvinToFahrenheit("1.0 K"));
+        assertEquals("-222.06999999999996°F", TemperatureConverter.kelvinToFahrenheit("132.0 K"));
+        assertEquals("-441.66999999999996°F", TemperatureConverter.kelvinToFahrenheit("10.0 K"));
     }
 
     @Test

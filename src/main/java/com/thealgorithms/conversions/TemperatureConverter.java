@@ -1,13 +1,27 @@
 package com.thealgorithms.conversions;
 
+/**
+ * Utility class for converting temperatures between Celsius, Fahrenheit, and Kelvin.
+ *
+ * <p>Formulas reference:
+ * <a href="https://en.wikipedia.org/wiki/Conversion_of_scales_of_temperature">...</a>
+ * <p>Note: Some of the formulas presented on the wikipedia page are not correct
+ *
+ * <p>Examples:
+ * <ul>
+ *   <li>0 °C = 32 °F = 273.15 K</li>
+ *   <li>-40 °C = -40 °F</li>
+ * </ul>
+ */
 public class TemperatureConverter {
 
     private TemperatureConverter() {
     }
 
-    // =============================================================
-    // Celsius to Fahrenheit
-    // =============================================================
+    /**
+     * Converts Celsius to Fahrenheit.
+     * Formula: °C × 9/5 + 32
+     */
     public static Double celsiusToFahrenheit(Double celsius) {
         if (celsius < -273.15) {
             throw new IllegalArgumentException("Temperature below absolute zero (-273.15°C).");
@@ -24,9 +38,10 @@ public class TemperatureConverter {
         return ((value * 1.8) + 32) + "°F";
     }
 
-    // =============================================================
-    // Celsius to Kelvin
-    // =============================================================
+    /**
+     * Converts Celsius to Kelvin.
+     * Formula: °C + 273.15
+     */
     public static Double celsiusToKelvin(Double celsius) {
         if (celsius < -273.15) {
             throw new IllegalArgumentException("Temperature below absolute zero (-273.15°C).");
@@ -43,9 +58,10 @@ public class TemperatureConverter {
         return (value + 273.15) + " K";
     }
 
-    // =============================================================
-    // Fahrenheit to Celsius
-    // =============================================================
+    /**
+     * Converts: Fahrenheit to Celsius.
+     * Formula: (°F - 32) * 5/9
+     */
     public static Double fahrenheitToCelsius(Double fahrenheit) {
         if (fahrenheit < -459.67) {
             throw new IllegalArgumentException("Temperature below absolute zero (-459.67°F).");
@@ -62,9 +78,10 @@ public class TemperatureConverter {
         return ((value - 32) * (5.0 / 9.0)) + "°C";
     }
 
-    // =============================================================
-    // Fahrenheit to Kelvin
-    // =============================================================
+    /**
+     * Converts: Fahrenheit to Kelvin.
+     * Formula: (°F - 32) * 5/9 + 273.15
+     */
     public static Double fahrenheitToKelvin(Double fahrenheit) {
         if (fahrenheit < -459.67) {
             throw new IllegalArgumentException("Temperature below absolute zero (-459.67°F).");
@@ -81,9 +98,10 @@ public class TemperatureConverter {
         return ((value - 32) * (5.0 / 9.0) + 273.15) + " K";
     }
 
-    // =============================================================
-    // Kelvin to Celsius
-    // =============================================================
+    /**
+     * Converts: Kelvin to Celsius.
+     * Formula: K - 273.15
+     */
     public static Double kelvinToCelsius(Double kelvin) {
         if (kelvin < 0) {
             throw new IllegalArgumentException("Temperature below absolute zero (0 K).");
@@ -100,14 +118,15 @@ public class TemperatureConverter {
         return (value - 273.15) + "°C";
     }
 
-    // =============================================================
-    // Kelvin to Fahrenheit
-    // =============================================================
+    /**
+     * Converts: Kelvin to Fahrenheit.
+     * Formula: (K - 273.15) * 9/5 + 32
+     */
     public static Double kelvinToFahrenheit(Double kelvin) {
         if (kelvin < 0) {
             throw new IllegalArgumentException("Temperature below absolute zero (0 K).");
         }
-        return 1.8 * (kelvin - 273) + 32;
+        return 1.8 * (kelvin - 273.15) + 32;
     }
 
     public static String kelvinToFahrenheit(String kelvin) {
@@ -116,7 +135,7 @@ public class TemperatureConverter {
         if (value < 0) {
             throw new IllegalArgumentException("Temperature below absolute zero (0 K).");
         }
-        return (1.8 * (value - 273) + 32) + "°F";
+        return (1.8 * (value - 273.15) + 32) + "°F";
     }
 
 }
