@@ -60,7 +60,7 @@ public final class Pangram {
     }
 
     /**
-     * Checks if a String is Pangram or not by checking if each alhpabet is present or not
+     * Checks if a String is Pangram or not by checking if each alphabet is present or not
      *
      * @param s The String to check
      * @return {@code true} if s is a Pangram, otherwise {@code false}

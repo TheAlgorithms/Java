@@ -97,7 +97,7 @@ class Trieac {
         }
     }
 
-    // Fucntion  to print suggestions for
+    // Function  to print suggestions for
     // given query prefix.
     static int printAutoSuggestions(TrieNode root, final String query) {
         TrieNode pCrawl = root;
