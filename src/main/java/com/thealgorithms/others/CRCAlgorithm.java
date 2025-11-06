@@ -95,7 +95,7 @@ public class CRCAlgorithm {
 
     /**
      * Resets some of the object's values, used on the main function, so that it
-     * can be re-used, in order not to waste too much memory and time, by
+     * can be reused, in order not to waste too much memory and time, by
      * creating new objects.
      */
     public void refactor() {
@@ -171,7 +171,7 @@ public class CRCAlgorithm {
      * Once the message is transmitted, some of it's elements, is possible to
      * change from 1 to 0, or from 0 to 1, because of the Bit Error Rate (ber).
      * For every element of the message, a random double number is created. If
-     * that number is smaller than ber, then the spesific element changes. On
+     * that number is smaller than ber, then the specific element changes. On
      * the other hand, if it's bigger than ber, it does not. Based on these
      * changes. the boolean variable messageChanged, gets the value: true, or
      * false.
