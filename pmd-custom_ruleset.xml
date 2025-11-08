@@ -8,7 +8,7 @@
   Custom PMD checks for TheAlgorithms/Java
   </description>
 <rule name="UselessMainMethod"
-      language="java"
+      
       message="The main method is redundant in this context"
       class="net.sourceforge.pmd.lang.rule.xpath.XPathRule">
     <description>
