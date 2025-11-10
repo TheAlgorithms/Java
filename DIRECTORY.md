@@ -372,6 +372,7 @@
           - 📄 [Dinic](src/main/java/com/thealgorithms/graph/Dinic.java)
           - 📄 [Edmonds](src/main/java/com/thealgorithms/graph/Edmonds.java)
           - 📄 [EdmondsKarp](src/main/java/com/thealgorithms/graph/EdmondsKarp.java)
+          - 📄 [GomoryHuTree](src/main/java/com/thealgorithms/graph/GomoryHuTree.java)
           - 📄 [HopcroftKarp](src/main/java/com/thealgorithms/graph/HopcroftKarp.java)
           - 📄 [HungarianAlgorithm](src/main/java/com/thealgorithms/graph/HungarianAlgorithm.java)
           - 📄 [PredecessorConstrainedDfs](src/main/java/com/thealgorithms/graph/PredecessorConstrainedDfs.java)
