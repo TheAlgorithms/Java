@@ -10,6 +10,8 @@ gen/
 build/
 out/
 
+hehehe
+
 # Ignoring Gradle build artifacts and project files
 ##----------Gradle----------
 .gradle/
