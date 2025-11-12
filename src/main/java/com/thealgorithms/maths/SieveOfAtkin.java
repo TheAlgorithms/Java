@@ -14,7 +14,7 @@ import java.util.List;
 public final class SieveOfAtkin {
 
     private SieveOfAtkin() {
-        // Utlity class; prevent instantiation
+        // Utility class; prevent instantiation
     }
 
     /**
