@@ -1,16 +1,21 @@
 package com.thealgorithms.tree;
 
+import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.Answers.values;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.RepeatedTest;
 import org.junit.jupiter.api.Test;
 
 class CentroidDecompositionTest {
     private CentroidDecomposition cd;
+    private int n = 16;
 
     @BeforeEach
     void setUp(){
@@ -45,20 +50,45 @@ class CentroidDecompositionTest {
                          14
                           \
                            15
+
+
+
+                    0
+             /      |       \
+            1      11        8
+          /   \   / | \     / | \
+         4     5 2 12 14   3  9 10
+                / \    / \
+               7   6  15 13
    
          */
     }
 
     @Test
     void testFindSubtreeSizes(){
-        boolean[] visited = new boolean[16];
-        int[] subtreeSizes = new int[16];
+        boolean[] visited = new boolean[n];
+        int[] subtreeSizes = new int[n];
 
         cd.findSubtreeSizes(3, visited, subtreeSizes);
         assertEquals(subtreeSizes[8], 3);
         assertEquals(subtreeSizes[0], 12);
     }
 
+    @RepeatedTest(100)
+    void testBuildCentroidTree(){
+        int src = (int) ((Math.random() * (15)) + 0);
+        cd.findCentroid(src, src);
+        List<Integer>[] centroidTree = cd.getCentroidTree();
+        
+        List<Integer> correct = new ArrayList<Integer>();
+        correct.add(0);
+        correct.add(3);
+        correct.add(9);
+        correct.add(10);
 
+        for (int j = 0; j < centroidTree[8].size(); j++) {
+            assertEquals(correct.get(j), centroidTree[8].get(j));
+        }
 
+    }
 }
