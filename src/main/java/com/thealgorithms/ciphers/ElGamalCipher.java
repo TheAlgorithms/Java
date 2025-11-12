@@ -21,7 +21,7 @@ public class ElGamalCipher {
         BigInteger c1 = g.modPow(k, p);
         BigInteger s = y.modPow(k, p);
         BigInteger c2 = s.multiply(message).mod(p);
-        return new BigInteger[]{c1, c2};
+        return new BigInteger[] {c1, c2};
     }
 
     // Decryption: m = c2 * (c1^x)^-1 mod p
