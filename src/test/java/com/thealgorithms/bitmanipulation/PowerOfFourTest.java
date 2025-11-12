@@ -2,10 +2,11 @@ package com.thealgorithms.bitmanipulation;
 
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+
 import org.junit.jupiter.api.Test;
 
 class PowerOfFourTest {
-    
+
     @Test
     void testPowersOfFour() {
         assertTrue(PowerOfFour.isPowerOfFour(1));
@@ -15,7 +16,7 @@ class PowerOfFourTest {
         assertTrue(PowerOfFour.isPowerOfFour(256));
         assertTrue(PowerOfFour.isPowerOfFour(1024));
     }
-    
+
     @Test
     void testNonPowersOfFour() {
         assertFalse(PowerOfFour.isPowerOfFour(2));
@@ -25,7 +26,7 @@ class PowerOfFourTest {
         assertFalse(PowerOfFour.isPowerOfFour(15));
         assertFalse(PowerOfFour.isPowerOfFour(32));
     }
-    
+
     @Test
     void testEdgeCases() {
         assertFalse(PowerOfFour.isPowerOfFour(0));
