@@ -34,18 +34,3 @@ public class ElGamalCipher {
         BigInteger sInv = s.modInverse(p);
         return c2.multiply(sInv).mod(p);
     }
-
-    // Example usage
-    public static void main(String[] args) {
-        ElGamalCipher elgamal = new ElGamalCipher();
-        elgamal.generateKeys(256);
-
-        BigInteger message = new BigInteger("12345");
-        BigInteger[] cipher = elgamal.encrypt(message);
-        BigInteger decrypted = elgamal.decrypt(cipher[0], cipher[1]);
-
-        System.out.println("Original: " + message);
-        System.out.println("Encrypted: c1=" + cipher[0] + ", c2=" + cipher[1]);
-        System.out.println("Decrypted: " + decrypted);
-    }
-}
