@@ -4,7 +4,11 @@ import java.math.BigInteger;
 import java.security.SecureRandom;
 
 public class ElGamalCipher {
-    private BigInteger p, g, x, y;
+    private BigInteger p;
+    private BigInteger g;
+    private BigInteger x;
+    private BigInteger y;
+
     private SecureRandom random = new SecureRandom();
 
     // Key generation
