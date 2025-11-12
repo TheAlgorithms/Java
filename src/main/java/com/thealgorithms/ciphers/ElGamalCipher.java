@@ -34,3 +34,4 @@ public class ElGamalCipher {
         BigInteger sInv = s.modInverse(p);
         return c2.multiply(sInv).mod(p);
     }
+}
