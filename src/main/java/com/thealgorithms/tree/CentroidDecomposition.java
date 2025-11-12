@@ -12,31 +12,28 @@ public class CentroidDecomposition {
     private int startingNode;
     private int N;
 
+    @SuppressWarnings("unchecked")
     public CentroidDecomposition(int n, int startingNode){
         tree = new ArrayList[n];
         centroidTree = new ArrayList[n];
         N = n;
-        for (int i = 0; i < centroidTree.length; i++) centroidTree[i] = new ArrayList<>();
-        for (int i = 0; i < tree.length; i++) tree[i] = new ArrayList<>();
         centroidMarked = new boolean[n];
         centroidParent = new int[n];
-        startingNode = (int)(Math.random() * n+1);
+        if (startingNode < 0 || startingNode > n-1){
+            throw new IllegalArgumentException("Starting node must be in range 0.." + (n - 1) + " but got " + startingNode);
+        }
         for(int i = 0; i<n; i++){
             tree[i] = new ArrayList<>();
+            centroidTree[i] = new ArrayList<>();
         }
     }
+
     public CentroidDecomposition(int n){
-        tree = new ArrayList[n];
-        centroidTree = new ArrayList[n];
-        centroidMarked = new boolean[n];
-        centroidParent = new int[n];
-        startingNode = (this.startingNode == -1) ? (int)(Math.random() * n+1) : this.startingNode;
-        N = n;
-        for (int i = 0; i < centroidTree.length; i++) centroidTree[i] = new ArrayList<>();
-        for (int i = 0; i < tree.length; i++) tree[i] = new ArrayList<>();
-        for(int i = 0; i<n; i++){
-            tree[i] = new ArrayList<>();
-        }
+        this(n, (int)(Math.random() * n));
+    }
+
+    public int getStartingNode(){
+        return startingNode;
     }
 
     public List<Integer>[] getCentroidTree(){
@@ -53,7 +50,6 @@ public class CentroidDecomposition {
         centroidTree[v].add(u);
         centroidParent[v] = u;
     }
-
 
     public void findSubtreeSizes(int src, boolean[] visited, int[] subtreeSizes){
         // dfs traversal to find size of subtree rooted at src
@@ -87,14 +83,12 @@ public class CentroidDecomposition {
         
         if (centroidMarked[src]){
             if (src != startingNode && src != previousCentroid) addEdgeCTree(previousCentroid, src); 
-            // centroidTree[previousCentroid].add(src);
             for (int node : tree[src]){
                 if (!centroidMarked[node])
                     findCentroid(node, src);                
             }
         }
         else{
-            // pick one of the children of the root for next check
             int nextLargestSubtree = tree[src].getFirst();
             for (int node : tree[src]){
                 if (subtreeSizes[node] >= subtreeSizes[nextLargestSubtree]) 
@@ -105,7 +99,7 @@ public class CentroidDecomposition {
     }
 
     public static void main(String[] args) {
-        CentroidDecomposition cd = new CentroidDecomposition(16, -1);
+        CentroidDecomposition cd = new CentroidDecomposition(16);
         cd.addEdge(0, 1);
         cd.addEdge(0, 2);
         cd.addEdge(0, 3);
@@ -126,7 +120,7 @@ public class CentroidDecomposition {
         int[] subtreeSizes = new int[16];
 
         // int start = cd.startingNode;
-        int src = (int) ((Math.random() * (15)) + 0);
+        int src = (int)(Math.random() * 15);
         System.out.println("src= " + src);
 
         cd.findCentroid(src, src);

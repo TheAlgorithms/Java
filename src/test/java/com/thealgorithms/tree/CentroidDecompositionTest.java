@@ -1,12 +1,9 @@
 package com.thealgorithms.tree;
 
-import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
-import static org.mockito.Answers.values;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import org.junit.jupiter.api.BeforeEach;
@@ -37,7 +34,8 @@ class CentroidDecompositionTest {
         cd.addEdge(14, 15);
 
         /*
-         *          0
+         * Initial Tree:
+         *           0
                 /   |    \
                1    2     3
               / \  / \     \
@@ -52,7 +50,7 @@ class CentroidDecompositionTest {
                            15
 
 
-
+         * centroid Tree:
                     0
              /      |       \
             1      11        8
@@ -74,12 +72,18 @@ class CentroidDecompositionTest {
         assertEquals(subtreeSizes[0], 12);
     }
 
+    @Test
+    void IllegalArgumentThrows(){
+        assertThrows(IllegalArgumentException.class, () -> {
+            new CentroidDecomposition(10, 99);
+        });
+    }
+
     @RepeatedTest(100)
     void testBuildCentroidTree(){
-        int src = (int) ((Math.random() * (15)) + 0);
-        cd.findCentroid(src, src);
+        int start = cd.getStartingNode();
+        System.out.println(start);
         List<Integer>[] centroidTree = cd.getCentroidTree();
-        
         List<Integer> correct = new ArrayList<Integer>();
         correct.add(0);
         correct.add(3);
