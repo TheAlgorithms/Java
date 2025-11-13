@@ -7,6 +7,8 @@ import java.util.List;
 public class CentroidDecomposition {
     private List<Integer>[] tree;
     private List<Integer>[] centroidTree;
+    private int[] subtreeSizes;
+    private boolean[] visited;
     private boolean[] centroidMarked;
     private int[] centroidParent;
     private int startingNode;
@@ -19,6 +21,8 @@ public class CentroidDecomposition {
         N = n;
         centroidMarked = new boolean[n];
         centroidParent = new int[n];
+        subtreeSizes = new int[N];
+        visited = new boolean[N];
         if (startingNode < 0 || startingNode > n-1){
             throw new IllegalArgumentException("Starting node must be in range 0.." + (n - 1) + " but got " + startingNode);
         }
@@ -51,6 +55,10 @@ public class CentroidDecomposition {
         centroidParent[v] = u;
     }
 
+    public int getParent(int v){
+        return centroidParent[v];
+    }
+
     public void findSubtreeSizes(int src, boolean[] visited, int[] subtreeSizes){
         // dfs traversal to find size of subtree rooted at src
         visited[src] = true;
@@ -65,8 +73,8 @@ public class CentroidDecomposition {
     }
     
     public void findCentroid(int src, int previousCentroid){
-        int[] subtreeSizes = new int[N];
-        boolean[] visited = new boolean[N];
+        // int[] subtreeSizes = new int[N];
+        // boolean[] visited = new boolean[N];
         Arrays.fill(visited, false);
         
         findSubtreeSizes(src, visited, subtreeSizes);
