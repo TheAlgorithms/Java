@@ -80,6 +80,12 @@ public class CentroidDecomposition {
         return centroidParent[v];
     }
 
+    public List<Integer> getCentroidChildren(int v) {
+        return centroidTree[v].stream()
+                .filter(child -> centroidParent[child] == v && centroidParent[v] != child)
+                .collect(Collectors.toList());
+    }
+
     public void findSubtreeSizes(int src){
         visited[src] = true;
         subtreeSizes[src] = 1;

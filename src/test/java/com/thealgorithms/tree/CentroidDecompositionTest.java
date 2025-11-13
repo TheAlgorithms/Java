@@ -2,9 +2,13 @@ package com.thealgorithms.tree;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.RepeatedTest;
@@ -62,6 +66,27 @@ class CentroidDecompositionTest {
          */
     }
 
+     @Test
+    void startingNodeIsInRangeWhenRandomCtorUsed() {
+        int n = 32;
+        CentroidDecomposition rnd = new CentroidDecomposition(n);
+        int s = rnd.getStartingNode();
+        assertTrue(0 <= s && s < n, "starting node must be in [0, n)");
+    }
+
+    @Test
+    void invalidStartingNodeThrows() {
+        assertThrows(IllegalArgumentException.class, () -> new CentroidDecomposition(10, -1));
+        assertThrows(IllegalArgumentException.class, () -> new CentroidDecomposition(10, 10));
+    }
+
+    @Test
+    void IllegalArgumentThrows(){
+        assertThrows(IllegalArgumentException.class, () -> {
+            new CentroidDecomposition(10, 99);
+        });
+    }
+
     @Test
     void testFindSubtreeSizes(){
         // int[] subtreeSizes = new int[n];
@@ -73,25 +98,117 @@ class CentroidDecompositionTest {
     }
 
     @Test
-    void IllegalArgumentThrows(){
-        assertThrows(IllegalArgumentException.class, () -> {
-            new CentroidDecomposition(10, 99);
-        });
+    void getCentroidChildrenReturnsDirectedChildrenOnly() {
+        cd.build();
+
+        // children of 0 in centroid tree should be [1, 11, 8] in any order
+        List<Integer> children0 = cd.getCentroidChildren(0).stream().sorted().collect(Collectors.toList());
+        assertEquals(Arrays.asList(1, 8, 11), children0);
+
+        // children of 11 should be [2, 12, 14]
+        List<Integer> children11 = cd.getCentroidChildren(11).stream().sorted().collect(Collectors.toList());
+        assertEquals(Arrays.asList(2, 12, 14), children11);
+
+        // leaves have no children
+        assertTrue(cd.getCentroidChildren(4).isEmpty());
+        assertTrue(cd.getCentroidChildren(9).isEmpty());
+        assertTrue(cd.getCentroidChildren(15).isEmpty());
+    }
+    @Test
+    void buildSetsExpectedParentsForKeyNodes() {
+        cd.build();
+        // parent(11) = 0, parent(1) = 0, parent(8) = 0
+        assertEquals(0, cd.getParent(11));
+        assertEquals(0, cd.getParent(1));
+        assertEquals(0, cd.getParent(8));
+
+        assertEquals(1, cd.getParent(4));
+        assertEquals(1, cd.getParent(5));
+
+        assertEquals(11, cd.getParent(2));
+        assertEquals(11, cd.getParent(12));
+        assertEquals(11, cd.getParent(14));
+
+        assertEquals(2, cd.getParent(6));
+        assertEquals(2, cd.getParent(7));
+
+        assertEquals(14, cd.getParent(13));
+        assertEquals(14, cd.getParent(15));
+
+        assertEquals(8, cd.getParent(3));
+        assertEquals(8, cd.getParent(9));
+        assertEquals(8, cd.getParent(10));
     }
 
     @Test
-    void testGetParent(){
+    void centroidAdjacencyFor8And11MatchesIgnoringOrder() {
         cd.build();
-        int three = 8;
-        int Twelve = 11;
-        int Five = 1;
-        int Eleven = 0;
+        ArrayList<Integer>[] cg = cd.getCentroidTree();
 
-        assertEquals(cd.getParent(3), three);
-        assertEquals(cd.getParent(12), Twelve);
-        assertEquals(cd.getParent(5), Five);
-        assertEquals(cd.getParent(11), Eleven);
+        List<Integer> actual8 = new ArrayList<>(cg[8]);
+        List<Integer> actual11 = new ArrayList<>(cg[11]);
 
+        List<Integer> expected8 = Arrays.asList(0, 3, 9, 10);
+        List<Integer> expected11 = Arrays.asList(0, 2, 12, 14);
+
+        Collections.sort(actual8);
+        Collections.sort(actual11);
+        List<Integer> e8 = expected8.stream().sorted().collect(Collectors.toList());
+        List<Integer> e11 = expected11.stream().sorted().collect(Collectors.toList());
+
+        assertEquals(e8, actual8);
+        assertEquals(e11, actual11);
+    }
+
+    @Test
+    void resetClearsCentroidData() {
+        cd.build();
+        cd.reset();
+
+        ArrayList<Integer>[] cg = cd.getCentroidTree();
+        for (int i = 0; i < cg.length; i++) {
+            assertTrue(cg[i].isEmpty(), "centroid adjacency must be empty after reset");
+            assertEquals(-1, cd.getParent(i), "parent must be -1 after reset");
+        }
+
+        cd.build();
+        assertEquals(0, cd.getParent(11));
+    }
+
+    @Test
+    void buildingFromDifferentStartNodesProducesSameParents() {
+        // build from 0
+        CentroidDecomposition a = new CentroidDecomposition(16, 0);
+        copyEdges(cd, a);
+        a.build();
+
+        // build from 7
+        CentroidDecomposition b = new CentroidDecomposition(16, 7);
+        copyEdges(cd, b);
+        b.build();
+
+        // compare parent arrays node by node
+        for (int v = 0; v < 16; v++) {
+            assertEquals(a.getParent(v), b.getParent(v), "parent mismatch at node " + v);
+        }
+    }
+
+    private static void copyEdges(CentroidDecomposition from, CentroidDecomposition to) {
+        to.addEdgeTree(0, 1);
+        to.addEdgeTree(0, 2);
+        to.addEdgeTree(0, 3);
+        to.addEdgeTree(1, 4);
+        to.addEdgeTree(1, 5);
+        to.addEdgeTree(2, 6);
+        to.addEdgeTree(2, 7);
+        to.addEdgeTree(3, 8);
+        to.addEdgeTree(8, 9);
+        to.addEdgeTree(8, 10);
+        to.addEdgeTree(6, 11);
+        to.addEdgeTree(11, 12);
+        to.addEdgeTree(11, 13);
+        to.addEdgeTree(13, 14);
+        to.addEdgeTree(14, 15);
     }
 
     @RepeatedTest(100)
