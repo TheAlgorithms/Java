@@ -30,7 +30,7 @@ public class BSTRecursiveGeneric<T extends Comparable<T>> {
     }
 
     /**
-     * Displays the tree is a structed format
+     * Displays the tree is a structured format
      */
     public void prettyDisplay() {
         prettyDisplay(root, 0);

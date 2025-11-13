@@ -106,7 +106,7 @@ public class LinkListSort {
             // The given array and the expected array is checked if both are same then true
             // is displayed else false is displayed
         default:
-            // default is used incase user puts a unauthorized value
+            // default is used in case user puts a unauthorized value
             System.out.println("Wrong choice");
         }
         // Switch case is used to call the classes as per the user requirement

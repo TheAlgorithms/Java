@@ -387,7 +387,7 @@ public class FibonacciHeap {
         private HeapNode parent;
 
         /*
-         * a constructor for a heapNode withe key @param (key)
+         * a constructor for a heapNode with key @param (key)
          * prev == next == this
          * parent == child == null
          */
