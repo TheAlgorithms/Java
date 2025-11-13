@@ -64,10 +64,10 @@ class CentroidDecompositionTest {
 
     @Test
     void testFindSubtreeSizes(){
-        boolean[] visited = new boolean[n];
-        int[] subtreeSizes = new int[n];
+        // int[] subtreeSizes = new int[n];
 
-        cd.findSubtreeSizes(3, visited, subtreeSizes);
+        cd.findSubtreeSizes(3);
+        int[] subtreeSizes = cd.getSubtreeSizes();
         assertEquals(subtreeSizes[8], 3);
         assertEquals(subtreeSizes[0], 12);
     }

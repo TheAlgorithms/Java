@@ -40,6 +40,10 @@ public class CentroidDecomposition {
         return startingNode;
     }
 
+    public int[] getSubtreeSizes(){
+        return subtreeSizes;
+    }
+
     public List<Integer>[] getCentroidTree(){
         return centroidTree;
     }
@@ -59,52 +63,50 @@ public class CentroidDecomposition {
         return centroidParent[v];
     }
 
-    public void findSubtreeSizes(int src, boolean[] visited, int[] subtreeSizes){
+    public void findSubtreeSizes(int src){
         // dfs traversal to find size of subtree rooted at src
         visited[src] = true;
         subtreeSizes[src] = 1;
         for (int node : tree[src]){
             if(!visited[node] && !centroidMarked[node]){
                 visited[node] = true;
-                findSubtreeSizes(node, visited, subtreeSizes); // recurse down to last child node
+                findSubtreeSizes(node); // recurse down to last child node
                 subtreeSizes[src] += subtreeSizes[node]; // add size of full recursive path to subtree Size of src
             }
         }
     }
     
     public void findCentroid(int src, int previousCentroid){
-        // int[] subtreeSizes = new int[N];
-        // boolean[] visited = new boolean[N];
+
         Arrays.fill(visited, false);
         
-        findSubtreeSizes(src, visited, subtreeSizes);
-        int treeSize = Arrays.stream(subtreeSizes).max().getAsInt();
+        findSubtreeSizes(src);
+        int treeSize = subtreeSizes[src];
 
-        centroidMarked[src] = true;
+        int heavyChild = -1;
 
         for (int node : tree[src]){
-            if (subtreeSizes[node] > (treeSize/2)){
-                centroidMarked[src] = false;
+            if(centroidMarked[node]) continue;
+            if(subtreeSizes[node] > (treeSize/2)){
+                heavyChild = node;
                 break;
             }
         }
+
+        if (heavyChild != -1){
+            findCentroid(heavyChild, previousCentroid);
+            return;
+        }
         
-        if (centroidMarked[src]){
-            if (src != startingNode && src != previousCentroid) addEdgeCTree(previousCentroid, src); 
-            for (int node : tree[src]){
-                if (!centroidMarked[node])
-                    findCentroid(node, src);                
+        centroidMarked[src] = true;
+
+        if(src != startingNode && src != previousCentroid) addEdge(previousCentroid, src);
+
+        for (int node : tree[src]){
+            if (!centroidMarked[node])
+                findCentroid(node, src);                
             }
         }
-        else{
-            int nextLargestSubtree = tree[src].getFirst();
-            for (int node : tree[src]){
-                if (subtreeSizes[node] >= subtreeSizes[nextLargestSubtree]) 
-                    nextLargestSubtree = node;
-            }
-            findCentroid(nextLargestSubtree, previousCentroid);
-        }
-    }
 
     public static void main(String[] args) {
         CentroidDecomposition cd = new CentroidDecomposition(16);
