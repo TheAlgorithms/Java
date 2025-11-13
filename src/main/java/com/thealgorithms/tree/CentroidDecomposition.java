@@ -3,10 +3,12 @@ package com.thealgorithms.tree;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
 
 public class CentroidDecomposition {
-    private List<Integer>[] tree;
-    private List<Integer>[] centroidTree;
+    private ArrayList<Integer>[] tree;
+    private ArrayList<Integer>[] centroidTree;
     private int[] subtreeSizes;
     private boolean[] visited;
     private boolean[] centroidMarked;
@@ -27,6 +29,7 @@ public class CentroidDecomposition {
             throw new IllegalArgumentException("Starting node must be in range 0.." + (n - 1) + " but got " + startingNode);
         }
         for(int i = 0; i<n; i++){
+            centroidParent[i] = -1;
             tree[i] = new ArrayList<>();
             centroidTree[i] = new ArrayList<>();
         }
@@ -34,6 +37,20 @@ public class CentroidDecomposition {
 
     public CentroidDecomposition(int n){
         this(n, (int)(Math.random() * n));
+    }
+
+    public void build(){
+        findCentroid(startingNode, startingNode);
+    }
+
+    public void reset(){
+        for(int i = 0; i<N; i++){
+            centroidTree[i] = new ArrayList<>();
+            centroidParent[i] = -1;
+            subtreeSizes[i] = 0;
+            centroidMarked[i] = false;
+            visited[i] = false;
+        }
     }
 
     public int getStartingNode(){
@@ -44,11 +61,7 @@ public class CentroidDecomposition {
         return subtreeSizes;
     }
 
-    public List<Integer>[] getCentroidTree(){
-        return centroidTree;
-    }
-
-    public void addEdge(int u, int v){
+    public void addEdgeTree(int u, int v){
         tree[u].add(v);
         tree[v].add(u);
     }
@@ -59,19 +72,22 @@ public class CentroidDecomposition {
         centroidParent[v] = u;
     }
 
+    public ArrayList<Integer>[] getCentroidTree(){
+        return centroidTree;
+    }
+
     public int getParent(int v){
         return centroidParent[v];
     }
 
     public void findSubtreeSizes(int src){
-        // dfs traversal to find size of subtree rooted at src
         visited[src] = true;
         subtreeSizes[src] = 1;
         for (int node : tree[src]){
             if(!visited[node] && !centroidMarked[node]){
                 visited[node] = true;
-                findSubtreeSizes(node); // recurse down to last child node
-                subtreeSizes[src] += subtreeSizes[node]; // add size of full recursive path to subtree Size of src
+                findSubtreeSizes(node);
+                subtreeSizes[src] += subtreeSizes[node];
             }
         }
     }
@@ -100,7 +116,7 @@ public class CentroidDecomposition {
         
         centroidMarked[src] = true;
 
-        if(src != startingNode && src != previousCentroid) addEdge(previousCentroid, src);
+        if(src != startingNode && src != previousCentroid) addEdgeCTree(previousCentroid, src);
 
         for (int node : tree[src]){
             if (!centroidMarked[node])
@@ -110,30 +126,30 @@ public class CentroidDecomposition {
 
     public static void main(String[] args) {
         CentroidDecomposition cd = new CentroidDecomposition(16);
-        cd.addEdge(0, 1);
-        cd.addEdge(0, 2);
-        cd.addEdge(0, 3);
-        cd.addEdge(1, 4);
-        cd.addEdge(1, 5);
-        cd.addEdge(2, 6);
-        cd.addEdge(2, 7);
-        cd.addEdge(3, 8);
-        cd.addEdge(8, 9);
-        cd.addEdge(8, 10);
-        cd.addEdge(6, 11);
-        cd.addEdge(11, 12);
-        cd.addEdge(11, 13);
-        cd.addEdge(13, 14);
-        cd.addEdge(14, 15);
+        cd.addEdgeTree(0, 1);
+        cd.addEdgeTree(0, 2);
+        cd.addEdgeTree(0, 3);
+        cd.addEdgeTree(1, 4);
+        cd.addEdgeTree(1, 5);
+        cd.addEdgeTree(2, 6);
+        cd.addEdgeTree(2, 7);
+        cd.addEdgeTree(3, 8);
+        cd.addEdgeTree(8, 9);
+        cd.addEdgeTree(8, 10);
+        cd.addEdgeTree(6, 11);
+        cd.addEdgeTree(11, 12);
+        cd.addEdgeTree(11, 13);
+        cd.addEdgeTree(13, 14);
+        cd.addEdgeTree(14, 15);
 
-        boolean[] visited = new boolean[16];
-        int[] subtreeSizes = new int[16];
+        // boolean[] visited = new boolean[16];
+        // int[] subtreeSizes = new int[16];
 
         // int start = cd.startingNode;
-        int src = (int)(Math.random() * 15);
-        System.out.println("src= " + src);
-
-        cd.findCentroid(src, src);
+        // int src = (int)(Math.random() * 15);
+        // System.out.println("src= " + src);
+        int start = cd.getStartingNode();
+        cd.findCentroid(start, start);
 
         // System.out.println((int)(Math.random() * 16));
 

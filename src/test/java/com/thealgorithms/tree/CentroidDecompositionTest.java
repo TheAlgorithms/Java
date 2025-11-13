@@ -12,26 +12,26 @@ import org.junit.jupiter.api.Test;
 
 class CentroidDecompositionTest {
     private CentroidDecomposition cd;
-    private int n = 16;
 
     @BeforeEach
     void setUp(){
         cd = new CentroidDecomposition(16);
-        cd.addEdge(0, 1);
-        cd.addEdge(0, 2);
-        cd.addEdge(0, 3);
-        cd.addEdge(1, 4);
-        cd.addEdge(1, 5);
-        cd.addEdge(2, 6);
-        cd.addEdge(2, 7);
-        cd.addEdge(3, 8);
-        cd.addEdge(8, 9);
-        cd.addEdge(8, 10);
-        cd.addEdge(6, 11);
-        cd.addEdge(11, 12);
-        cd.addEdge(11, 13);
-        cd.addEdge(13, 14);
-        cd.addEdge(14, 15);
+        cd.addEdgeTree(0, 1);
+        cd.addEdgeTree(0, 2);
+        cd.addEdgeTree(0, 3);
+        cd.addEdgeTree(1, 4);
+        cd.addEdgeTree(1, 5);
+        cd.addEdgeTree(2, 6);
+        cd.addEdgeTree(2, 7);
+        cd.addEdgeTree(3, 8);
+        cd.addEdgeTree(8, 9);
+        cd.addEdgeTree(8, 10);
+        cd.addEdgeTree(6, 11);
+        cd.addEdgeTree(11, 12);
+        cd.addEdgeTree(11, 13);
+        cd.addEdgeTree(13, 14);
+        cd.addEdgeTree(14, 15);
+
 
         /*
          * Initial Tree:
@@ -79,19 +79,43 @@ class CentroidDecompositionTest {
         });
     }
 
+    @Test
+    void testGetParent(){
+        cd.build();
+        int three = 8;
+        int Twelve = 11;
+        int Five = 1;
+        int Eleven = 0;
+
+        assertEquals(cd.getParent(3), three);
+        assertEquals(cd.getParent(12), Twelve);
+        assertEquals(cd.getParent(5), Five);
+        assertEquals(cd.getParent(11), Eleven);
+
+    }
+
     @RepeatedTest(100)
     void testBuildCentroidTree(){
-        int start = cd.getStartingNode();
-        System.out.println(start);
-        List<Integer>[] centroidTree = cd.getCentroidTree();
-        List<Integer> correct = new ArrayList<Integer>();
-        correct.add(0);
-        correct.add(3);
-        correct.add(9);
-        correct.add(10);
+        cd.build();
+        ArrayList<Integer>[] centroidTree = cd.getCentroidTree();
+        ArrayList<Integer> correctEight = new ArrayList<Integer>();
+        ArrayList<Integer> correctEleven = new ArrayList<Integer>();
+        correctEight.add(0);
+        correctEight.add(3);
+        correctEight.add(9);
+        correctEight.add(10);
+
+        correctEleven.add(0);
+        correctEleven.add(2);
+        correctEleven.add(12);
+        correctEleven.add(14);
 
         for (int j = 0; j < centroidTree[8].size(); j++) {
-            assertEquals(correct.get(j), centroidTree[8].get(j));
+            assertEquals(correctEight.get(j), centroidTree[8].get(j));
+        }
+
+        for (int j = 0; j < centroidTree[8].size(); j++) {
+            assertEquals(correctEleven.get(j), centroidTree[11].get(j));
         }
 
     }
