@@ -83,9 +83,11 @@ public class KruskalAlgorithm {
         public int getSource() {
             return source;
         }
+
         public int getTarget() {
             return target;
         }
+
         public int getWeight() {
             return weight;
         }
@@ -131,7 +133,7 @@ public class KruskalAlgorithm {
         private final int[] parent;
         private final int[] rank;
 
-        public DisjointSet(int size) {
+        DisjointSet(int size) {
             parent = new int[size];
             rank = new int[size];
             for (int i = 0; i < size; i++) {
