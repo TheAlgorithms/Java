@@ -2,10 +2,11 @@ package com.thealgorithms.greedyalgorithms;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.DisplayName;
-
 import java.util.List;
-
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 
 /**
  * Unit tests for the KruskalAlgorithm implementation.
@@ -70,7 +71,7 @@ public class KruskalAlgorithmTest {
         KruskalAlgorithm.Graph graph = new KruskalAlgorithm.Graph(3);
 
         graph.addEdge(0, 1, 10);
-        graph.addEdge(0, 1, 3);   // cheaper parallel edge
+        graph.addEdge(0, 1, 3); // cheaper parallel edge
         graph.addEdge(1, 2, 4);
 
         KruskalAlgorithm algo = new KruskalAlgorithm();

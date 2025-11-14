@@ -54,7 +54,9 @@ public class KruskalAlgorithm {
                 mst.add(e);
                 ds.union(rootA, rootB);
 
-                if (mst.size() == graph.numberOfVertices - 1) break;
+                if (mst.size() == graph.numberOfVertices - 1) {
+                    break;
+                }
             }
         }
 
@@ -78,9 +80,15 @@ public class KruskalAlgorithm {
             this.weight = weight;
         }
 
-        public int getSource() { return source; }
-        public int getTarget() { return target; }
-        public int getWeight() { return weight; }
+        public int getSource() {
+            return source;
+        }
+        public int getTarget() {
+            return target;
+        }
+        public int getWeight() {
+            return weight;
+        }
 
         @Override
         public int compareTo(Edge o) {
@@ -107,8 +115,7 @@ public class KruskalAlgorithm {
          * Adds an undirected edge to the graph.
          */
         public void addEdge(int source, int target, int weight) {
-            if (source < 0 || source >= numberOfVertices ||
-                    target < 0 || target >= numberOfVertices) {
+            if (source < 0 || source >= numberOfVertices || target < 0 || target >= numberOfVertices) {
                 throw new IndexOutOfBoundsException("Vertex index out of range.");
             }
 
@@ -127,7 +134,9 @@ public class KruskalAlgorithm {
         public DisjointSet(int size) {
             parent = new int[size];
             rank = new int[size];
-            for (int i = 0; i < size; i++) parent[i] = i;
+            for (int i = 0; i < size; i++) {
+                parent[i] = i;
+            }
         }
 
         public int find(int x) {
@@ -140,8 +149,9 @@ public class KruskalAlgorithm {
         public void union(int a, int b) {
             int ra = find(a);
             int rb = find(b);
-            if (ra == rb) return;
-
+            if (ra == rb) {
+                return;
+            }
             if (rank[ra] < rank[rb]) {
                 parent[ra] = rb;
             } else if (rank[ra] > rank[rb]) {
@@ -153,4 +163,3 @@ public class KruskalAlgorithm {
         }
     }
 }
-
