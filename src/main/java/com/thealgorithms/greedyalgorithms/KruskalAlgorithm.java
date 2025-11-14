@@ -3,6 +3,8 @@ package com.thealgorithms.greedyalgorithms;
 /**
  * An encapsulated, self-contained implementation of Kruskal's algorithm
  * for computing the Minimum Spanning Tree (MST) of a weighted, undirected graph.
+ * You can find more about this algorithm in the following link:
+ * <a href="https://www.geeksforgeeks.org/dsa/kruskals-minimum-spanning-tree-algorithm-greedy-algo-2/">Kruskal algorithm - Geeks for Geeks</a>
  * <p>
  * To avoid namespace conflicts and maintain isolation within larger projects,
  * all collaborators (Edge, Graph, DisjointSet) are implemented as private
