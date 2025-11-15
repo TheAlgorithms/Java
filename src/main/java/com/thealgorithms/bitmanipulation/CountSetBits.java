@@ -31,16 +31,16 @@ public final class CountSetBits {
 
         // Find the largest power of 2 <= n
         int x = largestPowerOf2InNumber(n);
-        
+
         // Total bits at position x: x * 2^(x-1)
         int bitsAtPositionX = x * (1 << (x - 1));
-        
+
         // Remaining numbers after 2^x
         int remainingNumbers = n - (1 << x) + 1;
-        
+
         // Recursively count for the rest
         int rest = countSetBits(n - (1 << x));
-        
+
         return bitsAtPositionX + remainingNumbers + rest;
     }
 
