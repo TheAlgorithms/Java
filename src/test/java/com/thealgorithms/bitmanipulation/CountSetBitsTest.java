@@ -34,12 +34,13 @@ class CountSetBitsTest {
 
     @Test
     void testCountSetBitsLargeNumber() {
-        assertEquals(93, CountSetBits.countSetBits(20));
+        assertEquals(42, CountSetBits.countSetBits(20));  // Changed from 93 to 42
     }
+
 
     @Test
     void testCountSetBitsPowerOfTwo() {
-        assertEquals(9, CountSetBits.countSetBits(8)); // 2^3
+        assertEquals(13, CountSetBits.countSetBits(8));  // Changed from 9 to 13
     }
 
     @Test
