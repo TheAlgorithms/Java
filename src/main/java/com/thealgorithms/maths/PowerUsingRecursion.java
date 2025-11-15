@@ -16,7 +16,6 @@ public final class PowerUsingRecursion {
      * @param exponent the power (can be negative)
      * @return base^exponent
      */
-    
     public static double power(double base, int exponent) {
 
         // Handle negative exponent: a^-n = 1 / (a^n)

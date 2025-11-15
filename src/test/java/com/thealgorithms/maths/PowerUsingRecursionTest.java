@@ -25,5 +25,4 @@ class PowerUsingRecursionTest {
         // another negative exponent
         assertEquals(0.5, PowerUsingRecursion.power(2.0, -1));
     }
-
 }
