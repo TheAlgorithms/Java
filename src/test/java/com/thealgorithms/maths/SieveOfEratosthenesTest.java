@@ -45,9 +45,7 @@ class SieveOfEratosthenesTest {
 
     @Test
     void testNegativeInput() {
-        assertThrows(IllegalArgumentException.class, () -> {
-            SieveOfEratosthenes.findPrimes(-1);
-        });
+        assertThrows(IllegalArgumentException.class, () -> { SieveOfEratosthenes.findPrimes(-1); });
     }
 
     @Test
