@@ -1,4 +1,6 @@
-package com.thealgorithms.bitmanipulation;
+package com.thealgorithms.maths;
+
+import com.thealgorithms.maths.PowerOfFour;
 
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -34,3 +36,4 @@ class PowerOfFourTest {
         assertFalse(PowerOfFour.isPowerOfFour(-4));
     }
 }
+
