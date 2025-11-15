@@ -6,15 +6,24 @@ import org.junit.jupiter.api.Test;
 
 /**
  * Test case for Power using Recursion
- * @author Bama Charan Chhandogi (https://github.com/BamaCharanChhandogi)
+ * @author Vinayak (https://github.com/Vinayak-v12)
  */
 
 class PowerUsingRecursionTest {
 
     @Test
     void testPowerUsingRecursion() {
-        assertEquals(32.0, PowerUsingRecursion.power(2.0, 5));
-        assertEquals(97.65625, PowerUsingRecursion.power(2.5, 5));
-        assertEquals(81, PowerUsingRecursion.power(3, 4));
+        // exponent = 0
+        assertEquals(1.0, PowerUsingRecursion.power(5.0, 0));
+
+        // exponent = 1
+        assertEquals(5.0, PowerUsingRecursion.power(5.0, 1));
+
+        // negative exponent
+        assertEquals(0.25, PowerUsingRecursion.power(2.0, -2));
+
+        // another negative exponent
+        assertEquals(0.5, PowerUsingRecursion.power(2.0, -1));
     }
+
 }
