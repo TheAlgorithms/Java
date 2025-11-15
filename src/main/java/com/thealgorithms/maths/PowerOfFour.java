@@ -1,4 +1,4 @@
-package com.thealgorithms.bitmanipulation;
+package com.thealgorithms.maths;
 
 /**
  * Utility class for checking if a number is a power of four.
