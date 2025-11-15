@@ -4,7 +4,7 @@ package com.thealgorithms.bitmanipulation;
  * Utility class to count total set bits from 1 to N
  * A set bit is a bit in binary representation that is 1
  *
- * @author Your GitHub Username
+ * @author navadeep
  */
 public final class CountSetBits {
 
@@ -29,28 +29,28 @@ public final class CountSetBits {
             return 0;
         }
 
-        // Find the position of the most significant bit
-        int powerOf2 = largestPowerOf2(n);
-
-        // Count set bits at position powerOf2
-        int bitsAtMsb = powerOf2 * (1 << (powerOf2 - 1));
-
-        // Count remaining set bits from MSB position
-        int msbRemainder = n - (1 << powerOf2) + 1;
-
-        // Recursively count for remaining numbers
-        int rest = n - (1 << powerOf2);
-
-        return bitsAtMsb + msbRemainder + countSetBits(rest);
+        // Find the largest power of 2 <= n
+        int x = largestPowerOf2InNumber(n);
+        
+        // Total bits at position x: x * 2^(x-1)
+        int bitsAtPositionX = x * (1 << (x - 1));
+        
+        // Remaining numbers after 2^x
+        int remainingNumbers = n - (1 << x) + 1;
+        
+        // Recursively count for the rest
+        int rest = countSetBits(n - (1 << x));
+        
+        return bitsAtPositionX + remainingNumbers + rest;
     }
 
     /**
-     * Finds the position of the largest power of 2 less than or equal to n
+     * Finds the position of the most significant bit in n
      *
      * @param n the number
-     * @return position of largest power of 2
+     * @return position of MSB (0-indexed from right)
      */
-    private static int largestPowerOf2(int n) {
+    private static int largestPowerOf2InNumber(int n) {
         int position = 0;
         while ((1 << position) <= n) {
             position++;
