@@ -238,8 +238,7 @@ public class IndexedPriorityQueueTest {
 
     @Test
     void testDuplicateEqualsElementsAreSupportedIdentityMap() {
-        IndexedPriorityQueue<NodeWithEquals> pq =
-                new IndexedPriorityQueue<>(Comparator.comparingInt(n -> n.prio));
+        IndexedPriorityQueue<NodeWithEquals> pq = new IndexedPriorityQueue<>(Comparator.comparingInt(n -> n.prio));
 
         NodeWithEquals x1 = new NodeWithEquals("X1", 7);
         NodeWithEquals x2 = new NodeWithEquals("X2", 7); // equals to X1 by prio, but different instance
@@ -322,9 +321,7 @@ public class IndexedPriorityQueueTest {
 
     @Test
     void testInvalidInitialCapacityThrows() {
-        Assertions.assertThrows(
-                IllegalArgumentException.class,
-                () -> new IndexedPriorityQueue<Integer>(0, Comparator.naturalOrder()));
+        Assertions.assertThrows(IllegalArgumentException.class, () -> new IndexedPriorityQueue<Integer>(0, Comparator.naturalOrder()));
     }
 
     @Test
@@ -332,9 +329,7 @@ public class IndexedPriorityQueueTest {
         IndexedPriorityQueue<Node> pq = newNodePQ();
         Node a = new Node("A", 10);
 
-        Assertions.assertThrows(
-                IllegalArgumentException.class,
-                () -> pq.changeKey(a, n -> n.prio = 5));
+        Assertions.assertThrows(IllegalArgumentException.class, () -> pq.changeKey(a, n -> n.prio = 5));
     }
 
     @Test
@@ -342,9 +337,7 @@ public class IndexedPriorityQueueTest {
         IndexedPriorityQueue<Node> pq = newNodePQ();
         Node a = new Node("A", 10);
 
-        Assertions.assertThrows(
-                IllegalArgumentException.class,
-                () -> pq.decreaseKey(a, n -> n.prio = 5));
+        Assertions.assertThrows(IllegalArgumentException.class, () -> pq.decreaseKey(a, n -> n.prio = 5));
     }
 
     @Test
@@ -352,9 +345,6 @@ public class IndexedPriorityQueueTest {
         IndexedPriorityQueue<Node> pq = newNodePQ();
         Node a = new Node("A", 10);
 
-        Assertions.assertThrows(
-                IllegalArgumentException.class,
-                () -> pq.increaseKey(a, n -> n.prio = 15));
+        Assertions.assertThrows(IllegalArgumentException.class, () -> pq.increaseKey(a, n -> n.prio = 15));
     }
-
 }
