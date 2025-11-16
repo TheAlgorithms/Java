@@ -74,7 +74,7 @@ public class IndexedPriorityQueueTest {
     // ------------------------
 
     @Test
-    void testOfferPollWithIntegers_ComparableMode() {
+    void testOfferPollWithIntegersComparableMode() {
         // cmp == null -> elements must be Comparable
         IndexedPriorityQueue<Integer> pq = new IndexedPriorityQueue<>();
         Assertions.assertTrue(pq.isEmpty());
@@ -211,7 +211,7 @@ public class IndexedPriorityQueueTest {
     }
 
     @Test
-    void testDirectMutationWithoutChangeKeyDoesNotReheap_ByDesign() {
+    void testDirectMutationWithoutChangeKeyDoesNotReheapByDesign() {
         // Demonstrates the contract: do NOT mutate comparator fields directly.
         IndexedPriorityQueue<Node> pq = newNodePQ();
         Node a = new Node("A", 5);
@@ -237,7 +237,7 @@ public class IndexedPriorityQueueTest {
     // ------------------------
 
     @Test
-    void testDuplicateEqualsElementsAreSupported_IdentityMap() {
+    void testDuplicateEqualsElementsAreSupportedIdentityMap() {
         IndexedPriorityQueue<NodeWithEquals> pq =
                 new IndexedPriorityQueue<>(Comparator.comparingInt(n -> n.prio));
 
@@ -262,15 +262,15 @@ public class IndexedPriorityQueueTest {
     @Test
     void testGrowByManyInserts() {
         IndexedPriorityQueue<Integer> pq = new IndexedPriorityQueue<>();
-        int N = 100; // beyond default capacity (11)
+        int n = 100; // beyond default capacity (11)
 
-        for (int i = N; i >= 1; i--) {
+        for (int i = n; i >= 1; i--) {
             pq.offer(i);
         }
 
-        Assertions.assertEquals(N, pq.size());
+        Assertions.assertEquals(n, pq.size());
         // Ensure min-to-max order when polling
-        for (int expected = 1; expected <= N; expected++) {
+        for (int expected = 1; expected <= n; expected++) {
             Integer v = pq.poll();
             Assertions.assertEquals(expected, v);
         }
@@ -315,4 +315,46 @@ public class IndexedPriorityQueueTest {
         Assertions.assertTrue(pq.isEmpty());
         Assertions.assertNull(pq.peek());
     }
+
+    // ------------------------
+    // Error / edge cases for coverage
+    // ------------------------
+
+    @Test
+    void testInvalidInitialCapacityThrows() {
+        Assertions.assertThrows(
+                IllegalArgumentException.class,
+                () -> new IndexedPriorityQueue<Integer>(0, Comparator.naturalOrder()));
+    }
+
+    @Test
+    void testChangeKeyOnMissingElementThrows() {
+        IndexedPriorityQueue<Node> pq = newNodePQ();
+        Node a = new Node("A", 10);
+
+        Assertions.assertThrows(
+                IllegalArgumentException.class,
+                () -> pq.changeKey(a, n -> n.prio = 5));
+    }
+
+    @Test
+    void testDecreaseKeyOnMissingElementThrows() {
+        IndexedPriorityQueue<Node> pq = newNodePQ();
+        Node a = new Node("A", 10);
+
+        Assertions.assertThrows(
+                IllegalArgumentException.class,
+                () -> pq.decreaseKey(a, n -> n.prio = 5));
+    }
+
+    @Test
+    void testIncreaseKeyOnMissingElementThrows() {
+        IndexedPriorityQueue<Node> pq = newNodePQ();
+        Node a = new Node("A", 10);
+
+        Assertions.assertThrows(
+                IllegalArgumentException.class,
+                () -> pq.increaseKey(a, n -> n.prio = 15));
+    }
+
 }
