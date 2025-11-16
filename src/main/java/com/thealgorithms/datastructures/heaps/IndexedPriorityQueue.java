@@ -1,9 +1,9 @@
 package com.thealgorithms.datastructures.heaps;
 
+import java.util.Arrays;
 import java.util.Comparator;
 import java.util.IdentityHashMap;
 import java.util.Objects;
-import java.util.Arrays;
 import java.util.function.Consumer;
 
 /**
@@ -73,24 +73,32 @@ public class IndexedPriorityQueue<E> {
     }
 
     public IndexedPriorityQueue(int initialCapacity, Comparator<? super E> cmp) {
-        if (initialCapacity < 1) throw new IllegalArgumentException("initialCapacity < 1");
+        if (initialCapacity < 1) {
+            throw new IllegalArgumentException("initialCapacity < 1");
+        }
         this.heap = new Object[initialCapacity];
         this.cmp = cmp;
         this.index = new IdentityHashMap<>();
     }
 
     /** Returns current number of elements. */
-    public int size() { return size; }
+    public int size() {
+        return size;
+    }
 
     /** Returns {@code true} if empty. */
-    public boolean isEmpty() { return size == 0; }
+    public boolean isEmpty() {
+        return size == 0;
+    }
 
     /**
      * Returns the minimum element without removing it, or {@code null} if empty.
      * Matches {@link java.util.PriorityQueue#peek()} behavior.
      */
     @SuppressWarnings("unchecked")
-    public E peek() { return size == 0 ? null : (E) heap[0]; }
+    public E peek() {
+        return size == 0 ? null : (E) heap[0];
+    }
 
     /**
      * Inserts the specified element (O(log n)).
@@ -100,7 +108,9 @@ public class IndexedPriorityQueue<E> {
      */
     public boolean offer(E e) {
         Objects.requireNonNull(e, "element is null");
-        if (size >= heap.length) grow(size + 1);
+        if (size >= heap.length) {
+            grow(size + 1);
+        }
         // Insert at the end and bubble up. siftUp will maintain 'index' for all touched nodes.
         siftUp(size, e);
         size++;
@@ -112,7 +122,9 @@ public class IndexedPriorityQueue<E> {
      */
     @SuppressWarnings("unchecked")
     public E poll() {
-        if (size == 0) return null;
+        if (size == 0) {
+            return null;
+        }
         E min = (E) heap[0];
         removeAt(0); // updates map and heap structure
         return min;
@@ -124,7 +136,9 @@ public class IndexedPriorityQueue<E> {
      */
     public boolean remove(Object o) {
         Integer i = index.get(o);
-        if (i == null) return false;
+        if (i == null) {
+            return false;
+        }
         removeAt(i);
         return true;
     }
@@ -156,11 +170,15 @@ public class IndexedPriorityQueue<E> {
      */
     public void changeKey(E e, Consumer<E> mutator) {
         Integer i = index.get(e);
-        if (i == null) throw new IllegalArgumentException("Element not in queue");
+        if (i == null) {
+            throw new IllegalArgumentException("Element not in queue");
+        }
         // Mutate fields used by comparator (do NOT mutate equality/hash if using value-based map)
         mutator.accept(e);
         // Try bubbling up; if no movement occurred, bubble down.
-        if (!siftUp(i)) siftDown(i);
+        if (!siftUp(i)) {
+            siftDown(i);
+        }
     }
 
     /**
@@ -169,7 +187,9 @@ public class IndexedPriorityQueue<E> {
      */
     public void decreaseKey(E e, Consumer<E> mutator) {
         Integer i = index.get(e);
-        if (i == null) throw new IllegalArgumentException("Element not in queue");
+        if (i == null) {
+            throw new IllegalArgumentException("Element not in queue");
+        }
         mutator.accept(e);
         siftUp(i);
     }
@@ -180,7 +200,9 @@ public class IndexedPriorityQueue<E> {
      */
     public void increaseKey(E e, Consumer<E> mutator) {
         Integer i = index.get(e);
-        if (i == null) throw new IllegalArgumentException("Element not in queue");
+        if (i == null) {
+            throw new IllegalArgumentException("Element not in queue");
+        }
         mutator.accept(e);
         siftDown(i);
     }
@@ -199,7 +221,9 @@ public class IndexedPriorityQueue<E> {
 
     @SuppressWarnings("unchecked")
     private int compare(E a, E b) {
-        if (cmp != null) return cmp.compare(a, b);
+        if (cmp != null) {
+            return cmp.compare(a, b);
+        }
         return ((Comparable<? super E>) a).compareTo(b);
     }
 
@@ -212,7 +236,9 @@ public class IndexedPriorityQueue<E> {
         while (k > 0) {
             int p = (k - 1) >>> 1;
             E e = (E) heap[p];
-            if (compare(x, e) >= 0) break;
+            if (compare(x, e) >= 0) {
+                break;
+            }
             heap[k] = e;
             index.put(e, k);
             k = p;
@@ -232,7 +258,9 @@ public class IndexedPriorityQueue<E> {
         while (k > 0) {
             int p = (k - 1) >>> 1;
             E e = (E) heap[p];
-            if (compare(x, e) >= 0) break;
+            if (compare(x, e) >= 0) {
+                break;
+            }
             heap[k] = e;
             index.put(e, k);
             k = p;
@@ -252,14 +280,16 @@ public class IndexedPriorityQueue<E> {
         E x = (E) heap[k];
         int half = n >>> 1; // loop while k has at least one child
         while (k < half) {
-            int child = (k << 1) + 1;      // assume left is smaller
+            int child = (k << 1) + 1; // assume left is smaller
             E c = (E) heap[child];
             int r = child + 1;
             if (r < n && compare(c, (E) heap[r]) > 0) {
                 child = r;
                 c = (E) heap[child];
             }
-            if (compare(x, c) <= 0) break;
+            if (compare(x, c) <= 0) {
+                break;
+            }
             heap[k] = c;
             index.put(c, k);
             k = child;
@@ -276,18 +306,22 @@ public class IndexedPriorityQueue<E> {
      */
     @SuppressWarnings("unchecked")
     private void removeAt(int i) {
-        int n = --size;                 // last index after removal
+        int n = --size; // last index after removal
         E moved = (E) heap[n];
         E removed = (E) heap[i];
-        heap[n] = null;                 // help GC
-        index.remove(removed);          // drop mapping for removed element
+        heap[n] = null; // help GC
+        index.remove(removed); // drop mapping for removed element
 
-        if (i == n) return;             // removed last element; done
+        if (i == n) {
+            return; // removed last element; done
+        }
 
         heap[i] = moved;
         index.put(moved, i);
 
         // Try sift-up first (cheap if key decreased); if no movement, sift-down.
-        if (!siftUp(i)) siftDown(i);
+        if (!siftUp(i)) {
+            siftDown(i);
+        }
     }
 }

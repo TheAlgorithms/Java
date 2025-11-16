@@ -1,9 +1,8 @@
 package com.thealgorithms.datastructures.heaps;
 
+import java.util.Comparator;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-
-import java.util.Comparator;
 
 /**
  * Tests for {@link IndexedPriorityQueue}.
@@ -47,7 +46,9 @@ public class IndexedPriorityQueueTest {
 
         @Override
         public boolean equals(Object o) {
-            if (!(o instanceof NodeWithEquals)) return false;
+            if (!(o instanceof NodeWithEquals)) {
+                return false;
+            }
             NodeWithEquals other = (NodeWithEquals) o;
             // Intentionally naive equality: equal if priority is equal
             return this.prio == other.prio;
@@ -238,7 +239,7 @@ public class IndexedPriorityQueueTest {
     @Test
     void testDuplicateEqualsElementsAreSupported_IdentityMap() {
         IndexedPriorityQueue<NodeWithEquals> pq =
-            new IndexedPriorityQueue<>(Comparator.comparingInt(n -> n.prio));
+                new IndexedPriorityQueue<>(Comparator.comparingInt(n -> n.prio));
 
         NodeWithEquals x1 = new NodeWithEquals("X1", 7);
         NodeWithEquals x2 = new NodeWithEquals("X2", 7); // equals to X1 by prio, but different instance
