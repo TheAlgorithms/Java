@@ -7,16 +7,18 @@ import java.util.function.IntConsumer;
 import java.util.stream.Collectors;
 
 /**
- * CentroidDecomposition builds the centroid decomposition of an undirected tree.
+ * Implements centroid decomposition on a tree.
  *
- * <p>The algorithm recursively finds centroids, marks them as removed, and
- * constructs a centroid tree whose height is O(log n). This structure enables
- * efficient solutions for distance queries, nearest-colored-node queries, and
- * other divide-and-conquer algorithms on trees.</p>
+ * A centroid of a tree is a node whose removal splits the tree into
+ * components of size at most n/2. Centroid decomposition recursively
+ * finds centroids and builds a centroid tree of height O(log n).
  *
- * <p>Supports adding edges of the original tree, building the centroid tree,
- * and querying centroid parents, children, and internal state.
- * </p>
+ * This class supports:
+ * <ul>
+ *   <li>Adding edges to the original tree</li>
+ *   <li>Building the centroid decomposition</li>
+ *   <li>Querying parents and children in the centroid tree</li>
+ * </ul>
  *
  * <p><strong>Author:</strong> Lennart S.<br>
  * <strong>GitHub: https://github.com/lens161<br>
@@ -24,19 +26,19 @@ import java.util.stream.Collectors;
  */
 
 public class CentroidDecomposition {
-    private ArrayList<Integer>[] tree;
-    private ArrayList<Integer>[] centroidTree;
+    private final List<Integer>[] tree;
+    private final List<Integer>[] centroidTree;
     private int[] subtreeSizes;
     private boolean[] visited;
     private boolean[] centroidMarked;
     private int[] centroidParent;
     private int startingNode;
-    private int N;
+    private final int N;
 
     @SuppressWarnings("unchecked")
     public CentroidDecomposition(int n, int startingNode){
-        tree = new ArrayList[n];
-        centroidTree = new ArrayList[n];
+        this.tree = (List<Integer>[]) new ArrayList<?>[n];
+        this.centroidTree = (List<Integer>[]) new ArrayList<?>[n];
         N = n;
         centroidMarked = new boolean[n];
         centroidParent = new int[n];
@@ -64,7 +66,7 @@ public class CentroidDecomposition {
 
     public void reset(){
         for(int i = 0; i<N; i++){
-            centroidTree[i] = new ArrayList<>();
+            centroidTree[i].clear();
             centroidParent[i] = -1;
             subtreeSizes[i] = 0;
             centroidMarked[i] = false;
@@ -91,7 +93,7 @@ public class CentroidDecomposition {
         centroidParent[v] = u;
     }
 
-    public ArrayList<Integer>[] getCentroidTree(){
+    public List<Integer>[] getCentroidTree(){
         return centroidTree;
     }
 
@@ -150,7 +152,9 @@ public class CentroidDecomposition {
         
         centroidMarked[src] = true;
 
-        if(src != startingNode && src != previousCentroid) addEdgeCTree(previousCentroid, src);
+        if(src != startingNode && src != previousCentroid){
+            addEdgeCTree(previousCentroid, src);
+        } 
 
         for (int node : tree[src]){
             if (!centroidMarked[node])

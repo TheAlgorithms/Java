@@ -142,7 +142,7 @@ class CentroidDecompositionTest {
     @Test
     void centroidAdjacencyFor8And11MatchesIgnoringOrder() {
         cd.build();
-        ArrayList<Integer>[] cg = cd.getCentroidTree();
+        List<Integer>[] cg = cd.getCentroidTree();
 
         List<Integer> actual8 = new ArrayList<>(cg[8]);
         List<Integer> actual11 = new ArrayList<>(cg[11]);
@@ -164,7 +164,7 @@ class CentroidDecompositionTest {
         cd.build();
         cd.reset();
 
-        ArrayList<Integer>[] cg = cd.getCentroidTree();
+        List<Integer>[] cg = cd.getCentroidTree();
         for (int i = 0; i < cg.length; i++) {
             assertTrue(cg[i].isEmpty(), "centroid adjacency must be empty after reset");
             assertEquals(-1, cd.getParent(i), "parent must be -1 after reset");
@@ -215,7 +215,7 @@ class CentroidDecompositionTest {
         int roots = 0;
         int edges = 0;
 
-        ArrayList<Integer>[] cg = cd.getCentroidTree();
+        List<Integer>[] cg = cd.getCentroidTree();
 
         for (int v = 0; v < n; v++) {
             if (cd.getParent(v) == -1) {
@@ -252,9 +252,9 @@ class CentroidDecompositionTest {
     @Test
     void testBuildCentroidTree(){
         cd.build();
-        ArrayList<Integer>[] centroidTree = cd.getCentroidTree();
-        ArrayList<Integer> correctEight = new ArrayList<Integer>();
-        ArrayList<Integer> correctEleven = new ArrayList<Integer>();
+        List<Integer>[] centroidTree = cd.getCentroidTree();
+        List<Integer> correctEight = new ArrayList<Integer>();
+        List<Integer> correctEleven = new ArrayList<Integer>();
         correctEight.add(0);
         correctEight.add(3);
         correctEight.add(9);
