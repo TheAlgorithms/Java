@@ -174,6 +174,30 @@ class CentroidDecompositionTest {
         assertEquals(0, cd.getParent(11));
     }
 
+
+    @Test
+    void forEachAncestorVisitsCorrectChain() {
+        cd.build();
+
+        int[] testNodes = {0, 3, 7, 11, 15};
+
+        for (int node : testNodes) {
+
+            List<Integer> visited = new ArrayList<>();
+            cd.forEachAncestor(node, visited::add);
+
+            List<Integer> expected = new ArrayList<>();
+            int curr = node;
+            while (curr != -1) {
+                expected.add(curr);
+                curr = cd.getParent(curr);
+            }
+
+            assertEquals(expected, visited,
+                "forEachAncestor wrong for node " + node);
+        }
+    }
+
     @Test
     void buildingFromDifferentStartNodesYieldsValidTrees() {
         CentroidDecomposition a = new CentroidDecomposition(16, 0);

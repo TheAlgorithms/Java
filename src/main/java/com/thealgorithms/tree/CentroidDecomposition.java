@@ -162,7 +162,7 @@ public class CentroidDecomposition {
      * Applies the given action to all centroid ancestors of the given node,
      * including the node itself, walking up via centroidParent[] until the root.
      */
-    public void forEachAcestor(int centroid, IntConsumer action){
+    public void forEachAncestor(int centroid, IntConsumer action){
         int curr = centroid;
         while(curr != -1){
             action.accept(curr);
