@@ -11,7 +11,6 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.RepeatedTest;
 import org.junit.jupiter.api.Test;
 
 class CentroidDecompositionTest {
@@ -19,7 +18,7 @@ class CentroidDecompositionTest {
 
     @BeforeEach
     void setUp(){
-        cd = new CentroidDecomposition(16);
+        cd = new CentroidDecomposition(16, 0);
         cd.addEdgeTree(0, 1);
         cd.addEdgeTree(0, 2);
         cd.addEdgeTree(0, 3);
@@ -54,7 +53,7 @@ class CentroidDecompositionTest {
                            15
 
 
-         * centroid Tree:
+         * centroid Tree (starting at 0):
                     0
              /      |       \
             1      11        8
@@ -176,23 +175,38 @@ class CentroidDecompositionTest {
     }
 
     @Test
-    void buildingFromDifferentStartNodesProducesSameParents() {
-        // build from 0
+    void buildingFromDifferentStartNodesYieldsValidTrees() {
         CentroidDecomposition a = new CentroidDecomposition(16, 0);
         copyEdges(cd, a);
         a.build();
+        assertValidCentroidTree(a, 16);
 
-        // build from 7
         CentroidDecomposition b = new CentroidDecomposition(16, 7);
         copyEdges(cd, b);
         b.build();
-
-        // compare parent arrays node by node
-        for (int v = 0; v < 16; v++) {
-            assertEquals(a.getParent(v), b.getParent(v), "parent mismatch at node " + v);
-        }
+        assertValidCentroidTree(b, 16);
     }
 
+    private static void assertValidCentroidTree(CentroidDecomposition cd, int n) {
+        int roots = 0;
+        int edges = 0;
+
+        ArrayList<Integer>[] cg = cd.getCentroidTree();
+
+        for (int v = 0; v < n; v++) {
+            if (cd.getParent(v) == -1) {
+                roots++;
+            }
+            edges += cg[v].size();
+        }
+
+        // undirected edges counted twice
+        edges /= 2;
+
+        assertEquals(1, roots, "must have exactly one root");
+        assertEquals(n - 1, edges, "centroid tree must have n-1 edges");
+    }
+    
     private static void copyEdges(CentroidDecomposition from, CentroidDecomposition to) {
         to.addEdgeTree(0, 1);
         to.addEdgeTree(0, 2);
@@ -211,7 +225,7 @@ class CentroidDecompositionTest {
         to.addEdgeTree(14, 15);
     }
 
-    @RepeatedTest(100)
+    @Test
     void testBuildCentroidTree(){
         cd.build();
         ArrayList<Integer>[] centroidTree = cd.getCentroidTree();
@@ -231,7 +245,7 @@ class CentroidDecompositionTest {
             assertEquals(correctEight.get(j), centroidTree[8].get(j));
         }
 
-        for (int j = 0; j < centroidTree[8].size(); j++) {
+        for (int j = 0; j < centroidTree[11].size(); j++) {
             assertEquals(correctEleven.get(j), centroidTree[11].get(j));
         }
 

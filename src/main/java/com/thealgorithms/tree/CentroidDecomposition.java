@@ -3,8 +3,25 @@ package com.thealgorithms.tree;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Collector;
+import java.util.function.IntConsumer;
 import java.util.stream.Collectors;
+
+/**
+ * CentroidDecomposition builds the centroid decomposition of an undirected tree.
+ *
+ * <p>The algorithm recursively finds centroids, marks them as removed, and
+ * constructs a centroid tree whose height is O(log n). This structure enables
+ * efficient solutions for distance queries, nearest-colored-node queries, and
+ * other divide-and-conquer algorithms on trees.</p>
+ *
+ * <p>Supports adding edges of the original tree, building the centroid tree,
+ * and querying centroid parents, children, and internal state.
+ * </p>
+ *
+ * <p><strong>Author:</strong> Lennart S.<br>
+ * <strong>GitHub: https://github.com/lens161<br>
+ * </p>
+ */
 
 public class CentroidDecomposition {
     private ArrayList<Integer>[] tree;
@@ -28,6 +45,7 @@ public class CentroidDecomposition {
         if (startingNode < 0 || startingNode > n-1){
             throw new IllegalArgumentException("Starting node must be in range 0.." + (n - 1) + " but got " + startingNode);
         }
+        this.startingNode = startingNode;
         for(int i = 0; i<n; i++){
             centroidParent[i] = -1;
             tree[i] = new ArrayList<>();
@@ -40,6 +58,7 @@ public class CentroidDecomposition {
     }
 
     public void build(){
+        reset();
         findCentroid(startingNode, startingNode);
     }
 
@@ -86,6 +105,15 @@ public class CentroidDecomposition {
                 .collect(Collectors.toList());
     }
 
+    public int getRoot() {
+        for (int i = 0; i < N; i++) {
+            if (centroidParent[i] == -1) {
+                return i;
+            }
+        }
+        throw new IllegalStateException("Centroid tree has no root. likely it was not built");
+    }
+
     public void findSubtreeSizes(int src){
         visited[src] = true;
         subtreeSizes[src] = 1;
@@ -130,43 +158,16 @@ public class CentroidDecomposition {
             }
         }
 
-    public static void main(String[] args) {
-        CentroidDecomposition cd = new CentroidDecomposition(16);
-        cd.addEdgeTree(0, 1);
-        cd.addEdgeTree(0, 2);
-        cd.addEdgeTree(0, 3);
-        cd.addEdgeTree(1, 4);
-        cd.addEdgeTree(1, 5);
-        cd.addEdgeTree(2, 6);
-        cd.addEdgeTree(2, 7);
-        cd.addEdgeTree(3, 8);
-        cd.addEdgeTree(8, 9);
-        cd.addEdgeTree(8, 10);
-        cd.addEdgeTree(6, 11);
-        cd.addEdgeTree(11, 12);
-        cd.addEdgeTree(11, 13);
-        cd.addEdgeTree(13, 14);
-        cd.addEdgeTree(14, 15);
-
-        // boolean[] visited = new boolean[16];
-        // int[] subtreeSizes = new int[16];
-
-        // int start = cd.startingNode;
-        // int src = (int)(Math.random() * 15);
-        // System.out.println("src= " + src);
-        int start = cd.getStartingNode();
-        cd.findCentroid(start, start);
-
-        // System.out.println((int)(Math.random() * 16));
-
-        for (int i = 0; i < cd.centroidTree.length; i++) {
-            System.out.println(String.format("%s %s", i, cd.centroidTree[i]));
+    /**
+     * Applies the given action to all centroid ancestors of the given node,
+     * including the node itself, walking up via centroidParent[] until the root.
+     */
+    public void forEachAcestor(int centroid, IntConsumer action){
+        int curr = centroid;
+        while(curr != -1){
+            action.accept(curr);
+            curr = getParent(curr);
         }
-
-        // cd.findSubtreeSizes(8, visited, subtreeSizes);
-        // for (int i = 0; i < subtreeSizes.length; i++) {
-        //     System.out.println(String.format("%s %s", i, subtreeSizes[i]));
-        // }
     }
 
 }
