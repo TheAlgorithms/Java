@@ -22,7 +22,9 @@ public final class UniquePermutation {
 
     public static List<String> generateUniquePermutations(String input) {
         List<String> result = new ArrayList<>();
-        if (input == null) return result;
+        if (input == null) {
+            return result;
+        }
 
         char[] chars = input.toCharArray();
         Arrays.sort(chars); // important: sort to detect duplicates
