@@ -81,7 +81,7 @@ class CentroidDecompositionTest {
 
     @Test
     void IllegalArgumentThrows() {
-        assertThrows(IllegalArgumentException.class, () -> { new CentroidDecomposition(10, 99);});
+        assertThrows(IllegalArgumentException.class, () -> { new CentroidDecomposition(10, 99); });
     }
 
     @Test

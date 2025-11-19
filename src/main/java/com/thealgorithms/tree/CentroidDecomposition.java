@@ -50,7 +50,7 @@ public class CentroidDecomposition {
             throw new IllegalArgumentException("Starting node must be in range 0.." + (n - 1) + " but got " + startingNode);
         }
         this.startingNode = startingNode;
-        for (int i = 0; i < n; i++){
+        for (int i = 0; i < n; i++) {
             centroidParent[i] = -1;
             tree[i] = new ArrayList<>();
             centroidTree[i] = new ArrayList<>();
@@ -139,7 +139,7 @@ public class CentroidDecomposition {
 
         for (int node : tree[src]) {
             if (centroidMarked[node]) continue;
-            if (subtreeSizes[node] > (treeSize/2)) {
+            if (subtreeSizes[node] > (treeSize / 2)) {
                 heavyChild = node;
                 break;
             }
@@ -158,8 +158,8 @@ public class CentroidDecomposition {
 
         for (int node : tree[src]) {
             if (!centroidMarked[node]) findCentroid(node, src);                
-            }
         }
+    }
 
     /**
      * Applies the given action to all centroid ancestors of the given node,
@@ -167,7 +167,7 @@ public class CentroidDecomposition {
      */
     public void forEachAncestor(int centroid, IntConsumer action) {
         int curr = centroid;
-        while (curr != -1){
+        while (curr != -1) {
             action.accept(curr);
             curr = getParent(curr);
         }
