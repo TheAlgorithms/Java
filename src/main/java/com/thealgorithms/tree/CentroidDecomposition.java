@@ -36,17 +36,17 @@ public class CentroidDecomposition {
     private boolean[] centroidMarked;
     private int[] centroidParent;
     private int startingNode;
-    private final int N;
+    private final int n;
 
     @SuppressWarnings("unchecked")
     public CentroidDecomposition(int n, int startingNode) {
         this.tree = (List<Integer>[]) new ArrayList<?>[n];
         this.centroidTree = (List<Integer>[]) new ArrayList<?>[n];
-        N = n;
+        this.n = n;
         centroidMarked = new boolean[n];
         centroidParent = new int[n];
-        subtreeSizes = new int[N];
-        visited = new boolean[N];
+        subtreeSizes = new int[n];
+        visited = new boolean[n];
         if (startingNode < 0 || startingNode > n - 1) {
             throw new IllegalArgumentException("Starting node must be in range 0.." + (n - 1) + " but got " + startingNode);
         }
@@ -68,7 +68,7 @@ public class CentroidDecomposition {
     }
 
     public void reset() {
-        for (int i = 0; i < N; i++) {
+        for (int i = 0; i < n; i++) {
             centroidTree[i].clear();
             centroidParent[i] = -1;
             subtreeSizes[i] = 0;
@@ -109,7 +109,7 @@ public class CentroidDecomposition {
     }
 
     public int getRoot() {
-        for (int i = 0; i < N; i++) {
+        for (int i = 0; i < n; i++) {
             if (centroidParent[i] == -1) {
                 return i;
             }
@@ -136,7 +136,9 @@ public class CentroidDecomposition {
         int heavyChild = -1;
 
         for (int node : tree[src]) {
-            if (centroidMarked[node]) continue;
+            if (centroidMarked[node]) {
+                continue;
+            }
             if (subtreeSizes[node] > (treeSize / 2)) {
                 heavyChild = node;
                 break;
