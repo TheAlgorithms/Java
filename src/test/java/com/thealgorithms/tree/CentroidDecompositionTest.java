@@ -250,7 +250,7 @@ class CentroidDecompositionTest {
     }
 
     @Test
-    void testBuildCentroidTree(){
+    void testBuildCentroidTree() {
         cd.build();
         List<Integer>[] centroidTree = cd.getCentroidTree();
         List<Integer> correctEight = new ArrayList<Integer>();

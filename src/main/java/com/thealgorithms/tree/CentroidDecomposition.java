@@ -20,8 +20,10 @@ import java.util.stream.Collectors;
  *   <li>Querying parents and children in the centroid tree</li>
  * </ul>
  *
- * <p><strong>Author:</strong> Lennart S.<br>
- * <strong>GitHub: https://github.com/lens161<br>
+ * <p>
+ * <strong>Reference:</strong> https://medium.com/carpanese/an-illustrated-introduction-to-centroid-decomposition-8c1989d53308<br>
+ * <strong>Author:</strong> Lennart S.<br>
+ * <strong>GitHub:</strong> https://github.com/lens161<br>
  * </p>
  */
 
@@ -55,7 +57,7 @@ public class CentroidDecomposition {
         }
     }
 
-    public CentroidDecomposition(int n){
+    public CentroidDecomposition(int n) {
         this(n, (int)(Math.random() * n));
     }
 
@@ -64,7 +66,7 @@ public class CentroidDecomposition {
         findCentroid(startingNode, startingNode);
     }
 
-    public void reset(){
+    public void reset() {
         for(int i = 0; i<N; i++){
             centroidTree[i].clear();
             centroidParent[i] = -1;
@@ -74,37 +76,36 @@ public class CentroidDecomposition {
         }
     }
 
-    public int getStartingNode(){
+    public int getStartingNode() {
         return startingNode;
     }
 
-    public int[] getSubtreeSizes(){
+    public int[] getSubtreeSizes() {
         return subtreeSizes;
     }
 
-    public void addEdgeTree(int u, int v){
+    public void addEdgeTree(int u, int v) {
         tree[u].add(v);
         tree[v].add(u);
     }
 
-    private void addEdgeCTree(int u, int v){
+    private void addEdgeCTree(int u, int v) {
         centroidTree[u].add(v);
         centroidTree[v].add(u);
         centroidParent[v] = u;
     }
 
-    public List<Integer>[] getCentroidTree(){
+    public List<Integer>[] getCentroidTree() {
         return centroidTree;
     }
 
-    public int getParent(int v){
+    public int getParent(int v) {
         return centroidParent[v];
     }
 
     public List<Integer> getCentroidChildren(int v) {
         return centroidTree[v].stream()
-                .filter(child -> centroidParent[child] == v && centroidParent[v] != child)
-                .collect(Collectors.toList());
+                .filter(child -> centroidParent[child] == v && centroidParent[v] != child).collect(Collectors.toList());
     }
 
     public int getRoot() {
@@ -116,7 +117,7 @@ public class CentroidDecomposition {
         throw new IllegalStateException("Centroid tree has no root. likely it was not built");
     }
 
-    public void findSubtreeSizes(int src){
+    public void findSubtreeSizes(int src) {
         visited[src] = true;
         subtreeSizes[src] = 1;
         for (int node : tree[src]){
@@ -128,7 +129,7 @@ public class CentroidDecomposition {
         }
     }
     
-    public void findCentroid(int src, int previousCentroid){
+    public void findCentroid(int src, int  previousCentroid) {
 
         Arrays.fill(visited, false);
         
@@ -137,7 +138,7 @@ public class CentroidDecomposition {
 
         int heavyChild = -1;
 
-        for (int node : tree[src]){
+        for (int node : tree[src]) {
             if(centroidMarked[node]) continue;
             if(subtreeSizes[node] > (treeSize/2)){
                 heavyChild = node;
@@ -145,18 +146,18 @@ public class CentroidDecomposition {
             }
         }
 
-        if (heavyChild != -1){
+        if (heavyChild != -1) {
             findCentroid(heavyChild, previousCentroid);
             return;
         }
         
         centroidMarked[src] = true;
 
-        if(src != startingNode && src != previousCentroid){
+        if(src != startingNode && src != previousCentroid) {
             addEdgeCTree(previousCentroid, src);
         } 
 
-        for (int node : tree[src]){
+        for (int node : tree[src]) {
             if (!centroidMarked[node])
                 findCentroid(node, src);                
             }
@@ -166,7 +167,7 @@ public class CentroidDecomposition {
      * Applies the given action to all centroid ancestors of the given node,
      * including the node itself, walking up via centroidParent[] until the root.
      */
-    public void forEachAncestor(int centroid, IntConsumer action){
+    public void forEachAncestor(int centroid, IntConsumer action) {
         int curr = centroid;
         while(curr != -1){
             action.accept(curr);
