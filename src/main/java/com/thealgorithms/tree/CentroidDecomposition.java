@@ -21,7 +21,8 @@ import java.util.stream.Collectors;
  * </ul>
  *
  * <p>
- * <strong>Reference:</strong> https://medium.com/carpanese/an-illustrated-introduction-to-centroid-decomposition-8c1989d53308<br>
+ * <strong>Reference:</strong>
+ * https://medium.com/carpanese/an-illustrated-introduction-to-centroid-decomposition-8c1989d53308<br>
  * <strong>Author:</strong> Lennart S.<br>
  * <strong>GitHub:</strong> https://github.com/lens161<br>
  * </p>
@@ -154,7 +155,9 @@ public class CentroidDecomposition {
         }
 
         for (int node : tree[src]) {
-            if (!centroidMarked[node]) findCentroid(node, src);           
+            if (!centroidMarked[node]) {
+                findCentroid(node, src);
+            }
         }
     }
 
