@@ -154,7 +154,7 @@ public class CentroidDecomposition {
         }
 
         for (int node : tree[src]) {
-            if (!centroidMarked[node]) findCentroid(node, src);                
+            if (!centroidMarked[node]) findCentroid(node, src);           
         }
     }
 

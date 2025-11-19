@@ -222,7 +222,7 @@ class CentroidDecompositionTest {
         assertEquals(1, roots, "must have exactly one root");
         assertEquals(n - 1, edges, "centroid tree must have n-1 edges");
     }
-    
+
     private static void copyEdges(CentroidDecomposition from, CentroidDecomposition to) {
         to.addEdgeTree(0, 1);
         to.addEdgeTree(0, 2);
