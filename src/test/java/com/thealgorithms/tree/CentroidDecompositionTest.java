@@ -9,7 +9,6 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
-
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -35,7 +34,6 @@ class CentroidDecompositionTest {
         cd.addEdgeTree(13, 14);
         cd.addEdgeTree(14, 15);
 
-
         /*
          * Initial Tree:
          *           0
@@ -51,7 +49,6 @@ class CentroidDecompositionTest {
                          14
                           \
                            15
-
 
          * centroid Tree (starting at 0):
                     0
@@ -172,7 +169,6 @@ class CentroidDecompositionTest {
         assertEquals(0, cd.getParent(11));
     }
 
-
     @Test
     void forEachAncestorVisitsCorrectChain() {
         cd.build();
@@ -269,6 +265,5 @@ class CentroidDecompositionTest {
         for (int j = 0; j < centroidTree[11].size(); j++) {
             assertEquals(correctEleven.get(j), centroidTree[11].get(j));
         }
-
     }
 }

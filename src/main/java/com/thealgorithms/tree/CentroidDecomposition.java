@@ -127,14 +127,12 @@ public class CentroidDecomposition {
             }
         }
     }
-    
-    public void findCentroid(int src, int previousCentroid) {
 
-        Arrays.fill(visited, false);
+    public void findCentroid(int src, int previousCentroid) {
         
+        Arrays.fill(visited, false);
         findSubtreeSizes(src);
         int treeSize = subtreeSizes[src];
-
         int heavyChild = -1;
 
         for (int node : tree[src]) {
@@ -149,12 +147,12 @@ public class CentroidDecomposition {
             findCentroid(heavyChild, previousCentroid);
             return;
         }
-        
+
         centroidMarked[src] = true;
 
         if (src != startingNode && src != previousCentroid) {
             addEdgeCTree(previousCentroid, src);
-        } 
+        }
 
         for (int node : tree[src]) {
             if (!centroidMarked[node]) findCentroid(node, src);                
@@ -172,5 +170,4 @@ public class CentroidDecomposition {
             curr = getParent(curr);
         }
     }
-
 }
