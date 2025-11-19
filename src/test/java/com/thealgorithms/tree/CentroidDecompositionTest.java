@@ -58,7 +58,6 @@ class CentroidDecompositionTest {
          4     5 2 12 14   3  9 10
                 / \    / \
                7   6  15 13
-   
          */
     }
 

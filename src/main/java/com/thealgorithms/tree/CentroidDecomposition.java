@@ -129,7 +129,6 @@ public class CentroidDecomposition {
     }
 
     public void findCentroid(int src, int previousCentroid) {
-        
         Arrays.fill(visited, false);
         findSubtreeSizes(src);
         int treeSize = subtreeSizes[src];
