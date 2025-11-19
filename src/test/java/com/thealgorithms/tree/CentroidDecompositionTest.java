@@ -17,7 +17,7 @@ class CentroidDecompositionTest {
     private CentroidDecomposition cd;
 
     @BeforeEach
-    void setUp(){
+    void setUp() {
         cd = new CentroidDecomposition(16, 0);
         cd.addEdgeTree(0, 1);
         cd.addEdgeTree(0, 2);
@@ -65,7 +65,7 @@ class CentroidDecompositionTest {
          */
     }
 
-     @Test
+    @Test
     void startingNodeIsInRangeWhenRandomCtorUsed() {
         int n = 32;
         CentroidDecomposition rnd = new CentroidDecomposition(n);
@@ -80,14 +80,12 @@ class CentroidDecompositionTest {
     }
 
     @Test
-    void IllegalArgumentThrows(){
-        assertThrows(IllegalArgumentException.class, () -> {
-            new CentroidDecomposition(10, 99);
-        });
+    void IllegalArgumentThrows() {
+        assertThrows(IllegalArgumentException.class, () -> { new CentroidDecomposition(10, 99);});
     }
 
     @Test
-    void testFindSubtreeSizes(){
+    void testFindSubtreeSizes() {
         // int[] subtreeSizes = new int[n];
 
         cd.findSubtreeSizes(3);
@@ -193,8 +191,7 @@ class CentroidDecompositionTest {
                 curr = cd.getParent(curr);
             }
 
-            assertEquals(expected, visited,
-                "forEachAncestor wrong for node " + node);
+            assertEquals(expected, visited, "forEachAncestor wrong for node " + node);
         }
     }
 
