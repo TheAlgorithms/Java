@@ -24,6 +24,8 @@
           - 📄 [Permutation](src/main/java/com/thealgorithms/backtracking/Permutation.java)
           - 📄 [PowerSum](src/main/java/com/thealgorithms/backtracking/PowerSum.java)
           - 📄 [SubsequenceFinder](src/main/java/com/thealgorithms/backtracking/SubsequenceFinder.java)
+          - 📄 [SudokuSolver](src/main/java/com/thealgorithms/backtracking/SudokuSolver.java)
+          - 📄 [UniquePermutation](src/main/java/com/thealgorithms/backtracking/UniquePermutation.java)
           - 📄 [WordPatternMatcher](src/main/java/com/thealgorithms/backtracking/WordPatternMatcher.java)
           - 📄 [WordSearch](src/main/java/com/thealgorithms/backtracking/WordSearch.java)
         - 📁 **bitmanipulation**
@@ -133,6 +135,7 @@
           - 📄 [PhoneticAlphabetConverter](src/main/java/com/thealgorithms/conversions/PhoneticAlphabetConverter.java)
           - 📄 [RgbHsvConversion](src/main/java/com/thealgorithms/conversions/RgbHsvConversion.java)
           - 📄 [RomanToInteger](src/main/java/com/thealgorithms/conversions/RomanToInteger.java)
+          - 📄 [TemperatureConverter](src/main/java/com/thealgorithms/conversions/TemperatureConverter.java)
           - 📄 [TimeConverter](src/main/java/com/thealgorithms/conversions/TimeConverter.java)
           - 📄 [TurkishToLatinConversion](src/main/java/com/thealgorithms/conversions/TurkishToLatinConversion.java)
           - 📄 [UnitConversions](src/main/java/com/thealgorithms/conversions/UnitConversions.java)
@@ -208,6 +211,7 @@
             - 📄 [GenericHeap](src/main/java/com/thealgorithms/datastructures/heaps/GenericHeap.java)
             - 📄 [Heap](src/main/java/com/thealgorithms/datastructures/heaps/Heap.java)
             - 📄 [HeapElement](src/main/java/com/thealgorithms/datastructures/heaps/HeapElement.java)
+            - 📄 [IndexedPriorityQueue](src/main/java/com/thealgorithms/datastructures/heaps/IndexedPriorityQueue.java)
             - 📄 [KthElementFinder](src/main/java/com/thealgorithms/datastructures/heaps/KthElementFinder.java)
             - 📄 [LeftistHeap](src/main/java/com/thealgorithms/datastructures/heaps/LeftistHeap.java)
             - 📄 [MaxHeap](src/main/java/com/thealgorithms/datastructures/heaps/MaxHeap.java)
@@ -507,6 +511,7 @@
           - 📄 [PiNilakantha](src/main/java/com/thealgorithms/maths/PiNilakantha.java)
           - 📄 [PollardRho](src/main/java/com/thealgorithms/maths/PollardRho.java)
           - 📄 [Pow](src/main/java/com/thealgorithms/maths/Pow.java)
+          - 📄 [PowerOfFour](src/main/java/com/thealgorithms/maths/PowerOfFour.java)
           - 📄 [PowerOfTwoOrNot](src/main/java/com/thealgorithms/maths/PowerOfTwoOrNot.java)
           - 📄 [PowerUsingRecursion](src/main/java/com/thealgorithms/maths/PowerUsingRecursion.java)
           - 📁 **Prime**
@@ -525,6 +530,7 @@
           - 📄 [SieveOfAtkin](src/main/java/com/thealgorithms/maths/SieveOfAtkin.java)
           - 📄 [SieveOfEratosthenes](src/main/java/com/thealgorithms/maths/SieveOfEratosthenes.java)
           - 📄 [SimpsonIntegration](src/main/java/com/thealgorithms/maths/SimpsonIntegration.java)
+          - 📄 [SmithNumber](src/main/java/com/thealgorithms/maths/SmithNumber.java)
           - 📄 [SolovayStrassenPrimalityTest](src/main/java/com/thealgorithms/maths/SolovayStrassenPrimalityTest.java)
           - 📄 [SquareRootWithBabylonianMethod](src/main/java/com/thealgorithms/maths/SquareRootWithBabylonianMethod.java)
           - 📄 [SquareRootWithNewtonRaphsonMethod](src/main/java/com/thealgorithms/maths/SquareRootWithNewtonRaphsonMethod.java)
@@ -622,7 +628,6 @@
           - 📄 [ProjectileMotion](src/main/java/com/thealgorithms/physics/ProjectileMotion.java)
           - 📄 [SimplePendulumRK4](src/main/java/com/thealgorithms/physics/SimplePendulumRK4.java)
         - 📁 **puzzlesandgames**
-          - 📄 [Sudoku](src/main/java/com/thealgorithms/puzzlesandgames/Sudoku.java)
           - 📄 [TowerOfHanoi](src/main/java/com/thealgorithms/puzzlesandgames/TowerOfHanoi.java)
           - 📄 [WordBoggle](src/main/java/com/thealgorithms/puzzlesandgames/WordBoggle.java)
         - 📁 **randomized**
@@ -842,6 +847,8 @@
           - 📄 [PermutationTest](src/test/java/com/thealgorithms/backtracking/PermutationTest.java)
           - 📄 [PowerSumTest](src/test/java/com/thealgorithms/backtracking/PowerSumTest.java)
           - 📄 [SubsequenceFinderTest](src/test/java/com/thealgorithms/backtracking/SubsequenceFinderTest.java)
+          - 📄 [SudokuSolverTest](src/test/java/com/thealgorithms/backtracking/SudokuSolverTest.java)
+          - 📄 [UniquePermutationTest](src/test/java/com/thealgorithms/backtracking/UniquePermutationTest.java)
           - 📄 [WordPatternMatcherTest](src/test/java/com/thealgorithms/backtracking/WordPatternMatcherTest.java)
           - 📄 [WordSearchTest](src/test/java/com/thealgorithms/backtracking/WordSearchTest.java)
         - 📁 **bitmanipulation**
@@ -944,6 +951,7 @@
           - 📄 [OctalToHexadecimalTest](src/test/java/com/thealgorithms/conversions/OctalToHexadecimalTest.java)
           - 📄 [PhoneticAlphabetConverterTest](src/test/java/com/thealgorithms/conversions/PhoneticAlphabetConverterTest.java)
           - 📄 [RomanToIntegerTest](src/test/java/com/thealgorithms/conversions/RomanToIntegerTest.java)
+          - 📄 [TemperatureConverterTest](src/test/java/com/thealgorithms/conversions/TemperatureConverterTest.java)
           - 📄 [TimeConverterTest](src/test/java/com/thealgorithms/conversions/TimeConverterTest.java)
           - 📄 [TurkishToLatinConversionTest](src/test/java/com/thealgorithms/conversions/TurkishToLatinConversionTest.java)
           - 📄 [UnitConversionsTest](src/test/java/com/thealgorithms/conversions/UnitConversionsTest.java)
@@ -1009,6 +1017,7 @@
             - 📄 [FibonacciHeapTest](src/test/java/com/thealgorithms/datastructures/heaps/FibonacciHeapTest.java)
             - 📄 [GenericHeapTest](src/test/java/com/thealgorithms/datastructures/heaps/GenericHeapTest.java)
             - 📄 [HeapElementTest](src/test/java/com/thealgorithms/datastructures/heaps/HeapElementTest.java)
+            - 📄 [IndexedPriorityQueueTest](src/test/java/com/thealgorithms/datastructures/heaps/IndexedPriorityQueueTest.java)
             - 📄 [KthElementFinderTest](src/test/java/com/thealgorithms/datastructures/heaps/KthElementFinderTest.java)
             - 📄 [LeftistHeapTest](src/test/java/com/thealgorithms/datastructures/heaps/LeftistHeapTest.java)
             - 📄 [MaxHeapTest](src/test/java/com/thealgorithms/datastructures/heaps/MaxHeapTest.java)
@@ -1279,6 +1288,7 @@
           - 📄 [PiApproximationTest](src/test/java/com/thealgorithms/maths/PiApproximationTest.java)
           - 📄 [PollardRhoTest](src/test/java/com/thealgorithms/maths/PollardRhoTest.java)
           - 📄 [PowTest](src/test/java/com/thealgorithms/maths/PowTest.java)
+          - 📄 [PowerOfFourTest](src/test/java/com/thealgorithms/maths/PowerOfFourTest.java)
           - 📄 [PowerOfTwoOrNotTest](src/test/java/com/thealgorithms/maths/PowerOfTwoOrNotTest.java)
           - 📄 [PowerUsingRecursionTest](src/test/java/com/thealgorithms/maths/PowerUsingRecursionTest.java)
           - 📄 [PronicNumberTest](src/test/java/com/thealgorithms/maths/PronicNumberTest.java)
@@ -1288,6 +1298,7 @@
           - 📄 [SecondMinMaxTest](src/test/java/com/thealgorithms/maths/SecondMinMaxTest.java)
           - 📄 [SieveOfAtkinTest](src/test/java/com/thealgorithms/maths/SieveOfAtkinTest.java)
           - 📄 [SieveOfEratosthenesTest](src/test/java/com/thealgorithms/maths/SieveOfEratosthenesTest.java)
+          - 📄 [SmithNumberTest](src/test/java/com/thealgorithms/maths/SmithNumberTest.java)
           - 📄 [SolovayStrassenPrimalityTestTest](src/test/java/com/thealgorithms/maths/SolovayStrassenPrimalityTestTest.java)
           - 📄 [SquareFreeIntegerTest](src/test/java/com/thealgorithms/maths/SquareFreeIntegerTest.java)
           - 📄 [SquareRootWithNewtonRaphsonTestMethod](src/test/java/com/thealgorithms/maths/SquareRootWithNewtonRaphsonTestMethod.java)
@@ -1377,7 +1388,6 @@
           - 📄 [ProjectileMotionTest](src/test/java/com/thealgorithms/physics/ProjectileMotionTest.java)
           - 📄 [SimplePendulumRK4Test](src/test/java/com/thealgorithms/physics/SimplePendulumRK4Test.java)
         - 📁 **puzzlesandgames**
-          - 📄 [SudokuTest](src/test/java/com/thealgorithms/puzzlesandgames/SudokuTest.java)
           - 📄 [TowerOfHanoiTest](src/test/java/com/thealgorithms/puzzlesandgames/TowerOfHanoiTest.java)
           - 📄 [WordBoggleTest](src/test/java/com/thealgorithms/puzzlesandgames/WordBoggleTest.java)
         - 📁 **randomized**
