@@ -41,7 +41,7 @@ public final class CentroidDecomposition {
 
         /**
          * Constructs a centroid tree from an adjacency list.
-         * 
+         *
          * @param adj adjacency list representation of the tree (0-indexed)
          * @throws IllegalArgumentException if tree is empty or null
          */
@@ -49,21 +49,21 @@ public final class CentroidDecomposition {
             if (adj == null || adj.isEmpty()) {
                 throw new IllegalArgumentException("Tree cannot be empty or null");
             }
-            
+
             this.n = adj.size();
             this.adj = adj;
             this.parent = new int[n];
             this.subtreeSize = new int[n];
             this.removed = new boolean[n];
             Arrays.fill(parent, -1);
-            
+
             // Build centroid tree starting from node 0
             this.root = decompose(0, -1);
         }
 
         /**
          * Recursively builds the centroid tree.
-         * 
+         *
          * @param u current node
          * @param p parent in centroid tree
          * @return centroid of current component
@@ -71,23 +71,23 @@ public final class CentroidDecomposition {
         private int decompose(int u, int p) {
             int size = getSubtreeSize(u, -1);
             int centroid = findCentroid(u, -1, size);
-            
+
             removed[centroid] = true;
             parent[centroid] = p;
-            
+
             // Recursively decompose each subtree
             for (int v : adj.get(centroid)) {
                 if (!removed[v]) {
                     decompose(v, centroid);
                 }
             }
-            
+
             return centroid;
         }
 
         /**
          * Calculates subtree size from node u.
-         * 
+         *
          * @param u current node
          * @param p parent node (-1 for root)
          * @return size of subtree rooted at u
@@ -105,7 +105,7 @@ public final class CentroidDecomposition {
         /**
          * Finds the centroid of a subtree.
          * A centroid is a node whose removal creates components with size ≤ totalSize/2.
-         * 
+         *
          * @param u current node
          * @param p parent node
          * @param totalSize total size of current component
@@ -122,7 +122,7 @@ public final class CentroidDecomposition {
 
         /**
          * Gets the parent of a node in the centroid tree.
-         * 
+         *
          * @param node the node
          * @return parent node in centroid tree, or -1 if root
          */
@@ -135,7 +135,7 @@ public final class CentroidDecomposition {
 
         /**
          * Gets the root of the centroid tree.
-         * 
+         *
          * @return root node
          */
         public int getRoot() {
@@ -144,7 +144,7 @@ public final class CentroidDecomposition {
 
         /**
          * Gets the number of nodes in the tree.
-         * 
+         *
          * @return number of nodes
          */
         public int size() {
@@ -154,7 +154,7 @@ public final class CentroidDecomposition {
         /**
          * Returns the centroid tree structure as a string.
          * Format: node -> parent (or ROOT for root node)
-         * 
+         *
          * @return string representation
          */
         @Override
@@ -175,7 +175,7 @@ public final class CentroidDecomposition {
 
     /**
      * Creates a centroid tree from an edge list.
-     * 
+     *
      * @param n number of nodes (0-indexed: 0 to n-1)
      * @param edges list of edges where each edge is [u, v]
      * @return CentroidTree object
@@ -203,11 +203,11 @@ public final class CentroidDecomposition {
             }
             int u = edge[0];
             int v = edge[1];
-            
+
             if (u < 0 || u >= n || v < 0 || v >= n) {
                 throw new IllegalArgumentException("Invalid node in edge: [" + u + ", " + v + "]");
             }
-            
+
             adj.get(u).add(v);
             adj.get(v).add(u);
         }
