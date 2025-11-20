@@ -1,13 +1,17 @@
-package com.thealgorithms.tree;
+package com.thealgorithms.datastructures.trees;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
+import java.util.ArrayList;
+import java.util.List;
 import org.junit.jupiter.api.Test;
-import java.util.*;
 
 /**
  * Test cases for CentroidDecomposition
- * 
+ *
  * @author lens161
  */
 class CentroidDecompositionTest {
@@ -17,7 +21,7 @@ class CentroidDecompositionTest {
         // Tree with just one node
         int[][] edges = {};
         CentroidDecomposition.CentroidTree tree = CentroidDecomposition.buildFromEdges(1, edges);
-        
+
         assertEquals(1, tree.size());
         assertEquals(0, tree.getRoot());
         assertEquals(-1, tree.getParent(0));
@@ -28,11 +32,11 @@ class CentroidDecompositionTest {
         // Simple tree: 0 - 1
         int[][] edges = {{0, 1}};
         CentroidDecomposition.CentroidTree tree = CentroidDecomposition.buildFromEdges(2, edges);
-        
+
         assertEquals(2, tree.size());
         int root = tree.getRoot();
         assertTrue(root == 0 || root == 1, "Root should be either node 0 or 1");
-        
+
         // One node should be root, other should have the root as parent
         int nonRoot = (root == 0) ? 1 : 0;
         assertEquals(-1, tree.getParent(root));
@@ -44,7 +48,7 @@ class CentroidDecompositionTest {
         // Linear tree: 0 - 1 - 2 - 3 - 4
         int[][] edges = {{0, 1}, {1, 2}, {2, 3}, {3, 4}};
         CentroidDecomposition.CentroidTree tree = CentroidDecomposition.buildFromEdges(5, edges);
-        
+
         assertEquals(5, tree.size());
         // For a linear tree of 5 nodes, the centroid should be the middle node (node 2)
         assertEquals(2, tree.getRoot());
@@ -61,13 +65,13 @@ class CentroidDecompositionTest {
         //   3   4
         int[][] edges = {{0, 1}, {0, 2}, {1, 3}, {1, 4}};
         CentroidDecomposition.CentroidTree tree = CentroidDecomposition.buildFromEdges(5, edges);
-        
+
         assertEquals(5, tree.size());
         // Root should be 0 or 1 (both are valid centroids)
         int root = tree.getRoot();
         assertTrue(root == 0 || root == 1);
         assertEquals(-1, tree.getParent(root));
-        
+
         // All nodes should have a parent in centroid tree except root
         for (int i = 0; i < 5; i++) {
             if (i != root) {

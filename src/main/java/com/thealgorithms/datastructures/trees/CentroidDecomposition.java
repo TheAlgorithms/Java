@@ -1,26 +1,31 @@
-package com.thealgorithms.tree;
+package com.thealgorithms.datastructures.trees;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 /**
  * Centroid Decomposition is a divide-and-conquer technique for trees.
  * It recursively partitions a tree by finding centroids - nodes whose removal
  * creates balanced subtrees (each with at most N/2 nodes).
- * 
+ *
+ * <p>
  * Time Complexity: O(N log N) for construction
  * Space Complexity: O(N)
- * 
+ *
+ * <p>
  * Applications:
  * - Distance queries on trees
  * - Path counting problems
  * - Nearest neighbor searches
- * 
+ *
+ * @see <a href="https://en.wikipedia.org/wiki/Centroid_decomposition">Centroid Decomposition</a>
+ * @see <a href="https://codeforces.com/blog/entry/81661">Centroid Decomposition Tutorial</a>
  * @author lens161
  */
 public final class CentroidDecomposition {
 
     private CentroidDecomposition() {
-        // Utility class
     }
 
     /**
