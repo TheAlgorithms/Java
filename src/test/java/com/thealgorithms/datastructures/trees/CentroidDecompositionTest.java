@@ -85,11 +85,11 @@ class CentroidDecompositionTest {
         // Star tree: center node 0 connected to 1, 2, 3, 4
         int[][] edges = {{0, 1}, {0, 2}, {0, 3}, {0, 4}};
         CentroidDecomposition.CentroidTree tree = CentroidDecomposition.buildFromEdges(5, edges);
-        
+
         assertEquals(5, tree.size());
         // Center node (0) should be the root
         assertEquals(0, tree.getRoot());
-        
+
         // All other nodes should have 0 as parent
         for (int i = 1; i < 5; i++) {
             assertEquals(0, tree.getParent(i));
@@ -106,10 +106,10 @@ class CentroidDecompositionTest {
         //   3  4 5  6
         int[][] edges = {{0, 1}, {0, 2}, {1, 3}, {1, 4}, {2, 5}, {2, 6}};
         CentroidDecomposition.CentroidTree tree = CentroidDecomposition.buildFromEdges(7, edges);
-        
+
         assertEquals(7, tree.size());
         assertEquals(0, tree.getRoot()); // Root should be the center
-        
+
         // Verify all nodes are reachable in centroid tree
         boolean[] visited = new boolean[7];
         visited[0] = true;
@@ -125,16 +125,16 @@ class CentroidDecompositionTest {
     void testLargerTree() {
         // Tree with 10 nodes
         int[][] edges = {
-            {0, 1}, {0, 2}, {1, 3}, {1, 4}, 
+            {0, 1}, {0, 2}, {1, 3}, {1, 4},
             {2, 5}, {2, 6}, {3, 7}, {4, 8}, {5, 9}
         };
         CentroidDecomposition.CentroidTree tree = CentroidDecomposition.buildFromEdges(10, edges);
-        
+
         assertEquals(10, tree.size());
         int root = tree.getRoot();
         assertTrue(root >= 0 && root < 10);
         assertEquals(-1, tree.getParent(root));
-        
+
         // Verify centroid tree structure is valid
         for (int i = 0; i < 10; i++) {
             if (i != root) {
@@ -148,7 +148,7 @@ class CentroidDecompositionTest {
         // Path graph with 8 nodes: 0-1-2-3-4-5-6-7
         int[][] edges = {{0, 1}, {1, 2}, {2, 3}, {3, 4}, {4, 5}, {5, 6}, {6, 7}};
         CentroidDecomposition.CentroidTree tree = CentroidDecomposition.buildFromEdges(8, edges);
-        
+
         assertEquals(8, tree.size());
         // For path of 8 nodes, centroid should be around middle
         int root = tree.getRoot();
@@ -205,11 +205,11 @@ class CentroidDecompositionTest {
     void testInvalidNodeQuery() {
         int[][] edges = {{0, 1}, {1, 2}};
         CentroidDecomposition.CentroidTree tree = CentroidDecomposition.buildFromEdges(3, edges);
-        
+
         assertThrows(IllegalArgumentException.class, () -> {
             tree.getParent(-1);
         });
-        
+
         assertThrows(IllegalArgumentException.class, () -> {
             tree.getParent(5);
         });
@@ -219,7 +219,7 @@ class CentroidDecompositionTest {
     void testToString() {
         int[][] edges = {{0, 1}, {1, 2}};
         CentroidDecomposition.CentroidTree tree = CentroidDecomposition.buildFromEdges(3, edges);
-        
+
         String result = tree.toString();
         assertNotNull(result);
         assertTrue(result.contains("Centroid Tree"));
@@ -237,7 +237,7 @@ class CentroidDecompositionTest {
         adj.get(1).add(0);
         adj.get(1).add(2);
         adj.get(2).add(1);
-        
+
         CentroidDecomposition.CentroidTree tree = new CentroidDecomposition.CentroidTree(adj);
         assertEquals(3, tree.size());
         assertEquals(1, tree.getRoot());
