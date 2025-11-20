@@ -158,14 +158,14 @@ class CentroidDecompositionTest {
     @Test
     void testInvalidEmptyTree() {
         assertThrows(IllegalArgumentException.class, () -> {
-            CentroidDecomposition.buildFromEdges(0, new int[][]{});
+            CentroidDecomposition.buildFromEdges(0, new int[][] {});
         });
     }
 
     @Test
     void testInvalidNegativeNodes() {
         assertThrows(IllegalArgumentException.class, () -> {
-            CentroidDecomposition.buildFromEdges(-1, new int[][]{});
+            CentroidDecomposition.buildFromEdges(-1, new int[][] {});
         });
     }
 
