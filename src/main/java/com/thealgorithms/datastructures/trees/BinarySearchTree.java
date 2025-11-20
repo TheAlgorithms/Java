@@ -17,10 +17,18 @@ public class BinarySearchTree {
     }
 
     private Node insertRec(Node node, int key) {
-        if (node == null) return new Node(key);
-        if (key < node.key) node.left = insertRec(node.left, key);
-        else node.right = insertRec(node.right, key);
-        return node;
+        if (node == null) {
+            return new Node(key);
+        } 
+        else {
+            if (key < node.key) {
+                node.left = insertRec(node.left, key);
+            } 
+            else {
+                node.right = insertRec(node.right, key);
+            }
+            return node;
+        }
     }
 
     public void delete(int key) {
@@ -28,16 +36,32 @@ public class BinarySearchTree {
     }
 
     private Node deleteRec(Node node, int key) {
-        if (node == null) return node;
-        if (key < node.key) node.left = deleteRec(node.left, key);
-        else if (key > node.key) node.right = deleteRec(node.right, key);
+        if (node == null) {
+            return node;
+        } 
         else {
-            if (node.left == null) return node.right;
-            if (node.right == null) return node.left;
-            node.key = minValue(node.right);
-            node.right = deleteRec(node.right, node.key);
+            if (key < node.key) {
+                node.left = deleteRec(node.left, key);
+            } 
+            else if (key > node.key) {
+                node.right = deleteRec(node.right, key);
+            } 
+            else {
+                if (node.left == null) {
+                    return node.right;
+                } 
+                else {
+                    if (node.right == null) {
+                        return node.left;
+                    } 
+                    else {
+                        node.key = minValue(node.right);
+                        node.right = deleteRec(node.right, node.key);
+                    }
+                }
+            }
+            return node;
         }
-        return node;
     }
 
     private int minValue(Node node) {
@@ -55,10 +79,11 @@ public class BinarySearchTree {
     }
 
     private void inorderRec(Node node) {
-        if (node == null) return;
-        inorderRec(node.left);
-        System.out.print(node.key + " ");
-        inorderRec(node.right);
+        if (node != null) {
+            inorderRec(node.left);
+            System.out.print(node.key + " ");
+            inorderRec(node.right);
+        }
     }
 
     public void preorder() {
@@ -67,10 +92,11 @@ public class BinarySearchTree {
     }
 
     private void preorderRec(Node node) {
-        if (node == null) return;
-        System.out.print(node.key + " ");
-        preorderRec(node.left);
-        preorderRec(node.right);
+        if (node != null) {
+            System.out.print(node.key + " ");
+            preorderRec(node.left);
+            preorderRec(node.right);
+        }
     }
 
     public void postorder() {
@@ -79,10 +105,11 @@ public class BinarySearchTree {
     }
 
     private void postorderRec(Node node) {
-        if (node == null) return;
-        postorderRec(node.left);
-        postorderRec(node.right);
-        System.out.print(node.key + " ");
+        if (node != null) {
+            postorderRec(node.left);
+            postorderRec(node.right);
+            System.out.print(node.key + " ");
+        }
     }
 
     public static void main(String[] args) {
@@ -97,20 +124,30 @@ public class BinarySearchTree {
                 System.out.print("Enter value: ");
                 int v = sc.nextInt();
                 bst.insert(v);
-            } else if (ch == 2) {
-                System.out.print("Enter value to delete: ");
-                int v = sc.nextInt();
-                bst.delete(v);
-            } else if (ch == 3) {
-                bst.inorder();
-            } else if (ch == 4) {
-                bst.preorder();
-            } else if (ch == 5) {
-                bst.postorder();
-            } else if (ch == 6) {
-                break;
             } else {
-                System.out.println("Invalid choice");
+                if (ch == 2) {
+                    System.out.print("Enter value to delete: ");
+                    int v = sc.nextInt();
+                    bst.delete(v);
+                } else {
+                    if (ch == 3) {
+                        bst.inorder();
+                    } else {
+                        if (ch == 4) {
+                            bst.preorder();
+                        } else {
+                            if (ch == 5) {
+                                bst.postorder();
+                            } else {
+                                if (ch == 6) {
+                                    break;
+                                } else {
+                                    System.out.println("Invalid choice");
+                                }
+                            }
+                        }
+                    }
+                }
             }
         }
     }
