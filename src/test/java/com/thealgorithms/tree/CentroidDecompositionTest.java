@@ -136,10 +136,10 @@ class CentroidDecompositionTest {
     @Test
     void centroidAdjacencyFor8And11MatchesIgnoringOrder() {
         cd.build();
-        List<Integer>[] cg = cd.getCentroidTree();
+        List<List<Integer>> cg = cd.getCentroidTree();
 
-        List<Integer> actual8 = new ArrayList<>(cg[8]);
-        List<Integer> actual11 = new ArrayList<>(cg[11]);
+        List<Integer> actual8 = new ArrayList<>(cg.get(8));
+        List<Integer> actual11 = new ArrayList<>(cg.get(8));
 
         List<Integer> expected8 = Arrays.asList(0, 3, 9, 10);
         List<Integer> expected11 = Arrays.asList(0, 2, 12, 14);
@@ -158,9 +158,9 @@ class CentroidDecompositionTest {
         cd.build();
         cd.reset();
 
-        List<Integer>[] cg = cd.getCentroidTree();
-        for (int i = 0; i < cg.length; i++) {
-            assertTrue(cg[i].isEmpty(), "centroid adjacency must be empty after reset");
+        List<List<Integer>> cg = cd.getCentroidTree();
+        for (int i = 0; i < cg.size(); i++) {
+            assertTrue(cg.get(i).isEmpty(), "centroid adjacency must be empty after reset");
             assertEquals(-1, cd.getParent(i), "parent must be -1 after reset");
         }
 
@@ -207,13 +207,13 @@ class CentroidDecompositionTest {
         int roots = 0;
         int edges = 0;
 
-        List<Integer>[] cg = cd.getCentroidTree();
+        List<List<Integer>> cg = cd.getCentroidTree();
 
         for (int v = 0; v < n; v++) {
             if (cd.getParent(v) == -1) {
                 roots++;
             }
-            edges += cg[v].size();
+            edges += cg.get(v).size();
         }
 
         // undirected edges counted twice
@@ -244,25 +244,24 @@ class CentroidDecompositionTest {
     @Test
     void testBuildCentroidTree() {
         cd.build();
-        List<Integer>[] centroidTree = cd.getCentroidTree();
-        List<Integer> correctEight = new ArrayList<Integer>();
-        List<Integer> correctEleven = new ArrayList<Integer>();
+        List<List<Integer>> centroidTree = cd.getCentroidTree();
+
+        List<Integer> correctEight = new ArrayList<>();
         correctEight.add(0);
         correctEight.add(3);
         correctEight.add(9);
         correctEight.add(10);
 
+        List<Integer> correctEleven = new ArrayList<>();
         correctEleven.add(0);
         correctEleven.add(2);
         correctEleven.add(12);
         correctEleven.add(14);
 
-        for (int j = 0; j < centroidTree[8].size(); j++) {
-            assertEquals(correctEight.get(j), centroidTree[8].get(j));
-        }
+        List<Integer> actualEight = centroidTree.get(8);
+        List<Integer> actualEleven = centroidTree.get(8);
 
-        for (int j = 0; j < centroidTree[11].size(); j++) {
-            assertEquals(correctEleven.get(j), centroidTree[11].get(j));
-        }
+        assertEquals(correctEight, actualEight);
+        assertEquals(correctEleven, actualEleven);
     }
 }

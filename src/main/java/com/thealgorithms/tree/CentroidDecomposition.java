@@ -29,8 +29,8 @@ import java.util.stream.Collectors;
  */
 
 public class CentroidDecomposition {
-    private final List<Integer>[] tree;
-    private final List<Integer>[] centroidTree;
+    private final List<List<Integer>> tree;
+    private final List<List<Integer>> centroidTree;
     private int[] subtreeSizes;
     private boolean[] visited;
     private boolean[] centroidMarked;
@@ -38,10 +38,9 @@ public class CentroidDecomposition {
     private int startingNode;
     private final int n;
 
-    @SuppressWarnings("unchecked")
     public CentroidDecomposition(int n, int startingNode) {
-        this.tree = (List<Integer>[]) new ArrayList<?>[n];
-        this.centroidTree = (List<Integer>[]) new ArrayList<?>[n];
+        this.tree = new ArrayList<>();
+        this.centroidTree = new ArrayList<>();
         this.n = n;
         centroidMarked = new boolean[n];
         centroidParent = new int[n];
@@ -53,8 +52,8 @@ public class CentroidDecomposition {
         this.startingNode = startingNode;
         for (int i = 0; i < n; i++) {
             centroidParent[i] = -1;
-            tree[i] = new ArrayList<>();
-            centroidTree[i] = new ArrayList<>();
+            tree.add(new ArrayList<>());
+            centroidTree.add(new ArrayList<>());
         }
     }
 
@@ -69,7 +68,7 @@ public class CentroidDecomposition {
 
     public void reset() {
         for (int i = 0; i < n; i++) {
-            centroidTree[i].clear();
+            centroidTree.get(i).clear();
             centroidParent[i] = -1;
             subtreeSizes[i] = 0;
             centroidMarked[i] = false;
@@ -86,17 +85,17 @@ public class CentroidDecomposition {
     }
 
     public void addEdgeTree(int u, int v) {
-        tree[u].add(v);
-        tree[v].add(u);
+        tree.get(u).add(v);
+        tree.get(v).add(u);
     }
 
     private void addEdgeCTree(int u, int v) {
-        centroidTree[u].add(v);
-        centroidTree[v].add(u);
+        centroidTree.get(u).add(v);
+        centroidTree.get(v).add(u);
         centroidParent[v] = u;
     }
 
-    public List<Integer>[] getCentroidTree() {
+    public List<List<Integer>> getCentroidTree() {
         return centroidTree;
     }
 
@@ -105,7 +104,7 @@ public class CentroidDecomposition {
     }
 
     public List<Integer> getCentroidChildren(int v) {
-        return centroidTree[v].stream().filter(child -> centroidParent[child] == v && centroidParent[v] != child).collect(Collectors.toList());
+        return centroidTree.get(v).stream().filter(child -> centroidParent[child] == v && centroidParent[v] != child).collect(Collectors.toList());
     }
 
     public int getRoot() {
@@ -120,7 +119,7 @@ public class CentroidDecomposition {
     public void findSubtreeSizes(int src) {
         visited[src] = true;
         subtreeSizes[src] = 1;
-        for (int node : tree[src]) {
+        for (int node : tree.get(src)) {
             if (!visited[node] && !centroidMarked[node]) {
                 visited[node] = true;
                 findSubtreeSizes(node);
@@ -135,7 +134,7 @@ public class CentroidDecomposition {
         int treeSize = subtreeSizes[src];
         int heavyChild = -1;
 
-        for (int node : tree[src]) {
+        for (int node : tree.get(src)) {
             if (centroidMarked[node]) {
                 continue;
             }
@@ -156,7 +155,7 @@ public class CentroidDecomposition {
             addEdgeCTree(previousCentroid, src);
         }
 
-        for (int node : tree[src]) {
+        for (int node : tree.get(src)) {
             if (!centroidMarked[node]) {
                 findCentroid(node, src);
             }
