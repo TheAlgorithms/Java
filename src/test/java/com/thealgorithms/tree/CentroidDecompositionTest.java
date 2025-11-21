@@ -56,7 +56,7 @@ class CentroidDecompositionTest {
             1      11        8
           /   \   / | \     / | \
          4     5 2 12 14   3  9 10
-                / \    / \
+                / \    / \Jva
                7   6  15 13
          */
     }
@@ -139,7 +139,7 @@ class CentroidDecompositionTest {
         List<List<Integer>> cg = cd.getCentroidTree();
 
         List<Integer> actual8 = new ArrayList<>(cg.get(8));
-        List<Integer> actual11 = new ArrayList<>(cg.get(8));
+        List<Integer> actual11 = new ArrayList<>(cg.get(11));
 
         List<Integer> expected8 = Arrays.asList(0, 3, 9, 10);
         List<Integer> expected11 = Arrays.asList(0, 2, 12, 14);
@@ -259,7 +259,7 @@ class CentroidDecompositionTest {
         correctEleven.add(14);
 
         List<Integer> actualEight = centroidTree.get(8);
-        List<Integer> actualEleven = centroidTree.get(8);
+        List<Integer> actualEleven = centroidTree.get(11);
 
         assertEquals(correctEight, actualEight);
         assertEquals(correctEleven, actualEleven);
