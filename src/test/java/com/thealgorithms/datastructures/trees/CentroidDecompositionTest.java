@@ -154,48 +154,36 @@ class CentroidDecompositionTest {
 
     @Test
     void testInvalidEmptyTree() {
-        assertThrows(IllegalArgumentException.class, () -> {
-            CentroidDecomposition.buildFromEdges(0, new int[][] {});
-        });
+        assertThrows(IllegalArgumentException.class, () -> { CentroidDecomposition.buildFromEdges(0, new int[][] {}); });
     }
 
     @Test
     void testInvalidNegativeNodes() {
-        assertThrows(IllegalArgumentException.class, () -> {
-            CentroidDecomposition.buildFromEdges(-1, new int[][] {});
-        });
+        assertThrows(IllegalArgumentException.class, () -> { CentroidDecomposition.buildFromEdges(-1, new int[][] {}); });
     }
 
     @Test
     void testInvalidNullEdges() {
-        assertThrows(IllegalArgumentException.class, () -> {
-            CentroidDecomposition.buildFromEdges(5, null);
-        });
+        assertThrows(IllegalArgumentException.class, () -> { CentroidDecomposition.buildFromEdges(5, null); });
     }
 
     @Test
     void testInvalidEdgeCount() {
         // Tree with n nodes must have n-1 edges
         int[][] edges = {{0, 1}, {1, 2}}; // 2 edges for 5 nodes (should be 4)
-        assertThrows(IllegalArgumentException.class, () -> {
-            CentroidDecomposition.buildFromEdges(5, edges);
-        });
+        assertThrows(IllegalArgumentException.class, () -> { CentroidDecomposition.buildFromEdges(5, edges); });
     }
 
     @Test
     void testInvalidEdgeFormat() {
         int[][] edges = {{0, 1, 2}}; // Edge with 3 elements instead of 2
-        assertThrows(IllegalArgumentException.class, () -> {
-            CentroidDecomposition.buildFromEdges(3, edges);
-        });
+        assertThrows(IllegalArgumentException.class, () -> { CentroidDecomposition.buildFromEdges(3, edges); });
     }
 
     @Test
     void testInvalidNodeInEdge() {
         int[][] edges = {{0, 5}}; // Node 5 doesn't exist in tree of size 3
-        assertThrows(IllegalArgumentException.class, () -> {
-            CentroidDecomposition.buildFromEdges(3, edges);
-        });
+        assertThrows(IllegalArgumentException.class, () -> { CentroidDecomposition.buildFromEdges(3, edges); });
     }
 
     @Test
@@ -203,13 +191,9 @@ class CentroidDecompositionTest {
         int[][] edges = {{0, 1}, {1, 2}};
         CentroidDecomposition.CentroidTree tree = CentroidDecomposition.buildFromEdges(3, edges);
 
-        assertThrows(IllegalArgumentException.class, () -> {
-            tree.getParent(-1);
-        });
+        assertThrows(IllegalArgumentException.class, () -> { tree.getParent(-1); });
 
-        assertThrows(IllegalArgumentException.class, () -> {
-            tree.getParent(5);
-        });
+        assertThrows(IllegalArgumentException.class, () -> { tree.getParent(5); });
     }
 
     @Test

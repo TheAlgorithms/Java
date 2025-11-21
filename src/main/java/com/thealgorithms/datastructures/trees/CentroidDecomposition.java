@@ -31,7 +31,7 @@ public final class CentroidDecomposition {
     /**
      * Represents the centroid tree structure.
      */
-    public static class CentroidTree {
+    public static final class CentroidTree {
         private final int n;
         private final List<List<Integer>> adj;
         private final int[] parent;
@@ -104,7 +104,7 @@ public final class CentroidDecomposition {
 
         /**
          * Finds the centroid of a subtree.
-         * A centroid is a node whose removal creates components with size ≤ totalSize/2.
+         * A centroid is a node whose removal creates components with size &lt;= totalSize/2.
          *
          * @param u current node
          * @param p parent node
@@ -153,7 +153,7 @@ public final class CentroidDecomposition {
 
         /**
          * Returns the centroid tree structure as a string.
-         * Format: node -> parent (or ROOT for root node)
+         * Format: node -&gt; parent (or ROOT for root node)
          *
          * @return string representation
          */
@@ -179,7 +179,7 @@ public final class CentroidDecomposition {
      * @param n number of nodes (0-indexed: 0 to n-1)
      * @param edges list of edges where each edge is [u, v]
      * @return CentroidTree object
-     * @throws IllegalArgumentException if n <= 0 or edges is invalid
+     * @throws IllegalArgumentException if n &lt;= 0 or edges is invalid
      */
     public static CentroidTree buildFromEdges(int n, int[][] edges) {
         if (n <= 0) {
