@@ -124,10 +124,7 @@ class CentroidDecompositionTest {
     @Test
     void testLargerTree() {
         // Tree with 10 nodes
-        int[][] edges = {
-            {0, 1}, {0, 2}, {1, 3}, {1, 4},
-            {2, 5}, {2, 6}, {3, 7}, {4, 8}, {5, 9}
-        };
+        int[][] edges = {{0, 1}, {0, 2}, {1, 3}, {1, 4}, {2, 5}, {2, 6}, {3, 7}, {4, 8}, {5, 9}};
         CentroidDecomposition.CentroidTree tree = CentroidDecomposition.buildFromEdges(10, edges);
 
         assertEquals(10, tree.size());
@@ -179,7 +176,7 @@ class CentroidDecompositionTest {
     @Test
     void testInvalidEdgeCount() {
         // Tree with n nodes must have n-1 edges
-        int[][] edges = {{0, 1}, {1, 2}}; // 3 edges for 5 nodes
+        int[][] edges = {{0, 1}, {1, 2}}; // 2 edges for 5 nodes (should be 4)
         assertThrows(IllegalArgumentException.class, () -> {
             CentroidDecomposition.buildFromEdges(5, edges);
         });
@@ -245,15 +242,11 @@ class CentroidDecompositionTest {
 
     @Test
     void testNullAdjacencyList() {
-        assertThrows(IllegalArgumentException.class, () -> {
-            new CentroidDecomposition.CentroidTree(null);
-        });
+        assertThrows(IllegalArgumentException.class, () -> { new CentroidDecomposition.CentroidTree(null); });
     }
 
     @Test
     void testEmptyAdjacencyList() {
-        assertThrows(IllegalArgumentException.class, () -> {
-            new CentroidDecomposition.CentroidTree(new ArrayList<>());
-        });
+        assertThrows(IllegalArgumentException.class, () -> { new CentroidDecomposition.CentroidTree(new ArrayList<>()); });
     }
 }
