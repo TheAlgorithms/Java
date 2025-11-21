@@ -193,12 +193,12 @@ class CentroidDecompositionTest {
     @Test
     void buildingFromDifferentStartNodesYieldsValidTrees() {
         CentroidDecomposition a = new CentroidDecomposition(16, 0);
-        copyEdges(cd, a);
+        copyEdges(a);
         a.build();
         assertValidCentroidTree(a, 16);
 
         CentroidDecomposition b = new CentroidDecomposition(16, 7);
-        copyEdges(cd, b);
+        copyEdges(b);
         b.build();
         assertValidCentroidTree(b, 16);
     }
@@ -223,7 +223,7 @@ class CentroidDecompositionTest {
         assertEquals(n - 1, edges, "centroid tree must have n-1 edges");
     }
 
-    private static void copyEdges(CentroidDecomposition from, CentroidDecomposition to) {
+    private static void copyEdges(CentroidDecomposition to) {
         to.addEdgeTree(0, 1);
         to.addEdgeTree(0, 2);
         to.addEdgeTree(0, 3);
