@@ -20,7 +20,8 @@ public class SudokuSolverTest {
         {0, 0, 0, 0, 8, 0, 0, 7, 9}
     };
 
-    assertTrue(SudokuSolver.solveSudoku(board), "Sudoku should be solvable");
+    assertTrue(SudokuSolver.solveSudoku(board),
+        "Sudoku should be solvable");
     assertBoardValid(board);
   }
 
@@ -38,7 +39,8 @@ public class SudokuSolverTest {
         {0, 0, 0, 0, 8, 0, 0, 7, 9}
     };
 
-    assertFalse(SudokuSolver.solveSudoku(board), "Sudoku should not be solvable");
+    assertFalse(SudokuSolver.solveSudoku(board),
+        "Sudoku should not be solvable");
   }
 
   @Test
@@ -56,7 +58,7 @@ public class SudokuSolverTest {
     };
 
     assertTrue(SudokuSolver.solveSudoku(board),
-               "Already solved Sudoku should return true");
+        "Already solved Sudoku should return true");
     assertBoardValid(board);
   }
 
