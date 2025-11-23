@@ -1,269 +1,388 @@
 package com.thealgorithms.datastructures.trees;
 
-import java.util.ArrayList;
-import java.util.List;
-
 /**
- * Represents an AVL Tree, a self-balancing binary search tree.
- * In an AVL tree, the heights of the two child subtrees of any node
- * differ by at most one. If they differ by more than one at any time,
- * rebalancing is performed to restore this property.
+ * AVL Tree (Adelson-Velsky and Landis Tree) implementation.
+ * A self-balancing Binary Search Tree where the difference between heights
+ * of left and right subtrees cannot be more than one for all nodes.
+ * 
+ * @author Raghu0703
  */
 public class AVLTree {
-
+    
+    /**
+     * Node class representing each element in the AVL Tree
+     */
+    class Node {
+        int data;
+        int height;
+        Node left, right;
+        
+        public Node(int data) {
+            this.data = data;
+            this.height = 1;
+            this.left = null;
+            this.right = null;
+        }
+    }
+    
     private Node root;
-
-    private static class Node {
-        private int key;
-        private int balance;
-        private int height;
-        private Node left;
-        private Node right;
-        private Node parent;
-
-        Node(int k, Node p) {
-            key = k;
-            parent = p;
-        }
-
-        public Integer getBalance() {
-            return balance;
-        }
-    }
-
+    
     /**
-     * Inserts a new key into the AVL tree.
-     *
-     * @param key the key to be inserted
-     * @return {@code true} if the key was inserted, {@code false} if the key already exists
+     * Constructor to initialize empty AVL Tree
      */
-    public boolean insert(int key) {
-        if (root == null) {
-            root = new Node(key, null);
+    public AVLTree() {
+        this.root = null;
+    }
+    
+    /**
+     * Get the height of a node
+     * 
+     * @param node the node
+     * @return height of the node, 0 if null
+     */
+    private int height(Node node) {
+        if (node == null) {
+            return 0;
+        }
+        return node.height;
+    }
+    
+    /**
+     * Get the balance factor of a node
+     * 
+     * @param node the node
+     * @return balance factor (left height - right height)
+     */
+    private int getBalance(Node node) {
+        if (node == null) {
+            return 0;
+        }
+        return height(node.left) - height(node.right);
+    }
+    
+    /**
+     * Right rotate subtree rooted with y
+     * 
+     * @param y the root of subtree to rotate
+     * @return new root after rotation
+     */
+    private Node rightRotate(Node y) {
+        Node x = y.left;
+        Node T2 = x.right;
+        
+        // Perform rotation
+        x.right = y;
+        y.left = T2;
+        
+        // Update heights
+        y.height = Math.max(height(y.left), height(y.right)) + 1;
+        x.height = Math.max(height(x.left), height(x.right)) + 1;
+        
+        return x;
+    }
+    
+    /**
+     * Left rotate subtree rooted with x
+     * 
+     * @param x the root of subtree to rotate
+     * @return new root after rotation
+     */
+    private Node leftRotate(Node x) {
+        Node y = x.right;
+        Node T2 = y.left;
+        
+        // Perform rotation
+        y.left = x;
+        x.right = T2;
+        
+        // Update heights
+        x.height = Math.max(height(x.left), height(x.right)) + 1;
+        y.height = Math.max(height(y.left), height(y.right)) + 1;
+        
+        return y;
+    }
+    
+    /**
+     * Insert a value into the AVL Tree
+     * 
+     * @param data the value to insert
+     */
+    public void insert(int data) {
+        root = insertRec(root, data);
+    }
+    
+    /**
+     * Recursive helper method to insert a value and balance the tree
+     * 
+     * @param node current node
+     * @param data value to insert
+     * @return the balanced node
+     */
+    private Node insertRec(Node node, int data) {
+        // Perform normal BST insertion
+        if (node == null) {
+            return new Node(data);
+        }
+        
+        if (data < node.data) {
+            node.left = insertRec(node.left, data);
+        } else if (data > node.data) {
+            node.right = insertRec(node.right, data);
         } else {
-            Node n = root;
-            Node parent;
-            while (true) {
-                if (n.key == key) {
-                    return false;
-                }
-
-                parent = n;
-                boolean goLeft = n.key > key;
-                n = goLeft ? n.left : n.right;
-
-                if (n == null) {
-                    if (goLeft) {
-                        parent.left = new Node(key, parent);
-                    } else {
-                        parent.right = new Node(key, parent);
-                    }
-                    rebalance(parent);
-                    break;
-                }
-            }
+            // Duplicate values not allowed
+            return node;
         }
-        return true;
+        
+        // Update height of current node
+        node.height = 1 + Math.max(height(node.left), height(node.right));
+        
+        // Get balance factor
+        int balance = getBalance(node);
+        
+        // If node is unbalanced, there are 4 cases
+        
+        // Left Left Case
+        if (balance > 1 && data < node.left.data) {
+            return rightRotate(node);
+        }
+        
+        // Right Right Case
+        if (balance < -1 && data > node.right.data) {
+            return leftRotate(node);
+        }
+        
+        // Left Right Case
+        if (balance > 1 && data > node.left.data) {
+            node.left = leftRotate(node.left);
+            return rightRotate(node);
+        }
+        
+        // Right Left Case
+        if (balance < -1 && data < node.right.data) {
+            node.right = rightRotate(node.right);
+            return leftRotate(node);
+        }
+        
+        return node;
     }
-
+    
     /**
-     * Deletes a key from the AVL tree.
-     *
-     * @param delKey the key to be deleted
+     * Find the node with minimum value
+     * 
+     * @param node the root of subtree
+     * @return node with minimum value
      */
-    public void delete(int delKey) {
+    private Node minValueNode(Node node) {
+        Node current = node;
+        while (current.left != null) {
+            current = current.left;
+        }
+        return current;
+    }
+    
+    /**
+     * Delete a value from the AVL Tree
+     * 
+     * @param data the value to delete
+     */
+    public void delete(int data) {
+        root = deleteRec(root, data);
+    }
+    
+    /**
+     * Recursive helper method to delete a value and balance the tree
+     * 
+     * @param root current node
+     * @param data value to delete
+     * @return the balanced node
+     */
+    private Node deleteRec(Node root, int data) {
+        // Perform standard BST delete
         if (root == null) {
-            return;
-        }
-
-        // Find the node to be deleted
-        Node node = root;
-        Node child = root;
-        while (child != null) {
-            node = child;
-            child = delKey >= node.key ? node.right : node.left;
-            if (delKey == node.key) {
-                delete(node);
-                return;
-            }
-        }
-    }
-
-    private void delete(Node node) {
-        if (node.left == null && node.right == null) {
-            // Leaf node
-            if (node.parent == null) {
-                root = null;
-            } else {
-                Node parent = node.parent;
-                if (parent.left == node) {
-                    parent.left = null;
-                } else {
-                    parent.right = null;
-                }
-                rebalance(parent);
-            }
-            return;
-        }
-
-        // Node has one or two children
-        Node child;
-        if (node.left != null) {
-            child = node.left;
-            while (child.right != null) {
-                child = child.right;
-            }
-        } else {
-            child = node.right;
-            while (child.left != null) {
-                child = child.left;
-            }
-        }
-        node.key = child.key;
-        delete(child);
-    }
-
-    /**
-     * Returns a list of balance factors for each node in the tree.
-     *
-     * @return a list of integers representing the balance factors of the nodes
-     */
-    public List<Integer> returnBalance() {
-        List<Integer> balances = new ArrayList<>();
-        returnBalance(root, balances);
-        return balances;
-    }
-
-    private void returnBalance(Node n, List<Integer> balances) {
-        if (n != null) {
-            returnBalance(n.left, balances);
-            balances.add(n.getBalance());
-            returnBalance(n.right, balances);
-        }
-    }
-
-    /**
-     * Searches for a key in the AVL tree.
-     *
-     * @param key the key to be searched
-     * @return true if the key is found, false otherwise
-     */
-    public boolean search(int key) {
-        Node result = searchHelper(this.root, key);
-        return result != null;
-    }
-
-    private Node searchHelper(Node root, int key) {
-        if (root == null || root.key == key) {
             return root;
         }
-
-        if (root.key > key) {
-            return searchHelper(root.left, key);
-        }
-        return searchHelper(root.right, key);
-    }
-
-    private void rebalance(Node n) {
-        setBalance(n);
-        if (n.balance == -2) {
-            if (height(n.left.left) >= height(n.left.right)) {
-                n = rotateRight(n);
-            } else {
-                n = rotateLeftThenRight(n);
-            }
-        } else if (n.balance == 2) {
-            if (height(n.right.right) >= height(n.right.left)) {
-                n = rotateLeft(n);
-            } else {
-                n = rotateRightThenLeft(n);
-            }
-        }
-
-        if (n.parent != null) {
-            rebalance(n.parent);
+        
+        if (data < root.data) {
+            root.left = deleteRec(root.left, data);
+        } else if (data > root.data) {
+            root.right = deleteRec(root.right, data);
         } else {
-            root = n;
-        }
-    }
-
-    private Node rotateLeft(Node a) {
-        Node b = a.right;
-        b.parent = a.parent;
-
-        a.right = b.left;
-
-        if (a.right != null) {
-            a.right.parent = a;
-        }
-
-        b.left = a;
-        a.parent = b;
-
-        if (b.parent != null) {
-            if (b.parent.right == a) {
-                b.parent.right = b;
+            // Node with only one child or no child
+            if ((root.left == null) || (root.right == null)) {
+                Node temp = root.left != null ? root.left : root.right;
+                
+                // No child case
+                if (temp == null) {
+                    temp = root;
+                    root = null;
+                } else {
+                    // One child case
+                    root = temp;
+                }
             } else {
-                b.parent.left = b;
+                // Node with two children
+                Node temp = minValueNode(root.right);
+                root.data = temp.data;
+                root.right = deleteRec(root.right, temp.data);
             }
         }
-
-        setBalance(a, b);
-        return b;
-    }
-
-    private Node rotateRight(Node a) {
-        Node b = a.left;
-        b.parent = a.parent;
-
-        a.left = b.right;
-
-        if (a.left != null) {
-            a.left.parent = a;
+        
+        // If tree had only one node
+        if (root == null) {
+            return root;
         }
-
-        b.right = a;
-        a.parent = b;
-
-        if (b.parent != null) {
-            if (b.parent.right == a) {
-                b.parent.right = b;
-            } else {
-                b.parent.left = b;
-            }
+        
+        // Update height
+        root.height = Math.max(height(root.left), height(root.right)) + 1;
+        
+        // Get balance factor
+        int balance = getBalance(root);
+        
+        // If unbalanced, there are 4 cases
+        
+        // Left Left Case
+        if (balance > 1 && getBalance(root.left) >= 0) {
+            return rightRotate(root);
         }
-
-        setBalance(a, b);
-        return b;
-    }
-
-    private Node rotateLeftThenRight(Node n) {
-        n.left = rotateLeft(n.left);
-        return rotateRight(n);
-    }
-
-    private Node rotateRightThenLeft(Node n) {
-        n.right = rotateRight(n.right);
-        return rotateLeft(n);
-    }
-
-    private int height(Node n) {
-        if (n == null) {
-            return -1;
+        
+        // Left Right Case
+        if (balance > 1 && getBalance(root.left) < 0) {
+            root.left = leftRotate(root.left);
+            return rightRotate(root);
         }
-        return n.height;
+        
+        // Right Right Case
+        if (balance < -1 && getBalance(root.right) <= 0) {
+            return leftRotate(root);
+        }
+        
+        // Right Left Case
+        if (balance < -1 && getBalance(root.right) > 0) {
+            root.right = rightRotate(root.right);
+            return leftRotate(root);
+        }
+        
+        return root;
     }
-
-    private void setBalance(Node... nodes) {
-        for (Node n : nodes) {
-            reheight(n);
-            n.balance = height(n.right) - height(n.left);
+    
+    /**
+     * Search for a value in the AVL Tree
+     * 
+     * @param data the value to search for
+     * @return true if found, false otherwise
+     */
+    public boolean search(int data) {
+        return searchRec(root, data);
+    }
+    
+    /**
+     * Recursive helper method to search for a value
+     * 
+     * @param root current node
+     * @param data value to search for
+     * @return true if found, false otherwise
+     */
+    private boolean searchRec(Node root, int data) {
+        if (root == null) {
+            return false;
+        }
+        
+        if (root.data == data) {
+            return true;
+        }
+        
+        if (data < root.data) {
+            return searchRec(root.left, data);
+        }
+        
+        return searchRec(root.right, data);
+    }
+    
+    /**
+     * Inorder traversal (Left-Root-Right)
+     * 
+     * @return string representation of inorder traversal
+     */
+    public String inorder() {
+        StringBuilder result = new StringBuilder();
+        inorderRec(root, result);
+        return result.toString().trim();
+    }
+    
+    /**
+     * Recursive helper for inorder traversal
+     */
+    private void inorderRec(Node root, StringBuilder result) {
+        if (root != null) {
+            inorderRec(root.left, result);
+            result.append(root.data).append(" ");
+            inorderRec(root.right, result);
         }
     }
-
-    private void reheight(Node node) {
-        if (node != null) {
-            node.height = 1 + Math.max(height(node.left), height(node.right));
+    
+    /**
+     * Preorder traversal (Root-Left-Right)
+     * 
+     * @return string representation of preorder traversal
+     */
+    public String preorder() {
+        StringBuilder result = new StringBuilder();
+        preorderRec(root, result);
+        return result.toString().trim();
+    }
+    
+    /**
+     * Recursive helper for preorder traversal
+     */
+    private void preorderRec(Node root, StringBuilder result) {
+        if (root != null) {
+            result.append(root.data).append(" ");
+            preorderRec(root.left, result);
+            preorderRec(root.right, result);
         }
+    }
+    
+    /**
+     * Get the height of the tree
+     * 
+     * @return the height of the tree
+     */
+    public int getHeight() {
+        return height(root);
+    }
+    
+    /**
+     * Check if the tree is empty
+     * 
+     * @return true if empty, false otherwise
+     */
+    public boolean isEmpty() {
+        return root == null;
+    }
+    
+    /**
+     * Check if the tree is balanced (for testing purposes)
+     * 
+     * @return true if balanced, false otherwise
+     */
+    public boolean isBalanced() {
+        return isBalancedRec(root);
+    }
+    
+    /**
+     * Recursive helper to check if tree is balanced
+     */
+    private boolean isBalancedRec(Node node) {
+        if (node == null) {
+            return true;
+        }
+        
+        int balance = getBalance(node);
+        
+        if (Math.abs(balance) > 1) {
+            return false;
+        }
+        
+        return isBalancedRec(node.left) && isBalancedRec(node.right);
     }
 }
