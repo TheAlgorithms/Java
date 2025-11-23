@@ -6,32 +6,44 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import org.junit.jupiter.api.Test;
 
 class ArmstrongNumberTest {
+    @Test
+    void testSingleDigitNumbers() {
+        for (int i = 0; i <= 9; i++) {
+            assertTrue(ArmstrongNumber.isArmstrong(i));
+        }
+    }
 
     @Test
-    void testArmstrongNumbers() {
-        // Test known Armstrong numbers
-        assertTrue(ArmstrongNumber.isArmstrong(0));
-        assertTrue(ArmstrongNumber.isArmstrong(1));
+    void testThreeDigitArmstrongNumbers() {
         assertTrue(ArmstrongNumber.isArmstrong(153));
         assertTrue(ArmstrongNumber.isArmstrong(370));
         assertTrue(ArmstrongNumber.isArmstrong(371));
         assertTrue(ArmstrongNumber.isArmstrong(407));
+    }
+
+    @Test
+    void testFourDigitArmstrongNumbers() {
         assertTrue(ArmstrongNumber.isArmstrong(1634));
+        assertTrue(ArmstrongNumber.isArmstrong(8208));
+        assertTrue(ArmstrongNumber.isArmstrong(9474));
     }
 
     @Test
     void testNonArmstrongNumbers() {
-        // Test numbers that are not Armstrong numbers
         assertFalse(ArmstrongNumber.isArmstrong(10));
         assertFalse(ArmstrongNumber.isArmstrong(100));
-        assertFalse(ArmstrongNumber.isArmstrong(152));
-        assertFalse(ArmstrongNumber.isArmstrong(200));
+        assertFalse(ArmstrongNumber.isArmstrong(123));
+        assertFalse(ArmstrongNumber.isArmstrong(999));
     }
 
     @Test
     void testNegativeNumbers() {
-        // Negative numbers cannot be Armstrong numbers
         assertFalse(ArmstrongNumber.isArmstrong(-1));
         assertFalse(ArmstrongNumber.isArmstrong(-153));
+    }
+
+    @Test
+    void testZero() {
+        assertTrue(ArmstrongNumber.isArmstrong(0));
     }
 }
