@@ -5,152 +5,114 @@ import java.util.Comparator;
 import java.util.List;
 
 /**
- * The KnightsTour class solves the Knight's Tour problem using backtracking.
+ * Solves the Knight's Tour problem using backtracking combined with
+ * Warnsdorff's heuristic for improved efficiency.
  *
- * Problem Statement:
- * Given an N*N board with a knight placed on the first block, the knight must
- * move according to chess rules and visit each square on the board exactly once.
- * The class outputs the sequence of moves for the knight.
- *
- * Example:
- * Input: N = 8 (8x8 chess board)
- * Output: The sequence of numbers representing the order in which the knight visits each square.
+ * A knight must visit every square on an N × N chessboard exactly once.
  */
-public final class KnightsTour {
-    private KnightsTour() {
-    }
+public class KnightsTour {
 
-    // The size of the chess board (12x12 grid, with 2 extra rows/columns as a buffer around a 8x8 area)
-    private static final int BASE = 12;
+    private final int n;              // Board dimension
+    private final int[][] board;      // Stores visiting order
+    private final int totalSquares;   // n * n
 
-    // Possible moves for a knight in chess
+    // Knight's possible movements
     private static final int[][] MOVES = {
-        {1, -2},
-        {2, -1},
-        {2, 1},
-        {1, 2},
-        {-1, 2},
-        {-2, 1},
-        {-2, -1},
-        {-1, -2},
+        {1, -2}, {2, -1}, {2, 1}, {1, 2},
+        {-1, 2}, {-2, 1}, {-2, -1}, {-1, -2}
     };
 
-    // Chess grid representing the board
-    static int[][] grid;
-
-    // Total number of cells the knight needs to visit
-    static int total;
-
     /**
-     * Resets the chess board to its initial state.
-     * Initializes the grid with boundary cells marked as -1 and internal cells as 0.
-     * Sets the total number of cells the knight needs to visit.
+     * Creates a Knight's Tour solver for an n × n board.
+     *
+     * @param n board size (must be >= 1)
      */
-    public static void resetBoard() {
-        grid = new int[BASE][BASE];
-        total = (BASE - 4) * (BASE - 4);
-        for (int r = 0; r < BASE; r++) {
-            for (int c = 0; c < BASE; c++) {
-                if (r < 2 || r > BASE - 3 || c < 2 || c > BASE - 3) {
-                    grid[r][c] = -1; // Mark boundary cells
-                }
-            }
+    public KnightsTour(int n) {
+        if (n < 1) {
+            throw new IllegalArgumentException("Board size must be positive");
         }
+        this.n = n;
+        this.board = new int[n][n];
+        this.totalSquares = n * n;
     }
 
     /**
-     * Recursive method to solve the Knight's Tour problem.
+     * Attempts to solve the Knight's Tour starting from (row, col).
      *
-     * @param row   The current row of the knight
-     * @param column The current column of the knight
-     * @param count  The current move number
-     * @return True if a solution is found, False otherwise
+     * @param row starting row
+     * @param col starting column
+     * @return true if a complete tour exists
      */
-    static boolean solve(int row, int column, int count) {
-        if (count > total) {
-            return true;
+    public boolean solve(int row, int col) {
+        board[row][col] = 1;
+        return backtrack(row, col, 2);
+    }
+
+    /** Recursive solver using Warnsdorff's ordering */
+    private boolean backtrack(int row, int col, int move) {
+        if (move > totalSquares) {
+            return true; // Successfully visited all squares
         }
 
-        List<int[]> neighbor = neighbors(row, column);
+        List<int[]> nextMoves = getSortedMoves(row, col);
 
-        if (neighbor.isEmpty() && count != total) {
-            return false;
-        }
+        for (int[] m : nextMoves) {
+            int nr = m[0], nc = m[1];
+            board[nr][nc] = move;
 
-        // Sort neighbors by Warnsdorff's rule (fewest onward moves)
-        neighbor.sort(Comparator.comparingInt(a -> a[2]));
-
-        for (int[] nb : neighbor) {
-            int nextRow = nb[0];
-            int nextCol = nb[1];
-            grid[nextRow][nextCol] = count;
-            if (!orphanDetected(count, nextRow, nextCol) && solve(nextRow, nextCol, count + 1)) {
+            if (backtrack(nr, nc, move + 1)) {
                 return true;
             }
-            grid[nextRow][nextCol] = 0; // Backtrack
-        }
 
-        return false;
-    }
-
-    /**
-     * Returns a list of valid neighboring cells where the knight can move.
-     *
-     * @param row   The current row of the knight
-     * @param column The current column of the knight
-     * @return A list of arrays representing valid moves, where each array contains:
-     *         {nextRow, nextCol, numberOfPossibleNextMoves}
-     */
-    static List<int[]> neighbors(int row, int column) {
-        List<int[]> neighbour = new ArrayList<>();
-
-        for (int[] m : MOVES) {
-            int x = m[0];
-            int y = m[1];
-            if (row + y >= 0 && row + y < BASE && column + x >= 0 && column + x < BASE && grid[row + y][column + x] == 0) {
-                int num = countNeighbors(row + y, column + x);
-                neighbour.add(new int[] {row + y, column + x, num});
-            }
-        }
-        return neighbour;
-    }
-
-    /**
-     * Counts the number of possible valid moves for a knight from a given position.
-     *
-     * @param row    The row of the current position
-     * @param column The column of the current position
-     * @return The number of valid neighboring moves
-     */
-    static int countNeighbors(int row, int column) {
-        int num = 0;
-        for (int[] m : MOVES) {
-            int x = m[0];
-            int y = m[1];
-            if (row + y >= 0 && row + y < BASE && column + x >= 0 && column + x < BASE && grid[row + y][column + x] == 0) {
-                num++;
-            }
-        }
-        return num;
-    }
-
-    /**
-     * Detects if moving to a given position will create an orphan (a position with no further valid moves).
-     *
-     * @param count   The current move number
-     * @param row     The row of the current position
-     * @param column  The column of the current position
-     * @return True if an orphan is detected, False otherwise
-     */
-    static boolean orphanDetected(int count, int row, int column) {
-        if (count < total - 1) {
-            List<int[]> neighbor = neighbors(row, column);
-            for (int[] nb : neighbor) {
-                if (countNeighbors(nb[0], nb[1]) == 0) {
-                    return true;
-                }
-            }
+            board[nr][nc] = 0; // Undo move (backtrack)
         }
         return false;
+    }
+
+    /**
+     * Returns valid knight moves sorted by Warnsdorff degree rule.
+     */
+    private List<int[]> getSortedMoves(int row, int col) {
+        List<int[]> moves = new ArrayList<>();
+
+        for (int[] m : MOVES) {
+            int nr = row + m[0];
+            int nc = col + m[1];
+
+            if (isValid(nr, nc)) {
+                int degree = countDegree(nr, nc);
+                moves.add(new int[] {nr, nc, degree});
+            }
+        }
+
+        moves.sort(Comparator.comparingInt(a -> a[2])); // Fewest onward moves first
+        return moves;
+    }
+
+    /** Counts onward valid knight moves */
+    private int countDegree(int row, int col) {
+        int count = 0;
+        for (int[] m : MOVES) {
+            int nr = row + m[0];
+            int nc = col + m[1];
+            if (isValid(nr, nc)) {
+                count++;
+            }
+        }
+        return count;
+    }
+
+    /** Checks bounds & whether square is unvisited */
+    private boolean isValid(int row, int col) {
+        return row >= 0 && row < n && col >= 0 && col < n && board[row][col] == 0;
+    }
+
+    /**
+     * Returns the solved board.
+     *
+     * @return board with visiting sequence
+     */
+    public int[][] getBoard() {
+        return board;
     }
 }
