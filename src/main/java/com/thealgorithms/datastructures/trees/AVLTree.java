@@ -7,12 +7,12 @@ package com.thealgorithms.datastructures.trees;
  * 
  * @author Raghu0703
  */
-public class AVLTree {
+public final class AVLTree {
     
     /**
      * Node class representing each element in the AVL Tree
      */
-    class Node {
+   static class Node {
         int data;
         int height;
         Node left, right;

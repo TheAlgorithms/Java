@@ -5,12 +5,12 @@ package com.thealgorithms.datastructures.trees;
  * 
  * @author Raghu0703
  */
-public class BinarySearchTree {
+public final class BinarySearchTree {
     
     /**
      * Node class representing each element in the BST
      */
-    class Node {
+   static  class Node {
         int data;
         Node left, right;
         
