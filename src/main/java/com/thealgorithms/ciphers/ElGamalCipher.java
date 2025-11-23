@@ -2,7 +2,6 @@ package com.thealgorithms.ciphers;
 
 import java.math.BigInteger;
 import java.security.SecureRandom;
-import java.util.Random;
 
 /**
  * ElGamal Encryption Algorithm Implementation
@@ -113,7 +112,7 @@ public final class ElGamalCipher {
 
         // Find a generator g (simplified: use a small generator that works for most primes)
         // In practice, we often use g = 2 or find a primitive root
-        BigInteger g = findGenerator(p, random);
+        BigInteger g = findGenerator(p);
 
         // Generate private key x: random number in range [2, p-2]
         BigInteger x;
@@ -132,10 +131,9 @@ public final class ElGamalCipher {
      * Simplified approach: tries small values until finding a suitable generator
      *
      * @param p The prime modulus
-     * @param random Random number generator
      * @return A generator g
      */
-    private static BigInteger findGenerator(BigInteger p, Random random) {
+    private static BigInteger findGenerator(BigInteger p) {
         // Simplified: use 2 as generator (works for most safe primes)
         // For production, should verify g is a primitive root
         BigInteger g = BigInteger.valueOf(2);
@@ -255,78 +253,4 @@ public final class ElGamalCipher {
         }
         return new String(bytes);
     }
-
-    /**
-     * Main method demonstrating ElGamal encryption and decryption
-     */
-    public static void main(String[] args) {
-        System.out.println("=== ElGamal Encryption Algorithm Demo ===\n");
-
-        // Example 1: Encrypting a small integer
-        System.out.println("Example 1: Encrypting a small integer");
-        System.out.println("--------------------------------------");
-
-        // Generate keys with 512-bit prime (use 1024 or 2048 for production)
-        System.out.println("Generating keys (512-bit)...");
-        KeyPair keyPair = generateKeys(512);
-
-        System.out.println("Prime (p): " + keyPair.getP());
-        System.out.println("Generator (g): " + keyPair.getG());
-        System.out.println("Private key (x): " + keyPair.getPrivateKey());
-        System.out.println("Public key (y): " + keyPair.getPublicKey());
-
-        // Message to encrypt
-        BigInteger message = BigInteger.valueOf(12345);
-        System.out.println("\nOriginal message: " + message);
-
-        // Encrypt
-        Ciphertext ciphertext = encrypt(message, keyPair);
-        System.out.println("Encrypted: " + ciphertext);
-
-        // Decrypt
-        BigInteger decrypted = decrypt(ciphertext, keyPair);
-        System.out.println("Decrypted message: " + decrypted);
-
-        // Verify
-        System.out.println("Decryption successful: " + message.equals(decrypted));
-
-        // Example 2: Demonstrating semantic security
-        System.out.println("\n\nExample 2: Demonstrating Semantic Security");
-        System.out.println("------------------------------------------");
-        System.out.println("Same message encrypted twice produces different ciphertexts:");
-
-        Ciphertext ct1 = encrypt(message, keyPair);
-        Ciphertext ct2 = encrypt(message, keyPair);
-
-        System.out.println("Encryption 1: " + ct1);
-        System.out.println("Encryption 2: " + ct2);
-        System.out.println("Are ciphertexts different? " + !ct1.getC1().equals(ct2.getC1()));
-
-        // Both decrypt to same message
-        System.out.println("Both decrypt to: " + decrypt(ct1, keyPair) + " and " + decrypt(ct2, keyPair));
-
-        // Example 3: String encryption
-        System.out.println("\n\nExample 3: Encrypting a String");
-        System.out.println("-------------------------------");
-
-        String text = "Hello";
-        System.out.println("Original text: " + text);
-
-        BigInteger textAsNumber = stringToBigInteger(text);
-        System.out.println("Text as BigInteger: " + textAsNumber);
-
-        // Check if message is small enough
-        if (textAsNumber.compareTo(keyPair.getP()) < 0) {
-            Ciphertext textCiphertext = encrypt(textAsNumber, keyPair);
-            System.out.println("Encrypted: " + textCiphertext);
-
-            BigInteger decryptedNumber = decrypt(textCiphertext, keyPair);
-            String decryptedText = bigIntegerToString(decryptedNumber);
-            System.out.println("Decrypted text: " + decryptedText);
-            System.out.println("Match: " + text.equals(decryptedText));
-        } else {
-            System.out.println("Text too large for current key size. Use larger keys or split text.");
-        }
-    }
 }
-
