@@ -33,9 +33,7 @@ class OneTimePadCipherTest {
         byte[] data = "hello".getBytes(StandardCharsets.UTF_8);
         byte[] shortKey = OneTimePadCipher.generateKey(2);
 
-        assertThrows(
-                IllegalArgumentException.class,
-                () -> OneTimePadCipher.encrypt(data, shortKey));
+        assertThrows(IllegalArgumentException.class, () -> OneTimePadCipher.encrypt(data, shortKey));
     }
 
     @Test
@@ -46,8 +44,6 @@ class OneTimePadCipherTest {
 
         byte[] wrongSizedKey = OneTimePadCipher.generateKey(data.length + 1);
 
-        assertThrows(
-                IllegalArgumentException.class,
-                () -> OneTimePadCipher.decrypt(ciphertext, wrongSizedKey));
+        assertThrows(IllegalArgumentException.class, () -> OneTimePadCipher.decrypt(ciphertext, wrongSizedKey));
     }
 }
