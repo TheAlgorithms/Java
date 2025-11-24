@@ -40,7 +40,7 @@ final class RotateMatrixBy90Degrees {
 }
 
 /**
- * Class containing the algo to roate matrix by 90 degree
+ * Class containing the algo to rotate matrix by 90 degree
  */
 final class Rotate {
     private Rotate() {
