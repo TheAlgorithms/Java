@@ -63,7 +63,8 @@ public final class SudokuSolver {
      * @return true if placement is valid
      */
     private static boolean isValid(int[][] board, int row, int col, int num) {
-        return isRowValid(board, row, num) && isColumnValid(board, col, num) && isSubgridValid(board, row, col, num);
+        return isRowValid(board, row, num) && isColumnValid(board, col, num)
+                && isSubgridValid(board, row, col, num);
     }
 
     /**

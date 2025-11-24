@@ -25,6 +25,8 @@ import java.security.SecureRandom;
  *   m = c2 * (c1^x)^-1 mod p
  *   where (c1^x)^-1 is the modular multiplicative inverse
  *
+ * Wikipedia: https://en.wikipedia.org/wiki/ElGamal_encryption
+ *
  * @author TheAlgorithms
  */
 public final class ElGamalCipher {
@@ -37,10 +39,10 @@ public final class ElGamalCipher {
      * Represents an ElGamal key pair containing public and private keys
      */
     public static class KeyPair {
-        private final BigInteger p; // Prime modulus
-        private final BigInteger g; // Generator
-        private final BigInteger x; // Private key
-        private final BigInteger y; // Public key (y = g^x mod p)
+        private final BigInteger p;
+        private final BigInteger g;
+        private final BigInteger x;
+        private final BigInteger y;
 
         public KeyPair(BigInteger p, BigInteger g, BigInteger x, BigInteger y) {
             this.p = p;
@@ -107,20 +109,14 @@ public final class ElGamalCipher {
     public static KeyPair generateKeys(int bitLength) {
         SecureRandom random = new SecureRandom();
 
-        // Generate a large prime p
         BigInteger p = BigInteger.probablePrime(bitLength, random);
-
-        // Find a generator g (simplified: use a small generator that works for most primes)
-        // In practice, we often use g = 2 or find a primitive root
         BigInteger g = findGenerator(p);
 
-        // Generate private key x: random number in range [2, p-2]
         BigInteger x;
         do {
             x = new BigInteger(bitLength - 1, random);
         } while (x.compareTo(BigInteger.TWO) < 0 || x.compareTo(p.subtract(BigInteger.TWO)) > 0);
 
-        // Calculate public key y = g^x mod p
         BigInteger y = g.modPow(x, p);
 
         return new KeyPair(p, g, x, y);
@@ -128,26 +124,21 @@ public final class ElGamalCipher {
 
     /**
      * Finds a generator for the multiplicative group modulo p
-     * Simplified approach: tries small values until finding a suitable generator
      *
      * @param p The prime modulus
      * @return A generator g
      */
     private static BigInteger findGenerator(BigInteger p) {
-        // Simplified: use 2 as generator (works for most safe primes)
-        // For production, should verify g is a primitive root
         BigInteger g = BigInteger.valueOf(2);
 
-        // If 2 doesn't work, try other small values
         while (g.compareTo(p) < 0) {
-            // Check if g is a valid generator (simplified check)
             if (g.modPow(p.subtract(BigInteger.ONE), p).equals(BigInteger.ONE)) {
                 return g;
             }
             g = g.add(BigInteger.ONE);
         }
 
-        return BigInteger.valueOf(2); // Fallback
+        return BigInteger.valueOf(2);
     }
 
     /**
@@ -158,9 +149,6 @@ public final class ElGamalCipher {
      * 2. Compute c1 = g^k mod p
      * 3. Compute c2 = m * y^k mod p
      * 4. Return ciphertext (c1, c2)
-     *
-     * The random k ensures semantic security - same message encrypted
-     * multiple times produces different ciphertexts
      *
      * @param message The plaintext message as BigInteger (must be < p)
      * @param keyPair The key pair containing public parameters
@@ -176,16 +164,12 @@ public final class ElGamalCipher {
         BigInteger g = keyPair.getG();
         BigInteger y = keyPair.getPublicKey();
 
-        // Choose random k in range [2, p-2]
         BigInteger k;
         do {
             k = new BigInteger(p.bitLength() - 1, random);
         } while (k.compareTo(BigInteger.TWO) < 0 || k.compareTo(p.subtract(BigInteger.TWO)) > 0);
 
-        // Compute c1 = g^k mod p
         BigInteger c1 = g.modPow(k, p);
-
-        // Compute c2 = m * y^k mod p
         BigInteger c2 = message.multiply(y.modPow(k, p)).mod(p);
 
         return new Ciphertext(c1, c2);
@@ -199,11 +183,6 @@ public final class ElGamalCipher {
      * 2. Compute s^-1 (modular multiplicative inverse of s)
      * 3. Recover m = c2 * s^-1 mod p
      *
-     * Mathematical proof:
-     * c2 * (c1^x)^-1 = (m * y^k) * (g^(k*x))^-1
-     *                = (m * g^(k*x)) * (g^(k*x))^-1
-     *                = m
-     *
      * @param ciphertext The ciphertext (c1, c2)
      * @param keyPair The key pair containing private key
      * @return Decrypted plaintext message
@@ -214,13 +193,8 @@ public final class ElGamalCipher {
         BigInteger x = keyPair.getPrivateKey();
         BigInteger p = keyPair.getP();
 
-        // Compute s = c1^x mod p
         BigInteger s = c1.modPow(x, p);
-
-        // Compute s^-1 mod p (modular multiplicative inverse)
         BigInteger sInverse = s.modInverse(p);
-
-        // Recover message: m = c2 * s^-1 mod p
         BigInteger message = c2.multiply(sInverse).mod(p);
 
         return message;
@@ -245,7 +219,6 @@ public final class ElGamalCipher {
      */
     public static String bigIntegerToString(BigInteger number) {
         byte[] bytes = number.toByteArray();
-        // Handle sign byte if present
         if (bytes[0] == 0 && bytes.length > 1) {
             byte[] tmp = new byte[bytes.length - 1];
             System.arraycopy(bytes, 1, tmp, 0, tmp.length);
