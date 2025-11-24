@@ -3,30 +3,22 @@ package com.thealgorithms.maths;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 
 public class HappyNumberTest {
 
-    @Test
-    void testHappyNumbers() {
-        // Known happy numbers
-        assertTrue(HappyNumber.isHappy(1));
-        assertTrue(HappyNumber.isHappy(7));
-        assertTrue(HappyNumber.isHappy(19));
-        assertTrue(HappyNumber.isHappy(100));
+    @ParameterizedTest
+    @CsvSource({"1", "7", "19", "100", "565", "998", "1000000"})
+    void testHappyNumbers(final int n) {
+        assertTrue(HappyNumber.isHappy(n));
+        assertTrue(HappyNumber.isHappyNumber(n));
     }
 
-    @Test
-    void testUnhappyNumbers() {
-        // Known unhappy numbers
-        assertFalse(HappyNumber.isHappy(2));
-        assertFalse(HappyNumber.isHappy(4));
-        assertFalse(HappyNumber.isHappy(20));
-    }
-
-    @Test
-    void testLargeNumber() {
-        // Just to check behavior with larger input
-        assertTrue(HappyNumber.isHappy(1000000)); // reduces to 1 eventually
+    @ParameterizedTest
+    @CsvSource({"2", "4", "20", "300", "999", "9999"})
+    void testUnhappyNumbers(final int n) {
+        assertFalse(HappyNumber.isHappy(n));
+        assertFalse(HappyNumber.isHappyNumber(n));
     }
 }
