@@ -125,6 +125,5 @@ public final class SudokuSolver {
         } else {
             System.out.println("\nNo solution exists for this Sudoku puzzle.");
         }
-
     }
 }
