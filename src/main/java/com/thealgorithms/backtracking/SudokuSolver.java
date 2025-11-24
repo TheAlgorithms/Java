@@ -3,7 +3,7 @@ package com.thealgorithms.backtracking;
 /**
  * Sudoku Solver using Backtracking algorithm
  * Solves a 9x9 Sudoku puzzle using depth-first search with backtracking
-  *
+ *
  * @author Your Name
  */
 public final class SudokuSolver {
