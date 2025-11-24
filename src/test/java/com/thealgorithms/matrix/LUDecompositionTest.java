@@ -1,40 +1,107 @@
 package com.thealgorithms.matrix;
 
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
-
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import org.junit.jupiter.api.Test;
 
-public class LUDecompositionTest {
+class LUDecompositionTest {
+
+    private static final double EPSILON = 1e-6;
 
     @Test
-    public void testLUDecomposition() {
-        double[][] a = {{4, 3}, {6, 3}};
+    void testBasicLUDecomposition() {
+        double[][] matrix = {
+            {2, -1, -2},
+            {-4, 6, 3},
+            {-4, -2, 8}
+        };
 
-        // Perform LU decomposition
-        LUDecomposition.LU lu = LUDecomposition.decompose(a);
-        double[][] l = lu.l;
-        double[][] u = lu.u;
+        LUDecomposition.Result result = LUDecomposition.decompose(matrix);
 
-        // Reconstruct a from l and u
-        double[][] reconstructed = multiplyMatrices(l, u);
+        double[][] expectedL = {
+            {1.0, 0.0, 0.0},
+            {-2.0, 1.0, 0.0},
+            {-2.0, -1.0, 1.0}
+        };
 
-        // Assert that reconstructed matrix matches original a
-        for (int i = 0; i < a.length; i++) {
-            assertArrayEquals(a[i], reconstructed[i], 1e-9);
-        }
+        double[][] expectedU = {
+            {2.0, -1.0, -2.0},
+            {0.0, 4.0, -1.0},
+            {0.0, 0.0, 3.0}
+        };
+
+        assertMatrixEquals(expectedL, result.getL());
+        assertMatrixEquals(expectedU, result.getU());
     }
 
-    // Helper method to multiply two matrices
-    private double[][] multiplyMatrices(double[][] a, double[][] b) {
-        int n = a.length;
-        double[][] c = new double[n][n];
-        for (int i = 0; i < n; i++) {
-            for (int j = 0; j < n; j++) {
-                for (int k = 0; k < n; k++) {
-                    c[i][j] += a[i][k] * b[k][j];
-                }
-            }
+    @Test
+    void testIdentityMatrix() {
+        double[][] identity = {
+            {1, 0, 0},
+            {0, 1, 0},
+            {0, 0, 1}
+        };
+
+        LUDecomposition.Result result = LUDecomposition.decompose(identity);
+
+        assertMatrixEquals(identity, result.getL());
+        assertMatrixEquals(identity, result.getU());
+    }
+
+    @Test
+    void testTwoByTwoMatrix() {
+        double[][] matrix = {
+            {4, 3},
+            {6, 3}
+        };
+
+        LUDecomposition.Result result = LUDecomposition.decompose(matrix);
+
+        double[][] expectedL = {
+            {1.0, 0.0},
+            {1.5, 1.0}
+        };
+
+        double[][] expectedU = {
+            {4.0, 3.0},
+            {0.0, -1.5}
+        };
+
+        assertMatrixEquals(expectedL, result.getL());
+        assertMatrixEquals(expectedU, result.getU());
+    }
+
+    @Test
+    void testNonSquareMatrix() {
+        double[][] nonSquare = {
+            {1, 2, 3},
+            {4, 5, 6}
+        };
+
+        assertThrows(IllegalArgumentException.class, () -> LUDecomposition.decompose(nonSquare));
+    }
+
+    @Test
+    void testEmptyMatrix() {
+        double[][] empty = {};
+
+        assertThrows(IllegalArgumentException.class, () -> LUDecomposition.decompose(empty));
+    }
+
+    @Test
+    void testSingularMatrix() {
+        double[][] singular = {
+            {1, 2, 3},
+            {2, 4, 6},
+            {3, 6, 9}
+        };
+
+        assertThrows(IllegalArgumentException.class, () -> LUDecomposition.decompose(singular));
+    }
+
+    private void assertMatrixEquals(double[][] expected, double[][] actual) {
+        for (int i = 0; i < expected.length; i++) {
+            assertArrayEquals(expected[i], actual[i], EPSILON);
         }
-        return c;
     }
 }
