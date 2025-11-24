@@ -1,61 +1,49 @@
 package com.thealgorithms.backtracking;
 
 /**
- * Sudoku Solver using Backtracking Algorithm
- * Solves a 9x9 Sudoku puzzle by filling empty cells with valid digits (1-9)
+ * SudokuSolver implements the backtracking algorithm to solve a standard 9×9 Sudoku puzzle.
+ * The puzzle is represented as a 2D array where 0 indicates an empty cell.
  *
- * @author Navadeep0007
+ * <p>Algorithm:
+ * - Iterates through empty cells and tries numbers 1-9
+ * - Validates placement against row, column, and 3×3 subgrid constraints
+ * - Backtracks if no valid number is found
+ * - Returns true if a solution exists
+ *
+ * <p>Wikipedia: https://en.wikipedia.org/wiki/Sudoku_solving_algorithms
+ *
+ * @author TheAlgorithms
  */
 public final class SudokuSolver {
 
-    private static final int GRID_SIZE = 9;
+    private static final int SIZE = 9;
     private static final int SUBGRID_SIZE = 3;
-    private static final int EMPTY_CELL = 0;
+    private static final int EMPTY = 0;
 
     private SudokuSolver() {
-        // Utility class, prevent instantiation
+        // Utility class - prevent instantiation
     }
 
     /**
-     * Solves the Sudoku puzzle using backtracking
+     * Solves the given Sudoku board using backtracking. Modifies the board
+     * in-place.
      *
-     * @param board 9x9 Sudoku board with 0 representing empty cells
-     * @return true if puzzle is solved, false otherwise
+     * @param board 9×9 2D array representing the Sudoku board (0 = empty cell)
+     * @return true if a valid solution exists, false otherwise
      */
     public static boolean solveSudoku(int[][] board) {
-        if (board == null || board.length != GRID_SIZE) {
-            return false;
-        }
+        for (int row = 0; row < SIZE; row++) {
+            for (int col = 0; col < SIZE; col++) {
+                if (board[row][col] == EMPTY) {
+                    for (int num = 1; num <= SIZE; num++) {
+                        if (isValid(board, row, col, num)) {
+                            board[row][col] = num;
 
-        for (int row = 0; row < GRID_SIZE; row++) {
-            if (board[row].length != GRID_SIZE) {
-                return false;
-            }
-        }
-
-        return solve(board);
-    }
-
-    /**
-     * Recursive helper method to solve the Sudoku puzzle
-     *
-     * @param board the Sudoku board
-     * @return true if solution is found, false otherwise
-     */
-    private static boolean solve(int[][] board) {
-        for (int row = 0; row < GRID_SIZE; row++) {
-            for (int col = 0; col < GRID_SIZE; col++) {
-                if (board[row][col] == EMPTY_CELL) {
-                    for (int number = 1; number <= GRID_SIZE; number++) {
-                        if (isValidPlacement(board, row, col, number)) {
-                            board[row][col] = number;
-
-                            if (solve(board)) {
+                            if (solveSudoku(board)) {
                                 return true;
                             }
 
-                            // Backtrack
-                            board[row][col] = EMPTY_CELL;
+                            board[row][col] = EMPTY;
                         }
                     }
                     return false;
@@ -66,86 +54,87 @@ public final class SudokuSolver {
     }
 
     /**
-     * Checks if placing a number at given position is valid
+     * Checks if placing a number at a given position is valid.
      *
      * @param board the Sudoku board
      * @param row row index
      * @param col column index
-     * @param number number to place (1-9)
-     * @return true if placement is valid, false otherwise
+     * @param num number to place (1-9)
+     * @return true if placement is valid
      */
-    private static boolean isValidPlacement(int[][] board, int row, int col, int number) {
-        return !isNumberInRow(board, row, number) && !isNumberInColumn(board, col, number) && !isNumberInSubgrid(board, row, col, number);
+    private static boolean isValid(int[][] board, int row, int col, int num) {
+        return isRowValid(board, row, num) && isColumnValid(board, col, num)
+                && isSubgridValid(board, row, col, num);
     }
 
     /**
-     * Checks if number exists in the given row
+     * Checks if a number already exists in the given row.
      *
      * @param board the Sudoku board
      * @param row row index
-     * @param number number to check
-     * @return true if number exists in row, false otherwise
+     * @param num number to check
+     * @return true if number is not in row
      */
-    private static boolean isNumberInRow(int[][] board, int row, int number) {
-        for (int col = 0; col < GRID_SIZE; col++) {
-            if (board[row][col] == number) {
-                return true;
+    private static boolean isRowValid(int[][] board, int row, int num) {
+        for (int col = 0; col < SIZE; col++) {
+            if (board[row][col] == num) {
+                return false;
             }
         }
-        return false;
+        return true;
     }
 
     /**
-     * Checks if number exists in the given column
+     * Checks if a number already exists in the given column.
      *
      * @param board the Sudoku board
      * @param col column index
-     * @param number number to check
-     * @return true if number exists in column, false otherwise
+     * @param num number to check
+     * @return true if number is not in column
      */
-    private static boolean isNumberInColumn(int[][] board, int col, int number) {
-        for (int row = 0; row < GRID_SIZE; row++) {
-            if (board[row][col] == number) {
-                return true;
+    private static boolean isColumnValid(int[][] board, int col, int num) {
+        for (int row = 0; row < SIZE; row++) {
+            if (board[row][col] == num) {
+                return false;
             }
         }
-        return false;
+        return true;
     }
 
     /**
-     * Checks if number exists in the 3x3 subgrid
+     * Checks if a number already exists in the 3×3 subgrid.
      *
      * @param board the Sudoku board
      * @param row row index
      * @param col column index
-     * @param number number to check
-     * @return true if number exists in subgrid, false otherwise
+     * @param num number to check
+     * @return true if number is not in subgrid
      */
-    private static boolean isNumberInSubgrid(int[][] board, int row, int col, int number) {
-        int subgridRowStart = row - row % SUBGRID_SIZE;
-        int subgridColStart = col - col % SUBGRID_SIZE;
+    private static boolean isSubgridValid(int[][] board, int row, int col, int num) {
+        int subgridRow = row - row % SUBGRID_SIZE;
+        int subgridCol = col - col % SUBGRID_SIZE;
 
-        for (int i = subgridRowStart; i < subgridRowStart + SUBGRID_SIZE; i++) {
-            for (int j = subgridColStart; j < subgridColStart + SUBGRID_SIZE; j++) {
-                if (board[i][j] == number) {
-                    return true;
+        for (int i = subgridRow; i < subgridRow + SUBGRID_SIZE; i++) {
+            for (int j = subgridCol; j < subgridCol + SUBGRID_SIZE; j++) {
+                if (board[i][j] == num) {
+                    return false;
                 }
             }
         }
-        return false;
+        return true;
     }
 
     /**
-     * Prints the Sudoku board
+     * Prints the Sudoku board in a readable format.
      *
-     * @param board the Sudoku board
+     * @param board the Sudoku board to print
      */
     public static void printBoard(int[][] board) {
-        for (int row = 0; row < GRID_SIZE; row++) {
+        for (int row = 0; row < SIZE; row++) {
             if (row % SUBGRID_SIZE == 0 && row != 0) {
                 System.out.println("-----------");
             }
-            for (int col = 0; col < GRID_SIZE; col++) {
+            for (int col = 0; col < SIZE; col++) {
                 if (col % SUBGRID_SIZE == 0 && col != 0) {
                     System.out.print("|");
                 }
