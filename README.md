@@ -18,3 +18,23 @@ Please read our [Contribution Guidelines](CONTRIBUTING.md) before you contribute
 
 ## Algorithms
 Our [directory](DIRECTORY.md) has the full list of applications.
+
+### Local development & contributing
+
+1. Clone & build
+\`\`\`bash
+git clone https://github.com/TheAlgorithms/Java.git
+cd Java
+mvn test   # or ./gradlew test if using Gradle
+\`\`\`
+
+2. Troubleshooting & tips
+- Ensure Java 11+ is installed (see `pom.xml`).
+- If tests fail: try: `mvn clean install`.
+- For large builds: use `-DskipTests` when building and run tests separately.
+- Contributions: add Javadoc, follow package structure, add tests for new algorithms.
+
+3. How to get started
+- Look for issues labelled `good first issue` (once template is active).
+- Fork → branch → PR as per templates above.
+
