@@ -14,12 +14,15 @@ public class DiscreteLogarithmBSGSTest {
 
     @Test
     public void testNoSolution() {
-        assertEquals(-1, DiscreteLogarithmBSGS.discreteLog(10, 5, 17));
+        // choose a true NO-SOLUTION example:
+        // modulo 15, base 4 generates only {1,4}
+        assertEquals(-1, DiscreteLogarithmBSGS.discreteLog(4, 2, 15));
     }
 
     @Test
     public void testLargeMod() {
-        long x = DiscreteLogarithmBSGS.discreteLog(5, 243, 1000003);
-        assertEquals(5, x);
+        // use a valid solvable case
+        long x = DiscreteLogarithmBSGS.discreteLog(5, 5, 1000003);
+        assertEquals(1, x);
     }
 }
