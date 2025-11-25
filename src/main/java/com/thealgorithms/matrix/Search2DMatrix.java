@@ -4,9 +4,9 @@ package com.thealgorithms.matrix;
  * Search a 2D Matrix.
  * Reference: https://leetcode.com/problems/search-a-2d-matrix/
  */
-public class Search2DMatrix {
+public final class Search2DMatrix {
 
-    // Private constructor to satisfy Checkstyle utility class rule
+    // Private constructor for utility class
     private Search2DMatrix() {
         throw new UnsupportedOperationException("Utility class");
     }
