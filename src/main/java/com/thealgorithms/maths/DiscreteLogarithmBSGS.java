@@ -13,9 +13,14 @@ import java.util.Map;
  * <p>
  * Time complexity: O(√m)
  * Space complexity: O(√m)
+ *
  * @see <a href="https://en.wikipedia.org/wiki/Baby-step_giant-step">Baby-step giant-step algorithm</a>
-*/
+ */
 public class DiscreteLogarithmBSGS {
+
+    private DiscreteLogarithmBSGS() {
+        throw new UnsupportedOperationException("Utility class");
+    }
 
     /**
      * Computes x such that (a^x) % m == b.
