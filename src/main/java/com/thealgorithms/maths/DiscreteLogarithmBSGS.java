@@ -41,7 +41,7 @@ public final class DiscreteLogarithmBSGS {
         long value = 1;
         for (long i = 0; i < n; i++) {
             babySteps.put(value, i);
-            value = (value * a) % m;
+            value = value * a % m;  // PMD fix
         }
 
         long factor = modPow(a, m - n - 1, m);
@@ -51,7 +51,7 @@ public final class DiscreteLogarithmBSGS {
             if (babySteps.containsKey(gamma)) {
                 return j * n + babySteps.get(gamma);
             }
-            gamma = (gamma * factor) % m;
+            gamma = gamma * factor % m;  // PMD fix
         }
 
         return -1; // no solution
@@ -64,9 +64,9 @@ public final class DiscreteLogarithmBSGS {
 
         while (exp > 0) {
             if ((exp & 1) == 1) {
-                result = (result * base) % mod;
+                result = result * base % mod; // PMD fix
             }
-            base = (base * base) % mod;
+            base = base * base % mod; // PMD fix
             exp >>= 1;
         }
         return result;
