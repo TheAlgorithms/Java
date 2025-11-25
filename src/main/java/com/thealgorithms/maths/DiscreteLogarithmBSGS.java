@@ -16,7 +16,7 @@ import java.util.Map;
  *
  * @see <a href="https://en.wikipedia.org/wiki/Baby-step_giant-step">Baby-step giant-step algorithm</a>
  */
-public class DiscreteLogarithmBSGS {
+public final class DiscreteLogarithmBSGS {
 
     private DiscreteLogarithmBSGS() {
         throw new UnsupportedOperationException("Utility class");
