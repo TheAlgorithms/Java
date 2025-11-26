@@ -1,3 +1,5 @@
+# Replace the entire file with the fixed version
+cat > src/main/java/com/thealgorithms/graphs/TopologicalSortDFS.java << 'EOF'
 package com.thealgorithms.graphs;
 
 import java.util.ArrayList;
@@ -94,7 +96,7 @@ public final class TopologicalSortDFS {
      *
      * @return true if graph is DAG, false otherwise
      */
-    private boolean isDAG() {
+    boolean isDAG() {
         boolean[] visited = new boolean[vertices];
         boolean[] recStack = new boolean[vertices];
 
