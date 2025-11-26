@@ -1,9 +1,8 @@
-/*
- * https://en.wikipedia.org/wiki/Z-algorithm
- */
 package com.thealgorithms.strings;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertArrayEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 import org.junit.jupiter.api.Test;
 
 public class ZAlgorithmTest {
