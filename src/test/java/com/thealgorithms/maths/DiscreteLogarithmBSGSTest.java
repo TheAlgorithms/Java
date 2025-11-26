@@ -38,5 +38,4 @@ public class DiscreteLogarithmBSGSTest {
         assertEquals(10 % 17, DiscreteLogarithmBSGS.modPow(10, 1, 17)); // odd exp branch
         assertEquals(100 % 17, DiscreteLogarithmBSGS.modPow(10, 2, 17)); // even exp branch
     }
-
 }
