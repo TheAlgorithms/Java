@@ -58,7 +58,7 @@ public final class TopologicalSortDFS {
 
         for (int i = 0; i < vertices; i++) {
             if (!visited[i]) {
-                topologicalSortDFS(i, visited, stack);
+                dfs(i, visited, stack);
             }
         }
 
@@ -71,44 +71,18 @@ public final class TopologicalSortDFS {
     }
 
     /**
-     * DFS helper method to detect cycles
+     * Recursive DFS helper method for topological sort
      *
      * @param vertex Current vertex
      * @param visited Visited array
-     * @param recursionStack Recursion stack to detect back edges
-     * @return true if cycle is detected, false otherwise
+     * @param stack Stack to store the topological order
      */
-    private boolean hasCycleDFS(int vertex, boolean[] visited, boolean[] recursionStack) {
-        visited[vertex] = true;
-        recursionStack[vertex] = true;
-
-        for (int neighbor : adjList.get(vertex)) {
-            if (!visited[neighbor]) {
-                if (hasCycleDFS(neighbor, visited, recursionStack)) {
-                    return true;
-                }
-            } else if (recursionStack[neighbor]) {
-                return true; // Back edge found - cycle detected
-            }
-        }
-
-        recursionStack[vertex] = false;
-        return false;
-    }
-
-    /**
-     * DFS helper method for topological sort
-     *
-     * @param vertex Current vertex
-     * @param visited Visited array
-     * @param stack Stack to store topological order
-     */
-    private void topologicalSortDFS(int vertex, boolean[] visited, Stack<Integer> stack) {
+    private void dfs(int vertex, boolean[] visited, Stack<Integer> stack) {
         visited[vertex] = true;
 
         for (int neighbor : adjList.get(vertex)) {
             if (!visited[neighbor]) {
-                topologicalSortDFS(neighbor, visited, stack);
+                dfs(neighbor, visited, stack);
             }
         }
 
@@ -116,21 +90,68 @@ public final class TopologicalSortDFS {
     }
 
     /**
-     * Check if the graph is a DAG (Directed Acyclic Graph)
+     * Check if the graph is a Directed Acyclic Graph (DAG)
      *
      * @return true if graph is DAG, false otherwise
      */
-    public boolean isDAG() {
+    private boolean isDAG() {
         boolean[] visited = new boolean[vertices];
-        boolean[] recursionStack = new boolean[vertices];
+        boolean[] recStack = new boolean[vertices];
 
         for (int i = 0; i < vertices; i++) {
-            if (!visited[i]) {
-                if (hasCycleDFS(i, visited, recursionStack)) {
-                    return false;
-                }
+            if (hasCycle(i, visited, recStack)) {
+                return false;
             }
         }
+
         return true;
+    }
+
+    /**
+     * Helper method to detect cycle in the graph
+     *
+     * @param vertex Current vertex
+     * @param visited Visited array
+     * @param recStack Recursion stack to track vertices in current path
+     * @return true if cycle is detected, false otherwise
+     */
+    private boolean hasCycle(int vertex, boolean[] visited, boolean[] recStack) {
+        if (recStack[vertex]) {
+            return true;
+        }
+
+        if (visited[vertex]) {
+            return false;
+        }
+
+        visited[vertex] = true;
+        recStack[vertex] = true;
+
+        for (int neighbor : adjList.get(vertex)) {
+            if (hasCycle(neighbor, visited, recStack)) {
+                return true;
+            }
+        }
+
+        recStack[vertex] = false;
+        return false;
+    }
+
+    /**
+     * Get the adjacency list of the graph
+     *
+     * @return Adjacency list
+     */
+    public List<List<Integer>> getAdjList() {
+        return adjList;
+    }
+
+    /**
+     * Get the number of vertices in the graph
+     *
+     * @return Number of vertices
+     */
+    public int getVertices() {
+        return vertices;
     }
 }
