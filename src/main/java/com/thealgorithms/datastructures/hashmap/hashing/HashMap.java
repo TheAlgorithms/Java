@@ -11,6 +11,7 @@ package com.thealgorithms.datastructures.hashmap.hashing;
 @SuppressWarnings("rawtypes")
 public class HashMap<K, V> {
     private final int hashSize;
+    private int currentSize; // Correctly track the total number of key-value pairs
     private final LinkedList<K, V>[] buckets;
 
     /**
@@ -21,6 +22,7 @@ public class HashMap<K, V> {
     @SuppressWarnings("unchecked")
     public HashMap(int hashSize) {
         this.hashSize = hashSize;
+        this.currentSize = 0;
         // Safe to suppress warning because we are creating an array of generic type
         this.buckets = new LinkedList[hashSize];
         for (int i = 0; i < hashSize; i++) {
@@ -37,9 +39,10 @@ public class HashMap<K, V> {
      */
     private int computeHash(K key) {
         if (key == null) {
-            return 0; // Use a special bucket (e.g., bucket 0) for null keys
+            return 0; // Use bucket 0 for null keys
         }
         int hash = key.hashCode() % hashSize;
+        // Ensure the hash index is non-negative
         return hash < 0 ? hash + hashSize : hash;
     }
 
@@ -52,7 +55,12 @@ public class HashMap<K, V> {
      */
     public void insert(K key, V value) {
         int hash = computeHash(key);
-        buckets[hash].insert(key, value);
+        boolean keyExisted = buckets[hash].insert(key, value);
+        
+        // Only increment size if a new key was inserted (not an update)
+        if (!keyExisted) {
+            currentSize++;
+        }
     }
 
     /**
@@ -62,7 +70,12 @@ public class HashMap<K, V> {
      */
     public void delete(K key) {
         int hash = computeHash(key);
-        buckets[hash].delete(key);
+        boolean deletedSuccessfully = buckets[hash].delete(key);
+
+        // Only decrement size if deletion was successful
+        if (deletedSuccessfully) {
+            currentSize--;
+        }
     }
 
     /**
@@ -73,8 +86,8 @@ public class HashMap<K, V> {
      */
     public V search(K key) {
         int hash = computeHash(key);
-        Node<K, V> node = buckets[hash].findKey(key);
-        return node != null ? node.getValue() : null;
+        // Changed LinkedList to return the value directly for better encapsulation
+        return buckets[hash].findValue(key);
     }
 
     /**
@@ -87,80 +100,71 @@ public class HashMap<K, V> {
     }
 
     /**
-     * Clears the contents of the hash map by reinitializing each bucket.
+     * Clears the contents of the hash map by reinitializing each bucket and resetting the size.
      */
     public void clear() {
         for (int i = 0; i < hashSize; i++) {
             buckets[i] = new LinkedList<>();
         }
+        currentSize = 0; // Reset size
     }
 
     /**
      * Gets the number of key-value pairs in the hash map.
+     * Corrected to return the stored 'currentSize' in O(1) time.
      *
      * @return the number of key-value pairs in the hash map
      */
     public int size() {
-        int size = 0;
-        for (int i = 0; i < hashSize; i++) {
-            size += buckets[i].isEmpty() ? 0 : 1;
-        }
-        return size;
+        return currentSize;
     }
+
+    // --- NESTED LINKED LIST CLASS (Collision Handler) ---
 
     /**
      * A nested static class that represents a linked list used for separate chaining in the hash map.
-     *
-     * @param <K> the type of keys maintained by this linked list
-     * @param <V> the type of mapped values
      */
     public static class LinkedList<K, V> {
         private Node<K, V> head;
 
         /**
          * Inserts the specified key-value pair into the linked list.
-         * If the linked list is empty, the pair becomes the head.
-         * Otherwise, the pair is added to the end of the list.
+         * If the key already exists, the value is updated.
          *
          * @param key   the key to be inserted
          * @param value the value to be associated with the key
+         * @return true if an existing key was updated, false if a new node was created.
          */
-        public void insert(K key, V value) {
-            Node<K, V> existingNode = findKey(key);
+        public boolean insert(K key, V value) {
+            Node<K, V> existingNode = findNode(key);
             if (existingNode != null) {
-                existingNode.setValue(value); // Update the value, even if it's null
+                existingNode.setValue(value);
+                return true; // Key existed, value updated
             } else {
+                Node<K, V> newNode = new Node<>(key, value);
                 if (isEmpty()) {
-                    head = new Node<>(key, value);
+                    head = newNode;
                 } else {
-                    Node<K, V> temp = findEnd(head);
-                    temp.setNext(new Node<>(key, value));
+                    Node<K, V> temp = head; // Start search from head
+                    while (temp.getNext() != null) {
+                        temp = temp.getNext();
+                    }
+                    temp.setNext(newNode);
                 }
+                return false; // New key added
             }
         }
 
         /**
-         * Finds the last node in the linked list.
-         *
-         * @param node the starting node
-         * @return the last node in the linked list
-         */
-        private Node<K, V> findEnd(Node<K, V> node) {
-            while (node.getNext() != null) {
-                node = node.getNext();
-            }
-            return node;
-        }
-
-        /**
-         * Finds the node associated with the specified key in the linked list.
+         * Finds the node associated with the specified key.
          *
          * @param key the key to search for
          * @return the node associated with the specified key, or null if not found
          */
-        public Node<K, V> findKey(K key) {
+        private Node<K, V> findNode(K key) {
             Node<K, V> temp = head;
             while (temp != null) {
+                // Robust key comparison, handles null keys correctly
                 if ((key == null && temp.getKey() == null) || (temp.getKey() != null && temp.getKey().equals(key))) {
                     return temp;
                 }
@@ -170,31 +174,45 @@ public class HashMap<K, V> {
         }
 
         /**
+         * Finds the value associated with the specified key.
+         *
+         * @param key the key to search for
+         * @return the value associated with the specified key, or null if not found
+         */
+        public V findValue(K key) {
+            Node<K, V> node = findNode(key);
+            return node != null ? node.getValue() : null;
+        }
+
+
+        /**
          * Deletes the node associated with the specified key from the linked list.
-         * Handles the case where the key could be null.
          *
          * @param key the key whose associated node is to be deleted
+         * @return true if the node was successfully deleted, false otherwise.
          */
-        public void delete(K key) {
+        public boolean delete(K key) {
             if (isEmpty()) {
-                return;
+                return false;
             }
 
-            // Handle the case where the head node has the key to delete
+            // Handle head deletion
             if ((key == null && head.getKey() == null) || (head.getKey() != null && head.getKey().equals(key))) {
                 head = head.getNext();
-                return;
+                return true;
             }
 
-            // Traverse the list to find and delete the node
+            // Traverse to find node to delete
             Node<K, V> current = head;
             while (current.getNext() != null) {
-                if ((key == null && current.getNext().getKey() == null) || (current.getNext().getKey() != null && current.getNext().getKey().equals(key))) {
-                    current.setNext(current.getNext().getNext());
-                    return;
+                Node<K, V> nextNode = current.getNext();
+                if ((key == null && nextNode.getKey() == null) || (nextNode.getKey() != null && nextNode.getKey().equals(key))) {
+                    current.setNext(nextNode.getNext());
+                    return true;
                 }
                 current = current.getNext();
             }
+            return false; // Key not found
         }
 
         /**
@@ -203,17 +221,8 @@ public class HashMap<K, V> {
          * @return a string representation of the linked list
          */
         public String display() {
-            return display(head);
-        }
-
-        /**
-         * Constructs a string representation of the linked list non-recursively.
-         *
-         * @param node the starting node
-         * @return a string representation of the linked list starting from the given node
-         */
-        private String display(Node<K, V> node) {
             StringBuilder sb = new StringBuilder();
+            Node<K, V> node = head;
             while (node != null) {
                 sb.append(node.getKey()).append("=").append(node.getValue());
                 node = node.getNext();
@@ -221,7 +230,7 @@ public class HashMap<K, V> {
                     sb.append(" -> ");
                 }
             }
-            return sb.toString().isEmpty() ? "null" : sb.toString();
+            return sb.length() > 0 ? sb.toString() : "empty";
         }
 
         /**
@@ -234,64 +243,37 @@ public class HashMap<K, V> {
         }
     }
 
+    // --- NESTED NODE CLASS (Key-Value Pair) ---
+
     /**
-     * A nested static class representing a node in the linked list.
-     *
-     * @param <K> the type of key maintained by this node
-     * @param <V> the type of value maintained by this node
+     * A nested static class representing a node (Entry) in the linked list.
      */
     public static class Node<K, V> {
         private final K key;
         private V value;
         private Node<K, V> next;
 
-        /**
-         * Constructs a Node with the specified key and value.
-         *
-         * @param key   the key associated with this node
-         * @param value the value associated with this node
-         */
         public Node(K key, V value) {
             this.key = key;
             this.value = value;
         }
 
-        /**
-         * Gets the key associated with this node.
-         *
-         * @return the key associated with this node
-         */
         public K getKey() {
             return key;
         }
 
-        /**
-         * Gets the value associated with this node.
-         *
-         * @return the value associated with this node
-         */
         public V getValue() {
             return value;
         }
 
-        public void setValue(V value) { // This method allows updating the value
+        public void setValue(V value) {
             this.value = value;
         }
 
-        /**
-         * Gets the next node in the linked list.
-         *
-         * @return the next node in the linked list
-         */
         public Node<K, V> getNext() {
             return next;
         }
 
-        /**
-         * Sets the next node in the linked list.
-         *
-         * @param next the next node to be linked
-         */
         public void setNext(Node<K, V> next) {
             this.next = next;
         }
