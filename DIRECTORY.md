@@ -821,6 +821,7 @@
           - 📄 [Upper](src/main/java/com/thealgorithms/strings/Upper.java)
           - 📄 [ValidParentheses](src/main/java/com/thealgorithms/strings/ValidParentheses.java)
           - 📄 [WordLadder](src/main/java/com/thealgorithms/strings/WordLadder.java)
+          - 📄 [ZAlgorithm](src/main/java/com/thealgorithms/strings/ZAlgorithm.java)
           - 📁 **zigZagPattern**
             - 📄 [ZigZagPattern](src/main/java/com/thealgorithms/strings/zigZagPattern/ZigZagPattern.java)
         - 📁 **tree**
@@ -1578,6 +1579,7 @@
           - 📄 [UpperTest](src/test/java/com/thealgorithms/strings/UpperTest.java)
           - 📄 [ValidParenthesesTest](src/test/java/com/thealgorithms/strings/ValidParenthesesTest.java)
           - 📄 [WordLadderTest](src/test/java/com/thealgorithms/strings/WordLadderTest.java)
+          - 📄 [ZAlgorithmTest](src/test/java/com/thealgorithms/strings/ZAlgorithmTest.java)
           - 📁 **zigZagPattern**
             - 📄 [ZigZagPatternTest](src/test/java/com/thealgorithms/strings/zigZagPattern/ZigZagPatternTest.java)
         - 📁 **tree**
