@@ -1,3 +1,6 @@
+/*
+ * https://en.wikipedia.org/wiki/Z-algorithm
+ */
 package com.thealgorithms.strings;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -8,7 +11,7 @@ public class ZAlgorithmTest {
     @Test
     void testZFunction() {
         int[] z = ZAlgorithm.zFunction("aaaaa");
-        assertArrayEquals(new int[]{0, 4, 3, 2, 1}, z);
+        assertArrayEquals(new int[] { 0, 4, 3, 2, 1 }, z);
     }
 
     @Test
