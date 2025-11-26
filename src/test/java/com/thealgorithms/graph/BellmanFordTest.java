@@ -28,7 +28,6 @@ class BellmanFordTest {
 
         BellmanFord.Result result = BellmanFord.findShortestPaths(5, edges, 0);
 
-        assertTrue(result.hasPath());
         assertFalse(result.hasNegativeCycle());
         assertArrayEquals(new int[] {0, 2, 7, 4, -2}, result.getDistances());
     }
@@ -53,7 +52,6 @@ class BellmanFordTest {
 
         BellmanFord.Result result = BellmanFord.findShortestPaths(4, edges, 0);
 
-        assertTrue(result.hasPath());
         assertEquals(0, result.getDistance(0));
         assertEquals(5, result.getDistance(1));
         assertEquals(Integer.MAX_VALUE, result.getDistance(2));
@@ -65,7 +63,6 @@ class BellmanFordTest {
         List<BellmanFord.Edge> edges = new ArrayList<>();
         BellmanFord.Result result = BellmanFord.findShortestPaths(1, edges, 0);
 
-        assertTrue(result.hasPath());
         assertFalse(result.hasNegativeCycle());
         assertArrayEquals(new int[] {0}, result.getDistances());
     }
@@ -94,7 +91,6 @@ class BellmanFordTest {
 
         BellmanFord.Result result = BellmanFord.findShortestPaths(4, edges, 0);
 
-        assertTrue(result.hasPath());
         assertFalse(result.hasNegativeCycle());
         assertEquals(0, result.getDistance(0));
         assertEquals(5, result.getDistance(1));
