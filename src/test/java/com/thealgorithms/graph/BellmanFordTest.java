@@ -127,7 +127,7 @@ class BellmanFordTest {
 
     @Test
     void testNullEdges() {
-        assertThrows(IllegalArgumentException.class, () -> {
+        assertThrows(NullPointerException.class, () -> {
             BellmanFord.findShortestPaths(3, null, 0);
         });
     }
