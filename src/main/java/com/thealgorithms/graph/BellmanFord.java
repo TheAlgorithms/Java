@@ -142,7 +142,7 @@ public final class BellmanFord {
      * @return Result object containing distances, paths, and negative cycle information
      * @throws IllegalArgumentException if vertices is non-positive or source is invalid
      */
-    public static Result findShortestPaths(int vertices, List<Edge> edges, int source) {
+    public static Result findShortestPaths(int vertices, Iterable<Edge> edges, int source) {
         if (vertices <= 0) {
             throw new IllegalArgumentException("Number of vertices must be positive");
         }
