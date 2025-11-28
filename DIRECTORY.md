@@ -385,6 +385,7 @@
           - 📄 [Dinic](src/main/java/com/thealgorithms/graph/Dinic.java)
           - 📄 [Edmonds](src/main/java/com/thealgorithms/graph/Edmonds.java)
           - 📄 [EdmondsKarp](src/main/java/com/thealgorithms/graph/EdmondsKarp.java)
+          - 📄 [GomoryHuTree](src/main/java/com/thealgorithms/graph/GomoryHuTree.java)
           - 📄 [HierholzerAlgorithm](src/main/java/com/thealgorithms/graph/HierholzerAlgorithm.java)
           - 📄 [HierholzerEulerianPath](src/main/java/com/thealgorithms/graph/HierholzerEulerianPath.java)
           - 📄 [HopcroftKarp](src/main/java/com/thealgorithms/graph/HopcroftKarp.java)
