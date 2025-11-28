@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
+import java.util.objects;
 /**
  * An implementation of the Lempel-Ziv 78 (LZ78) compression algorithm.
  * <p>
@@ -97,12 +97,13 @@ public final class LZ78 {
         }
 
         // Handle remaining phrase at end of input
-        if (currentNode != root) {
+        if (!currentNode.equals(root)) {
             compressedOutput.add(new Token(lastMatchedIndex, END_OF_STREAM));
         }
 
         return compressedOutput;
-    }
+}
+
 
     /**
      * Decompresses a list of LZ78 tokens back into the original string.
