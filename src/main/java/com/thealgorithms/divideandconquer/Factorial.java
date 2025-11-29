@@ -1,4 +1,5 @@
 package com.thealgorithms.divideandconquer;
+
 /**
  * Computes the factorial of a non-negative integer using an iterative
  * approach to avoid recursion overhead and stack overflow risks.
@@ -10,7 +11,12 @@ package com.thealgorithms.divideandconquer;
  * <p>Time Complexity: O(n)
  * <br>Space Complexity: O(1)
  */
-public class Factorial {
+public final class Factorial {
+
+    private Factorial() {
+        // Utility class
+    }
+
     /**
      * Returns the factorial of the given non-negative number.
      *
@@ -18,9 +24,6 @@ public class Factorial {
      * @return factorial of n (n!)
      * @throws IllegalArgumentException if n is negative
      */
-    private Factorial() {
-        // Utility class
-    }
     public static long factorial(long n) {
         if (n < 0) {
             throw new IllegalArgumentException("Negative input not allowed");
@@ -34,3 +37,4 @@ public class Factorial {
         return result;
     }
 }
+
