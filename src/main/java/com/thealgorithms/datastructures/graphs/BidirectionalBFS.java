@@ -16,9 +16,8 @@ import java.util.ArrayList;
  *
  * Wikipedia reference: https://en.wikipedia.org/wiki/Bidirectional_search
  */
+public class BidirectionalBFS {
 
-public class BidirectionalBFS
-{
     /**
      * Checks if a path exists between start and goal using bidirectional BFS.
      *
@@ -28,13 +27,11 @@ public class BidirectionalBFS
      * @return true if a path exists, false otherwise
      */
     public static boolean bidirectionalBFS(
-        Map<Integer, List<Integer>> graph,
-        int start,
-        int goal
-    )
-    {
-        if (start == goal)
-        {
+            Map<Integer, List<Integer>> graph,
+            int start,
+            int goal
+    ) {
+        if (start == goal) {
             return true;
         }
 
@@ -50,27 +47,13 @@ public class BidirectionalBFS
         visitedStart.add(start);
         visitedGoal.add(goal);
 
-        while (!queueStart.isEmpty() && !queueGoal.isEmpty())
-        {
+        while (!queueStart.isEmpty() && !queueGoal.isEmpty()) {
             // Expand from start side
-            if (expandFrontier(
-                graph,
-                queueStart,
-                visitedStart,
-                visitedGoal
-            ))
-            {
+            if (expandFrontier(graph, queueStart, visitedStart, visitedGoal)) {
                 return true;
             }
-
             // Expand from goal side
-            if (expandFrontier(
-                graph,
-                queueGoal,
-                visitedGoal,
-                visitedStart
-            ))
-            {
+            if (expandFrontier(graph, queueGoal, visitedGoal, visitedStart)) {
                 return true;
             }
         }
@@ -88,24 +71,19 @@ public class BidirectionalBFS
      * @return true if the frontiers meet, false otherwise
      */
     private static boolean expandFrontier(
-        Map<Integer, List<Integer>> graph,
-        Queue<Integer> queue,
-        Set<Integer> visitedThisSide,
-        Set<Integer> visitedOtherSide
-    )
-    {
+            Map<Integer, List<Integer>> graph,
+            Queue<Integer> queue,
+            Set<Integer> visitedThisSide,
+            Set<Integer> visitedOtherSide
+    ) {
         int size = queue.size();
-        for (int i = 0; i < size; i++)
-        {
+        for (int i = 0; i < size; i++) {
             int current = queue.poll();
-            for (int neighbor : graph.getOrDefault(current, new ArrayList<>()))
-            {
-                if (visitedOtherSide.contains(neighbor))
-                {
+            for (int neighbor : graph.getOrDefault(current, new ArrayList<>())) {
+                if (visitedOtherSide.contains(neighbor)) {
                     return true;
                 }
-                if (!visitedThisSide.contains(neighbor))
-                {
+                if (!visitedThisSide.contains(neighbor)) {
                     visitedThisSide.add(neighbor);
                     queue.add(neighbor);
                 }
