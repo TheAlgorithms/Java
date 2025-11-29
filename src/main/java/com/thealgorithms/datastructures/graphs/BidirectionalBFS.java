@@ -8,9 +8,13 @@ import java.util.LinkedList;
 import java.util.ArrayList;
 
 /**
- * Implementation of Bidirectional Breadth-First Search (BFS) algorithm.
- * Checks if a path exists between a start node and a goal node in an undirected graph.
+ * Implementation of the Bidirectional Breadth-First Search (BiBFS) algorithm.
+ * This algorithm performs BFS from both the start and goal nodes simultaneously,
+ * greatly reducing search space in large unweighted graphs.
+ *
+ * Wikipedia reference: https://en.wikipedia.org/wiki/Bidirectional_search
  */
+
 public class BidirectionalBFS
 {
     /**
