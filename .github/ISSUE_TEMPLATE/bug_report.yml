@@ -1,45 +1,60 @@
-name: "Bug report"
-description: "Create a report to help us improve"
-title: "[BUG] <title>"
+name: Bug Report
+description: Report an issue to help us improve
+title: "Provide a brief, clear description of the bug"
 labels: ["bug"]
+
 body:
-  - type: textarea
-    id: description
+  - type: input
+    id: summary
     attributes:
-      label: "Description"
-      description: "A clear and concise description of what the bug is."
-    validations:
-      required: true
+      label: Summary
+      description: Brief description of the issue.
+
+  - type: dropdown
+    id: environment
+    attributes:
+      label: Operating System
+      options:
+        - Windows
+        - macOS
+        - Linux
+        - Other
+
   - type: textarea
     id: steps
     attributes:
-      label: "Steps to reproduce"
-      description: "Steps to reproduce the behavior (if applicable)"
+      label: Steps to Reproduce
+      description: How can we reproduce this bug?
       placeholder: |
-       1. Go to '...'
-       2. Click on '....'
-       3. Scroll down to '....'
-       4. See error
-    validations:
-      required: false
+        1. Step one
+        2. Step two
+
   - type: textarea
-    id: exceptedbhv
+    id: expected
     attributes:
-      label: "Excepted behavior"
-      description: "A clear and concise description of what you expected to happen."
-    validations:
-      required: true
+      label: Expected Behavior
+      placeholder: What should have happened?
+
   - type: textarea
-    id: screenshots
+    id: actual
     attributes:
-      label: "Screenshots"
-      description: "If applicable, add screenshots to help explain your problem."
-    validations:
-      required: false
+      label: Actual Behavior
+      placeholder: What actually happened?
+
+  - type: textarea
+    id: logs
+    attributes:
+      label: Logs / Error Messages
+      placeholder: Paste any relevant logs or screenshots.
+
+  - type: textarea
+    id: config
+    attributes:
+      label: Configuration Files
+      description: VS Code settings.json / other configs if applicable.
+
   - type: textarea
     id: context
     attributes:
-      label: "Additional context"
-      description: "Is there anything else we should know about this bug report?"
-    validations:
-      required: false
+      label: Additional Context
+      placeholder: Any other info?
