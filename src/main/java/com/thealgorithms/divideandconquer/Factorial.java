@@ -18,6 +18,9 @@ public class Factorial {
      * @return factorial of n (n!)
      * @throws IllegalArgumentException if n is negative
      */
+    private Factorial() {
+        // Utility class
+    }
     public static long factorial(long n) {
         if (n < 0) {
             throw new IllegalArgumentException("Negative input not allowed");

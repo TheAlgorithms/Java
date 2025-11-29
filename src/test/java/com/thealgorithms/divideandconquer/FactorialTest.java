@@ -1,11 +1,15 @@
 package com.thealgorithms.divideandconquer;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
 import org.junit.jupiter.api.Test;
 
-
 public class FactorialTest {
-     // --------------------------------------------------------
+
+    // --------------------------------------------------------
     // SECTION 1: Basic Correctness Tests
     // --------------------------------------------------------
 
@@ -21,9 +25,7 @@ public class FactorialTest {
 
     @Test
     void testNegativeInputThrowsException() {
-        assertThrows(IllegalArgumentException.class, () -> {
-            Factorial.factorial(-5);
-        });
+        assertThrows(IllegalArgumentException.class, () -> Factorial.factorial(-5));
     }
 
     // --------------------------------------------------------
@@ -45,16 +47,21 @@ public class FactorialTest {
     // --------------------------------------------------------
 
     /**
-     * Local copy of the original recursive implementation
-     * used only for comparing performance inside the test.
+     * Local copy of the original recursive implementation used only for comparing performance inside
+     * the test.
      */
     private long recursiveFactorial(long n) {
-        if (n < 0) throw new IllegalArgumentException("Negative input not allowed");
-        if (n == 0 || n == 1) return 1;
-        return n * recursiveFactorial(n - 1);
+        if (n < 0) {
+            throw new IllegalArgumentException("Negative input not allowed");
+        }
+        if (n == 0 || n == 1) {
+            return 1;
+        } else {
+            return n * recursiveFactorial(n - 1);
+        }
     }
 
-     @Test
+    @Test
     void testIterativeFasterThanRecursive() {
         long n = 18;
 
@@ -67,11 +74,12 @@ public class FactorialTest {
         long endIter = System.nanoTime();
 
         assertEquals(recResult, iterResult);
-        assertTrue(endIter - startIter < endRec - startRec,
+        assertTrue(
+                endIter - startIter < endRec - startRec,
                 "Iterative version should outperform recursive version");
     }
 
-      @Test
+    @Test
     void testIterativeHandlesLargerInputsSafely() {
         assertDoesNotThrow(() -> Factorial.factorial(20));
     }
