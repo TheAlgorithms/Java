@@ -37,5 +37,3 @@ public final class Factorial {
         return result;
     }
 }
-
-

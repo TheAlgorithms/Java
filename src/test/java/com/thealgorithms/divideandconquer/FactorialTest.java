@@ -8,7 +8,6 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import org.junit.jupiter.api.Test;
 
 public class FactorialTest {
-
     // --------------------------------------------------------
     // SECTION 1: Basic Correctness Tests
     // --------------------------------------------------------
@@ -25,7 +24,7 @@ public class FactorialTest {
 
     @Test
     void testNegativeInputThrowsException() {
-        assertThrows(IllegalArgumentException.class, () -> Factorial.factorial(-5));
+        assertThrows(IllegalArgumentException.class, () -> { Factorial.factorial(-5); });
     }
 
     // --------------------------------------------------------
@@ -47,8 +46,8 @@ public class FactorialTest {
     // --------------------------------------------------------
 
     /**
-     * Local copy of the original recursive implementation used only for comparing performance inside
-     * the test.
+     * Local copy of the original recursive implementation
+     * used only for comparing performance inside the test.
      */
     private long recursiveFactorial(long n) {
         if (n < 0) {
@@ -56,9 +55,8 @@ public class FactorialTest {
         }
         if (n == 0 || n == 1) {
             return 1;
-        } else {
-            return n * recursiveFactorial(n - 1);
         }
+        return n * recursiveFactorial(n - 1);
     }
 
     @Test
@@ -74,9 +72,7 @@ public class FactorialTest {
         long endIter = System.nanoTime();
 
         assertEquals(recResult, iterResult);
-        assertTrue(
-                endIter - startIter < endRec - startRec,
-                "Iterative version should outperform recursive version");
+        assertTrue(endIter - startIter < endRec - startRec, "Iterative version should outperform recursive version");
     }
 
     @Test
