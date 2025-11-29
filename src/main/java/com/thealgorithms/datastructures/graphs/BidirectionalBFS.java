@@ -6,7 +6,6 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.ArrayList;
-import java.util.Arrays;
 
 /**
  * Implementation of Bidirectional Breadth-First Search (BFS) algorithm.
@@ -22,7 +21,11 @@ public class BidirectionalBFS
      * @param goal  The goal node
      * @return true if a path exists, false otherwise
      */
-    public static boolean bidirectionalBFS(Map<Integer, List<Integer>> graph, int start, int goal)
+    public static boolean bidirectionalBFS(
+        Map<Integer, List<Integer>> graph,
+        int start,
+        int goal
+    )
     {
         if (start == goal)
         {
@@ -44,12 +47,23 @@ public class BidirectionalBFS
         while (!queueStart.isEmpty() && !queueGoal.isEmpty())
         {
             // Expand from start side
-            if (expandFrontier(graph, queueStart, visitedStart, visitedGoal))
+            if (expandFrontier(
+                graph,
+                queueStart,
+                visitedStart,
+                visitedGoal
+            ))
             {
                 return true;
             }
+
             // Expand from goal side
-            if (expandFrontier(graph, queueGoal, visitedGoal, visitedStart))
+            if (expandFrontier(
+                graph,
+                queueGoal,
+                visitedGoal,
+                visitedStart
+            ))
             {
                 return true;
             }
@@ -61,14 +75,18 @@ public class BidirectionalBFS
     /**
      * Helper function to expand one level of BFS frontier.
      *
-     * @param graph           The adjacency list of the graph
-     * @param queue           The BFS queue for this side
-     * @param visitedThisSide Set of nodes visited from this side
+     * @param graph            The adjacency list of the graph
+     * @param queue            The BFS queue for this side
+     * @param visitedThisSide  Set of nodes visited from this side
      * @param visitedOtherSide Set of nodes visited from the other side
      * @return true if the frontiers meet, false otherwise
      */
-    private static boolean expandFrontier(Map<Integer, List<Integer>> graph, Queue<Integer> queue,
-                                          Set<Integer> visitedThisSide, Set<Integer> visitedOtherSide)
+    private static boolean expandFrontier(
+        Map<Integer, List<Integer>> graph,
+        Queue<Integer> queue,
+        Set<Integer> visitedThisSide,
+        Set<Integer> visitedOtherSide
+    )
     {
         int size = queue.size();
         for (int i = 0; i < size; i++)
