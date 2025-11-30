@@ -8,7 +8,7 @@ import org.junit.jupiter.api.Test;
 
 /**
  * Testcases for 2-SAT.
- * Please note thea whlie checking for boolean assignments always keep n + 1 elements and the first element should be always false.
+ * Please note thea while checking for boolean assignments always keep n + 1 elements and the first element should be always false.
  */
 public class TwoSatTest {
     private TwoSat twoSat;
