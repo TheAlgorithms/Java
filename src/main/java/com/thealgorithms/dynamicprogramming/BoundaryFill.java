@@ -12,8 +12,8 @@ public final class BoundaryFill {
      * Get the color at the given co-odrinates of a 2D image
      *
      * @param image The image to be filled
-     * @param xCoordinate The x co-ordinate of which color is to be obtained
-     * @param yCoordinate The y co-ordinate of which color is to be obtained
+     * @param xCoordinate The x coordinate of which color is to be obtained
+     * @param yCoordinate The y coordinate of which color is to be obtained
      */
     public static int getPixel(int[][] image, int xCoordinate, int yCoordinate) {
         return image[xCoordinate][yCoordinate];
@@ -23,8 +23,8 @@ public final class BoundaryFill {
      * Put the color at the given co-odrinates of a 2D image
      *
      * @param image The image to be filed
-     * @param xCoordinate The x co-ordinate at which color is to be filled
-     * @param yCoordinate The y co-ordinate at which color is to be filled
+     * @param xCoordinate The x coordinate at which color is to be filled
+     * @param yCoordinate The y coordinate at which color is to be filled
      */
     public static void putPixel(int[][] image, int xCoordinate, int yCoordinate, int newColor) {
         image[xCoordinate][yCoordinate] = newColor;
@@ -34,8 +34,8 @@ public final class BoundaryFill {
      * Fill the 2D image with new color
      *
      * @param image The image to be filed
-     * @param xCoordinate The x co-ordinate at which color is to be filled
-     * @param yCoordinate The y co-ordinate at which color is to be filled
+     * @param xCoordinate The x coordinate at which color is to be filled
+     * @param yCoordinate The y coordinate at which color is to be filled
      * @param newColor The new color which to be filled in the image
      * @param boundaryColor The old color which is to be replaced in the image
      */

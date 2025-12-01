@@ -15,7 +15,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Close stale PRs
-        uses: actions/github-script@v7
+        uses: actions/github-script@v8
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           script: |
@@ -59,11 +59,13 @@ jobs:
 
                   const meaningfulCommits = commits.filter(c => {
                     const msg = c.commit.message.toLowerCase();
+                    const date = new Date(c.commit.committer.date);
                     const isMergeFromMain = mainBranches.some(branch =>
                       msg.startsWith(`merge branch '${branch}'`) ||
                       msg.includes(`merge remote-tracking branch '${branch}'`)
                     );
-                    return !isMergeFromMain;
+                      
+                    return !isMergeFromMain && date > cutoff;
                   });
 
                   // Get checks with error handling
