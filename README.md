@@ -18,3 +18,9 @@ Please read our [Contribution Guidelines](CONTRIBUTING.md) before you contribute
 
 ## Algorithms
 Our [directory](DIRECTORY.md) has the full list of applications.
+
+## Quick Links
+
+- [Directory](DIRECTORY.md) - Browse all algorithms by category
+- [Contributing](CONTRIBUTING.md) - Learn how to contribute
+- [LICENSE](LICENSE) - Project license information
