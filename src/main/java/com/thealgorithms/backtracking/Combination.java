@@ -7,8 +7,7 @@ import java.util.List;
 import java.util.TreeSet;
 
 /**
- * Finds all permutations of given array
- * @author Alan Piao (<a href="https://github.com/cpiao3">git-Alan Piao</a>)
+ * Finds all combinations of a given array using backtracking algorithm * @author Alan Piao (<a href="https://github.com/cpiao3">git-Alan Piao</a>)
  */
 public final class Combination {
     private Combination() {
