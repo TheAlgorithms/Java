@@ -5,8 +5,10 @@ package com.thealgorithms.physics;
  * n1 * sin(theta1) = n2 * sin(theta2)
  * @see <a href="https://en.wikipedia.org/wiki/Snell%27s_law">Snell's Law</a>
  */
-public class SnellLaw {
-
+public final class SnellLaw {
+     private SnellLaw() {
+        throw new AssertionError("No instances.");
+    }
     /**
      * Computes the refracted angle (theta2) in radians.
      *
