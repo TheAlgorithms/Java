@@ -3,6 +3,7 @@ package com.thealgorithms.physics;
 /**
  * Calculates refraction angle using Snell's Law:
  * n1 * sin(theta1) = n2 * sin(theta2)
+ * @see <a href="https://en.wikipedia.org/wiki/Snell%27s_law">Snell's Law</a>
  */
 public class SnellLaw {
 
