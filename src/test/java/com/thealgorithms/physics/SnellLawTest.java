@@ -3,7 +3,7 @@ package com.thealgorithms.physics;
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
 
-public class SnellsLawTest {
+public class SnellLawTest {
 //tests for example environmet
     @Test
     public void testCalculateRefractionAngle() {
