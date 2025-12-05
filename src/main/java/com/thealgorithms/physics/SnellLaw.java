@@ -25,9 +25,7 @@ public final class SnellLaw {
         double sinTheta2 = ratio * Math.sin(theta1);
 
         if (Math.abs(sinTheta2) > 1.0) {
-            throw new IllegalArgumentException(
-                "Total internal reflection: no refraction possible."
-            );
+            throw new IllegalArgumentException("Total internal reflection: no refraction possible.");
         }
 
         return Math.asin(sinTheta2);
