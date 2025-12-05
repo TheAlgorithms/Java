@@ -15,23 +15,27 @@ public final class Upper {
     }
 
     /**
-     * Converts all the characters in this {@code String} to upper case
+     * Converts all the characters in this {@code String} to upper case.
      *
      * @param s the string to convert
      * @return the {@code String}, converted to uppercase.
      */
     public static String toUpperCase(String s) {
         if (s == null) {
-            throw new IllegalArgumentException("Input string connot be null");
+            throw new IllegalArgumentException("Input string cannot be null");
         }
         if (s.isEmpty()) {
             return s;
         }
-        StringBuilder result = new StringBuilder(s);
-        for (int i = 0; i < result.length(); ++i) {
-            char currentChar = result.charAt(i);
-            if (Character.isLetter(currentChar) && Character.isLowerCase(currentChar)) {
-                result.setCharAt(i, Character.toUpperCase(currentChar));
+
+        StringBuilder result = new StringBuilder(s.length());
+
+        for (int i = 0; i < s.length(); ++i) {
+            char currentChar = s.charAt(i);
+            if (Character.isLowerCase(currentChar)) {
+                result.append(Character.toUpperCase(currentChar));
+            } else {
+                result.append(currentChar);
             }
         }
         return result.toString();
