@@ -16,7 +16,7 @@ public class SnellLawTest {
 
         double theta2 = SnellLaw.refractedAngle(n1, n2, theta1);
 
-        double expected = Math.asin((n1 / n2) * Math.sin(theta1));
+        double expected = Math.asin(n1 / n2 * Math.sin(theta1));
 
         assertEquals(expected, theta2, 1e-12);
     }
@@ -27,9 +27,7 @@ public class SnellLawTest {
         double n2 = 1.0;
         double theta1 = Math.toRadians(60); // large angle
 
-        assertThrows(IllegalArgumentException.class, () -> {
-            SnellLaw.refractedAngle(n1, n2, theta1);
-        });
+        assertThrows(IllegalArgumentException.class, () -> SnellLaw.refractedAngle(n1, n2, theta1));
     }
 
     @Test
@@ -38,8 +36,6 @@ public class SnellLawTest {
         double n2 = 1.0;
         double theta1 = Math.toRadians(10);
 
-        assertDoesNotThrow(() -> {
-            SnellLaw.refractedAngle(n1, n2, theta1);
-        });
+        assertDoesNotThrow(() -> SnellLaw.refractedAngle(n1, n2, theta1));
     }
 }
