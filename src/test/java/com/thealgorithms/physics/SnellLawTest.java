@@ -1,14 +1,17 @@
 package com.thealgorithms.physics;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+
 import org.junit.jupiter.api.Test;
 
 public class SnellLawTest {
 
     @Test
     public void testRefractedAngle() {
-        double n1 = 1.0;  // air
-        double n2 = 1.5;  // glass
+        double n1 = 1.0; // air
+        double n2 = 1.5; // glass
         double theta1 = Math.toRadians(30);
 
         double theta2 = SnellLaw.refractedAngle(n1, n2, theta1);
@@ -20,10 +23,9 @@ public class SnellLawTest {
 
     @Test
     public void testTotalInternalReflection() {
-        // total internal reflection happens when n1 > n2 AND theta1 is large
         double n1 = 1.5;
         double n2 = 1.0;
-        double theta1 = Math.toRadians(60); // large enough angle
+        double theta1 = Math.toRadians(60); // large angle
 
         assertThrows(IllegalArgumentException.class, () -> {
             SnellLaw.refractedAngle(n1, n2, theta1);
