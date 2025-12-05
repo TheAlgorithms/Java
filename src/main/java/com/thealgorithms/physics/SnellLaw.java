@@ -6,9 +6,11 @@ package com.thealgorithms.physics;
  * @see <a href="https://en.wikipedia.org/wiki/Snell%27s_law">Snell's Law</a>
  */
 public final class SnellLaw {
-     private SnellLaw() {
+
+    private SnellLaw() {
         throw new AssertionError("No instances.");
     }
+
     /**
      * Computes the refracted angle (theta2) in radians.
      *
@@ -23,7 +25,9 @@ public final class SnellLaw {
         double sinTheta2 = ratio * Math.sin(theta1);
 
         if (Math.abs(sinTheta2) > 1.0) {
-            throw new IllegalArgumentException("Total internal reflection: no refraction possible.");
+            throw new IllegalArgumentException(
+                "Total internal reflection: no refraction possible."
+            );
         }
 
         return Math.asin(sinTheta2);
