@@ -33,11 +33,11 @@ class Graph{
           if(adj.isEmpty()) return;
 
 	  HashSet<String> set=new HashSet<>();
-	  Queue<String> q=new LinkedList<>();
+	  Queue<String> q=new LinkedList<>();  //BFS uses Queue data structure
 	  q.offer(src);
 	  set.add(src);
 	  
-	  while(!q.isEmpty()){
+	  while(!q.isEmpty()){ 
              String node=q.poll();
 	     System.out.print(node+" ");
 	     List<Node> neighbours=adj.get(src);
