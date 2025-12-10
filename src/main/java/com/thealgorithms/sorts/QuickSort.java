@@ -8,9 +8,16 @@ package com.thealgorithms.sorts;
 class QuickSort implements SortAlgorithm {
 
     /**
-     * This method implements the Generic Quick Sort
+     * Generic Quick Sort algorithm.
      *
-     * @param array The array to be sorted Sorts the array in increasing order
+     * Time Complexity:
+     * - Best case: O(n log n) – pivot splits array roughly in half each time.
+     * - Average case: O(n log n)
+     * - Worst case: O(n^2) – occurs when pivot consistently produces unbalanced splits.
+     *
+     * Space Complexity: O(log n) – recursion stack, in-place sorting.
+     *
+     * @see SortAlgorithm
      */
     @Override
     public <T extends Comparable<T>> T[] sort(T[] array) {

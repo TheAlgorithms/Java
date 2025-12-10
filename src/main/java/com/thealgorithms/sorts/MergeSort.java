@@ -13,11 +13,16 @@ class MergeSort implements SortAlgorithm {
     private Comparable[] aux;
 
     /**
-     * Generic merge sort algorithm implements.
+     * Generic merge sort algorithm.
      *
-     * @param unsorted the array which should be sorted.
-     * @param <T> Comparable class.
-     * @return sorted array.
+     * Time Complexity:
+     * - Best case: O(n log n)
+     * - Average case: O(n log n)
+     * - Worst case: O(n log n)
+     *
+     * Space Complexity: O(n) – requires auxiliary array for merging.
+     *
+     * @see SortAlgorithm
      */
     @Override
     public <T extends Comparable<T>> T[] sort(T[] unsorted) {
