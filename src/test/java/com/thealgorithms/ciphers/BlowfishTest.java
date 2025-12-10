@@ -32,6 +32,7 @@ class BlowfishTest {
         // when
         String plainText = blowfish.decrypt(cipherText, key);
         String plainText2= blowfish.decrypt(cipherText, key);
+        String plainText3= blowfish.decrypt(cipherText, key);
         // then
         assertEquals(expectedOutput, plainText);
     }
