@@ -83,11 +83,6 @@ public class DijkstraAlgorithmTest {
     @Test
     void testStarTopology() {
         // Star graph: center node 0 connected to all others
-        // 1(2)
-        // |
-        // 3(4)-0-2(3)
-        // |
-        // 4(5)
         int[][] starGraph = {
                 { 0, 2, 3, 4, 5 },
                 { 2, 0, 0, 0, 0 },
@@ -176,8 +171,6 @@ public class DijkstraAlgorithmTest {
     @Test
     void testShortcutPath() {
         // Graph where direct path is longer than indirect path
-        // 0 --(10)--> 2
-        // 0 --(1)--> 1 --(2)--> 2
         int[][] shortcutGraph = {
                 { 0, 1, 10 },
                 { 1, 0, 2 },

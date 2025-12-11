@@ -8,12 +8,6 @@ import org.junit.jupiter.api.Test;
 /**
  * Unit tests for the Graph class in ConnectedComponent.java.
  * Tests the depth-first search implementation and connected component counting.
- * Covers various graph topologies including:
- * - Single connected components
- * - Multiple disconnected components
- * - Self-loops
- * - Linear chains
- * - Cyclic graphs
  */
 class ConnectedComponentTest {
 
@@ -151,8 +145,7 @@ class ConnectedComponentTest {
     @Test
     void testBidirectionalEdges() {
         Graph<Integer> graph = new Graph<>();
-        // Note: This is a directed graph representation
-        // Adding edge 1->2 does not automatically add 2->1
+        // Note: This is a directed graph representation; adding 1->2 doesn't add 2->1 automatically
         graph.addEdge(1, 2);
         graph.addEdge(2, 1);
         graph.addEdge(2, 3);

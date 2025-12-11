@@ -7,29 +7,12 @@ import org.junit.jupiter.api.Test;
 
 /**
  * Unit tests for the BellmanFord algorithm implementation.
- * Tests cover various graph scenarios including:
- * - Simple weighted graphs
- * - Graphs with negative weights
- * - Single vertex graphs
- * - Disconnected graphs
- * - Linear path graphs
  */
 class BellmanFordTest {
 
     @Test
     void testSimpleGraph() {
         // Create a simple graph with 5 vertices and 8 edges
-        // Graph visualization:
-        // 1
-        // /|\
-        // 6 | 7
-        // / | \
-        // 0 5 2
-        // \ | /
-        // 8 | -2
-        // \|/
-        // 4---3
-        // 9
         BellmanFord bellmanFord = new BellmanFord(5, 8);
         bellmanFord.addEdge(0, 1, 6);
         bellmanFord.addEdge(0, 4, 8);
