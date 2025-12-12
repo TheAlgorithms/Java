@@ -446,6 +446,7 @@
           - 📄 [ConvolutionFFT](src/main/java/com/thealgorithms/maths/ConvolutionFFT.java)
           - 📄 [CrossCorrelation](src/main/java/com/thealgorithms/maths/CrossCorrelation.java)
           - 📄 [DeterminantOfMatrix](src/main/java/com/thealgorithms/maths/DeterminantOfMatrix.java)
+          - [DiscreteLogarithmBSGS](src/main/java/com/thealgorithms/maths/DiscreteLogarithmBSGS.java)
           - 📄 [DigitalRoot](src/main/java/com/thealgorithms/maths/DigitalRoot.java)
           - 📄 [DistanceFormula](src/main/java/com/thealgorithms/maths/DistanceFormula.java)
           - 📄 [DudeneyNumber](src/main/java/com/thealgorithms/maths/DudeneyNumber.java)
