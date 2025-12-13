@@ -5,40 +5,54 @@ import java.util.Arrays;
 import java.util.Queue;
 
 /**
- * Dinic's algorithm for computing maximum flow in a directed graph.
+ * Implementation of Dinic's Algorithm to compute the maximum flow
+ * in a directed graph.
  *
- * <p>Time complexity: O(E * V^2) in the worst case, but typically faster in practice
- * and near O(E * sqrt(V)) for unit networks.</p>
+ * <p><b>Algorithm idea:</b>
+ * The algorithm works by repeatedly building a level graph using BFS
+ * and then finding blocking flows using DFS until no more augmenting
+ * paths exist.</p>
  *
- * <p>The graph is represented using a capacity matrix where capacity[u][v] is the
- * capacity of the directed edge u -> v. Capacities must be non-negative.
- * The algorithm builds level graphs using BFS and finds blocking flows using DFS
- * with current-edge optimization.</p>
+ * <p><b>Time Complexity:</b>
+ * Worst case: O(E × V²) <br>
+ * Practical performance: Much faster, often close to O(E × √V)</p>
  *
- * <p>This implementation mirrors the API and validation style of
+ * <p>The graph is represented using a capacity matrix where
+ * {@code capacity[u][v]} denotes the capacity of the directed edge
+ * from vertex {@code u} to vertex {@code v}.</p>
+ *
+ * <p>This implementation follows the same validation style as
  * {@link EdmondsKarp#maxFlow(int[][], int, int)} for consistency.</p>
  *
- * @see <a href="https://en.wikipedia.org/wiki/Dinic%27s_algorithm">Wikipedia: Dinic's algorithm</a>
+ * @see <a href="https://en.wikipedia.org/wiki/Dinic%27s_algorithm">
+ *      Wikipedia: Dinic's Algorithm</a>
  */
 public final class Dinic {
+
+    // Private constructor to prevent instantiation
     private Dinic() {
     }
 
     /**
-     * Computes the maximum flow from source to sink using Dinic's algorithm.
+     * Computes the maximum flow from a source vertex to a sink vertex
+     * using Dinic's Algorithm.
      *
-     * @param capacity square capacity matrix (n x n); entries must be >= 0
-     * @param source source vertex index in [0, n)
-     * @param sink sink vertex index in [0, n)
-     * @return the maximum flow value
-     * @throws IllegalArgumentException if the input matrix is null/non-square/has negatives or
-     *     indices invalid
+     * @param capacity square matrix representing edge capacities
+     * @param source index of the source vertex
+     * @param sink index of the sink vertex
+     * @return maximum possible flow from source to sink
+     * @throws IllegalArgumentException if the input matrix is invalid
      */
     public static int maxFlow(int[][] capacity, int source, int sink) {
+
+        // Validate capacity matrix
         if (capacity == null || capacity.length == 0) {
             throw new IllegalArgumentException("Capacity matrix must not be null or empty");
         }
+
         final int n = capacity.length;
+
+        // Ensure matrix is square and capacities are non-negative
         for (int i = 0; i < n; i++) {
             if (capacity[i] == null || capacity[i].length != n) {
                 throw new IllegalArgumentException("Capacity matrix must be square");
@@ -49,69 +63,87 @@ public final class Dinic {
                 }
             }
         }
+
+        // Validate source and sink
         if (source < 0 || sink < 0 || source >= n || sink >= n) {
             throw new IllegalArgumentException("Source and sink must be valid vertex indices");
         }
+
         if (source == sink) {
             return 0;
         }
 
-        // residual capacities
+        // Create residual graph
         int[][] residual = new int[n][n];
         for (int i = 0; i < n; i++) {
             residual[i] = Arrays.copyOf(capacity[i], n);
         }
 
         int[] level = new int[n];
-        int flow = 0;
+        int maxFlow = 0;
+
+        // Repeatedly build level graph and find blocking flows
         while (bfsBuildLevelGraph(residual, source, sink, level)) {
             int[] next = new int[n]; // current-edge optimization
-            int pushed;
-            do {
-                pushed = dfsBlocking(residual, level, next, source, sink, Integer.MAX_VALUE);
-                flow += pushed;
-            } while (pushed > 0);
+            int flow;
+
+            // Push flow while augmenting paths exist
+            while ((flow = dfsBlocking(residual, level, next, source, sink, Integer.MAX_VALUE)) > 0) {
+                maxFlow += flow;
+            }
         }
-        return flow;
+        return maxFlow;
     }
 
+    /**
+     * Builds the level graph using BFS.
+     */
     private static boolean bfsBuildLevelGraph(int[][] residual, int source, int sink, int[] level) {
         Arrays.fill(level, -1);
         level[source] = 0;
-        Queue<Integer> q = new ArrayDeque<>();
-        q.add(source);
-        while (!q.isEmpty()) {
-            int u = q.poll();
+
+        Queue<Integer> queue = new ArrayDeque<>();
+        queue.add(source);
+
+        while (!queue.isEmpty()) {
+            int u = queue.poll();
             for (int v = 0; v < residual.length; v++) {
                 if (residual[u][v] > 0 && level[v] == -1) {
                     level[v] = level[u] + 1;
                     if (v == sink) {
                         return true;
                     }
-                    q.add(v);
+                    queue.add(v);
                 }
             }
         }
         return level[sink] != -1;
     }
 
-    private static int dfsBlocking(int[][] residual, int[] level, int[] next, int u, int sink, int f) {
+    /**
+     * DFS to find blocking flow in the level graph.
+     */
+    private static int dfsBlocking(int[][] residual, int[] level, int[] next,
+                                   int u, int sink, int flow) {
+
         if (u == sink) {
-            return f;
+            return flow;
         }
+
         final int n = residual.length;
+
         for (int v = next[u]; v < n; v++, next[u] = v) {
-            if (residual[u][v] <= 0) {
-                continue;
-            }
-            if (level[v] != level[u] + 1) {
-                continue;
-            }
-            int pushed = dfsBlocking(residual, level, next, v, sink, Math.min(f, residual[u][v]));
-            if (pushed > 0) {
-                residual[u][v] -= pushed;
-                residual[v][u] += pushed;
-                return pushed;
+            if (residual[u][v] > 0 && level[v] == level[u] + 1) {
+                int pushed = dfsBlocking(
+                        residual, level, next, v, sink,
+                        Math.min(flow, residual[u][v])
+                );
+
+                if (pushed > 0) {
+                    residual[u][v] -= pushed;
+                    residual[v][u] += pushed;
+                    return pushed;
+                }
             }
         }
         return 0;
