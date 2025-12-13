@@ -1,3 +1,15 @@
+
+## Naming Conventions
+
+All algorithm categories use lowercase, plural directory names that match their Java packages.  
+For example:
+- Searching algorithms are in `searches` (`com.thealgorithms.searches`)
+- Sorting algorithms are in `sorts` (`com.thealgorithms.sorts`)
+
+This avoids older mixed forms like `Search/`, `searching/`, or `sort/` and keeps the structure consistent for contributors.
+
+
+
 # Project Structure
 
 ## src
