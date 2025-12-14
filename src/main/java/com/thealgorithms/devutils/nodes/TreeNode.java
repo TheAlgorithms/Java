@@ -12,7 +12,7 @@ package com.thealgorithms.devutils.nodes;
 public abstract class TreeNode<E> extends Node<E> {
 
     /**
-     * Refernce to the parent Node.
+     * Reference to the parent Node.
      */
     private TreeNode<E> parentNode;
     /**
@@ -21,7 +21,7 @@ public abstract class TreeNode<E> extends Node<E> {
     private int depth;
 
     /**
-     * Empty contructor.
+     * Empty constructor.
      */
     public TreeNode() {
         super();
