@@ -82,6 +82,7 @@ final class BalancedBrackets {
 /**
  * Time Complexity: O(n)
  * Space Complexity: O(n)
+ * 
  * reasons:
  * 1. The time complexity of the isBalanced method is O(n), where n is the
  * length of the input string.
