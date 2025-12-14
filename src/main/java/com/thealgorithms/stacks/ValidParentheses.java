@@ -7,7 +7,8 @@ import java.util.Stack;
 /**
  * Valid Parentheses Problem
  *
- * Given a string containing just the characters '(', ')', '{', '}', '[' and ']',
+ * Given a string containing just the characters '(', ')', '{', '}', '[' and
+ * ']',
  * determine if the input string is valid.
  *
  * An input string is valid if:
@@ -72,3 +73,13 @@ public final class ValidParentheses {
         return stack.isEmpty();
     }
 }
+
+/**
+ * Time Complexity: O(n)
+ * The algorithm scans the string once, and all operations inside
+ * the loop (map lookup, stack push/pop) run in constant time.
+ * 
+ * Space Complexity: O(n)
+ * In the worst case, the stack holds half of the characters, growing linearly
+ * with input size.
+ */

@@ -27,6 +27,7 @@ public class GreatestElementConstantTime {
      * Pushes an element onto the top of the stack.
      * Checks if the element is the maximum or not
      * If so, then pushes to the maximum stack
+     * 
      * @param data The element to be pushed onto the stack.
      */
     public void push(int data) {
@@ -63,7 +64,8 @@ public class GreatestElementConstantTime {
     /**
      * Returns the maximum element present in the stack
      *
-     * @return The element at the top of the maxStack, or null if the stack is empty.
+     * @return The element at the top of the maxStack, or null if the stack is
+     *         empty.
      */
     public Integer getMaximumElement() {
         if (maxStack.isEmpty()) {
@@ -72,3 +74,15 @@ public class GreatestElementConstantTime {
         return maxStack.peek();
     }
 }
+
+/**
+ * ime Complexity: O(1)
+ * Reason: Detailed operations like push, pop, and getMaximumElement
+ * only involve basic stack operations (push/pop/peek) and constant-time
+ * comparisons, so they all run in constant time.
+ * -----------------------------------------------------------------
+ * Space Complexity: O(n)
+ * Reason: An auxiliary stack (maxStack) is used. In the worst case (e.g.,
+ * elements pushed in ascending order), it stores all n elements.
+ * 
+ */

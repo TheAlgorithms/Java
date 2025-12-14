@@ -7,12 +7,15 @@ import java.util.function.BiFunction;
 /**
  * Utility class for evaluating postfix expressions using integer arithmetic.
  * <p>
- * Postfix notation, also known as Reverse Polish Notation (RPN), is a mathematical notation in which operators follow their operands.
- * This class provides a method to evaluate expressions written in postfix notation.
+ * Postfix notation, also known as Reverse Polish Notation (RPN), is a
+ * mathematical notation in which operators follow their operands.
+ * This class provides a method to evaluate expressions written in postfix
+ * notation.
  * </p>
  * <p>
  * For more information on postfix notation, refer to
- * <a href="https://en.wikipedia.org/wiki/Reverse_Polish_notation">Reverse Polish Notation (RPN) on Wikipedia</a>.
+ * <a href="https://en.wikipedia.org/wiki/Reverse_Polish_notation">Reverse
+ * Polish Notation (RPN) on Wikipedia</a>.
  * </p>
  */
 public final class StackPostfixNotation {
@@ -22,16 +25,16 @@ public final class StackPostfixNotation {
     private static BiFunction<Integer, Integer, Integer> getOperator(final String operationSymbol) {
         // note the order of operands
         switch (operationSymbol) {
-        case "+":
-            return (a, b) -> b + a;
-        case "-":
-            return (a, b) -> b - a;
-        case "*":
-            return (a, b) -> b * a;
-        case "/":
-            return (a, b) -> b / a;
-        default:
-            throw new IllegalArgumentException("exp contains an unknown operation.");
+            case "+":
+                return (a, b) -> b + a;
+            case "-":
+                return (a, b) -> b - a;
+            case "*":
+                return (a, b) -> b * a;
+            case "/":
+                return (a, b) -> b / a;
+            default:
+                throw new IllegalArgumentException("exp contains an unknown operation.");
         }
     }
 
@@ -70,3 +73,10 @@ public final class StackPostfixNotation {
         return s.pop();
     }
 }
+/**
+ * Time Complexity: O(n)
+ * Reason - The expression is tokenized and scanned once. Each operation takes
+ * constant time.
+ * Space Complexity: O(n)
+ * Reason - The stack can store up to O(n) operands in the worst case.
+ */

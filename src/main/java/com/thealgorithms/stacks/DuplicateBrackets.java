@@ -3,8 +3,10 @@ package com.thealgorithms.stacks;
 import java.util.Stack;
 
 /**
- * Class for detecting unnecessary or redundant brackets in a mathematical expression.
- * Assumes the expression is balanced (i.e., all opening brackets have matching closing brackets).
+ * Class for detecting unnecessary or redundant brackets in a mathematical
+ * expression.
+ * Assumes the expression is balanced (i.e., all opening brackets have matching
+ * closing brackets).
  */
 public final class DuplicateBrackets {
     private DuplicateBrackets() {
@@ -42,3 +44,12 @@ public final class DuplicateBrackets {
         return false;
     }
 }
+
+/**
+ * Time Complexity: O(n)
+ * reason - Iterates through the expression once; each character is processed
+ * constant times.
+ * Space Complexity: O(n)
+ * reason - Stack stores characters, growing linearly with expression length in
+ * worst case.
+ */

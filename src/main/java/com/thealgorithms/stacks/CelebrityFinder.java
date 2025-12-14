@@ -5,8 +5,10 @@ import java.util.Stack;
 /**
  * Solves the celebrity problem using a stack-based algorithm.
  *
- * <p>Celebrity is someone known by everyone but doesn't know anyone else.
- * <p>Applications: Graph theory and social network analysis.
+ * <p>
+ * Celebrity is someone known by everyone but doesn't know anyone else.
+ * <p>
+ * Applications: Graph theory and social network analysis.
  *
  * @author Hardvan
  */
@@ -50,3 +52,15 @@ public final class CelebrityFinder {
         return candidate;
     }
 }
+
+/**
+ * Time Complexity: O(n)
+ * reason:- Because each person is processed a constant number of times:
+ * once when pushed, once during candidate elimination, and once during
+ * verification.
+ * -----------------------------------------------------------------------------
+ * 
+ * Space Complexity: O(n)
+ * reason:- Due to the stack storing up to n people in the worst case.
+ *
+ */

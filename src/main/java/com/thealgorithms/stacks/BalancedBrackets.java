@@ -78,6 +78,7 @@ final class BalancedBrackets {
         return bracketsStack.isEmpty();
     }
 }
+
 /**
  * Time Complexity: O(n)
  * Space Complexity: O(n)

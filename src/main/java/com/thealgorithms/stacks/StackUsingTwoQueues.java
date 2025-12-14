@@ -89,3 +89,11 @@ public class StackUsingTwoQueues {
         return mainQueue.size();
     }
 }
+/*
+ * push: O(n) — requires moving all existing elements to maintain LIFO order.
+ * pop: O(1) — direct removal from the main queue.
+ * peek: O(1).
+ * isEmpty / size: O(1).
+ * -----------------------------------------------------------------
+ * Space Complexity: O(n) — total elements stored across two queues.
+ */
