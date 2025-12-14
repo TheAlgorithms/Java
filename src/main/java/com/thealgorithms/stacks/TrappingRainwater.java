@@ -1,4 +1,5 @@
 package com.thealgorithms.stacks;
+
 /**
  * Trapping Rainwater Problem
  * Given an array of non-negative integers representing the height of bars,
@@ -46,3 +47,10 @@ public final class TrappingRainwater {
         return result;
     }
 }
+
+/**
+ * Time Complexity - O(n)
+ * reason:- The algorithm scans the array once.
+ * Space Complexity - O(1)
+ * reason:- Constant space is used.
+ */
