@@ -1,7 +1,7 @@
 package com.thealgorithms.datastructures.trees;
 
 /*
-* Avl is algo that balance itself while adding new alues to tree
+* Avl is algo that balance itself while adding new values to tree
 * by rotating branches of binary tree and make itself Binary seaarch tree
 * there are four cases which has to tackle
 * rotating - left right ,left left,right right,right left
