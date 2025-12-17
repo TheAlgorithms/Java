@@ -30,7 +30,7 @@ public final class ExtendedEuclideanAlgorithm {
     public static long[] extendedGCD(long a, long b) {
         if (b == 0) {
             // Base case: gcd(a, 0) = a. The equation is a*1 + 0*0 = a.
-            return new long[] { a, 1, 0 };
+            return new long[] {a, 1, 0};
         }
 
         // Recursive call
@@ -43,6 +43,6 @@ public final class ExtendedEuclideanAlgorithm {
         long x = y1;
         long y = x1 - a / b * y1;
 
-        return new long[] { gcd, x, y };
+        return new long[] {gcd, x, y};
     }
 }
