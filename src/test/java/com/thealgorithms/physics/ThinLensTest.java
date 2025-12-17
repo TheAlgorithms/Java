@@ -1,6 +1,7 @@
 package com.thealgorithms.physics;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+
 import org.junit.jupiter.api.Test;
 
 class ThinLensTest {
