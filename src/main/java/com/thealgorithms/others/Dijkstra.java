@@ -1,9 +1,10 @@
 package com.thealgorithms.others;
 
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.PriorityQueue;
-import java.util.Comparator;
+
 /**
  * Dijkstra's algorithm,is a graph search algorithm that solves the
  * single-source shortest path problem for a graph with nonnegative edge path
