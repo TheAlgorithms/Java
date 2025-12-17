@@ -266,7 +266,6 @@ public class SpreadSort implements SortAlgorithm {
          *
          * @return an array containing all elements in the bucket
          */
-        @SuppressWarnings("unchecked")
         T[] toArray() {
             return Arrays.copyOf(elements, size);
         }

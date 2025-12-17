@@ -30,14 +30,12 @@ public final class HighestResponseRatioNextScheduling {
      * Represents a process in the scheduling algorithm.
      */
     private static class Process {
-        String name;
         int arrivalTime;
         int burstTime;
         int turnAroundTime;
         boolean finished;
 
         Process(String name, int arrivalTime, int burstTime) {
-            this.name = name;
             this.arrivalTime = arrivalTime;
             this.burstTime = burstTime;
             this.turnAroundTime = 0;

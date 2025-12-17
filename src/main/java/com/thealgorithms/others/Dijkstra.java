@@ -1,9 +1,10 @@
 package com.thealgorithms.others;
 
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.NavigableSet;
-import java.util.TreeSet;
+import java.util.PriorityQueue;
+
 /**
  * Dijkstra's algorithm,is a graph search algorithm that solves the
  * single-source shortest path problem for a graph with nonnegative edge path
@@ -12,7 +13,10 @@ import java.util.TreeSet;
  * <p>
  * NOTE: The inputs to Dijkstra's algorithm are a directed and weighted graph
  * consisting of 2 or more nodes, generally represented by an adjacency matrix
- * or list, and a start node.
+ * or list, and a start node. This implementation uses a binary heap
+ * (Java's {@link PriorityQueue}) to achieve a time complexity of
+ * O((V + E) log V) in practice. Practical use-cases include GPS routing and
+ * network routing where all edge weights are non-negative.
  *
  * <p>
  * Original source of code:
@@ -182,43 +186,69 @@ class Graph {
             return;
         }
         final Vertex source = graph.get(startName);
-        NavigableSet<Vertex> q = new TreeSet<>();
 
-        // set-up vertices
+        // initialize distances
         for (Vertex v : graph.values()) {
             v.previous = v == source ? source : null;
             v.dist = v == source ? 0 : Integer.MAX_VALUE;
-            q.add(v);
         }
 
-        dijkstra(q);
+        // Priority queue of (vertex, knownDist) entries. We push new entries when
+        // a shorter distance is found; stale entries are ignored when polled.
+        PriorityQueue<NodeEntry> pq = new PriorityQueue<>(Comparator
+                .comparingInt((NodeEntry e) -> e.dist)
+                .thenComparing(e -> e.vertex.name));
+
+        pq.add(new NodeEntry(source, 0));
+
+        dijkstra(pq);
+    }
+    /**
+     * Implementation of dijkstra's algorithm using a priority queue of entries.
+     */
+    private void dijkstra(final PriorityQueue<NodeEntry> pq) {
+        while (!pq.isEmpty()) {
+            final NodeEntry entry = pq.poll();
+            final Vertex u = entry.vertex;
+
+            // ignore stale/popped entries
+            if (entry.dist != u.dist) {
+                continue;
+            }
+
+            if (u.dist == Integer.MAX_VALUE) {
+                break; // remaining vertices are unreachable
+            }
+
+            // look at distances to each neighbour
+            for (Map.Entry<Vertex, Integer> a : u.neighbours.entrySet()) {
+                final Vertex v = a.getKey(); // the neighbour in this iteration
+                final int weight = a.getValue();
+
+                if (weight < 0) {
+                    throw new IllegalArgumentException("Graph contains negative edge weight: " + weight);
+                }
+
+                final int alternateDist = u.dist + weight;
+                if (alternateDist < v.dist) { // shorter path to neighbour found
+                    v.dist = alternateDist;
+                    v.previous = u;
+                    pq.add(new NodeEntry(v, alternateDist));
+                }
+            }
+        }
     }
 
     /**
-     * Implementation of dijkstra's algorithm using a binary heap.
+     * Helper entry for the priority queue to avoid costly removals (no decrease-key).
      */
-    private void dijkstra(final NavigableSet<Vertex> q) {
-        Vertex u;
-        Vertex v;
-        while (!q.isEmpty()) {
-            // vertex with shortest distance (first iteration will return source)
-            u = q.pollFirst();
-            if (u.dist == Integer.MAX_VALUE) {
-                break; // we can ignore u (and any other remaining vertices) since they are
-                       // unreachable
-            }
-            // look at distances to each neighbour
-            for (Map.Entry<Vertex, Integer> a : u.neighbours.entrySet()) {
-                v = a.getKey(); // the neighbour in this iteration
+    private static class NodeEntry {
+        final Vertex vertex;
+        final int dist;
 
-                final int alternateDist = u.dist + a.getValue();
-                if (alternateDist < v.dist) { // shorter path to neighbour found
-                    q.remove(v);
-                    v.dist = alternateDist;
-                    v.previous = u;
-                    q.add(v);
-                }
-            }
+        NodeEntry(Vertex vertex, int dist) {
+            this.vertex = vertex;
+            this.dist = dist;
         }
     }
 

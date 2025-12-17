@@ -22,7 +22,6 @@ public class StackArray<T> implements Stack<T> {
     /**
      * Creates a stack with a default capacity.
      */
-    @SuppressWarnings("unchecked")
     public StackArray() {
         this(DEFAULT_CAPACITY);
     }

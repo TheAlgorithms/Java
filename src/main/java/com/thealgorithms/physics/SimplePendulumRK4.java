@@ -8,10 +8,6 @@ package com.thealgorithms.physics;
  */
 public final class SimplePendulumRK4 {
 
-    private SimplePendulumRK4() {
-        throw new AssertionError("No instances.");
-    }
-
     private final double length; // meters
     private final double g; // acceleration due to gravity (m/s^2)
 

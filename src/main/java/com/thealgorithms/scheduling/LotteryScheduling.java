@@ -11,8 +11,6 @@ import java.util.Random;
  * Processes with more tickets have a higher chance of being selected.
  */
 public final class LotteryScheduling {
-    private LotteryScheduling() {
-    }
 
     private List<Process> processes;
     private Random random;

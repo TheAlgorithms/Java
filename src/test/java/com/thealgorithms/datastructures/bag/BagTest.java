@@ -99,7 +99,7 @@ class BagTest {
     void testIteratorEmptyBag() {
         Bag<String> bag = new Bag<>();
         int count = 0;
-        for (String ignored : bag) {
+        for (String item : bag) {
             org.junit.jupiter.api.Assertions.fail("Iterator should not return any items for an empty bag");
         }
         assertEquals(0, count, "Iterator should not traverse any items in an empty bag");

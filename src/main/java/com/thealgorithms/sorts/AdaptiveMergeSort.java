@@ -1,7 +1,6 @@
 package com.thealgorithms.sorts;
 
 public class AdaptiveMergeSort implements SortAlgorithm {
-    @SuppressWarnings("unchecked")
     public <T extends Comparable<T>> T[] sort(T[] array) {
         if (array.length <= 1) {
             return array;
