@@ -25,7 +25,10 @@ public class DijkstraPriorityQueueTest {
     @Test
     void testSimpleGraph() {
         Map<Integer, List<DijkstraPriorityQueue.Edge>> graph = new HashMap<>();
-        graph.put(0, List.of(new DijkstraPriorityQueue.Edge(1, 7), new DijkstraPriorityQueue.Edge(2, 9)));
+        graph.put(
+            0,
+            List.of(
+                new DijkstraPriorityQueue.Edge(1, 7), new DijkstraPriorityQueue.Edge(2, 9)));
         graph.put(1, List.of(new DijkstraPriorityQueue.Edge(2, 10)));
         graph.put(2, new ArrayList<>());
 
@@ -36,10 +39,19 @@ public class DijkstraPriorityQueueTest {
 
     @Test
     void testShorterPathFoundLater() {
-        // This ensures the 'if (dist[u] + edge.weight < dist[edge.target])' logic is fully tested
+        // This ensures the 'if (dist[u] + edge.weight < dist[edge.target])' logic
+        // is fully tested
         Map<Integer, List<DijkstraPriorityQueue.Edge>> graph = new HashMap<>();
-        graph.put(0, List.of(new DijkstraPriorityQueue.Edge(1, 10), new DijkstraPriorityQueue.Edge(2, 2)));
-        graph.put(2, List.of(new DijkstraPriorityQueue.Edge(1, 3))); // Path 0->2->1 is shorter (5) than 0->1 (10)
+        graph.put(
+            0,
+            List.of(
+                new DijkstraPriorityQueue.Edge(1, 10),
+                new DijkstraPriorityQueue.Edge(2, 2)));
+        graph.put(
+            2,
+            List.of(
+                new DijkstraPriorityQueue.Edge(1, 3))); // Path 0->2->1 is shorter (5)
+        // than 0->1 (10)
 
         int[] result = dijkstra.runDijkstra(0, graph, 3);
         int[] expected = {0, 5, 2};
@@ -51,7 +63,10 @@ public class DijkstraPriorityQueueTest {
         // This forces 'if (d > dist[u]) continue;' to execute
         Map<Integer, List<DijkstraPriorityQueue.Edge>> graph = new HashMap<>();
         // Two edges to the same target: the PQ will have two entries for node 1
-        graph.put(0, List.of(new DijkstraPriorityQueue.Edge(1, 10), new DijkstraPriorityQueue.Edge(1, 2)));
+        graph.put(
+            0,
+            List.of(
+                new DijkstraPriorityQueue.Edge(1, 10), new DijkstraPriorityQueue.Edge(1, 2)));
 
         int[] result = dijkstra.runDijkstra(0, graph, 2);
         int[] expected = {0, 2};
