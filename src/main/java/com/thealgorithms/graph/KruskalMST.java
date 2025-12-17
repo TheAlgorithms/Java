@@ -3,6 +3,7 @@ package com.thealgorithms.graph;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Objects;
 
 /**
  * Implementation of Kruskal's Algorithm to find
@@ -22,18 +23,22 @@ public final class KruskalMST {
      * @param edges list of all edges in the graph
      * @return list of edges forming the MST
      * @throws IllegalArgumentException if vertices <= 0
+     * @throws NullPointerException if edges is null
      */
     public static List<Edge> findMST(final int vertices, final List<Edge> edges) {
         if (vertices <= 0) {
             throw new IllegalArgumentException("Number of vertices must be positive");
         }
 
+        Objects.requireNonNull(edges, "Edges list must not be null");
+
+        final List<Edge> sortedEdges = new ArrayList<>(edges);
+        Collections.sort(sortedEdges);
+
         final List<Edge> mst = new ArrayList<>();
         final DisjointSetUnion dsu = new DisjointSetUnion(vertices);
 
-        Collections.sort(edges);
-
-        for (final Edge edge : edges) {
+        for (final Edge edge : sortedEdges) {
             final int rootU = dsu.find(edge.source);
             final int rootV = dsu.find(edge.destination);
 
