@@ -59,4 +59,28 @@ public class GCDTest {
     void testArrayGcdForEmptyInput() {
         Assertions.assertEquals(GCD.gcd(new int[] {}), 0);
     }
+
+  
+
+
+@Test
+void testSameNumbers() {
+    Assertions.assertEquals(GCD.gcd(7, 7), 7);
+}
+
+@Test
+void testPrimeNumbers() {
+    Assertions.assertEquals(GCD.gcd(13, 17), 1);
+}
+
+@Test
+void testSingleElementArray() {
+    Assertions.assertEquals(GCD.gcd(new int[] {42}), 42);
+}
+
+@Test
+void testLargeNumbers() {
+    Assertions.assertEquals(GCD.gcd(123456, 789012), 12);
+}
+
 }
