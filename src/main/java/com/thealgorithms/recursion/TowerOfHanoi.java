@@ -12,9 +12,17 @@ public final class TowerOfHanoi {
         // Utility class
     }
 
+    /**
+     * Solves the Tower of Hanoi problem.
+     *
+     * @param n number of disks
+     * @param src source rod
+     * @param helper auxiliary rod
+     * @param dest destination rod
+     */
     public static void towerOfHanoi(int n, char src, char helper, char dest) {
         if (n == 1) {
-            System.out.println("Move disk " + n + " from " + src + " to " + dest);
+            System.out.println("Move disk 1 from " + src + " to " + dest);
             return;
         }
 
@@ -23,4 +31,3 @@ public final class TowerOfHanoi {
         towerOfHanoi(n - 1, helper, src, dest);
     }
 }
-
