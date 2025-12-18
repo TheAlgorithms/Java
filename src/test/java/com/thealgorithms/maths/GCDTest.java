@@ -6,81 +6,85 @@ import org.junit.jupiter.api.Test;
 public class GCDTest {
 
     @Test
-    void test1() {
+    void testNegativeAndZeroThrowsException() {
         Assertions.assertThrows(ArithmeticException.class, () -> GCD.gcd(-1, 0));
     }
 
     @Test
-    void test2() {
+    void testPositiveAndNegativeThrowsException() {
         Assertions.assertThrows(ArithmeticException.class, () -> GCD.gcd(10, -2));
     }
 
     @Test
-    void test3() {
+    void testBothNegativeThrowsException() {
         Assertions.assertThrows(ArithmeticException.class, () -> GCD.gcd(-5, -3));
     }
 
     @Test
-    void test4() {
-        Assertions.assertEquals(GCD.gcd(0, 2), 2);
+    void testZeroAndPositiveReturnsPositive() {
+        Assertions.assertEquals(2, GCD.gcd(0, 2));
     }
 
     @Test
-    void test5() {
-        Assertions.assertEquals(GCD.gcd(10, 0), 10);
+    void testPositiveAndZeroReturnsPositive() {
+        Assertions.assertEquals(10, GCD.gcd(10, 0));
     }
 
     @Test
-    void test6() {
-        Assertions.assertEquals(GCD.gcd(1, 0), 1);
+    void testOneAndZeroReturnsOne() {
+        Assertions.assertEquals(1, GCD.gcd(1, 0));
     }
 
     @Test
-    void test7() {
-        Assertions.assertEquals(GCD.gcd(9, 6), 3);
+    void testTwoPositiveNumbers() {
+        Assertions.assertEquals(3, GCD.gcd(9, 6));
     }
 
     @Test
-    void test8() {
-        Assertions.assertEquals(GCD.gcd(48, 18, 30, 12), 6);
+    void testMultipleArgumentsGcd() {
+        Assertions.assertEquals(6, GCD.gcd(48, 18, 30, 12));
     }
 
     @Test
-    void testArrayGcd1() {
-        Assertions.assertEquals(GCD.gcd(new int[] {9, 6}), 3);
+    void testArrayInputGcd() {
+        Assertions.assertEquals(3, GCD.gcd(new int[] {9, 6}));
     }
 
     @Test
-    void testArrayGcd2() {
-        Assertions.assertEquals(GCD.gcd(new int[] {2 * 3 * 5 * 7, 2 * 5 * 5 * 5, 2 * 5 * 11, 5 * 5 * 5 * 13}), 5);
+    void testArrayWithCommonFactor() {
+        Assertions.assertEquals(
+            5,
+            GCD.gcd(new int[] {
+                2 * 3 * 5 * 7,
+                2 * 5 * 5 * 5,
+                2 * 5 * 11,
+                5 * 5 * 5 * 13
+            })
+        );
     }
 
     @Test
-    void testArrayGcdForEmptyInput() {
-        Assertions.assertEquals(GCD.gcd(new int[] {}), 0);
+    void testEmptyArrayReturnsZero() {
+        Assertions.assertEquals(0, GCD.gcd(new int[] {}));
     }
 
-  
+    @Test
+    void testSameNumbers() {
+        Assertions.assertEquals(7, GCD.gcd(7, 7));
+    }
 
+    @Test
+    void testPrimeNumbersHaveGcdOne() {
+        Assertions.assertEquals(1, GCD.gcd(13, 17));
+    }
 
-@Test
-void testSameNumbers() {
-    Assertions.assertEquals(GCD.gcd(7, 7), 7);
-}
+    @Test
+    void testSingleElementArrayReturnsElement() {
+        Assertions.assertEquals(42, GCD.gcd(new int[] {42}));
+    }
 
-@Test
-void testPrimeNumbers() {
-    Assertions.assertEquals(GCD.gcd(13, 17), 1);
-}
-
-@Test
-void testSingleElementArray() {
-    Assertions.assertEquals(GCD.gcd(new int[] {42}), 42);
-}
-
-@Test
-void testLargeNumbers() {
-    Assertions.assertEquals(GCD.gcd(123456, 789012), 12);
-}
-
+    @Test
+    void testLargeNumbers() {
+        Assertions.assertEquals(12, GCD.gcd(123456, 789012));
+    }
 }
