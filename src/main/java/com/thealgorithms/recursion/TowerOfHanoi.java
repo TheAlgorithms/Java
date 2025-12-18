@@ -1,10 +1,10 @@
 package com.thealgorithms.recursion;
 
 /**
- * Tower of Hanoi problem using recursion.
+ * Tower of Hanoi problem solved using recursion.
  *
  * <p>Time Complexity: O(2^n)</p>
- * <p>Space Complexity: O(n) (recursion stack)</p>
+ * <p>Space Complexity: O(n)</p>
  */
 public final class TowerOfHanoi {
 
@@ -16,18 +16,24 @@ public final class TowerOfHanoi {
      * Solves the Tower of Hanoi problem.
      *
      * @param n number of disks
-     * @param src source rod
+     * @param source source rod
      * @param helper auxiliary rod
-     * @param dest destination rod
+     * @param destination destination rod
      */
-    public static void towerOfHanoi(int n, char src, char helper, char dest) {
+    public static void towerOfHanoi(int n, char source, char helper, char destination) {
         if (n == 1) {
-            System.out.println("Move disk 1 from " + src + " to " + dest);
+            System.out.println(
+                "Move disk 1 from " + source + " to " + destination
+            );
             return;
         }
 
-        towerOfHanoi(n - 1, src, dest, helper);
-        System.out.println("Move disk " + n + " from " + src + " to " + dest);
-        towerOfHanoi(n - 1, helper, src, dest);
+        towerOfHanoi(n - 1, source, destination, helper);
+
+        System.out.println(
+            "Move disk " + n + " from " + source + " to " + destination
+        );
+
+        towerOfHanoi(n - 1, helper, source, destination);
     }
 }
