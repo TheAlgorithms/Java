@@ -2,6 +2,7 @@ package com.thealgorithms.recursion;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
+
 import org.junit.jupiter.api.Test;
 
 class FactorialRecursionTest {
@@ -28,7 +29,6 @@ class FactorialRecursionTest {
 
     @Test
     void testFactorialOfNegativeNumber() {
-        assertThrows(IllegalArgumentException.class,
-                () -> FactorialRecursion.factorial(-1));
+        assertThrows(IllegalArgumentException.class, () -> FactorialRecursion.factorial(-1));
     }
 }
