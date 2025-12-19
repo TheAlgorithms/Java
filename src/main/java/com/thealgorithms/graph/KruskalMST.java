@@ -50,7 +50,6 @@ public final class KruskalMST {
         }
       }
     }
-
     return mst;
   }
 
