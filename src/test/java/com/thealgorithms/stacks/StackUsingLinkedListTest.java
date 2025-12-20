@@ -1,9 +1,9 @@
 package com.thealgorithms.stacks;
-
+import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+
 
 public class StackUsingLinkedListTest {
     private StackUsingLinkedList<Integer> stack;
@@ -51,8 +51,7 @@ public class StackUsingLinkedListTest {
     }
     @Test
     public void testPeekOnEmptyStackThrowsException() {
-        RuntimeException exception =
-                assertThrows(RuntimeException.class, () -> stack.peek());
+        RuntimeException exception = assertThrows(RuntimeException.class, () -> stack.peek());
         assertEquals("Stack is empty", exception.getMessage());
     }
 }
