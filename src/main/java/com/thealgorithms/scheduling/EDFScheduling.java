@@ -10,8 +10,6 @@ import java.util.List;
  * This scheduling algorithm is ideal for real-time systems where meeting deadlines is critical.
  */
 public final class EDFScheduling {
-    private EDFScheduling() {
-    }
 
     private List<Process> processes;
 

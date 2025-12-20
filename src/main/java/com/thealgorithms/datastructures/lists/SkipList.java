@@ -227,7 +227,6 @@ public class SkipList<E extends Comparable<E>> {
         private final List<Node<E>> forward;
         private final List<Node<E>> backward;
 
-        @SuppressWarnings("unchecked")
         Node(E value, int height) {
             this.value = value;
             this.height = height;

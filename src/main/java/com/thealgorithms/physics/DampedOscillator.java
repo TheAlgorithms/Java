@@ -34,10 +34,6 @@ public final class DampedOscillator {
     /** Damping coefficient (s⁻¹). */
     private final double gamma;
 
-    private DampedOscillator() {
-        throw new AssertionError("No instances.");
-    }
-
     /**
      * Constructs a damped oscillator model.
      *

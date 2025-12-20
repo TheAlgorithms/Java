@@ -19,11 +19,11 @@ public class PerfectBinarySearch<T> implements SearchAlgorithm {
     /**
      * @param array is an array where the element should be found
      * @param key is an element which should be found
-     * @param <T> is any comparable type
+     * @param <U> is any comparable type
      * @return index of the element
      */
     @Override
-    public <T extends Comparable<T>> int find(T[] array, T key) {
+    public <U extends Comparable<U>> int find(U[] array, U key) {
         return search(array, key, 0, array.length - 1);
     }
 

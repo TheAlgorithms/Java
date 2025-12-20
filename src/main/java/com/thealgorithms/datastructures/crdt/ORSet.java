@@ -166,7 +166,6 @@ public class ORSet<T> {
      */
     public static class Pair<T> {
         private final T element;
-        private final String uniqueTag;
 
         /**
          * Constructs a pair with the specified element and unique tag.
@@ -176,7 +175,6 @@ public class ORSet<T> {
          */
         public Pair(T element, String uniqueTag) {
             this.element = element;
-            this.uniqueTag = uniqueTag;
         }
 
         /**
