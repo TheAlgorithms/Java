@@ -49,4 +49,10 @@ public class StackUsingLinkedListTest {
     public void testPopOnEmptyStack() {
         assertThrows(RuntimeException.class, () -> stack.pop());
     }
+    @Test
+    public void testPeekOnEmptyStackThrowsException() {
+        RuntimeException exception =
+                assertThrows(RuntimeException.class, () -> stack.peek());
+        assertEquals("Stack is empty", exception.getMessage());
+    }
 }
