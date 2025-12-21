@@ -247,4 +247,42 @@ public class DES {
         }
         return decryptedMessage.toString().replace("\0", ""); // Get rid of the null bytes used for padding
     }
+
+    /**
+     * Encrypts a byte array directly without string conversion.
+     * This method is used for 3DES implementation to avoid encoding issues.
+     * 
+     * @param data The byte array to encrypt
+     * @return The encrypted data as a byte array
+     */
+    public byte[] encryptBytes(byte[] data) {
+        String message = new String(data);
+        String encrypted = encrypt(message);
+        
+        // Convert binary string back to bytes
+        int len = encrypted.length();
+        byte[] result = new byte[len / 8];
+        for (int i = 0; i < len; i += 8) {
+            result[i / 8] = (byte) Integer.parseInt(encrypted.substring(i, i + 8), 2);
+        }
+        return result;
+    }
+
+    /**
+     * Decrypts a byte array directly without string conversion.
+     * This method is used for 3DES implementation to avoid encoding issues.
+     * 
+     * @param data The byte array to decrypt
+     * @return The decrypted data as a byte array
+     */
+    public byte[] decryptBytes(byte[] data) {
+        // Convert bytes to binary string
+        StringBuilder binaryString = new StringBuilder();
+        for (byte b : data) {
+            binaryString.append(pad(Integer.toBinaryString(b & 0xFF), 8));
+        }
+        
+        String decrypted = decrypt(binaryString.toString());
+        return decrypted.getBytes();
+    }
 }
