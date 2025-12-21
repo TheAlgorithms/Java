@@ -202,22 +202,29 @@ public class DES {
      * @return The encrypted message, as a binary string
      */
     public String encrypt(String message) {
+        return encrypt(message.getBytes());
+    }
+
+    /**
+     * @param data Byte array to be encrypted
+     * @return The encrypted message, as a binary string
+     */
+    public String encrypt(byte[] data) {
         StringBuilder encryptedMessage = new StringBuilder();
-        int l = message.length();
+        int l = data.length;
         int i;
         int j;
+        byte[] paddedData = data;
         if (l % 8 != 0) {
             int desiredLength = (l / 8 + 1) * 8;
-            l = desiredLength;
-            message = padLast(message, desiredLength);
+            paddedData = new byte[desiredLength];
+            System.arraycopy(data, 0, paddedData, 0, l);
         }
 
-        for (i = 0; i < l; i += 8) {
-            String block = message.substring(i, i + 8);
+        for (i = 0; i < paddedData.length; i += 8) {
             StringBuilder bitBlock = new StringBuilder();
-            byte[] bytes = block.getBytes();
             for (j = 0; j < 8; j++) {
-                bitBlock.append(pad(Integer.toBinaryString(bytes[j]), 8));
+                bitBlock.append(pad(Integer.toBinaryString(paddedData[i + j] & 0xFF), 8));
             }
             encryptedMessage.append(encryptBlock(bitBlock.toString(), subKeys));
         }
@@ -229,7 +236,16 @@ public class DES {
      * @return The decrypted String, in plain English
      */
     public String decrypt(String message) {
-        StringBuilder decryptedMessage = new StringBuilder();
+        return new String(decryptToBytes(message));
+    }
+
+    /**
+     * @param message The encrypted string. Expects it to be a multiple of 64 bits, in binary format
+     * @return The decrypted byte array
+     */
+    public byte[] decryptToBytes(String message) {
+        int totalBytes = (message.length() / 64) * 8;
+        byte[] decryptedData = new byte[totalBytes];
         int l = message.length();
         int i;
         int j;
@@ -243,8 +259,8 @@ public class DES {
             for (j = 0; j < 64; j += 8) {
                 res[j / 8] = (byte) Integer.parseInt(result.substring(j, j + 8), 2);
             }
-            decryptedMessage.append(new String(res));
+            System.arraycopy(res, 0, decryptedData, (i / 64) * 8, 8);
         }
-        return decryptedMessage.toString().replace("\0", ""); // Get rid of the null bytes used for padding
+        return decryptedData;
     }
 }
