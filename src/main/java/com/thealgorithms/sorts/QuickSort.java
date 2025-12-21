@@ -1,4 +1,5 @@
 package com.thealgorithms.sorts;
+
 /**
  * QuickSort is a divide-and-conquer sorting algorithm.
  *
@@ -40,7 +41,7 @@ class QuickSort implements SortAlgorithm {
      * The sorting process
      *
      * @param array The array to be sorted
-     * @param left The first index of an array
+     * @param left  The first index of an array
      * @param right The last index of an array
      */
     private static <T extends Comparable<T>> void doSort(T[] array, final int left, final int right) {
@@ -59,13 +60,13 @@ class QuickSort implements SortAlgorithm {
      * Randomizes the array to avoid already ordered or nearly ordered sequences
      *
      * @param array The array to be sorted
-     * @param left The first index of an array
+     * @param left  The first index of an array
      * @param right The last index of an array
      * @return the partition index of the array
      */
     private static <T extends Comparable<T>> int randomPartition(T[] array, final int left, final int right) {
-       // Randomizing the pivot helps avoid worst-case performance
-       // for already sorted or nearly sorted arrays
+        // Randomizing the pivot helps avoid worst-case performance
+        // for already sorted or nearly sorted arrays
         final int randomIndex = left + (int) (Math.random() * (right - left + 1));
         SortUtils.swap(array, randomIndex, right);
         return partition(array, left, right);
@@ -75,13 +76,12 @@ class QuickSort implements SortAlgorithm {
      * This method finds the partition index for an array
      *
      * @param array The array to be sorted
-     * @param left The first index of an array
+     * @param left  The first index of an array
      * @param right The last index of an array
-     * array
      */
     private static <T extends Comparable<T>> int partition(T[] array, int left, int right) {
         final int mid = (left + right) >>> 1;
-       //  Choose the middle element as the pivot
+        // Choose the middle element as the pivot
         final T pivot = array[mid];
         // Move the left and right pointers towards each other
         while (left <= right) {
