@@ -1,4 +1,4 @@
-package com.thealgorithms.maths;
+package com.thealgorithms.recursion;
 
 public final class FactorialRecursion {
     private FactorialRecursion() {
