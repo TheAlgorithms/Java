@@ -1,34 +1,29 @@
 package com.thealgorithms.recursion;
 
+import java.util.stream.Stream;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
-
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
 
-class FactorialRecursionTest {
+import com.thealgorithms.recursion.FactorialRecursion;
 
-    @Test
-    void testFactorialOfZero() {
-        assertEquals(1, FactorialRecursion.factorial(0));
+public class FactorialRecursionTest {
+    @ParameterizedTest
+    @MethodSource("inputStream")
+    void testFactorialRecursion(long expected, int number) {
+        assertEquals(expected, FactorialRecursion.factorial(number));
+    }
+
+    private static Stream<Arguments> inputStream() {
+        return Stream.of(Arguments.of(1, 0), Arguments.of(1, 1), Arguments.of(2, 2), Arguments.of(6, 3), Arguments.of(120, 5));
     }
 
     @Test
-    void testFactorialOfOne() {
-        assertEquals(1, FactorialRecursion.factorial(1));
-    }
-
-    @Test
-    void testFactorialOfPositiveNumber() {
-        assertEquals(120, FactorialRecursion.factorial(5));
-    }
-
-    @Test
-    void testFactorialOfLargerNumber() {
-        assertEquals(3628800, FactorialRecursion.factorial(10));
-    }
-
-    @Test
-    void testFactorialOfNegativeNumber() {
+    void testThrowsForNegativeInput() {
         assertThrows(IllegalArgumentException.class, () -> FactorialRecursion.factorial(-1));
     }
 }
