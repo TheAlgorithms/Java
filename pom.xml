@@ -42,7 +42,7 @@
         <dependency>
             <groupId>org.mockito</groupId>
             <artifactId>mockito-core</artifactId>
-            <version>5.20.0</version>
+            <version>5.21.0</version>
             <scope>test</scope>
         </dependency>
         <dependency>
@@ -112,7 +112,7 @@
                     <dependency>
                     <groupId>com.puppycrawl.tools</groupId>
                     <artifactId>checkstyle</artifactId>
-                    <version>12.2.0</version>
+                    <version>12.3.0</version>
                     </dependency>
                 </dependencies>
             </plugin>
@@ -127,7 +127,7 @@
                         <plugin>
                             <groupId>com.mebigfatguy.fb-contrib</groupId>
                             <artifactId>fb-contrib</artifactId>
-                            <version>7.7.1</version>
+                            <version>7.7.2</version>
                         </plugin>
                         <plugin>
                             <groupId>com.h3xstream.findsecbugs</groupId>
