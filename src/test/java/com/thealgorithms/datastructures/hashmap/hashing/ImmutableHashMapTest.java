@@ -4,14 +4,14 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+
 import org.junit.jupiter.api.Test;
 
 class ImmutableHashMapTest {
 
     @Test
     void testEmptyMap() {
-        ImmutableHashMap<String, Integer> map
-                = ImmutableHashMap.<String, Integer>empty();
+        ImmutableHashMap<String, Integer> map = ImmutableHashMap.<String, Integer>empty();
 
         assertEquals(0, map.size());
         assertNull(map.get("A"));
@@ -19,8 +19,7 @@ class ImmutableHashMapTest {
 
     @Test
     void testPutDoesNotModifyOriginalMap() {
-        ImmutableHashMap<String, Integer> map1
-                = ImmutableHashMap.<String, Integer>empty();
+        ImmutableHashMap<String, Integer> map1 = ImmutableHashMap.<String, Integer>empty();
 
         ImmutableHashMap<String, Integer> map2 = map1.put("A", 1);
 
@@ -32,10 +31,7 @@ class ImmutableHashMapTest {
 
     @Test
     void testMultiplePuts() {
-        ImmutableHashMap<String, Integer> map
-                = ImmutableHashMap.<String, Integer>empty()
-                        .put("A", 1)
-                        .put("B", 2);
+        ImmutableHashMap<String, Integer> map = ImmutableHashMap.<String, Integer>empty().put("A", 1).put("B", 2);
 
         assertEquals(2, map.size());
         assertEquals(1, map.get("A"));
@@ -44,9 +40,7 @@ class ImmutableHashMapTest {
 
     @Test
     void testContainsKey() {
-        ImmutableHashMap<String, Integer> map
-                = ImmutableHashMap.<String, Integer>empty()
-                        .put("X", 100);
+        ImmutableHashMap<String, Integer> map = ImmutableHashMap.<String, Integer>empty().put("X", 100);
 
         assertTrue(map.containsKey("X"));
         assertFalse(map.containsKey("Y"));
@@ -54,9 +48,7 @@ class ImmutableHashMapTest {
 
     @Test
     void testNullKey() {
-        ImmutableHashMap<String, Integer> map
-                = ImmutableHashMap.<String, Integer>empty()
-                        .put(null, 50);
+        ImmutableHashMap<String, Integer> map = ImmutableHashMap.<String, Integer>empty().put(null, 50);
 
         assertEquals(50, map.get(null));
     }

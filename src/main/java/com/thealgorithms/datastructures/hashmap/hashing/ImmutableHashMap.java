@@ -63,8 +63,7 @@ public final class ImmutableHashMap<K, V> {
         Node<K, V> current = table[index];
 
         while (current != null) {
-            if ((key == null && current.key == null)
-                    || (key != null && key.equals(current.key))) {
+            if ((key == null && current.key == null) || (key != null && key.equals(current.key))) {
                 return current.value;
             }
             current = current.next;
@@ -95,9 +94,7 @@ public final class ImmutableHashMap<K, V> {
      * Computes hash index for a given key.
      */
     private int hash(K key) {
-        return key == null
-                ? 0
-                : (key.hashCode() & Integer.MAX_VALUE) % table.length;
+        return key == null ? 0 : (key.hashCode() & Integer.MAX_VALUE) % table.length;
     }
 
     /**
