@@ -2,10 +2,9 @@ package com.thealgorithms.datastructures.hashmap.hashing;
 
 /**
  * Immutable HashMap implementation using separate chaining.
- * <p>
- * This HashMap does not allow modification of existing instances. Any update
- * operation returns a new ImmutableHashMap.
- * </p>
+ *
+ * <p>This HashMap does not allow modification of existing instances.
+ * Any update operation returns a new ImmutableHashMap.
  *
  * @param <K> key type
  * @param <V> value type
@@ -32,9 +31,10 @@ public final class ImmutableHashMap<K, V> {
      * @param <V> value type
      * @return empty ImmutableHashMap
      */
-    @SuppressWarnings("unchecked")
+    @SuppressWarnings({"unchecked", "rawtypes"})
     public static <K, V> ImmutableHashMap<K, V> empty() {
-        return new ImmutableHashMap<>(new Node[DEFAULT_CAPACITY], 0);
+        Node<K, V>[] table = (Node<K, V>[]) new Node[DEFAULT_CAPACITY];
+        return new ImmutableHashMap<>(table, 0);
     }
 
     /**
@@ -95,9 +95,9 @@ public final class ImmutableHashMap<K, V> {
      * Computes hash index for a given key.
      */
     private int hash(K key) {
-        return (key == null
+        return key == null
                 ? 0
-                : (key.hashCode() & Integer.MAX_VALUE) % table.length);
+                : (key.hashCode() & Integer.MAX_VALUE) % table.length;
     }
 
     /**
