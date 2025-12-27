@@ -13,7 +13,6 @@ public final class StochasticMatrix {
     private StochasticMatrix() {
         // Utility class
     }
-
     /**
      * Checks if a matrix is row-stochastic.
      *
