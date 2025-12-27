@@ -1,9 +1,10 @@
-package com.thealgorithms.maths;
+package com.thealgorithms.matrix;
 
 /**
  * Utility class to check whether a matrix is stochastic.
  * A matrix is stochastic if all its elements are non-negative
  * and the sum of each row or column is equal to 1.
+ *Reference: https://en.wikipedia.org/wiki/Stochastic_matrix
  */
 public final class StochasticMatrix {
 
