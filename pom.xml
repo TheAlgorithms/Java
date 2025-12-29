@@ -20,7 +20,7 @@
             <dependency>
                 <groupId>org.junit</groupId>
                 <artifactId>junit-bom</artifactId>
-                <version>6.0.0</version>
+                <version>6.0.1</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
@@ -42,13 +42,13 @@
         <dependency>
             <groupId>org.mockito</groupId>
             <artifactId>mockito-core</artifactId>
-            <version>5.20.0</version>
+            <version>5.21.0</version>
             <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-lang3</artifactId>
-            <version>3.19.0</version>
+            <version>3.20.0</version>
         </dependency>
         <dependency>
             <groupId>org.apache.commons</groupId>
@@ -82,7 +82,7 @@
             <plugin>
                 <groupId>org.jacoco</groupId>
                 <artifactId>jacoco-maven-plugin</artifactId>
-                <version>0.8.13</version>
+                <version>0.8.14</version>
                 <executions>
                     <execution>
                         <goals>
@@ -112,14 +112,14 @@
                     <dependency>
                     <groupId>com.puppycrawl.tools</groupId>
                     <artifactId>checkstyle</artifactId>
-                    <version>12.0.0</version>
+                    <version>12.3.0</version>
                     </dependency>
                 </dependencies>
             </plugin>
             <plugin>
                 <groupId>com.github.spotbugs</groupId>
                 <artifactId>spotbugs-maven-plugin</artifactId>
-                <version>4.9.6.0</version>
+                <version>4.9.8.2</version>
                 <configuration>
                     <excludeFilterFile>spotbugs-exclude.xml</excludeFilterFile>
                     <includeTests>true</includeTests>
@@ -127,7 +127,7 @@
                         <plugin>
                             <groupId>com.mebigfatguy.fb-contrib</groupId>
                             <artifactId>fb-contrib</artifactId>
-                            <version>7.6.15</version>
+                            <version>7.7.2</version>
                         </plugin>
                         <plugin>
                             <groupId>com.h3xstream.findsecbugs</groupId>

@@ -12,8 +12,8 @@ public final class FloodFill {
      * Get the color at the given coordinates of a 2D image
      *
      * @param image The image to be filled
-     * @param x The x co-ordinate of which color is to be obtained
-     * @param y The y co-ordinate of which color is to be obtained
+     * @param x The x coordinate of which color is to be obtained
+     * @param y The y coordinate of which color is to be obtained
      */
 
     public static int getPixel(final int[][] image, final int x, final int y) {
@@ -24,8 +24,8 @@ public final class FloodFill {
      * Put the color at the given coordinates of a 2D image
      *
      * @param image The image to be filled
-     * @param x The x co-ordinate at which color is to be filled
-     * @param y The y co-ordinate at which color is to be filled
+     * @param x The x coordinate at which color is to be filled
+     * @param y The y coordinate at which color is to be filled
      */
     public static void putPixel(final int[][] image, final int x, final int y, final int newColor) {
         image[x][y] = newColor;
@@ -35,8 +35,8 @@ public final class FloodFill {
      * Fill the 2D image with new color
      *
      * @param image The image to be filled
-     * @param x The x co-ordinate at which color is to be filled
-     * @param y The y co-ordinate at which color is to be filled
+     * @param x The x coordinate at which color is to be filled
+     * @param y The y coordinate at which color is to be filled
      * @param newColor The new color which to be filled in the image
      * @param oldColor The old color which is to be replaced in the image
      */
