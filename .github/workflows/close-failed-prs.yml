@@ -1,0 +1,156 @@
+name: Close stale PRs with failed workflows
+
+on:
+  schedule:
+    - cron: '0 3 * * *' # runs daily at 03:00 UTC
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+  pull-requests: write
+
+jobs:
+  close-stale:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Close stale PRs
+        uses: actions/github-script@v8
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            const mainBranches = ['main', 'master'];
+            const cutoffDays = 14;
+            const cutoff = new Date();
+            cutoff.setDate(cutoff.getDate() - cutoffDays);
+
+            console.log(`Checking PRs older than: ${cutoff.toISOString()}`);
+
+            try {
+              const { data: prs } = await github.rest.pulls.list({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                state: 'open',
+                sort: 'updated',
+                direction: 'asc',
+                per_page: 100
+              });
+
+              console.log(`Found ${prs.length} open PRs to check`);
+
+              for (const pr of prs) {
+                try {
+                  const updated = new Date(pr.updated_at);
+                  
+                  if (updated > cutoff) {
+                    console.log(`⏩ Skipping PR #${pr.number} - updated recently`);
+                    continue;
+                  }
+
+                  console.log(`🔍 Checking PR #${pr.number}: "${pr.title}"`);
+
+                  // Get commits
+                  const commits = await github.paginate(github.rest.pulls.listCommits, {
+                    owner: context.repo.owner,
+                    repo: context.repo.repo,
+                    pull_number: pr.number,
+                    per_page: 100
+                  });
+
+                  const meaningfulCommits = commits.filter(c => {
+                    const msg = c.commit.message.toLowerCase();
+                    const date = new Date(c.commit.committer.date);
+                    const isMergeFromMain = mainBranches.some(branch =>
+                      msg.startsWith(`merge branch '${branch}'`) ||
+                      msg.includes(`merge remote-tracking branch '${branch}'`)
+                    );
+                      
+                    return !isMergeFromMain && date > cutoff;
+                  });
+
+                  // Get checks with error handling
+                  let hasFailedChecks = false;
+                  let allChecksCompleted = false;
+                  let hasChecks = false;
+                  
+                  try {
+                    const { data: checks } = await github.rest.checks.listForRef({
+                      owner: context.repo.owner,
+                      repo: context.repo.repo,
+                      ref: pr.head.sha
+                    });
+                    
+                    hasChecks = checks.check_runs.length > 0;
+                    hasFailedChecks = checks.check_runs.some(c => c.conclusion === 'failure');
+                    allChecksCompleted = checks.check_runs.every(c => 
+                      c.status === 'completed' || c.status === 'skipped'
+                    );
+                  } catch (error) {
+                    console.log(`⚠️ Could not fetch checks for PR #${pr.number}: ${error.message}`);
+                  }
+
+                  // Get workflow runs with error handling
+                  let hasFailedWorkflows = false;
+                  let allWorkflowsCompleted = false;
+                  let hasWorkflows = false;
+                  
+                  try {
+                    const { data: runs } = await github.rest.actions.listWorkflowRuns({
+                      owner: context.repo.owner,
+                      repo: context.repo.repo,
+                      head_sha: pr.head.sha,
+                      per_page: 50
+                    });
+
+                    hasWorkflows = runs.workflow_runs.length > 0;
+                    hasFailedWorkflows = runs.workflow_runs.some(r => r.conclusion === 'failure');
+                    allWorkflowsCompleted = runs.workflow_runs.every(r => 
+                      ['completed', 'skipped', 'cancelled'].includes(r.status)
+                    );
+
+                    console.log(`PR #${pr.number}: ${runs.workflow_runs.length} workflow runs found`);
+
+                  } catch (error) {
+                    console.log(`⚠️ Could not fetch workflow runs for PR #${pr.number}: ${error.message}`);
+                  }
+
+                  console.log(`PR #${pr.number}: ${meaningfulCommits.length} meaningful commits`);
+                  console.log(`Checks - has: ${hasChecks}, failed: ${hasFailedChecks}, completed: ${allChecksCompleted}`);
+                  console.log(`Workflows - has: ${hasWorkflows}, failed: ${hasFailedWorkflows}, completed: ${allWorkflowsCompleted}`);
+
+                  // Combine conditions - only consider if we actually have checks/workflows
+                  const hasAnyFailure = (hasChecks && hasFailedChecks) || (hasWorkflows && hasFailedWorkflows);
+                  const allCompleted = (!hasChecks || allChecksCompleted) && (!hasWorkflows || allWorkflowsCompleted);
+
+                  if (meaningfulCommits.length === 0 && hasAnyFailure && allCompleted) {
+                    console.log(`✅ Closing PR #${pr.number} (${pr.title})`);
+
+                    await github.rest.issues.createComment({
+                      owner: context.repo.owner,
+                      repo: context.repo.repo,
+                      issue_number: pr.number,
+                      body: `This pull request has been automatically closed because its workflows or checks failed and it has been inactive for more than ${cutoffDays} days. Please fix the workflows and reopen if you'd like to continue. Merging from main/master alone does not count as activity.`
+                    });
+
+                    await github.rest.pulls.update({
+                      owner: context.repo.owner,
+                      repo: context.repo.repo,
+                      pull_number: pr.number,
+                      state: 'closed'
+                    });
+                    
+                    console.log(`✅ Successfully closed PR #${pr.number}`);
+                  } else {
+                    console.log(`⏩ Not closing PR #${pr.number} - conditions not met`);
+                  }
+
+                } catch (prError) {
+                  console.error(`❌ Error processing PR #${pr.number}: ${prError.message}`);
+                  continue;
+                }
+              }
+              
+            } catch (error) {
+              console.error(`❌ Fatal error: ${error.message}`);
+              throw error;
+            }
