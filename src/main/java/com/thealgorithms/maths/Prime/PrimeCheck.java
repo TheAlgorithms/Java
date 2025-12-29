@@ -1,5 +1,6 @@
 package com.thealgorithms.maths.Prime;
 
+import java.math.BigInteger;
 import java.util.Scanner;
 
 public final class PrimeCheck {
@@ -21,6 +22,12 @@ public final class PrimeCheck {
             System.out.println("algo2 verify that " + n + " is a prime number");
         } else {
             System.out.println("algo2 verify that " + n + " is not a prime number");
+        }
+
+        if (BigInteger.valueOf(n).isProbablePrime(100)){ // uses Miller–Rabin and Lucas probable prime test (Baillie–PSW)
+            System.out.println("algo3 verify that " + n + " is a prime number");
+        } else {
+            System.out.println("algo3 verify that " + n + " is not a prime number");
         }
         scanner.close();
     }
