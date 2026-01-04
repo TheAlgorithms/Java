@@ -43,8 +43,6 @@ public class MergeSortRecursive {
         if (arr.size() <= 1) {
             return arr;
         }
-
-
         int arrLength = arr.size();
         int half = arrLength / 2;
 
