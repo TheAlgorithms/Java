@@ -2,6 +2,8 @@
 
 A hash map organizes data so you can quickly look up values for a given key.
 
+> Note: The term “hash map” refers to the data structure concept, while `HashMap` refers specifically to Java’s implementation.
+
 ## Strengths:
 - **Fast lookups**: Lookups take O(1) time on average.
 - **Flexible keys**: Most data types can be used for keys, as long as they're hashable.
