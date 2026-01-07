@@ -161,6 +161,14 @@ public class BubbleSortTest {
     }
 
     @Test
+    public void bubbleSortNegativeNumbers() {
+        Integer[] inputArray = {5, -1, 7, 0};
+        Integer[] outputArray = bubbleSort.sort(inputArray);
+        Integer[] expectedOutput = {-1, 0, 5, 7};
+        assertArrayEquals(expectedOutput, outputArray);
+    }
+
+    @Test
     public void bubbleSortCustomObjects() {
         Person[] inputArray = {
             new Person("Alice", 32),
