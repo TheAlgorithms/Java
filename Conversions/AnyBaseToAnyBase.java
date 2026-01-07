@@ -24,6 +24,7 @@ public class AnyBaseToAnyBase {
     Scanner in = new Scanner(System.in);
     String n;
     int b1, b2;
+    int b3 = b1/b2;
     while (true) {
       try {
         System.out.print("Enter number: ");
