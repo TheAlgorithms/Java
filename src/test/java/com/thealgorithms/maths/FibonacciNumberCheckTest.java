@@ -1,30 +1,48 @@
 package com.thealgorithms.maths;
 
-import org.junit.jupiter.api.Assertions;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 /**
- * Fibonacci Sequence: 0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144...
+ * Unit tests for FibonacciNumberCheck.
  *
- * @author Albina Gimaletdinova on 01/07/2023
+ * Fibonacci sequence:
+ * 0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144...
+ *
+ * @author Albina
  */
-public class FibonacciNumberCheckTest {
+class FibonacciNumberCheckTest {
+
     @Test
-    public void testNumberIsFibonacciNumber() {
-        Assertions.assertTrue(FibonacciNumberCheck.isFibonacciNumber(1));
-        Assertions.assertTrue(FibonacciNumberCheck.isFibonacciNumber(2));
-        Assertions.assertTrue(FibonacciNumberCheck.isFibonacciNumber(21));
-        Assertions.assertTrue(FibonacciNumberCheck.isFibonacciNumber(6765)); // 20th number
-        Assertions.assertTrue(FibonacciNumberCheck.isFibonacciNumber(832040)); // 30th number
-        Assertions.assertTrue(FibonacciNumberCheck.isFibonacciNumber(102334155)); // 40th number
-        Assertions.assertTrue(FibonacciNumberCheck.isFibonacciNumber(701408733)); // 45th number
+    @DisplayName("Should return true for Fibonacci numbers")
+    void testNumberIsFibonacciNumber() {
+        assertTrue(FibonacciNumberCheck.isFibonacciNumber(0));
+        assertTrue(FibonacciNumberCheck.isFibonacciNumber(1));
+        assertTrue(FibonacciNumberCheck.isFibonacciNumber(2));
+        assertTrue(FibonacciNumberCheck.isFibonacciNumber(21));
+        assertTrue(FibonacciNumberCheck.isFibonacciNumber(6765));      // 20th number
+        assertTrue(FibonacciNumberCheck.isFibonacciNumber(832040));    // 30th number
+        assertTrue(FibonacciNumberCheck.isFibonacciNumber(102334155)); // 40th number
+        assertTrue(FibonacciNumberCheck.isFibonacciNumber(701408733)); // 45th number
     }
 
     @Test
-    public void testNumberIsNotFibonacciNumber() {
-        Assertions.assertFalse(FibonacciNumberCheck.isFibonacciNumber(9));
-        Assertions.assertFalse(FibonacciNumberCheck.isFibonacciNumber(10));
-        Assertions.assertFalse(FibonacciNumberCheck.isFibonacciNumber(145));
-        Assertions.assertFalse(FibonacciNumberCheck.isFibonacciNumber(701408734));
+    @DisplayName("Should return false for non-Fibonacci numbers")
+    void testNumberIsNotFibonacciNumber() {
+        assertFalse(FibonacciNumberCheck.isFibonacciNumber(9));
+        assertFalse(FibonacciNumberCheck.isFibonacciNumber(10));
+        assertFalse(FibonacciNumberCheck.isFibonacciNumber(145));
+        assertFalse(FibonacciNumberCheck.isFibonacciNumber(701408734));
+    }
+
+    @Test
+    @DisplayName("Should return false for negative numbers")
+    void testNegativeNumbersAreNotFibonacci() {
+        assertFalse(FibonacciNumberCheck.isFibonacciNumber(-1));
+        assertFalse(FibonacciNumberCheck.isFibonacciNumber(-5));
+        assertFalse(FibonacciNumberCheck.isFibonacciNumber(Integer.MIN_VALUE));
     }
 }

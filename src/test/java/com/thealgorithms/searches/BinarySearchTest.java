@@ -1,8 +1,9 @@
 package com.thealgorithms.searches;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.stream.IntStream;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 /**
@@ -10,99 +11,75 @@ import org.junit.jupiter.api.Test;
  */
 class BinarySearchTest {
 
-    /**
-     * Test for basic binary search functionality.
-     */
+    private final BinarySearch binarySearch = new BinarySearch();
+
     @Test
+    @DisplayName("BinarySearch should find existing element")
     void testBinarySearchFound() {
-        BinarySearch binarySearch = new BinarySearch();
         Integer[] array = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
         int key = 7;
-        int expectedIndex = 6; // Index of the key in the array
-        assertEquals(expectedIndex, binarySearch.find(array, key), "The index of the found element should be 6.");
+        assertEquals(6, binarySearch.find(array, key));
     }
 
-    /**
-     * Test for binary search when the element is not present.
-     */
     @Test
+    @DisplayName("BinarySearch should return -1 when element is not found")
     void testBinarySearchNotFound() {
-        BinarySearch binarySearch = new BinarySearch();
         Integer[] array = {1, 2, 3, 4, 5};
-        int key = 6; // Element not present in the array
-        int expectedIndex = -1; // Key not found
-        assertEquals(expectedIndex, binarySearch.find(array, key), "The element should not be found in the array.");
+        int key = 6;
+        assertEquals(-1, binarySearch.find(array, key));
     }
 
-    /**
-     * Test for binary search with first element as the key.
-     */
     @Test
+    @DisplayName("BinarySearch should find first element")
     void testBinarySearchFirstElement() {
-        BinarySearch binarySearch = new BinarySearch();
         Integer[] array = {1, 2, 3, 4, 5};
-        int key = 1; // First element
-        int expectedIndex = 0; // Index of the key in the array
-        assertEquals(expectedIndex, binarySearch.find(array, key), "The index of the first element should be 0.");
+        assertEquals(0, binarySearch.find(array, 1));
     }
 
-    /**
-     * Test for binary search with last element as the key.
-     */
     @Test
+    @DisplayName("BinarySearch should find last element")
     void testBinarySearchLastElement() {
-        BinarySearch binarySearch = new BinarySearch();
         Integer[] array = {1, 2, 3, 4, 5};
-        int key = 5; // Last element
-        int expectedIndex = 4; // Index of the key in the array
-        assertEquals(expectedIndex, binarySearch.find(array, key), "The index of the last element should be 4.");
+        assertEquals(4, binarySearch.find(array, 5));
     }
 
-    /**
-     * Test for binary search with a single element present.
-     */
     @Test
+    @DisplayName("BinarySearch should handle single-element array (found)")
     void testBinarySearchSingleElementFound() {
-        BinarySearch binarySearch = new BinarySearch();
         Integer[] array = {1};
-        int key = 1; // Only element present
-        int expectedIndex = 0; // Index of the key in the array
-        assertEquals(expectedIndex, binarySearch.find(array, key), "The index of the single element should be 0.");
+        assertEquals(0, binarySearch.find(array, 1));
     }
 
-    /**
-     * Test for binary search with a single element not present.
-     */
     @Test
+    @DisplayName("BinarySearch should handle single-element array (not found)")
     void testBinarySearchSingleElementNotFound() {
-        BinarySearch binarySearch = new BinarySearch();
         Integer[] array = {1};
-        int key = 2; // Key not present
-        int expectedIndex = -1; // Key not found
-        assertEquals(expectedIndex, binarySearch.find(array, key), "The element should not be found in the array.");
+        assertEquals(-1, binarySearch.find(array, 2));
     }
 
-    /**
-     * Test for binary search with an empty array.
-     */
     @Test
+    @DisplayName("BinarySearch should return -1 for empty array")
     void testBinarySearchEmptyArray() {
-        BinarySearch binarySearch = new BinarySearch();
-        Integer[] array = {}; // Empty array
-        int key = 1; // Key not present
-        int expectedIndex = -1; // Key not found
-        assertEquals(expectedIndex, binarySearch.find(array, key), "The element should not be found in an empty array.");
+        Integer[] array = {};
+        assertEquals(-1, binarySearch.find(array, 1));
     }
 
-    /**
-     * Test for binary search on large array.
-     */
     @Test
+    @DisplayName("BinarySearch should handle large sorted array")
     void testBinarySearchLargeArray() {
-        BinarySearch binarySearch = new BinarySearch();
-        Integer[] array = IntStream.range(0, 10000).boxed().toArray(Integer[] ::new); // Array from 0 to 9999
-        int key = 9999; // Last element
-        int expectedIndex = 9999; // Index of the last element
-        assertEquals(expectedIndex, binarySearch.find(array, key), "The index of the last element should be 9999.");
+        Integer[] array = IntStream.range(0, 10_000)
+            .boxed()
+            .toArray(Integer[]::new);
+
+        assertEquals(9999, binarySearch.find(array, 9999));
+    }
+
+    @Test
+    @DisplayName("BinarySearch should throw exception for null array")
+    void testBinarySearchNullArray() {
+        assertThrows(
+            IllegalArgumentException.class,
+            () -> binarySearch.find(null, 5)
+        );
     }
 }
