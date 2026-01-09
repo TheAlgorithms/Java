@@ -36,6 +36,13 @@ class RotatedBinarySearchTest {
     }
 
     @Test
+    void shouldHandleWhenMiddleIsGreaterThanKeyInRightSortedHalf() {
+        RotatedBinarySearch search = new RotatedBinarySearch();
+        Integer[] array = {6, 7, 0, 1, 2, 3, 4, 5};
+        assertEquals(2, search.find(array, 0));
+    }
+
+    @Test
     void shouldHandleDuplicates() {
         RotatedBinarySearch search = new RotatedBinarySearch();
         Integer[] array = {2, 2, 2, 3, 4, 2};
