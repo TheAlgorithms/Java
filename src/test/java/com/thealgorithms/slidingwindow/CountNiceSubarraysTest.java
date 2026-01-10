@@ -24,6 +24,6 @@ public class CountNiceSubarraysTest {
     @Test
     void testMultipleChoices() {
         int[] nums = {2, 2, 1, 2, 2, 1, 2};
-        assertEquals(9, CountNiceSubarrays.countNiceSubarrays(nums, 2));
+        assertEquals(6, CountNiceSubarrays.countNiceSubarrays(nums, 2));
     }
 }
