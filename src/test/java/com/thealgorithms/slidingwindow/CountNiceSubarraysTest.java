@@ -31,20 +31,20 @@ public class CountNiceSubarraysTest {
 
     @Test
     void testTrailingEvenNumbers() {
-    int[] nums = {1, 2, 2, 2};
-    assertEquals(4, CountNiceSubarrays.countNiceSubarrays(nums, 1));
+        int[] nums = {1, 2, 2, 2};
+        assertEquals(4, CountNiceSubarrays.countNiceSubarrays(nums, 1));
     }
 
     @Test
     void testMultipleWindowShrinks() {
-    int[] nums = {1, 1, 1, 1};
-    assertEquals(3, CountNiceSubarrays.countNiceSubarrays(nums, 2));
+        int[] nums = {1, 1, 1, 1};
+        assertEquals(3, CountNiceSubarrays.countNiceSubarrays(nums, 2));
     }
 
     @Test
     void testEvensBetweenOdds() {
-    int[] nums = {2, 1, 2, 1, 2};
-    assertEquals(4, CountNiceSubarrays.countNiceSubarrays(nums, 2));
+        int[] nums = {2, 1, 2, 1, 2};
+        assertEquals(4, CountNiceSubarrays.countNiceSubarrays(nums, 2));
     }
 
     @Test
@@ -52,5 +52,4 @@ public class CountNiceSubarraysTest {
         int[] nums = {2, 2, 1, 2, 2, 1, 2, 2};
         assertEquals(9, CountNiceSubarrays.countNiceSubarrays(nums, 2));
     }
-    
 }
