@@ -1,6 +1,7 @@
 package com.thealgorithms.datastructures.lists;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertNull;
 
 import org.junit.jupiter.api.Test;
@@ -24,25 +25,33 @@ public class MiddleOfLinkedListTest {
     @Test
     void middleNodeOddLength() {
         SinglyLinkedListNode head = listOf(1, 2, 3, 4, 5);
-        assertEquals(3, MiddleOfLinkedList.middleNode(head).value);
+        SinglyLinkedListNode middle = MiddleOfLinkedList.middleNode(head);
+        assertNotNull(middle);
+        assertEquals(3, middle.value);
     }
 
     @Test
     void middleNodeEvenLengthReturnsSecondMiddle() {
         SinglyLinkedListNode head = listOf(1, 2, 3, 4, 5, 6);
-        assertEquals(4, MiddleOfLinkedList.middleNode(head).value);
+        SinglyLinkedListNode middle = MiddleOfLinkedList.middleNode(head);
+        assertNotNull(middle);
+        assertEquals(4, middle.value);
     }
 
     @Test
     void middleNodeSingleElement() {
         SinglyLinkedListNode head = listOf(42);
-        assertEquals(42, MiddleOfLinkedList.middleNode(head).value);
+        SinglyLinkedListNode middle = MiddleOfLinkedList.middleNode(head);
+        assertNotNull(middle);
+        assertEquals(42, middle.value);
     }
 
     @Test
     void middleNodeTwoElementsReturnsSecond() {
         SinglyLinkedListNode head = listOf(10, 20);
-        assertEquals(20, MiddleOfLinkedList.middleNode(head).value);
+        SinglyLinkedListNode middle = MiddleOfLinkedList.middleNode(head);
+        assertNotNull(middle);
+        assertEquals(20, middle.value);
     }
 
     @Test
@@ -61,7 +70,9 @@ public class MiddleOfLinkedListTest {
         second.next = third;
         third.next = fourth;
 
-        assertEquals(3, MiddleOfLinkedList.middleNode(first).value);
+        SinglyLinkedListNode middle = MiddleOfLinkedList.middleNode(first);
+        assertNotNull(middle);
+        assertEquals(3, middle.value);
 
         assertEquals(second, first.next);
         assertEquals(third, second.next);
