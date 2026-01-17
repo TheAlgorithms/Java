@@ -26,6 +26,11 @@ class SearchSortedMatrixTest {
     }
 
     @Test
+    void nullFirstRowReturnsFalse() {
+        assertFalse(SearchSortedMatrix.search(new int[][] {null}, 42));
+    }
+
+    @Test
     void findsExistingTargetInTypicalMatrix() {
         final int[][] matrix = {
             {1, 4, 7, 11, 15},
@@ -41,6 +46,16 @@ class SearchSortedMatrixTest {
     }
 
     @Test
+    void intSearchCoversAllComparisonBranches() {
+        final int[][] matrix = {
+            {1, 4},
+            {2, 5},
+        };
+
+        assertTrue(SearchSortedMatrix.search(matrix, 2));
+    }
+
+    @Test
     void genericSearchFindsExistingTarget() {
         final Integer[][] matrix = {
             {1, 4, 7, 11, 15},
@@ -52,6 +67,16 @@ class SearchSortedMatrixTest {
 
         assertTrue(SearchSortedMatrix.search(matrix, 16, Comparator.naturalOrder()));
         assertFalse(SearchSortedMatrix.search(matrix, 20, Comparator.naturalOrder()));
+    }
+
+    @Test
+    void genericSearchCoversAllComparisonBranches() {
+        final Integer[][] matrix = {
+            {1, 4},
+            {2, 5},
+        };
+
+        assertTrue(SearchSortedMatrix.search(matrix, 2, Comparator.naturalOrder()));
     }
 
     @Test
