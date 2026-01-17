@@ -55,6 +55,55 @@ class SearchSortedMatrixTest {
     }
 
     @Test
+    void genericNullMatrixReturnsFalse() {
+        assertFalse(SearchSortedMatrix.search((Integer[][]) null, 42, Comparator.naturalOrder()));
+    }
+
+    @Test
+    void genericEmptyMatrixReturnsFalse() {
+        assertFalse(SearchSortedMatrix.search(new Integer[0][], 42, Comparator.naturalOrder()));
+    }
+
+    @Test
+    void genericEmptyFirstRowReturnsFalse() {
+        assertFalse(SearchSortedMatrix.search(new Integer[][] {{}}, 42, Comparator.naturalOrder()));
+    }
+
+    @Test
+    void genericNullFirstRowReturnsFalse() {
+        assertFalse(SearchSortedMatrix.search(new Integer[][] {null}, 42, Comparator.naturalOrder()));
+    }
+
+    @Test
+    void genericRejectsJaggedMatrix() {
+        final Integer[][] jagged = {
+            {1, 2, 3},
+            {4, 5},
+        };
+
+        assertThrows(IllegalArgumentException.class, () -> SearchSortedMatrix.search(jagged, 5, Comparator.naturalOrder()));
+    }
+
+    @Test
+    void genericRejectsNullRow() {
+        final Integer[][] hasNullRow = {
+            {1, 2, 3},
+            null,
+        };
+
+        assertThrows(IllegalArgumentException.class, () -> SearchSortedMatrix.search(hasNullRow, 2, Comparator.naturalOrder()));
+    }
+
+    @Test
+    void genericNullComparatorThrows() {
+        final Integer[][] matrix = {
+            {1, 2, 3},
+        };
+
+        assertThrows(NullPointerException.class, () -> SearchSortedMatrix.search(matrix, 2, null));
+    }
+
+    @Test
     void returnsFalseWhenTargetDoesNotExist() {
         final int[][] matrix = {
             {1, 2, 3},
