@@ -11,7 +11,6 @@ package com.thealgorithms.recursion;
 
 public final class FibonacciSeries {
     private FibonacciSeries() {
-
         throw new UnsupportedOperationException("Utility class");
     }
 
