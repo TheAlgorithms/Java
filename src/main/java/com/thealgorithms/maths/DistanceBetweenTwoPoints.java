@@ -25,8 +25,7 @@ public final class DistanceBetweenTwoPoints {
      * @param y2 y-coordinate of the second point
      * @return Euclidean distance between the two points
      */
-    public static double calculate(
-            final double x1, final double y1, final double x2, final double y2) {
+    public static double calculate(final double x1, final double y1, final double x2, final double y2) {
         final double deltaX = x2 - x1;
         final double deltaY = y2 - y1;
         return Math.sqrt(deltaX * deltaX + deltaY * deltaY);
