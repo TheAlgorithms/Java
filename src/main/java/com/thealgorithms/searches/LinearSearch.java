@@ -1,21 +1,26 @@
 package com.thealgorithms.searches;
 
 import com.thealgorithms.devutils.searches.SearchAlgorithm;
-
 /**
- * Linear search is the easiest search algorithm It works with sorted and
- * unsorted arrays (an binary search works only with sorted array) This
- * algorithm just compares all elements of an array to find a value
+ * Linear Search is a simple searching algorithm that checks
+ * each element of the array sequentially until the target
+ * value is found or the array ends.
  *
- * <p>
- * Worst-case performance O(n) Best-case performance O(1) Average performance
- * O(n) Worst-case space complexity
+ * It works for both sorted and unsorted arrays.
  *
- * @author Varun Upadhyay (https://github.com/varunu28)
- * @author Podshivalov Nikita (https://github.com/nikitap492)
+ * Time Complexity:
+ *  - Best case: O(1)
+ *  - Average case: O(n)
+ *  - Worst case: O(n)
+ *
+ * Space Complexity: O(1)
+ *
+ * @author Varun Upadhyay
+ * @author Podshivalov Nikita
  * @see BinarySearch
  * @see SearchAlgorithm
  */
+
 public class LinearSearch implements SearchAlgorithm {
 
     /**
