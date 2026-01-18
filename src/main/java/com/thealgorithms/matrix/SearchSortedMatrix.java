@@ -69,10 +69,16 @@ public final class SearchSortedMatrix {
      * @throws NullPointerException if {@code comparator} is null
      */
     public static <T> boolean search(final T[][] matrix, final T target, final Comparator<? super T> comparator) {
-        if (matrix == null || matrix.length == 0) {
+        if (matrix == null) {
             return false;
         }
-        if (matrix[0] == null || matrix[0].length == 0) {
+        if (matrix.length == 0) {
+            return false;
+        }
+        if (matrix[0] == null) {
+            return false;
+        }
+        if (matrix[0].length == 0) {
             return false;
         }
 
@@ -93,7 +99,10 @@ public final class SearchSortedMatrix {
         int rowIndex = 0;
         int colIndex = colCount - 1;
 
-        while (rowIndex < rowCount && colIndex >= 0) {
+        while (rowIndex < rowCount) {
+            if (colIndex < 0) {
+                break;
+            }
             final T value = matrix[rowIndex][colIndex];
             final int comparison = comparator.compare(value, target);
             if (comparison == 0) {
@@ -120,10 +129,16 @@ public final class SearchSortedMatrix {
      * @throws IllegalArgumentException if the matrix is jagged or contains null rows
      */
     public static boolean search(final int[][] matrix, final int target) {
-        if (matrix == null || matrix.length == 0) {
+        if (matrix == null) {
             return false;
         }
-        if (matrix[0] == null || matrix[0].length == 0) {
+        if (matrix.length == 0) {
+            return false;
+        }
+        if (matrix[0] == null) {
+            return false;
+        }
+        if (matrix[0].length == 0) {
             return false;
         }
 
@@ -142,7 +157,10 @@ public final class SearchSortedMatrix {
         int rowIndex = 0;
         int colIndex = colCount - 1;
 
-        while (rowIndex < rowCount && colIndex >= 0) {
+        while (rowIndex < rowCount) {
+            if (colIndex < 0) {
+                break;
+            }
             final int value = matrix[rowIndex][colIndex];
             if (value == target) {
                 return true;

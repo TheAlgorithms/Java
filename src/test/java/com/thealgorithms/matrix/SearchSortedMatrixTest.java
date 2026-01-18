@@ -70,6 +70,16 @@ class SearchSortedMatrixTest {
     }
 
     @Test
+    void genericTargetSmallerThanAllValuesReturnsFalse() {
+        final Integer[][] matrix = {
+            {1, 4},
+            {2, 5},
+        };
+
+        assertFalse(SearchSortedMatrix.search(matrix, 0, Comparator.naturalOrder()));
+    }
+
+    @Test
     void genericSearchCoversAllComparisonBranches() {
         final Integer[][] matrix = {
             {1, 4},
