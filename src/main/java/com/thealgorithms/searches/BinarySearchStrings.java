@@ -7,6 +7,7 @@ package com.thealgorithms.searches;
  * Time Complexity: O(log n * m) where n is array length and m is average string length
  * Space Complexity: O(1)
  * 
+ * @see <a href="https://en.wikipedia.org/wiki/Binary_search_algorithm">Binary Search Algorithm</a>
  * @author Jeevan Yewale (https://github.com/JeevanYewale)
  */
 public final class BinarySearchStrings {
