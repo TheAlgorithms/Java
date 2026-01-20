@@ -2,6 +2,7 @@ package com.thealgorithms.datastructures.trees;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNull;
 
 import org.junit.jupiter.api.Test;
 
@@ -30,7 +31,7 @@ public class TreapTest {
         treap.insert(3);
         treap.insert(8);
         treap.insert(1);
-        assertEquals(null, treap.search(4));
+        assertNull(treap.search(4));
     }
 
     @Test
