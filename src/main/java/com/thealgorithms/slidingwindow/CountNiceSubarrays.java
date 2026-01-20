@@ -4,7 +4,20 @@ package com.thealgorithms.slidingwindow;
  * Counts the number of "nice subarrays".
  * A nice subarray is a contiguous subarray that contains exactly k odd numbers.
  *
- * This implementation uses the sliding window technique.
+ * Approach:
+ * This implementation uses a sliding window technique.
+ * The window expands using a right pointer and shrinks from the left when the
+ * number of odd elements exceeds k. Even numbers do not affect the odd count
+ * and can be freely included in the window.
+ *
+ * Example:
+ * Input: nums = [1, 1, 2, 1, 1], k = 3
+ * Output: 2
+ *
+ * Explanation:
+ * The subarrays with exactly 3 odd numbers are:
+ * [1, 1, 2, 1]
+ * [1, 2, 1, 1]
  *
  * Reference:
  * https://leetcode.com/problems/count-number-of-nice-subarrays/
@@ -35,44 +48,30 @@ public final class CountNiceSubarrays {
         // Tracks number of odd elements in the current window
         int oddCount = 0;
 
-        // Final answer: total number of nice subarrays
+        // Stores the total number of nice subarrays
         int result = 0;
 
-        /*
-         * memo[i] stores how many valid starting positions exist
-         * when the left pointer is at index i.
-         *
-         * This avoids recomputing the same values again.
-         */
+        // memo[i] stores how many valid subarrays can start at index i
         int[] memo = new int[n];
 
-        // Right pointer moves forward to expand the window
+        // Right pointer expands the window
         for (int right = 0; right < n; right++) {
 
-            // If current element is odd, increment odd count
+            // Increment odd count if current number is odd
             if ((nums[right] & 1) == 1) {
                 oddCount++;
             }
 
-            /*
-             * If oddCount exceeds k, shrink the window from the left
-             * until oddCount becomes valid again.
-             */
+            // Shrink the window if odd count exceeds k
             if (oddCount > k) {
                 left += memo[left];
                 oddCount--;
             }
 
-            /*
-             * When the window contains exactly k odd numbers,
-             * count all possible valid subarrays starting at `left`.
-             */
+            // When exactly k odd numbers are present
             if (oddCount == k) {
 
-                /*
-                 * If this left index hasn't been processed before,
-                 * count how many consecutive even numbers follow it.
-                 */
+                // Calculate number of valid subarrays starting at left (only once)
                 if (memo[left] == 0) {
                     int count = 0;
                     int temp = left;
@@ -83,14 +82,11 @@ public final class CountNiceSubarrays {
                         temp++;
                     }
 
-                    /*
-                     * Number of valid subarrays starting at `left`
-                     * is (count of even numbers + 1)
-                     */
+                    // Valid subarrays = consecutive evens + 1
                     memo[left] = count + 1;
                 }
 
-                // Add number of valid subarrays for this left position
+                // Add valid subarrays count for current window
                 result += memo[left];
             }
         }
