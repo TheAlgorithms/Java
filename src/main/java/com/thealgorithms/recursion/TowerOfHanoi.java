@@ -35,10 +35,10 @@ public final class TowerOfHanoi {
      * @return list of moves as strings
      */
     public static List<String> solveTowerOfHanoi(int n, char source, char destination, char auxiliary) {
+        List<String> moves = new ArrayList<>();
         if (n < 0) {
             throw new IllegalArgumentException("Number of disks cannot be negative");
         }
-        List<String> moves = new ArrayList<>();
         moveDisks(n, source, destination, auxiliary, moves);
         return moves;
     }
@@ -61,4 +61,4 @@ public final class TowerOfHanoi {
         moves.add("Move disk " + n + " from rod " + source + " to rod " + destination);
         moveDisks(n - 1, auxiliary, destination, source, moves);
     }
-  }
+}

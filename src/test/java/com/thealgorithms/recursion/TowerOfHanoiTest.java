@@ -20,11 +20,7 @@ public class TowerOfHanoiTest {
     public void testSmallRecursion() {
         List<String> result = TowerOfHanoi.solveTowerOfHanoi(2, 'A', 'C', 'B');
         assertEquals(3, result.size());
-        List<String> expected = Arrays.asList(
-            "Move disk 1 from rod A to rod B",
-            "Move disk 2 from rod A to rod C",
-            "Move disk 1 from rod B to rod C"
-        );
+        List<String> expected = Arrays.asList("Move disk 1 from rod A to rod B", "Move disk 2 from rod A to rod C", "Move disk 1 from rod B to rod C");
         assertEquals(expected, result, "Sequence of moves for 2 disks is incorrect");
     }
 
@@ -38,6 +34,6 @@ public class TowerOfHanoiTest {
 
     @Test
     public void testNegativeInput() {
-        assertThrows(IllegalArgumentException.class, () -> TowerOfHanoi.solveTowerOfHanoi(-5, 'A', 'C', 'B'), "Should throw exception for negative disks");
+        assertThrows(IllegalArgumentException.class, () -> { TowerOfHanoi.solveTowerOfHanoi(-5, 'A', 'C', 'B'); }, "Should throw exception for negative disks");
     }
 }
