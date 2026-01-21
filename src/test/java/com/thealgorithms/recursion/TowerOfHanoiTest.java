@@ -37,4 +37,3 @@ public class TowerOfHanoiTest {
         assertThrows(IllegalArgumentException.class, () -> { TowerOfHanoi.solveTowerOfHanoi(-5, 'A', 'C', 'B'); }, "Should throw exception for negative disks");
     }
 }
-
