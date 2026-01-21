@@ -22,7 +22,6 @@ import java.util.List;
 public final class TowerOfHanoi {
 
     private TowerOfHanoi() {
-
         // Utility class
     }
 
@@ -36,10 +35,10 @@ public final class TowerOfHanoi {
      * @return list of moves as strings
      */
     public static List<String> solveTowerOfHanoi(int n, char source, char destination, char auxiliary) {
-        List<String> moves = new ArrayList<>();
         if (n < 0) {
             throw new IllegalArgumentException("Number of disks cannot be negative");
         }
+        List<String> moves = new ArrayList<>();
         moveDisks(n, source, destination, auxiliary, moves);
         return moves;
     }
