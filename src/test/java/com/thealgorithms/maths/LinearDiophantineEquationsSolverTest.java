@@ -176,7 +176,7 @@ class LinearDiophantineEquationsSolverTest {
         assertEquals(solution1, solution2);
         assertNotEquals(solution3, solution1);
         assertEquals(solution1, solution1);
-        assertNotEquals(null, solution1);
+        assertNotNull(solution1);
         assertNotEquals("string", solution1);
     }
 
@@ -217,7 +217,7 @@ class LinearDiophantineEquationsSolverTest {
         assertEquals(wrapper1, wrapper2);
         assertNotEquals(wrapper3, wrapper1);
         assertEquals(wrapper1, wrapper1);
-        assertNotEquals(null, wrapper1);
+        assertNotNull(wrapper1);
         assertNotEquals("string", wrapper1);
     }
 
