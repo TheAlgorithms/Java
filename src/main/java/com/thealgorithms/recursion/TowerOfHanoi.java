@@ -2,7 +2,6 @@ package com.thealgorithms.recursion;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
 
 /**
  * TowerOfHanoi - Solves the classic Tower of Hanoi puzzle
@@ -17,12 +16,12 @@ import java.util.Scanner;
  * Example: If n = 3, Source = 'A', Destination = 'C', Auxiliary = 'B'
  * Resulting moves will guide disks from A to C using B.
  *
- * @author justanothercoder
+ * @author justanothercoder-hub
  * @see <a href="https://en.wikipedia.org/wiki/Tower_of_Hanoi">Tower of Hanoi</a>
  */
-public final class TowerofHanoi {
+public final class TowerOfHanoi {
 
-    private TowerofHanoi() {
+    private TowerOfHanoi() {
 
         // Utility class
     }
@@ -38,7 +37,7 @@ public final class TowerofHanoi {
      */
     public static List<String> solveTowerOfHanoi(int n, char source, char destination, char auxiliary) {
         List<String> moves = new ArrayList<>();
-        if(n < 0) {
+        if (n < 0) {
             throw new IllegalArgumentException("Number of disks cannot be negative");
         }
         moveDisks(n, source, destination, auxiliary, moves);
@@ -63,15 +62,4 @@ public final class TowerofHanoi {
         moves.add("Move disk " + n + " from rod " + source + " to rod " + destination);
         moveDisks(n - 1, auxiliary, destination, source, moves);
     }
-
-    public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        System.out.print("Enter the number of disks: ");
-        int n = scanner.nextInt();
-        List<String> result = solveTowerOfHanoi(n, 'A', 'C', 'B');
-
-        for(String move : result){
-            System.out.println(move);
-        }
-     }
-    }
+}
