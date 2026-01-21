@@ -1,10 +1,12 @@
 package com.thealgorithms.recursion;
 
-import org.junit.jupiter.api.Test;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
+
 import java.util.Arrays;
 import java.util.List;
+import org.junit.jupiter.api.Test;
 
 public class TowerOfHanoiTest {
 
@@ -36,10 +38,9 @@ public class TowerOfHanoiTest {
         assertEquals(3, result.size());
         
         // Assertion 2: Verify the exact sequence of moves
-        List<String> expected = Arrays.asList(
-            "Move disk 1 from rod A to rod B", // Small disk to Aux
+        List<String> expected = Arrays.asList("Move disk 1 from rod A to rod B", // Small disk to Aux
             "Move disk 2 from rod A to rod C", // Big disk to Dest
-            "Move disk 1 from rod B to rod C"  // Small disk to Dest
+            "Move disk 1 from rod B to rod C" // Small disk to Dest
         );
         
         assertEquals(expected, result, "Sequence of moves for 2 disks is incorrect");
@@ -67,8 +68,7 @@ public class TowerOfHanoiTest {
      */
     @Test
     public void testNegativeInput() {
-        assertThrows(IllegalArgumentException.class, () -> {
-            TowerOfHanoi.solveTowerOfHanoi(-5, 'A', 'C', 'B');
-        }, "Should throw exception for negative disks");
+         assertThrows(IllegalArgumentException.class, () -> { TowerOfHanoi.solveTowerOfHanoi(-5, 'A', 'C', 'B'); }, 
+"Should throw exception for negative disks");
     }
 }

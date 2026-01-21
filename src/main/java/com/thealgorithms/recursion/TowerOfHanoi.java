@@ -38,7 +38,7 @@ public final class TowerofHanoi {
      */
     public static List<String> solveTowerOfHanoi(int n, char source, char destination, char auxiliary) {
         List<String> moves = new ArrayList<>();
-        if(n<0){
+        if(n < 0) {
             throw new IllegalArgumentException("Number of disks cannot be negative");
         }
         moveDisks(n, source, destination, auxiliary, moves);
@@ -64,13 +64,14 @@ public final class TowerofHanoi {
         moveDisks(n - 1, auxiliary, destination, source, moves);
     }
 
-    public static void main(String[] args){
+    public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         System.out.print("Enter the number of disks: ");
         int n = scanner.nextInt();
         List<String> result = solveTowerOfHanoi(n, 'A', 'C', 'B');
 
-        for(String move: result){
+        for(String move : result){
             System.out.println(move);
         }
+     }
     }
