@@ -1,6 +1,7 @@
 package com.thealgorithms.dynamicprogramming;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNull;
 
 import org.junit.jupiter.api.Test;
 
@@ -55,27 +56,24 @@ public class LongestCommonSubsequenceTest {
     public void testLCSWithNullFirstString() {
         String str1 = null;
         String str2 = "XYZ";
-        String expected = null; // Should return null if first string is null
         String result = LongestCommonSubsequence.getLCS(str1, str2);
-        assertEquals(expected, result);
+        assertNull(result);
     }
 
     @Test
     public void testLCSWithNullSecondString() {
         String str1 = "ABC";
         String str2 = null;
-        String expected = null; // Should return null if second string is null
         String result = LongestCommonSubsequence.getLCS(str1, str2);
-        assertEquals(expected, result);
+        assertNull(result);
     }
 
     @Test
     public void testLCSWithNullBothStrings() {
         String str1 = null;
         String str2 = null;
-        String expected = null; // Should return null if both strings are null
         String result = LongestCommonSubsequence.getLCS(str1, str2);
-        assertEquals(expected, result);
+        assertNull(result);
     }
 
     @Test
