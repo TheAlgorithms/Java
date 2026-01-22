@@ -13,8 +13,11 @@ public class SpiralMatrixII {
 
         int[][] matrix = new int[n][n];
 
-        int top = 0, bottom = n - 1;
-        int left = 0, right = n - 1;
+        int top = 0;
+        int bottom = n - 1;
+
+        int left = 0;
+        int right = n - 1;
 
         int num = 1;
 
