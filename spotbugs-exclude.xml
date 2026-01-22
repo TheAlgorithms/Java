@@ -211,9 +211,6 @@
         <Bug pattern="UTAO_JUNIT_ASSERTION_ODDITIES_USE_ASSERT_EQUALS" />
     </Match>
     <Match>
-        <Bug pattern="UTAO_JUNIT_ASSERTION_ODDITIES_USE_ASSERT_NOT_EQUALS" />
-    </Match>
-    <Match>
         <Bug pattern="UTAO_JUNIT_ASSERTION_ODDITIES_ACTUAL_CONSTANT" />
     </Match>
     <Match>
