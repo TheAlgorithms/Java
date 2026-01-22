@@ -81,15 +81,4 @@ final class KnuthMorrisPratt {
         }
         return occurrences;
     }
-
-    /**
-     * Main method demonstrating the KMP algorithm with an example.
-     *
-     * @param args command line arguments (unused)
-     */
-    public static void main(String[] args) {
-        final String text = "AAAAABAAABA";
-        final String pattern = "AAAA";
-        search(text, pattern);
-    }
 }
