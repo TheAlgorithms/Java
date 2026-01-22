@@ -2,7 +2,7 @@ package com.thealgorithms.matrix;
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import org.junit.jupiter.api.Test;
 
-class SpiralMatrixTest {
+class SpiralMatrixIITest {
 
     SpiralMatrix spiral = new SpiralMatrix();
 
