@@ -1,6 +1,7 @@
 package com.thealgorithms.recursion;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import java.util.List;
@@ -19,14 +20,7 @@ public class TowerOfHanoiTest {
     }
 
     private static Stream<Arguments> diskCountAndMoveCount() {
-        return Stream.of(
-            Arguments.of(1, 1L),
-            Arguments.of(2, 3L),
-            Arguments.of(3, 7L),
-            Arguments.of(4, 15L),
-            Arguments.of(5, 31L),
-            Arguments.of(10, 1023L)
-        );
+        return Stream.of(Arguments.of(1, 1L), Arguments.of(2, 3L), Arguments.of(3, 7L), Arguments.of(4, 15L), Arguments.of(5, 31L), Arguments.of(10, 1023L));
     }
 
     @ParameterizedTest
@@ -37,13 +31,7 @@ public class TowerOfHanoiTest {
     }
 
     private static Stream<Arguments> diskCountAndExpectedMoves() {
-        return Stream.of(
-            Arguments.of(1, 1L),
-            Arguments.of(2, 3L),
-            Arguments.of(3, 7L),
-            Arguments.of(4, 15L),
-            Arguments.of(5, 31L)
-        );
+        return Stream.of(Arguments.of(1, 1L), Arguments.of(2, 3L), Arguments.of(3, 7L), Arguments.of(4, 15L), Arguments.of(5, 31L));
     }
 
     @Test
@@ -112,6 +100,6 @@ public class TowerOfHanoiTest {
     @Test
     void testSolveIsNotEmpty() {
         List<String> moves = TowerOfHanoi.solve(1, 'A', 'C', 'B');
-        assertEquals(false, moves.isEmpty());
+        assertFalse(moves.isEmpty());
     }
 }
