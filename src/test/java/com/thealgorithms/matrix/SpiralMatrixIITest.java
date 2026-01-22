@@ -34,4 +34,13 @@ class SpiralMatrixIITest {
         };
         assertArrayEquals(expected, spiral.generateMatrix(4));
     }
+	@Test
+	void testNEquals2() {
+		int[][] expected = {
+			{1, 2},
+			{4, 3}
+		};
+		assertArrayEquals(expected, spiral.generateMatrix(2));
+	}
+
 }
