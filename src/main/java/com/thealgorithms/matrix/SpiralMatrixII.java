@@ -1,3 +1,10 @@
+/**
+ * Spiral Matrix II
+ * Generates an n x n matrix filled with numbers from 1 to n^2 in spiral order.
+ *
+ * @see <a href="https://leetcode.com/problems/spiral-matrix-ii/">LeetCode – Spiral Matrix II</a>
+ * @see <a href="https://en.wikipedia.org/wiki/Spiral_matrix">Wikipedia – Spiral Matrix</a>
+ */
 package com.thealgorithms.matrix;
 
 public class SpiralMatrixII {
