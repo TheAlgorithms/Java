@@ -91,8 +91,6 @@ final class KnuthMorrisPratt {
         final String text = "AAAAABAAABA";
         final String pattern = "AAAA";
         final List<Integer> idx = search(text, pattern);
-        for (int pos : idx) {
-            System.out.println("Pattern found at index: " + pos);
-        }
+        // Pattern occurrences would be logged here in production
     }
 }
