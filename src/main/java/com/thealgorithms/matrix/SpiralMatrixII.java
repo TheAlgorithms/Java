@@ -6,7 +6,6 @@
  * @see <a href="https://en.wikipedia.org/wiki/Spiral_matrix">Wikipedia – Spiral Matrix</a>
  */
 package com.thealgorithms.matrix;
-
 public class SpiralMatrixII {
 
     public int[][] generateMatrix(int n) {
