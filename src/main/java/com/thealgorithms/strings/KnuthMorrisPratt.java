@@ -90,7 +90,6 @@ final class KnuthMorrisPratt {
     public static void main(String[] args) {
         final String text = "AAAAABAAABA";
         final String pattern = "AAAA";
-        final List<Integer> idx = search(text, pattern);
-        // Pattern occurrences would be logged here in production
+        search(text, pattern);
     }
 }
