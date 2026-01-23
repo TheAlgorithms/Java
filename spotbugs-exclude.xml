@@ -216,9 +216,6 @@
     <Match>
         <Bug pattern="UTAO_JUNIT_ASSERTION_ODDITIES_INEXACT_DOUBLE" />
     </Match>
-    <Match>
-        <Bug pattern="UTAO_JUNIT_ASSERTION_ODDITIES_IMPOSSIBLE_NULL" />
-    </Match>
     <!-- find-sec-bugs -->
     <Match>
         <Bug pattern="PREDICTABLE_RANDOM" />
