@@ -1,7 +1,6 @@
 package com.thealgorithms.compression;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.List;
@@ -286,7 +285,6 @@ class LZ78Test {
         // All tokens should have valid indices (>= 0)
         for (LZ78.Token token : compressed) {
             assertTrue(token.index() >= 0);
-            assertNotNull(token.nextChar());
         }
 
         String decompressed = LZ78.decompress(compressed);
