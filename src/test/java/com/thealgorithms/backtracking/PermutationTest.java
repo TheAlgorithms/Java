@@ -12,13 +12,13 @@ public class PermutationTest {
     @Test
     void testNoElement() {
         List<Integer[]> result = Permutation.permutation(new Integer[] {});
-        assertEquals(result.get(0).length, 0);
+        assertEquals(0, result.get(0).length);
     }
 
     @Test
     void testSingleElement() {
         List<Integer[]> result = Permutation.permutation(new Integer[] {1});
-        assertEquals(result.get(0)[0], 1);
+        assertEquals(1, result.get(0)[0]);
     }
 
     @Test
