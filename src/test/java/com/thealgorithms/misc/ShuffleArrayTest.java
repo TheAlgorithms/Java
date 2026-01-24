@@ -1,6 +1,7 @@
 package com.thealgorithms.misc;
 
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -67,7 +68,7 @@ public class ShuffleArrayTest {
         ShuffleArray.shuffle(arr);
 
         // Check that the shuffled array contains the same elements
-        assertTrue(arr.length == 5);
+        assertEquals(5, arr.length);
         for (int i = 1; i <= 5; i++) {
             assertTrue(contains(arr, i));
         }
