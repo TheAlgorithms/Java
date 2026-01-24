@@ -14,13 +14,13 @@ public class ParseIntegerTest {
     @Test
     public void testNullInput() {
         IllegalArgumentException exception = Assertions.assertThrows(IllegalArgumentException.class, () -> ParseInteger.parseInt(null));
-        Assertions.assertEquals(exception.getMessage(), NULL_PARAMETER_MESSAGE);
+        Assertions.assertEquals(NULL_PARAMETER_MESSAGE, exception.getMessage());
     }
 
     @Test
     public void testEmptyInput() {
         IllegalArgumentException exception = Assertions.assertThrows(IllegalArgumentException.class, () -> ParseInteger.parseInt(""));
-        Assertions.assertEquals(exception.getMessage(), EMPTY_PARAMETER_MESSAGE);
+        Assertions.assertEquals(EMPTY_PARAMETER_MESSAGE, exception.getMessage());
     }
 
     @Test
