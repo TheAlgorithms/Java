@@ -28,16 +28,16 @@ public class CombinationTest {
     @Test
     void testLengthOne() {
         List<TreeSet<Integer>> result = Combination.combination(new Integer[] {1, 2}, 1);
-        assertTrue(result.get(0).iterator().next() == 1);
-        assertTrue(result.get(1).iterator().next() == 2);
+        assertEquals(1, result.get(0).iterator().next());
+        assertEquals(2, result.get(1).iterator().next());
     }
 
     @Test
     void testLengthTwo() {
         List<TreeSet<Integer>> result = Combination.combination(new Integer[] {1, 2}, 2);
         Integer[] arr = result.get(0).toArray(new Integer[2]);
-        assertTrue(arr[0] == 1);
-        assertTrue(arr[1] == 2);
+        assertEquals(1, arr[0]);
+        assertEquals(2, arr[1]);
     }
 
     @Test

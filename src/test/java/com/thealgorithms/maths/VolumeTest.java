@@ -10,30 +10,30 @@ public class VolumeTest {
     public void volume() {
 
         /* test cube */
-        assertEquals(Volume.volumeCube(7), 343.0);
+        assertEquals(343.0, Volume.volumeCube(7));
 
         /* test cuboid */
-        assertEquals(Volume.volumeCuboid(2, 5, 7), 70.0);
+        assertEquals(70.0, Volume.volumeCuboid(2, 5, 7));
 
         /* test sphere */
-        assertEquals(Volume.volumeSphere(7), 1436.7550402417319);
+        assertEquals(1436.7550402417319, Volume.volumeSphere(7));
 
         /* test cylinder */
-        assertEquals(Volume.volumeCylinder(3, 7), 197.92033717615698);
+        assertEquals(197.92033717615698, Volume.volumeCylinder(3, 7));
 
         /* test hemisphere */
-        assertEquals(Volume.volumeHemisphere(7), 718.3775201208659);
+        assertEquals(718.3775201208659, Volume.volumeHemisphere(7));
 
         /* test cone */
-        assertEquals(Volume.volumeCone(3, 7), 65.97344572538566);
+        assertEquals(65.97344572538566, Volume.volumeCone(3, 7));
 
         /* test prism */
-        assertEquals(Volume.volumePrism(10, 2), 20.0);
+        assertEquals(20.0, Volume.volumePrism(10, 2));
 
         /* test pyramid */
-        assertEquals(Volume.volumePyramid(10, 3), 10.0);
+        assertEquals(10.0, Volume.volumePyramid(10, 3));
 
         /* test frustum */
-        assertEquals(Volume.volumeFrustumOfCone(3, 5, 7), 359.188760060433);
+        assertEquals(359.188760060433, Volume.volumeFrustumOfCone(3, 5, 7));
     }
 }

@@ -29,19 +29,19 @@ public class SecondMinMaxTest {
     @Test
     public void testForEmptyInputArray() {
         IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> SecondMinMax.findSecondMin(new int[] {}));
-        assertEquals(exception.getMessage(), EXP_MSG_ARR_LEN_LESS_2);
+        assertEquals(EXP_MSG_ARR_LEN_LESS_2, exception.getMessage());
     }
 
     @Test
     public void testForArrayWithSingleElement() {
         IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> SecondMinMax.findSecondMax(new int[] {1}));
-        assertEquals(exception.getMessage(), EXP_MSG_ARR_LEN_LESS_2);
+        assertEquals(EXP_MSG_ARR_LEN_LESS_2, exception.getMessage());
     }
 
     @Test
     public void testForArrayWithSameElements() {
         IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> SecondMinMax.findSecondMin(new int[] {1, 1, 1, 1}));
-        assertEquals(exception.getMessage(), EXP_MSG_ARR_SAME_ELE);
+        assertEquals(EXP_MSG_ARR_SAME_ELE, exception.getMessage());
     }
 
     @ParameterizedTest

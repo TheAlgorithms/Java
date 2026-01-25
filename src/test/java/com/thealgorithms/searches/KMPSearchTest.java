@@ -14,7 +14,7 @@ class KMPSearchTest {
         KMPSearch kmpSearch = new KMPSearch();
         int value = kmpSearch.kmpSearch(pat, txt);
         System.out.println(value);
-        assertEquals(value, 10);
+        assertEquals(10, value);
     }
 
     @Test
@@ -25,7 +25,7 @@ class KMPSearchTest {
         KMPSearch kmpSearch = new KMPSearch();
         int value = kmpSearch.kmpSearch(pat, txt);
         System.out.println(value);
-        assertEquals(value, 0);
+        assertEquals(0, value);
     }
 
     @Test
@@ -36,7 +36,7 @@ class KMPSearchTest {
         KMPSearch kmpSearch = new KMPSearch();
         int value = kmpSearch.kmpSearch(pat, txt);
         System.out.println(value);
-        assertEquals(value, 4);
+        assertEquals(4, value);
     }
 
     @Test
@@ -47,7 +47,7 @@ class KMPSearchTest {
         KMPSearch kmpSearch = new KMPSearch();
         int value = kmpSearch.kmpSearch(pat, txt);
         System.out.println(value);
-        assertEquals(value, 4);
+        assertEquals(4, value);
     }
 
     @Test
@@ -58,6 +58,6 @@ class KMPSearchTest {
         KMPSearch kmpSearch = new KMPSearch();
         int value = kmpSearch.kmpSearch(pat, txt);
         System.out.println(value);
-        assertEquals(value, -1);
+        assertEquals(-1, value);
     }
 }
