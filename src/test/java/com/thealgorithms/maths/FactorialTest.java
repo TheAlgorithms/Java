@@ -11,7 +11,7 @@ public class FactorialTest {
     @Test
     public void testWhenInvalidInoutProvidedShouldThrowException() {
         IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> Factorial.factorial(-1));
-        assertEquals(exception.getMessage(), EXCEPTION_MESSAGE);
+        assertEquals(EXCEPTION_MESSAGE, exception.getMessage());
     }
 
     @Test

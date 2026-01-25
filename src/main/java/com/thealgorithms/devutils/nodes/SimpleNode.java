@@ -15,7 +15,7 @@ public class SimpleNode<E> extends Node<E> {
     private SimpleNode<E> nextNode;
 
     /**
-     * Empty contructor.
+     * Empty constructor.
      */
     public SimpleNode() {
         super();
