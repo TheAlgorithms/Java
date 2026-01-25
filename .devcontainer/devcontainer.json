@@ -7,7 +7,7 @@
 		"args": {
 			// Update the VARIANT arg to pick a Java version: 11, 17
 			// Append -bullseye or -buster to pin to an OS version.
-			// Use the -bullseye variants on local arm64/Apple Silicon.
+			// Use the -bullseye variants on local arm64/Apple Silicon. hiii bug?github
 			"VARIANT": "21-bullseye",
 			// Options
 			"INSTALL_MAVEN": "true",
