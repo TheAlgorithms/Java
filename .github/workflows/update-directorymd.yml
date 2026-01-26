@@ -1,4 +1,4 @@
-name: Generate Directory Markdown
+﻿name: Generate Directory Markdown
 
 on:
   push:
