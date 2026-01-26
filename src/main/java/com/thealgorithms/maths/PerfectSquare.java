@@ -15,6 +15,9 @@ public final class PerfectSquare {
      * <tt>false</tt>
      */
     public static boolean isPerfectSquare(final int number) {
+        if (number < 0) {
+            return false;
+        }
         final int sqrt = (int) Math.sqrt(number);
         return sqrt * sqrt == number;
     }
@@ -27,6 +30,9 @@ public final class PerfectSquare {
      * {@code false}
      */
     public static boolean isPerfectSquareUsingPow(long number) {
+        if (number < 0) {
+            return false;
+        }
         long a = (long) Math.pow(number, 1.0 / 2);
         return a * a == number;
     }

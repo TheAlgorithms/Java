@@ -9,8 +9,8 @@ public class ZigZagPatternTest {
     public void testZigZagPattern() {
         String input1 = "HelloWorldFromJava";
         String input2 = "javaIsAProgrammingLanguage";
-        Assertions.assertEquals(ZigZagPattern.encode(input1, 4), "HooeWrrmalolFJvlda");
-        Assertions.assertEquals(ZigZagPattern.encode(input2, 4), "jAaLgasPrmgaaevIrgmnnuaoig");
+        Assertions.assertEquals("HooeWrrmalolFJvlda", ZigZagPattern.encode(input1, 4));
+        Assertions.assertEquals("jAaLgasPrmgaaevIrgmnnuaoig", ZigZagPattern.encode(input2, 4));
         // Edge cases
         Assertions.assertEquals("ABC", ZigZagPattern.encode("ABC", 1)); // Single row
         Assertions.assertEquals("A", ZigZagPattern.encode("A", 2)); // numRows > length of string

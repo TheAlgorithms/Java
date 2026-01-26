@@ -96,7 +96,7 @@ public final class Area {
             throw new IllegalArgumentException(POSITIVE_RADIUS);
         }
         if (height <= 0) {
-            throw new IllegalArgumentException(POSITIVE_RADIUS);
+            throw new IllegalArgumentException(POSITIVE_HEIGHT);
         }
         return 2 * (Math.PI * radius * radius + Math.PI * radius * height);
     }

@@ -13,4 +13,5 @@ In order to reduce the number of notifications sent to the maintainers, please:
 - [ ] All filenames are in PascalCase.
 - [ ] All functions and variable names follow Java naming conventions.
 - [ ] All new algorithms have a URL in their comments that points to Wikipedia or other similar explanations.
+- [ ] All new algorithms include a corresponding test class that validates their functionality.
 - [ ] All new code is formatted with `clang-format -i --style=file path/to/your/file.java`

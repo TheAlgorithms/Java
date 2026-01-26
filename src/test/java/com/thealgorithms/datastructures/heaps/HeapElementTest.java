@@ -2,6 +2,7 @@ package com.thealgorithms.datastructures.heaps;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertNull;
 
 import org.junit.jupiter.api.Test;
@@ -39,7 +40,7 @@ class HeapElementTest {
 
         assertEquals(element1, element2); // Same key and info
         assertNotEquals(element1, element3); // Different key
-        assertNotEquals(null, element1); // Check for null
+        assertNotNull(element1);
         assertNotEquals("String", element1); // Check for different type
     }
 

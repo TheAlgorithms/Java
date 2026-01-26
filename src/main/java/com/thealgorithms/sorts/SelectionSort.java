@@ -2,11 +2,16 @@ package com.thealgorithms.sorts;
 
 public class SelectionSort implements SortAlgorithm {
     /**
-     * Sorts an array of comparable elements in increasing order using the selection sort algorithm.
+     * Generic Selection Sort algorithm.
      *
-     * @param array the array to be sorted
-     * @param <T> the class of array elements
-     * @return the sorted array
+     * Time Complexity:
+     * - Best case: O(n^2)
+     * - Average case: O(n^2)
+     * - Worst case: O(n^2)
+     *
+     * Space Complexity: O(1) – in-place sorting.
+     *
+     * @see SortAlgorithm
      */
     @Override
     public <T extends Comparable<T>> T[] sort(T[] array) {

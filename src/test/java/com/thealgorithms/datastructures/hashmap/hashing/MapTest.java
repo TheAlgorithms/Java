@@ -81,19 +81,19 @@ abstract class MapTest {
     @Test
     void sizeTest() {
         Map<Integer, String> map = getMap();
-        assertEquals(map.size(), 0);
+        assertEquals(0, map.size());
 
         for (int i = -100; i < 100; i++) {
             map.put(i, String.valueOf(i));
         }
 
-        assertEquals(map.size(), 200);
+        assertEquals(200, map.size());
 
         for (int i = -50; i < 50; i++) {
             map.delete(i);
         }
 
-        assertEquals(map.size(), 100);
+        assertEquals(100, map.size());
     }
 
     @Test

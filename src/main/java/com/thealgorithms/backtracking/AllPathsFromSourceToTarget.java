@@ -4,11 +4,36 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Program description - To find all possible paths from source to destination
- * <a href="https://en.wikipedia.org/wiki/Shortest_path_problem">Wikipedia</a>
+ * Finds all possible simple paths from a given source vertex to a destination vertex
+ * in a directed graph using backtracking.
  *
- * @author <a href="https://github.com/siddhant2002">Siddhant Swarup Mallick</a>
+ * <p>This algorithm performs a Depth First Search (DFS) traversal while keeping track
+ * of visited vertices to avoid cycles. Whenever the destination vertex is reached,
+ * the current path is stored as one valid path.</p>
+ *
+ * <p><b>Key Characteristics:</b></p>
+ * <ul>
+ *   <li>Works on directed graphs</li>
+ *   <li>Does not allow revisiting vertices in the same path</li>
+ *   <li>Stores all possible paths from source to destination</li>
+ * </ul>
+ *
+ * <p><b>Time Complexity:</b></p>
+ * <ul>
+ *   <li>Worst Case: O(V!) — when the graph is fully connected</li>
+ * </ul>
+ *
+ * <p><b>Space Complexity:</b></p>
+ * <ul>
+ *   <li>O(V) for recursion stack and visited array</li>
+ *   <li>Additional space for storing all valid paths</li>
+ * </ul>
+ *
+ * <p>This implementation is intended for educational purposes.</p>
+ *
+ * @see <a href="https://en.wikipedia.org/wiki/Depth-first_search">Depth First Search</a>
  */
+
 @SuppressWarnings({"rawtypes", "unchecked"})
 public class AllPathsFromSourceToTarget {
 

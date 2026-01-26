@@ -5,7 +5,9 @@ import com.thealgorithms.devutils.searches.SearchAlgorithm;
 /**
  * Binary search is one of the most popular algorithms The algorithm finds the
  * position of a target value within a sorted array
- *
+ * IMPORTANT
+ * This algorithm works correctly only if the input array is sorted
+ * in ascending order.
  * <p>
  * Worst-case performance O(log n) Best-case performance O(1) Average
  * performance O(log n) Worst-case space complexity O(1)
@@ -25,6 +27,9 @@ class BinarySearch implements SearchAlgorithm {
      */
     @Override
     public <T extends Comparable<T>> int find(T[] array, T key) {
+        if (array == null || array.length == 0) {
+            return -1;
+        }
         return search(array, key, 0, array.length - 1);
     }
 

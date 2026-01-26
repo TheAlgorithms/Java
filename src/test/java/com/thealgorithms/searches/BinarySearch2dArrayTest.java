@@ -117,7 +117,7 @@ public class BinarySearch2dArrayTest {
         int target = 8;
         // Assert that the requirement, that the target is in the middle row and middle column, is
         // fulfilled.
-        assertEquals(arr[arr.length / 2][arr[0].length / 2], target);
+        assertEquals(target, arr[arr.length / 2][arr[0].length / 2]);
         int[] ans = BinarySearch2dArray.binarySearch(arr, target);
         System.out.println(Arrays.toString(ans));
         assertEquals(1, ans[0]);
@@ -135,8 +135,8 @@ public class BinarySearch2dArrayTest {
 
         // Assert that the requirement, that he target is in the middle column,
         // in an array with an even number of columns, and on the row "above" the middle row.
-        assertEquals(arr[0].length % 2, 0);
-        assertEquals(arr[arr.length / 2 - 1][arr[0].length / 2], target);
+        assertEquals(0, arr[0].length % 2);
+        assertEquals(target, arr[arr.length / 2 - 1][arr[0].length / 2]);
         int[] ans = BinarySearch2dArray.binarySearch(arr, target);
         System.out.println(Arrays.toString(ans));
         assertEquals(0, ans[0]);

@@ -17,7 +17,7 @@ public class PasswordGenTest {
     @Test
     public void generateOneCharacterPassword() {
         String tempPassword = PasswordGen.generatePassword(1, 2);
-        assertTrue(tempPassword.length() == 1);
+        assertEquals(1, tempPassword.length());
     }
 
     @Test

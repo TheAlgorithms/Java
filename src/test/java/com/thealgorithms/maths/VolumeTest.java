@@ -1,6 +1,6 @@
 package com.thealgorithms.maths;
 
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.jupiter.api.Test;
 
@@ -10,30 +10,30 @@ public class VolumeTest {
     public void volume() {
 
         /* test cube */
-        assertTrue(Volume.volumeCube(7) == 343.0);
+        assertEquals(343.0, Volume.volumeCube(7));
 
         /* test cuboid */
-        assertTrue(Volume.volumeCuboid(2, 5, 7) == 70.0);
+        assertEquals(70.0, Volume.volumeCuboid(2, 5, 7));
 
         /* test sphere */
-        assertTrue(Volume.volumeSphere(7) == 1436.7550402417319);
+        assertEquals(1436.7550402417319, Volume.volumeSphere(7));
 
         /* test cylinder */
-        assertTrue(Volume.volumeCylinder(3, 7) == 197.92033717615698);
+        assertEquals(197.92033717615698, Volume.volumeCylinder(3, 7));
 
         /* test hemisphere */
-        assertTrue(Volume.volumeHemisphere(7) == 718.3775201208659);
+        assertEquals(718.3775201208659, Volume.volumeHemisphere(7));
 
         /* test cone */
-        assertTrue(Volume.volumeCone(3, 7) == 65.97344572538566);
+        assertEquals(65.97344572538566, Volume.volumeCone(3, 7));
 
         /* test prism */
-        assertTrue(Volume.volumePrism(10, 2) == 20.0);
+        assertEquals(20.0, Volume.volumePrism(10, 2));
 
         /* test pyramid */
-        assertTrue(Volume.volumePyramid(10, 3) == 10.0);
+        assertEquals(10.0, Volume.volumePyramid(10, 3));
 
         /* test frustum */
-        assertTrue(Volume.volumeFrustumOfCone(3, 5, 7) == 359.188760060433);
+        assertEquals(359.188760060433, Volume.volumeFrustumOfCone(3, 5, 7));
     }
 }

@@ -1,9 +1,20 @@
 package com.thealgorithms.sorts;
 
 /**
- * Heap Sort Algorithm Implementation
+ * Heap Sort algorithm implementation.
+ *
+ * Heap sort converts the array into a max-heap and repeatedly extracts the maximum
+ * element to sort the array in increasing order.
+ *
+ * Time Complexity:
+ * - Best case: O(n log n)
+ * - Average case: O(n log n)
+ * - Worst case: O(n log n)
+ *
+ * Space Complexity: O(1) – in-place sorting
  *
  * @see <a href="https://en.wikipedia.org/wiki/Heapsort">Heap Sort Algorithm</a>
+ * @see SortAlgorithm
  */
 public class HeapSort implements SortAlgorithm {
 

@@ -207,6 +207,12 @@
     <Match>
         <Bug pattern="FII_USE_ARRAYS_STREAM" />
     </Match>
+    <Match>
+        <Bug pattern="UTAO_JUNIT_ASSERTION_ODDITIES_USE_ASSERT_EQUALS" />
+    </Match>
+    <Match>
+        <Bug pattern="UTAO_JUNIT_ASSERTION_ODDITIES_INEXACT_DOUBLE" />
+    </Match>
     <!-- find-sec-bugs -->
     <Match>
         <Bug pattern="PREDICTABLE_RANDOM" />
