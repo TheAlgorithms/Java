@@ -41,20 +41,20 @@ class BinarySearch implements SearchAlgorithm {
      * Generic method to perform binary search on any comparable type. This is the main entry point
      * for binary search operations.
      *
+     * <p>Example Usage:
+     * <pre>
+     * Integer[] numbers = {1, 3, 5, 7, 9, 11};
+     * int result = new BinarySearch().find(numbers, 7);
+     * // result will be 3 (index of element 7)
+     *
+     * int notFound = new BinarySearch().find(numbers, 4);
+     * // notFound will be -1 (element 4 does not exist)
+     * </pre>
+     *
      * @param <T> The type of elements in the array (must be Comparable)
      * @param array The sorted array to search in (MUST be sorted in ascending order)
      * @param key The element to search for
-     * @return The index of the key if found, -1 if not found
-     * @throws NullPointerException if array is null
-     *     <p>Example Usage:
-     *     <pre>
-     * Integer[] numbers = {1, 3, 5, 7, 9, 11};
-     * int result = BinarySearch.find(numbers, 7);
-     * // result will be 3 (index of element 7)
-     *
-     * int notFound = BinarySearch.find(numbers, 4);
-     * // notFound will be -1 (element 4 does not exist)
-     * </pre>
+     * @return The index of the key if found, -1 if not found or if array is null/empty
      */
     @Override
     public <T extends Comparable<T>> int find(T[] array, T key) {
@@ -71,9 +71,16 @@ class BinarySearch implements SearchAlgorithm {
      * Core recursive implementation of binary search algorithm. This method divides the problem
      * into smaller subproblems recursively.
      *
-     * <p>How it works: 1. Calculate the middle index to avoid integer overflow 2. Check if middle
-     * element matches the target 3. If not, recursively search either left or right half 4. Base
-     * case: left &gt; right means element not found
+     * <p>How it works:
+     * <ol>
+     * <li>Calculate the middle index to avoid integer overflow</li>
+     * <li>Check if middle element matches the target</li>
+     * <li>If not, recursively search either left or right half</li>
+     * <li>Base case: left &gt; right means element not found</li>
+     * </ol>
+     *
+     * <p>Time Complexity: O(log n) because we halve the search space each time.
+     * Space Complexity: O(log n) due to recursive call stack.
      *
      * @param <T> The type of elements (must be Comparable)
      * @param array The sorted array to search in
@@ -81,8 +88,6 @@ class BinarySearch implements SearchAlgorithm {
      * @param left The leftmost index of current search range (inclusive)
      * @param right The rightmost index of current search range (inclusive)
      * @return The index where key is located, or -1 if not found
-     *     <p>Time Complexity: O(log n) because we halve the search space each time Space
-     *     Complexity: O(log n) due to recursive call stack
      */
     private <T extends Comparable<T>> int search(T[] array, T key, int left, int right) {
         // Base case: Search space is exhausted
