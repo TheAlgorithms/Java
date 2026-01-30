@@ -39,7 +39,7 @@ public final class RabinKarp {
 
         // h = pow(ALPHABET_SIZE, m-1) % q
         for (i = 0; i < m - 1; i++) {
-            h = (h * ALPHABET_SIZE) % q;
+            h = h * ALPHABET_SIZE % q;
         }
 
         for (i = 0; i < m; i++) {
@@ -61,11 +61,11 @@ public final class RabinKarp {
             }
 
             if (i < n - m) {
-                t = (t - (text.charAt(i) * h) % q);
+                t = (t - text.charAt(i) * h % q);
                 if (t < 0) {
                     t += q;
                 }
-                t = (t * ALPHABET_SIZE) % q;
+                t = t * ALPHABET_SIZE % q;
                 t = (t + text.charAt(i + m)) % q;
             }
         }
