@@ -33,7 +33,14 @@ public final class RabinKarp {
         int j = 0;
         int i = 0;
 
-        h = (int) Math.pow(ALPHABET_SIZE, m - 1) % q;
+        if (m > n) {
+            return new ArrayList<>();
+        }
+
+        // h = pow(ALPHABET_SIZE, m-1) % q
+        for (i = 0; i < m - 1; i++) {
+            h = (h * ALPHABET_SIZE) % q;
+        }
 
         for (i = 0; i < m; i++) {
             p = (ALPHABET_SIZE * p + pattern.charAt(i)) % q;
@@ -54,10 +61,12 @@ public final class RabinKarp {
             }
 
             if (i < n - m) {
-                t = (ALPHABET_SIZE * (t - text.charAt(i) * h) + text.charAt(i + m)) % q;
+                t = (t - (text.charAt(i) * h) % q);
                 if (t < 0) {
-                    t = (t + q);
+                    t += q;
                 }
+                t = (t * ALPHABET_SIZE) % q;
+                t = (t + text.charAt(i + m)) % q;
             }
         }
         return occurrences;
