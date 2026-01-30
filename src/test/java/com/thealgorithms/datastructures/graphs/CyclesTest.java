@@ -73,4 +73,22 @@ class CyclesTest {
         assertEquals(1, cycles.get(0).size());
         assertEquals(0, cycles.get(0).get(0));
     }
+
+    @Test
+    void testPrintAll() {
+        int nodes = 3;
+        int[][] matrix = {
+                { 0, 1, 1 },
+                { 1, 0, 1 },
+                { 1, 1, 0 }
+        };
+        Cycle c = new Cycle(nodes, matrix);
+        c.start();
+        c.printAll(); // Ensure no exception
+    }
+
+    @Test
+    void testMain() {
+        Cycles.main(new String[] {});
+    }
 }
