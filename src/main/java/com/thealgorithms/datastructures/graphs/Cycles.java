@@ -75,7 +75,7 @@ public final class Cycles {
     public static void main(String[] args) {
         // Example usage with a triangle graph: 0 -> 1 -> 2 -> 0
         int nodes = 3;
-        int[][] matrix = { { 0, 1, 1 }, { 1, 0, 1 }, { 1, 1, 0 } };
+        int[][] matrix = {{0, 1, 1}, {1, 0, 1}, {1, 1, 0}};
 
         Cycle c = new Cycle(nodes, matrix);
         c.start();
