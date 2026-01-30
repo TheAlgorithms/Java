@@ -14,11 +14,7 @@ class CyclesTest {
     void testTriangleCycle() {
         // Triangle graph: 0-1, 1-2, 2-0
         int nodes = 3;
-        int[][] matrix = {
-                { 0, 1, 1 },
-                { 1, 0, 1 },
-                { 1, 1, 0 }
-        };
+        int[][] matrix = { { 0, 1, 1 }, { 1, 0, 1 }, { 1, 1, 0 } };
 
         Cycle c = new Cycle(nodes, matrix);
         c.start();
@@ -45,11 +41,7 @@ class CyclesTest {
     void testNoCycle() {
         // Line graph: 0 -> 1 -> 2
         int nodes = 3;
-        int[][] matrix = {
-                { 0, 1, 0 },
-                { 0, 0, 1 },
-                { 0, 0, 0 }
-        };
+        int[][] matrix = { { 0, 1, 0 }, { 0, 0, 1 }, { 0, 0, 0 } };
 
         Cycle c = new Cycle(nodes, matrix);
         c.start();
@@ -62,9 +54,7 @@ class CyclesTest {
     void testSelfLoop() {
         // Node 0 has self loop
         int nodes = 1;
-        int[][] matrix = {
-                { 1 }
-        };
+        int[][] matrix = { { 1 } };
 
         Cycle c = new Cycle(nodes, matrix);
         c.start();
@@ -79,11 +69,7 @@ class CyclesTest {
     @Test
     void testPrintAll() {
         int nodes = 3;
-        int[][] matrix = {
-                { 0, 1, 1 },
-                { 1, 0, 1 },
-                { 1, 1, 0 }
-        };
+        int[][] matrix = { { 0, 1, 1 }, { 1, 0, 1 }, { 1, 1, 0 } };
         Cycle c = new Cycle(nodes, matrix);
         c.start();
         c.printAll(); // Ensure no exception
