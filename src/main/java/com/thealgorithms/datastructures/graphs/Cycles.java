@@ -1,59 +1,42 @@
 package com.thealgorithms.datastructures.graphs;
 
 import java.util.ArrayList;
-import java.util.Scanner;
+import java.util.List;
 
 class Cycle {
 
     private final int nodes;
-    private int[][] adjacencyMatrix;
-    private boolean[] visited;
-    ArrayList<ArrayList<Integer>> cycles = new ArrayList<ArrayList<Integer>>();
+    private final int[][] adjacencyMatrix;
+    private final boolean[] visited;
+    private final List<List<Integer>> cycles = new ArrayList<>();
 
-    Cycle() {
-        Scanner in = new Scanner(System.in);
-        System.out.print("Enter the no. of nodes: ");
-        nodes = in.nextInt();
-        System.out.print("Enter the no. of Edges: ");
-        final int edges = in.nextInt();
-
-        adjacencyMatrix = new int[nodes][nodes];
-        visited = new boolean[nodes];
-
+    Cycle(int nodes, int[][] adjacencyMatrix) {
+        this.nodes = nodes;
+        this.adjacencyMatrix = new int[nodes][nodes];
+        // Deep copy matrix to avoid side-effects
         for (int i = 0; i < nodes; i++) {
-            visited[i] = false;
+            System.arraycopy(adjacencyMatrix[i], 0, this.adjacencyMatrix[i], 0, nodes);
         }
-
-        System.out.println("Enter the details of each edges <Start Node> <End Node>");
-
-        for (int i = 0; i < edges; i++) {
-            int start;
-            int end;
-            start = in.nextInt();
-            end = in.nextInt();
-            adjacencyMatrix[start][end] = 1;
-        }
-        in.close();
+        this.visited = new boolean[nodes];
     }
 
     public void start() {
         for (int i = 0; i < nodes; i++) {
-            ArrayList<Integer> temp = new ArrayList<>();
-            dfs(i, i, temp);
+            dfs(i, i, new ArrayList<>());
             for (int j = 0; j < nodes; j++) {
-                adjacencyMatrix[i][j] = 0;
-                adjacencyMatrix[j][i] = 0;
+                this.adjacencyMatrix[i][j] = 0;
+                this.adjacencyMatrix[j][i] = 0;
             }
         }
     }
 
-    private void dfs(Integer start, Integer curr, ArrayList<Integer> temp) {
+    private void dfs(int start, int curr, List<Integer> temp) {
         temp.add(curr);
         visited[curr] = true;
         for (int i = 0; i < nodes; i++) {
             if (adjacencyMatrix[curr][i] == 1) {
                 if (i == start) {
-                    cycles.add(new ArrayList<Integer>(temp));
+                    cycles.add(new ArrayList<>(temp));
                 } else {
                     if (!visited[i]) {
                         dfs(start, i, temp);
@@ -62,18 +45,24 @@ class Cycle {
             }
         }
 
-        if (temp.size() > 0) {
+        if (!temp.isEmpty()) {
             temp.remove(temp.size() - 1);
         }
         visited[curr] = false;
     }
 
+    public List<List<Integer>> getCycles() {
+        return cycles;
+    }
+
     public void printAll() {
-        for (int i = 0; i < cycles.size(); i++) {
-            for (int j = 0; j < cycles.get(i).size(); j++) {
-                System.out.print(cycles.get(i).get(j) + " -> ");
+        for (List<Integer> cycle : cycles) {
+            for (Integer node : cycle) {
+                System.out.print(node + " -> ");
             }
-            System.out.println(cycles.get(i).get(0));
+            if (!cycle.isEmpty()) {
+                System.out.println(cycle.get(0));
+            }
             System.out.println();
         }
     }
@@ -84,7 +73,15 @@ public final class Cycles {
     }
 
     public static void main(String[] args) {
-        Cycle c = new Cycle();
+        // Example usage with a triangle graph: 0 -> 1 -> 2 -> 0
+        int nodes = 3;
+        int[][] matrix = {
+                { 0, 1, 1 },
+                { 1, 0, 1 },
+                { 1, 1, 0 }
+        };
+
+        Cycle c = new Cycle(nodes, matrix);
         c.start();
         c.printAll();
     }
