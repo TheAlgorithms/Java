@@ -1,5 +1,8 @@
 package com.thealgorithms.strings;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Implementation of Knuth–Morris–Pratt algorithm Usage: see the main function
  * for an example
@@ -8,16 +11,19 @@ public final class KMP {
     private KMP() {
     }
 
-    // a working example
+    /**
+     * find the starting index in string haystack[] that matches the search word P[]
+     *
+     * @param haystack The text to be searched
+     * @param needle   The pattern to be searched for
+     * @return A list of starting indices where the pattern is found
+     */
+    public static List<Integer> kmpMatcher(final String haystack, final String needle) {
+        List<Integer> occurrences = new ArrayList<>();
+        if (haystack == null || needle == null || needle.isEmpty()) {
+            return occurrences;
+        }
 
-    public static void main(String[] args) {
-        final String haystack = "AAAAABAAABA"; // This is the full string
-        final String needle = "AAAA"; // This is the substring that we want to find
-        kmpMatcher(haystack, needle);
-    }
-
-    // find the starting index in string haystack[] that matches the search word P[]
-    public static void kmpMatcher(final String haystack, final String needle) {
         final int m = haystack.length();
         final int n = needle.length();
         final int[] pi = computePrefixFunction(needle);
@@ -32,10 +38,11 @@ public final class KMP {
             }
 
             if (q == n) {
-                System.out.println("Pattern starts: " + (i + 1 - n));
+                occurrences.add(i + 1 - n);
                 q = pi[q - 1];
             }
         }
+        return occurrences;
     }
 
     // return the prefix function
