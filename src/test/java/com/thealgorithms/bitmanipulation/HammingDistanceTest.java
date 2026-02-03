@@ -2,6 +2,7 @@ package com.thealgorithms.bitmanipulation;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import com.thealgorithms.strings.HammingDistance;
 import org.junit.jupiter.api.Test;
 
 public class HammingDistanceTest {

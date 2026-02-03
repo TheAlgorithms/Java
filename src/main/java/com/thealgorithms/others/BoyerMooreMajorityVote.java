@@ -1,16 +1,19 @@
 package com.thealgorithms.others;
+
 import java.util.Optional;
 
 /**
- * Utility class implementing Boyer-Moore's Voting Algorithm to find the majority element
- * in an array. The majority element is defined as the element that appears more than n/2 times
- * in the array, where n is the length of the array.
+ * Boyer-Moore Majority Vote Algorithm (renamed for clarity).
  *
- * For more information on the algorithm, refer to:
- * https://en.wikipedia.org/wiki/Boyer%E2%80%93Moore_majority_vote_algorithm
+ * <p>Resolves naming conflict: "BoyerMoore" in others referred to the majority vote algorithm,
+ * while searches.BoyerMoore is the string-search algorithm. This class is the majority-vote implementation.
+ *
+ * <p>Finds the majority element in an array (element that appears more than n/2 times).
+ *
+ * @see <a href="https://en.wikipedia.org/wiki/Boyer%E2%80%93Moore_majority_vote_algorithm">Boyer–Moore majority vote algorithm</a>
  */
-public final class BoyerMoore {
-    private BoyerMoore() {
+public final class BoyerMooreMajorityVote {
+    private BoyerMooreMajorityVote() {
     }
 
     /**
@@ -33,12 +36,6 @@ public final class BoyerMoore {
         return Optional.empty();
     }
 
-    /**
-     * Identifies the potential majority candidate using Boyer-Moore's Voting Algorithm.
-     *
-     * @param array the input array
-     * @return the candidate for the majority element
-     */
     private static int findCandidate(final int[] array) {
         int count = 0;
         int candidate = -1;
@@ -51,13 +48,6 @@ public final class BoyerMoore {
         return candidate;
     }
 
-    /**
-     * Counts the occurrences of the candidate element in the array.
-     *
-     * @param candidate the candidate element
-     * @param array the input array
-     * @return the number of times the candidate appears in the array
-     */
     private static int countOccurrences(final int candidate, final int[] array) {
         int count = 0;
         for (int value : array) {
@@ -68,13 +58,6 @@ public final class BoyerMoore {
         return count;
     }
 
-    /**
-     * Determines if the count of the candidate element is more than n/2, where n is the length of the array.
-     *
-     * @param count the number of occurrences of the candidate
-     * @param totalCount the total number of elements in the array
-     * @return true if the candidate is the majority element, false otherwise
-     */
     private static boolean isMajority(int count, int totalCount) {
         return 2 * count > totalCount;
     }

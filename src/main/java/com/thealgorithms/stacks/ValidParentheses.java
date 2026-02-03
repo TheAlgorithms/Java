@@ -1,32 +1,26 @@
 package com.thealgorithms.stacks;
 
-import java.util.HashMap;
+import java.util.ArrayDeque;
+import java.util.Deque;
 import java.util.Map;
-import java.util.Stack;
 
 /**
- * Valid Parentheses Problem
+ * Valid Parentheses Problem (consolidated implementation).
  *
- * Given a string containing just the characters '(', ')', '{', '}', '[' and ']',
+ * <p>Resolves duplicate implementations: single stack-based solution for validating
+ * matching parentheses. Previously duplicated in strings and stacks packages.
+ *
+ * <p>Given a string containing just the characters '(', ')', '{', '}', '[' and ']',
  * determine if the input string is valid.
  *
- * An input string is valid if:
- * 1. Open brackets must be closed by the same type of brackets.
- * 2. Open brackets must be closed in the correct order.
- * 3. Every close bracket has a corresponding open bracket of the same type.
+ * <p>An input string is valid if:
+ * <ul>
+ *   <li>Open brackets are closed by the same type of brackets.</li>
+ *   <li>Open brackets are closed in the correct order.</li>
+ *   <li>Every closing bracket has a corresponding open bracket of the same type.</li>
+ * </ul>
  *
- * Examples:
- * Input: "()"
- * Output: true
- *
- * Input: "()[]{}"
- * Output: true
- *
- * Input: "(]"
- * Output: false
- *
- * Input: "([)]"
- * Output: false
+ * <p>Examples: "()" → true, "()[]{}" → true, "(]" → false, "([)]" → false.
  *
  * @author Gokul45-45
  */
@@ -34,41 +28,37 @@ public final class ValidParentheses {
     private ValidParentheses() {
     }
 
+    // Map closing bracket to opening bracket for stack matching
+    private static final Map<Character, Character> CLOSE_TO_OPEN = Map.of(')', '(', '}', '{', ']', '[');
+    private static final Map<Character, Character> OPEN_TO_CLOSE = Map.of('(', ')', '{', '}', '[', ']');
+
     /**
-     * Checks if the given string has valid parentheses
+     * Checks if the given string has valid matching parentheses using a stack.
+     * Only the six bracket characters are allowed; any other character makes the string invalid.
      *
-     * @param s the input string containing parentheses
-     * @return true if valid, false otherwise
+     * @param s the input string (only bracket characters allowed)
+     * @return true if valid, false if null, odd length, contains non-bracket chars, or mismatched
      */
     public static boolean isValid(String s) {
         if (s == null || s.length() % 2 != 0) {
             return false;
         }
 
-        Map<Character, Character> parenthesesMap = new HashMap<>();
-        parenthesesMap.put('(', ')');
-        parenthesesMap.put('{', '}');
-        parenthesesMap.put('[', ']');
-
-        Stack<Character> stack = new Stack<>();
+        Deque<Character> stack = new ArrayDeque<>();
 
         for (char c : s.toCharArray()) {
-            if (parenthesesMap.containsKey(c)) {
-                // Opening bracket - push to stack
+            if (OPEN_TO_CLOSE.containsKey(c)) {
                 stack.push(c);
+            } else if (CLOSE_TO_OPEN.containsKey(c)) {
+                if (stack.isEmpty() || stack.pop() != CLOSE_TO_OPEN.get(c)) {
+                    return false;
+                }
             } else {
-                // Closing bracket - check if it matches
-                if (stack.isEmpty()) {
-                    return false;
-                }
-                char openBracket = stack.pop();
-                if (parenthesesMap.get(openBracket) != c) {
-                    return false;
-                }
+                // Non-bracket character
+                return false;
             }
         }
 
-        // Stack should be empty if all brackets are matched
         return stack.isEmpty();
     }
 }

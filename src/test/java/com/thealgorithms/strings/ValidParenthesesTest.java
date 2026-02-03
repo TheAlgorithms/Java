@@ -1,33 +1,52 @@
 package com.thealgorithms.strings;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+import com.thealgorithms.stacks.ValidParentheses;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
+/**
+ * Tests for ValidParentheses (consolidated implementation in stacks package).
+ */
 public class ValidParenthesesTest {
 
     @ParameterizedTest(name = "Input: \"{0}\" → Expected: {1}")
-    @CsvSource({"'()', true", "'()[]{}', true", "'(]', false", "'{[]}', true", "'([{}])', true", "'([)]', false", "'', true", "'(', false", "')', false", "'{{{{}}}}', true", "'[({})]', true", "'[(])', false", "'[', false", "']', false", "'()()()()', true", "'(()', false", "'())', false",
-        "'{[()()]()}', true"})
-    void
-    testIsValid(String input, boolean expected) {
+    @CsvSource({
+        "'()', true",
+        "'()[]{}', true",
+        "'(]', false",
+        "'{[]}', true",
+        "'([{}])', true",
+        "'([)]', false",
+        "'', true",
+        "'(', false",
+        "')', false",
+        "'{{{{}}}}', true",
+        "'[({})]', true",
+        "'[(])', false",
+        "'[', false",
+        "']', false",
+        "'()()()()', true",
+        "'(()', false",
+        "'())', false",
+        "'{[()()]()}', true"
+    })
+    void testIsValid(String input, boolean expected) {
         assertEquals(expected, ValidParentheses.isValid(input));
     }
 
     @Test
-    void testNullInputThrows() {
-        IllegalArgumentException ex = assertThrows(IllegalArgumentException.class, () -> ValidParentheses.isValid(null));
-        assertEquals("Input string cannot be null", ex.getMessage());
+    void testNullInputReturnsFalse() {
+        assertFalse(ValidParentheses.isValid(null));
     }
 
-    @ParameterizedTest(name = "Input: \"{0}\" → throws IllegalArgumentException")
+    @ParameterizedTest(name = "Input: \"{0}\" → invalid characters return false")
     @CsvSource({"'a'", "'()a'", "'[123]'", "'{hello}'", "'( )'", "'\t'", "'\n'", "'@#$%'"})
-    void testInvalidCharactersThrow(String input) {
-        IllegalArgumentException ex = assertThrows(IllegalArgumentException.class, () -> ValidParentheses.isValid(input));
-        assertTrue(ex.getMessage().startsWith("Unexpected character"));
+    void testInvalidCharactersReturnFalse(String input) {
+        assertFalse(ValidParentheses.isValid(input));
     }
 }

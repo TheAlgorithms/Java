@@ -2,6 +2,7 @@ package com.thealgorithms.dynamicprogramming;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import com.thealgorithms.strings.LongestPalindromicSubstring;
 import java.util.stream.Stream;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
