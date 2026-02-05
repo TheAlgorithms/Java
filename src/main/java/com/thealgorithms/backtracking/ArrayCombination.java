@@ -20,8 +20,8 @@ public final class ArrayCombination {
      * @throws IllegalArgumentException if n or k are negative, or if k is greater than n.
      */
     public static List<List<Integer>> combination(int n, int k) {
-        if (n < 0 || k < 0 || k > n) {
-            throw new IllegalArgumentException("Invalid input: n must be non-negative, k must be non-negative and less than or equal to n.");
+        if (k < 0 || k > n) {
+            throw new IllegalArgumentException("Invalid input: 0 ≤ k ≤ n is required.");
         }
 
         List<List<Integer>> combinations = new ArrayList<>();
@@ -48,7 +48,7 @@ public final class ArrayCombination {
         for (int i = start; i < n; i++) {
             current.add(i);
             combine(combinations, current, i + 1, n, k);
-            current.remove(current.size() - 1); // Backtrack
+            current.removeLast(); // Backtrack
         }
     }
 }
