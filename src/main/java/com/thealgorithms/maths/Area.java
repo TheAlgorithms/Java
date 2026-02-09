@@ -10,17 +10,17 @@ public final class Area {
     /**
      * String of IllegalArgumentException for radius
      */
-    private static final String POSITIVE_RADIUS = "Must be a positive radius";
+    private static final String POSITIVE_RADIUS = "Radius must be greater than 0";
 
     /**
      * String of IllegalArgumentException for height
      */
-    private static final String POSITIVE_HEIGHT = "Must be a positive height";
+    private static final String POSITIVE_HEIGHT = "Height must be greater than 0";
 
     /**
      * String of IllegalArgumentException for base
      */
-    private static final String POSITIVE_BASE = "Must be a positive base";
+    private static final String POSITIVE_BASE = "Base must be greater than 0";
 
     /**
      * Calculate the surface area of a cube.
@@ -30,7 +30,7 @@ public final class Area {
      */
     public static double surfaceAreaCube(final double sideLength) {
         if (sideLength <= 0) {
-            throw new IllegalArgumentException("Must be a positive sideLength");
+            throw new IllegalArgumentException("Side length must be greater than 0");
         }
         return 6 * sideLength * sideLength;
     }
@@ -57,10 +57,10 @@ public final class Area {
      */
     public static double surfaceAreaPyramid(final double sideLength, final double slantHeight) {
         if (sideLength <= 0) {
-            throw new IllegalArgumentException("Must be a positive sideLength");
+            throw new IllegalArgumentException("");
         }
         if (slantHeight <= 0) {
-            throw new IllegalArgumentException("Must be a positive slantHeight");
+            throw new IllegalArgumentException("slant height must be greater than 0");
         }
         double baseArea = sideLength * sideLength;
         double lateralSurfaceArea = 2 * sideLength * slantHeight;
@@ -76,10 +76,10 @@ public final class Area {
      */
     public static double surfaceAreaRectangle(final double length, final double width) {
         if (length <= 0) {
-            throw new IllegalArgumentException("Must be a positive length");
+            throw new IllegalArgumentException("Length must be greater than 0");
         }
         if (width <= 0) {
-            throw new IllegalArgumentException("Must be a positive width");
+            throw new IllegalArgumentException("Width must be greater than 0");
         }
         return length * width;
     }
@@ -109,7 +109,7 @@ public final class Area {
      */
     public static double surfaceAreaSquare(final double sideLength) {
         if (sideLength <= 0) {
-            throw new IllegalArgumentException("Must be a positive sideLength");
+            throw new IllegalArgumentException("Side Length must be greater than 0");
         }
         return sideLength * sideLength;
     }
@@ -121,7 +121,7 @@ public final class Area {
      * @param height height of triangle
      * @return area of given triangle
      */
-    public static double surfaceAreaTriangle(final double base, final double height) {
+    public static double surfaceAreaTriangle(final double baseLength, final double height) {
         if (base <= 0) {
             throw new IllegalArgumentException(POSITIVE_BASE);
         }
