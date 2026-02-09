@@ -122,7 +122,7 @@ public final class Area {
      * @return area of given triangle
      */
     public static double surfaceAreaTriangle(final double baseLength, final double height) {
-        if (base <= 0) {
+        if (baseLength<= 0) {
             throw new IllegalArgumentException(POSITIVE_BASE);
         }
         if (height <= 0) {
