@@ -128,7 +128,7 @@ public final class Area {
         if (height <= 0) {
             throw new IllegalArgumentException(POSITIVE_HEIGHT);
         }
-        return base * height / 2;
+        return baseLength* height / 2;
     }
 
     /**
@@ -138,8 +138,8 @@ public final class Area {
      * @param height height of a parallelogram
      * @return area of given parallelogram
      */
-    public static double surfaceAreaParallelogram(final double base, final double height) {
-        if (base <= 0) {
+    public static double surfaceAreaParallelogram(final double baseLength, final double height) {
+        if (baseLength <= 0) {
             throw new IllegalArgumentException(POSITIVE_BASE);
         }
         if (height <= 0) {
@@ -156,17 +156,17 @@ public final class Area {
      * @param height height of trapezium
      * @return area of given trapezium
      */
-    public static double surfaceAreaTrapezium(final double base1, final double base2, final double height) {
-        if (base1 <= 0) {
+    public static double surfaceAreaTrapezium(final double baseLength1, final double baseLength2, final double height) {
+        if (baseLength1 <= 0) {
             throw new IllegalArgumentException(POSITIVE_BASE + 1);
         }
-        if (base2 <= 0) {
+        if (baseLength2 <= 0) {
             throw new IllegalArgumentException(POSITIVE_BASE + 2);
         }
         if (height <= 0) {
             throw new IllegalArgumentException(POSITIVE_HEIGHT);
         }
-        return (base1 + base2) * height / 2;
+        return (baseLength1 + baseLength2) * height / 2;
     }
 
     /**
