@@ -3,27 +3,32 @@ package com.thealgorithms.puzzlesandgames;
 import java.util.List;
 
 /**
- * The {@code TowerOfHanoi} class provides a recursive solution to the Tower of Hanoi puzzle.
- * This puzzle involves moving a set of discs from one pole to another, following specific rules:
+ * Recursive solution to the Tower of Hanoi puzzle.
+ *
+ * <p>
+ * The puzzle rules are:
  * 1. Only one disc can be moved at a time.
  * 2. A disc can only be placed on top of a larger disc.
  * 3. All discs must start on one pole and end on another.
- *
- * This implementation recursively calculates the steps required to solve the puzzle and stores them
- * in a provided list.
- *
- * <p>
- * For more information about the Tower of Hanoi, see
- * <a href="https://en.wikipedia.org/wiki/Tower_of_Hanoi">Tower of Hanoi on Wikipedia</a>.
  * </p>
  *
- * The {@code shift} method takes the number of discs and the names of the poles,
- * and appends the steps required to solve the puzzle to the provided list.
- * Time Complexity: O(2^n) - Exponential time complexity due to the recursive nature of the problem.
- * Space Complexity: O(n) - Linear space complexity due to the recursion stack.
- * Wikipedia: https://en.wikipedia.org/wiki/Tower_of_Hanoi
+ * <p>
+ * The recursion follows three steps:
+ * 1. Move {@code n-1} discs from start to intermediate.
+ * 2. Move the largest disc from start to end.
+ * 3. Move {@code n-1} discs from intermediate to end.
+ * </p>
+ *
+ * <p>
+ * Time Complexity: O(2^n) - exponential due to recursive expansion.
+ * Space Complexity: O(n) - recursion stack depth.
+ * </p>
+ *
+ * <p>
+ * See <a href="https://en.wikipedia.org/wiki/Tower_of_Hanoi">Tower of Hanoi on Wikipedia</a>.
+ * </p>
  */
-final class TowerOfHanoi {
+public final class TowerOfHanoi {
 
     private TowerOfHanoi() {
     }
@@ -36,6 +41,7 @@ final class TowerOfHanoi {
      * @param intermediatePole The name of the intermediate pole used as a temporary holding area.
      * @param endPole          The name of the end pole to which discs are moved.
      * @param result           A list to store the steps required to solve the puzzle.
+    * @throws IllegalArgumentException if {@code n} is negative.
      *
      *                         <p>
      *                         This method is called recursively to move n-1 discs
@@ -51,15 +57,20 @@ final class TowerOfHanoi {
      *                         </p>
      */
     public static void shift(int n, String startPole, String intermediatePole, String endPole, List<String> result) {
-        if (n != 0) {
-            // Move n-1 discs from startPole to intermediatePole
-            shift(n - 1, startPole, endPole, intermediatePole, result);
-
-            // Add the move of the nth disc from startPole to endPole
-            result.add(String.format("Move %d from %s to %s", n, startPole, endPole));
-
-            // Move the n-1 discs from intermediatePole to endPole
-            shift(n - 1, intermediatePole, startPole, endPole, result);
+        if (n < 0) {
+            throw new IllegalArgumentException("Number of discs must be non-negative");
         }
+        if (n == 0) {
+            return;
+        }
+
+        // Move n-1 discs from startPole to intermediatePole
+        shift(n - 1, startPole, endPole, intermediatePole, result);
+
+        // Add the move of the nth disc from startPole to endPole
+        result.add(String.format("Move %d from %s to %s", n, startPole, endPole));
+
+        // Move the n-1 discs from intermediatePole to endPole
+        shift(n - 1, intermediatePole, startPole, endPole, result);
     }
 }
