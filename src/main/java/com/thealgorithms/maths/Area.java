@@ -128,7 +128,7 @@ public final class Area {
         if (height <= 0) {
             throw new IllegalArgumentException(POSITIVE_HEIGHT);
         }
-        return baseLength* height / 2;
+        return baseLength * height / 2;
     }
 
     /**
