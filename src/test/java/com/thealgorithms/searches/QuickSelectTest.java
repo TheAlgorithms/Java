@@ -172,7 +172,7 @@ class QuickSelectTest {
     void quickSelectMedianOfThreeCharacters() {
         List<Character> elements = Arrays.asList('X', 'Z', 'Y');
         char actual = QuickSelect.select(elements, 1);
-        assertEquals(actual, 'Y');
+        assertEquals('Y', actual);
     }
 
     @Test

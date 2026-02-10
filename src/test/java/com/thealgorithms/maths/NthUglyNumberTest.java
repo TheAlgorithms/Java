@@ -48,22 +48,22 @@ public class NthUglyNumberTest {
 
         var uglyNumbers = new NthUglyNumber(new int[] {7, 2, 5, 3});
         for (final var tc : testCases.entrySet()) {
-            assertEquals(uglyNumbers.get(tc.getKey()), tc.getValue());
+            assertEquals(tc.getValue(), uglyNumbers.get(tc.getKey()));
         }
 
-        assertEquals(uglyNumbers.get(999), 385875);
+        assertEquals(385875, uglyNumbers.get(999));
     }
 
     @Test
     public void testGetWithBase1() {
         var uglyNumbers = new NthUglyNumber(new int[] {1});
-        assertEquals(uglyNumbers.get(10), 1);
+        assertEquals(1, uglyNumbers.get(10));
     }
 
     @Test
     public void testGetWithBase2() {
         var uglyNumbers = new NthUglyNumber(new int[] {2});
-        assertEquals(uglyNumbers.get(5), 32);
+        assertEquals(32, uglyNumbers.get(5));
     }
 
     @Test

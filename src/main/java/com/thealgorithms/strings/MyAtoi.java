@@ -45,7 +45,9 @@ public final class MyAtoi {
         int number = 0;
         while (index < length) {
             char ch = s.charAt(index);
-            if (!Character.isDigit(ch)) {
+
+            // Accept only ASCII digits
+            if (ch < '0' || ch > '9') {
                 break;
             }
 
