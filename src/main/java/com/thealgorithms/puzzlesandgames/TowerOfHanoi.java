@@ -41,7 +41,7 @@ public final class TowerOfHanoi {
      * @param intermediatePole The name of the intermediate pole used as a temporary holding area.
      * @param endPole          The name of the end pole to which discs are moved.
      * @param result           A list to store the steps required to solve the puzzle.
-    * @throws IllegalArgumentException if {@code n} is negative.
+     * @throws IllegalArgumentException if {@code n} is negative.
      *
      *                         <p>
      *                         This method is called recursively to move n-1 discs
