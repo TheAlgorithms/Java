@@ -18,7 +18,7 @@ public final class FindMax {
         }
         int max = array[0];
         for (int i = 1; i < n; i++) {
-            max = Math.max(array[i] , array[i+1]);
+            max = Math.max(array[i] , max);
         }
         return max;
     }
