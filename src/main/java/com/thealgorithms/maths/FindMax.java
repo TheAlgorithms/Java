@@ -1,7 +1,8 @@
 package com.thealgorithms.maths;
 
 public final class FindMax {
-    private FindMax() {}
+    private FindMax() {
+    }
 
     public static int findMax(final int[] array) {
         if (array.length == 0) {
