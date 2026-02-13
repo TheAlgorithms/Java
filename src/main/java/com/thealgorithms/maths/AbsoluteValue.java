@@ -11,6 +11,6 @@ public final class AbsoluteValue {
      * @return The absolute value of the {@code number}
      */
     public static int getAbsValue(int number) {
-        return number < 0 ? -number : number;
+        return Math.abs(number);
     }
 }
