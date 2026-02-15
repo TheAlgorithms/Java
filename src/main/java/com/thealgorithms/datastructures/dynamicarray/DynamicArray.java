@@ -126,6 +126,21 @@ public class DynamicArray<E> implements Iterable<E> {
     public boolean isEmpty() {
         return size == 0;
     }
+    /**
+ * Checks whether the array contains the specified element.
+ *
+ *  @param element the element to check for
+ *  @return true if the array contains the specified element, false otherwise
+ */
+    public boolean contains(final E element) {
+        for (int i = 0; i < size; i++) {
+          if (Objects.equals(elements[i], element)) {
+            return true;
+        }
+    }
+    return false;
+}
+
 
     /**
      * Returns a sequential stream with this collection as its source.
