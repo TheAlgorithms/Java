@@ -256,15 +256,15 @@ public class DynamicArrayTest {
         assertEquals("Charlie", array.get(2));
     }
     @Test
-public void testContains() {
-    DynamicArray<Integer> array = new DynamicArray<>();
-    array.add(1);
-    array.add(2);
-    array.add(3);
+    public void testContains() {
+        DynamicArray<Integer> array = new DynamicArray<>();
+        array.add(1);
+        array.add(2);
+        array.add(3);
 
-    assertTrue(array.contains(2));
-    assertFalse(array.contains(5));
-}
+        assertTrue(array.contains(2));
+        assertFalse(array.contains(5));
+    }
 
 @Test
 public void testContainsWithNull() {
