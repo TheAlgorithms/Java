@@ -255,6 +255,7 @@ public class DynamicArrayTest {
         assertEquals(3, array.getSize());
         assertEquals("Charlie", array.get(2));
     }
+
     @Test
     public void testContains() {
         DynamicArray<Integer> array = new DynamicArray<>();
@@ -266,12 +267,12 @@ public class DynamicArrayTest {
         assertFalse(array.contains(5));
     }
 
-@Test
-public void testContainsWithNull() {
-    DynamicArray<String> array = new DynamicArray<>();
-    array.add(null);
+    @Test
+    public void testContainsWithNull() {
+        DynamicArray<String> array = new DynamicArray<>();
+        array.add(null);
 
-    assertTrue(array.contains(null));
-}
+        assertTrue(array.contains(null));
+    }
 
 }
