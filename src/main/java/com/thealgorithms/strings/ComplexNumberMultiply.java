@@ -28,8 +28,4 @@ public final class ComplexNumberMultiply {
 
         return real + "+" + imaginary + "i";
     }
-
-    public static void main(String[] args) {
-        System.out.println(multiply("1+1i", "1+1i"));
-    }
 }

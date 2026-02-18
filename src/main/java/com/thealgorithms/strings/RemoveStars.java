@@ -28,8 +28,4 @@ public final class RemoveStars {
         }
         return result.toString();
     }
-    public static void main(String[] args) {
-        String example = "leet**cod*e";
-        System.out.println(removeStars(example));
-    }
 }
