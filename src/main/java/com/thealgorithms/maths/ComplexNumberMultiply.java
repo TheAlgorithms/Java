@@ -1,11 +1,8 @@
-package com.thealgorithms.strings;
+package com.thealgorithms.maths;
 
 /**
  * Multiplies two complex numbers represented as strings in the form "a+bi".
- *
- * Example:
- * Input: 1+1i , 1+1i
- * Output: 0+2i
+ * Supports negative values and validates input format.
  */
 public final class ComplexNumberMultiply {
 
@@ -13,6 +10,10 @@ public final class ComplexNumberMultiply {
     }
 
     private static int[] parse(String num) {
+        if (num == null || !num.matches("-?\\d+\\+-?\\d+i")) {
+            throw new IllegalArgumentException("Invalid complex number format: " + num);
+        }
+
         String[] parts = num.split("\\+");
         int real = Integer.parseInt(parts[0]);
         int imaginary = Integer.parseInt(parts[1].replace("i", ""));
