@@ -24,13 +24,11 @@ public class ComplexNumberMultiplyTest {
 
     @Test
     void testInvalidFormat() {
-        assertThrows(IllegalArgumentException.class,
-            () -> ComplexNumberMultiply.multiply("1+1", "1+1i"));
+        assertThrows(IllegalArgumentException.class, () -> ComplexNumberMultiply.multiply("1+1", "1+1i"));
     }
 
     @Test
     void testNullInput() {
-        assertThrows(IllegalArgumentException.class,
-            () -> ComplexNumberMultiply.multiply(null, "1+1i"));
+        assertThrows(IllegalArgumentException.class, () -> ComplexNumberMultiply.multiply(null, "1+1i"));
     }
 }
