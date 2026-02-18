@@ -91,9 +91,6 @@
         <Bug pattern="USBR_UNNECESSARY_STORE_BEFORE_RETURN" />
     </Match>
     <Match>
-        <Bug pattern="BL_BURYING_LOGIC" />
-    </Match>
-    <Match>
         <Bug pattern="MUI_CONTAINSKEY_BEFORE_GET" />
     </Match>
     <Match>
