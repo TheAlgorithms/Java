@@ -274,5 +274,4 @@ public class DynamicArrayTest {
 
         assertTrue(array.contains(null));
     }
-
 }

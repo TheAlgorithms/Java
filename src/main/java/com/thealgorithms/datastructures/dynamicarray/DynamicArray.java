@@ -106,8 +106,7 @@ public class DynamicArray<E> implements Iterable<E> {
         if (index < 0 || index >= size) {
             throw new IndexOutOfBoundsException("Index: " + index + ", Size: " + size);
         }
-        @SuppressWarnings("unchecked")
-        E oldElement = (E) elements[index];
+        @SuppressWarnings("unchecked") E oldElement = (E) elements[index];
         fastRemove(index);
         modCount++; // Increment modification count
         return oldElement;
