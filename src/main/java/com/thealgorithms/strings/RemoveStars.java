@@ -12,12 +12,11 @@ package com.thealgorithms.strings;
 public final class RemoveStars {
 
     private RemoveStars() {
-        // Private constructor to prevent instantiation(object creation)
     }
 
     public static String removeStars(String s) {
         StringBuilder result = new StringBuilder();
-         
+
         for (char c : s.toCharArray()) {
             if (c == '*') {
                 if (result.length() > 0) {
