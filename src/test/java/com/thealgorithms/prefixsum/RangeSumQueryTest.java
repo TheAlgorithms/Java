@@ -43,7 +43,7 @@ class RangeSumQueryTest {
         int[] prefixSum = RangeSumQuery.buildPrefixSum(nums);
 
         assertEquals(-2, RangeSumQuery.sumRange(prefixSum, 0, 2)); // -1+2-3
-        assertEquals(3, RangeSumQuery.sumRange(prefixSum, 1, 3));  // 2-3+4
+        assertEquals(3, RangeSumQuery.sumRange(prefixSum, 1, 3)); // 2-3+4
     }
 
     @Test
@@ -51,16 +51,13 @@ class RangeSumQueryTest {
         int[] nums = {};
         int[] prefixSum = RangeSumQuery.buildPrefixSum(nums);
 
-        assertThrows(IllegalArgumentException.class,
-                () -> RangeSumQuery.sumRange(prefixSum, 0, 0));
+        assertThrows(IllegalArgumentException.class, () -> RangeSumQuery.sumRange(prefixSum, 0, 0));
     }
 
     @Test
     void testNullArrayThrowsException() {
-        assertThrows(IllegalArgumentException.class,
-                () -> RangeSumQuery.buildPrefixSum(null));
-        assertThrows(IllegalArgumentException.class,
-                () -> RangeSumQuery.sumRange(null, 0, 0));
+        assertThrows(IllegalArgumentException.class, () -> RangeSumQuery.buildPrefixSum(null));
+        assertThrows(IllegalArgumentException.class, () -> RangeSumQuery.sumRange(null, 0, 0));
     }
 
     @Test
@@ -68,11 +65,8 @@ class RangeSumQueryTest {
         int[] nums = {1, 2, 3};
         int[] prefixSum = RangeSumQuery.buildPrefixSum(nums);
 
-        assertThrows(IllegalArgumentException.class,
-                () -> RangeSumQuery.sumRange(prefixSum, -1, 2));
-        assertThrows(IllegalArgumentException.class,
-                () -> RangeSumQuery.sumRange(prefixSum, 1, 5));
-        assertThrows(IllegalArgumentException.class,
-                () -> RangeSumQuery.sumRange(prefixSum, 2, 1));
+        assertThrows(IllegalArgumentException.class, () -> RangeSumQuery.sumRange(prefixSum, -1, 2));
+        assertThrows(IllegalArgumentException.class, () -> RangeSumQuery.sumRange(prefixSum, 1, 5));
+        assertThrows(IllegalArgumentException.class, () -> RangeSumQuery.sumRange(prefixSum, 2, 1));
     }
 }
