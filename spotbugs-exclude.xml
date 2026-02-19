@@ -9,16 +9,10 @@
         <Bug pattern="DMI_RANDOM_USED_ONLY_ONCE" />
     </Match>
     <Match>
-        <Bug pattern="SF_SWITCH_NO_DEFAULT" />
-    </Match>
-    <Match>
         <Bug pattern="RV_RETURN_VALUE_IGNORED_NO_SIDE_EFFECT" />
     </Match>
     <Match>
         <Bug pattern="DM_NEXTINT_VIA_NEXTDOUBLE" />
-    </Match>
-    <Match>
-        <Bug pattern="SIC_INNER_SHOULD_BE_STATIC" />
     </Match>
     <Match>
         <Bug pattern="EI_EXPOSE_REP" />
@@ -33,13 +27,7 @@
         <Bug pattern="PA_PUBLIC_PRIMITIVE_ATTRIBUTE" />
     </Match>
     <Match>
-        <Bug pattern="MS_PKGPROTECT" />
-    </Match>
-    <Match>
         <Bug pattern="SE_COMPARATOR_SHOULD_BE_SERIALIZABLE" />
-    </Match>
-    <Match>
-        <Bug pattern="INT_BAD_REM_BY_1" />
     </Match>
     <Match>
         <Bug pattern="FE_FLOATING_POINT_EQUALITY" />
@@ -51,13 +39,7 @@
         <Bug pattern="URF_UNREAD_FIELD" />
     </Match>
     <Match>
-        <Bug pattern="RC_REF_COMPARISON" />
-    </Match>
-    <Match>
         <Bug pattern="MS_EXPOSE_REP" />
-    </Match>
-    <Match>
-        <Bug pattern="DM_BOXED_PRIMITIVE_FOR_PARSING" />
     </Match>
     <Match>
         <Bug pattern="UWF_UNWRITTEN_FIELD" />
@@ -72,9 +54,6 @@
         <Bug pattern="URF_UNREAD_PUBLIC_OR_PROTECTED_FIELD" />
     </Match>
     <Match>
-        <Bug pattern="NP_IMMEDIATE_DEREFERENCE_OF_READLINE" />
-    </Match>
-    <Match>
         <Bug pattern="EQ_COMPARETO_USE_OBJECT_EQUALS" />
     </Match>
     <Match>
@@ -82,9 +61,6 @@
     </Match>
     <Match>
         <Bug pattern="AT_STALE_THREAD_WRITE_OF_PRIMITIVE" />
-    </Match>
-    <Match>
-        <Bug pattern="SF_SWITCH_FALLTHROUGH" />
     </Match>
     <!-- fb-contrib -->
     <Match>
@@ -115,12 +91,6 @@
         <Bug pattern="USBR_UNNECESSARY_STORE_BEFORE_RETURN" />
     </Match>
     <Match>
-        <Bug pattern="BL_BURYING_LOGIC" />
-    </Match>
-    <Match>
-        <Bug pattern="UTWR_USE_TRY_WITH_RESOURCES" />
-    </Match>
-    <Match>
         <Bug pattern="MUI_CONTAINSKEY_BEFORE_GET" />
     </Match>
     <Match>
@@ -149,9 +119,6 @@
     </Match>
     <Match>
         <Bug pattern="LSYC_LOCAL_SYNCHRONIZED_COLLECTION" />
-    </Match>
-    <Match>
-        <Bug pattern="IOI_USE_OF_FILE_STREAM_CONSTRUCTORS" />
     </Match>
     <Match>
         <Bug pattern="UP_UNUSED_PARAMETER" />
@@ -190,22 +157,13 @@
         <Bug pattern="STT_STRING_PARSING_A_FIELD" />
     </Match>
     <Match>
-        <Bug pattern="IMC_IMMATURE_CLASS_BAD_SERIALVERSIONUID" />
-    </Match>
-    <Match>
         <Bug pattern="DRE_DECLARED_RUNTIME_EXCEPTION" />
-    </Match>
-    <Match>
-        <Bug pattern="BAS_BLOATED_ASSIGNMENT_SCOPE" />
     </Match>
     <Match>
         <Bug pattern="SPP_FIELD_COULD_BE_STATIC" />
     </Match>
     <Match>
         <Bug pattern="ITC_INHERITANCE_TYPE_CHECKING" />
-    </Match>
-    <Match>
-        <Bug pattern="FII_USE_ARRAYS_STREAM" />
     </Match>
     <Match>
         <Bug pattern="UTAO_JUNIT_ASSERTION_ODDITIES_USE_ASSERT_EQUALS" />
