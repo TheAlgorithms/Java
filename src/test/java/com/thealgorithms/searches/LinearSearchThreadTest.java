@@ -3,6 +3,7 @@ package com.thealgorithms.searches;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+import java.util.Random;
 import org.junit.jupiter.api.Test;
 
 class LinearSearchThreadTest {
@@ -62,10 +63,11 @@ class LinearSearchThreadTest {
     void testSearcherRandomNumbers() throws InterruptedException {
         int size = 200;
         int[] array = new int[size];
+        Random random = new Random();
         for (int i = 0; i < size; i++) {
-            array[i] = (int) (Math.random() * 100);
+            array[i] = random.nextInt(100);
         }
-        int target = array[(int) (Math.random() * size)]; // Randomly select a target that is present
+        final int target = array[random.nextInt(size)]; // Randomly select a target that is present
         Searcher searcher = new Searcher(array, 0, size, target);
         searcher.start();
         searcher.join();
