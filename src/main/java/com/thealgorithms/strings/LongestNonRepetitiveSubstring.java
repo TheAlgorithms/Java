@@ -5,13 +5,24 @@ import java.util.Map;
 
 /**
  * Class for finding the length of the longest substring without repeating characters.
+ *
+ * Uses the sliding window technique with a HashMap to track
+ * the last seen index of each character.
  */
 final class LongestNonRepetitiveSubstring {
+
     private LongestNonRepetitiveSubstring() {
     }
 
     /**
      * Finds the length of the longest substring without repeating characters.
+     *
+     * Uses the sliding window approach to maintain a window of unique characters.
+     * When a duplicate character is found within the current window,
+     * the starting index is updated accordingly.
+     *
+     * Time Complexity: O(n), where n is the length of the input string.
+     * Space Complexity: O(min(n, m)), where m is the size of the character set.
      *
      * @param s the input string
      * @return the length of the longest non-repetitive substring
@@ -24,16 +35,11 @@ final class LongestNonRepetitiveSubstring {
         for (int i = 0; i < s.length(); i++) {
             char currentChar = s.charAt(i);
 
-            // If the character is already in the map and its index is within the current window
             if (charIndexMap.containsKey(currentChar) && charIndexMap.get(currentChar) >= start) {
-                // Move the start to the position right after the last occurrence of the current character
                 start = charIndexMap.get(currentChar) + 1;
             }
 
-            // Update the last seen index of the current character
             charIndexMap.put(currentChar, i);
-
-            // Calculate the maximum length of the substring without repeating characters
             maxLength = Math.max(maxLength, i - start + 1);
         }
 
