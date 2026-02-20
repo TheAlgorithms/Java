@@ -12,9 +12,6 @@
         <Bug pattern="RV_RETURN_VALUE_IGNORED_NO_SIDE_EFFECT" />
     </Match>
     <Match>
-        <Bug pattern="DM_NEXTINT_VIA_NEXTDOUBLE" />
-    </Match>
-    <Match>
         <Bug pattern="EI_EXPOSE_REP" />
     </Match>
     <Match>
