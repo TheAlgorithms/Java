@@ -97,9 +97,6 @@
         <Bug pattern="UCPM_USE_CHARACTER_PARAMETERIZED_METHOD" />
     </Match>
     <Match>
-        <Bug pattern="SUA_SUSPICIOUS_UNINITIALIZED_ARRAY" />
-    </Match>
-    <Match>
         <Bug pattern="SPP_USE_MATH_CONSTANT" />
     </Match>
     <Match>
