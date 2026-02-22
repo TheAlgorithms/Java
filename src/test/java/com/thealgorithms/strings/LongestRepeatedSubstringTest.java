@@ -17,17 +17,7 @@ class LongestRepeatedSubstringTest {
     }
 
     private static Stream<Arguments> provideTestCases() {
-        return Stream.of(
-            Arguments.of("banana", "ana"),
-            Arguments.of("abcabc", "abc"),
-            Arguments.of("aaaa", "aaa"),
-            Arguments.of("abcd", ""),
-            Arguments.of("a", ""),
-            Arguments.of("", ""),
-            Arguments.of(null, ""),
-            Arguments.of("aab", "a"),
-            Arguments.of("mississippi", "issi")
-        );
+        return Stream.of(Arguments.of("banana", "ana"), Arguments.of("abcabc", "abc"), Arguments.of("aaaa", "aaa"), Arguments.of("abcd", ""), Arguments.of("a", ""), Arguments.of("", ""), Arguments.of(null, ""), Arguments.of("aab", "a"), Arguments.of("aa", "a"), Arguments.of("mississippi", "issi"));
     }
 
     @ParameterizedTest(name = "\"{0}\" -> LCP={1}")
@@ -38,9 +28,6 @@ class LongestRepeatedSubstringTest {
     }
 
     private static Stream<Arguments> provideLcpTestCases() {
-        return Stream.of(
-            Arguments.of("banana", new int[] {1, 3, 0, 0, 2}),
-            Arguments.of("ab", new int[] {0})
-        );
+        return Stream.of(Arguments.of("banana", new int[] {1, 3, 0, 0, 2}), Arguments.of("ab", new int[] {0}));
     }
 }
