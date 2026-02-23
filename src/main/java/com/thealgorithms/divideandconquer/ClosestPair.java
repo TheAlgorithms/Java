@@ -66,10 +66,6 @@ public final class ClosestPair {
         }
     }
 
-    public Location[] createLocation(int numberValues) {
-        return new Location[numberValues];
-    }
-
     public Location buildLocation(double x, double y) {
         return new Location(x, y);
     }

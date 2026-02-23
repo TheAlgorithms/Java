@@ -17,14 +17,6 @@ public class ClosestPairTest {
     }
 
     @Test
-    public void testCreateLocation() {
-        ClosestPair cp = new ClosestPair(5);
-        ClosestPair.Location[] locations = cp.createLocation(5);
-        assertNotNull(locations);
-        assertEquals(5, locations.length);
-    }
-
-    @Test
     public void testXPartition() {
         ClosestPair cp = new ClosestPair(5);
         ClosestPair.Location[] points = new ClosestPair.Location[5];

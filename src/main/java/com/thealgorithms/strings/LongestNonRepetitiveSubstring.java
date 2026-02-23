@@ -13,6 +13,12 @@ final class LongestNonRepetitiveSubstring {
     /**
      * Finds the length of the longest substring without repeating characters.
      *
+     * Uses the sliding window technique with a HashMap to track
+     * the last seen index of each character.
+     *
+     * Time Complexity: O(n), where n is the length of the input string.
+     * Space Complexity: O(min(n, m)), where m is the size of the character set.
+     *
      * @param s the input string
      * @return the length of the longest non-repetitive substring
      */
