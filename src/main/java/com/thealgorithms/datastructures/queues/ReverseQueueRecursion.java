@@ -8,7 +8,7 @@ import java.util.Queue;
 public final class ReverseQueueRecursion {
 
     private ReverseQueueRecursion() {
-        // private constructor to prevent instantiation
+        // Private constructor to prevent instantiation
     }
 
     /**
@@ -17,9 +17,16 @@ public final class ReverseQueueRecursion {
      * @param queue the queue to reverse
      * @param <T> type of elements in the queue
      */
-    public static <T> void reverseQueue(Queue<T> queue) {
-        if (queue.isEmpty()) return;
-        T front = queue.poll();
+    public static <T> void reverseQueue(final Queue<T> queue) {
+        if (queue == null) {
+            return;
+        }
+
+        if (queue.isEmpty()) {
+            return;
+        }
+
+        final T front = queue.poll();
         reverseQueue(queue);
         queue.add(front);
     }
