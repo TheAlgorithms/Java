@@ -8,7 +8,7 @@ import java.util.Queue;
 public final class ReverseQueueRecursion {
 
     private ReverseQueueRecursion() {
-        // Private constructor to prevent instantiation
+        // private constructor to prevent instantiation
     }
 
     /**
