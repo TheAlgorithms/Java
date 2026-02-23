@@ -1,9 +1,15 @@
 package com.thealgorithms.datastructures.queues;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
+
 import static org.junit.jupiter.api.Assertions.assertTrue;
+
 import java.util.LinkedList;
+
 import java.util.Queue;
+
 import org.junit.jupiter.api.Test;
+
 class ReverseQueueRecursionTest {
     void testReverseMultipleElements() {
         Queue<Integer> queue = new LinkedList<>();
@@ -44,3 +50,4 @@ class ReverseQueueRecursionTest {
         assertTrue(queue.isEmpty());
     }
 }
+
