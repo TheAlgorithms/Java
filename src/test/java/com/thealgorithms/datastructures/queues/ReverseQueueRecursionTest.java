@@ -8,7 +8,6 @@ import java.util.Queue;
 import org.junit.jupiter.api.Test;
 
 class ReverseQueueRecursionTest {
-
     @Test
     void testReverseMultipleElements() {
         Queue<Integer> queue = new LinkedList<>();
