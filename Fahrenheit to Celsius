@@ -1,0 +1,15 @@
+import java.util.*;
+ 
+class FToC {
+  public static void main(String[] args) {
+    float temp;
+    Scanner in = new Scanner(System.in);
+ 
+    System.out.println("Enter temp in F");
+    temp = in.nextInt();
+ 
+    temp = ((temp - 32)*5)/9;
+ 
+    System.out.println("temp in C = " + temp);
+  }
+}
