@@ -35,5 +35,8 @@ public class VolumeTest {
 
         /* test frustum */
         assertEquals(359.188760060433, Volume.volumeFrustumOfCone(3, 5, 7));
+
+        /* test pyramid frustum */
+        assertEquals(140.0, Volume.volumeFrustumOfPyramid(6, 24, 10));
     }
 }
