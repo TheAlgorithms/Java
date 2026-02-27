@@ -113,4 +113,5 @@ public final class Volume {
      */    
     public static double volumeFrustumOfPyramid(double upperBaseArea, double lowerBaseArea, double height) {
         return (upperBaseArea + lowerBaseArea + Math.sqrt(upperBaseArea * lowerBaseArea)) * height / 3;
+    }
 }
