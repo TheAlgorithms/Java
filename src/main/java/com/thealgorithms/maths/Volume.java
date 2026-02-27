@@ -110,7 +110,7 @@ public final class Volume {
      * @param lowerBaseArea area of the lower base
      * @param height height of the frustum
      * @return volume of the frustum
-     */    
+     */
     public static double volumeFrustumOfPyramid(double upperBaseArea, double lowerBaseArea, double height) {
         return (upperBaseArea + lowerBaseArea + Math.sqrt(upperBaseArea * lowerBaseArea)) * height / 3;
     }
