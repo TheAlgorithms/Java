@@ -35,6 +35,27 @@ public final class Area {
         return 6 * sideLength * sideLength;
     }
 
+     /**
+     * Calculate the surface area of a cuboid.
+     *
+     * @param length length of the cuboid
+     * @param width width of the cuboid
+     * @param height height of the cuboid
+     * @return surface area of given cuboid
+     */
+    public static double surfaceAreaCuboid(final double length, double width, double height) {
+        if (length <= 0) {
+            throw new IllegalArgumentException("Length must be greater than 0");
+        }
+        if (width <= 0) {
+            throw new IllegalArgumentException("Width must be greater than 0");
+        }
+        if (height <= 0) {
+            throw new IllegalArgumentException("Height must be greater than 0");
+        }
+        return 2 * (length * width + length * height + width * height);
+    }
+    
     /**
      * Calculate the surface area of a sphere.
      *
