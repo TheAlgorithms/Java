@@ -76,6 +76,12 @@ class AreaTest {
         assertAll(()
                       -> assertThrows(IllegalArgumentException.class, () -> Area.surfaceAreaCube(0)),
             ()
+                -> assertThrows(IllegalArgumentException.class, () -> Area.surfaceAreaCuboid(0, 1, 2)),
+            ()
+                -> assertThrows(IllegalArgumentException.class, () -> Area.surfaceAreaCuboid(1, 0, 2)),
+            ()
+                -> assertThrows(IllegalArgumentException.class, () -> Area.surfaceAreaCuboid(1, 2, 0)),
+            ()
                 -> assertThrows(IllegalArgumentException.class, () -> Area.surfaceAreaSphere(0)),
             ()
                 -> assertThrows(IllegalArgumentException.class, () -> Area.surfaceAreaRectangle(0, 10)),
