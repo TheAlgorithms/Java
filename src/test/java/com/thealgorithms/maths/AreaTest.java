@@ -17,6 +17,10 @@ class AreaTest {
     }
 
     @Test
+    void testSurfaceAreaCuboid() {
+        assertEquals(214.0, Area.surfaceAreaCuboid(5, 6, 7));
+
+    @Test
     void testSurfaceAreaSphere() {
         assertEquals(12.566370614359172, Area.surfaceAreaSphere(1));
     }
