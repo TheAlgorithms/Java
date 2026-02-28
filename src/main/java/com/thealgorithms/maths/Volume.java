@@ -114,4 +114,15 @@ public final class Volume {
     public static double volumeFrustumOfPyramid(double upperBaseArea, double lowerBaseArea, double height) {
         return (upperBaseArea + lowerBaseArea + Math.sqrt(upperBaseArea * lowerBaseArea)) * height / 3;
     }
+
+    /**
+     * Calculate the volume of a torus.
+     *
+     * @param majorRadius major radius of a torus
+     * @param minorRadius minor radius of a torus
+     * @return volume of the torus
+     */
+    public static double volumeTorus(double majorRadius, double minorRadius) {
+        return 2 * Math.PI * Math.PI * majorRadius * minorRadius * minorRadius;
+    }
 }
