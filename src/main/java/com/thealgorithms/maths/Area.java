@@ -35,7 +35,7 @@ public final class Area {
         return 6 * sideLength * sideLength;
     }
 
-     /**
+    /**
      * Calculate the surface area of a cuboid.
      *
      * @param length length of the cuboid
