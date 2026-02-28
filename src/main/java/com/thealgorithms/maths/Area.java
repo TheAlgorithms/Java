@@ -55,7 +55,7 @@ public final class Area {
         }
         return 2 * (length * width + length * height + width * height);
     }
-    
+
     /**
      * Calculate the surface area of a sphere.
      *
