@@ -18,30 +18,8 @@ class TopKFrequentWordsTest {
     }
 
     static Stream<Arguments> validTestCases() {
-        return Stream.of(
-            Arguments.of(
-                new String[] {"i", "love", "leetcode", "i", "love", "coding"},
-                2,
-                List.of("i", "love")
-            ),
-            Arguments.of(
-                new String[] {"the", "day", "is", "sunny", "the", "the", "the", "sunny", "is", "is"},
-                4,
-                List.of("the", "is", "sunny", "day")
-            ),
-            Arguments.of(
-                new String[] {"bbb", "aaa", "bbb", "aaa", "ccc"},
-                2,
-                List.of("aaa", "bbb")
-            ),
-            Arguments.of(
-                new String[] {"one", "two", "three"},
-                10,
-                List.of("one", "three", "two")
-            ),
-            Arguments.of(new String[] {}, 3, List.of()),
-            Arguments.of(new String[] {"x", "x", "y"}, 0, List.of())
-        );
+        return Stream.of(Arguments.of(new String[] {"i", "love", "leetcode", "i", "love", "coding"}, 2, List.of("i", "love")), Arguments.of(new String[] {"the", "day", "is", "sunny", "the", "the", "the", "sunny", "is", "is"}, 4, List.of("the", "is", "sunny", "day")),
+            Arguments.of(new String[] {"bbb", "aaa", "bbb", "aaa", "ccc"}, 2, List.of("aaa", "bbb")), Arguments.of(new String[] {"one", "two", "three"}, 10, List.of("one", "three", "two")), Arguments.of(new String[] {}, 3, List.of()), Arguments.of(new String[] {"x", "x", "y"}, 0, List.of()));
     }
 
     @ParameterizedTest
@@ -51,10 +29,6 @@ class TopKFrequentWordsTest {
     }
 
     static Stream<Arguments> invalidTestCases() {
-        return Stream.of(
-            Arguments.of((String[]) null, 1),
-            Arguments.of(new String[] {"a", null, "b"}, 2),
-            Arguments.of(new String[] {"a"}, -1)
-        );
+        return Stream.of(Arguments.of((String[]) null, 1), Arguments.of(new String[] {"a", null, "b"}, 2), Arguments.of(new String[] {"a"}, -1));
     }
 }

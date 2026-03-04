@@ -12,6 +12,9 @@ import java.util.Map;
  * <p>Words are ranked by frequency in descending order. For equal frequencies,
  * words are ranked in lexicographical ascending order.
  *
+ * <p>Reference:
+ * https://en.wikipedia.org/wiki/Top-k_problem
+ *
  */
 public final class TopKFrequentWords {
     private TopKFrequentWords() {
@@ -45,11 +48,7 @@ public final class TopKFrequentWords {
         }
 
         List<String> candidates = new ArrayList<>(frequency.keySet());
-        candidates.sort(
-            Comparator.<String>comparingInt(frequency::get)
-                .reversed()
-                .thenComparing(Comparator.naturalOrder())
-        );
+        candidates.sort(Comparator.<String>comparingInt(frequency::get).reversed().thenComparing(Comparator.naturalOrder()));
 
         int limit = Math.min(k, candidates.size());
         return new ArrayList<>(candidates.subList(0, limit));
