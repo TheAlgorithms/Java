@@ -27,10 +27,7 @@ public final class Pow {
         if (b < 0) {
             throw new IllegalArgumentException("Exponent must be non-negative.");
         }
-        long result = 1;
-        for (int i = 1; i <= b; i++) {
-            result *= a;
-        }
+        long result = (long) Math.pow(a , b);
         return result;
     }
 }
