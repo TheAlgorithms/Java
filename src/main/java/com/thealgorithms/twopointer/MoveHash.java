@@ -13,6 +13,7 @@
 package com.thealgorithms.twopointer;
 
 public class MoveHash {
+    
 
     /** default constructor  */
     public MoveHash() {}
