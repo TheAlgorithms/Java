@@ -13,10 +13,8 @@
 package com.thealgorithms.twopointer;
 
 public class MoveHash {
-    
 
-
-    /** default constructor  */
+    /** default constructor */
     public MoveHash() {}
 
     /**
@@ -55,7 +53,7 @@ public class MoveHash {
          * this continuos untill i reaches to end of string.
          */
 
-        for (int i=0; i<c.length; i++) {
+        for (int i = 0; i < c.length; i++) {
             if (c[i] != '#') {
                 swap(i, j, c);
                 j++;
@@ -77,7 +75,7 @@ public class MoveHash {
         /** input part. */
         String input = "h#e#l###l#o";
 
-        /** output catches through the function.  */
+        /** output catches through the function. */
         String output = movehashtoend(input);
 
         /** display appropriate output. */

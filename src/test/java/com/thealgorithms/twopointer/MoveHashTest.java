@@ -60,3 +60,5 @@ public class MoveHashTest {
         assertEquals('a', arr[2]);
     }
 }
+    }
+}
