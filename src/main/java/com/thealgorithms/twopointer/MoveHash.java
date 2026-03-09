@@ -15,6 +15,7 @@ package com.thealgorithms.twopointer;
 public class MoveHash {
     
 
+
     /** default constructor  */
     public MoveHash() {}
 
@@ -27,6 +28,11 @@ public class MoveHash {
      */
 
     public static String movehashtoend(String s) {
+        /** return null if inputed string is null */
+        if (s == null) {
+            return null;
+        }
+
         /** converts string into character array
           for example.,
                string = roman,
@@ -34,11 +40,6 @@ public class MoveHash {
          */
 
         char[] c = s.toCharArray();
-
-        /** return null if inputed string is null */
-        if (s == null) {
-            return "null";
-        }
 
         /** j works like a tracker the hash position */
         int j = 0;
