@@ -33,30 +33,30 @@ class InsertionSort implements SortAlgorithm {
     }
 
     /**
-     * Sorts a subarray of the given array using the standard Insertion Sort algorithm.
+     * Sorts a subarray of the given items using the standard Insertion Sort algorithm.
      *
-     * @param array The array to be sorted
-     * @param lo    The starting index of the subarray
-     * @param hi    The ending index of the subarray (exclusive)
-     * @param <T>   The type of elements in the array, which must be comparable
-     * @return The sorted array
+     * @param items The items to be sorted
+     * @param startIndex    The starting index of the subarray
+     * @param endIndex    The ending index of the subarray (exclusive)
+     * @param <T>   The type of elements in the items, which must be comparable
+     * @return The sorted items
      */
-    public <T extends Comparable<T>> T[] sort(T[] array, final int lo, final int hi) {
-        if (array == null || lo >= hi) {
-            return array;
+    public <T extends Comparable<T>> T[] sort(T[] items, final int startIndex, final int endIndex) {
+        if (items == null || startIndex >= endIndex) {
+            return items;
         }
 
-        for (int i = lo + 1; i < hi; i++) {
-            final T key = array[i];
+        for (int i = startIndex + 1; i < endIndex; i++) {
+            final T key = items[i];
             int j = i - 1;
-            while (j >= lo && SortUtils.less(key, array[j])) {
-                array[j + 1] = array[j];
+            while (j >= startIndex && SortUtils.less(key, items[j])) {
+                items[j + 1] = items[j];
                 j--;
             }
-            array[j + 1] = key;
+            items[j + 1] = key;
         }
 
-        return array;
+        return items;
     }
 
     /**
