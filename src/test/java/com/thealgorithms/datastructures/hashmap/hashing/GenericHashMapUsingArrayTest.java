@@ -97,7 +97,8 @@ class GenericHashMapUsingArrayTest {
     @Test
     void shouldThrowNullPointerExceptionForNullKey() {
         GenericHashMapUsingArray<String, String> map = new GenericHashMapUsingArray<>();
-        Assertions.assertThrows(NullPointerException.class, () -> map.put(null, "value"));
+        String nullKey = null; // Use variable to avoid static analysis false positive
+        Assertions.assertThrows(NullPointerException.class, () -> map.put(nullKey, "value"));
     }
 
     @Test
