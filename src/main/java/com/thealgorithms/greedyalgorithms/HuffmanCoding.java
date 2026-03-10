@@ -4,7 +4,13 @@ import java.util.PriorityQueue;
 
 /**
  * Huffman Coding Algorithm
- * Greedy algorithm used for optimal prefix codes.
+ *
+ * Greedy algorithm used for optimal prefix coding and data compression.
+ *
+ * Time Complexity: O(n log n)
+ * Space Complexity: O(n)
+ *
+ * https://en.wikipedia.org/wiki/Huffman_coding
  */
 public class HuffmanCoding {
 
@@ -19,8 +25,9 @@ public class HuffmanCoding {
             this.frequency = frequency;
         }
 
+        @Override
         public int compareTo(Node other) {
-            return this.frequency - other.frequency;
+            return Integer.compare(this.frequency, other.frequency);
         }
     }
 
