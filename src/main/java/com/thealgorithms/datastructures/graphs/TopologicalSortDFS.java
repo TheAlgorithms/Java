@@ -10,37 +10,28 @@ import java.util.Map;
 /**
  * Topological Sort using Depth-First Search (DFS).
  *
- * <p>
- * A topological ordering of a directed acyclic graph (DAG) is a linear ordering
+ * <p>A topological ordering of a directed acyclic graph (DAG) is a linear ordering
  * of its vertices such that for every directed edge u → v, vertex u appears
  * before vertex v in the ordering.
  *
- * <p>
- * This implementation uses DFS with a 3-state visited array:
+ * <p>This implementation uses DFS with a 3-state visited array:
  * <ul>
- * <li>UNVISITED – node has not been visited yet</li>
- * <li>IN_PROGRESS – node is on the current DFS path (used for cycle
- * detection)</li>
- * <li>DONE – node and all its descendants are fully processed</li>
+ *   <li>UNVISITED – node has not been visited yet</li>
+ *   <li>IN_PROGRESS – node is on the current DFS path (used for cycle detection)</li>
+ *   <li>DONE – node and all its descendants are fully processed</li>
  * </ul>
  *
- * <p>
- * Time Complexity: O(V + E), where V = vertices, E = edges
+ * <p>Time Complexity: O(V + E), where V = vertices, E = edges
  * Space Complexity: O(V + E) for the adjacency list and recursion stack
  *
- * @see <a href="https://en.wikipedia.org/wiki/Topological_sorting">Topological
- *      Sorting (Wikipedia)</a>
+ * @see <a href="https://en.wikipedia.org/wiki/Topological_sorting">Topological Sorting (Wikipedia)</a>
  */
-public class TopologicalSortDFS {
+public final class TopologicalSortDFS {
 
     public TopologicalSortDFS() {
     }
 
-    private enum VisitState {
-        UNVISITED,
-        IN_PROGRESS,
-        DONE
-    }
+    private enum VisitState { UNVISITED, IN_PROGRESS, DONE }
 
     private final Map<Integer, List<Integer>> adjacencyList = new HashMap<>();
 
@@ -69,8 +60,7 @@ public class TopologicalSortDFS {
      * Performs a topological sort of the graph using DFS.
      *
      * @return a {@link List} of vertices in topologically sorted order
-     * @throws IllegalStateException if the graph contains a cycle (i.e., is not a
-     *                               DAG)
+     * @throws IllegalStateException if the graph contains a cycle (i.e., is not a DAG)
      */
     public List<Integer> topologicalSort() {
         Map<Integer, VisitState> visitState = new HashMap<>();
@@ -107,16 +97,13 @@ public class TopologicalSortDFS {
         for (int neighbor : adjacencyList.get(vertex)) {
             VisitState state = visitState.get(neighbor);
             if (state == VisitState.IN_PROGRESS) {
-                // Back edge found → cycle exists → not a DAG
-                throw new IllegalStateException(
-                        "Graph contains a cycle. Topological sort is not possible.");
+                throw new IllegalStateException("Graph contains a cycle. Topological sort is not possible.");
             }
             if (state == VisitState.UNVISITED) {
                 dfs(neighbor, visitState, stack);
             }
         }
 
-        // All descendants processed — mark done and push to stack
         visitState.put(vertex, VisitState.DONE);
         stack.push(vertex);
     }
