@@ -31,9 +31,9 @@ import java.util.Map;
  * @see <a href="https://en.wikipedia.org/wiki/Topological_sorting">Topological
  *      Sorting (Wikipedia)</a>
  */
-public final class TopologicalSortDFS {
+public class TopologicalSortDFS {
 
-    private TopologicalSortDFS() {
+    public TopologicalSortDFS() {
     }
 
     private enum VisitState {
