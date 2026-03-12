@@ -83,7 +83,9 @@ public class WordSearch {
     //    }
 
     private boolean dfs(char[][] board, int x, int y, String word, int idx) {
-        if (idx == word.length()) { return true; }
+        if (idx == word.length()) {
+            return true;
+        }
 
         if (x < 0 || y < 0 || x >= board.length || y >= board[0].length || board[x][y] != word.charAt(idx)) {
             return false;
