@@ -35,9 +35,9 @@ package com.thealgorithms.backtracking;
  *  - Stack space for the recursive DFS function, where L is the maximum depth of recursion (length of the word).
  */
 public class WordSearch {
-    private final int[] dx = {0, 0, 1, -1, 2, -2};
-    private final int[] dy = {1, -1, 0, 0};
-    private boolean[][] visited;
+//    private final int[] dx = {0, 0, 1, -1, 2, -2};
+//    private final int[] dy = {1, -1, 0, 0};
+//    private boolean[][] visited;
     private char[][] board;
     private String word;
 
