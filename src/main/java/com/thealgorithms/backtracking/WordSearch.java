@@ -61,45 +61,38 @@ public class WordSearch {
      * @param nextIdx The index of the next character in the word to be matched.
      * @return True if a valid path is found to match the remaining characters of the word; false otherwise.
      */
-//    private boolean doDFS(int x, int y, int nextIdx) {
-//        visited[x][y] = true;
-//        if (nextIdx == word.length()) {
-//            return true;
-//        }
-//
-//        for (int i = 0; i < 4; ++i) {
-//            int xi = x + dx[i];
-//            int yi = y + dy[i];
-//            if (isValid(xi, yi) && board[xi][yi] == word.charAt(nextIdx) && !visited[xi][yi]) {
-//                boolean exists = doDFS(xi, yi, nextIdx + 1);
-//                if (exists) {
-//                    return true;
-//                }
-//            }
-//        }
-//
-//        visited[x][y] = false; // Backtrack
-//        return false;
-//    }
-
+    //    private boolean doDFS(int x, int y, int nextIdx) {
+    //        visited[x][y] = true;
+    //        if (nextIdx == word.length()) {
+    //            return true;
+    //        }
+    //
+    //        for (int i = 0; i < 4; ++i) {
+    //            int xi = x + dx[i];
+    //            int yi = y + dy[i];
+    //            if (isValid(xi, yi) && board[xi][yi] == word.charAt(nextIdx) && !visited[xi][yi]) {
+    //                boolean exists = doDFS(xi, yi, nextIdx + 1);
+    //                if (exists) {
+    //                    return true;
+    //                }
+    //            }
+    //        }
+    //
+    //        visited[x][y] = false; // Backtrack
+    //        return false;
+    //    }
 
     private boolean dfs(char[][] board, int x, int y, String word, int idx) {
         if (idx == word.length()) return true;
 
-        if (x < 0 || y < 0 ||
-                x >= board.length || y >= board[0].length ||
-                board[x][y] != word.charAt(idx)) {
+        if (x < 0 || y < 0 || x >= board.length || y >= board[0].length || board[x][y] != word.charAt(idx)) {
             return false;
         }
 
         char temp = board[x][y];
         board[x][y] = '#';
 
-        boolean found =
-                dfs(board, x + 1, y, word, idx + 1) ||
-                        dfs(board, x - 1, y, word, idx + 1) ||
-                        dfs(board, x, y + 1, word, idx + 1) ||
-                        dfs(board, x, y - 1, word, idx + 1);
+        boolean found = dfs(board, x + 1, y, word, idx + 1) || dfs(board, x - 1, y, word, idx + 1) || dfs(board, x, y + 1, word, idx + 1) || dfs(board, x, y - 1, word, idx + 1);
 
         board[x][y] = temp;
 
@@ -114,30 +107,27 @@ public class WordSearch {
      * @param word  The target word to search for in the board.
      * @return True if the word exists in the board; false otherwise.
      */
-//    public boolean exist(char[][] board, String word) {
-//        this.board = board;
-//        this.word = word;
-//        for (int i = 0; i < board.length; ++i) {
-//            for (int j = 0; j < board[0].length; ++j) {
-//                if (board[i][j] == word.charAt(0)) {
-//                    visited = new boolean[board.length][board[0].length];
-//                    boolean exists = doDFS(i, j, 1);
-//                    if (exists) {
-//                        return true;
-//                    }
-//                }
-//            }
-//        }
-//        return false;
-//    }
-
-
+    //    public boolean exist(char[][] board, String word) {
+    //        this.board = board;
+    //        this.word = word;
+    //        for (int i = 0; i < board.length; ++i) {
+    //            for (int j = 0; j < board[0].length; ++j) {
+    //                if (board[i][j] == word.charAt(0)) {
+    //                    visited = new boolean[board.length][board[0].length];
+    //                    boolean exists = doDFS(i, j, 1);
+    //                    if (exists) {
+    //                        return true;
+    //                    }
+    //                }
+    //            }
+    //        }
+    //        return false;
+    //    }
 
     public boolean exist(char[][] board, String word) {
 
         int m = board.length;
         int n = board[0].length;
-
 
         // DFS search
         for (int i = 0; i < m; i++) {
@@ -148,7 +138,6 @@ public class WordSearch {
                         return true;
                     }
                 }
-
             }
         }
 
