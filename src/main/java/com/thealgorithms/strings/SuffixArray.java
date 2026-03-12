@@ -30,15 +30,7 @@ public final class SuffixArray {
         for (int k = 1; k < n; k *= 2) {
             final int step = k;
 
-            // Comparator: first by rank, then by rank + step
-            Arrays.sort(suffixArray, (a, b) -> {
-                if (rank[a] != rank[b]) {
-                    return Integer.compare(rank[a], rank[b]);
-                }
-                int ra = (a + step < n) ? rank[a + step] : -1;
-                int rb = (b + step < n) ? rank[b + step] : -1;
-                return Integer.compare(ra, rb);
-            });
+            sortSuffixArray(suffixArray, rank, step, n);
 
             // Re-rank
             tempRank[suffixArray[0]] = 0;
@@ -56,5 +48,19 @@ public final class SuffixArray {
             }
         }
         return Arrays.stream(suffixArray).mapToInt(Integer::intValue).toArray();
+    }
+
+    private static Integer[] sortSuffixArray(Integer[] suffixArray, int[] rank, int step, int n) {
+        // Comparator: first by rank, then by rank + step
+        Arrays.sort(suffixArray, (a, b) -> {
+            if (rank[a] != rank[b]) {
+                return Integer.compare(rank[a], rank[b]);
+            }
+            int ra = (a + step < n) ? rank[a + step] : -1;
+            int rb = (b + step < n) ? rank[b + step] : -1;
+            return Integer.compare(ra, rb);
+
+            });
+        return suffixArray;
     }
 }
