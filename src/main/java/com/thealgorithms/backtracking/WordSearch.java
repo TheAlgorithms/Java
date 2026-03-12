@@ -82,9 +82,8 @@ public class WordSearch {
         // DFS search
         for (int i = 0; i < m; i++) {
             for (int j = 0; j < n; j++) {
-
                 if (board[i][j] == word.charAt(0) && dfs(board, i, j, word, 0)) {
-                        return true;
+                    return true;
                 }
             }
         }
