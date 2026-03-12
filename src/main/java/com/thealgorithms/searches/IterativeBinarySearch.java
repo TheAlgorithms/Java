@@ -29,24 +29,24 @@ public final class IterativeBinarySearch implements SearchAlgorithm {
      */
     @Override
     public <T extends Comparable<T>> int find(T[] array, T key) {
-        int l;
-        int r;
-        int k;
-        int cmp;
+        int left;
+        int right;
+        int mid;
+        int comparison;
 
-        l = 0;
-        r = array.length - 1;
+        left = 0;
+        right = array.length - 1;
 
-        while (l <= r) {
-            k = (l + r) >>> 1;
-            cmp = key.compareTo(array[k]);
+        while (left <= right) {
+            mid = (left + right) >>> 1;
+            comparison = key.compareTo(array[mid]);
 
-            if (cmp == 0) {
-                return k;
-            } else if (cmp < 0) {
-                r = --k;
+            if (comparison == 0) {
+                return mid;
+            } else if (comparison < 0) {
+                right = --mid;
             } else {
-                l = ++k;
+                left = ++mid;
             }
         }
 
