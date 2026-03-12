@@ -35,19 +35,6 @@ package com.thealgorithms.backtracking;
  *  - Stack space for the recursive DFS function, where L is the maximum depth of recursion (length of the word).
  */
 public class WordSearch {
-    private char[][] board;
-    private String word;
-
-    /**
-     * Checks if the given (x, y) coordinates are valid positions in the board.
-     *
-     * @param x The row index.
-     * @param y The column index.
-     * @return True if the coordinates are within the bounds of the board; false otherwise.
-     */
-    private boolean isValid(int x, int y) {
-        return x >= 0 && x < board.length && y >= 0 && y < board[0].length;
-    }
 
     /**
      * Performs Depth First Search (DFS) from the cell (x, y)
