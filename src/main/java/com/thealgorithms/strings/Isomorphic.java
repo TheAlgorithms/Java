@@ -24,21 +24,21 @@ public final class Isomorphic {
     /**
      * Checks if two strings are isomorphic.
      *
-     * @param s the first input string
-     * @param t the second input string
-     * @return {@code true} if {@code s} and {@code t} are isomorphic; {@code false} otherwise
+     * @param sourceString the first input string
+     * @param targetString the second input string
+     * @return {@code true} if {@code sourceString} and {@code targetString} are isomorphic; {@code false} otherwise
      */
-    public static boolean areIsomorphic(String s, String t) {
-        if (s.length() != t.length()) {
+    public static boolean areIsomorphic(String sourceString, String targetString) {
+        if (sourceString.length() != targetString.length()) {
             return false;
         }
 
         Map<Character, Character> map = new HashMap<>();
         Set<Character> usedCharacters = new HashSet<>();
 
-        for (int i = 0; i < s.length(); i++) {
-            char sourceChar = s.charAt(i);
-            char targetChar = t.charAt(i);
+        for (int i = 0; i < sourceString.length(); i++) {
+            char sourceChar = sourceString.charAt(i);
+            char targetChar = targetString.charAt(i);
 
             if (map.containsKey(sourceChar)) {
                 if (map.get(sourceChar) != targetChar) {
