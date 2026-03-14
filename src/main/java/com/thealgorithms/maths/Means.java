@@ -109,9 +109,9 @@ public final class Means {
 
     public static Double quadratic(final Iterable<Double> numbers) {
         checkIfNotEmpty(numbers);
-        double sum = StreamSupport.stream(numbers.spliterator(), false).reduce(0d, (x, y) -> x * x + y * y);
+        double sumOfSquares = StreamSupport.stream(numbers.spliterator(), false).reduce(0d, (x, y) -> x + y * y);
         int size = IterableUtils.size(numbers);
-        return Math.sqrt(sum / size);
+        return Math.sqrt(sumOfSquares / size);
     }
     
     /**
