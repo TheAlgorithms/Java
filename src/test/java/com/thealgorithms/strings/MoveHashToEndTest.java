@@ -9,7 +9,7 @@ public class MoveHashToEndTest {
 
     @Test
     void testBasicCase() {
-        assertEquals("hello###", MoveHashToEnd.moveHashToEnd("h#e#l#llo"));
+        assertEquals("helllo###", MoveHashToEnd.moveHashToEnd("h#e#l#llo"));
     }
 
     @Test

@@ -6,7 +6,7 @@ package com.thealgorithms.strings;
  *
  * Example:
  * Input  : "h#e#l#llo"
- * Output : "hello###"
+ * Output : "helllo###"
  *
  * The algorithm works by iterating through the string and collecting
  * all non-# characters first, then filling the remaining positions
