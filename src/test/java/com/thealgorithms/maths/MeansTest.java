@@ -264,6 +264,6 @@ class MeansTest {
 
         assertTrue(harmonic <= geometric, "Harmonic mean should be ≤ geometric mean");
         assertTrue(geometric <= arithmetic, "Geometric mean should be ≤ arithmetic mean");
-        assertTrue(arithmetic <= quadratic, "Arithmetic mean should be ≤ quadratic mean"); 
+        assertTrue(arithmetic <= quadratic, "Arithmetic mean should be ≤ quadratic mean");
     }
 }
