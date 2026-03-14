@@ -128,7 +128,7 @@ public final class Means {
         int size = IterableUtils.size(numbers);
         return Math.pow(sumOfSquares / size, 0.5);
     }
-    
+
     /**
      * Validates that the input iterable is not empty.
      *
