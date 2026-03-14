@@ -182,43 +182,42 @@ class MeansTest {
     }
 
     @Test
-    void testHarmonicMeanTwoNumbers() {
-        List<Double> numbers = Arrays.asList(2.0, 6.0);
-        double expected = Math.sqrt(20.0);
-        assertEquals(expected, Means.quadratic(numbers), EPSILON);
+    void testQuadraticMeanSingleNumber() {
+        LinkedHashSet<Double> numbers = new LinkedHashSet<>(Arrays.asList(2.5));
+        assertEquals(2.5, Means.quadratic(numbers), EPSILON);
     }
 
     @Test
-    void testHarmonicMeanTwoNumbers() {
+    void testQuadraticMeanTwoNumbers() {
         List<Double> numbers = Arrays.asList(1.0, 7.0);
         assertEquals(5.0, Means.quadratic(numbers), EPSILON);
     }
 
     @Test
-    void testQuadraticMeanWithLinkedList() {
-        LinkedList<Double> numbers = new LinkedList<>(Arrays.asList(3.0, 6.0, 9.0));
+    void testQuadraticMeanMultipleNumbers() {
+        List<Double> numbers = new Vector<>(Arrays.asList(1.0, 2.5, 3.0, 7.5, 10.0));
+        double expected = Math.sqrt(34.5);
+        assertEquals(expected, Means.quadratic(numbers), EPSILON);
+    }
+
+    @Test
+    void testQuadraticMeanThreeNumbers() {
+        LinkedList<Double> numbers = Arrays.asList(3.0, 6.0, 9.0);
         double expected = Math.sqrt(42.0);
         assertEquals(expected, Means.quadratic(numbers), EPSILON);
     }
 
     @Test
-    void testQuadraticMeanWithLinkedList() {
-        LinkedList<Double> numbers = new LinkedList<>(Arrays.asList(1.0, 2.0, 4.0));
-        double expected = Math.sqrt(7.0);
-        assertEquals(expected, Means.quadratic(numbers), EPSILON);
-    }    
+    void testQuadraticMeanIdenticalNumbers() {
+        LinkedList<Double> numbers = Arrays.asList(5.0, 5.0, 5.0);
+        assertEquals(5.0, Means.quadratic(numbers), EPSILON);
+    }  
 
     @Test
     void testQuadraticMeanWithLinkedList() {
         LinkedList<Double> numbers = new LinkedList<>(Arrays.asList(1.0, 5.0, 11.0));
         assertEquals(7.0, Means.quadratic(numbers), EPSILON);
-    }    
-
-    @Test
-    void testQuadraticMeanWithLinkedList() {
-        LinkedList<Double> numbers = new LinkedList<>(Arrays.asList(5.0, 5.0, 5.0));
-        assertEquals(5.0, Means.quadratic(numbers), EPSILON);
-    }    
+    }      
     
     // ========== Additional Edge Case Tests ==========
 
