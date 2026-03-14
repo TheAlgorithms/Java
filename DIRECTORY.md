@@ -816,6 +816,7 @@
           - 📄 [Lower](src/main/java/com/thealgorithms/strings/Lower.java)
           - 📄 [Manacher](src/main/java/com/thealgorithms/strings/Manacher.java)
           - 📄 [MyAtoi](src/main/java/com/thealgorithms/strings/MyAtoi.java)
+          - 📄 [MoveHashToEnd](src/main/java/com/thealgorithms/strings/MoveHashToEnd.java)
           - 📄 [Palindrome](src/main/java/com/thealgorithms/strings/Palindrome.java)
           - 📄 [Pangram](src/main/java/com/thealgorithms/strings/Pangram.java)
           - 📄 [PermuteString](src/main/java/com/thealgorithms/strings/PermuteString.java)
