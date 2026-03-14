@@ -107,6 +107,13 @@ public final class Means {
         return size / sumOfReciprocals;
     }
 
+    public static Double quadratic(final Iterable<Double> numbers) {
+        checkIfNotEmpty(numbers);
+        double sum = StreamSupport.stream(numbers.spliterator(), false).reduce(0d, (x, y) -> x * x + y * y);
+        int size = IterableUtils.size(numbers);
+        return Math.sqrt(sum / size);
+    }
+    
     /**
      * Validates that the input iterable is not empty.
      *
