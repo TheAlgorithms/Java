@@ -126,7 +126,7 @@ public final class Means {
         checkIfNotEmpty(numbers);
         double sumOfSquares = StreamSupport.stream(numbers.spliterator(), false).reduce(0d, (x, y) -> x + y * y);
         int size = IterableUtils.size(numbers);
-        return Math.sqrt(sumOfSquares / size);
+        return Math.pow(sumOfSquares / size, 0.5);
     }
     
     /**
