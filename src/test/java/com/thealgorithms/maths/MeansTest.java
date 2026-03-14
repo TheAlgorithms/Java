@@ -195,21 +195,21 @@ class MeansTest {
 
     @Test
     void testQuadraticMeanMultipleNumbers() {
-        List<Double> numbers = new Vector<>(Arrays.asList(1.0, 2.5, 3.0, 7.5, 10.0));
+        Vector<Double> numbers = new Vector<>(Arrays.asList(1.0, 2.5, 3.0, 7.5, 10.0));
         double expected = Math.sqrt(34.5);
         assertEquals(expected, Means.quadratic(numbers), EPSILON);
     }
 
     @Test
     void testQuadraticMeanThreeNumbers() {
-        LinkedList<Double> numbers = Arrays.asList(3.0, 6.0, 9.0);
+        List<Double> numbers = Arrays.asList(3.0, 6.0, 9.0);
         double expected = Math.sqrt(42.0);
         assertEquals(expected, Means.quadratic(numbers), EPSILON);
     }
 
     @Test
     void testQuadraticMeanIdenticalNumbers() {
-        LinkedList<Double> numbers = Arrays.asList(5.0, 5.0, 5.0);
+        List<Double> numbers = Arrays.asList(5.0, 5.0, 5.0);
         assertEquals(5.0, Means.quadratic(numbers), EPSILON);
     }  
 
