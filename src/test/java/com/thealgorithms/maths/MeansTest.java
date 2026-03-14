@@ -211,13 +211,13 @@ class MeansTest {
     void testQuadraticMeanIdenticalNumbers() {
         List<Double> numbers = Arrays.asList(5.0, 5.0, 5.0);
         assertEquals(5.0, Means.quadratic(numbers), EPSILON);
-    }  
+    }
 
     @Test
     void testQuadraticMeanWithLinkedList() {
         LinkedList<Double> numbers = new LinkedList<>(Arrays.asList(1.0, 5.0, 11.0));
         assertEquals(7.0, Means.quadratic(numbers), EPSILON);
-    }      
+    }
 
     // ========== Additional Edge Case Tests ==========
 
