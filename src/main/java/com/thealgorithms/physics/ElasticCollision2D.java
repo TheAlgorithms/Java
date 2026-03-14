@@ -41,7 +41,7 @@ public final class ElasticCollision2D {
         double dy = b.y - a.y;
         double dist = Math.hypot(dx, dy);
 
-        if (dist == 0) {
+        if (dist < a.radius + b.radius) {
             return; // overlapping
         }
 
