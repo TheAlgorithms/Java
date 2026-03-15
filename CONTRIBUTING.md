@@ -23,6 +23,18 @@ NOTE: *Please avoid opening issues asking to be "assigned" to a particular algor
 - [Open a new issue](https://github.com/TheAlgorithms/Java/issues/new).
 - Be sure to include a **title**, a clear **description** and a **test case** demonstrating the new feature you want to add to the project.
 
+### Do you know our Code of conduct?
+
+We value the participation of every contributor and want to create a welcoming and respectful community. Please follow these guidelines:
+
+- Treat everyone with respect, kindness, and patience.
+- Focus on the content, not the person.
+- Provide feedback that is helpful and specific.
+- Respect the [contribution guidelines](CONTRIBUTING.md), 
+- If you witness or experience behavior that violates this code, report it to the maintainers via an [issue](https://github.com/TheAlgorithms/Java/issues/new) or contact email.
+- All reports will be reviewed confidentially and handled appropriately.
+:fire: By contributing to this project, you agree to abide by this Code of Conduct! :fire:
+
 
 ### Do you have questions about the source code?
 
