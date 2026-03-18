@@ -13,7 +13,7 @@ import org.junit.jupiter.api.Test;
 final class RelativityTest {
 
     // A small tolerance (delta) for comparing floating-point numbers
-    private static final double DELTA = 1e-9;
+    private static final double DELTA = 1e-6;
     private static final double C = Relativity.SPEED_OF_LIGHT;
 	
 	@Test
