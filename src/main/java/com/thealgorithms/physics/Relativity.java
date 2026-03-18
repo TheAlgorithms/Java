@@ -46,7 +46,7 @@ public final class Relativity {
 		if (length < 0) {
 			throw new IllegalArgumentException("Length must be non-negative");
 		}
-		return length/gamma(v);
+		return length / gamma(v);
 	}
 
 	/**
@@ -60,9 +60,9 @@ public final class Relativity {
 		if (time < 0) {
 			throw new IllegalArgumentException("Time must be non-negative");
 		}
-		return time*gamma(v);
+		return time * gamma(v);
 	}
-	
+
 	/**
 	 * Calculates the velocity with respect to the moving frame.
 	 *
@@ -80,4 +80,3 @@ public final class Relativity {
 		return (v1 - v) / (1 - v1 * v / (SPEED_OF_LIGHT * SPEED_OF_LIGHT));
 	}
 }
-			
