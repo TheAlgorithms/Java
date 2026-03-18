@@ -53,23 +53,23 @@ public class KasaiAlgorithmTest {
 
     @Test
     public void testKasaiSingleChar() {
-        assertArrayEquals(new int[]{0}, KasaiAlgorithm.kasai("A", new int[]{0}));
+        assertArrayEquals(new int[] {0}, KasaiAlgorithm.kasai("A", new int[] {0}));
     }
 
     @Test
     public void testKasaiNullTextOrSuffixArray() {
-        assertThrows(IllegalArgumentException.class, () -> KasaiAlgorithm.kasai(null, new int[]{0}));
+        assertThrows(IllegalArgumentException.class, () -> KasaiAlgorithm.kasai(null, new int[] {0}));
         assertThrows(IllegalArgumentException.class, () -> KasaiAlgorithm.kasai("A", null));
     }
 
     @Test
     public void testKasaiInvalidSuffixArrayLength() {
-        assertThrows(IllegalArgumentException.class, () -> KasaiAlgorithm.kasai("A", new int[]{0, 1}));
+        assertThrows(IllegalArgumentException.class, () -> KasaiAlgorithm.kasai("A", new int[] {0, 1}));
     }
 
     @Test
     public void testKasaiInvalidSuffixArrayIndex() {
-        assertThrows(IllegalArgumentException.class, () -> KasaiAlgorithm.kasai("A", new int[]{1})); // Out of bounds
-        assertThrows(IllegalArgumentException.class, () -> KasaiAlgorithm.kasai("A", new int[]{-1})); // Out of bounds
+        assertThrows(IllegalArgumentException.class, () -> KasaiAlgorithm.kasai("A", new int[] {1})); // Out of bounds
+        assertThrows(IllegalArgumentException.class, () -> KasaiAlgorithm.kasai("A", new int[] {-1})); // Out of bounds
     }
 }
