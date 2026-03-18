@@ -6,8 +6,7 @@ package com.thealgorithms.physics;
  * in the laboratory frame with respect to the object's own frame, and velocity
  * with respect to the moving frame.
  *
- * @see
- * <a href="https://en.wikipedia.org/wiki/List_of_relativistic_equations">Wikipedia</a>
+ * @see <a href="https://en.wikipedia.org/wiki/List_of_relativistic_equations">Wikipedia</a>
  */
 public final class Relativity {
 
