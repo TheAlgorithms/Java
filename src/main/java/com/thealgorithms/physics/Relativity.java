@@ -77,7 +77,7 @@ public final class Relativity {
 		if (Math.abs(v) >= SPEED_OF_LIGHT) {
 			throw new IllegalArgumentException("Frame speed must be lower than the speed of light");
 		}
-		return (v1 - v)/(1 - v1*v/(SPEED_OF_LIGHT*SPEED_OF_LIGHT));
+		return (v1 - v) / (1 - v1 * v / (SPEED_OF_LIGHT * SPEED_OF_LIGHT));
 	}
 }
 			
