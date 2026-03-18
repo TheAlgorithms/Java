@@ -39,21 +39,21 @@ final class RelativityTest {
 	
 	@Test
 	@DisplayName("Test the velocity addition in the same direction")
-	void testVelocityAddition() {
+	void testVelocityAdditionSameDirection() {
 		double myVelocity = Relativity.velocityAddition(0.8*C, 0.75*C);
 		assertEquals(0.125*C, myVelocity, DELTA);
 	}
 	
 	@Test
 	@DisplayName("Test the velocity addition in different directions")
-	void testVelocityAddition() {
+	void testVelocityAdditionDifferentDirections() {
 		double myVelocity = Relativity.velocityAddition(0.8*C, -0.75*C);
 		assertEquals(0.96875*C, myVelocity, DELTA);
 	}
 
 	@Test
 	@DisplayName("Test the velocity addition with the speed of light")
-	void testVelocityAddition() {
+	void testVelocityAdditionWithSpeedOfLight() {
 		double myVelocity = Relativity.velocityAddition(C, 0.7*C);
 		assertEquals(C, myVelocity, DELTA);
 	}	
