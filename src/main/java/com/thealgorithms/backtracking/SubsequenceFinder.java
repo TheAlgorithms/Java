@@ -39,6 +39,19 @@ public final class SubsequenceFinder {
      * @param allSubSequences contains all sequences
      * @param <T> the type of elements which we generate
      */
+
+    /**
+     * Complexity Analysis
+     * 
+     * Time Complexity:
+     * O(2^N * N), where N is the size of the input list.
+     * There are 2^N subsequences and each takes O(N) time to copy.
+     *
+     * Space Complexity:
+     * O(2^N * N) for storing all subsequences +
+     * O(N) recursion stack.
+     */
+
     private static <T> void backtrack(List<T> sequence, List<T> currentSubsequence, final int index, List<List<T>> allSubSequences) {
         assert index <= sequence.size();
         if (index == sequence.size()) {

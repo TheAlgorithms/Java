@@ -31,6 +31,19 @@ public final class Permutation {
      * @param result the list contains all permutations.
      * @param <T> the type of elements in the array.
      */
+
+    /**
+     * Complexity Analysis
+     * 
+     * Time Complexity:
+     * O(N! * N), where N is the size of the array.
+     * There are N! permutations and each takes O(N) time to copy.
+     *
+     * Space Complexity:
+     * O(N! * N) for storing all permutations +
+     * O(N) recursion stack.
+     */
+
     private static <T> void backtracking(T[] arr, int index, List<T[]> result) {
         if (index == arr.length) {
             result.add(arr.clone());

@@ -8,20 +8,32 @@ import java.util.List;
  * A class to solve a crossword puzzle using backtracking.
  * Example:
  * Input:
- *  puzzle = {
- *      {' ', ' ', ' '},
- *      {' ', ' ', ' '},
- *      {' ', ' ', ' '}
- *  }
- *  words = List.of("cat", "dog")
+ * puzzle = {
+ * {' ', ' ', ' '},
+ * {' ', ' ', ' '},
+ * {' ', ' ', ' '}
+ * }
+ * words = List.of("cat", "dog")
  *
  * Output:
- *  {
- *      {'c', 'a', 't'},
- *      {' ', ' ', ' '},
- *      {'d', 'o', 'g'}
- *  }
+ * {
+ * {'c', 'a', 't'},
+ * {' ', ' ', ' '},
+ * {'d', 'o', 'g'}
+ * }
+ * 
+ * Complexity Analysis
+ *  
+ * Time Complexity:
+ * O((2W)^W * L), where W is number of words and L is average word length.
+ * In the worst case, this can be approximated as O(W! * 2^W * L)
+ * due to trying all permutations of words with two placement directions.
+ *
+ * Space Complexity:
+ * O(W) for recursion stack +
+ * O(R * C) for the puzzle grid.
  */
+
 public final class CrosswordSolver {
     private CrosswordSolver() {
     }

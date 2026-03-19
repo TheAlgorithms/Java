@@ -11,8 +11,19 @@ import java.util.List;
  *   Input: "AAB"
  *   Output: ["AAB", "ABA", "BAA"]
  *
- * Time Complexity: O(n! * n)
+ * Complexity Analysis
+ * 
+ * Time Complexity:
+ * O(n! * n)
+ * - n! permutations in worst case
+ * - Each permutation takes O(n) to build
+ *
+ * Space Complexity:
+ * O(n! * n)
+ * - Result list stores all permutations
+ * - Auxiliary space: O(n) for recursion, used array, and StringBuilder
  */
+
 public final class UniquePermutation {
 
     private UniquePermutation() {

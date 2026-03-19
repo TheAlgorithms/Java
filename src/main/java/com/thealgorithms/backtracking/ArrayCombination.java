@@ -18,7 +18,12 @@ public final class ArrayCombination {
      * @param k The desired length of each combination.
      * @return A list containing all combinations of length k.
      * @throws IllegalArgumentException if n or k are negative, or if k is greater than n.
+     * 
+     * Complexity Analysis
+     * Time Complexity: O(C(n, k) * k)
+     * Space Complexity: O(k)
      */
+    
     public static List<List<Integer>> combination(int n, int k) {
         if (k < 0 || k > n) {
             throw new IllegalArgumentException("Invalid input: 0 ≤ k ≤ n is required.");

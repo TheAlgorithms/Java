@@ -36,6 +36,16 @@ public class PowerSum {
      * @param currentSum The current sum of powered numbers
      * @return The number of valid combinations
      */
+
+    /**
+     * Time Complexity:
+     * O(2^M), where M ≈ N^(1/X).
+     * This corresponds to exploring all subsets of numbers whose Xth power is ≤ N.
+     *
+     * Space Complexity:
+     * O(M) for recursion stack.
+     */
+    
     private int sumRecursive(int remainingSum, int power, int currentNumber, int currentSum) {
         int newSum = currentSum + (int) Math.pow(currentNumber, power);
 

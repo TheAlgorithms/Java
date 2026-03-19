@@ -4,7 +4,22 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-/** Backtracking: pick/not-pick with reuse of candidates. */
+/**
+ * Backtracking: pick/not-pick with reuse of candidates.
+ * 
+ * Complexity Analysis
+ *  
+ * Time Complexity:
+ * O(N^(T / min)), where N is number of candidates,
+ * T is target, and min is the smallest candidate value.
+ * In practice, it is O(P * k), where P is number of valid combinations
+ * and k is average combination length.
+ *
+ * Space Complexity:
+ * O(T / min) for recursion stack and current combination +
+ * O(P * (T / min)) for storing all results.
+ */
+
 public final class CombinationSum {
     private CombinationSum() {
         throw new UnsupportedOperationException("Utility class");

@@ -8,7 +8,18 @@ import java.util.TreeSet;
 
 /**
  * Finds all combinations of a given array using backtracking algorithm * @author Alan Piao (<a href="https://github.com/cpiao3">git-Alan Piao</a>)
+ *
+ * Complexity Analysis
+ * 
+ * Time Complexity:
+ * O(C(N, n) * n log n), where N is array size and n is combination length.
+ * The log n factor comes from TreeSet operations (add/remove).
+ *
+ * Space Complexity:
+ * O(C(N, n) * n) for storing all combinations +
+ * O(n) auxiliary space for recursion and current set.
  */
+
 public final class Combination {
     private Combination() {
     }

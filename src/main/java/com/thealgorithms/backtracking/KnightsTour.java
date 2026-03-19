@@ -1,5 +1,6 @@
 package com.thealgorithms.backtracking;
 
+import java.sql.Time;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
@@ -66,6 +67,18 @@ public final class KnightsTour {
      * @param count  The current move number
      * @return True if a solution is found, False otherwise
      */
+
+    /** 
+     * Time Complexity:
+     * 
+     * Worst Case: O(8^(N^2)) due to backtracking.
+     * Practical Complexity: Significantly reduced to near O(N^2)
+     * using Warnsdorff’s heuristic and pruning (orphan detection).
+     *
+     * Space Complexity:
+     * O(N^2) for the board and recursion stack.
+     */
+
     static boolean solve(int row, int column, int count) {
         if (count > total) {
             return true;

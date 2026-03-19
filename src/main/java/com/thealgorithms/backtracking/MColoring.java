@@ -35,6 +35,16 @@ public final class MColoring {
      * @param m     The maximum number of allowed colors.
      * @return true if the graph can be colored using M colors, false otherwise.
      */
+
+    /**
+     * Time Complexity:
+     * O(V + E), where V is number of vertices and E is number of edges.
+     * Each node and edge is processed once during BFS traversal.
+     *
+     * Space Complexity:
+     * O(V + E) for storing the graph and BFS queue.
+     */
+    
     static boolean isColoringPossible(ArrayList<Node> nodes, int n, int m) {
 
         // Visited array keeps track of whether each node has been processed.

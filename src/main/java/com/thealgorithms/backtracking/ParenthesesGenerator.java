@@ -35,6 +35,18 @@ public final class ParenthesesGenerator {
      * @param close   The number of closed parentheses.
      * @param n       The total number of pairs of parentheses.
      */
+
+    /**
+     * Complexity Analysis
+     * 
+     * Time Complexity:
+     * O(Cn * n), where Cn is the nth Catalan number
+     * (approximately 4^n / √n). Each valid combination takes O(n) time to build.
+     *
+     * Space Complexity:
+     * O(Cn * n) for storing all combinations +
+     * O(n) recursion stack.
+     */
     private static void generateParenthesesHelper(List<String> result, final String current, final int open, final int close, final int n) {
         if (current.length() == n * 2) {
             result.add(current);

@@ -42,6 +42,19 @@ public final class SudokuSolver {
      * @param board the Sudoku board
      * @return true if solution is found, false otherwise
      */
+
+    /**
+     * Complexity Analysis
+     * 
+     * Time Complexity:
+     * O(9^N), where N is the number of empty cells.
+     * Each empty cell can take values from 1 to 9, leading to exponential
+     * complexity.
+     *
+     * Space Complexity:
+     * O(N) for recursion stack.
+     */
+
     private static boolean solve(int[][] board) {
         for (int row = 0; row < GRID_SIZE; row++) {
             for (int col = 0; col < GRID_SIZE; col++) {

@@ -18,7 +18,22 @@ import java.util.Map;
  * Pattern: "aabb"
  * Input String: "JavaPythonPythonJava"
  * Output: false
+ * 
+ * Complexity Analysis
+ * 
+ * Time Complexity:
+ * O(n^m * n)
+ * - n = length of input string
+ * - m = length of pattern
+ * - For each pattern character, we try all possible substrings
+ * - Additional O(n) cost for substring and matching operations
+ *
+ * Space Complexity:
+ * O(m + n)
+ * - O(m) recursion depth and pattern map
+ * - O(n) for substring mappings in strMap
  */
+
 public final class WordPatternMatcher {
     private WordPatternMatcher() {
     }

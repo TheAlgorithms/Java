@@ -64,6 +64,21 @@ public final class NQueens {
      * @param columns: columns[i] = rowId where queen is placed in ith column.
      * @param columnIndex: This is the column in which queen is being placed
      */
+
+    /**
+     * Complexity Analysis:
+     * 
+     * Time Complexity:
+     * O(N! * N), where N is the number of queens.
+     * The factorial comes from placing queens column by column,
+     * and O(N) is for checking validity at each step.
+     *
+     * Space Complexity:
+     * O(N) for recursion stack and column tracking +
+     * O(S * N^2) for storing all valid solutions,
+     * where S is the number of solutions.
+     */
+
     private static void getSolution(int boardSize, List<List<String>> solutions, int[] columns, int columnIndex) {
         if (columnIndex == boardSize) {
             // this means that all queens have been placed

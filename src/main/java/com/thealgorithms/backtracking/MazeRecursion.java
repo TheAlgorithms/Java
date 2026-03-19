@@ -50,6 +50,18 @@ public final class MazeRecursion {
      * @param j   The current y-coordinate of the ball (column index)
      * @return True if a path is found to (6,5), otherwise false
      */
+
+    /**
+     * Complexity Analysis
+     * 
+     * Time Complexity:
+     * O(R * C), where R is number of rows and C is number of columns.
+     * Each cell is visited at most once.
+     *
+     * Space Complexity:
+     * O(R * C) in the worst case due to recursion stack.
+     */
+
     private static boolean setWay(int[][] map, int i, int j) {
         if (map[6][5] == 2) {
             return true;

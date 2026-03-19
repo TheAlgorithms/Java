@@ -14,6 +14,15 @@ public final class FloodFill {
      * @param image The image to be filled
      * @param x The x coordinate of which color is to be obtained
      * @param y The y coordinate of which color is to be obtained
+     *
+     * Complexity Analysis:
+     * 
+     * Time Complexity:
+     * O(R * C), where R is number of rows and C is number of columns.
+     * Each cell is visited at most once.
+     *
+     * Space Complexity:
+     * O(R * C) in the worst case due to recursion stack.
      */
 
     public static int getPixel(final int[][] image, final int x, final int y) {
