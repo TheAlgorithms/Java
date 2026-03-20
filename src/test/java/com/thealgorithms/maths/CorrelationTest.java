@@ -31,6 +31,7 @@ public class CorrelationTest {
         double[] y = {4, 4, 4};
         int n = 3;
         assertEquals(0, Correlation.correlation(x, y, n), DELTA);
+	}
 
     public void testCorrelationLinearDependence() {
         double[] x = {1, 2, 3, 4};
