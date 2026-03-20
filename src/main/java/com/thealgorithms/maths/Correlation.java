@@ -21,7 +21,11 @@ public final class Correlation {
      * @return The result of the correlation of variables x,y.
      */
     public static double correlation(double[] x, double[] y, int n) {
-        double exy = 0, ex = 0, exx = 0, ey = 0, eyy = 0;
+        double exy = 0; 
+		double ex = 0; 
+		double exx = 0;
+		double ey = 0;
+		double eyy = 0;
         for (int i = 0; i < n; i++) {
             exy += x[i] * y[i];
             ex += x[i];
