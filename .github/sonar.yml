@@ -1,0 +1,37 @@
+name: SonarQube Scan
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+jobs:
+  sonar:
+    name: Build and Analyze
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@v4
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+
+      - name: Cache Maven packages
+        uses: actions/cache@v4
+        with:
+          path: ~/.m2
+          key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
+          restore-keys: ${{ runner.os }}-m2
+
+      - name: Build and SonarQube Scan
+        run: |
+          mvn clean verify sonar:sonar \
+            -Dsonar.projectKey=Nglicloud_Java \
+            -Dsonar.host.url= https://sonarcloud.io/projects \
+            -Dsonar.login=75f5d23fd39669ae77ea05ba90a303606672ef5a \
+            -Dsonar.organization=nglicloud
