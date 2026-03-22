@@ -88,9 +88,7 @@ class TarjanBridgesTest {
         //               6
         // Cycle: 0-1-2-3-0 (no bridges within)
         // Bridges: 2-4, 4-5, 5-6
-        List<List<Integer>> adj = buildGraph(7, new int[][] {
-            {0, 1}, {1, 2}, {2, 3}, {3, 0}, {2, 4}, {4, 5}, {5, 6}
-        });
+        List<List<Integer>> adj = buildGraph(7, new int[][] {{0, 1}, {1, 2}, {2, 3}, {3, 0}, {2, 4}, {4, 5}, {5, 6}});
         List<int[]> bridges = TarjanBridges.findBridges(7, adj);
         sortBridges(bridges);
         assertEquals(3, bridges.size());
@@ -106,9 +104,7 @@ class TarjanBridgesTest {
     void testDisconnectedGraphWithBridges() {
         // Component 1: 0-1 (bridge)
         // Component 2: 2-3-4-2 (cycle, no bridges)
-        List<List<Integer>> adj = buildGraph(5, new int[][] {
-            {0, 1}, {2, 3}, {3, 4}, {4, 2}
-        });
+        List<List<Integer>> adj = buildGraph(5, new int[][] {{0, 1}, {2, 3}, {3, 4}, {4, 2}});
         List<int[]> bridges = TarjanBridges.findBridges(5, adj);
         assertEquals(1, bridges.size());
         assertEquals(0, bridges.get(0)[0]);
@@ -165,9 +161,7 @@ class TarjanBridgesTest {
         // Cycle A: 0-1-2-0
         // Cycle B: 3-4-5-3
         // Bridge: 2-3
-        List<List<Integer>> adj = buildGraph(6, new int[][] {
-            {0, 1}, {1, 2}, {2, 0}, {3, 4}, {4, 5}, {5, 3}, {2, 3}
-        });
+        List<List<Integer>> adj = buildGraph(6, new int[][] {{0, 1}, {1, 2}, {2, 0}, {3, 4}, {4, 5}, {5, 3}, {2, 3}});
         List<int[]> bridges = TarjanBridges.findBridges(6, adj);
         assertEquals(1, bridges.size());
         assertEquals(2, bridges.get(0)[0]);
@@ -193,9 +187,7 @@ class TarjanBridgesTest {
     @Test
     void testStarGraphAllEdgesAreBridges() {
         // Star graph: center vertex 0 connected to 1, 2, 3, 4
-        List<List<Integer>> adj = buildGraph(5, new int[][] {
-            {0, 1}, {0, 2}, {0, 3}, {0, 4}
-        });
+        List<List<Integer>> adj = buildGraph(5, new int[][] {{0, 1}, {0, 2}, {0, 3}, {0, 4}});
         List<int[]> bridges = TarjanBridges.findBridges(5, adj);
         assertEquals(4, bridges.size());
     }
@@ -206,11 +198,7 @@ class TarjanBridgesTest {
         // Square 1: 0-1-2-3-0
         // Square 2: 4-5-6-7-4
         // Bridge: 3-4
-        List<List<Integer>> adj = buildGraph(8, new int[][] {
-            {0, 1}, {1, 2}, {2, 3}, {3, 0},
-            {4, 5}, {5, 6}, {6, 7}, {7, 4},
-            {3, 4}
-        });
+        List<List<Integer>> adj = buildGraph(8, new int[][] {{0, 1}, {1, 2}, {2, 3}, {3, 0}, {4, 5}, {5, 6}, {6, 7}, {7, 4}, {3, 4}});
         List<int[]> bridges = TarjanBridges.findBridges(8, adj);
         assertEquals(1, bridges.size());
         assertEquals(3, bridges.get(0)[0]);
