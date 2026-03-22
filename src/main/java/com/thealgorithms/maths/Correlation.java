@@ -12,7 +12,8 @@ public final class Correlation {
 
     /**
      * Discrete correlation function.
-     * Correlation between two discrete variables is calculated.
+     * Correlation between two discrete variables is calculated
+     * according to the formula: Cor(x, y)=Cov(x, y)/sqrt(Var(x)*Var(y)).
      * Correlation with a constant variable is taken to be zero.
      *
      * @param x The first discrete variable
@@ -21,11 +22,11 @@ public final class Correlation {
      * @return The result of the correlation of variables x,y.
      */
     public static double correlation(double[] x, double[] y, int n) {
-        double exy = 0;
-        double ex = 0;
-        double exx = 0;
-        double ey = 0;
-        double eyy = 0;
+        double exy = 0; //E(XY)
+        double ex = 0;  //E(X)
+        double exx = 0; //E(X^2)
+        double ey = 0;  //E(Y)
+        double eyy = 0; //E(Y^2)
         for (int i = 0; i < n; i++) {
             exy += x[i] * y[i];
             ex += x[i];
@@ -38,10 +39,10 @@ public final class Correlation {
         exx /= n;
         ey /= n;
         eyy /= n;
-        double cov = exy - ex * ey;
-        double varx = Math.sqrt(exx - ex * ex);
-        double vary = Math.sqrt(eyy - ey * ey);
-        if (varx * vary < DELTA) {
+        double cov = exy - ex * ey;             //Cov(X, Y) = E(XY)-E(X)E(Y)
+        double varx = Math.sqrt(exx - ex * ex); //Var(X) = sqrt(E(X^2)-E(X)^2)
+        double vary = Math.sqrt(eyy - ey * ey); //Var(Y) = sqrt(E(Y^2)-E(Y)^2)
+        if (varx * vary < DELTA) { //Var(X) = 0 means X = const, the same about Y
             return 0;
         } else {
             return cov / Math.sqrt(varx * vary);
