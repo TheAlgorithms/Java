@@ -126,7 +126,6 @@ public final class Volume {
         return 2 * Math.PI * Math.PI * majorRadius * minorRadius * minorRadius;
     }
 
-    
     /**
      * Calculate the volume of an ellipsoid.
      *
@@ -134,7 +133,7 @@ public final class Volume {
      * @param b second semi-axis of an ellipsoid
      * @param c third semi-axis of an ellipsoid
      * @return volume of the ellipsoid
-     */    
+     */
     public static double volumeEllipsoid(double a, double b, double c) {
         return (4 * Math.PI * a * b * c) / 3;
     }
