@@ -135,6 +135,7 @@ public final class Volume {
      * @param c third semi-axis of an ellipsoid
      * @return volume of the ellipsoid
      */    
-    public static double volumeEllipsoid(double a, double b, double c)
+    public static double volumeEllipsoid(double a, double b, double c) {
         return 4 / 3 * Math.PI * a * b * c;
+    }
 }
