@@ -136,6 +136,6 @@ public final class Volume {
      * @return volume of the ellipsoid
      */    
     public static double volumeEllipsoid(double a, double b, double c) {
-        return 4 / 3 * Math.PI * a * b * c;
+        return (4 * Math.PI * a * b * c) / 3;
     }
 }
