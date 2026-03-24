@@ -41,5 +41,8 @@ public class VolumeTest {
 
         /* test torus */
         assertEquals(39.47841760435743, Volume.volumeTorus(2, 1));
+
+        /* test ellipsoid */
+        assertEquals(25.13274122871835, Volume.volumeEllipsoid(3, 2, 1));
     }
 }
