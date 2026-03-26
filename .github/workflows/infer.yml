@@ -24,7 +24,7 @@ jobs:
           distribution: 'temurin'
 
       - name: Set up OCaml
-        uses: ocaml/setup-ocaml@v3
+        uses: ocaml/setup-ocaml@44184b0d1ab751e3d1726b13e0afef61d6980755 # v3
         with:
           ocaml-compiler: 5
 

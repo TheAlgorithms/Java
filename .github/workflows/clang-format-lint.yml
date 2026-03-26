@@ -12,7 +12,7 @@ jobs:
 
     steps:
     - uses: actions/checkout@v6
-    - uses: DoozyX/clang-format-lint-action@v0.20
+    - uses: DoozyX/clang-format-lint-action@bcb4eb2cb0d707ee4f3e5cc3b456eb075f12cf73 # v0.20
       with:
         source: './src'
         extensions: 'java'
