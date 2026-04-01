@@ -51,9 +51,9 @@ class BinarySearch implements SearchAlgorithm {
      * // notFound will be -1 (element 4 does not exist)
      * </pre>
      *
-     * @param <T> The type of elements in the array (must be Comparable)
+     * @param <T>   The type of elements in the array (must be Comparable)
      * @param array The sorted array to search in (MUST be sorted in ascending order)
-     * @param key The element to search for
+     * @param key   The element to search for
      * @return The index of the key if found, -1 if not found or if array is null/empty
      */
     @Override
@@ -89,10 +89,10 @@ class BinarySearch implements SearchAlgorithm {
      * <p>Time Complexity: O(log n) because we halve the search space each time.
      * Space Complexity: O(log n) due to recursive call stack.
      *
-     * @param <T> The type of elements (must be Comparable)
+     * @param <T>   The type of elements (must be Comparable)
      * @param array The sorted array to search in
-     * @param key The element we're looking for
-     * @param left The leftmost index of current search range (inclusive)
+     * @param key   The element we're looking for
+     * @param left  The leftmost index of current search range (inclusive)
      * @param right The rightmost index of current search range (inclusive)
      * @return The index where key is located, or -1 if not found
      */
