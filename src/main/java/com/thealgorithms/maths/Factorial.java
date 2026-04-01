@@ -16,10 +16,10 @@ public final class Factorial {
         if (n < 0) {
             throw new IllegalArgumentException("Input number cannot be negative");
         }
-        BigInteger factorial = BigInteger.ONE;
-        for (int i = 1; i <= n; ++i) {
-            factorial = factorial.multiply(BigInteger.valueOf(i));  
+        BigInteger result = BigInteger.ONE;
+        for (int i = 1; i <= n; i++) {
+            result = result.multiply(BigInteger.valueOf(i));
         }
-        return factorial;
+        return result;
     }
 }
