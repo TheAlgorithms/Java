@@ -1,5 +1,7 @@
 package com.thealgorithms.maths;
 
+import java.math.BigInteger;
+
 public final class Factorial {
     private Factorial() {
     }
@@ -10,13 +12,13 @@ public final class Factorial {
      * @param n the number
      * @return the factorial of {@code n}
      */
-    public static long factorial(int n) {
+    public static BigInteger factorial(int n) {
         if (n < 0) {
             throw new IllegalArgumentException("Input number cannot be negative");
         }
-        long factorial = 1;
+        BigInteger factorial = BigInteger.ONE;
         for (int i = 1; i <= n; ++i) {
-            factorial *= i;
+            factorial = factorial.multiply(BigInteger.valueOf(i));  
         }
         return factorial;
     }
