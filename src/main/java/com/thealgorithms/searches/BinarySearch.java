@@ -131,43 +131,6 @@ class BinarySearch implements SearchAlgorithm {
             return search(array, key, median + 1, right);
         }
     }
-
-    /**
-     * Iterative implementation of binary search.
-     * This version avoids recursion and uses constant space O(1).
-     *
-     * @param <T> The type of elements in the array (must be Comparable)
-     * @param array The sorted array to search in
-     * @param key The element to search for
-     * @return The index of the key if found, -1 otherwise
-     */
-    public <T extends Comparable<T>> int findIterative(T[] array, T key) {
-
-        // Handle edge cases
-        if (array == null || array.length == 0 || key == null) {
-            return -1;
-        }
-
-        int left = 0;
-        int right = array.length - 1;
-
-        while (left <= right) {
-
-            int median = (left + right) >>> 1;
-
-            int comp = key.compareTo(array[median]);
-
-            if (comp == 0) {
-                return median;
-            } else if (comp < 0) {
-                right = median - 1;
-            } else {
-                left = median + 1;
-            }
-        }
-
-        return -1;
-    }
 }
 
 

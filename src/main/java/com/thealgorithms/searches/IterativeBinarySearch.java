@@ -33,7 +33,10 @@ public final class IterativeBinarySearch implements SearchAlgorithm {
      */
     @Override
     public <T extends Comparable<T>> int find(T[] array, T key) {
-        if (array == null || array.length == 0) {
+
+        // Handle edge cases: null/empty array or null key
+        // Prevents NullPointerException during comparison
+        if (array == null || array.length == 0 || key == null) {
             return -1;
         }
 
@@ -41,7 +44,11 @@ public final class IterativeBinarySearch implements SearchAlgorithm {
         int right = array.length - 1;
 
         while (left <= right) {
+
+            // Use unsigned right shift to avoid overflow
+            // Equivalent to (left + right) / 2 but safer for large indices
             int mid = (left + right) >>> 1;
+
             int cmp = key.compareTo(array[mid]);
 
             if (cmp == 0) {
@@ -53,6 +60,7 @@ public final class IterativeBinarySearch implements SearchAlgorithm {
             }
         }
 
+        // Element not found
         return -1;
     }
 }
