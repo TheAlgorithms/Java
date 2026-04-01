@@ -58,8 +58,15 @@ class BinarySearch implements SearchAlgorithm {
      */
     @Override
     public <T extends Comparable<T>> int find(T[] array, T key) {
-        // Handle edge case: empty array
+        // Handle edge case: null or empty array
         if (array == null || array.length == 0) {
+            return -1;
+        }
+
+        // Handle edge case: null key
+        // Searching for null in an array of Comparables is undefined behavior
+        // Return -1 to indicate not found rather than throwing NPE
+        if (key == null) {
             return -1;
         }
 
