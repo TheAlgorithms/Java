@@ -30,10 +30,7 @@ class LinearEquationTest {
 
     @Test
     void testAllIllegalInput() {
-        assertAll(
-                () -> assertThrows(IllegalArgumentException.class, () -> LinearEquation.solve(0, 5)),
-                () -> assertThrows(IllegalArgumentException.class, () -> LinearEquation.solve(0, 0)),
-                () -> assertThrows(IllegalArgumentException.class, () -> LinearEquation.solve(0, -3))
-        );
+        assertAll(() -> assertThrows(IllegalArgumentException.class, () -> LinearEquation.solve(0, 5)), () -> assertThrows(IllegalArgumentException.class, () -> LinearEquation.solve(0, 0)), () -> assertThrows(IllegalArgumentException.class, () -> LinearEquation.solve(0, -3)));
+
     }
 }
