@@ -2,10 +2,6 @@ package com.thealgorithms.maths;
 
 /**
  * Solves linear equations of the form ax + b = 0.
- */
-
-/**
- * Solves linear equations of the form ax + b = 0.
  *
  * @see <a href="https://en.wikipedia.org/wiki/Linear_equation">Linear equation (Wikipedia)</a>
  */
