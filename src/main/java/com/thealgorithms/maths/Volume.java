@@ -125,4 +125,16 @@ public final class Volume {
     public static double volumeTorus(double majorRadius, double minorRadius) {
         return 2 * Math.PI * Math.PI * majorRadius * minorRadius * minorRadius;
     }
+
+    /**
+     * Calculate the volume of an ellipsoid.
+     *
+     * @param a first semi-axis of an ellipsoid
+     * @param b second semi-axis of an ellipsoid
+     * @param c third semi-axis of an ellipsoid
+     * @return volume of the ellipsoid
+     */
+    public static double volumeEllipsoid(double a, double b, double c) {
+        return (4 * Math.PI * a * b * c) / 3;
+    }
 }

@@ -1,6 +1,20 @@
+/**
+ * Performs Linear Search on an array.
+ *
+ * Linear search checks each element one by one until the target is found
+ * or the array ends.
+ *
+ * Example:
+ * Input: [2, 4, 6, 8], target = 6
+ * Output: Index = 2
+ *
+ * Time Complexity: O(n)
+ * Space Complexity: O(1)
+ */
 package com.thealgorithms.searches;
 
 import com.thealgorithms.devutils.searches.SearchAlgorithm;
+
 /**
  * Linear Search is a simple searching algorithm that checks
  * each element of the array sequentially until the target
@@ -20,7 +34,6 @@ import com.thealgorithms.devutils.searches.SearchAlgorithm;
  * @see BinarySearch
  * @see SearchAlgorithm
  */
-
 public class LinearSearch implements SearchAlgorithm {
 
     /**
@@ -28,15 +41,21 @@ public class LinearSearch implements SearchAlgorithm {
      *
      * @param array List to be searched
      * @param value Key being searched for
-     * @return Location of the key
+     * @return Location of the key, -1 if array is null or empty, or key not found
      */
     @Override
     public <T extends Comparable<T>> int find(T[] array, T value) {
+
+        if (array == null || array.length == 0 || value == null) {
+            return -1;
+        }
+
         for (int i = 0; i < array.length; i++) {
-            if (array[i].compareTo(value) == 0) {
+            if (array[i] != null && array[i].compareTo(value) == 0) {
                 return i;
             }
         }
+
         return -1;
     }
 }

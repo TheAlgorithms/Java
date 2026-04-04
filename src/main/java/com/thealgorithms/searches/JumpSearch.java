@@ -12,26 +12,50 @@ import com.thealgorithms.devutils.searches.SearchAlgorithm;
  * Once the range is found, a linear search is performed within that block.
  *
  * <p>
- * The Jump Search algorithm is particularly effective for large sorted arrays where the cost of
- * performing a linear search on the entire array would be prohibitive.
+ * <b>How it works:</b>
+ * <ol>
+ *   <li>Calculate the optimal block size as √n (square root of array length)</li>
+ *   <li>Jump ahead by the block size until the current element is greater than the target</li>
+ *   <li>Perform a linear search backwards within the identified block</li>
+ * </ol>
  *
  * <p>
- * Worst-case performance: O(√N)<br>
- * Best-case performance: O(1)<br>
- * Average performance: O(√N)<br>
- * Worst-case space complexity: O(1)
+ * <b>Example:</b><br>
+ * Array: [1, 3, 5, 7, 9, 11, 13, 15, 17, 19], Target: 9<br>
+ * Step 1: Jump from index 0 → 3 → 6 (9 < 13, so we found the block)<br>
+ * Step 2: Linear search from index 3 to 6: found 9 at index 4<br>
+ * Result: Index = 4
+ *
+ * <p>
+ * <b>Time Complexity:</b><br>
+ * - Best-case: O(1) - element found at first position<br>
+ * - Average: O(√n) - optimal block size reduces jumps<br>
+ * - Worst-case: O(√n) - element at end of array or not present<br>
+ *
+ * <p>
+ * <b>Space Complexity:</b> O(1) - only uses a constant amount of extra space
+ *
+ * <p>
+ * <b>Note:</b> Jump Search requires a sorted array. For unsorted arrays, use Linear Search.
+ * Compared to Linear Search (O(n)), Jump Search is faster for large arrays.
+ * Compared to Binary Search (O(log n)), Jump Search is less efficient but may be
+ * preferable when jumping through a linked list or when backward scanning is costly.
  *
  * <p>
  * This class implements the {@link SearchAlgorithm} interface, providing a generic search method
  * for any comparable type.
+ *
+ * @see SearchAlgorithm
+ * @see BinarySearch
+ * @see LinearSearch
  */
 public class JumpSearch implements SearchAlgorithm {
 
     /**
      * Jump Search algorithm implementation.
      *
-     * @param array the sorted array containing elements
-     * @param key   the element to be searched
+     * @param array the sorted array containing elements (must be sorted in ascending order)
+     * @param key   the element to be searched for
      * @return the index of {@code key} if found, otherwise -1
      */
     @Override

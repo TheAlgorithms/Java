@@ -1,3 +1,14 @@
+/**
+ * Interpolation Search estimates the position of the target value
+ * based on the distribution of values.
+ *
+ * Example:
+ * Input: [10, 20, 30, 40], target = 30
+ * Output: Index = 2
+ *
+ * Time Complexity: O(log log n) (average case)
+ * Space Complexity: O(1)
+ */
 package com.thealgorithms.searches;
 
 /**
