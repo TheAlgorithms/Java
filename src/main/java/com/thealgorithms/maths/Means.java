@@ -108,6 +108,28 @@ public final class Means {
     }
 
     /**
+     * Computes the quadratic mean (root mean square) of the given numbers.
+     * <p>
+     * The quadratic mean is calculated as: √[(x₁^2 × x₂^2 × ... × xₙ^2)/n]
+     * </p>
+     * <p>
+     * Example: For numbers [1, 7], the quadratic mean is √[(1^2+7^2)/2] = √25 = 5.0
+     * </p>
+     *
+     * @param numbers the input numbers (must not be empty)
+     * @return the quadratic mean of the input numbers
+     * @throws IllegalArgumentException if the input is empty
+     * @see <a href="https://en.wikipedia.org/wiki/Root_mean_square">Quadratic
+     *      Mean</a>
+     */
+    public static Double quadratic(final Iterable<Double> numbers) {
+        checkIfNotEmpty(numbers);
+        double sumOfSquares = StreamSupport.stream(numbers.spliterator(), false).reduce(0d, (x, y) -> x + y * y);
+        int size = IterableUtils.size(numbers);
+        return Math.pow(sumOfSquares / size, 0.5);
+    }
+
+    /**
      * Validates that the input iterable is not empty.
      *
      * @param numbers the input numbers to validate

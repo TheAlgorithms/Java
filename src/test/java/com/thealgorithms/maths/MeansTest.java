@@ -172,6 +172,53 @@ class MeansTest {
         assertEquals(expected, Means.harmonic(numbers), EPSILON);
     }
 
+    // ========== Quadratic Mean Tests ==========
+
+    @Test
+    void testQuadraticMeanThrowsExceptionForEmptyList() {
+        List<Double> numbers = new ArrayList<>();
+        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> Means.quadratic(numbers));
+        assertTrue(exception.getMessage().contains("Empty list"));
+    }
+
+    @Test
+    void testQuadraticMeanSingleNumber() {
+        LinkedHashSet<Double> numbers = new LinkedHashSet<>(Arrays.asList(2.5));
+        assertEquals(2.5, Means.quadratic(numbers), EPSILON);
+    }
+
+    @Test
+    void testQuadraticMeanTwoNumbers() {
+        List<Double> numbers = Arrays.asList(1.0, 7.0);
+        assertEquals(5.0, Means.quadratic(numbers), EPSILON);
+    }
+
+    @Test
+    void testQuadraticMeanMultipleNumbers() {
+        Vector<Double> numbers = new Vector<>(Arrays.asList(1.0, 2.5, 3.0, 7.5, 10.0));
+        double expected = Math.sqrt(34.5);
+        assertEquals(expected, Means.quadratic(numbers), EPSILON);
+    }
+
+    @Test
+    void testQuadraticMeanThreeNumbers() {
+        List<Double> numbers = Arrays.asList(3.0, 6.0, 9.0);
+        double expected = Math.sqrt(42.0);
+        assertEquals(expected, Means.quadratic(numbers), EPSILON);
+    }
+
+    @Test
+    void testQuadraticMeanIdenticalNumbers() {
+        List<Double> numbers = Arrays.asList(5.0, 5.0, 5.0);
+        assertEquals(5.0, Means.quadratic(numbers), EPSILON);
+    }
+
+    @Test
+    void testQuadraticMeanWithLinkedList() {
+        LinkedList<Double> numbers = new LinkedList<>(Arrays.asList(1.0, 5.0, 11.0));
+        assertEquals(7.0, Means.quadratic(numbers), EPSILON);
+    }
+
     // ========== Additional Edge Case Tests ==========
 
     @Test
@@ -198,21 +245,25 @@ class MeansTest {
         double arithmetic = Means.arithmetic(numbers);
         double geometric = Means.geometric(numbers);
         double harmonic = Means.harmonic(numbers);
+        double quadratic = Means.quadratic(numbers);
 
         assertEquals(7.5, arithmetic, EPSILON);
         assertEquals(7.5, geometric, EPSILON);
         assertEquals(7.5, harmonic, EPSILON);
+        assertEquals(7.5, quadratic, EPSILON);
     }
 
     @Test
     void testMeansRelationship() {
-        // For positive numbers, harmonic mean ≤ geometric mean ≤ arithmetic mean
+        // For positive numbers, harmonic mean ≤ geometric mean ≤ arithmetic mean ≤ quadratic mean
         List<Double> numbers = Arrays.asList(2.0, 4.0, 8.0);
         double arithmetic = Means.arithmetic(numbers);
         double geometric = Means.geometric(numbers);
         double harmonic = Means.harmonic(numbers);
+        double quadratic = Means.quadratic(numbers);
 
         assertTrue(harmonic <= geometric, "Harmonic mean should be ≤ geometric mean");
         assertTrue(geometric <= arithmetic, "Geometric mean should be ≤ arithmetic mean");
+        assertTrue(arithmetic <= quadratic, "Arithmetic mean should be ≤ quadratic mean");
     }
 }
