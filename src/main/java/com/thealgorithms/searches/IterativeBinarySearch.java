@@ -33,9 +33,9 @@ public final class IterativeBinarySearch implements SearchAlgorithm {
      */
     @Override
     public <T extends Comparable<T>> int find(T[] array, T key) {
-        if (array == null || array.length == 0) {
-            return -1;
-        }
+        if (array == null || array.length == 0 || key == null) {
+    return -1;
+}
 
         int left = 0;
         int right = array.length - 1;
