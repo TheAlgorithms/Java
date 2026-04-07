@@ -46,11 +46,11 @@ public class LinearSearch implements SearchAlgorithm {
     @Override
     public <T extends Comparable<T>> int find(T[] array, T value) {
 
-        if (array == null || array.length == 0 || value == null) {
+        if (array == null || value == null) {
             return -1;
         }
 
-        for (int i = 0; i < array.length; i++) {
+        for (int i = 0, n =  < array.length; i < n; i++) {
             if (array[i] != null && array[i].compareTo(value) == 0) {
                 return i;
             }
