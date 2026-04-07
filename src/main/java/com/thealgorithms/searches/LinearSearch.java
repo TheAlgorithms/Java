@@ -51,7 +51,8 @@ public class LinearSearch implements SearchAlgorithm {
         }
 
         for (int i = 0; i < array.length; i++) {
-            if (array[i] != null && array[i].compareTo(value) == 0) {
+            T currentElement = array[i];
+            if (currentElement != null && currentElement.compareTo(value) == 0) {
                 return i;
             }
         }
