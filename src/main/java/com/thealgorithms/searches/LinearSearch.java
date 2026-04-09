@@ -50,7 +50,7 @@ public class LinearSearch implements SearchAlgorithm {
             return -1;
         }
 
-        for (int i = 0, n =  < array.length; i < n; i++) {
+        for (int i = 0, n = array.length; i < n; i++) {
             if (array[i] != null && array[i].compareTo(value) == 0) {
                 return i;
             }
