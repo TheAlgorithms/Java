@@ -1,32 +1,58 @@
 package com.thealgorithms.strings;
 
+import java.util.Locale;
+
 /**
- * Utility class for checking if a string's characters are in alphabetical order.
+ * Utility class for checking whether a string's characters are in non-decreasing
+ * lexicographical order based on Unicode code points (case-insensitive).
  * <p>
- * Alphabetical order is a system whereby character strings are placed in order
- * based on the position of the characters in the conventional ordering of an
- * alphabet.
+ * This does NOT implement language-aware alphabetical ordering (collation rules).
+ * It simply compares lowercase Unicode character values.
  * <p>
- * Reference: <a href="https://en.wikipedia.org/wiki/Alphabetical_order">Wikipedia: Alphabetical Order</a>
+ * Non-letter characters are not allowed and will cause the check to fail.
+ * <p>
+ * Reference:
+ * <a href="https://en.wikipedia.org/wiki/Alphabetical_order">Wikipedia: Alphabetical order</a>
  */
 public final class Alphabetical {
+
     private Alphabetical() {
     }
 
     /**
-     * Checks whether the characters in the given string are in alphabetical order.
-     * Non-letter characters will cause the check to fail.
+     * Checks whether the characters in the given string are in non-decreasing
+     * lexicographical order (case-insensitive).
+     * <p>
+     * Rules:
+     * <ul>
+     *   <li>String must not be null or blank</li>
+     *   <li>All characters must be letters</li>
+     *   <li>Comparison is based on lowercase Unicode values</li>
+     *   <li>Order must be non-decreasing (equal or increasing allowed)</li>
+     * </ul>
      *
-     * @param s the input string
-     * @return {@code true} if all characters are in alphabetical order (case-insensitive), otherwise {@code false}
+     * @param s input string
+     * @return {@code true} if characters are in non-decreasing order, otherwise {@code false}
      */
     public static boolean isAlphabetical(String s) {
-        s = s.toLowerCase();
-        for (int i = 0; i < s.length() - 1; ++i) {
-            if (!Character.isLetter(s.charAt(i)) || s.charAt(i) > s.charAt(i + 1)) {
+        if (s == null || s.isBlank()) {
+            return false;
+        }
+
+        String normalized = s.toLowerCase(Locale.ROOT);
+
+        if (!Character.isLetter(normalized.charAt(0))) {
+            return false;
+        }
+
+        for (int i = 1; i < normalized.length(); i++) {
+            char prev = normalized.charAt(i - 1);
+            char curr = normalized.charAt(i);
+
+            if (!Character.isLetter(curr) || prev > curr) {
                 return false;
             }
         }
-        return !s.isEmpty() && Character.isLetter(s.charAt(s.length() - 1));
+        return true;
     }
 }
