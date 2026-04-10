@@ -30,7 +30,7 @@ public final class Average {
      * @throws IllegalArgumentException if {@code numbers} is {@code null} or empty
      */
     public static double average(double[] numbers) {
-        if (numbers==null || numbers.length==0) {
+        if (numbers == null || numbers.length == 0) {
             throw new IllegalArgumentException("Numbers array cannot be empty or null");
         }
         double sum = 0;
@@ -51,7 +51,7 @@ public final class Average {
      * @throws IllegalArgumentException if {@code numbers} is {@code null} or empty
      */
     public static long average(int[] numbers) {
-        if (numbers==null || numbers.length==0) {
+        if (numbers == null || numbers.length == 0) {
             throw new IllegalArgumentException("Numbers array cannot be empty or null");
         }
         long sum = 0;
@@ -72,7 +72,7 @@ public final class Average {
      * @return an {@link OptionalDouble} with the mean, or empty if input is null/empty
      */
     public static OptionalDouble averageStream(double[] numbers) {
-        if (numbers==null || numbers.length==0) {
+        if (numbers == null || numbers.length == 0) {
             return OptionalDouble.empty();
         }
         return Arrays.stream(numbers).average();
