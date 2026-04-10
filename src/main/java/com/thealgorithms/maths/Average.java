@@ -2,8 +2,12 @@ package com.thealgorithms.maths;
 
 /**
  * A utility class for computing the average of numeric arrays.
- * This class provides static methods to calculate the average of arrays
- * of both {@code double} and {@code int} values.
+ *
+ * <p>This class provides static methods to calculate the arithmetic mean
+ * of arrays of both {@code double} and {@code int} values. It also offers
+ * a Stream-based alternative for modern, declarative usage.
+ *
+ * <p>All methods guard against {@code null} or empty inputs.
  */
 public final class Average {
 
@@ -13,11 +17,14 @@ public final class Average {
     }
 
     /**
-     * Computes the average of a {@code double} array.
+     * Computes the arithmetic mean of a {@code double} array.
      *
-     * @param numbers an array of {@code double} values
-     * @return the average of the given numbers
-     * @throws IllegalArgumentException if the input array is {@code null} or empty
+     * <p>The average is calculated as the sum of all elements divided
+     * by the number of elements: {@code avg = Σ(numbers[i]) / n}.
+     *
+     * @param numbers a non-null, non-empty array of {@code double} values
+     * @return the arithmetic mean of the given numbers
+     * @throws IllegalArgumentException if {@code numbers} is {@code null} or empty
      */
     public static double average(double[] numbers) {
         if (numbers == null || numbers.length == 0) {
@@ -31,11 +38,14 @@ public final class Average {
     }
 
     /**
-     * Computes the average of an {@code int} array.
+     * Computes the arithmetic mean of an {@code int} array.
      *
-     * @param numbers an array of {@code int} values
-     * @return the average of the given numbers
-     * @throws IllegalArgumentException if the input array is {@code null} or empty
+     * <p>The sum is accumulated in a {@code long} to prevent integer overflow
+     * when processing large arrays or large values.
+     *
+     * @param numbers a non-null, non-empty array of {@code int} values
+     * @return the arithmetic mean as a {@code long} (truncated toward zero)
+     * @throws IllegalArgumentException if {@code numbers} is {@code null} or empty
      */
     public static long average(int[] numbers) {
         if (numbers == null || numbers.length == 0) {
