@@ -14,17 +14,19 @@ import org.junit.jupiter.params.provider.MethodSource;
 class AlphabeticalTest {
 
     static Stream<Arguments> testCases() {
-        return Stream.of(arguments("", false, "Should return false for empty string"), arguments("   ", false, "Should return false for blank string"), arguments("a1b2", false, "Should return false when string contains numbers"),
-            arguments("abc!DEF", false, "Should return false when string contains symbols"), arguments("#abc", false, "Should return false when first character is not a letter"), arguments("abc", true, "Should return true for non-decreasing order"),
-            arguments("aBcD", true, "Should return true for mixed case increasing sequence"), arguments("a", true, "Should return true for single letter"), arguments("'", false, "Should return false for single symbol"), arguments("aabbcc", true, "Should return true for repeated letters"),
-            arguments("cba", false, "Should return false when order decreases"), arguments("abzba", false, "Should return false when middle breaks order"));
+        // Workaround for SpotBugs false positive (NAB_NEEDLESS_BOOLEAN_CONSTANT_CONVERSION)
+        // due to JUnit Arguments.of(Object...) auto-boxing
+        return Stream.of(arguments("", Boolean.FALSE, "Should return false for empty string"), arguments("   ", Boolean.FALSE, "Should return false for blank string"), arguments("a1b2", Boolean.FALSE, "Should return false when string contains numbers"),
+            arguments("abc!DEF", Boolean.FALSE, "Should return false when string contains symbols"), arguments("#abc", Boolean.FALSE, "Should return false when first character is not a letter"), arguments("abc", Boolean.TRUE, "Should return true for non-decreasing order"),
+            arguments("aBcD", Boolean.TRUE, "Should return true for mixed case increasing sequence"), arguments("a", Boolean.TRUE, "Should return true for single letter"), arguments("'", Boolean.FALSE, "Should return false for single symbol"),
+            arguments("aabbcc", Boolean.TRUE, "Should return true for repeated letters"), arguments("cba", Boolean.FALSE, "Should return false when order decreases"), arguments("abzba", Boolean.FALSE, "Should return false when middle breaks order"));
     }
 
     private void assertAlphabetical(String input, boolean expected, String message) {
         // Arrange & Act
         boolean result = Alphabetical.isAlphabetical(input);
 
-        // Assertion
+        // Assert
         assertEquals(expected, result, message);
     }
 
