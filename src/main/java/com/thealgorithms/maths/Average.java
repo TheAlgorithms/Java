@@ -1,5 +1,8 @@
 package com.thealgorithms.maths;
 
+import java.util.Arrays;
+import java.util.OptionalDouble;
+
 /**
  * A utility class for computing the average of numeric arrays.
  *
@@ -13,7 +16,8 @@ public final class Average {
 
     // Prevent instantiation of this utility class
     private Average() {
-        throw new UnsupportedOperationException("This is a utility class and cannot be instantiated.");
+        throw new UnsupportedOperationException(
+                "This is a utility class and cannot be instantiated.");
     }
 
     /**
@@ -28,7 +32,8 @@ public final class Average {
      */
     public static double average(double[] numbers) {
         if (numbers == null || numbers.length == 0) {
-            throw new IllegalArgumentException("Numbers array cannot be empty or null");
+            throw new IllegalArgumentException(
+                    "Numbers array cannot be empty or null");
         }
         double sum = 0;
         for (double number : numbers) {
@@ -49,12 +54,30 @@ public final class Average {
      */
     public static long average(int[] numbers) {
         if (numbers == null || numbers.length == 0) {
-            throw new IllegalArgumentException("Numbers array cannot be empty or null");
+            throw new IllegalArgumentException(
+                    "Numbers array cannot be empty or null");
         }
         long sum = 0;
         for (int number : numbers) {
             sum += number;
         }
         return sum / numbers.length;
+    }
+
+    /**
+     * Computes the arithmetic mean of a {@code double} array using Java Streams.
+     *
+     * <p>This method is a declarative alternative to {@link #average(double[])}.
+     * Instead of throwing on empty input, it returns an empty {@link OptionalDouble},
+     * following the convention of the Stream API.
+     *
+     * @param numbers an array of {@code double} values, may be {@code null} or empty
+     * @return an {@link OptionalDouble} with the mean, or empty if input is null/empty
+     */
+    public static OptionalDouble averageStream(double[] numbers) {
+        if (numbers == null || numbers.length == 0) {
+            return OptionalDouble.empty();
+        }
+        return Arrays.stream(numbers).average();
     }
 }
