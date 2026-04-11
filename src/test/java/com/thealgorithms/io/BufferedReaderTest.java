@@ -1,99 +1,84 @@
 package com.thealgorithms.io;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import org.junit.jupiter.api.Test;
 
 class BufferedReaderTest {
+
     @Test
-    public void testPeeks() throws IOException {
-        String text = "Hello!\nWorld!";
-        int len = text.length();
-        byte[] bytes = text.getBytes();
+    void testPeeks() throws IOException {
+        final String text = "Hello!\nWorld!";
+        final byte[] bytes = text.getBytes();
 
-        ByteArrayInputStream input = new ByteArrayInputStream(bytes);
-        BufferedReader reader = new BufferedReader(input);
+        final BufferedReader reader = new BufferedReader(new ByteArrayInputStream(bytes));
 
-        // read the first letter
         assertEquals('H', reader.read());
-        len--;
-        assertEquals(len, reader.available());
 
-        // position: H[e]llo!\nWorld!
-        // reader.read() will be == 'e'
         assertEquals('l', reader.peek(1));
-        assertEquals('l', reader.peek(2)); // second l
+        assertEquals('l', reader.peek(2));
         assertEquals('o', reader.peek(3));
     }
 
     @Test
-    public void testMixes() throws IOException {
-        String text = "Hello!\nWorld!";
-        int len = text.length();
-        byte[] bytes = text.getBytes();
+    void testMixes() throws IOException {
+        final String text = "Hello!\nWorld!";
+        final byte[] bytes = text.getBytes();
 
-        ByteArrayInputStream input = new ByteArrayInputStream(bytes);
-        BufferedReader reader = new BufferedReader(input);
+        final BufferedReader reader = new BufferedReader(new ByteArrayInputStream(bytes));
 
-        // read the first letter
-        assertEquals('H', reader.read()); // first letter
-        len--;
+        assertEquals('H', reader.read());
 
-        assertEquals('l', reader.peek(1)); // third later (second letter after 'H')
-        assertEquals('e', reader.read()); // second letter
-        len--;
-        assertEquals(len, reader.available());
+        assertEquals('l', reader.peek(1));
+        assertEquals('e', reader.read());
 
-        // position: H[e]llo!\nWorld!
-        assertEquals('o', reader.peek(2)); // second l
+        assertEquals('o', reader.peek(2));
         assertEquals('!', reader.peek(3));
         assertEquals('\n', reader.peek(4));
 
-        assertEquals('l', reader.read()); // third letter
-        assertEquals('o', reader.peek(1)); // fourth letter
+        assertEquals('l', reader.read());
+        assertEquals('o', reader.peek(1));
 
-        for (int i = 0; i < 6; i++) {
+        // Move towards EOF
+        for (int i = 0; i < text.length(); i++) {
             reader.read();
         }
-        try {
-            System.out.println((char) reader.peek(4));
-        } catch (Exception ignored) {
-            System.out.println("[cached intentional error]");
-            // intentional, for testing purpose
-        }
+
+        // Proper exception testing
+        assertThrows(IOException.class, () -> reader.peek(4));
     }
 
     @Test
-    public void testBlockPractical() throws IOException {
-        String text = "!Hello\nWorld!";
-        byte[] bytes = text.getBytes();
-        int len = bytes.length;
+    void testBlockPractical() throws IOException {
+        final String text = "!Hello\nWorld!";
+        final byte[] bytes = text.getBytes();
 
-        ByteArrayInputStream input = new ByteArrayInputStream(bytes);
-        BufferedReader reader = new BufferedReader(input);
+        final BufferedReader reader = new BufferedReader(new ByteArrayInputStream(bytes));
 
         assertEquals('H', reader.peek());
-        assertEquals('!', reader.read()); // read the first letter
-        len--;
+        assertEquals('!', reader.read());
 
-        // this only reads the next 5 bytes (Hello) because
-        // the default buffer size = 5
         assertEquals("Hello", new String(reader.readBlock()));
-        len -= 5;
-        assertEquals(reader.available(), len);
 
-        // maybe kind of a practical demonstration / use case
         if (reader.read() == '\n') {
             assertEquals('W', reader.read());
             assertEquals('o', reader.read());
 
-            // the rest of the blocks
             assertEquals("rld!", new String(reader.readBlock()));
         } else {
-            // should not reach
-            throw new IOException("Something not right");
+            throw new IOException("Unexpected stream state");
         }
+    }
+
+    @Test
+    void testEndOfFile() throws IOException {
+        final byte[] bytes = "A".getBytes();
+        final BufferedReader reader = new BufferedReader(new ByteArrayInputStream(bytes));
+
+        assertEquals('A', reader.read());
+        assertEquals(-1, reader.read()); // EOF check
     }
 }

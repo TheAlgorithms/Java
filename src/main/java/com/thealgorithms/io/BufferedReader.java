@@ -5,28 +5,20 @@ import java.io.IOException;
 import java.io.InputStream;
 
 /**
- * Mimics the actions of the Original buffered reader
- * implements other actions, such as peek(n) to lookahead,
- * block() to read a chunk of size {BUFFER SIZE}
- * <p>
+ * Mimics the behavior of a buffered reader with additional features like peek(n)
+ * and block reading.
+ *
+ * <p>Provides lookahead functionality and efficient buffered reading.
+ *
  * Author: Kumaraswamy B.G (Xoma Dev)
  */
 public class BufferedReader {
 
     private static final int DEFAULT_BUFFER_SIZE = 5;
 
-    /**
-     * The maximum number of bytes the buffer can hold.
-     * Value is changed when encountered Eof to not
-     * cause overflow read of 0 bytes
-     */
-
     private int bufferSize;
     private final byte[] buffer;
 
-    /**
-     * posRead -> indicates the next byte to read
-     */
     private int posRead = 0;
     private int bufferPos = 0;
 
@@ -45,113 +37,91 @@ public class BufferedReader {
     public BufferedReader(InputStream input, int bufferSize) throws IOException {
         this.input = input;
         if (input.available() == -1) {
-            throw new IOException("Empty or already closed stream provided");
+            throw new IOException("Empty or closed stream provided");
         }
 
         this.bufferSize = bufferSize;
-        buffer = new byte[bufferSize];
+        this.buffer = new byte[bufferSize];
     }
 
     /**
-     * Reads a single byte from the stream
+     * Reads a single byte from the stream.
      */
     public int read() throws IOException {
         if (needsRefill()) {
             if (foundEof) {
                 return -1;
             }
-            // the buffer is empty, or the buffer has
-            // been completely read and needs to be refilled
             refill();
         }
-        return buffer[posRead++] & 0xff; // read and un-sign it
+        return buffer[posRead++] & 0xff;
     }
 
     /**
-     * Number of bytes not yet been read
+     * Returns number of bytes available.
      */
-
     public int available() throws IOException {
         int available = input.available();
         if (needsRefill()) {
-            // since the block is already empty,
-            // we have no responsibility yet
             return available;
         }
         return bufferPos - posRead + available;
     }
 
     /**
-     * Returns the next character
+     * Returns next byte without consuming it.
      */
-
     public int peek() throws IOException {
         return peek(1);
     }
 
     /**
-     * Peeks and returns a value located at next {n}
+     * Peeks nth byte ahead.
      */
-
     public int peek(int n) throws IOException {
         int available = available();
-        if (n >= available) {
-            throw new IOException("Out of range, available %d, but trying with %d".formatted(available, n));
+        if (n > available) {
+            throw new IOException("Out of range: available %d, requested %d".formatted(available, n));
         }
+
         pushRefreshData();
 
-        if (n >= bufferSize) {
-            throw new IllegalAccessError("Cannot peek %s, maximum upto %s (Buffer Limit)".formatted(n, bufferSize));
+        if (n > bufferSize) {
+            throw new IllegalArgumentException("Cannot peek beyond buffer size: " + bufferSize);
         }
-        return buffer[n];
+
+        return buffer[posRead + n - 1] & 0xff;
     }
 
     /**
-     * Removes the already read bytes from the buffer
-     * in-order to make space for new bytes to be filled up.
-     * <p>
-     * This may also do the job to read first time data (the whole buffer is empty)
+     * Shifts unread data and refills buffer.
      */
-
     private void pushRefreshData() throws IOException {
-        for (int i = posRead, j = 0; i < bufferSize; i++, j++) {
-            buffer[j] = buffer[i];
-        }
+        int unread = bufferPos - posRead;
 
-        bufferPos -= posRead;
+        System.arraycopy(buffer, posRead, buffer, 0, unread);
+
+        bufferPos = unread;
         posRead = 0;
 
-        // fill out the spaces that we've
-        // emptied
         justRefill();
     }
 
     /**
-     * Reads one complete block of size {bufferSize}
-     * if found eof, the total length of an array will
-     * be that of what's available
-     *
-     * @return a completed block
+     * Reads a full block.
      */
     public byte[] readBlock() throws IOException {
         pushRefreshData();
 
-        byte[] cloned = new byte[bufferSize];
-        // arraycopy() function is better than clone()
-        if (bufferPos >= 0) {
-            System.arraycopy(buffer, 0, cloned, 0,
-                // important to note that, bufferSize does not stay constant
-                // once the class is defined. See justRefill() function
-                bufferSize);
-        }
-        // we assume that already a chunk
-        // has been read
+        byte[] result = new byte[bufferPos];
+        System.arraycopy(buffer, 0, result, 0, bufferPos);
+
         refill();
-        return cloned;
+        return result;
     }
 
     private boolean needsRefill() {
-        return bufferPos == 0 || posRead == bufferSize;
+        return posRead >= bufferPos;
     }
 
     private void refill() throws IOException {
@@ -163,25 +133,21 @@ public class BufferedReader {
     private void justRefill() throws IOException {
         assertStreamOpen();
 
-        // try to fill in the maximum we can until
-        // we reach EOF
         while (bufferPos < bufferSize) {
             int read = input.read();
+
             if (read == -1) {
-                // reached end-of-file, no more data left
-                // to be read
                 foundEof = true;
-                // rewrite the BUFFER_SIZE, to know that we've reached
-                // EOF when requested refill
-                bufferSize = bufferPos;
+                break; // ✅ FIX: stop immediately
             }
+
             buffer[bufferPos++] = (byte) read;
         }
     }
 
     private void assertStreamOpen() {
         if (input == null) {
-            throw new IllegalStateException("Input Stream already closed!");
+            throw new IllegalStateException("Input stream already closed");
         }
     }
 
