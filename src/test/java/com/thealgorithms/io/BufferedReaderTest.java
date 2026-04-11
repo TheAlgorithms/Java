@@ -16,11 +16,10 @@ class BufferedReaderTest {
 
         final BufferedReader reader = new BufferedReader(new ByteArrayInputStream(bytes));
 
-        assertEquals('H', reader.read());
-
-        assertEquals('l', reader.peek(1));
-        assertEquals('l', reader.peek(2));
-        assertEquals('o', reader.peek(3));
+        // Pointer at start: [H]
+        assertEquals('H', reader.peek(1));
+        assertEquals('e', reader.peek(2));
+        assertEquals('l', reader.peek(3));
     }
 
     @Test
@@ -30,25 +29,28 @@ class BufferedReaderTest {
 
         final BufferedReader reader = new BufferedReader(new ByteArrayInputStream(bytes));
 
+        // Read first character
         assertEquals('H', reader.read());
 
-        assertEquals('l', reader.peek(1));
+        // Pointer now at 'e'
+        assertEquals('e', reader.peek(1));
         assertEquals('e', reader.read());
 
-        assertEquals('o', reader.peek(2));
-        assertEquals('!', reader.peek(3));
-        assertEquals('\n', reader.peek(4));
+        // Pointer at first 'l'
+        assertEquals('l', reader.peek(1));
+        assertEquals('l', reader.peek(2));
+        assertEquals('o', reader.peek(3));
 
         assertEquals('l', reader.read());
         assertEquals('o', reader.peek(1));
 
-        // Move towards EOF
-        for (int i = 0; i < text.length(); i++) {
-            reader.read();
+        // Move to EOF safely
+        while (reader.read() != -1) {
+            // consume remaining
         }
 
-        // Proper exception testing
-        assertThrows(IOException.class, () -> reader.peek(4));
+        // Exception when peeking beyond available
+        assertThrows(IOException.class, () -> reader.peek(1));
     }
 
     @Test
@@ -58,11 +60,16 @@ class BufferedReaderTest {
 
         final BufferedReader reader = new BufferedReader(new ByteArrayInputStream(bytes));
 
-        assertEquals('H', reader.peek());
+        // Peek before reading
+        assertEquals('!', reader.peek());
+
+        // Read first character
         assertEquals('!', reader.read());
 
+        // Read next block (default buffer size = 5 → "Hello")
         assertEquals("Hello", new String(reader.readBlock()));
 
+        // Continue reading
         if (reader.read() == '\n') {
             assertEquals('W', reader.read());
             assertEquals('o', reader.read());
