@@ -72,6 +72,20 @@ class LineIntersectionTest {
     }
 
     @Test
+    void testCollinearSegmentsTouchingAtEndpointHaveUniquePoint() {
+        Point p1 = new Point(0, 0);
+        Point p2 = new Point(2, 2);
+        Point q1 = new Point(2, 2);
+        Point q2 = new Point(4, 4);
+
+        assertTrue(LineIntersection.intersects(p1, p2, q1, q2));
+        Optional<Point2D.Double> intersection = LineIntersection.intersectionPoint(p1, p2, q1, q2);
+        assertTrue(intersection.isPresent());
+        assertEquals(2.0, intersection.orElseThrow().getX(), 1e-9);
+        assertEquals(2.0, intersection.orElseThrow().getY(), 1e-9);
+    }
+
+    @Test
     void testVerticalAndHorizontalCrossingSegments() {
         Point p1 = new Point(2, 0);
         Point p2 = new Point(2, 5);

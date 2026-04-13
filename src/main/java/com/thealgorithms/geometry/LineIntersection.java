@@ -62,29 +62,41 @@ public final class LineIntersection {
             return Optional.empty();
         }
 
-        double x1 = p1.x();
-        double y1 = p1.y();
-        double x2 = p2.x();
-        double y2 = p2.y();
-        double x3 = q1.x();
-        double y3 = q1.y();
-        double x4 = q2.x();
-        double y4 = q2.y();
+        long x1 = p1.x();
+        long y1 = p1.y();
+        long x2 = p2.x();
+        long y2 = p2.y();
+        long x3 = q1.x();
+        long y3 = q1.y();
+        long x4 = q2.x();
+        long y4 = q2.y();
 
-        double denominator = (x1 - x2) * (y3 - y4) - (y1 - y2) * (x3 - x4);
-        if (denominator == 0.0) {
-            return Optional.empty();
+        long denominator = (x1 - x2) * (y3 - y4) - (y1 - y2) * (x3 - x4);
+        if (denominator == 0L) {
+            return sharedEndpoint(p1, p2, q1, q2);
         }
 
-        double numeratorX = (x1 * y2 - y1 * x2) * (x3 - x4) - (x1 - x2) * (x3 * y4 - y3 * x4);
-        double numeratorY = (x1 * y2 - y1 * x2) * (y3 - y4) - (y1 - y2) * (x3 * y4 - y3 * x4);
+        long determinant1 = x1 * y2 - y1 * x2;
+        long determinant2 = x3 * y4 - y3 * x4;
+        long numeratorX = determinant1 * (x3 - x4) - (x1 - x2) * determinant2;
+        long numeratorY = determinant1 * (y3 - y4) - (y1 - y2) * determinant2;
 
-        return Optional.of(new Point2D.Double(numeratorX / denominator, numeratorY / denominator));
+        return Optional.of(new Point2D.Double(numeratorX / (double) denominator, numeratorY / (double) denominator));
     }
 
     private static int orientation(Point a, Point b, Point c) {
-        long cross = (long) (b.x() - a.x()) * (c.y() - a.y()) - (long) (b.y() - a.y()) * (c.x() - a.x());
+        long cross = ((long) b.x() - a.x()) * ((long) c.y() - a.y()) - ((long) b.y() - a.y()) * ((long) c.x() - a.x());
         return Long.compare(cross, 0L);
+    }
+
+    private static Optional<Point2D.Double> sharedEndpoint(Point p1, Point p2, Point q1, Point q2) {
+        if (p1.equals(q1) || p1.equals(q2)) {
+            return Optional.of(new Point2D.Double(p1.x(), p1.y()));
+        }
+        if (p2.equals(q1) || p2.equals(q2)) {
+            return Optional.of(new Point2D.Double(p2.x(), p2.y()));
+        }
+        return Optional.empty();
     }
 
     private static boolean onSegment(Point a, Point b, Point c) {
