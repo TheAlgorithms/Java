@@ -63,4 +63,20 @@ class AccountMergeTest {
 
         assertEquals(expected, merged);
     }
+
+    @Test
+    void testAccountsWithNoEmailsArePreserved() {
+        List<List<String>> accounts = List.of(
+            List.of("Alex"),
+            List.of("Alex", "alex1@mail.com"),
+            List.of("Bob"));
+
+        List<List<String>> merged = AccountMerge.mergeAccounts(accounts);
+        List<List<String>> expected = List.of(
+            List.of("Alex"),
+            List.of("Alex", "alex1@mail.com"),
+            List.of("Bob"));
+
+        assertEquals(expected, merged);
+    }
 }

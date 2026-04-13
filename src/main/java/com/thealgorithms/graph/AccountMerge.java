@@ -41,6 +41,12 @@ public final class AccountMerge {
             int root = dsu.find(entry.getValue());
             rootToEmails.computeIfAbsent(root, ignored -> new ArrayList<>()).add(entry.getKey());
         }
+        for (int i = 0; i < accounts.size(); i++) {
+            if (accounts.get(i).size() <= 1) {
+                int root = dsu.find(i);
+                rootToEmails.computeIfAbsent(root, ignored -> new ArrayList<>());
+            }
+        }
 
         List<List<String>> merged = new ArrayList<>();
         for (Map.Entry<Integer, List<String>> entry : rootToEmails.entrySet()) {
@@ -58,6 +64,9 @@ public final class AccountMerge {
             int cmp = a.getFirst().compareTo(b.getFirst());
             if (cmp != 0) {
                 return cmp;
+            }
+            if (a.size() == 1 || b.size() == 1) {
+                return Integer.compare(a.size(), b.size());
             }
             return a.get(1).compareTo(b.get(1));
         });
