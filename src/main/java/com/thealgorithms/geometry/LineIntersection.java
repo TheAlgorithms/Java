@@ -100,7 +100,6 @@ public final class LineIntersection {
     }
 
     private static boolean onSegment(Point a, Point b, Point c) {
-        return b.x() >= Math.min(a.x(), c.x()) && b.x() <= Math.max(a.x(), c.x())
-            && b.y() >= Math.min(a.y(), c.y()) && b.y() <= Math.max(a.y(), c.y());
+        return b.x() >= Math.min(a.x(), c.x()) && b.x() <= Math.max(a.x(), c.x()) && b.y() >= Math.min(a.y(), c.y()) && b.y() <= Math.max(a.y(), c.y());
     }
 }
