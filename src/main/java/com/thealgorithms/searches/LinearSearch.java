@@ -41,12 +41,12 @@ public class LinearSearch implements SearchAlgorithm {
      *
      * @param array List to be searched
      * @param value Key being searched for
-     * @return Location of the key, -1 if array is null or empty, or key not found
+     * @return Index of the key if found; otherwise -1 if the array is null, empty, or the key is not found
      */
     @Override
     public <T extends Comparable<T>> int find(T[] array, T value) {
 
-        if (array == null || array.length == 0 || value == null) {
+        if (array == null || array.length == 0) {
             return -1;
         }
 
