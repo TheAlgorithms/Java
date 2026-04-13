@@ -59,4 +59,29 @@ class LineIntersectionTest {
         assertTrue(LineIntersection.intersects(p1, p2, q1, q2));
         assertTrue(LineIntersection.intersectionPoint(p1, p2, q1, q2).isEmpty());
     }
+
+    @Test
+    void testCollinearDisjointSegments() {
+        Point p1 = new Point(0, 0);
+        Point p2 = new Point(2, 2);
+        Point q1 = new Point(3, 3);
+        Point q2 = new Point(5, 5);
+
+        assertFalse(LineIntersection.intersects(p1, p2, q1, q2));
+        assertTrue(LineIntersection.intersectionPoint(p1, p2, q1, q2).isEmpty());
+    }
+
+    @Test
+    void testVerticalAndHorizontalCrossingSegments() {
+        Point p1 = new Point(2, 0);
+        Point p2 = new Point(2, 5);
+        Point q1 = new Point(0, 3);
+        Point q2 = new Point(4, 3);
+
+        assertTrue(LineIntersection.intersects(p1, p2, q1, q2));
+        Optional<Point2D.Double> intersection = LineIntersection.intersectionPoint(p1, p2, q1, q2);
+        assertTrue(intersection.isPresent());
+        assertEquals(2.0, intersection.orElseThrow().getX(), 1e-9);
+        assertEquals(3.0, intersection.orElseThrow().getY(), 1e-9);
+    }
 }
