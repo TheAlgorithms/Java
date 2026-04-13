@@ -43,4 +43,24 @@ class AccountMergeTest {
     void testEmptyInput() {
         assertEquals(List.of(), AccountMerge.mergeAccounts(List.of()));
     }
+
+    @Test
+    void testNullInput() {
+        assertEquals(List.of(), AccountMerge.mergeAccounts(null));
+    }
+
+    @Test
+    void testTransitiveMergeAndDuplicateEmails() {
+        List<List<String>> accounts = List.of(
+            List.of("A", "a1@mail.com", "a2@mail.com"),
+            List.of("A", "a2@mail.com", "a3@mail.com"),
+            List.of("A", "a3@mail.com", "a4@mail.com", "a4@mail.com"));
+
+        List<List<String>> merged = AccountMerge.mergeAccounts(accounts);
+
+        List<List<String>> expected = List.of(
+            List.of("A", "a1@mail.com", "a2@mail.com", "a3@mail.com", "a4@mail.com"));
+
+        assertEquals(expected, merged);
+    }
 }
