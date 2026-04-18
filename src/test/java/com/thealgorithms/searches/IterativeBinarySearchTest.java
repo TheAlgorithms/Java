@@ -88,6 +88,26 @@ class IterativeBinarySearchTest {
     }
 
     /**
+     * Test for binary search with a null array.
+     */
+    @Test
+    void testBinarySearchNullArray() {
+        IterativeBinarySearch binarySearch = new IterativeBinarySearch();
+        Integer key = 1;
+        assertEquals(-1, binarySearch.find(null, key), "The element should not be found in a null array.");
+    }
+
+    /**
+     * Test for binary search with a null key.
+     */
+    @Test
+    void testBinarySearchNullKey() {
+        IterativeBinarySearch binarySearch = new IterativeBinarySearch();
+        Integer[] array = {1, 2, 4, 8, 16};
+        assertEquals(-1, binarySearch.find(array, null), "A null search key should return -1.");
+    }
+
+    /**
      * Test for binary search on a large array.
      */
     @Test
