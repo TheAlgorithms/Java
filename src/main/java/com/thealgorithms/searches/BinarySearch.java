@@ -55,6 +55,16 @@ class BinarySearch implements SearchAlgorithm {
      * @param array The sorted array to search in (MUST be sorted in ascending order)
      * @param key The element to search for
      * @return The index of the key if found, -1 if not found or if array is null/empty
+     *
+     * <p><strong>Edge Cases:</strong>
+     * <ul>
+     *   <li>Null array → returns -1</li>
+     *   <li>Empty array → returns -1</li>
+     *   <li>Null key → returns -1</li>
+     *   <li>Element not found → returns -1</li>
+     *   <li>Single element array → works correctly</li>
+     *   <li>Duplicate elements → may return any one valid index</li>
+     * </ul>
      */
     @Override
     public <T extends Comparable<T>> int find(T[] array, T key) {
