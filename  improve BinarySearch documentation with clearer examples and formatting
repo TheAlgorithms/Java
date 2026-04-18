@@ -1,0 +1,250 @@
+[33mcommit b3e31b5a5cd1465e474b71d87b44d4659fcfda23[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mimprove-binarysearch-docs[m[33m, [m[1;31morigin/master[m[33m, [m[1;31morigin/improve-binarysearch-docs[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;32mmaster[m[33m)[m
+Author: Nick Zerjeski <57059725+nickzerjeski@users.noreply.github.com>
+Date:   Wed Apr 15 16:07:03 2026 +0200
+
+    feat(graph): add DSU-based account merge algorithm (#7377)
+    
+    * feat(graph): add DSU-based account merge algorithm
+    
+    * test(graph): add null and transitive account merge cases
+    
+    * Handle no-email accounts in account merge
+    
+    * Apply clang-format style to account merge tests
+
+[33mcommit 14b6f9924216e5e0c4c2c70683c930bac369c1b9[m
+Author: Nick Zerjeski <57059725+nickzerjeski@users.noreply.github.com>
+Date:   Tue Apr 14 12:03:00 2026 +0200
+
+    test(searches): cover null input cases in IterativeBinarySearch (#7375)
+
+[33mcommit df8fd850584077c8a15039301d52c9efd1400dbc[m
+Author: Prashant Maurya <prashantpiyush1111@gmail.com>
+Date:   Tue Apr 14 15:29:22 2026 +0530
+
+    docs: add edge cases to JumpSearch documentation (#7379)
+    
+    * docs: add edge cases to JumpSearch documentation
+    
+    * fix: remove trailing whitespace (checkstyle)
+
+[33mcommit 79bc6201358862fd14fd13307b2bc52fcd89b201[m
+Author: Nick Zerjeski <57059725+nickzerjeski@users.noreply.github.com>
+Date:   Mon Apr 13 13:02:04 2026 +0200
+
+    feat(geometry): add line segment intersection utility (#7376)
+    
+    * feat(geometry): add line segment intersection utility
+    
+    * test(geometry): cover more line intersection edge cases
+    
+    * Address line intersection edge cases from review
+    
+    * Apply clang-format fixes for line intersection
+
+[33mcommit 1edf319cb3da42c75ac7c5cfeaf1928d409d9153[m
+Author: Papichardog <pablopichardogalindo@gmail.com>
+Date:   Sat Apr 11 05:04:33 2026 -0600
+
+    feat(maths): enhance Average with stream method and improved JavaDoc (#7369)
+    
+    * docs(maths): improve JavaDoc for Average utility class
+    
+    * feat(maths): add stream-based averageStream method and validations
+    
+    * style: fix formatting
+    
+    * style: final formatting fix for CI checks
+    
+    * style: apply official clang-format to Average.java
+
+[33mcommit e0a7223ab40f66a87ce4e02a7b4aeca4302902ef[m
+Author: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>
+Date:   Sat Apr 11 09:34:54 2026 +0200
+
+    chore(deps): bump actions/github-script from 8 to 9 in /.github/workflows (#7371)
+    
+    chore(deps): bump actions/github-script in /.github/workflows
+    
+    Bumps [actions/github-script](https://github.com/actions/github-script) from 8 to 9.
+    - [Release notes](https://github.com/actions/github-script/releases)
+    - [Commits](https://github.com/actions/github-script/compare/v8...v9)
+    
+    ---
+    updated-dependencies:
+    - dependency-name: actions/github-script
+      dependency-version: '9'
+      dependency-type: direct:production
+      update-type: version-update:semver-major
+    ...
+    
+    Signed-off-by: dependabot[bot] <support@github.com>
+    Co-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>
+
+[33mcommit 5b9db677b3fc3f081ad164a2657f018aa578b47f[m
+Author: Feliphe Jesus <felseje@hotmail.com>
+Date:   Fri Apr 10 17:21:48 2026 -0300
+
+    Refactor Alphabetical implementation and tests (#7370)
+    
+    * Improve Alphabetical implementation, tests and documentation
+    
+    * Workaround SpotBugs false positive in parameterized tests
+    
+    Replaced boolean literals with Boolean.TRUE/FALSE in Arguments.of(...)
+    to avoid SpotBugs warning (NAB_NEEDLESS_BOOLEAN_CONSTANT_CONVERSION).
+    
+    This is a false positive caused by JUnit's Object... varargs
+    requiring auto-boxing.
+
+[33mcommit 49f9e1a5a7c041a6b40db52b089b480e897b89b5[m
+Author: kadambari25 <sureshkadambari62@gmail.com>
+Date:   Wed Apr 8 09:10:19 2026 +0200
+
+    Improve readability in LinearSearch by using local variable (#7367)
+    
+    Co-authored-by: Kadambari <kadambari179@gmail.com>
+
+[33mcommit 7eea9a5101a2347e4bb69e9ae2bc96b1fbd5cef4[m
+Author: kadambari25 <sureshkadambari62@gmail.com>
+Date:   Mon Apr 6 21:40:34 2026 +0200
+
+    Fix: handle null key in IterativeBinarySearch (#7365)
+    
+    * Fix: handle null key in IterativeBinarySearch
+    
+    * style: fix indentation in IterativeBinarySearch
+    
+    * style: fix indentation in IterativeBinarySearch
+    
+    ---------
+    
+    Co-authored-by: Kadambari <kadambari179@gmail.com>
+
+[33mcommit 741b2d10944fe85f0cea81b6e6f2d01eb8d29182[m
+Author: Yassa Talaat <145781920+YassaTalaat80@users.noreply.github.com>
+Date:   Mon Apr 6 18:42:14 2026 +0200
+
+    Feat/segment tree 2d (#7363)
+    
+    * feat: add 2D segment tree implementation
+    
+    * test: add comprehensive unit tests for 2D segment tree
+    
+    * style: format code using clang-format
+
+[33mcommit 13aaad21135611953d1e310e5535e4f181a1a4dc[m
+Author: Shyam Chavda <163722988+ShyamChavda005@users.noreply.github.com>
+Date:   Sun Apr 5 22:36:07 2026 +0530
+
+    feat(strings): add MoveHashToEnd algorithm (#7313)
+    
+    * feat(strings): add MoveHashToEnd algorithm with tests
+    
+    - Add MoveHashToEnd utility class that moves all '#' characters
+      to the end of a string while preserving the order of other characters
+    - Algorithm runs in O(n) time and O(n) space using a two-pass approach:
+      first collects non-'#' chars, then fills remaining positions with '#'
+    - Add null and empty string guards
+    - Add MoveHashToEndTest with 9 unit tests covering normal, edge,
+      and boundary cases (null, empty, all-hash, no-hash, single char)
+    
+    * docs(strings): add reference URL to MoveHashToEnd Javadoc
+    
+    * docs: add MoveHashToEnd to DIRECTORY index
+    
+    * style(strings): add missing newline at EOF in MoveHashToEnd
+    
+    * test(strings): fix MoveHashToEnd expected output for sample input
+
+[33mcommit abd1c4732f4369a500cd164489e68f3e5fd4aba8[m
+Author: kvadrik <41710943+kvadrik@users.noreply.github.com>
+Date:   Sun Apr 5 00:58:45 2026 +0300
+
+    Create Relativity.java (#7323)
+    
+    * Create Relativity.java
+    
+    Created the file that implements relativity formulae.
+    
+    * Create RelativityTest.java
+    
+    Test file created for Relativity.java.
+    
+    * Update RelativityTest.java
+    
+    Function name ambiguity resolved
+    
+    * Update RelativityTest.java
+    
+    DELTA increased
+    
+    * Update Relativity.java
+    
+    Extra white space removed
+    
+    * Update Relativity.java
+    
+    Extra spaces added
+    
+    * Update RelativityTest.java
+    
+    Spaces added and removed
+    
+    * Update Relativity.java
+    
+    White spaces added and removed
+    
+    * Update RelativityTest.java
+    
+    Added and removed spaces
+    
+    * Update Relativity.java
+    
+    * Update Relativity.java
+    
+    Space removed
+    
+    * Update Relativity.java
+    
+    Replaced tabs by spaces
+    
+    * Update RelativityTest.java
+    
+    Tabs replaced by spaces
+
+[33mcommit b7e9c85c43a23515cadc34e9b71484b198c7af2b[m
+Author: AbhiramSakha <143825001+AbhiramSakha@users.noreply.github.com>
+Date:   Sun Apr 5 03:13:50 2026 +0530
+
+    Enhance LinearSearch with null check for value (#7355)
+    
+    Added null check for the search value in the find method.
+
+[33mcommit f38d5cdb3c33589c0e171b17f1daad6634fba963[m
+Author: Alex Tumanov <oleksii.tumanov@gmail.com>
+Date:   Fri Apr 3 06:50:11 2026 -0500
+
+    feat: add OptimalBinarySearchTree algorithm (#7310)
+
+[33mcommit 9729e56fc7b54197460ee449d94d33284c68d7aa[m
+Author: Vansh Sharma <Vansh.Sharma7171717@gmail.com>
+Date:   Wed Apr 1 17:25:29 2026 +0530
+
+    Use BigInteger to prevent overflow in factorial calculation (#7358)
+    
+    * Use BigInteger to prevent overflow in factorial calculation
+    
+    * chore: remove unnecessary comment
+    
+    * update
+    
+    * Fix: improve factorial implementation and formatting
+    
+    * test: final fix for FactorialTest logic and formatting
+    
+    * chore: final formatting and test fix for BigInteger
+    
+    * chore: final formatting and test fix for BigInteger
+
+[33mcommit 635d54a9de573a51786b18b151579206b58ae94
