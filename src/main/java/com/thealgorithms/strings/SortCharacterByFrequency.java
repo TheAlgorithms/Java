@@ -30,17 +30,15 @@ class Solution {
         }
 
         // Step 2: Create max-heap based on frequency
-        PriorityQueue<Map.Entry<Character, Integer>> pq =
-                new PriorityQueue<>((a, b) -> {
+        PriorityQueue<Map.Entry<Character, Integer>> pq = new PriorityQueue<>((a, b) -> {
+            // Higher frequency comes first
+            int diff = b.getValue() - a.getValue();
 
-                    // Higher frequency comes first
-                    int diff = b.getValue() - a.getValue();
+            // If frequency same, sort by character
+            if (diff == 0) return a.getKey() - b.getKey();
 
-                    // If frequency same, sort by character
-                    if (diff == 0) return a.getKey() - b.getKey();
-
-                    return diff;
-                });
+            return diff;
+        });
 
         // Add all entries to heap
         pq.addAll(map.entrySet());
@@ -52,7 +50,7 @@ class Solution {
 
             Map.Entry<Character, Integer> entry = pq.poll();
 
-            char key = entry.getKey();   // character
+            char key = entry.getKey(); // character
             int freq = entry.getValue(); // frequency
 
             // Append character 'freq' times
