@@ -1,5 +1,7 @@
 // Reference: https://leetcode.com/problems/sort-characters-by-frequency/
+package com.thealgorithms.strings;
 import java.util.*;
+
 
 // Problem: Sort Characters By Frequency
 // Pattern: HashMap + Priority Queue (Heap)
@@ -16,7 +18,7 @@ import java.util.*;
  Space Complexity: O(n)
 */
 
-class Solution {
+class SortCharacterByFrequency {
     public String frequencySort(String s) {
 
         // Step 1: Count frequency of each character

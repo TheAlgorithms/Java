@@ -38,4 +38,12 @@ class SortCharacterByFrequencyTest {
         // Possible outputs: "cccaaa" or "aaaccc"
         assertTrue(result.equals("cccaaa") || result.equals("aaaccc"));
     }
+
+    @Test
+    void testWithNumbersAndLetters() {
+        String result = solution.frequencySort("Aabb");
+
+        // 'b' appears twice → should come first
+        assertTrue(result.startsWith("bb"));
+    }
 }
