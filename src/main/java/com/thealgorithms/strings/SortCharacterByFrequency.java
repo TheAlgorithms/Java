@@ -2,7 +2,6 @@
 package com.thealgorithms.strings;
 import java.util.*;
 
-
 // Problem: Sort Characters By Frequency
 // Pattern: HashMap + Priority Queue (Heap)
 // Difficulty: Medium
