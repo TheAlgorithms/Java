@@ -65,7 +65,8 @@ public class SentinelLinearSearch implements SearchAlgorithm {
 
         int i = 0;
         // Search without bound checking since sentinel guarantees we'll find the key
-        while (array[i].compareTo(key) != 0) {
+        // Null check for array element to prevent NPE when array contains null elements
+        while (array[i] != null && array[i].compareTo(key) != 0) {
             i++;
         }
 
