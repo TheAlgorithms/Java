@@ -3,7 +3,7 @@
  * <p>
  * Time Complexity: O(n) [or appropriate complexity]
  * Space Complexity: O(n)
- * * @author Reshma Kakkirala
+ * @author Reshma Kakkirala
  */
 package com.thealgorithms.conversions;
 
