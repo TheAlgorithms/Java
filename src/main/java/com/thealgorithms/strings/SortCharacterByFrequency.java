@@ -1,6 +1,5 @@
 // Reference: https://leetcode.com/problems/sort-characters-by-frequency/
 package com.thealgorithms.strings;
-import java.util.*;
 
 // Problem: Sort Characters By Frequency
 // Pattern: HashMap + Priority Queue (Heap)
@@ -36,7 +35,9 @@ class SortCharacterByFrequency {
             int diff = b.getValue() - a.getValue();
 
             // If frequency same, sort by character
-            if (diff == 0) return a.getKey() - b.getKey();
+            if (diff == 0) {
+                return a.getKey() - b.getKey();
+            }
 
             return diff;
         });
