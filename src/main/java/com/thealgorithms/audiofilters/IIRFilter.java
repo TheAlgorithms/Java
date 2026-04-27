@@ -1,5 +1,7 @@
 package com.thealgorithms.audiofilters;
 
+// Học cấu trúc của một bộ lọc IIR (Infinite Impulse Response) và cách sử dụng nó để xử lý tín hiệu âm thanh. Bộ lọc IIR là một loại bộ lọc kỹ thuật số có phản hồi vô hạn, nghĩa là nó sử dụng cả giá trị đầu vào hiện tại và các giá trị đầu vào trước đó để tính toán giá trị đầu ra. Điều này cho phép bộ lọc IIR có thể đạt được đáp ứng tần số mong muốn với ít hệ số hơn so với bộ lọc FIR (Finite Impulse Response).
+
 /**
  * N-Order IIR Filter Assumes inputs are normalized to [-1, 1]
  *
