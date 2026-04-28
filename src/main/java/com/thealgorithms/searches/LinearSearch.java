@@ -20,7 +20,7 @@ import com.thealgorithms.devutils.searches.SearchAlgorithm;
  *
  * @author Varun Upadhyay
  * @author Podshivalov Nikita
- * @author yawarali1
+ * @author Yawar Ali
  * @see BinarySearch
  * @see SearchAlgorithm
  */
