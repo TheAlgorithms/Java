@@ -3,7 +3,7 @@ package com.thealgorithms.searches;
 import com.thealgorithms.devutils.searches.SearchAlgorithm;
 
 /**
- * Linear Search is a simple searching algorithm that checks each element 
+ * Linear Search is a simple searching algorithm that checks each element
  * of the array sequentially until the target value is found or the array ends.
  *
  * <p>It works for both sorted and unsorted arrays.</p>
