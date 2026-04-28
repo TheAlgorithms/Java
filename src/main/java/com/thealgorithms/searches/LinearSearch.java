@@ -49,3 +49,4 @@ public class LinearSearch implements SearchAlgorithm {
 
         return -1;
     }
+}
