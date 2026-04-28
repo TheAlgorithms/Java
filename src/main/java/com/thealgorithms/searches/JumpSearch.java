@@ -36,6 +36,13 @@ import com.thealgorithms.devutils.searches.SearchAlgorithm;
  * <b>Space Complexity:</b> O(1) - only uses a constant amount of extra space
  *
  * <p>
+ * <b>Edge Cases:</b>
+ * <ul>
+ *   <li>Empty array → returns -1</li>
+ *   <li>Element not present → returns -1</li>
+ *   <li>Single element array</li>
+ * </ul>
+ * <p>
  * <b>Note:</b> Jump Search requires a sorted array. For unsorted arrays, use Linear Search.
  * Compared to Linear Search (O(n)), Jump Search is faster for large arrays.
  * Compared to Binary Search (O(log n)), Jump Search is less efficient but may be
