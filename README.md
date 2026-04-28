@@ -12,6 +12,7 @@ You can run and edit the algorithms, or contribute to them using Gitpod.io (a fr
 
 ### All algorithms are implemented in Java (for educational purposes)
 These implementations are intended for learning purposes. As such, they may be less efficient than the Java standard library.
+This repository is very useful for the new learners who are enthusiastic to learn data structures and algorithms along with java.
 
 ## Contribution Guidelines
 Please read our [Contribution Guidelines](CONTRIBUTING.md) before you contribute to this project.
