@@ -2,90 +2,99 @@ package com.thealgorithms.recursion;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.HashSet;
 import java.util.List;
-import java.util.stream.Collectors;
 
 /**
- * The Permutations class provides utility methods to generate all possible 
- * rearrangements of elements for both integer arrays and strings.
- * 
- * <p>This implementation uses a recursive approach and a {@link HashSet} 
- * internally to ensure that only unique permutations are returned.</p>
+ * This class provides methods to generate all permutations
+ * of a given integer array or string using recursion.
+ *
+ * Reference:
+ * https://en.wikipedia.org/wiki/Permutation
  */
 public final class Permutations {
 
     private Permutations() {
-        throw new UnsupportedOperationException("Utility Class");
+        throw new UnsupportedOperationException("Utility class");
     }
 
     /**
-     * Generates all unique permutations of an integer array.
+     * Generates all permutations of an integer array.
      *
-     * @param nums The array of integers to permute.
-     * @return A List of Lists, where each inner list is a unique permutation.
-     * @throws NullPointerException if nums is null.
+     * @param nums the input array
+     * @return list of all permutations
+     * @throws NullPointerException if nums is null
      */
-    public static List<List<Integer>> permutation(int[] nums) {
-        if (nums == null) throw new NullPointerException("Input array cannot be null");
-        
-        List<Integer> up = Arrays.stream(nums).boxed().collect(Collectors.toList());
-        HashSet<List<Integer>> set = generatePermutations(new ArrayList<>(), up);
-        return new ArrayList<>(set);
-    }
-
-    /**
-     * Internal recursive helper to build permutations for integer lists.
-     */
-    private static HashSet<List<Integer>> generatePermutations(List<Integer> p, List<Integer> up) {
-        HashSet<List<Integer>> result = new HashSet<>();
-        if (up.isEmpty()) {
-            result.add(new ArrayList<>(p));
-            return result;
+    public static List<List<Integer>> permutations(int[] nums) {
+        if (nums == null) {
+            throw new NullPointerException("Input array cannot be null");
         }
 
-        Integer num = up.get(0);
-        List<Integer> remaining = up.subList(1, up.size());
+        List<List<Integer>> result = new ArrayList<>();
+        List<Integer> list = new ArrayList<>();
 
-        for (int i = 0; i <= p.size(); i++) {
-            List<Integer> nextP = new ArrayList<>(p);
-            nextP.add(i, num); // Insert num at every possible position
-            result.addAll(generatePermutations(nextP, remaining));
+        for (int num : nums) {
+            list.add(num);
         }
 
+        generateIntegerPermutations(0, list, result);
         return result;
     }
 
-    /**
-     * Generates all possible permutations of a given string.
-     *
-     * @param s The string to permute.
-     * @return A List containing all permutations of the input string.
-     * @throws NullPointerException if s is null.
-     */
-    public static List<String> permutation(String s) {
-        if (s == null) throw new NullPointerException("Input string cannot be null");
-        return generateStringPermutations("", s);
+    private static void generateIntegerPermutations(
+        int index,
+        List<Integer> list,
+        List<List<Integer>> result
+    ) {
+        if (index == list.size()) {
+            result.add(new ArrayList<>(list));
+            return;
+        }
+
+        for (int i = index; i < list.size(); i++) {
+            swap(list, index, i);
+            generateIntegerPermutations(index + 1, list, result);
+            swap(list, index, i); // backtrack
+        }
+    }
+
+    private static void swap(List<Integer> list, int i, int j) {
+        Integer temp = list.get(i);
+        list.set(i, list.get(j));
+        list.set(j, temp);
     }
 
     /**
-     * Internal recursive helper to build permutations for strings.
+     * Generates all permutations of a string.
+     *
+     * @param s the input string
+     * @return list of all permutations
+     * @throws NullPointerException if s is null
      */
-    private static List<String> generateStringPermutations(String p, String up) {
-        List<String> list = new ArrayList<>();
-        if (up.isEmpty()) {
-            list.add(p);
-            return list;
+    public static List<String> permutations(String s) {
+        if (s == null) {
+            throw new NullPointerException("Input string cannot be null");
         }
 
-        char ch = up.charAt(0);
-        String remaining = up.substring(1);
+        List<String> result = new ArrayList<>();
+        generateStringPermutations("", s, result);
+        return result;
+    }
 
-        for (int i = 0; i <= p.length(); i++) {
-            String first = p.substring(0, i);
-            String second = p.substring(i);
-            list.addAll(generateStringPermutations(first + ch + second, remaining));
+    private static void generateStringPermutations(
+        String prefix,
+        String remaining,
+        List<String> result
+    ) {
+        if (remaining.isEmpty()) {
+            result.add(prefix);
+            return;
         }
-        return list;
+
+        for (int i = 0; i < remaining.length(); i++) {
+            char ch = remaining.charAt(i);
+            String next =
+                remaining.substring(0, i) + remaining.substring(i + 1);
+            generateStringPermutations(prefix + ch, next, result);
+        }
     }
 }
