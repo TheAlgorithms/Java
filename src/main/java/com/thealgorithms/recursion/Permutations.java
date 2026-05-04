@@ -1,7 +1,6 @@
 package com.thealgorithms.recursion;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -40,11 +39,7 @@ public final class Permutations {
         return result;
     }
 
-    private static void generateIntegerPermutations(
-        int index,
-        List<Integer> list,
-        List<List<Integer>> result
-    ) {
+    private static void generateIntegerPermutations(int index, List<Integer> list, List<List<Integer>> result) {
         if (index == list.size()) {
             result.add(new ArrayList<>(list));
             return;
@@ -80,11 +75,7 @@ public final class Permutations {
         return result;
     }
 
-    private static void generateStringPermutations(
-        String prefix,
-        String remaining,
-        List<String> result
-    ) {
+    private static void generateStringPermutations(String prefix, String remaining, List<String> result) {
         if (remaining.isEmpty()) {
             result.add(prefix);
             return;
@@ -92,8 +83,7 @@ public final class Permutations {
 
         for (int i = 0; i < remaining.length(); i++) {
             char ch = remaining.charAt(i);
-            String next =
-                remaining.substring(0, i) + remaining.substring(i + 1);
+            String next = remaining.substring(0, i) + remaining.substring(i + 1);
             generateStringPermutations(prefix + ch, next, result);
         }
     }
