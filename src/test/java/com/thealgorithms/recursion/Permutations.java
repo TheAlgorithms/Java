@@ -1,11 +1,10 @@
 package com.thealgorithms.recursion;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import org.junit.jupiter.api.Test;
 
 import java.util.List;
-import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 class PermutationsTest {
 
@@ -20,7 +19,7 @@ class PermutationsTest {
 
     @Test
     void testArrayWithNullElementThrowsIllegalArgumentException() {
-        Integer[] items = { 1, null, 3 };
+        Integer[] items = {1, null, 3};
         assertThrows(IllegalArgumentException.class, () -> Permutations.permutations(items));
     }
 
@@ -38,7 +37,7 @@ class PermutationsTest {
 
     @Test
     void testSingleElementReturnsOnePermutation() {
-        Integer[] items = { 42 };
+        Integer[] items = {42};
         List<List<Integer>> result = Permutations.permutations(items);
         assertEquals(1, result.size());
         assertEquals(List.of(42), result.get(0));
@@ -50,7 +49,7 @@ class PermutationsTest {
 
     @Test
     void testTwoIntegersReturnsTwoPermutations() {
-        Integer[] items = { 1, 2 };
+        Integer[] items = {1, 2};
         List<List<Integer>> result = Permutations.permutations(items);
         assertEquals(2, result.size());
         assertTrue(result.contains(List.of(1, 2)));
@@ -59,14 +58,14 @@ class PermutationsTest {
 
     @Test
     void testThreeIntegersReturnsSixPermutations() {
-        Integer[] items = { 1, 2, 3 };
+        Integer[] items = {1, 2, 3};
         List<List<Integer>> result = Permutations.permutations(items);
         assertEquals(6, result.size());
     }
 
     @Test
     void testIntegerPermutationsContainAllExpectedOrders() {
-        Integer[] items = { 1, 2, 3 };
+        Integer[] items = {1, 2, 3};
         List<List<Integer>> result = Permutations.permutations(items);
         assertTrue(result.contains(List.of(1, 2, 3)));
         assertTrue(result.contains(List.of(1, 3, 2)));
@@ -82,7 +81,7 @@ class PermutationsTest {
 
     @Test
     void testTwoDuplicateIntegersReturnsOnePermutation() {
-        Integer[] items = { 1, 1 };
+        Integer[] items = {1, 1};
         List<List<Integer>> result = Permutations.permutations(items);
         assertEquals(1, result.size());
         assertEquals(List.of(1, 1), result.get(0));
@@ -90,7 +89,7 @@ class PermutationsTest {
 
     @Test
     void testArrayWithDuplicatesReturnsCorrectCount() {
-        Integer[] items = { 1, 1, 2 };
+        Integer[] items = {1, 1, 2};
         List<List<Integer>> result = Permutations.permutations(items);
         // 3!/2! = 3 unique permutations
         assertEquals(3, result.size());
@@ -101,7 +100,7 @@ class PermutationsTest {
 
     @Test
     void testAllDuplicatesReturnsOnePermutation() {
-        Integer[] items = { 5, 5, 5 };
+        Integer[] items = {5, 5, 5};
         List<List<Integer>> result = Permutations.permutations(items);
         assertEquals(1, result.size());
         assertEquals(List.of(5, 5, 5), result.get(0));
@@ -113,7 +112,7 @@ class PermutationsTest {
 
     @Test
     void testTwoStringsReturnsTwoPermutations() {
-        String[] items = { "a", "b" };
+        String[] items = {"a", "b"};
         List<List<String>> result = Permutations.permutations(items);
         assertEquals(2, result.size());
         assertTrue(result.contains(List.of("a", "b")));
@@ -122,14 +121,14 @@ class PermutationsTest {
 
     @Test
     void testThreeStringsReturnsSixPermutations() {
-        String[] items = { "x", "y", "z" };
+        String[] items = {"x", "y", "z"};
         List<List<String>> result = Permutations.permutations(items);
         assertEquals(6, result.size());
     }
 
     @Test
     void testDuplicateStringsReturnsCorrectCount() {
-        String[] items = { "a", "a", "b" };
+        String[] items = {"a", "a", "b"};
         List<List<String>> result = Permutations.permutations(items);
         assertEquals(3, result.size());
         assertTrue(result.contains(List.of("a", "a", "b")));
@@ -143,14 +142,14 @@ class PermutationsTest {
 
     @Test
     void testCharacterPermutations() {
-        Character[] items = { 'a', 'b', 'c' };
+        Character[] items = {'a', 'b', 'c'};
         List<List<Character>> result = Permutations.permutations(items);
         assertEquals(6, result.size());
     }
 
     @Test
     void testDuplicateCharactersReturnsCorrectCount() {
-        Character[] items = { 'a', 'a', 'b' };
+        Character[] items = {'a', 'a', 'b'};
         List<List<Character>> result = Permutations.permutations(items);
         assertEquals(3, result.size());
     }

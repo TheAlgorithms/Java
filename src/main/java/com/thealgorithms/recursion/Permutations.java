@@ -1,15 +1,11 @@
 package com.thealgorithms.recursion;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 /**
  * This class provides methods to generate all permutations
  * of a given array of any type using recursion.
- *
+ * <p>
  * Reference:
  * https://en.wikipedia.org/wiki/Permutation
  */
