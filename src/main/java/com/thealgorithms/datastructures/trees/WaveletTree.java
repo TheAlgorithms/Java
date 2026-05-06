@@ -26,7 +26,7 @@ public class WaveletTree {
             this.low = low;
             this.high = high;
 
-            if (arr.length == 0 || low == high) {
+            if (low == high) {
                 return;
             }
 
@@ -150,24 +150,15 @@ public class WaveletTree {
     }
 
     private int select(Node node, int x, int k) {
-        if (node == null) {
-            return -1;
-        }
         if (node.low == node.high) {
             return k - 1; // 0-based index within the imaginary array at the leaf
         }
         int mid = node.low + (node.high - node.low) / 2;
         if (x <= mid) {
             int posInLeft = select(node.left, x, k);
-            if (posInLeft == -1) {
-                return -1;
-            }
             return binarySearchLeft(node.leftCount, posInLeft + 1);
         } else {
             int posInRight = select(node.right, x, k);
-            if (posInRight == -1) {
-                return -1;
-            }
             return binarySearchRight(node.leftCount, posInRight + 1);
         }
     }
@@ -219,9 +210,6 @@ public class WaveletTree {
     }
 
     private int kthSmallest(Node node, int left, int right, int k) {
-        if (node == null) {
-            return -1;
-        }
         if (node.low == node.high) {
             return node.low;
         }

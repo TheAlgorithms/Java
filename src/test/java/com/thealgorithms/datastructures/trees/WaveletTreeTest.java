@@ -69,17 +69,32 @@ public class WaveletTreeTest {
 
     @Test
     public void testEmptyAndSingleElementArray() {
-        WaveletTree wtEmpty = new WaveletTree(new int[]{});
+        WaveletTree wtEmpty = new WaveletTree(new int[] {});
         assertEquals(0, wtEmpty.rank(1, 0));
         assertEquals(-1, wtEmpty.select(1, 1));
         assertEquals(-1, wtEmpty.kthSmallest(0, 0, 1));
 
-        WaveletTree wtSingle = new WaveletTree(new int[]{42});
+        WaveletTree wtSingle = new WaveletTree(new int[] {42});
         assertEquals(1, wtSingle.rank(42, 0));
         assertEquals(0, wtSingle.rank(42, -1));
         assertEquals(0, wtSingle.select(42, 1));
         assertEquals(-1, wtSingle.select(42, 2));
         assertEquals(42, wtSingle.kthSmallest(0, 0, 1));
+    }
+
+    @Test
+    public void testNullArrayAndCustomBounds() {
+        WaveletTree wtNull = new WaveletTree(null);
+        assertEquals(0, wtNull.rank(1, 0));
+
+        WaveletTree wtNullCustom = new WaveletTree(null, 1, 5);
+        assertEquals(-1, wtNullCustom.select(1, 1));
+
+        int[] arr = {5, 1, 2, 5, 1};
+        WaveletTree wtCustom = new WaveletTree(arr, 1, 10);
+        assertEquals(2, wtCustom.rank(5, 4));
+        assertEquals(0, wtCustom.rank(4, 4)); // Query an element inside bounds but not in array
+        assertEquals(0, wtCustom.rank(10, 4)); // Query upper bound
     }
 
     @Test
@@ -89,7 +104,7 @@ public class WaveletTreeTest {
 
         assertEquals(2, wt.rank(-5, 4));
         assertEquals(1, wt.rank(0, 3));
-        
+
         assertEquals(0, wt.select(-5, 1));
         assertEquals(4, wt.select(-5, 2));
         assertEquals(3, wt.select(0, 1));
