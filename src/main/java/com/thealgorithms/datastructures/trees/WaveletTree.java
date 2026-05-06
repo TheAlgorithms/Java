@@ -11,8 +11,10 @@ import java.util.List;
 public class WaveletTree {
 
     private class Node {
-        int low, high;
-        Node left, right;
+        int low;
+        int high;
+        Node left;
+        Node right;
         List<Integer> leftCount; // Prefix sums of elements going to the left child
 
         /**
@@ -164,7 +166,8 @@ public class WaveletTree {
     }
 
     private int binarySearchLeft(List<Integer> prefixSums, int k) {
-        int l = 1, r = prefixSums.size() - 1;
+        int l = 1;
+        int r = prefixSums.size() - 1;
         int ans = -1;
         while (l <= r) {
             int mid = l + (r - l) / 2;
@@ -179,7 +182,8 @@ public class WaveletTree {
     }
 
     private int binarySearchRight(List<Integer> prefixSums, int k) {
-        int l = 1, r = prefixSums.size() - 1;
+        int l = 1;
+        int r = prefixSums.size() - 1;
         int ans = -1;
         while (l <= r) {
             int mid = l + (r - l) / 2;
