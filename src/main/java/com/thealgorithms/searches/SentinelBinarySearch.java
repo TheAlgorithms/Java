@@ -10,6 +10,8 @@ package com.thealgorithms.searches;
 *
 * Worst case: O(logn)
 * Best case: O(1)
+*
+* <a href="https://en.wikipedia.org/wiki/Linear_search#With_a_sentinel">Wiki</a>
 */
 public class SentinelBinarySearch {
     /**
