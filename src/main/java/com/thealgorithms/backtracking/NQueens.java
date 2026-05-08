@@ -42,13 +42,13 @@ import java.util.Set;
 public final class NQueens {
 
     // Store occupied rows for constant time safety check
-    private static final Set<Integer> OCCUPIED_ROWS = new HashSet<>();
+    private static final Set<Integer> OCROWS = new HashSet<>();
 
     // Store occupied main diagonals (row - column)
-    private static final Set<Integer> OCCUPIED_DIAGONALS = new HashSet<>();
+    private static final Set<Integer> OCDIAG = new HashSet<>();
 
     // Store occupied anti-diagonals (row + columns)
-    private static final Set<Integer> OCCUPIED_ANTI_DIAGONALS = new HashSet<>();
+    private static final Set<Integer> OCANTIDIAG = new HashSet<>();
 
     private NQueens() {
     }
@@ -101,24 +101,27 @@ public final class NQueens {
             columns[columnIndex] = rowIndex;
 
             // Skip current position if row or diagonal is already occupied
-            if (OCCUPIED_ROWS.contains(rowIndex) || OCCUPIED_DIAGONALS.contains(rowIndex - columnIndex) ||
-                    OCCUPIED_ANTI_DIAGONALS.contains(rowIndex + columnIndex)) {
+            boolean isROp = OCROWS.contains(rowIndex);
+
+            boolean isDOp = OCDIAG.contains(rowIndex - columnIndex) || OCANTIDIAG.contains(rowIndex + columnIndex);
+
+            if (isROp || isDOp) {
                 continue;
             }
 
             // Mark current row and diagonal as occupied
-            OCCUPIED_ROWS.add(rowIndex);
-            OCCUPIED_DIAGONALS.add(rowIndex - columnIndex);
-            OCCUPIED_ANTI_DIAGONALS.add(rowIndex + columnIndex);
+            OCROWS.add(rowIndex);
+            OCDIAG.add(rowIndex - columnIndex);
+            OCANTIDIAG.add(rowIndex + columnIndex);
 
             // Move to the next column after placing current queen
             getSolution(boardSize, solutions, columns, columnIndex + 1);
 
             // Backtrack by removing current queen
 
-            OCCUPIED_ROWS.remove(rowIndex);
-            OCCUPIED_DIAGONALS.remove(rowIndex - columnIndex);
-            OCCUPIED_ANTI_DIAGONALS.remove(rowIndex + columnIndex);
+            OCROWS.remove(rowIndex);
+            OCDIAG.remove(rowIndex - columnIndex);
+            OCANTIDIAG.remove(rowIndex + columnIndex);
         }
     }
 
