@@ -42,13 +42,13 @@ import java.util.Set;
 public final class NQueens {
 
     // Store occupied rows for constant time safety check
-    private static final Set<Integer> occupiedRows = new HashSet<>();
+    private static final Set<Integer> OCCUPIED_ROWS = new HashSet<>();
 
     // Store occupied main diagonals (row - column)
-    private static final Set<Integer> occupiedDiagonals = new HashSet<>();
+    private static final Set<Integer> OCCUPIED_DIAGONALS = new HashSet<>();
 
     // Store occupied anti-diagonals (row + columns)
-    private static final Set<Integer> occupiedAntiDiagonals = new HashSet<>();
+    private static final Set<Integer> OCCUPIED_ANTI_DIAGONALS = new HashSet<>();
 
     private NQueens() {
     }
@@ -102,25 +102,26 @@ public final class NQueens {
             columns[columnIndex] = rowIndex;
 
             // Skip current position if row or diagonal is already occupied
-            if (occupiedRows.contains(rowIndex)
-                    || occupiedDiagonals.contains(rowIndex - columnIndex)
-                    || occupiedAntiDiagonals.contains(rowIndex + columnIndex)) {
+            if (OCCUPIED_ROWS
+                    .contains(rowIndex)
+                    || OCCUPIED_DIAGONALS.contains(rowIndex - columnIndex)
+                    || OCCUPIED_ANTI_DIAGONALS.contains(rowIndex + columnIndex)) {
                 continue;
             }
 
             // Mark current row and diagonal as occupied
-            occupiedRows.add(rowIndex);
-            occupiedDiagonals.add(rowIndex - columnIndex);
-            occupiedAntiDiagonals.add(rowIndex + columnIndex);
+            OCCUPIED_ROWS.add(rowIndex);
+            OCCUPIED_DIAGONALS.add(rowIndex - columnIndex);
+            OCCUPIED_ANTI_DIAGONALS.add(rowIndex + columnIndex);
 
             // Move to the next column after placing current queen
             getSolution(boardSize, solutions, columns, columnIndex + 1);
 
             // Backtrack by removing current queen
 
-            occupiedRows.remove(rowIndex);
-            occupiedDiagonals.remove(rowIndex - columnIndex);
-            occupiedAntiDiagonals.remove(rowIndex + columnIndex);
+            OCCUPIED_ROWS.remove(rowIndex);
+            OCCUPIED_DIAGONALS.remove(rowIndex - columnIndex);
+            OCCUPIED_ANTI_DIAGONALS.remove(rowIndex + columnIndex);
         }
     }
 
