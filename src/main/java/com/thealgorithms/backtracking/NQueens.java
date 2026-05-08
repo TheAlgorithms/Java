@@ -101,9 +101,8 @@ public final class NQueens {
             columns[columnIndex] = rowIndex;
 
             // Skip current position if row or diagonal is already occupied
-            if (OCCUPIED_ROWS.contains(rowIndex)
-                    || OCCUPIED_DIAGONALS.contains(rowIndex - columnIndex)
-                    || OCCUPIED_ANTI_DIAGONALS.contains(rowIndex + columnIndex)) {
+            if (OCCUPIED_ROWS.contains(rowIndex) || OCCUPIED_DIAGONALS.contains(rowIndex - columnIndex) ||
+                    OCCUPIED_ANTI_DIAGONALS.contains(rowIndex + columnIndex)) {
                 continue;
             }
 
