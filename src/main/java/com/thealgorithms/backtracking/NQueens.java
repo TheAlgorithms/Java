@@ -124,5 +124,4 @@ public final class NQueens {
             OCANTIDIAG.remove(rowIndex + columnIndex);
         }
     }
-
 }
