@@ -63,8 +63,7 @@ public final class NQueens {
         List<List<String>> arrangements = new ArrayList<>();
         getSolution(queens, arrangements, new int[queens], 0);
         if (arrangements.isEmpty()) {
-            System.out.println(
-                    "There is no way to place " + queens + " queens on board of size " + queens + "x" + queens);
+            System.out.println(" no way to place " + queens + " queens on board of size " + queens + "x" + queens);
         } else {
             System.out.println("Arrangement for placing " + queens + " queens");
         }
