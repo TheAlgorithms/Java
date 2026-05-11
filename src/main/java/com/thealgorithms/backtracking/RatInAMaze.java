@@ -71,15 +71,7 @@ public final class RatInAMaze {
      * @param visited tracks visited cells for the current path
      * @param results accumulates complete paths
      */
-    private static void solve(
-            final int[][] maze,
-            final int row,
-            final int col,
-            final int n,
-            final String path,
-            final boolean[][] visited,
-            final List<String> results) {
-
+    private static void solve(final int[][] maze, final int row, final int col, final int n, final String path, final boolean[][] visited, final List<String> results) {
         // Base case: reached destination
         if (row == n - 1 && col == n - 1) {
             results.add(path);
@@ -121,17 +113,7 @@ public final class RatInAMaze {
      * @param visited tracks visited cells for the current path
      * @return {@code true} if the cell is within bounds, open, and not yet visited
      */
-    private static boolean isSafe(
-            final int[][] maze,
-            final int row,
-            final int col,
-            final int n,
-            final boolean[][] visited) {
-        return row >= 0
-                && row < n
-                && col >= 0
-                && col < n
-                && maze[row][col] == 1
-                && !visited[row][col];
+    private static boolean isSafe(final int[][] maze, final int row, final int col, final int n, final boolean[][] visited) {
+        return row >= 0 && row < n && col >= 0 && col < n && maze[row][col] == 1 && !visited[row][col];
     }
 }

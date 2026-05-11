@@ -11,15 +11,9 @@ class RatInAMazeTest {
 
     @Test
     void testMultiplePathsExist() {
-        // This maze has exactly 2 paths: DDRDRR and DRDDRR
-        int[][] maze = {
-                {1, 0, 0, 0},
-                {1, 1, 0, 1},
-                {0, 1, 0, 0},
-                {0, 1, 1, 1}
-        };
+        int[][] maze = {{1, 0, 0, 0}, {1, 1, 0, 1}, {0, 1, 0, 0}, {0, 1, 1, 1}};
+
         List<String> paths = RatInAMaze.findPaths(maze);
-        // Verify at least one valid path exists and all paths are valid
         assertTrue(paths.size() >= 1);
         for (String path : paths) {
             assertTrue(path.chars().allMatch(c -> "DLRU".indexOf(c) >= 0));
@@ -28,11 +22,7 @@ class RatInAMazeTest {
 
     @Test
     void testSinglePath() {
-        int[][] maze = {
-                {1, 0, 0},
-                {1, 1, 0},
-                {0, 1, 1}
-        };
+        int[][] maze = {{1, 0, 0}, {1, 1, 0}, {0, 1, 1}};
         List<String> paths = RatInAMaze.findPaths(maze);
         assertEquals(1, paths.size());
         assertEquals("DRDR", paths.get(0));
@@ -40,31 +30,21 @@ class RatInAMazeTest {
 
     @Test
     void testNoPathExists() {
-        int[][] maze = {
-                {1, 0, 0},
-                {0, 0, 0},
-                {0, 0, 1}
-        };
+        int[][] maze = {{1, 0, 0}, {0, 0, 0}, {0, 0, 1}};
         List<String> paths = RatInAMaze.findPaths(maze);
         assertTrue(paths.isEmpty());
     }
 
     @Test
     void testSourceBlocked() {
-        int[][] maze = {
-                {0, 1},
-                {1, 1}
-        };
+        int[][] maze = {{0, 1}, {1, 1}};
         List<String> paths = RatInAMaze.findPaths(maze);
         assertTrue(paths.isEmpty());
     }
 
     @Test
     void testDestinationBlocked() {
-        int[][] maze = {
-                {1, 1},
-                {1, 0}
-        };
+        int[][] maze = {{1, 1}, {1, 0}};
         List<String> paths = RatInAMaze.findPaths(maze);
         assertTrue(paths.isEmpty());
     }
@@ -91,7 +71,7 @@ class RatInAMazeTest {
 
     @Test
     void testEmptyMazeThrowsException() {
-        assertThrows(IllegalArgumentException.class, () -> RatInAMaze.findPaths(new int[][]{}));
+        assertThrows(IllegalArgumentException.class, () -> RatInAMaze.findPaths(new int[][] {}));
     }
 
     @Test
@@ -102,28 +82,19 @@ class RatInAMazeTest {
 
     @Test
     void testAllCellsOpen() {
-        int[][] maze = {
-                {1, 1, 1},
-                {1, 1, 1},
-                {1, 1, 1}
-        };
+        int[][] maze = {{1, 1, 1}, {1, 1, 1}, {1, 1, 1}};
         List<String> paths = RatInAMaze.findPaths(maze);
         assertTrue(paths.size() > 1);
     }
 
     @Test
     void testLargerMazeWithPath() {
-        int[][] maze = {
-                {1, 1, 1, 1},
-                {0, 1, 0, 1},
-                {0, 1, 0, 1},
-                {0, 1, 1, 1}
-        };
+        int[][] maze = {{1, 1, 1, 1}, {0, 1, 0, 1}, {0, 1, 0, 1}, {0, 1, 1, 1}};
         List<String> paths = RatInAMaze.findPaths(maze);
         assertTrue(paths.size() >= 1);
         for (String path : paths) {
-            assertTrue(path.chars().allMatch(c -> "DLRU".indexOf(c) >= 0),
-                    "Path contains invalid characters: " + path);
+            assertTrue(path.chars().allMatch(c -> "DLRU".indexOf(c) >= 0), "Path contains invalid characters: " + path);
         }
+
     }
 }
