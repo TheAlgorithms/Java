@@ -95,6 +95,5 @@ class RatInAMazeTest {
         for (String path : paths) {
             assertTrue(path.chars().allMatch(c -> "DLRU".indexOf(c) >= 0), "Path contains invalid characters: " + path);
         }
-
     }
 }
