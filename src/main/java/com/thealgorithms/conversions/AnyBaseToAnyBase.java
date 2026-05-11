@@ -1,10 +1,3 @@
-/**
- * [Brief description of what the algorithm does]
- * <p>
- * Time Complexity: O(n) [or appropriate complexity]
- * Space Complexity: O(n)
- * @author Reshma Kakkirala
- */
 package com.thealgorithms.conversions;
 
 import java.util.Arrays;
@@ -16,8 +9,13 @@ import java.util.Scanner;
  * Class for converting from "any" base to "any" other base, when "any" means
  * from 2-36. Works by going from base 1 to decimal to base 2. Includes
  * auxiliary method for determining whether a number is valid for a given base.
- *
+
+ * [Brief description of what the algorithm does]
+ * <p>
+ * Time Complexity: O(n) [or appropriate complexity]
+ * Space Complexity: O(n)
  * @author Michael Rolland
+ * @author Reshma Kakkirala
  * @version 2017.10.10
  */
 public final class AnyBaseToAnyBase {
