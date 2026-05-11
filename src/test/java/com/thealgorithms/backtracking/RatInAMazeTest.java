@@ -99,4 +99,31 @@ class RatInAMazeTest {
         int[][] maze = {{1, 0, 1}, {1, 1, 1}};
         assertThrows(IllegalArgumentException.class, () -> RatInAMaze.findPaths(maze));
     }
+
+    @Test
+    void testAllCellsOpen() {
+        int[][] maze = {
+                {1, 1, 1},
+                {1, 1, 1},
+                {1, 1, 1}
+        };
+        List<String> paths = RatInAMaze.findPaths(maze);
+        assertTrue(paths.size() > 1);
+    }
+
+    @Test
+    void testLargerMazeWithPath() {
+        int[][] maze = {
+                {1, 1, 1, 1},
+                {0, 1, 0, 1},
+                {0, 1, 0, 1},
+                {0, 1, 1, 1}
+        };
+        List<String> paths = RatInAMaze.findPaths(maze);
+        assertTrue(paths.size() >= 1);
+        for (String path : paths) {
+            assertTrue(path.chars().allMatch(c -> "DLRU".indexOf(c) >= 0),
+                    "Path contains invalid characters: " + path);
+        }
+    }
 }
