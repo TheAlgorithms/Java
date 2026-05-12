@@ -5,19 +5,26 @@ package com.thealgorithms.maths;
  * A number whose sum of digits of its square equals the number itself.
  * Example: 9 - 9^2 = 81 - 8+1 = 9
  *
- * @see <a href="https://en.wikipedia.org/wiki/Recreational_mathematics">Wikipedia</a>
+ * @see <a href="https://en.wikipedia.org/wiki/Recreational_mathematics">
+ *     Wikipedia</a>
  */
-public class NeonNumber {
+public final class NeonNumber {
 
     private NeonNumber() {
     }
 
+    /**
+     * Check if a number is a Neon number.
+     *
+     * @param number the input number
+     * @return true if neon number, false otherwise
+     */
     public static boolean isNeon(final int number) {
         int square = number * number;
         int digitSum = 0;
         int temp = square;
         while (temp > 0) {
-            digitSum += temp % 10;
+            digitSum = digitSum + temp % 10;
             temp /= 10;
         }
         return digitSum == number;
