@@ -2,6 +2,8 @@ package com.thealgorithms.maths;
 
 public class NeonNumber {
 
+    private NeonNumber(){
+    }
     /**
      * Check if a number is Neon Number.
      * A neon number is a number where a sum of digits of its square equals the number itself.
@@ -11,6 +13,7 @@ public class NeonNumber {
      * @param number the number to check
      * @return true if neon number, else --> false
       */
+
 
     public static boolean isNeon(int number)
     {
