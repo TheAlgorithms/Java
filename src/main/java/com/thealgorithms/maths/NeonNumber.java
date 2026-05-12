@@ -3,7 +3,7 @@ package com.thealgorithms.maths;
 /**
  * Neon Number algorithm.
  * A number whose sum of digits of its square equals the number itself.
- * Example: 9^2=81⇒8+1=9
+ * Example: 9 - 9^2 = 81 - 8+1 = 9
  *
  * @see <a href="https://en.wikipedia.org/wiki/Recreational_mathematics">Wikipedia</a>
  */
@@ -12,12 +12,13 @@ public class NeonNumber {
     private NeonNumber() {
     }
 
-    public static boolean isNeon(int number) {
+    public static boolean isNeon(final int number) {
         int square = number * number;
         int digitSum = 0;
-        while (square > 0) {
-            digitSum = digitSum + square % 10;
-            square /= 10;
+        int temp = square;
+        while (temp > 0) {
+            digitSum += temp % 10;
+            temp /= 10;
         }
         return digitSum == number;
     }
