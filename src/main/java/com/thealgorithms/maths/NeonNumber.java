@@ -16,7 +16,7 @@ public class NeonNumber {
         int square = number * number;
         int digitSum = 0;
         while (square > 0) {
-            digitSum += square % 10;
+            digitSum = digitSum + square % 10;
             square /= 10;
         }
         return digitSum == number;
