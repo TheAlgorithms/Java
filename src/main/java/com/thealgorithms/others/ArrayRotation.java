@@ -61,7 +61,7 @@ public class ArrayRotation {
     /**
      * Reverses elements between start and end indices.
      *
-     * @param nums the input array
+     * @param nums  the input array
      * @param start starting index
      * @param end   ending index
      */
@@ -74,5 +74,5 @@ public class ArrayRotation {
             start++;
             end--;
         }
-      }
     }
+}
