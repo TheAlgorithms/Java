@@ -106,7 +106,7 @@ public final class AnyBaseToAnyBase {
             'W',
             'X',
             'Y',
-            'Z',};
+            'Z'};
         // digitsForBase contains all the valid digits for the base given
         char[] digitsForBase = Arrays.copyOfRange(validDigits, 0, base);
 
