@@ -1,25 +1,22 @@
 package com.thealgorithms.searches;
 
 /**
- * Interpolation Search estimates the position of the target value
- * based on the distribution of values.
+ * Interpolation Search estimates the position of the target value based on the
+ * distribution of values.
  *
- * Example:
- * Input: [10, 20, 30, 40], target = 30
- * Output: Index = 2
+ * Example: Input: [10, 20, 30, 40], target = 30 Output: Index = 2
  *
- * Time Complexity: O(log log n) (average case)
- * Space Complexity: O(1)
+ * Time Complexity: O(log log n) (average case) Space Complexity: O(1)
  *
- * InterpolationSearch is an algorithm that searches for a target value within a sorted array
- * by estimating the position based on the values at the corners of the current search range.
+ * InterpolationSearch is an algorithm that searches for a target value within a
+ * sorted array by estimating the position based on the values at the corners of
+ * the current search range.
  *
  * <p>
- * The performance of this algorithm can vary:
- * - Worst-case performance: O(n)
- * - Best-case performance: O(1)
- * - Average performance: O(log(log(n))) if the elements are uniformly distributed; otherwise O(n)
- * - Worst-case space complexity: O(1)
+ * The performance of this algorithm can vary: - Worst-case performance: O(n) -
+ * Best-case performance: O(1) - Average performance: O(log(log(n))) if the
+ * elements are uniformly distributed; otherwise O(n) - Worst-case space
+ * complexity: O(1)
  * </p>
  *
  * <p>
@@ -31,7 +28,8 @@ package com.thealgorithms.searches;
 class InterpolationSearch {
 
     /**
-     * Finds the index of the specified key in a sorted array using interpolation search.
+     * Finds the index of the specified key in a sorted array using
+     * interpolation search.
      *
      * @param array The sorted array to search.
      * @param key The value to search for.
