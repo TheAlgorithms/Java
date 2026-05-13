@@ -13,7 +13,6 @@ package com.thealgorithms.others;
  * Time Complexity: O(n)
  * Space Complexity: O(1)
  */
-
 public class ArrayRotation {
 
   private ArrayRotation() {
@@ -25,7 +24,6 @@ public class ArrayRotation {
    * @param nums the input array
    * @param k    number of rotations
    */
-
   public static void rotateRight(int[] nums, int k) {
 
     int n = nums.length;
@@ -47,7 +45,6 @@ public class ArrayRotation {
    * @param nums the input array
    * @param k    number of rotations
    */
-
   public static void rotateLeft(int[] nums, int k) {
 
     int n = nums.length;
