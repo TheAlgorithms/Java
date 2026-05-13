@@ -13,7 +13,7 @@ package com.thealgorithms.others;
  * Time Complexity: O(n)
  * Space Complexity: O(1)
  */
-public class ArrayRotation {
+public final class ArrayRotation {
 
     private ArrayRotation() {
     }
