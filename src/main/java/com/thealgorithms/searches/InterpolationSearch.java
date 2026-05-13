@@ -1,3 +1,5 @@
+package com.thealgorithms.searches;
+
 /**
  * Interpolation Search estimates the position of the target value
  * based on the distribution of values.
@@ -8,10 +10,7 @@
  *
  * Time Complexity: O(log log n) (average case)
  * Space Complexity: O(1)
- */
-package com.thealgorithms.searches;
-
-/**
+ *
  * InterpolationSearch is an algorithm that searches for a target value within a sorted array
  * by estimating the position based on the values at the corners of the current search range.
  *

@@ -3,7 +3,6 @@ package com.thealgorithms.backtracking;
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-
 import org.junit.jupiter.api.Test;
 
 class SudokuSolverTest {
@@ -49,5 +48,40 @@ class SudokuSolverTest {
         int[][] board = {{0, 0, 0, 0, 0, 0, 0, 0, 0}, {0, 0, 0, 0, 0, 0, 0, 0, 0}, {0, 0, 0, 0, 0, 0, 0, 0, 0}, {0, 0, 0, 0, 0, 0, 0, 0, 0}, {0, 0, 0, 0, 0, 0, 0, 0, 0}, {0, 0, 0, 0, 0, 0, 0, 0, 0}, {0, 0, 0, 0, 0, 0, 0, 0, 0}, {0, 0, 0, 0, 0, 0, 0, 0, 0}, {0, 0, 0, 0, 0, 0, 0, 0, 0}};
 
         assertTrue(SudokuSolver.solveSudoku(board));
+    }
+
+    @Test
+    void testSolveInitiallyInvalidBoard(){
+        int[][] board ={
+            {5,5,0,0,0,0,0,0,0},
+            {0,0,0,0,0,0,0,0,0},
+            {0,0,0,0,0,0,0,0,0},
+            {0,0,0,0,0,0,0,0,0},
+            {0,0,0,0,0,0,0,0,0},
+            {0,0,0,0,0,0,0,0,0},
+            {0,0,0,0,0,0,0,0,0},
+            {0,0,0,0,0,0,0,0,0},
+            {0,0,0,0,0,0,0,0,0},
+
+        };
+
+        assertFalse(SudokuSolver.solveSudoku(board));
+    }
+
+    @Test
+    void testSolveSudokuUnsolvablePuzzle(){
+        int[][] board = {
+            {5, 1, 6, 8, 4, 9, 7, 3, 2},
+            {3, 0, 7, 6, 0, 5, 0, 0, 0},
+            {8, 0, 9, 1, 0, 0, 0, 6, 0},
+            {1, 3, 0, 4, 0, 7, 0, 0, 0},
+            {0, 0, 2, 0, 1, 0, 3, 0, 0},
+            {0, 0, 0, 9, 0, 3, 0, 1, 7},
+            {0, 6, 0, 0, 0, 1, 9, 0, 3},
+            {0, 0, 0, 3, 0, 8, 5, 0, 1},
+            {0, 0, 0, 5, 0, 0, 4, 7, 0}
+        };
+        board[1][1] = 5;
+        assertFalse(SudokuSolver.solveSudoku(board));
     }
 }

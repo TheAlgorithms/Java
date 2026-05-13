@@ -1,3 +1,8 @@
+package com.thealgorithms.searches;
+
+import com.thealgorithms.devutils.searches.SearchAlgorithm;
+
+
 /**
  * Performs Linear Search on an array.
  *
@@ -10,12 +15,7 @@
  *
  * Time Complexity: O(n)
  * Space Complexity: O(1)
- */
-package com.thealgorithms.searches;
-
-import com.thealgorithms.devutils.searches.SearchAlgorithm;
-
-/**
+ *
  * Linear Search is a simple searching algorithm that checks
  * each element of the array sequentially until the target
  * value is found or the array ends.
