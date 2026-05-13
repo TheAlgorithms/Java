@@ -22,10 +22,9 @@ public class ArrayRotation {
      * Rotates the array to the right by k positions.
      *
      * @param nums the input array
-     * @param k number of rotations
+     * @param k    number of rotations
      */
     public static void rotateRight(int[] nums, int k) {
-
         int n = nums.length;
 
         if (n == 0) {
@@ -43,10 +42,9 @@ public class ArrayRotation {
      * Rotates the array to the left by k positions.
      *
      * @param nums the input array
-     * @param k number of rotations
+     * @param k    number of rotations
      */
     public static void rotateLeft(int[] nums, int k) {
-
         int n = nums.length;
 
         if (n == 0) {
@@ -65,12 +63,10 @@ public class ArrayRotation {
      *
      * @param nums the input array
      * @param start starting index
-     * @param end ending index
+     * @param end   ending index
      */
     private static void reverse(int[] nums, int start, int end) {
-
         while (start < end) {
-
             int temp = nums[start];
             nums[start] = nums[end];
             nums[end] = temp;
@@ -79,4 +75,4 @@ public class ArrayRotation {
             end--;
         }
     }
-   }
+}
