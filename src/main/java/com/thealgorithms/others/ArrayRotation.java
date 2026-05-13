@@ -1,7 +1,5 @@
 package com.thealgorithms.others;
 
-import java.util.Arrays;
-
 /**
  * Array Rotation Utility
  *
@@ -17,6 +15,9 @@ import java.util.Arrays;
  */
 
 public class ArrayRotation {
+
+  private ArrayRotation() {
+  }
 
   /**
    * Rotates the array to the right by k positions.
