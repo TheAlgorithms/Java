@@ -15,68 +15,68 @@ package com.thealgorithms.others;
  */
 public class ArrayRotation {
 
-  private ArrayRotation() {
-  }
-
-  /**
-   * Rotates the array to the right by k positions.
-   *
-   * @param nums the input array
-   * @param k    number of rotations
-   */
-  public static void rotateRight(int[] nums, int k) {
-
-    int n = nums.length;
-
-    if (n == 0) {
-      return;
+    private ArrayRotation() {
     }
 
-    k = k % n;
+    /**
+     * Rotates the array to the right by k positions.
+     *
+     * @param nums the input array
+     * @param k number of rotations
+     */
+    public static void rotateRight(int[] nums, int k) {
 
-    reverse(nums, 0, n - 1);
-    reverse(nums, 0, k - 1);
-    reverse(nums, k, n - 1);
-  }
+        int n = nums.length;
 
-  /**
-   * Rotates the array to the left by k positions.
-   *
-   * @param nums the input array
-   * @param k    number of rotations
-   */
-  public static void rotateLeft(int[] nums, int k) {
+        if (n == 0) {
+            return;
+        }
 
-    int n = nums.length;
+        k = k % n;
 
-    if (n == 0) {
-      return;
+        reverse(nums, 0, n - 1);
+        reverse(nums, 0, k - 1);
+        reverse(nums, k, n - 1);
     }
 
-    k = k % n;
+    /**
+     * Rotates the array to the left by k positions.
+     *
+     * @param nums the input array
+     * @param k number of rotations
+     */
+    public static void rotateLeft(int[] nums, int k) {
 
-    reverse(nums, 0, k - 1);
-    reverse(nums, k, n - 1);
-    reverse(nums, 0, n - 1);
-  }
+        int n = nums.length;
 
-  /**
-   * Reverses elements between start and end indices.
-   *
-   * @param nums  the input array
-   * @param start starting index
-   * @param end   ending index
-   */
-  private static void reverse(int[] nums, int start, int end) {
+        if (n == 0) {
+            return;
+        }
 
-    while (start < end) {
+        k = k % n;
 
-      int temp = nums[start];
-      nums[start] = nums[end];
-      nums[end] = temp;
-
-      start++;
-      end--;
+        reverse(nums, 0, k - 1);
+        reverse(nums, k, n - 1);
+        reverse(nums, 0, n - 1);
     }
-  }
+
+    /**
+     * Reverses elements between start and end indices.
+     *
+     * @param nums the input array
+     * @param start starting index
+     * @param end ending index
+     */
+    private static void reverse(int[] nums, int start, int end) {
+
+        while (start < end) {
+
+            int temp = nums[start];
+            nums[start] = nums[end];
+            nums[end] = temp;
+
+            start++;
+            end--;
+        }
+    }
 }
