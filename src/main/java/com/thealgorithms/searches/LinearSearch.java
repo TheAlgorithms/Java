@@ -1,16 +1,4 @@
-/**
- * Performs Linear Search on an array.
- *
- * Linear search checks each element one by one until the target is found
- * or the array ends.
- *
- * Example:
- * Input: [2, 4, 6, 8], target = 6
- * Output: Index = 2
- *
- * Time Complexity: O(n)
- * Space Complexity: O(1)
- */
+
 package com.thealgorithms.searches;
 
 import com.thealgorithms.devutils.searches.SearchAlgorithm;
