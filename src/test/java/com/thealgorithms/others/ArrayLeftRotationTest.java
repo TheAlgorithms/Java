@@ -52,3 +52,4 @@ class ArrayLeftRotationTest {
         assertArrayEquals(arr, result);
     }
 }
+
