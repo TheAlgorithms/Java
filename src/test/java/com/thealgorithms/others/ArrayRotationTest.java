@@ -13,7 +13,7 @@ public class ArrayRotationTest {
         ArrayRotation.rotateRight(values, 2);
 
         assertArrayEquals(new int[] {4, 5, 1, 2, 3}, values);
-    }
+     }
 
     @Test
     void shouldRotateArrayLeftByTwoPositions() {
@@ -49,11 +49,11 @@ public class ArrayRotationTest {
         ArrayRotation.rotateRight(values, 3);
 
         assertArrayEquals(new int[] {}, values);
-    }
+     }
 
     @Test
     void shouldReturnOriginalArrayWhenRotationIsZero() {
-        int[] values = { 7, 8, 9 };
+        int[] values = {7, 8, 9};
 
         ArrayRotation.rotateLeft(values, 0);
 
