@@ -4,52 +4,59 @@ import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 
 import org.junit.jupiter.api.Test;
 
-class ArrayLeftRotationTest {
+public class ArrayRotationTest {
 
     @Test
-    void testForOneElement() {
-        int[] arr = {3};
-        int[] result = ArrayLeftRotation.rotateLeft(arr, 3);
-        assertArrayEquals(arr, result);
+    void shouldRotateArrayRightByTwoPositions() {
+        int[] values = {1, 2, 3, 4, 5};
+
+        ArrayRotation.rotateRight(values, 2);
+
+        assertArrayEquals(new int[] {4, 5, 1, 2, 3}, values);
     }
 
     @Test
-    void testForZeroStep() {
-        int[] arr = {3, 1, 5, 8, 6};
-        int[] result = ArrayLeftRotation.rotateLeft(arr, 0);
-        assertArrayEquals(arr, result);
+    void shouldRotateArrayLeftByTwoPositions() {
+        int[] values = {1, 2, 3, 4, 5};
+
+        ArrayRotation.rotateLeft(values, 2);
+
+        assertArrayEquals(new int[] {3, 4, 5, 1, 2}, values);
     }
 
     @Test
-    void testForEqualSizeStep() {
-        int[] arr = {3, 1, 5, 8, 6};
-        int[] result = ArrayLeftRotation.rotateLeft(arr, 5);
-        assertArrayEquals(arr, result);
+    void shouldHandleRotationGreaterThanArrayLength() {
+        int[] values = {10, 20, 30, 40};
+
+        ArrayRotation.rotateRight(values, 6);
+
+        assertArrayEquals(new int[] {30, 40, 10, 20}, values);
     }
 
     @Test
-    void testForLowerSizeStep() {
-        int[] arr = {3, 1, 5, 8, 6};
-        int n = 2;
-        int[] expected = {5, 8, 6, 3, 1};
-        int[] result = ArrayLeftRotation.rotateLeft(arr, n);
-        assertArrayEquals(expected, result);
+    void shouldKeepSingleElementArrayUnchanged() {
+        int[] values = {99};
+
+        ArrayRotation.rotateLeft(values, 5);
+
+        assertArrayEquals(new int[] {99}, values);
     }
 
     @Test
-    void testForHigherSizeStep() {
-        int[] arr = {3, 1, 5, 8, 6};
-        int n = 7;
-        int[] expected = {5, 8, 6, 3, 1};
-        int[] result = ArrayLeftRotation.rotateLeft(arr, n);
-        assertArrayEquals(expected, result);
+    void shouldHandleEmptyArrayWithoutErrors() {
+        int[] values = {};
+
+        ArrayRotation.rotateRight(values, 3);
+
+        assertArrayEquals(new int[] {}, values);
     }
 
     @Test
-    void testForEmptyArray() {
-        int[] arr = {};
-        int[] result = ArrayLeftRotation.rotateLeft(arr, 3);
-        assertArrayEquals(arr, result);
+    void shouldReturnOriginalArrayWhenRotationIsZero() {
+        int[] values = {7, 8, 9};
+
+        ArrayRotation.rotateLeft(values, 0);
+
+        assertArrayEquals(new int[] {7, 8, 9}, values);
     }
 }
-
