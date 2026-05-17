@@ -8,12 +8,11 @@ public class ArrayRotationTest {
 
     @Test
     void shouldRotateArrayRightByTwoPositions() {
-        int[] values = { 1, 2, 3, 4, 5 };
+        int[] values = {1, 2, 3, 4, 5};
 
         ArrayRotation.rotateRight(values, 2);
 
         assertArrayEquals(new int[] {4, 5, 1, 2, 3}, values);
-
     }
 
     @Test
@@ -23,7 +22,6 @@ public class ArrayRotationTest {
         ArrayRotation.rotateLeft(values, 2);
 
         assertArrayEquals(new int[] {3, 4, 5, 1, 2}, values);
-
     }
 
     @Test
@@ -61,5 +59,5 @@ public class ArrayRotationTest {
 
         assertArrayEquals(new int[] {7, 8, 9}, values);
     }
-}
+ }
 
