@@ -1,9 +1,12 @@
 package com.thealgorithms.strings;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import java.util.stream.Stream;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 
 class AlternativeStringArrangeTest {
@@ -19,5 +22,16 @@ class AlternativeStringArrangeTest {
     @MethodSource("provideTestData")
     void arrangeTest(String input1, String input2, String expected) {
         assertEquals(expected, AlternativeStringArrange.arrange(input1, input2));
+    }
+
+    @ParameterizedTest(name = "null input ({0}, {1}) should throw IllegalArgumentException")
+    @MethodSource("provideNullInputs")
+    void arrangeThrowsOnNullInput(String input1, String input2) {
+        IllegalArgumentException ex = assertThrows(IllegalArgumentException.class, () -> AlternativeStringArrange.arrange(input1, input2));
+        assertEquals("Input strings must not be null", ex.getMessage());
+    }
+
+    private static Stream<Arguments> provideNullInputs() {
+        return Stream.of(Arguments.of(null, "abc"), Arguments.of("abc", null), Arguments.of(null, null));
     }
 }
