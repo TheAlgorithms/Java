@@ -21,12 +21,19 @@ public final class AlternativeStringArrange {
 
     /**
      * Arranges two strings by alternating their characters.
+     * If one string is longer than the other, the remaining characters of the longer string
+     * are appended at the end of the result.
      *
-     * @param firstString  the first input string
-     * @param secondString the second input string
+     * @param firstString  the first input string, must not be {@code null}
+     * @param secondString the second input string, must not be {@code null}
      * @return a new string with characters from both strings arranged alternately
+     * @throws IllegalArgumentException if {@code firstString} or {@code secondString} is {@code null}
      */
     public static String arrange(String firstString, String secondString) {
+        if (firstString == null || secondString == null) {
+            throw new IllegalArgumentException("Input strings must not be null");
+        }
+
         StringBuilder result = new StringBuilder();
         int length1 = firstString.length();
         int length2 = secondString.length();
