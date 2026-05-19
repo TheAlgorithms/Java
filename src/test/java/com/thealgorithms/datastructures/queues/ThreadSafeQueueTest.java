@@ -34,7 +34,7 @@ public class ThreadSafeQueueTest {
 
     @Test
     public void testOfferPoll() {
-        ThreadSafeQueue<String> queue = new ThreadSafeQueue<>(3);
+        ThreadSafeQueue<String> queue = new ThreadSafeQueue<>(2);
         assertTrue(queue.offer("a"));
         assertTrue(queue.offer("b"));
         assertFalse(queue.offer("c"));
@@ -130,7 +130,6 @@ public class ThreadSafeQueueTest {
         int numProducers = 4;
         int itemsPerProducer = 250;
         int totalItems = numProducers * itemsPerProducer;
-        CountDownLatch startLatch = new CountDownLatch(1);
         CountDownLatch doneLatch = new CountDownLatch(numProducers);
         List<Integer> results = new ArrayList<>();
 
@@ -140,7 +139,6 @@ public class ThreadSafeQueueTest {
             final int producerId = p;
             executor.submit(() -> {
                 try {
-                    startLatch.await();
                     for (int i = 0; i < itemsPerProducer; i++) {
                         queue.enqueue(producerId * itemsPerProducer + i);
                     }
@@ -152,25 +150,28 @@ public class ThreadSafeQueueTest {
             });
         }
 
-        executor.submit(() -> {
+        Thread consumerThread = new Thread(() -> {
             try {
-                doneLatch.await();
                 while (results.size() < totalItems) {
                     Integer item = queue.poll();
                     if (item != null) {
-                        results.add(item);
+                        synchronized (results) {
+                            results.add(item);
+                        }
                     }
                 }
-            } catch (InterruptedException e) {
+            } catch (Exception e) {
                 Thread.currentThread().interrupt();
             }
         });
+        consumerThread.start();
 
-        startLatch.countDown();
-        executor.shutdown();
-        assertTrue(executor.awaitTermination(10, TimeUnit.SECONDS));
+        assertTrue(doneLatch.await(10, TimeUnit.SECONDS));
+        consumerThread.join(5000);
 
         assertEquals(totalItems, results.size());
+        executor.shutdown();
+        assertTrue(executor.awaitTermination(5, TimeUnit.SECONDS));
     }
 
     @Test
