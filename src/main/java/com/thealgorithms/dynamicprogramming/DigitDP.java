@@ -3,16 +3,21 @@ package com.thealgorithms.dynamicprogramming;
 import java.util.Arrays;
 
 /**
- * A generalized template for the Digit Dynamic Programming (Digit DP) technique.
- * Digit DP is used to count numbers within a range [L, R] that satisfy specific digit properties.
- * This specific implementation demonstrates counting the numbers whose digit sum equals a target value.
+ * A generalized template for the Digit Dynamic Programming (Digit DP)
+ * technique.
+ * Digit DP is used to count numbers within a range [L, R] that satisfy specific
+ * digit properties.
+ * This specific implementation demonstrates counting the numbers whose digit
+ * sum equals a target value.
  *
- * <p>Example:
+ * <p>
+ * Example:
  * countRangeWithDigitSum(1, 100, 5) returns 6 (numbers: 5, 14, 23, 32, 41, 50)
  */
 public final class DigitDP {
 
-    // Maximum theoretical digit sum for a 64-bit signed long integer (9 * 19 digits = 171)
+    // Maximum theoretical digit sum for a 64-bit signed long integer (9 * 19 digits
+    // = 171)
     private static final int MAX_DIGIT_SUM = 171;
 
     private DigitDP() {
@@ -20,7 +25,8 @@ public final class DigitDP {
     }
 
     /**
-     * Counts how many numbers in the range [L, R] have a digit sum equal to the target.
+     * Counts how many numbers in the range [L, R] have a digit sum equal to the
+     * target.
      *
      * @param l      The lower bound of the range (inclusive).
      * @param r      The upper bound of the range (inclusive).
@@ -60,9 +66,11 @@ public final class DigitDP {
      * Time Complexity: O(number_of_digits * target_sum * 10)
      * Space Complexity: O(number_of_digits * target_sum * 2)
      *
-     * @param index      Current digit position from left to right (most significant first).
+     * @param index      Current digit position from left to right (most significant
+     *                   first).
      * @param currentSum Cumulative sum of digits chosen so far.
-     * @param tight      Flag indicating if current prefix matches the original number boundary.
+     * @param tight      Flag indicating if current prefix matches the original
+     *                   number boundary.
      * @param numStr     String representation of the upper ceiling limit.
      * @param target     The exact required sum of digits.
      * @param dp         Memoization matrix cache table.
@@ -92,7 +100,8 @@ public final class DigitDP {
                 continue;
             }
 
-            // Next state remains tight only if current state is tight and we place the exact limit digit
+            // Next state remains tight only if current state is tight and we place the
+            // exact limit digit
             int nextTight = (tight == 1 && digit == limit) ? 1 : 0;
             ans += solve(index + 1, nextSum, nextTight, numStr, target, dp);
         }
