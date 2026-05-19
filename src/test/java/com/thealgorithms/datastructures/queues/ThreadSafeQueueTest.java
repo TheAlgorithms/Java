@@ -1,11 +1,5 @@
 package com.thealgorithms.datastructures.queues;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertNull;
-import static org.junit.jupiter.api.Assertions.assertThrows;
-import static org.junit.jupiter.api.Assertions.assertTrue;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.CountDownLatch;
@@ -13,6 +7,7 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicInteger;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 public class ThreadSafeQueueTest {
@@ -24,85 +19,85 @@ public class ThreadSafeQueueTest {
         queue.enqueue(2);
         queue.enqueue(3);
 
-        assertEquals(3, queue.size());
-        assertEquals(1, queue.dequeue());
-        assertEquals(2, queue.dequeue());
-        assertEquals(3, queue.dequeue());
-        assertTrue(queue.isEmpty());
+        Assertions.assertEquals(3, queue.size());
+        Assertions.assertEquals(1, queue.dequeue());
+        Assertions.assertEquals(2, queue.dequeue());
+        Assertions.assertEquals(3, queue.dequeue());
+        Assertions.assertTrue(queue.isEmpty());
     }
 
     @Test
     public void testOfferPoll() {
         ThreadSafeQueue<String> queue = new ThreadSafeQueue<>(2);
-        assertTrue(queue.offer("a"));
-        assertTrue(queue.offer("b"));
-        assertFalse(queue.offer("c"));
+        Assertions.assertTrue(queue.offer("a"));
+        Assertions.assertTrue(queue.offer("b"));
+        Assertions.assertFalse(queue.offer("c"));
 
-        assertEquals("a", queue.poll());
-        assertEquals("b", queue.poll());
-        assertNull(queue.poll());
+        Assertions.assertEquals("a", queue.poll());
+        Assertions.assertEquals("b", queue.poll());
+        Assertions.assertNull(queue.poll());
     }
 
     @Test
     public void testOfferRejectsWhenFull() {
         ThreadSafeQueue<Integer> queue = new ThreadSafeQueue<>(2);
-        assertTrue(queue.offer(1));
-        assertTrue(queue.offer(2));
-        assertFalse(queue.offer(3));
-        assertEquals(2, queue.size());
+        Assertions.assertTrue(queue.offer(1));
+        Assertions.assertTrue(queue.offer(2));
+        Assertions.assertFalse(queue.offer(3));
+        Assertions.assertEquals(2, queue.size());
     }
 
     @Test
     public void testPollReturnsNullWhenEmpty() {
         ThreadSafeQueue<Integer> queue = new ThreadSafeQueue<>(5);
-        assertNull(queue.poll());
+        Assertions.assertNull(queue.poll());
     }
 
     @Test
     public void testEnqueueNullThrows() {
         ThreadSafeQueue<String> queue = new ThreadSafeQueue<>(5);
-        assertThrows(IllegalArgumentException.class, () -> queue.enqueue(null));
+        Assertions.assertThrows(IllegalArgumentException.class, () -> queue.enqueue(null));
     }
 
     @Test
     public void testOfferNullThrows() {
         ThreadSafeQueue<String> queue = new ThreadSafeQueue<>(5);
-        assertThrows(IllegalArgumentException.class, () -> queue.offer(null));
+        Assertions.assertThrows(IllegalArgumentException.class, () -> queue.offer(null));
     }
 
     @Test
     public void testInvalidCapacityThrows() {
-        assertThrows(IllegalArgumentException.class, () -> new ThreadSafeQueue<>(0));
-        assertThrows(IllegalArgumentException.class, () -> new ThreadSafeQueue<>(-1));
+        Assertions.assertThrows(IllegalArgumentException.class, () -> new ThreadSafeQueue<>(0));
+        Assertions.assertThrows(IllegalArgumentException.class, () -> new ThreadSafeQueue<>(-1));
     }
 
     @Test
     public void testIsEmptyAndIsFull() throws InterruptedException {
         ThreadSafeQueue<Integer> queue = new ThreadSafeQueue<>(2);
-        assertTrue(queue.isEmpty());
-        assertFalse(queue.isFull());
+        Assertions.assertTrue(queue.isEmpty());
+        Assertions.assertFalse(queue.isFull());
 
         queue.enqueue(1);
-        assertFalse(queue.isEmpty());
-        assertFalse(queue.isFull());
+        Assertions.assertFalse(queue.isEmpty());
+        Assertions.assertFalse(queue.isFull());
 
         queue.enqueue(2);
-        assertFalse(queue.isEmpty());
-        assertTrue(queue.isFull());
+        Assertions.assertFalse(queue.isEmpty());
+        Assertions.assertTrue(queue.isFull());
 
         queue.dequeue();
-        assertFalse(queue.isEmpty());
-        assertFalse(queue.isFull());
+        Assertions.assertFalse(queue.isEmpty());
+        Assertions.assertFalse(queue.isFull());
 
         queue.dequeue();
-        assertTrue(queue.isEmpty());
-        assertFalse(queue.isFull());
+        Assertions.assertTrue(queue.isEmpty());
+        Assertions.assertFalse(queue.isFull());
     }
 
     @Test
     public void testCapacity() {
         ThreadSafeQueue<Integer> queue = new ThreadSafeQueue<>(10);
-        assertEquals(10, queue.capacity());
+        Assertions.assertEquals(10, queue.capacity());
     }
 
     @Test
@@ -112,15 +107,15 @@ public class ThreadSafeQueueTest {
         queue.enqueue(2);
         queue.enqueue(3);
 
-        assertEquals(1, queue.dequeue());
-        assertEquals(2, queue.dequeue());
+        Assertions.assertEquals(1, queue.dequeue());
+        Assertions.assertEquals(2, queue.dequeue());
 
         queue.enqueue(4);
         queue.enqueue(5);
 
-        assertEquals(3, queue.dequeue());
-        assertEquals(4, queue.dequeue());
-        assertEquals(5, queue.dequeue());
+        Assertions.assertEquals(3, queue.dequeue());
+        Assertions.assertEquals(4, queue.dequeue());
+        Assertions.assertEquals(5, queue.dequeue());
     }
 
     @Test
@@ -165,12 +160,12 @@ public class ThreadSafeQueueTest {
         });
         consumerThread.start();
 
-        assertTrue(doneLatch.await(10, TimeUnit.SECONDS));
+        Assertions.assertTrue(doneLatch.await(10, TimeUnit.SECONDS));
         consumerThread.join(5000);
 
-        assertEquals(totalItems, results.size());
+        Assertions.assertEquals(totalItems, results.size());
         executor.shutdown();
-        assertTrue(executor.awaitTermination(5, TimeUnit.SECONDS));
+        Assertions.assertTrue(executor.awaitTermination(5, TimeUnit.SECONDS));
     }
 
     @Test
@@ -208,10 +203,10 @@ public class ThreadSafeQueueTest {
             });
         }
 
-        assertTrue(doneLatch.await(10, TimeUnit.SECONDS));
-        assertEquals(totalItems, consumedCount.get());
+        Assertions.assertTrue(doneLatch.await(10, TimeUnit.SECONDS));
+        Assertions.assertEquals(totalItems, consumedCount.get());
         executor.shutdown();
-        assertTrue(executor.awaitTermination(5, TimeUnit.SECONDS));
+        Assertions.assertTrue(executor.awaitTermination(5, TimeUnit.SECONDS));
     }
 
     @Test
@@ -231,11 +226,11 @@ public class ThreadSafeQueueTest {
         producer.start();
 
         Thread.sleep(100);
-        assertEquals(1, queue.dequeue());
+        Assertions.assertEquals(1, queue.dequeue());
 
         producer.join(2000);
-        assertEquals(1, blockedCount.get());
-        assertEquals(2, queue.dequeue());
+        Assertions.assertEquals(1, blockedCount.get());
+        Assertions.assertEquals(2, queue.dequeue());
     }
 
     @Test
@@ -256,7 +251,7 @@ public class ThreadSafeQueueTest {
         queue.enqueue(42);
 
         consumer.join(2000);
-        assertEquals(42, result.get());
+        Assertions.assertEquals(42, result.get());
     }
 
     @Test
@@ -291,9 +286,9 @@ public class ThreadSafeQueueTest {
             });
         }
 
-        assertTrue(latch.await(10, TimeUnit.SECONDS));
-        assertTrue(enqueueCount.get() >= dequeueCount.get());
-        assertEquals(enqueueCount.get() - dequeueCount.get(), queue.size());
+        Assertions.assertTrue(latch.await(10, TimeUnit.SECONDS));
+        Assertions.assertTrue(enqueueCount.get() >= dequeueCount.get());
+        Assertions.assertEquals(enqueueCount.get() - dequeueCount.get(), queue.size());
         executor.shutdown();
         executor.awaitTermination(5, TimeUnit.SECONDS);
     }
