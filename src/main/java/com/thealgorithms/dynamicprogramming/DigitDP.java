@@ -1,5 +1,4 @@
 package com.thealgorithms.dynamicprogramming;
-
 import java.util.Arrays;
 
 /**
@@ -106,6 +105,7 @@ public final class DigitDP {
             ans += solve(index + 1, nextSum, nextTight, numStr, target, dp);
         }
 
-        return dp[index][currentSum][tight] = ans;
+        dp[index][currentSum][tight] = ans;
+        return ans;
     }
 }
