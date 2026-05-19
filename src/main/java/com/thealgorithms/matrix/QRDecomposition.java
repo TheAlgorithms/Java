@@ -42,7 +42,7 @@ public final class QRDecomposition {
      * @throws IllegalArgumentException if the matrix is null, empty, or has invalid rows
      */
     public static QR decompose(double[][] matrix) {
-        MatrixUtil.validateInputMatrix(matrix);
+        validateInputMatrix(matrix);
 
         int m = matrix.length;
         int n = matrix[0].length;
@@ -111,5 +111,39 @@ public final class QRDecomposition {
 
     private static double norm(double[] v) {
         return Math.sqrt(dotProduct(v, v));
+    }
+
+    private static void validateInputMatrix(double[][] matrix) {
+        if (matrix == null) {
+            throw new IllegalArgumentException("The input matrix cannot be null");
+        }
+        if (matrix.length == 0) {
+            throw new IllegalArgumentException("The input matrix cannot be empty");
+        }
+        if (!hasValidRows(matrix)) {
+            throw new IllegalArgumentException("The input matrix cannot have null or empty rows");
+        }
+        if (isJaggedMatrix(matrix)) {
+            throw new IllegalArgumentException("The input matrix cannot be jagged");
+        }
+    }
+
+    private static boolean hasValidRows(double[][] matrix) {
+        for (double[] row : matrix) {
+            if (row == null || row.length == 0) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    private static boolean isJaggedMatrix(double[][] matrix) {
+        int numColumns = matrix[0].length;
+        for (double[] row : matrix) {
+            if (row.length != numColumns) {
+                return true;
+            }
+        }
+        return false;
     }
 }
