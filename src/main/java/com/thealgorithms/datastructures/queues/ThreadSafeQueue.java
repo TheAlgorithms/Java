@@ -60,7 +60,7 @@ public class ThreadSafeQueue<T> {
             buffer[tail] = item;
             tail = (tail + 1) % capacity;
             count++;
-            notEmpty.signal();
+            notEmpty.signalAll();
         } finally {
             lock.unlock();
         }
@@ -82,7 +82,7 @@ public class ThreadSafeQueue<T> {
             buffer[head] = null;
             head = (head + 1) % capacity;
             count--;
-            notFull.signal();
+            notFull.signalAll();
             return item;
         } finally {
             lock.unlock();
@@ -108,7 +108,7 @@ public class ThreadSafeQueue<T> {
             buffer[tail] = item;
             tail = (tail + 1) % capacity;
             count++;
-            notEmpty.signal();
+            notEmpty.signalAll();
             return true;
         } finally {
             lock.unlock();
@@ -130,7 +130,7 @@ public class ThreadSafeQueue<T> {
             buffer[head] = null;
             head = (head + 1) % capacity;
             count--;
-            notFull.signal();
+            notFull.signalAll();
             return item;
         } finally {
             lock.unlock();
