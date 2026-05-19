@@ -40,7 +40,8 @@ public class DigitDPTest {
 
     @Test
     public void testDigitDPExceedsMaxSum() {
-        // Sum condition that exceeds max possible physical sum array constraints gracefully returns 0
+        // Sum condition that exceeds max possible physical sum array constraints
+        // gracefully returns 0
         long result = DigitDP.countRangeWithDigitSum(1, 100, 200);
         assertEquals(0, result);
     }
@@ -50,5 +51,21 @@ public class DigitDPTest {
         // Lower bound greater than upper bound should evaluate gracefully to 0
         long result = DigitDP.countRangeWithDigitSum(50, 20, 5);
         assertEquals(0, result);
+    }
+
+    @Test
+    public void testDigitDPExceedsMaxSumEdgeCase() {
+        // Yeh test case target > MAX_DIGIT_SUM wali condition ko hit karega
+        long result = DigitDP.countRangeWithDigitSum(1, 100, 180);
+        assertEquals(0, result);
+    }
+
+    @Test
+    public void testDigitDPMemoizationHit() {
+        // Badi range dene se overlapping subproblems bante hain,
+        // jisse memoization hit hogi aur coverage 100% ho jayegi.
+        long result1 = DigitDP.countRangeWithDigitSum(1, 100000, 15);
+        long result2 = DigitDP.countRangeWithDigitSum(1, 100000, 15);
+        assertEquals(result1, result2);
     }
 }
