@@ -1,19 +1,20 @@
 package com.thealgorithms.searches;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.*;
 
-public class SentinelBinarySearchTest {
+class SentinelBinarySearchTest {
+
     private final SentinelBinarySearch search = new SentinelBinarySearch();
 
     @Test
-    void testElementFound(){
+    void testElementFound() {
         int[] arr = {1, 3, 5, 7, 9};
         assertEquals(2, search.find(arr, 5));
     }
 
     @Test
-    void testElementNotFound(){
+    void testElementNotFound() {
         int[] arr = {1, 3, 5, 7, 9};
         assertEquals(-1, search.find(arr, 4));
     }
