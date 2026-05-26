@@ -6,6 +6,8 @@ import java.util.Stack;
  * The NearestElement class provides implementations for classic stack-based
  * algorithms to find the nearest greater or smaller elements in an array. These
  * algorithms use a Monotonic Stack approach to achieve linear time complexity.
+ * For more details, see:
+ * https://en.wikipedia.org/wiki/All-nearest-smaller-values
  */
 public final class NearestElement {
 
