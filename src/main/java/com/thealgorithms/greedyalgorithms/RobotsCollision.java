@@ -1,4 +1,4 @@
-package com.thealgorithms.others;
+package com.thealgorithms.greedyalgorithms;
 
 import java.util.Stack;
 
