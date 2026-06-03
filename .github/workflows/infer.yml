@@ -23,34 +23,8 @@ jobs:
           java-version: 21
           distribution: 'temurin'
 
-      - name: Set up OCaml
-        uses: ocaml/setup-ocaml@v3
-        with:
-          ocaml-compiler: 5
-
-      - name: Get current year/weak
-        run: echo "year_week=$(date +'%Y_%U')" >> $GITHUB_ENV
-
-      - name: Cache infer build
-        id: cache-infer
-        uses: actions/cache@v5
-        with:
-          path: infer
-          key: ${{ runner.os }}-infer-${{ env.year_week }}
-
-      - name: Build infer
-        if: steps.cache-infer.outputs.cache-hit != 'true'
-        run: |
-          cd ..
-          git clone https://github.com/facebook/infer.git
-          cd infer
-          git checkout 02c2c43b71e4c5110c0be841e66153942fda06c9
-          ./build-infer.sh java
-          cp -r infer ../Java
-
-      - name: Add infer to PATH
-        run: |
-          echo "infer/bin" >> $GITHUB_PATH
+      - name: Set up inferAdd commentMore actions
+        uses: srz-zumix/setup-infer@v1
 
       - name: Display infer version
         run: |
@@ -60,5 +34,5 @@ jobs:
       - name: Run infer
         run: |
           mvn clean
-          infer --fail-on-issue  --print-logs --no-progress-bar -- mvn test
+          infer --java-version 21 --fail-on-issue  --print-logs --no-progress-bar -- mvn test
 ...
