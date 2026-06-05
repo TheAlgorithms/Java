@@ -9,7 +9,6 @@ package com.thealgorithms.maths;
  * @see <a href="https://www.investopedia.com/terms/r/returnoninvestment.asp">Investopedia</a>
  */
 public final class ReturnOnInvestment {
-
     private ReturnOnInvestment() {
     }
 
@@ -17,7 +16,7 @@ public final class ReturnOnInvestment {
      * Calculates the return on investment as a percentage.
      *
      * @param gainFromInvestment the total value gained from the investment
-     * @param costOfInvestment   the total cost of the investment
+     * @param costOfInvestment the total cost of the investment
      * @return ROI as a percentage
      * @throws IllegalArgumentException if costOfInvestment is not positive
      */
