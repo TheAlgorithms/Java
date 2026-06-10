@@ -9,7 +9,7 @@ public class CountDistinctElementsInWindowTest {
 
     @Test
     public void testBasicCase() {
-        assertArrayEquals(new int[]{3, 2, 2, 2},
+        assertArrayEquals(new int[]{3, 2, 2},
                 CountDistinctElementsInWindow.countDistinct(new int[]{1, 2, 3, 2, 3}, 3));
     }
 
