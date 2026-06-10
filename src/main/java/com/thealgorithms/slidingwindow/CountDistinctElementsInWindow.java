@@ -39,9 +39,14 @@ public final class CountDistinctElementsInWindow {
             freqMap.merge(arr[i], 1, Integer::sum);
 
             int outgoing = arr[i - k];
-            freqMap.put(outgoing, freqMap.get(outgoing) - 1);
-            if (freqMap.get(outgoing) == 0) {
-                freqMap.remove(outgoing);
+
+            Integer count = freqMap.get(outgoing);
+            if (count != null) {
+                if (count == 1) {
+                    freqMap.remove(outgoing);
+                } else {
+                    freqMap.put(outgoing, count - 1);
+                }
             }
 
             result[i - k + 1] = freqMap.size();
