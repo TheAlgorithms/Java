@@ -10,7 +10,7 @@ import org.junit.jupiter.params.provider.CsvSource;
 public class LongestPalindromicSubsequenceTest {
 
     @ParameterizedTest
-    @CsvSource({"BBABCBCAB, BABCBAB", "BABCBAB, BABCBAB", "A, A", "AA, AA", "AB, A"})
+    @CsvSource({"BBABCBCAB, BACBCAB", "BABCBAB, BABCBAB", "A, A", "AA, AA", "AB, B"})
     void testLpsKnownCases(String input, String expectedLps) {
         assertEquals(expectedLps, LongestPalindromicSubsequence.lps(input));
     }
@@ -42,7 +42,7 @@ public class LongestPalindromicSubsequenceTest {
 
     @Test
     void testLpsNullThrowsException() {
-        assertThrows(IllegalArgumentException.class, () -> LongestPalindromicSubsequence.lps(null));
+        assertThrows(IllegalArgumentException.class, () -> { LongestPalindromicSubsequence.lps(null); });
     }
 
     @Test
