@@ -1,19 +1,10 @@
-/**
- * Interpolation Search estimates the position of the target value
- * based on the distribution of values.
- *
- * Example:
- * Input: [10, 20, 30, 40], target = 30
- * Output: Index = 2
- *
- * Time Complexity: O(log log n) (average case)
- * Space Complexity: O(1)
- */
+ 
 package com.thealgorithms.searches;
 
 /**
- * InterpolationSearch is an algorithm that searches for a target value within a sorted array
- * by estimating the position based on the values at the corners of the current search range.
+ * InterpolationSearch is an algorithm that searches for a target value within a
+ * sorted array by estimating the position based on the values at the corners of
+ * the current search range.
  *
  * <p>
  * The performance of this algorithm can vary:
@@ -27,7 +18,7 @@ package com.thealgorithms.searches;
  * This search algorithm requires the input array to be sorted.
  * </p>
  *
- * @author Podshivalov Nikita (https://github.com/nikitap492)
+ * @author Podshivalov Nikita (https://github.com/nikitak492)
  */
 class InterpolationSearch {
 
@@ -46,6 +37,12 @@ class InterpolationSearch {
         // Since array is sorted, an element present
         // in array must be in range defined by corner
         while (start <= end && key >= array[start] && key <= array[end]) {
+
+            // FIX: division by zero guard
+            if (array[end] == array[start]) {
+                return array[start] == key ? start : -1;
+            }
+
             // Probing the position with keeping
             // uniform distribution in mind.
             int pos = start + (((end - start) / (array[end] - array[start])) * (key - array[start]));
