@@ -1,8 +1,8 @@
-package com.thealgorithms.others;
+package com.thealgorithms.datastructures.trees;
 
 // Java Program to implement Auto-Complete
 // Feature using Trie
-class Trieac {
+class TrieAutocomplete {
 
     // Alphabet size (# of symbols)
     public static final int ALPHABET_SIZE = 26;
