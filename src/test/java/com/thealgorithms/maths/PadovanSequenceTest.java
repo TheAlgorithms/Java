@@ -29,7 +29,6 @@ public class PadovanSequenceTest {
 
     @Test
     public void testInvalidInput() {
-        assertThrows(IllegalArgumentException.class,
-            () -> PadovanSequence.padovan(-1));
+        assertThrows(IllegalArgumentException.class, () -> PadovanSequence.padovan(-1));
     }
 }
