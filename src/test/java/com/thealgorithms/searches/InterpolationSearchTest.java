@@ -87,4 +87,15 @@ class InterpolationSearchTest {
         int key = 21; // Present in the array
         assertEquals(6, interpolationSearch.find(array, key), "The index of the found element should be 6.");
     }
+
+    /**
+     * Test for interpolation search with specific sorted arrays that previously caused division by zero.
+     */
+    @Test
+    void testInterpolationSearchDivisionByZeroEdgeCases() {
+        InterpolationSearch interpolationSearch = new InterpolationSearch();
+        assertEquals(3, interpolationSearch.find(new int[]{0, 0, 0, 2}, 2));
+        assertEquals(0, interpolationSearch.find(new int[]{2, 2, 2, 2}, 2));
+        assertEquals(3, interpolationSearch.find(new int[]{0, 1, 2, 4}, 4));
+    }
 }
