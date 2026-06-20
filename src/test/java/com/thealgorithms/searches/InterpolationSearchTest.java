@@ -94,8 +94,8 @@ class InterpolationSearchTest {
     @Test
     void testInterpolationSearchDivisionByZeroEdgeCases() {
         InterpolationSearch interpolationSearch = new InterpolationSearch();
-        assertEquals(3, interpolationSearch.find(new int[]{0, 0, 0, 2}, 2));
-        assertEquals(0, interpolationSearch.find(new int[]{2, 2, 2, 2}, 2));
-        assertEquals(3, interpolationSearch.find(new int[]{0, 1, 2, 4}, 4));
+        assertEquals(3, interpolationSearch.find(new int[] {0, 0, 0, 2}, 2));
+        assertEquals(0, interpolationSearch.find(new int[] {2, 2, 2, 2}, 2));
+        assertEquals(3, interpolationSearch.find(new int[] {0, 1, 2, 4}, 4));
     }
 }
