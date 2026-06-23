@@ -36,9 +36,12 @@ class InterpolationSearch {
         // Since array is sorted, an element present
         // in array must be in range defined by corner
         while (start <= end && key >= array[start] && key <= array[end]) {
+            if (array[start] == array[end]) {
+                return start;
+            }
             // Probing the position with keeping
             // uniform distribution in mind.
-            int pos = start + (((end - start) / (array[end] - array[start])) * (key - array[start]));
+            int pos = start + (int) (((long) (end - start) * (key - array[start])) / ((long) array[end] - array[start]));
 
             // Condition of target found
             if (array[pos] == key) {
