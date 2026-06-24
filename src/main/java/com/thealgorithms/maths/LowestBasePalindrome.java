@@ -23,6 +23,12 @@ import java.util.List;
  *
  * @see <a href="https://oeis.org/A016026">OEIS A016026 - Smallest base in which
  *      n is palindromic</a>
+ * @see com.thealgorithms.strings.Palindrome
+ * @see com.thealgorithms.stacks.PalindromeWithStack
+ * @see com.thealgorithms.bitmanipulation.BinaryPalindromeCheck
+ * @see com.thealgorithms.datastructures.lists.PalindromeSinglyLinkedList
+ * @see com.thealgorithms.maths.PalindromePrime
+ * @see com.thealgorithms.maths.PalindromeNumber
  * @author TheAlgorithms Contributors
  */
 public final class LowestBasePalindrome {
