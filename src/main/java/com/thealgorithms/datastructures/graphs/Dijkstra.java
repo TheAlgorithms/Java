@@ -171,9 +171,15 @@ class DijkstraGraph {
 
         // another pass to set neighbouring vertices
         for (Edge e : edges) {
-            graph.get(e.v1).neighbours.put(graph.get(e.v2), e.dist);
-            // graph.get(e.v2).neighbours.put(graph.get(e.v1), e.dist); // also do this for an
-            // undirected graph
+            var v1 = graph.get(e.v1);
+            var v2 = graph.get(e.v2);
+
+            // this null-check satisfies Infer static analyzer
+            if (v1 != null && v2 != null) {
+                v1.neighbours.put(v2, e.dist);
+                // v2.neighbours.put(v1, e.dist); // also do this for an
+                // undirected graph
+            }
         }
     }
 
