@@ -1,0 +1,37 @@
+name: JDK Compatibility Matrix
+
+on:
+  schedule:
+    # Run every Sunday at 00:00 UTC
+    - cron: '0 0 * * 0'
+  workflow_dispatch:
+    # Allows manual triggering
+
+permissions:
+  contents: read
+
+jobs:
+  compat-test:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        java-version: [ 22, 23, 24 ]
+        distribution: [ 'temurin' ]
+        include:
+          # Also test the upcoming JDK 25 Early Access
+          - java-version: '25-ea'
+            distribution: 'oracle'
+
+    name: Java ${{ matrix.java-version }} (${{ matrix.distribution }})
+    steps:
+      - uses: actions/checkout@v7
+
+      - name: Set up JDK ${{ matrix.java-version }}
+        uses: actions/setup-java@v5
+        with:
+          java-version: ${{ matrix.java-version }}
+          distribution: ${{ matrix.distribution }}
+
+      - name: Build and Test with Maven
+        run: mvn --batch-mode --update-snapshots verify
