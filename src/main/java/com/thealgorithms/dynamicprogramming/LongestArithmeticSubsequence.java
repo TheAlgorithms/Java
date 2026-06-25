@@ -2,7 +2,7 @@ package com.thealgorithms.dynamicprogramming;
 
 import java.util.HashMap;
 
-@SuppressWarnings({"rawtypes", "unchecked"})
+@SuppressWarnings({ "rawtypes", "unchecked" })
 final class LongestArithmeticSubsequence {
     private LongestArithmeticSubsequence() {
     }
