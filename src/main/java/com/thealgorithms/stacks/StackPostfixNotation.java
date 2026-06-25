@@ -64,9 +64,17 @@ public final class StackPostfixNotation {
     public static int postfixEvaluate(final String exp) {
         Stack<Integer> s = new Stack<>();
         consumeExpression(s, exp);
-        if (s.size() != 1) {
-            throw new IllegalArgumentException("exp is not a proper postfix expression.");
-        }
-        return s.pop();
-    }
+     // Inside the evaluation loop when an operator is found:
+if (s.size() < 2) {
+    throw new IllegalArgumentException("Invalid expression: not enough operands.");
+}
+int b = s.pop();
+int a = s.pop();
+// perform operation and push result
+
+// ... after the loop finishes ...
+if (s.size() != 1) {
+    throw new IllegalArgumentException("exp is not a proper postfix expression.");
+}
+return s.pop();   }
 }

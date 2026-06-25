@@ -27,15 +27,22 @@ public class FCFSScheduling {
             return;
         }
 
-        int waitingTime = 0;
         int burstTime = processes.get(0).getBurstTime();
+        if (burstTime < 0) {
+            throw new IllegalArgumentException("Burst time cannot be negative for process: " + processes.get(0).getProcessId());
+        }
 
+        int waitingTime = 0;
         processes.get(0).setWaitingTime(waitingTime); // for the first process, waiting time will be 0.
 
         for (int i = 1; i < processesNumber; i++) {
+            int currentBurstTime = processes.get(i).getBurstTime();
+            if (currentBurstTime < 0) {
+                throw new IllegalArgumentException("Burst time cannot be negative for process: " + processes.get(i).getProcessId());
+            }
             processes.get(i).setWaitingTime(waitingTime + burstTime);
             waitingTime = processes.get(i).getWaitingTime();
-            burstTime = processes.get(i).getBurstTime();
+            burstTime = currentBurstTime;
         }
     }
 

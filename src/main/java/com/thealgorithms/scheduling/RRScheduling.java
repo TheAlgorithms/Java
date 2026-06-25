@@ -18,6 +18,20 @@ public class RRScheduling {
     private int quantumTime;
 
     RRScheduling(final List<ProcessDetails> processes, int quantumTime) {
+        if (quantumTime <= 0) {
+            throw new IllegalArgumentException("Quantum time must be positive.");
+        }
+        for (ProcessDetails process : processes) {
+            if (process.getBurstTime() < 0) {
+                throw new IllegalArgumentException("Burst time cannot be negative for process: " + process.getProcessId());
+            }
+            if (process.getArrivalTime() < 0) {
+                throw new IllegalArgumentException("Arrival time cannot be negative for process: " + process.getProcessId());
+            }
+            if (process.getProcessId() == null || !process.getProcessId().matches("[a-zA-Z0-9_-]+")) {
+                throw new IllegalArgumentException("Invalid process ID: " + process.getProcessId());
+            }
+        }
         this.processes = processes;
         this.quantumTime = quantumTime;
     }

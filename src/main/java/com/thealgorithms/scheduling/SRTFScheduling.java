@@ -30,14 +30,27 @@ public class SRTFScheduling {
         this.processes = processes;
     }
 
+    private static void validateProcess(ProcessDetails process) {
+        if (process.getBurstTime() < 0) {
+            throw new IllegalArgumentException("Burst time cannot be negative for process: " + process.getProcessId());
+        }
+        if (process.getArrivalTime() < 0) {
+            throw new IllegalArgumentException("Arrival time cannot be negative for process: " + process.getProcessId());
+        }
+        if (process.getProcessId() == null || !process.getProcessId().matches("[a-zA-Z0-9_-]+")) {
+            throw new IllegalArgumentException("Invalid process ID: " + process.getProcessId());
+        }
+    }
+
     public void evaluateScheduling() {
         int time = 0;
         int cr = 0; // cr=current running process, time= units of time
         int n = processes.size();
         int[] remainingTime = new int[n];
 
-        /* calculating remaining time of every process and total units of time */
+        /* validating and calculating remaining time of every process and total units of time */
         for (int i = 0; i < n; i++) {
+            validateProcess(processes.get(i));
             remainingTime[i] = processes.get(i).getBurstTime();
             time += processes.get(i).getBurstTime();
         }

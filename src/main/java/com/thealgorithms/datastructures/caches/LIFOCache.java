@@ -12,6 +12,8 @@ import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 import java.util.function.BiConsumer;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  * A thread-safe generic cache implementation using the Last-In-First-Out eviction policy.
@@ -37,6 +39,8 @@ import java.util.function.BiConsumer;
  * @author Kevin Babu (<a href="https://www.github.com/KevinMwita7">GitHub</a>)
  */
 public final class LIFOCache<K, V> {
+
+    private static final Logger LOGGER = Logger.getLogger(LIFOCache.class.getName());
 
     private final int capacity;
     private final long defaultTTL;
@@ -268,8 +272,8 @@ public final class LIFOCache<K, V> {
         if (evictionListener != null) {
             try {
                 evictionListener.accept(key, value);
-            } catch (Exception e) {
-                System.err.println("Eviction listener failed: " + e.getMessage());
+            } catch (IllegalArgumentException | IllegalStateException e) {
+                LOGGER.log(Level.WARNING, "Eviction listener failed for key: " + key, e);
             }
         }
     }
