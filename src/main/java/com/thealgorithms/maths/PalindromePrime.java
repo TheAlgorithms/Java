@@ -1,8 +1,19 @@
-package com.thealgorithms.misc;
+package com.thealgorithms.maths;
 
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * A class to check and generate palindromic prime numbers.
+ * A palindromic prime is a prime number that is also a palindromic number.
+ *
+ * @see com.thealgorithms.strings.Palindrome
+ * @see com.thealgorithms.stacks.PalindromeWithStack
+ * @see com.thealgorithms.bitmanipulation.BinaryPalindromeCheck
+ * @see com.thealgorithms.maths.LowestBasePalindrome
+ * @see com.thealgorithms.datastructures.lists.PalindromeSinglyLinkedList
+ * @see com.thealgorithms.maths.PalindromeNumber
+ */
 public final class PalindromePrime {
     private PalindromePrime() {
     }
