@@ -24,7 +24,8 @@ public final class JosephusProblem {
     /**
      * Find the Winner of the Circular Game.
      *
-     * @param number of friends, n, and an integer k
+     * @param n number of friends
+     * @param k an integer
      * @return return the winner of the game
      */
 

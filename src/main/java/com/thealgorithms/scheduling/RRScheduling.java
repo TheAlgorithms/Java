@@ -14,8 +14,8 @@ import java.util.Queue;
  */
 
 public class RRScheduling {
-    private List<ProcessDetails> processes;
-    private int quantumTime;
+    private final List<ProcessDetails> processes;
+    private final int quantumTime;
 
     RRScheduling(final List<ProcessDetails> processes, int quantumTime) {
         this.processes = processes;

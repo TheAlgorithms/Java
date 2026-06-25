@@ -2,9 +2,9 @@ package com.thealgorithms.datastructures.trees;
 
 public class SegmentTree {
 
-    private int[] segTree;
+    private final int[] segTree;
     private int n;
-    private int[] arr;
+    private final int[] arr;
 
     /* Constructor which takes the size of the array and the array as a parameter*/
     public SegmentTree(int n, int[] arr) {

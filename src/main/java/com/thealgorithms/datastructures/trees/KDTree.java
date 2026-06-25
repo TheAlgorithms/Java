@@ -142,7 +142,7 @@ public class KDTree {
     static class Node {
 
         private Point point;
-        private int axis; // 0 for x, 1 for y, 2 for z, etc.
+        private final int axis; // 0 for x, 1 for y, 2 for z, etc.
 
         private Node left = null; // Left child
         private Node right = null; // Right child

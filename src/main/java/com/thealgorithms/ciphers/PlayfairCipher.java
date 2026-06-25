@@ -3,7 +3,7 @@ package com.thealgorithms.ciphers;
 public class PlayfairCipher {
 
     private char[][] matrix;
-    private String key;
+    private final String key;
 
     public PlayfairCipher(String key) {
         this.key = key;

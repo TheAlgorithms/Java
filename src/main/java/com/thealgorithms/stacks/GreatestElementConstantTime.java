@@ -12,8 +12,8 @@ import java.util.Stack;
  * Problem: https://www.baeldung.com/cs/stack-constant-time
  */
 public class GreatestElementConstantTime {
-    private Stack<Integer> mainStack; // initialize a mainStack
-    private Stack<Integer> maxStack; // initialize a maxStack
+    private final Stack<Integer> mainStack; // initialize a mainStack
+    private final Stack<Integer> maxStack; // initialize a maxStack
 
     /**
      * Constructs two empty stacks

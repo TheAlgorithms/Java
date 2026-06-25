@@ -19,7 +19,7 @@ public class KadaneAlgorithmTest {
     void testMaxSumWithMixedValues() {
         // Test with mixed positive and negative numbers
         int[] input = {1, -2, 3, 4, -1, 2, 1, -5, 4};
-        int expectedMaxSum = 3 + 4 + -1 + 2 + 1; // max subarray is [3, 4, -1, 2, 1]
+        int expectedMaxSum = 9; // max subarray is [3, 4, -1, 2, 1]
         assertTrue(KadaneAlgorithm.maxSum(input, expectedMaxSum));
     }
 

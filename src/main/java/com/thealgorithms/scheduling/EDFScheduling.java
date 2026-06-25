@@ -56,9 +56,9 @@ public final class EDFScheduling {
      * The Process class represents a process with an ID, burst time, deadline, waiting time, and turnaround time.
      */
     public static class Process {
-        private String processId;
-        private int burstTime;
-        private int deadline;
+        private final String processId;
+        private final int burstTime;
+        private final int deadline;
         private int waitingTime;
         private int turnAroundTime;
 

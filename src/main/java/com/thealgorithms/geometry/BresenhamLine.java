@@ -11,8 +11,8 @@ import java.util.List;
  *
  * <p>This algorithm uses integer arithmetic to calculate the points,
  * making it suitable for rasterization in computer graphics.</p>
- *
- * For more information, please visit {@link https://en.wikipedia.org/wiki/Bresenham%27s_line_algorithm}
+ /**
+ * For more information, please visit <a href="https://en.wikipedia.org/wiki/Bresenham%27s_line_algorithm">Bresenham's Line Algorithm</a>
  */
 public final class BresenhamLine {
 

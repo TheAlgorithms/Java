@@ -80,7 +80,7 @@ public final class ColumnarTranspositionCipher {
                 wordDecrypted.append(item);
             }
         }
-        return wordDecrypted.toString().replaceAll(ENCRYPTION_FIELD, "");
+        return wordDecrypted.toString().replace(ENCRYPTION_FIELD, "");
     }
 
     /**

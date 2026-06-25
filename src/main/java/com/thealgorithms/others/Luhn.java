@@ -109,7 +109,7 @@ public final class Luhn {
          */
         public static CreditCard fromString(String cardNumber) {
             Objects.requireNonNull(cardNumber);
-            String trimmedCardNumber = cardNumber.replaceAll(" ", "");
+            String trimmedCardNumber = cardNumber.replace(" ", "");
             if (trimmedCardNumber.length() != DIGITS_COUNT || !trimmedCardNumber.matches("\\d+")) {
                 throw new IllegalArgumentException("{" + cardNumber + "} - is not a card number");
             }

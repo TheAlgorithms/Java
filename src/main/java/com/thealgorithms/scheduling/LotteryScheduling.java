@@ -98,9 +98,9 @@ public final class LotteryScheduling {
      * lottery selection), waiting time, and turnaround time.
      */
     public static class Process {
-        private String processId;
-        private int burstTime;
-        private int tickets;
+        private final String processId;
+        private final int burstTime;
+        private final int tickets;
         private int waitingTime;
         private int turnAroundTime;
 

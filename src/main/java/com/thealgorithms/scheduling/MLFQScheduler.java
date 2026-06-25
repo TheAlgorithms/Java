@@ -11,8 +11,8 @@ import java.util.Queue;
  * between queues depending on their CPU burst behavior.
  */
 public class MLFQScheduler {
-    private List<Queue<Process>> queues; // Multi-level feedback queues
-    private int[] timeQuantum; // Time quantum for each queue level
+    private final List<Queue<Process>> queues; // Multi-level feedback queues
+    private final int[] timeQuantum; // Time quantum for each queue level
     private int currentTime; // Current time in the system
 
     /**

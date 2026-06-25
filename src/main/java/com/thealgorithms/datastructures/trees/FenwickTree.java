@@ -2,8 +2,8 @@ package com.thealgorithms.datastructures.trees;
 
 public class FenwickTree {
 
-    private int n;
-    private int[] fenTree;
+    private final int n;
+    private final int[] fenTree;
 
     /* Constructor which takes the size of the array as a parameter */
     public FenwickTree(int n) {

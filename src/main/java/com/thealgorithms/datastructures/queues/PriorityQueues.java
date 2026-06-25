@@ -16,11 +16,11 @@ class PriorityQueue {
     /**
      * The max size of the queue
      */
-    private int maxSize;
+    private final int maxSize;
     /**
      * The array for the queue
      */
-    private int[] queueArray;
+    private final int[] queueArray;
     /**
      * How many items are in the queue
      */

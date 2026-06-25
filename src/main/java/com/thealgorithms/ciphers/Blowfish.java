@@ -1115,7 +1115,7 @@ public class Blowfish {
      * This method returns a string obtained by XOR-ing two strings of same length passed a method
      * parameters
      *
-     * @param String a and b are string objects which will be XORed and are to be of same length
+     * @param  a and  @param b are string objects which will be XORed and are to be of same length
      * @return String object obtained by XOR operation on String a and String b
      * */
     private String xor(String a, String b) {
@@ -1133,7 +1133,8 @@ public class Blowfish {
      * This method returns addition of two hexadecimal numbers passed as parameters and moded with
      * 2^32
      *
-     * @param String a and b are hexadecimal numbers
+     * @param  a  hexadecimal number
+     * @param b hexadecimal number
      * @return String object which is a is addition that is then moded with 2^32 of hex numbers
      *     passed as parameters
      */
@@ -1198,8 +1199,8 @@ public class Blowfish {
      * This method returns cipher text for the plaintext passed as the first parameter generated
      * using the key passed as the second parameter
      *
-     * @param String plainText is the text which is to be encrypted
-     * @param String key is the key which is to be used for generating cipher text
+     * @param  plainText is the text which is to be encrypted
+     * @param  key is the key which is to be used for generating cipher text
      * @return String cipherText is the encrypted value
      */
     String encrypt(String plainText, String key) {
@@ -1222,8 +1223,8 @@ public class Blowfish {
      * This method returns plaintext for the ciphertext passed as the first parameter decoded
      * using the key passed as the second parameter
      *
-     * @param String ciphertext is the text which is to be decrypted
-     * @param String key is the key which is to be used for generating cipher text
+     * @param  cipherText is the text which is to be decrypted
+     * @param  key is the key which is to be used for generating cipher text
      * @return String plainText is the decrypted text
      */
     String decrypt(String cipherText, String key) {

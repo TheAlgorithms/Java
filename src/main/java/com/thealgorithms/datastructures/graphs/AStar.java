@@ -19,7 +19,8 @@ public final class AStar {
      * Represents a graph using an adjacency list.
      */
     static class Graph {
-        private ArrayList<ArrayList<Edge>> graph;
+        // 1. Made graph field final
+        private final ArrayList<ArrayList<Edge>> graph;
 
         Graph(int size) {
             this.graph = new ArrayList<>();
@@ -43,9 +44,10 @@ public final class AStar {
      * Represents an edge in the graph with a start node, end node, and weight.
      */
     private static class Edge {
-        private int from;
-        private int to;
-        private int weight;
+        // 2, 3, 4. Made from, to, and weight fields final
+        private final int from;
+        private final int to;
+        private final int weight;
 
         Edge(int from, int to, int weight) {
             this.from = from;
@@ -70,9 +72,10 @@ public final class AStar {
      * Contains information about the path and its total distance.
      */
     static class PathAndDistance {
-        private int distance; // total distance from the start node
-        private ArrayList<Integer> path; // list of nodes in the path
-        private int estimated; // heuristic estimate for reaching the destination
+        // 5, 6, 7. Made distance, path, and estimated fields final
+        private final int distance; // total distance from the start node
+        private final ArrayList<Integer> path; // list of nodes in the path
+        private final int estimated; // heuristic estimate for reaching the destination
 
         PathAndDistance(int distance, ArrayList<Integer> path, int estimated) {
             this.distance = distance;

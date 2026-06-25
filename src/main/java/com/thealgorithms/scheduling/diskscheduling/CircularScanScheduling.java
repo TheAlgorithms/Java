@@ -15,7 +15,7 @@ import java.util.List;
  */
 public class CircularScanScheduling {
     private int currentPosition;
-    private boolean movingUp;
+    private final boolean movingUp;
     private final int diskSize;
 
     public CircularScanScheduling(int startPosition, boolean movingUp, int diskSize) {

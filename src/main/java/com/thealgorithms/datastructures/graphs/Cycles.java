@@ -6,8 +6,8 @@ import java.util.Scanner;
 class Cycle {
 
     private final int nodes;
-    private int[][] adjacencyMatrix;
-    private boolean[] visited;
+    private final int[][] adjacencyMatrix;
+    private final boolean[] visited;
     ArrayList<ArrayList<Integer>> cycles = new ArrayList<ArrayList<Integer>>();
 
     Cycle() {

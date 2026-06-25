@@ -51,7 +51,7 @@ public final class Relativity {
     /**
      * Calculates the time that has passed in the moving frame.
      *
-     * @param length The time that has passed in the object's own frame (s).
+     * @param time The time that has passed in the object's own frame (s).
      * @param v The velocity of the object (m/s).
      * @return The time that has passed in the laboratory frame (s).
      */

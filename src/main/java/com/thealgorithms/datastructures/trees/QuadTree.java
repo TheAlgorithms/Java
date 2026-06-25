@@ -69,7 +69,7 @@ public class QuadTree {
     private final BoundingBox boundary;
     private final int capacity;
 
-    private List<Point> pointList;
+    private final List<Point> pointList;
     private boolean divided;
     private QuadTree northWest;
     private QuadTree northEast;

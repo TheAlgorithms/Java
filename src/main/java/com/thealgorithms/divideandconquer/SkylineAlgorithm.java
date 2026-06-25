@@ -11,7 +11,7 @@ import java.util.Comparator;
  */
 public class SkylineAlgorithm {
 
-    private ArrayList<Point> points;
+    private final ArrayList<Point> points;
 
     /**
      * Main constructor of the application. ArrayList points gets created, which
@@ -127,8 +127,8 @@ public class SkylineAlgorithm {
 
     public static class Point {
 
-        private int x;
-        private int y;
+        private final int x;
+        private final int y;
 
         /**
          * The main constructor of Point Class, used to represent the 2

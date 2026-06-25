@@ -20,8 +20,8 @@ public final class MedianFinder {
     MedianFinder() {
     }
 
-    private PriorityQueue<Integer> minHeap = new PriorityQueue<>();
-    private PriorityQueue<Integer> maxHeap = new PriorityQueue<>((a, b) -> b - a);
+    private final PriorityQueue<Integer> minHeap = new PriorityQueue<>();
+    private final PriorityQueue<Integer> maxHeap = new PriorityQueue<>((a, b) -> b - a);
 
     /**
      * Adds a new number to the data stream. The number is placed in the appropriate

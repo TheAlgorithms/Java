@@ -10,7 +10,7 @@ import java.util.LinkedList;
  * Reference: https://www.geeksforgeeks.org/check-whether-the-given-string-is-palindrome-using-stack/
  */
 public class PalindromeWithStack {
-    private LinkedList<Character> stack;
+    private final LinkedList<Character> stack;
 
     /**
      * Constructs an empty stack that stores characters.

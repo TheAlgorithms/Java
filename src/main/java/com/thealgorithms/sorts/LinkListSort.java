@@ -208,9 +208,7 @@ class Task {
         while (j <= e) {
             b[k++] = n[j++];
         }
-        for (int p = s; p <= e; p++) {
-            a[p] = b[p - s];
-        }
+        if (e + 1 - s >= 0) System.arraycopy(b, s - s, a, s, e + 1 - s);
     }
     // The method task and task1 is used to sort the linklist using merge sort
 }

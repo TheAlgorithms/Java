@@ -18,9 +18,9 @@ public class CRCAlgorithm {
 
     private int wrongMessNotCaught;
 
-    private int messSize;
+    private final int messSize;
 
-    private double ber;
+    private final double ber;
 
     private boolean messageChanged;
 
@@ -28,7 +28,7 @@ public class CRCAlgorithm {
 
     private ArrayList<Integer> p;
 
-    private Random randomGenerator;
+    private final Random randomGenerator;
 
     /**
      * The algorithm's main constructor. The most significant variables, used in
