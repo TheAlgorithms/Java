@@ -1,11 +1,9 @@
 package com.thealgorithms.maths;
-
 import java.math.BigInteger;
-
 /**
  * This class provides methods for calculating Fibonacci numbers using BigInteger for large values of 'n'.
  * <p>
- * This specific implementation uses an <b>Iterative approach (Loop)</b> with {@code O(n)} time complexity 
+ * This specific implementation uses an <b>Iterative approach (Loop)</b> with {@code O(n)} time complexity
  * and {@code O(1)} space complexity.
  * <p>
  * For alternative approaches to compute or verify Fibonacci numbers, see:
