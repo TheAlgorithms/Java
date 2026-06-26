@@ -18,3 +18,7 @@ Please read our [Contribution Guidelines](CONTRIBUTING.md) before you contribute
 
 ## Algorithms
 Our [directory](DIRECTORY.md) has the full list of applications.
+
+### Contribution
+- Added by Danielle Ihm for CIS175 GitHub fork assignment
+- Practiced cloning, editing, committing, and pull requests
