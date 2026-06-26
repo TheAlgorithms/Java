@@ -1,4 +1,4 @@
-package com.thealgorithms.tree;
+package com.thealgorithms.datastructures.trees;
 
 import java.util.ArrayList;
 import java.util.List;
