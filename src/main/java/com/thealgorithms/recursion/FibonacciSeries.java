@@ -7,8 +7,18 @@ package com.thealgorithms.recursion;
  * Example:
  * 0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55 ...
  * </p>
+ * <p>
+ * This specific implementation demonstrates a <b>Naive Recursive approach</b> with {@code O(2^n)} time complexity.
+ * For more performant variations or different programming paradigms, see:
+ * <ul>
+ * <li>{@link com.thealgorithms.maths.FibonacciLoop} - Standard Iterative (Loop) approach</li>
+ * <li>{@link com.thealgorithms.dynamicprogramming.Fibonacci} - Dynamic Programming variants (Memoization / Bottom-Up)</li>
+ * <li>{@link com.thealgorithms.maths.FibonacciJavaStreams} - Functional approach using Java Streams</li>
+ * <li>{@link com.thealgorithms.maths.FibonacciNumberGoldenRation} - Closed-form expression using Binet's formula</li>
+ * <li>{@link com.thealgorithms.maths.FibonacciNumberCheck} - Utility to check if a given number is a Fibonacci number</li>
+ * <li>{@link com.thealgorithms.matrix.matrixexponentiation.Fibonacci} - O(log n) Matrix Exponentiation approach</li>
+ * </ul>
  */
-
 public final class FibonacciSeries {
     private FibonacciSeries() {
         throw new UnsupportedOperationException("Utility class");
