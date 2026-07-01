@@ -4,6 +4,10 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.jupiter.api.Test;
 
+/**
+ * Unit tests for {@link SquareRootWithBabylonianMethod}.
+ */
+
 public class SquareRootWithBabylonianMethodTest {
 
     private static final float DELTA = 1e-3f;
