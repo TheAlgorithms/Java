@@ -20,7 +20,7 @@
             <dependency>
                 <groupId>org.junit</groupId>
                 <artifactId>junit-bom</artifactId>
-                <version>6.1.0</version>
+                <version>6.1.1</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
@@ -112,7 +112,7 @@
                     <dependency>
                     <groupId>com.puppycrawl.tools</groupId>
                     <artifactId>checkstyle</artifactId>
-                    <version>13.6.0</version>
+                    <version>13.7.0</version>
                     </dependency>
                 </dependencies>
             </plugin>

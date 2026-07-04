@@ -4,6 +4,18 @@ package com.thealgorithms.maths;
  * Fibonacci: 0 1 1 2 3 5 8 13 21 ...
  * This code checks Fibonacci Numbers up to 45th number.
  * Other checks fail because of 'long'-type overflow.
+ * <p>
+ * This class serves as a <b>verification utility</b> rather than a generation algorithm.
+ * <p>
+ * For approaches that actively compute the n-th Fibonacci number, see:
+ * <ul>
+ * <li>{@link com.thealgorithms.maths.FibonacciLoop} - Standard Iterative (Loop) approach</li>
+ * <li>{@link com.thealgorithms.recursion.FibonacciSeries} - Naive Recursive approach</li>
+ * <li>{@link com.thealgorithms.dynamicprogramming.Fibonacci} - Dynamic Programming approaches (Memoization, Bottom-Up, Optimized)</li>
+ * <li>{@link com.thealgorithms.maths.FibonacciJavaStreams} - Functional approach using Java Streams</li>
+ * <li>{@link com.thealgorithms.maths.FibonacciNumberGoldenRation} - Closed-form expression using Binet's formula</li>
+ * <li>{@link com.thealgorithms.matrix.matrixexponentiation.Fibonacci} - O(log n) Matrix Exponentiation approach</li>
+ * </ul>
  */
 public final class FibonacciNumberCheck {
     private FibonacciNumberCheck() {
