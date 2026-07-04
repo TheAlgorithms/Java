@@ -27,10 +27,10 @@ public final class OnesComplement {
         StringBuilder complement = new StringBuilder(binary.length());
         for (char bit : binary.toCharArray()) {
             switch (bit) {
-                case '0' -> complement.append('1');
-                case '1' -> complement.append('0');
-                default -> throw new IllegalArgumentException("Input must contain only '0' and '1'. Found: " + bit);
-            }
+                case '0': complement.append('1');
+                case '1': complement.append('0');
+                default: throw new IllegalArgumentException("...");
+            }            
         }
         return complement.toString();
     }
