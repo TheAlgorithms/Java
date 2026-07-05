@@ -1,33 +1,22 @@
 package com.thealgorithms.datastructures.trees;
 
+import java.io.Serial;
 import java.util.LinkedList;
 import java.util.List;
 
 /**
  * Implementation of a Splay Tree data structure.
- *
- * A splay tree is a self-adjusting binary search tree with the additional
- * property
+ * <p>
+ * A splay tree is a self-adjusting binary search tree with the additional property
  * that recently accessed elements are quick to access again. It performs basic
- * operations such as insertion, deletion, and searching in O(log n) amortized
- * time,
- * where n is the number of elements in the tree.
- *
- * The key feature of splay trees is the splay operation, which moves a node
- * closer
- * to the root of the tree when it is accessed. This operation helps to maintain
- * good balance and improves the overall performance of the tree. After
- * performing
- * a splay operation, the accessed node becomes the new root of the tree.
- *
- * Splay trees have applications in various areas, including caching, network
- * routing,
- * and dynamic optimality analysis.
+ * operations such as insertion, deletion, and searching in O(log n) amortized time.
  */
 public class SplayTree {
-    public static final TreeTraversal PRE_ORDER = new PreOrderTraversal();
-    public static final TreeTraversal IN_ORDER = new InOrderTraversal();
-    public static final TreeTraversal POST_ORDER = new PostOrderTraversal();
+
+    // Preserved public API constants
+    public static final TreeTraversal PRE_ORDER = TraversalStrategy.PRE_ORDER;
+    public static final TreeTraversal IN_ORDER = TraversalStrategy.IN_ORDER;
+    public static final TreeTraversal POST_ORDER = TraversalStrategy.POST_ORDER;
 
     private Node root;
 
@@ -57,15 +46,18 @@ public class SplayTree {
      * @return True if the key is found, otherwise false.
      */
     public boolean search(int key) {
+        if (isEmpty()) {
+            return false;
+        }
         root = splay(root, key);
-        return root != null && root.key == key;
+        return root.key == key;
     }
 
     /**
      * Deletes a key from the SplayTree.
      *
      * @param key The key to delete.
-     * @throws IllegalArgumentException If the tree is empty.
+     * @throws EmptyTreeException If the tree is empty.
      */
     public void delete(final int key) {
         if (isEmpty()) {
@@ -81,9 +73,9 @@ public class SplayTree {
         if (root.left == null) {
             root = root.right;
         } else {
-            Node temp = root;
+            Node rightSubtree = root.right;
             root = splay(root.left, findMax(root.left).key);
-            root.right = temp.right;
+            root.right = rightSubtree;
         }
     }
 
@@ -95,171 +87,96 @@ public class SplayTree {
      */
     public List<Integer> traverse(TreeTraversal traversal) {
         List<Integer> result = new LinkedList<>();
-        traversal.traverse(root, result);
+        // Safely delegate to the internal enum strategy, hiding Node exposure
+        if (traversal instanceof TraversalStrategy strategy) {
+            strategy.execute(root, result);
+        }
         return result;
     }
 
-    /**
-     * Finds the node with the maximum key in a given subtree.
-     *
-     * <p>
-     * This method traverses the right children of the subtree until it finds the
-     * rightmost node, which contains the maximum key.
-     * </p>
-     *
-     * @param root The root node of the subtree.
-     * @return The node with the maximum key in the subtree.
-     */
-    private Node findMax(Node root) {
-        while (root.right != null) {
-            root = root.right;
+    private Node findMax(Node node) {
+        while (node.right != null) {
+            node = node.right;
         }
-        return root;
+        return node;
     }
 
     /**
-     * Zig operation.
-     *
-     * <p>
-     * The zig operation is used to perform a single rotation on a node to move it
-     * closer to
-     * the root of the tree. It is typically applied when the node is a left child
-     * of its parent
-     * and needs to be rotated to the right.
-     * </p>
-     *
-     * @param x The node to perform the zig operation on.
-     * @return The new root node after the operation.
+     * Zig operation (Right Rotation).
      */
-    private Node rotateRight(Node x) {
-        Node y = x.left;
-        x.left = y.right;
-        y.right = x;
-        return y;
+    private Node rotateRight(Node node) {
+        Node leftChild = node.left;
+        node.left = leftChild.right;
+        leftChild.right = node;
+        return leftChild;
     }
 
     /**
-     * Zag operation.
-     *
-     * <p>
-     * The zag operation is used to perform a single rotation on a node to move it
-     * closer to
-     * the root of the tree. It is typically applied when the node is a right child
-     * of its parent
-     * and needs to be rotated to the left.
-     * </p>
-     *
-     * @param x The node to perform the zag operation on.
-     * @return The new root node after the operation.
+     * Zag operation (Left Rotation).
      */
-    private Node rotateLeft(Node x) {
-        Node y = x.right;
-        x.right = y.left;
-        y.left = x;
-        return y;
+    private Node rotateLeft(Node node) {
+        Node rightChild = node.right;
+        node.right = rightChild.left;
+        rightChild.left = node;
+        return rightChild;
     }
 
     /**
-     * Splay operation.
-     *
-     * <p>
-     * The splay operation is the core operation of a splay tree. It moves a
-     * specified node
-     * closer to the root of the tree by performing a series of rotations. The goal
-     * of the splay
-     * operation is to improve the access time for frequently accessed nodes by
-     * bringing them
-     * closer to the root.
-     * </p>
-     *
-     * <p>
-     * The splay operation consists of three main cases:
-     * <ul>
-     * <li>Zig-Zig case: Perform two consecutive rotations.</li>
-     * <li>Zig-Zag case: Perform two consecutive rotations in opposite
-     * directions.</li>
-     * <li>Zag-Zag case: Perform two consecutive rotations.</li>
-     * </ul>
-     * </p>
-     *
-     * <p>
-     * After performing the splay operation, the accessed node becomes the new root
-     * of the tree.
-     * </p>
-     *
-     * @param root The root of the subtree to splay.
-     * @param key  The key to splay around.
-     * @return The new root of the splayed subtree.
+     * Splay operation. Moves the accessed node to the root.
      */
-    private Node splay(Node root, final int key) {
-        if (root == null || root.key == key) {
-            return root;
+    private Node splay(Node node, final int key) {
+        if (node == null || node.key == key) {
+            return node;
         }
 
-        if (root.key > key) {
-            if (root.left == null) {
-                return root;
+        if (node.key > key) {
+            if (node.left == null) {
+                return node;
             }
-            // Zig-Zig case
-            if (root.left.key > key) {
-                root.left.left = splay(root.left.left, key);
-                root = rotateRight(root);
-            } else if (root.left.key < key) {
-                root.left.right = splay(root.left.right, key);
-                if (root.left.right != null) {
-                    root.left = rotateLeft(root.left);
+            if (node.left.key > key) {
+                node.left.left = splay(node.left.left, key);
+                node = rotateRight(node);
+            } else if (node.left.key < key) {
+                node.left.right = splay(node.left.right, key);
+                if (node.left.right != null) {
+                    node.left = rotateLeft(node.left);
                 }
             }
-            return (root.left == null) ? root : rotateRight(root);
+            return (node.left == null) ? node : rotateRight(node);
         } else {
-            if (root.right == null) {
-                return root;
+            if (node.right == null) {
+                return node;
             }
-            // Zag-Zag case
-            if (root.right.key > key) {
-                root.right.left = splay(root.right.left, key);
-                if (root.right.left != null) {
-                    root.right = rotateRight(root.right);
+            if (node.right.key > key) {
+                node.right.left = splay(node.right.left, key);
+                if (node.right.left != null) {
+                    node.right = rotateRight(node.right);
                 }
-            } else if (root.right.key < key) {
-                root.right.right = splay(root.right.right, key);
-                root = rotateLeft(root);
+            } else if (node.right.key < key) {
+                node.right.right = splay(node.right.right, key);
+                node = rotateLeft(node);
             }
-            return (root.right == null) ? root : rotateLeft(root);
+            return (node.right == null) ? node : rotateLeft(node);
         }
     }
 
-    private Node insertRec(Node root, final int key) {
-        if (root == null) {
+    private Node insertRec(Node node, final int key) {
+        if (node == null) {
             return new Node(key);
         }
 
-        if (key < root.key) {
-            root.left = insertRec(root.left, key);
-        } else if (key > root.key) {
-            root.right = insertRec(root.right, key);
+        if (key < node.key) {
+            node.left = insertRec(node.left, key);
+        } else if (key > node.key) {
+            node.right = insertRec(node.right, key);
         } else {
             throw new DuplicateKeyException("Duplicate key: " + key);
         }
 
-        return root;
+        return node;
     }
 
-    public static class EmptyTreeException extends RuntimeException {
-        private static final long serialVersionUID = 1L;
-
-        public EmptyTreeException(String message) {
-            super(message);
-        }
-    }
-
-    public static class DuplicateKeyException extends RuntimeException {
-        private static final long serialVersionUID = 1L;
-
-        public DuplicateKeyException(String message) {
-            super(message);
-        }
-    }
+    // --- Inner Classes and Interfaces ---
 
     private static class Node {
         final int key;
@@ -268,57 +185,73 @@ public class SplayTree {
 
         Node(int key) {
             this.key = key;
-            left = null;
-            right = null;
         }
     }
 
+    /**
+     * Public interface acting as a type token for traversals.
+     * No longer exposes internal Node architecture to the public API.
+     */
     public interface TreeTraversal {
-        /**
-         * Recursive function for a specific order traversal.
-         *
-         * @param root   The root of the subtree to traverse.
-         * @param result The list to store the traversal result.
-         */
-        void traverse(Node root, List<Integer> result);
+        // Marker interface to preserve public API footprint
     }
 
-    private static final class InOrderTraversal implements TreeTraversal {
-        private InOrderTraversal() {
-        }
-
-        public void traverse(Node root, List<Integer> result) {
-            if (root != null) {
-                traverse(root.left, result);
-                result.add(root.key);
-                traverse(root.right, result);
+    /**
+     * Private internal implementation of the traversal strategies.
+     * This keeps the 'Node' references completely encapsulated within SplayTree.
+     */
+    private enum TraversalStrategy implements TreeTraversal {
+        PRE_ORDER {
+            @Override
+            void execute(Node root, List<Integer> result) {
+                if (root != null) {
+                    result.add(root.key);
+                    execute(root.left, result);
+                    execute(root.right, result);
+                }
             }
+        },
+        IN_ORDER {
+            @Override
+            void execute(Node root, List<Integer> result) {
+                if (root != null) {
+                    execute(root.left, result);
+                    result.add(root.key);
+                    execute(root.right, result);
+                }
+            }
+        },
+        POST_ORDER {
+            @Override
+            void execute(Node root, List<Integer> result) {
+                if (root != null) {
+                    execute(root.left, result);
+                    execute(root.right, result);
+                    result.add(root.key);
+                }
+            }
+        };
+
+        abstract void execute(Node root, List<Integer> result);
+    }
+
+    // --- Custom Exceptions ---
+
+    public static class EmptyTreeException extends RuntimeException {
+        @Serial
+        private static final long serialVersionUID = 1L;
+
+        public EmptyTreeException(String message) {
+            super(message);
         }
     }
 
-    private static final class PreOrderTraversal implements TreeTraversal {
-        private PreOrderTraversal() {
-        }
+    public static class DuplicateKeyException extends RuntimeException {
+        @Serial
+        private static final long serialVersionUID = 1L;
 
-        public void traverse(Node root, List<Integer> result) {
-            if (root != null) {
-                result.add(root.key);
-                traverse(root.left, result);
-                traverse(root.right, result);
-            }
-        }
-    }
-
-    private static final class PostOrderTraversal implements TreeTraversal {
-        private PostOrderTraversal() {
-        }
-
-        public void traverse(Node root, List<Integer> result) {
-            if (root != null) {
-                traverse(root.left, result);
-                traverse(root.right, result);
-                result.add(root.key);
-            }
+        public DuplicateKeyException(String message) {
+            super(message);
         }
     }
 }
