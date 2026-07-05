@@ -5,11 +5,11 @@ import java.util.Deque;
 
 /**
  * Maximum Sliding Window Algorithm
- *
+ * <p>
  * This algorithm finds the maximum element in each sliding window of size k
  * in a given array of integers. It uses a deque (double-ended queue) to
  * efficiently keep track of potential maximum values in the current window.
- *
+ * <p>
  * Time Complexity: O(n), where n is the number of elements in the input array
  * Space Complexity: O(k), where k is the size of the sliding window
  */

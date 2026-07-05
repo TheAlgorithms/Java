@@ -2,8 +2,8 @@ package com.thealgorithms.maths;
 
 /**
  * This program calculates the sum of the first n odd numbers.
- *
- * https://www.cuemath.com/algebra/sum-of-odd-numbers/
+ * <p><a href="
+ ">* https://www.cuemath.com/algebra/sum-of-odd-numb</a>ers/
  */
 
 public final class SumOfOddNumbers {

@@ -7,6 +7,8 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicInteger;
+
+import org.jspecify.annotations.NonNull;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -144,6 +146,17 @@ public class ThreadSafeQueueTest {
             });
         }
 
+        Thread consumerThread = getThread(results, totalItems, queue);
+
+        Assertions.assertTrue(doneLatch.await(10, TimeUnit.SECONDS));
+        consumerThread.join(5000);
+
+        Assertions.assertEquals(totalItems, results.size());
+        executor.shutdown();
+        Assertions.assertTrue(executor.awaitTermination(5, TimeUnit.SECONDS));
+    }
+
+    private static @NonNull Thread getThread(List<Integer> results, int totalItems, ThreadSafeQueue<Integer> queue) {
         Thread consumerThread = new Thread(() -> {
             try {
                 while (results.size() < totalItems) {
@@ -159,13 +172,7 @@ public class ThreadSafeQueueTest {
             }
         });
         consumerThread.start();
-
-        Assertions.assertTrue(doneLatch.await(10, TimeUnit.SECONDS));
-        consumerThread.join(5000);
-
-        Assertions.assertEquals(totalItems, results.size());
-        executor.shutdown();
-        Assertions.assertTrue(executor.awaitTermination(5, TimeUnit.SECONDS));
+        return consumerThread;
     }
 
     @Test

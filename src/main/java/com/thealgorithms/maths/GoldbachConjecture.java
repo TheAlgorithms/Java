@@ -5,8 +5,8 @@ import static com.thealgorithms.maths.Prime.PrimeCheck.isPrime;
 /**
  * This is a representation of the unsolved problem of Goldbach's Projection, according to which every
  * even natural number greater than 2 can be written as the sum of 2 prime numbers
- * More info: https://en.wikipedia.org/wiki/Goldbach%27s_conjecture
- * @author Vasilis Sarantidis (https://github.com/BILLSARAN)
+ * More info: <a href="https://en.wikipedia.org/wiki/Goldbach%27s_conjecture">...</a>
+ * @author Vasilis Sarantidis (<a href="https://github.com/BILLSARAN">...</a>)
  */
 
 public final class GoldbachConjecture {

@@ -7,7 +7,7 @@ import java.util.Queue;
  * AgingScheduling is an algorithm designed to prevent starvation
  * by gradually increasing the priority of waiting tasks.
  * The longer a process waits, the higher its priority becomes.
- *
+ * <p>
  * Use Case: Useful in systems with mixed workloads to avoid
  * lower-priority tasks being starved by higher-priority tasks.
  *
@@ -16,7 +16,7 @@ import java.util.Queue;
 public final class AgingScheduling {
 
     static class Task {
-        String name;
+        final String name;
         int waitTime;
         int priority;
 

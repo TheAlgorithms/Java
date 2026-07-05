@@ -5,9 +5,9 @@ import java.util.Optional;
  * Utility class implementing Boyer-Moore's Voting Algorithm to find the majority element
  * in an array. The majority element is defined as the element that appears more than n/2 times
  * in the array, where n is the length of the array.
- *
- * For more information on the algorithm, refer to:
- * https://en.wikipedia.org/wiki/Boyer%E2%80%93Moore_majority_vote_algorithm
+ * <p>
+ * For more information on the algorithm, refer to:<a href="
+ ">* https://en.wikipedia.org/wiki/Boyer%E2%80%93Moore_majority_vote_algor</a>ithm
  */
 public final class BoyerMoore {
     private BoyerMoore() {

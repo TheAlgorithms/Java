@@ -5,8 +5,8 @@ package com.thealgorithms.maths;
  * sum of its positive divisors, excluding the number itself. For instance, 6
  * has divisors 1, 2 and 3 (excluding itself), and 1 + 2 + 3 = 6, so 6 is a
  * perfect number.
- *
- * link:https://en.wikipedia.org/wiki/Perfect_number
+ * <p>
+ * l<a href="ink:https://en.wikipedia.org/wiki/Perfect_nu">...</a>mber
  */
 public final class PerfectNumber {
     private PerfectNumber() {

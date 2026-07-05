@@ -4,7 +4,7 @@ package com.thealgorithms.maths;
  * This class checks whether a given number is an Armstrong number or not.
  * An Armstrong number is a number that is equal to the sum of its own digits,
  * each raised to the power of the number of digits.
- *
+ * <p>
  * For example, 370 is an Armstrong number because 3^3 + 7^3 + 0^3 = 370.
  * 1634 is an Armstrong number because 1^4 + 6^4 + 3^4 + 4^4 = 1634.
  * An Armstrong number is often called a Narcissistic number.

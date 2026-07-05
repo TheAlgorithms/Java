@@ -4,6 +4,8 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
 import java.math.BigInteger;
+
+import org.jspecify.annotations.NonNull;
 import org.junit.jupiter.api.Test;
 
 /**
@@ -14,7 +16,7 @@ import org.junit.jupiter.api.Test;
  * @author xuyang
  */
 public class ECCTest {
-    ECC ecc = new ECC(256); // Generate a 256-bit ECC key pair. Calls generateKeys(bits) to create keys including privateKey and publicKey.
+    final ECC ecc = new ECC(256); // Generate a 256-bit ECC key pair. Calls generateKeys(bits) to create keys including privateKey and publicKey.
 
     /**
      * Test the encryption functionality: convert plaintext to ciphertext and output relevant encryption data.
@@ -55,18 +57,10 @@ public class ECCTest {
         BigInteger knownPrivateKey = new BigInteger("28635978664199231399690075483195602260051035216440375973817268759912070302603");
 
         // 2. Define the known elliptic curve parameters
-        BigInteger a = new BigInteger("64505295837372135469230827475895976532873592609649950000895066186842236488761"); // Replace with known a value
-        BigInteger b = new BigInteger("89111668838830965251111555638616364203833415376750835901427122343021749874324"); // Replace with known b value
-        BigInteger p = new BigInteger("107276428198310591598877737561885175918069075479103276920057092968372930219921"); // Replace with known p value
-        ECC.ECPoint basePoint = new ECC.ECPoint(new BigInteger("4"), new BigInteger("8")); // Replace with known base point coordinates
-
-        // 3. Create the elliptic curve object
-        ECC.EllipticCurve curve = new ECC.EllipticCurve(a, b, p, basePoint);
+        ECC.EllipticCurve curve = getEllipticCurve();
 
         // 4. Define the known ciphertext containing two ECPoints (R, S)
-        ECC.ECPoint rPoint = new ECC.ECPoint(new BigInteger("103077584019003058745849614420912636617007257617156724481937620119667345237687"), new BigInteger("68193862907937248121971710522760893811582068323088661566426323952783362061817"));
-        ECC.ECPoint sPoint = new ECC.ECPoint(new BigInteger("31932232426664380635434632300383525435115368414929679432313910646436992147798"), new BigInteger("77299754382292904069123203569944908076819220797512755280123348910207308129766"));
-        ECC.ECPoint[] cipherText = new ECC.ECPoint[] {rPoint, sPoint};
+        ECC.ECPoint[] cipherText = getEcPoints();
 
         // 5. Create an ECC instance and set the private key and curve parameters
         ecc.setPrivateKey(knownPrivateKey); // Use setter method to set the private key
@@ -78,6 +72,22 @@ public class ECCTest {
         // 7. Compare the decrypted plaintext with the expected value
         String expectedMessage = "Elliptic Curve Cryptography"; // Expected plaintext
         assertEquals(expectedMessage, decryptedMessage);
+    }
+
+    private static ECC.ECPoint @NonNull [] getEcPoints() {
+        ECC.ECPoint rPoint = new ECC.ECPoint(new BigInteger("103077584019003058745849614420912636617007257617156724481937620119667345237687"), new BigInteger("68193862907937248121971710522760893811582068323088661566426323952783362061817"));
+        ECC.ECPoint sPoint = new ECC.ECPoint(new BigInteger("31932232426664380635434632300383525435115368414929679432313910646436992147798"), new BigInteger("77299754382292904069123203569944908076819220797512755280123348910207308129766"));
+        return new ECC.ECPoint[] {rPoint, sPoint};
+    }
+
+    private static ECC.@NonNull EllipticCurve getEllipticCurve() {
+        BigInteger a = new BigInteger("64505295837372135469230827475895976532873592609649950000895066186842236488761"); // Replace with known a value
+        BigInteger b = new BigInteger("89111668838830965251111555638616364203833415376750835901427122343021749874324"); // Replace with known b value
+        BigInteger p = new BigInteger("107276428198310591598877737561885175918069075479103276920057092968372930219921"); // Replace with known p value
+        ECC.ECPoint basePoint = new ECC.ECPoint(new BigInteger("4"), new BigInteger("8")); // Replace with known base point coordinates
+
+        // 3. Create the elliptic curve object
+        return new ECC.EllipticCurve(a, b, p, basePoint);
     }
 
     /**

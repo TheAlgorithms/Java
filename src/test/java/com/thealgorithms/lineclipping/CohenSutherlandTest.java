@@ -15,7 +15,7 @@ import org.junit.jupiter.api.Test;
 class CohenSutherlandTest {
 
     // Define the clipping window (1.0, 1.0) to (10.0, 10.0)
-    CohenSutherland cs = new CohenSutherland(1.0, 1.0, 10.0, 10.0);
+    final CohenSutherland cs = new CohenSutherland(1.0, 1.0, 10.0, 10.0);
 
     @Test
     void testLineCompletelyInside() {

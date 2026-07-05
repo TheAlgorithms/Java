@@ -2,7 +2,7 @@ package com.thealgorithms.conversions;
 
 /**
  * A utility class for converting numbers from any base to any other base.
- *
+ * <p>
  * This class provides a method to convert a source number from a given base
  * to a destination number in another base. Valid bases range from 2 to 10.
  */

@@ -95,7 +95,7 @@ class Link {
     /**
      * Value of node
      */
-    public int value;
+    public final int value;
     /**
      * This points to the link in front of the new link
      */
@@ -293,7 +293,6 @@ class LinkOperations {
      * Delete the element from somewhere in the list
      *
      * @param x element to be deleted
-     * @return Link deleted
      */
     public void delete(int x) {
         Link current = head;
@@ -379,10 +378,9 @@ class LinkOperations {
     public void reverse() {
         // Keep references to the head and tail
         Link thisHead = this.head;
-        Link thisTail = this.tail;
 
         // Flip the head and tail references
-        this.head = thisTail;
+        this.head = this.tail;
         this.tail = thisHead;
 
         // While the link we're visiting is not null, flip the
@@ -390,8 +388,7 @@ class LinkOperations {
         Link nextLink = thisHead;
         while (nextLink != null) {
             Link nextLinkNext = nextLink.next;
-            Link nextLinkPrevious = nextLink.previous;
-            nextLink.next = nextLinkPrevious;
+            nextLink.next = nextLink.previous;
             nextLink.previous = nextLinkNext;
 
             // Now, we want to go to the next link

@@ -13,7 +13,7 @@ import org.apache.commons.lang3.tuple.Pair;
  * It is unknown if there are infinitely many pairs of amicable numbers.
  *
  * <p>
- * link: https://en.wikipedia.org/wiki/Amicable_numbers
+ * link: <a href="https://en.wikipedia.org/wiki/Amicable_numbers">...</a>
  * <p>
  * Simple Example: (220, 284)
  * 220 is divisible by {1,2,4,5,10,11,20,22,44,55,110} <-SUM = 284
@@ -27,7 +27,7 @@ public final class AmicableNumber {
      *
      * @param from range start value
      * @param to   range end value (inclusive)
-     * @return list with amicable numbers found in given range.
+     * @return set with amicable numbers found in given range.
      */
     public static Set<Pair<Integer, Integer>> findAllInRange(int from, int to) {
         if (from <= 0 || to <= 0 || to < from) {

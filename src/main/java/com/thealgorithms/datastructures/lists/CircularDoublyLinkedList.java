@@ -6,7 +6,7 @@ package com.thealgorithms.datastructures.lists;
  * the last node points back to the first node and the first node points back to
  * the last node,
  * creating a circular chain in both directions.
- *
+ * <p>
  * This implementation includes basic operations such as appending elements to
  * the end,
  * removing elements from a specified position, and converting the list to a
@@ -18,7 +18,7 @@ public class CircularDoublyLinkedList<E> {
     static final class Node<E> {
         Node<E> next;
         Node<E> prev;
-        E value;
+        final E value;
 
         private Node(E value, Node<E> next, Node<E> prev) {
             this.value = value;
@@ -28,7 +28,7 @@ public class CircularDoublyLinkedList<E> {
     }
 
     private int size;
-    Node<E> head = null;
+    Node<E> head;
 
     /**
      * Initializes a new circular doubly linked list. A dummy head node is used for

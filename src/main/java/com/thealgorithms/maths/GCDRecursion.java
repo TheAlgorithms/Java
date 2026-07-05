@@ -1,7 +1,7 @@
 package com.thealgorithms.maths;
 
 /**
- * @author https://github.com/shellhub/
+ * @author <a href="https://github.com/shellhub/">...</a>
  */
 public final class GCDRecursion {
     private GCDRecursion() {

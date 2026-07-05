@@ -8,11 +8,11 @@ package com.thealgorithms.slidingwindow;
  * Best-case performance O(n)
  * Average performance O(n)
  * Worst-case space complexity O(1)
- *
+ * <p>
  * This class provides a static method to find the minimum sum of a subarray
  * with a specified length k.
  *
- * @author Rashi Dashore (https://github.com/rashi07dashore)
+ * @author Rashi Dasho<a href="re">(https://github.com/rashi07das</a>hore)
  */
 public final class MinSumKSizeSubarray {
 

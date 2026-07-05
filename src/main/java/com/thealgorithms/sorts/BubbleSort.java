@@ -1,20 +1,20 @@
 package com.thealgorithms.sorts;
 
 /**
- * @author Varun Upadhyay (https://github.com/varunu28)
- * @author Podshivalov Nikita (https://github.com/nikitap492)
+ * @author Varun Upadhyay (<a href="https://github.com/varunu28">...</a>)
+ * @author Podshivalov Nikita (<a href="https://github.com/nikitap492">...</a>)
  * @see SortAlgorithm
  */
 class BubbleSort implements SortAlgorithm {
 
     /**
      * Implements generic bubble sort algorithm.
-     *
+     * <p>
      * Time Complexity:
      * - Best case: O(n) – array is already sorted.
      * - Average case: O(n^2)
      * - Worst case: O(n^2)
-     *
+     * <p>
      * Space Complexity: O(1) – in-place sorting.
      *
      * @param array the array to be sorted.

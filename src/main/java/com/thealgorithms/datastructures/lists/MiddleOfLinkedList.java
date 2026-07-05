@@ -9,7 +9,7 @@ package com.thealgorithms.datastructures.lists;
  *
  * <p>This method does not modify the input list.</p>
  *
- * <p>Reference: https://en.wikipedia.org/wiki/Cycle_detection#Floyd's_tortoise_and_hare</p>
+ * <p>Reference: <a href="https://en.wikipedia.org/wiki/Cycle_detection#Floyd">...</a>'s_tortoise_and_hare</p>
  *
  * <p>Complexity:</p>
  * <ul>

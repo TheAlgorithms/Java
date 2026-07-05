@@ -9,7 +9,7 @@ class TreeNode {
 
     // Members
 
-    int key;
+    final int key;
     TreeNode left;
     TreeNode right;
 
@@ -26,8 +26,8 @@ class TreeNode {
 // distance of node from root
 class QItem {
 
-    TreeNode node;
-    int hd;
+    final TreeNode node;
+    final int hd;
 
     QItem(TreeNode n, int h) {
         node = n;
@@ -38,7 +38,7 @@ class QItem {
 // Class for a Binary Tree
 class Tree {
 
-    TreeNode root;
+    final TreeNode root;
 
     // Constructors
     Tree() {

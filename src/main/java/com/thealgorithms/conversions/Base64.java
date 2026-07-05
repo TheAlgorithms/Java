@@ -8,14 +8,14 @@ import java.util.List;
  * Base64 is a group of binary-to-text encoding schemes that represent binary data
  * in an ASCII string format by translating it into a radix-64 representation.
  * Each base64 digit represents exactly 6 bits of data.
- *
+ * <p>
  * Base64 encoding is commonly used when there is a need to encode binary data
  * that needs to be stored and transferred over media that are designed to deal
  * with textual data.
- *
- * Wikipedia Reference: https://en.wikipedia.org/wiki/Base64
+ * <p>
+ * Wikipedia Ref<a href="erence:">https://en.wikipedia.org/wik</a>i/Base64
  * Author: Nithin U.
- * Github: https://github.com/NithinU2802
+ * <a href="Github:">https://github.com/Nit</a>hinU2802
  */
 
 public final class Base64 {

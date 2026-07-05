@@ -68,7 +68,7 @@ public class KDTree {
 
     static class Point {
 
-        int[] coordinates;
+        final int[] coordinates;
 
         public int getCoordinate(int i) {
             return coordinates[i];

@@ -7,12 +7,12 @@ import java.util.Comparator;
  * The FractionalKnapsack class provides a method to solve the fractional knapsack problem
  * using a greedy algorithm approach. It allows for selecting fractions of items to maximize
  * the total value in a knapsack with a given weight capacity.
- *
+ * <p>
  * The problem consists of a set of items, each with a weight and a value, and a knapsack
  * that can carry a maximum weight. The goal is to maximize the value of items in the knapsack,
  * allowing for the inclusion of fractions of items.
- *
- * Problem Link: https://en.wikipedia.org/wiki/Continuous_knapsack_problem
+ * <p>
+ * Proble<a href="m">Link: https://en.wikipedia.org/wiki/Continuous_knapsack</a>_problem
  */
 public final class FractionalKnapsack {
     private FractionalKnapsack() {

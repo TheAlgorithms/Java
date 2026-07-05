@@ -1,7 +1,7 @@
 package com.thealgorithms.sorts;
 
 /**
- * @author Tabbygray (https://github.com/Tabbygray)
+ * @author Tabbygray (<a href="https://github.com/Tabbygray">...</a>)
  * @see OddEvenSort
  */
 

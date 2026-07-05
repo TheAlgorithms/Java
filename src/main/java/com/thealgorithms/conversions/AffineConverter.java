@@ -3,7 +3,7 @@ package com.thealgorithms.conversions;
 /**
  * A utility class to perform affine transformations of the form:
  * y = slope * x + intercept.
- *
+ * <p>
  * This class supports inversion and composition of affine transformations.
  * It is immutable, meaning each instance represents a fixed transformation.
  */

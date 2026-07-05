@@ -21,7 +21,7 @@ public class DisjointSetUnionBySize<T> {
      * Each node keeps track of its parent and the size of the set it represents.
      */
     public static class Node<T> {
-        public T value;
+        public final T value;
         public Node<T> parent;
         public int size; // size of the set
 

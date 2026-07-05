@@ -11,7 +11,7 @@ import org.junit.jupiter.params.provider.MethodSource;
  * This test class validates the functionality of the
  * NonRepeatingNumberFinder by checking various scenarios.
  *
- * @author Bama Charan Chhandogi (https://github.com/BamaCharanChhandogi)
+ * @author Bama Charan Chhandogi (<a href="https://github.com/BamaCharanChhandogi">...</a>)
  */
 class NonRepeatingNumberFinderTest {
 

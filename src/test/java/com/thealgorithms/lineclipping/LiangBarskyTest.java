@@ -14,7 +14,7 @@ import org.junit.jupiter.api.Test;
  */
 class LiangBarskyTest {
 
-    LiangBarsky lb = new LiangBarsky(1.0, 1.0, 10.0, 10.0);
+    final LiangBarsky lb = new LiangBarsky(1.0, 1.0, 10.0, 10.0);
 
     @Test
     void testLineCompletelyInside() {

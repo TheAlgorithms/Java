@@ -5,7 +5,7 @@ package com.thealgorithms.maths;
  * A power of four is a number that can be expressed as 4^n where n is a non-negative integer.
  * This class provides a method to determine if a given integer is a power of four using bit manipulation.
  *
- * @author krishna-medapati (https://github.com/krishna-medapati)
+ * @author krishna-medapati (<a href="https://github.com/krishna-medapati">...</a>)
  */
 public final class PowerOfFour {
     private PowerOfFour() {
@@ -13,12 +13,12 @@ public final class PowerOfFour {
 
     /**
      * Checks if the given integer is a power of four.
-     *
+     * <p>
      * A number is considered a power of four if:
      * 1. It is greater than zero
      * 2. It has exactly one '1' bit in its binary representation (power of two)
      * 3. The '1' bit is at an even position (0, 2, 4, 6, ...)
-     *
+     * <p>
      * The method uses the mask 0x55555555 (binary: 01010101010101010101010101010101)
      * to check if the set bit is at an even position.
      *

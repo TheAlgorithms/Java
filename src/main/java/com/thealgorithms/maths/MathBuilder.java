@@ -6,7 +6,7 @@ import java.util.function.BiFunction;
 import java.util.function.Function;
 
 /**
- * Author: Sadiul Hakim : https://github.com/sadiul-hakim
+ * Author: Sadiul Hakim : <a href="https://github.com/sadiul-hakim">...</a>
  * Profession: Backend Engineer
  * Date: Oct 20, 2024
  */

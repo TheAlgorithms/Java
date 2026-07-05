@@ -4,14 +4,11 @@ import java.util.Arrays;
 
 /**
  * 0/1 Knapsack Problem - Dynamic Programming solution.
- *
  * This algorithm solves the classic optimization problem where we have n items,
  * each with a weight and a value. The goal is to maximize the total value
  * without exceeding the knapsack's weight capacity.
- *
  * Time Complexity: O(n * W)
  * Space Complexity: O(W)
- *
  * Example:
  * values = {60, 100, 120}
  * weights = {10, 20, 30}
@@ -64,7 +61,7 @@ public final class Knapsack {
         return dp[weightCapacity];
     }
 
-    /*
+
     // Example main method for local testing only.
     public static void main(String[] args) {
         int[] values = {60, 100, 120};
@@ -74,5 +71,5 @@ public final class Knapsack {
         int maxValue = knapSack(weightCapacity, weights, values);
         System.out.println("Maximum value = " + maxValue); // Output: 220
     }
-    */
+
 }

@@ -10,7 +10,7 @@ import java.util.Set;
  * computes the value of this polynomial at a given point.
  *
  * <p>
- * Wikipedia: https://en.wikipedia.org/wiki/Neville%27s_algorithm
+ * Wikipedia: <a href="https://en.wikipedia.org/wiki/Neville%27s_algorithm">...</a>
  *
  * @author Mitrajit Ghorui(KeyKyrios)
  */

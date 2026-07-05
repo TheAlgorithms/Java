@@ -2,7 +2,7 @@ package com.thealgorithms.devutils.nodes;
 
 /**
  * Base class for any tree node which holds a reference to the parent node.
- *
+ * <p>
  * All known subclasses: {@link SimpleTreeNode}, {@link LargeTreeNode}.
  *
  * @param <E> The type of the data held in the Node.

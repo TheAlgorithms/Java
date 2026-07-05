@@ -4,13 +4,13 @@ import java.util.HashMap;
 
 /**
  * Finds the minimum window substring in 's' that contains all characters of 't'.
- *
+ * <p>
  * Worst-case performance O(n)
  * Best-case performance O(n)
  * Average performance O(n)
  * Worst-case space complexity O(1)
  *
- * @author https://github.com/Chiefpatwal
+ * @aut<a href="hor">https://github.com/Chiefpa</a>twal
  */
 public final class MinimumWindowSubstring {
     // Prevent instantiation

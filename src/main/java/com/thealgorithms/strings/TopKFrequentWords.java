@@ -13,7 +13,7 @@ import java.util.Map;
  * words are ranked in lexicographical ascending order.
  *
  * <p>Reference:
- * https://en.wikipedia.org/wiki/Top-k_problem
+ * <a href="https://en.wikipedia.org/wiki/Top-k_problem">...</a>
  *
  */
 public final class TopKFrequentWords {

@@ -11,7 +11,7 @@ package com.thealgorithms.ciphers;
 public class Blowfish {
 
     // Initializing substitution boxes
-    String[][] sBox = {
+    final String[][] sBox = {
         {
             "d1310ba6",
             "98dfb5ac",
@@ -1047,7 +1047,7 @@ public class Blowfish {
     };
 
     // Initializing subkeys with digits of pi
-    String[] subKeys = {
+    final String[] subKeys = {
         "243f6a88",
         "85a308d3",
         "13198a2e",
@@ -1069,7 +1069,7 @@ public class Blowfish {
     };
 
     // Initializing modVal to 2^32
-    long modVal = 4294967296L;
+    final long modVal = 4294967296L;
 
     /**
      * This method returns binary representation of the hexadecimal number passed as parameter
@@ -1139,7 +1139,7 @@ public class Blowfish {
      *     passed as parameters
      */
     private String addBin(String a, String b) {
-        String ans = "";
+        String ans;
         long n1 = Long.parseUnsignedLong(a, 16);
         long n2 = Long.parseUnsignedLong(b, 16);
         n1 = (n1 + n2) % modVal;
@@ -1155,7 +1155,7 @@ public class Blowfish {
         */
     private String f(String plainText) {
         String[] a = new String[4];
-        String ans = "";
+        String ans;
         for (int i = 0; i < 8; i += 2) {
             // column number for S-box is a 8-bit value
             long col = Long.parseUnsignedLong(hexToBin(plainText.substring(i, i + 2)), 2);

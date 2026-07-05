@@ -14,11 +14,11 @@ import java.util.List;
  * P2      | 2 ms        | 1 ms
  * In this example, P1 will be executed at time = 0 until time = 1 when P2 arrives. At time = 2, P2 will be executed until time = 4. At time 4, P2 is done, and P1 is executed again to be done.
  * That's a simple example of how the algorithm works.
- * More information you can find here -> https://en.wikipedia.org/wiki/Shortest_remaining_time
+ * More information you can find here -> <a href="https://en.wikipedia.org/wiki/Shortest_remaining_time">...</a>
  */
 public class SRTFScheduling {
     protected List<ProcessDetails> processes;
-    protected List<String> ready;
+    protected final List<String> ready;
 
     /**
      * Constructor

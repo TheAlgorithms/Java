@@ -2,7 +2,7 @@ package com.thealgorithms.dynamicprogramming;
 
 /**
  * The {@code Tribonacci} class provides a method to compute the n-th number in the Tribonacci sequence.
- * N-th Tribonacci Number - https://leetcode.com/problems/n-th-tribonacci-number/description/
+ * N-th Tribonacci Number - <a href="https://leetcode.com/problems/n-th-tribonacci-number/description/">...</a>
  */
 public final class Tribonacci {
     private Tribonacci() {

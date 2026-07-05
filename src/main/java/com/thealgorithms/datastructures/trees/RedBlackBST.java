@@ -12,7 +12,7 @@ public class RedBlackBST {
 
     private class Node {
 
-        int key = -1;
+        int key;
         int color = BLACK;
         Node left = nil;
         Node right = nil;
@@ -95,7 +95,7 @@ public class RedBlackBST {
 
     private void fixTree(Node node) {
         while (node.p.color == RED) {
-            Node y = nil;
+            Node y;
             if (node.p == node.p.p.left) {
                 y = node.p.p.right;
 

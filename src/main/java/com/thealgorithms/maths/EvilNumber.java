@@ -3,9 +3,9 @@ package com.thealgorithms.maths;
 /**
  * In number theory, an evil number is a non-negative integer that has an even number of 1s in its binary expansion.
  * Non-negative integers that are not evil are called odious numbers.
- *
- * Evil Number Wiki: https://en.wikipedia.org/wiki/Evil_number
- * Odious Number Wiki: https://en.wikipedia.org/wiki/Odious_number
+ * <p>
+ * Evil Number Wi<a href="ki:">https://en.wikipedia.org/wiki/Evil_nu</a>mber
+ * Odious Number Wi<a href="ki:">https://en.wikipedia.org/wiki/Odious_nu</a>mber
  */
 public final class EvilNumber {
 

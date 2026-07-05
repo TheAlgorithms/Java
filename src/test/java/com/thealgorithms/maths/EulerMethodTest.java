@@ -14,11 +14,11 @@ import org.junit.jupiter.params.provider.MethodSource;
 class EulerMethodTest {
 
     private static class EulerFullTestCase {
-        double[] params;
-        BiFunction<Double, Double, Double> equation;
-        int expectedSize;
-        double[] expectedFirstPoint;
-        double[] expectedLastPoint;
+        final double[] params;
+        final BiFunction<Double, Double, Double> equation;
+        final int expectedSize;
+        final double[] expectedFirstPoint;
+        final double[] expectedLastPoint;
 
         EulerFullTestCase(double[] params, BiFunction<Double, Double, Double> equation, int expectedSize, double[] expectedFirstPoint, double[] expectedLastPoint) {
             this.params = params;

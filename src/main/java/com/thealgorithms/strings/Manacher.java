@@ -1,7 +1,7 @@
 package com.thealgorithms.strings;
 
 /**
- * Wikipedia: https://en.wikipedia.org/wiki/Longest_palindromic_substring#Manacher's_algorithm
+ * Wikipedia: <a href="https://en.wikipedia.org/wiki/Longest_palindromic_substring#Manacher">...</a>'s_algorithm
  */
 public final class Manacher {
 

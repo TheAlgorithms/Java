@@ -4,8 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * @author Prateek Kumar Oraon (https://github.com/prateekKrOraon)
- *
+ * @author Prateek Kumar Oraon (<a href="https://github.com/prateekKrOraon">...</a>)
+ * <p>
  *         An implementation of Rabin-Karp string matching algorithm
  *         Program will simply end if there is no match
  */
@@ -30,8 +30,8 @@ public final class RabinKarp {
         int t = 0;
         int p = 0;
         int h = 1;
-        int j = 0;
-        int i = 0;
+        int j;
+        int i;
 
         if (m > n) {
             return new ArrayList<>();

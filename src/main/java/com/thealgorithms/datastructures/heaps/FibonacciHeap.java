@@ -196,8 +196,7 @@ public class FibonacciHeap {
      * @pre heap contains x
      */
     private void decreaseKey(HeapNode x, int delta) {
-        int newKey = x.getKey() - delta;
-        x.key = newKey;
+        x.key = x.getKey() - delta;
         if (x.isRoot()) { // no parent to x
             this.updateMin(x);
             return;

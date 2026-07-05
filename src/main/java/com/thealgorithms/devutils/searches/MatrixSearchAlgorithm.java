@@ -3,7 +3,7 @@ package com.thealgorithms.devutils.searches;
 /**
  * The common interface of most searching algorithms that search in matrixes.
  *
- * @author Aitor Fidalgo (https://github.com/aitorfi)
+ * @author Aitor Fidalgo (<a href="https://github.com/aitorfi">...</a>)
  */
 public interface MatrixSearchAlgorithm {
     /**

@@ -1,12 +1,10 @@
 package com.thealgorithms.datastructures.stacks;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
-import static org.junit.jupiter.api.Assertions.assertTrue;
-
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 class NodeStackTest {
 
@@ -244,7 +242,7 @@ class NodeStackTest {
 
         String stackString = intStack.toString();
         // Basic check that toString doesn't throw exception and returns something
-        assertTrue(stackString != null, "toString should not return null");
-        assertTrue(stackString.length() > 0, "toString should return non-empty string");
+        assertNotNull(stackString, "toString should not return null");
+        assertFalse(stackString.isEmpty(), "toString should return non-empty string");
     }
 }

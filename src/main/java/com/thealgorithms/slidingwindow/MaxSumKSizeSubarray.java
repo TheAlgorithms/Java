@@ -10,7 +10,7 @@ package com.thealgorithms.slidingwindow;
  * Average performance O(n)
  * Worst-case space complexity O(1)
  *
- * @author Your Name (https://github.com/Chiefpatwal)
+ * @author Your Name (<a href="https://github.com/Chiefpatwal">...</a>)
  */
 public final class MaxSumKSizeSubarray {
 

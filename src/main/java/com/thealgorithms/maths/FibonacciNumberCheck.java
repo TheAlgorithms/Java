@@ -27,7 +27,7 @@ public final class FibonacciNumberCheck {
      * @param number the number
      * @return <tt>true</tt> if {@code number} is a Fibonacci number, otherwise
      *         <tt>false</tt>
-     * @link https://en.wikipedia.org/wiki/Fibonacci_number#Identification
+     * @link <a href="https://en.wikipedia.org/wiki/Fibonacci_number#Identification">...</a>
      */
     public static boolean isFibonacciNumber(long number) {
         long value1 = 5 * number * number + 4;

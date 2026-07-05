@@ -16,7 +16,7 @@ import java.util.TreeSet;
  *
  * <p>
  * Original source of code:
- * https://rosettacode.org/wiki/Dijkstra%27s_algorithm#Java Also most of the
+ * <a href="https://rosettacode.org/wiki/Dijkstra%27s_algorithm#Java">...</a> Also most of the
  * comments are from RosettaCode.
  */
 public final class Dijkstra {

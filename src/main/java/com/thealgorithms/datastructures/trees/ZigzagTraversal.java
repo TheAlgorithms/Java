@@ -56,8 +56,9 @@ public final class ZigzagTraversal {
             // traverse all the level nodes
             for (int i = 0; i < nodesOnLevel; i++) {
                 BinaryTree.Node node = q.poll();
+                assert node != null;
                 if (prevLevelFromLeftToRight) {
-                    level.add(0, node.data);
+                    level.addFirst(node.data);
                 } else {
                     level.add(node.data);
                 }

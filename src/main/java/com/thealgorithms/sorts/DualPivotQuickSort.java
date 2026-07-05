@@ -3,7 +3,7 @@ package com.thealgorithms.sorts;
 /**
  * Dual Pivot Quick Sort Algorithm
  *
- * @author Debasish Biswas (https://github.com/debasishbsws) *
+ * @author Debasish Biswas (<a href="https://github.com/debasishbsws">...</a>) *
  * @see SortAlgorithm
  */
 public class DualPivotQuickSort implements SortAlgorithm {

@@ -7,7 +7,7 @@ import java.util.Map;
  * The Baconian Cipher is a substitution cipher where each letter is represented
  * by a group of five binary digits (A's and B's). It can also be used to hide
  * messages within other texts, making it a simple form of steganography.
- * https://en.wikipedia.org/wiki/Bacon%27s_cipher
+ * <a href="https://en.wikipedia.org/wiki/Bacon%27s_cipher">...</a>
  *
  * @author Bennybebo
  */

@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 
 class SimpleSubCipherTest {
 
-    SimpleSubCipher simpleSubCipher = new SimpleSubCipher();
+    final SimpleSubCipher simpleSubCipher = new SimpleSubCipher();
 
     @Test
     void simpleSubCipherEncryptTest() {

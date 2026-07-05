@@ -3,7 +3,7 @@ package com.thealgorithms.strings;
 /**
  * Removes characters affected by '*' in a string.
  * Each '*' deletes the closest non-star character to its left.
- *
+ * <p>
  * Example:
  * Input: leet**cod*e
  * Output: lecoe
@@ -19,7 +19,7 @@ public final class RemoveStars {
 
         for (char c : s.toCharArray()) {
             if (c == '*') {
-                if (result.length() > 0) {
+                if (!result.isEmpty()) {
                     result.deleteCharAt(result.length() - 1);
                 }
             } else {

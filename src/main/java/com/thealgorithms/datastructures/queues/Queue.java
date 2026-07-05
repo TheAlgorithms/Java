@@ -4,7 +4,7 @@ package com.thealgorithms.datastructures.queues;
  * This class implements a Queue data structure using an array.
  * A queue is a first-in-first-out (FIFO) data structure where elements are
  * added to the rear and removed from the front.
- *
+ * <p>
  * Note: This implementation is not thread-safe.
  */
 public final class Queue<T> {

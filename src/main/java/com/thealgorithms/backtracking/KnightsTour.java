@@ -6,12 +6,12 @@ import java.util.List;
 
 /**
  * The KnightsTour class solves the Knight's Tour problem using backtracking.
- *
+ * <p>
  * Problem Statement:
  * Given an N*N board with a knight placed on the first block, the knight must
  * move according to chess rules and visit each square on the board exactly once.
  * The class outputs the sequence of moves for the knight.
- *
+ * <p>
  * Example:
  * Input: N = 8 (8x8 chess board)
  * Output: The sequence of numbers representing the order in which the knight visits each square.

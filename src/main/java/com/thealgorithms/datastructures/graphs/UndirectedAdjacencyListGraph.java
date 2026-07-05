@@ -5,7 +5,7 @@ import java.util.HashMap;
 import java.util.HashSet;
 
 public class UndirectedAdjacencyListGraph {
-    private ArrayList<HashMap<Integer, Integer>> adjacencyList = new ArrayList<>();
+    private final ArrayList<HashMap<Integer, Integer>> adjacencyList = new ArrayList<>();
 
     /**
      * Adds a new node to the graph by adding an empty HashMap for its neighbors.

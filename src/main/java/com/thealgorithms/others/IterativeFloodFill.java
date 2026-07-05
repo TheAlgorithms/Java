@@ -93,10 +93,6 @@ public final class IterativeFloodFill {
      */
     private static boolean shouldSkipPixel(final int[][] image, final int x, final int y, final int oldColor) {
 
-        if (x < 0 || x >= image.length || y < 0 || y >= image[0].length || image[x][y] != oldColor) {
-            return true;
-        }
-
-        return false;
+        return x < 0 || x >= image.length || y < 0 || y >= image[0].length || image[x][y] != oldColor;
     }
 }

@@ -4,7 +4,7 @@ package com.thealgorithms.maths;
  * Find the 2 elements which are non-repeating in an array
  * Reason to use bitwise operator: It makes our program faster as we are operating on bits and not
  * on actual numbers.
- *
+ * <p>
  * Explanation of the code:
  * Let us assume we have an array [1, 2, 1, 2, 3, 4]
  * Property of XOR: num ^ num = 0.

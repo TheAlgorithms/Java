@@ -8,9 +8,9 @@ package com.thealgorithms.matrix;
  * where:
  * - l is a lower triangular matrix with 1s on its diagonal
  * - u is an upper triangular matrix
- *
- * Reference:
- * https://en.wikipedia.org/wiki/lu_decomposition
+ * <p>
+ * Reference:<a href="
+ ">* https://en.wikipedia.org/wiki/lu_decomposi</a>tion
  */
 public final class LUDecomposition {
 
@@ -21,8 +21,8 @@ public final class LUDecomposition {
      * A helper class to store both l and u matrices
      */
     public static class LU {
-        double[][] l;
-        double[][] u;
+        final double[][] l;
+        final double[][] u;
 
         LU(double[][] l, double[][] u) {
             this.l = l;

@@ -16,7 +16,7 @@ import com.thealgorithms.devutils.searches.SearchAlgorithm;
  * Worst-case performance O(log n) Best-case performance O(1) Average
  * performance O(log n) Worst-case space complexity O(1)
  *
- * @author Pratik Padalia (https://github.com/15pratik)
+ * @author Pratik Padalia (<a href="https://github.com/15pratik">...</a>)
  * @see SearchAlgorithm
  * @see BinarySearch
  */

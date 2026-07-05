@@ -1,11 +1,10 @@
 package com.thealgorithms.backtracking;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
-
 import java.util.Arrays;
 import java.util.List;
 import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 public class PermutationTest {
 
@@ -24,7 +23,7 @@ public class PermutationTest {
     @Test
     void testMultipleElements() {
         List<Integer[]> result = Permutation.permutation(new Integer[] {1, 2});
-        assertTrue(Arrays.equals(result.get(0), new Integer[] {1, 2}));
-        assertTrue(Arrays.equals(result.get(1), new Integer[] {2, 1}));
+        assertArrayEquals(result.get(0), new Integer[]{1, 2});
+        assertArrayEquals(result.get(1), new Integer[]{2, 1});
     }
 }

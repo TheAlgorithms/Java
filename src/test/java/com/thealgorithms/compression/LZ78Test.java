@@ -1,11 +1,10 @@
 package com.thealgorithms.compression;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
-
 import java.util.List;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 class LZ78Test {
 
@@ -153,7 +152,7 @@ class LZ78Test {
 
         // Verify first few tokens
         // Expected pattern: (0,a)(1,b)(2,a)(3,b) building dictionary 1:a, 2:ab, 3:aa, 4:aab
-        assertTrue(compressed.size() > 0);
+        assertFalse(compressed.isEmpty());
         assertEquals(0, compressed.getFirst().index()); // First char always has index 0
     }
 

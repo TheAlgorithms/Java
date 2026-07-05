@@ -110,8 +110,8 @@ public class BurrowsWheelerTransformTest {
 
         assertEquals(res1, res1);
         assertEquals(res1, res2);
-        assertNotEquals(res1, null); // obj == null
-        assertNotEquals(res1, new Object()); // different class
+        assertNotEquals(null, res1); // obj == null
+        assertNotEquals(new Object(), res1); // different class
         assertNotEquals(res1, res3); // different transformed
         assertNotEquals(res1, res4); // different originalIndex
 

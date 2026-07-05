@@ -7,7 +7,7 @@ import com.thealgorithms.devutils.searches.SearchAlgorithm;
  * Linear Search is a simple searching algorithm that checks
  * each element of the array sequentially until the target
  * value is found or the array ends.
- *
+ * <p>
  * It works for both sorted and unsorted arrays.
  *
  * <p>How it works step-by-step:
@@ -38,7 +38,7 @@ import com.thealgorithms.devutils.searches.SearchAlgorithm;
  *  - Best case: O(1) - target is the first element
  *  - Average case: O(n) - target is somewhere in the middle
  *  - Worst case: O(n) - target is last or not present
- *
+ * <p>
  * Space Complexity: O(1)
  *
  * @author Varun Upadhyay

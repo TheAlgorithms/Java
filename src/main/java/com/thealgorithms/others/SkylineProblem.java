@@ -113,8 +113,8 @@ public class SkylineProblem {
      * A class representing a point in the skyline with its x-coordinate and height.
      */
     public class Skyline {
-        public int coordinates;
-        public int height;
+        public final int coordinates;
+        public final int height;
 
         /**
          * Constructor for the {@code Skyline} class.
@@ -133,9 +133,9 @@ public class SkylineProblem {
      * x-coordinates.
      */
     public class Building {
-        public int left;
-        public int height;
-        public int right;
+        public final int left;
+        public final int height;
+        public final int right;
 
         /**
          * Constructor for the {@code Building} class.

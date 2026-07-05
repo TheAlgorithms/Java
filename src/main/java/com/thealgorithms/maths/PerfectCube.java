@@ -1,7 +1,7 @@
 package com.thealgorithms.maths;
 
 /**
- * https://en.wikipedia.org/wiki/Cube_(algebra)
+ * <a href="https://en.wikipedia.org/wiki/Cube_(algebra)">...</a>
  */
 public final class PerfectCube {
     private PerfectCube() {

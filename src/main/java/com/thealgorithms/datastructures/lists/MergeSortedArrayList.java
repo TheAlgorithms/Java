@@ -24,7 +24,7 @@ import java.util.List;
  *
  * <p>This implementation assumes the input lists are already sorted in ascending order.</p>
  *
- * @author https://github.com/shellhub
+ * @author <a href="https://github.com/shellhub">...</a>
  * @see List
  */
 public final class MergeSortedArrayList {

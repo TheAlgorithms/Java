@@ -4,7 +4,7 @@ import java.util.Stack;
 
 /**
  * Converts a prefix expression to an infix expression using a stack.
- *
+ * <p>
  * The input prefix expression should consist of
  * valid operands (letters or digits) and operators (+, -, *, /, ^).
  * Parentheses are not required in the prefix string.

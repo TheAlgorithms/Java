@@ -2,14 +2,14 @@ package com.thealgorithms.maths;
 
 /**
  *  This class provides methods to compute the Greatest Common Divisor (GCD) of two or more integers.
- *
+ * <p>
  * The Greatest Common Divisor (GCD) of two or more integers is the largest positive integer that divides each of the integers without leaving a remainder.
- *
+ * <p>
  * The GCD can be computed using the Euclidean algorithm, which is based on the principle that the GCD of two numbers also divides their difference.
- *
+ * <p>
  * For more information, refer to the
  * <a href="https://en.wikipedia.org/wiki/Greatest_common_divisor">Greatest Common Divisor</a> Wikipedia page.
- *
+ * <p>
  * <b>Example usage:</b>
  * <pre>
  * int result1 = GCD.gcd(48, 18);

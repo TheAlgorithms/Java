@@ -171,7 +171,7 @@ public class GenericHashMapUsingArrayList<K, V> {
      * A private inner class representing a key-value pair (node) in the hash map.
      */
     private class Node {
-        K key;
+        final K key;
         V val;
 
         /**

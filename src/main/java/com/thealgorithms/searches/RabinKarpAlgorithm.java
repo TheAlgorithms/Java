@@ -35,7 +35,7 @@ public final class RabinKarpAlgorithm {
                and pattern. If the hash values match then only
                check for characters one by one*/
 
-            int j = 0;
+            int j;
             if (hashForPattern == hashForText) {
                 /* Check for characters one by one */
                 for (j = 0; j < patternLength; j++) {

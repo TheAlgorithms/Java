@@ -9,11 +9,11 @@ import java.util.Stack;
  * The time complexity is O(n) in the best case and O(n log(n)) in the worst case.
  * The space complexity is O(n).
  * This algorithm is applicable only to integral coordinates.
- *
- * References:
- * https://github.com/TheAlgorithms/C-Plus-Plus/blob/master/geometry/graham_scan_algorithm.cpp
- * https://github.com/TheAlgorithms/C-Plus-Plus/blob/master/geometry/graham_scan_functions.hpp
- * https://algs4.cs.princeton.edu/99hull/GrahamScan.java.html
+ * <p>
+ * References:<a href="
+ ">* https://github.com/TheAlgorithms/C-Plus-Plus/blob/master/geometry/graham_scan_algorithm</a>.cpp<a href="
+ ">* https://github.com/TheAlgorithms/C-Plus-Plus/blob/master/geometry/graham_scan_functions</a>.hpp<a href="
+ ">* https://algs4.cs.princeton.edu/99hull/GrahamScan.java.</a>html
  */
 public class GrahamScan {
 

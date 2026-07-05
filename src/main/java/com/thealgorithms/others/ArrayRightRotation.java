@@ -4,8 +4,8 @@ package com.thealgorithms.others;
  * Provides a method to perform a right rotation on an array.
  * A left rotation operation shifts each element of the array
  * by a specified number of positions to the right.
- *
- * https://en.wikipedia.org/wiki/Right_rotation *
+ * <p><a href="
+ ">* https://en.wikipedia.org/wiki/Right_rota</a>tion *
  */
 public final class ArrayRightRotation {
     private ArrayRightRotation() {

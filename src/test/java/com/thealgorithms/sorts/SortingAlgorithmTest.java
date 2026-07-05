@@ -286,7 +286,7 @@ public abstract class SortingAlgorithmTest {
     }
 
     static class CustomObject implements Comparable<CustomObject> {
-        int value;
+        final int value;
 
         CustomObject(int value) {
             this.value = value;

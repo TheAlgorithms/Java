@@ -8,7 +8,7 @@ import org.junit.jupiter.api.Test;
 /**
  * Test cases for QuickSortLinkedList.
  * Author: Prabhat-Kumar-42
- * GitHub: https://github.com/Prabhat-Kumar-42
+ * GitHub: <a href="https://github.com/Prabhat-Kumar-42">...</a>
  */
 public class QuickSortLinkedListTest {
 

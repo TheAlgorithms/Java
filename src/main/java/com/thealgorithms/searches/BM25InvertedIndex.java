@@ -10,15 +10,15 @@ import java.util.Objects;
  * Inverted Index implementation with BM25 Scoring for movie search.
  * This class supports adding movie documents and searching for terms
  * within those documents using the BM25 algorithm.
- * @author Prayas Kumar (https://github.com/prayas7102)
+ * @author Prayas Kumar (<a href="https://github.com/prayas7102">...</a>)
  */
 
 class Movie {
-    int docId; // Unique identifier for the movie
-    String name; // Movie name
-    double imdbRating; // IMDb rating of the movie
-    int releaseYear; // Year the movie was released
-    String content; // Full text content (could be the description or script)
+    final int docId; // Unique identifier for the movie
+    final String name; // Movie name
+    final double imdbRating; // IMDb rating of the movie
+    final int releaseYear; // Year the movie was released
+    final String content; // Full text content (could be the description or script)
 
     /**
      * Constructor for the Movie class.
@@ -53,8 +53,8 @@ class Movie {
 }
 
 class SearchResult {
-    int docId; // Unique identifier of the movie document
-    double relevanceScore; // Relevance score based on the BM25 algorithm
+    final int docId; // Unique identifier of the movie document
+    final double relevanceScore; // Relevance score based on the BM25 algorithm
 
     /**
      * Constructor for SearchResult class.

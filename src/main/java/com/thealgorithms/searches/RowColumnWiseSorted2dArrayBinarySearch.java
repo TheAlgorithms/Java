@@ -8,7 +8,7 @@ import com.thealgorithms.devutils.searches.MatrixSearchAlgorithm;
  *  {15, 25, 35, 45},
  *  {18, 28, 38, 48},
  *  {21, 31, 41, 51}}
- *
+ * <p>
  * This array is sorted in both row and column manner.
  * In this two pointers are taken, the first points to the 0th row and the second one points to end
  * column, and then the element corresponding to the pointers placed in the array is compared with

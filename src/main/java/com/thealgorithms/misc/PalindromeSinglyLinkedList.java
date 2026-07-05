@@ -6,9 +6,9 @@ import java.util.Stack;
  * A simple way of knowing if a singly linked list is palindrome is to push all
  * the values into a Stack and then compare the list to popped vales from the
  * Stack.
- *
- * See more:
- * https://www.geeksforgeeks.org/function-to-check-if-a-singly-linked-list-is-palindrome/
+ * <p>
+ * See more:<a href="
+ ">* https://www.geeksforgeeks.org/function-to-check-if-a-singly-linked-list-is-palindr</a>ome/
  */
 @SuppressWarnings("rawtypes")
 public final class PalindromeSinglyLinkedList {
@@ -66,7 +66,7 @@ public final class PalindromeSinglyLinkedList {
         return true;
     }
     static class Node {
-        int val;
+        final int val;
         Node next;
         Node(int val) {
             this.val = val;

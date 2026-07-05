@@ -8,7 +8,7 @@ import org.junit.jupiter.api.Test;
 
 /**
  * JUnit test class for GroundToGroundProjectileMotion
- *
+ * <p>
  * Contains unit tests for projectile motion calculations using JUnit 5
  */
 public class GroundToGroundProjectileMotionTest {

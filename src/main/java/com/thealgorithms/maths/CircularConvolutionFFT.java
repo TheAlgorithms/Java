@@ -35,7 +35,7 @@ public final class CircularConvolutionFFT {
      * FFT algorithm for faster calculations of the two DFTs and the final IDFT.
      *
      * <p>
-     * More info: https://en.wikipedia.org/wiki/Convolution_theorem
+     * More info: <a href="https://en.wikipedia.org/wiki/Convolution_theorem">...</a>
      *
      * @param a The first signal.
      * @param b The other signal.

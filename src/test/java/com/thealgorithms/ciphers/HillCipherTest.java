@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 
 class HillCipherTest {
 
-    HillCipher hillCipher = new HillCipher();
+    final HillCipher hillCipher = new HillCipher();
 
     @Test
     void hillCipherEncryptTest() {

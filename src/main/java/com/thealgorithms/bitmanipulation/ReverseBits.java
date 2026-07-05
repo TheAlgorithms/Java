@@ -4,14 +4,14 @@ package com.thealgorithms.bitmanipulation;
  * This class provides a method to reverse the bits of a 32-bit integer.
  * Reversing the bits means that the least significant bit (LSB) becomes
  * the most significant bit (MSB) and vice versa.
- *
+ * <p>
  * Example:
  * Input (binary): 00000010100101000001111010011100 (43261596)
  * Output (binary): 00111001011110000010100101000000 (964176192)
- *
+ * <p>
  * Time Complexity: O(32) - A fixed number of 32 iterations
  * Space Complexity: O(1) - No extra space used
- *
+ * <p>
  * Note:
  * - If the input is negative, Java handles it using two’s complement representation.
  * - This function works on 32-bit integers by default.

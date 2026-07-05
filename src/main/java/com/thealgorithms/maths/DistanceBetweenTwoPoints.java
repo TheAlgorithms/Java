@@ -8,7 +8,7 @@ package com.thealgorithms.maths;
  *
  * <p>Formula: d = sqrt((x2 - x1)^2 + (y2 - y1)^2)
  *
- * <p>Reference: https://en.wikipedia.org/wiki/Euclidean_distance
+ * <p>Reference: <a href="https://en.wikipedia.org/wiki/Euclidean_distance">...</a>
  */
 public final class DistanceBetweenTwoPoints {
 

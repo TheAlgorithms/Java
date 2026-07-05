@@ -9,11 +9,11 @@ public final class ClosestPair {
     /**
      * Number of points
      */
-    int numberPoints;
+    final int numberPoints;
     /**
      * Input data, maximum 10000.
      */
-    Location[] array;
+    final Location[] array;
     /**
      * Minimum point coordinate.
      */
@@ -53,8 +53,8 @@ public final class ClosestPair {
      */
     public static class Location {
 
-        double x;
-        double y;
+        final double x;
+        final double y;
 
         /**
          * @param xpar (IN Parameter) x coordinate <br>

@@ -10,7 +10,7 @@ import org.junit.jupiter.params.provider.NullAndEmptySource;
 
 /**
  * Test case for Highest Set Bit
- * @author Abhinay Verma(https://github.com/Monk-AbhinayVerma)
+ * @author Abhinay Verma(<a href="https://github.com/Monk-AbhinayVerma">...</a>)
  */
 public class OnesComplementTest {
 

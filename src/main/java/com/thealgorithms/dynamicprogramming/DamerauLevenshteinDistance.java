@@ -5,14 +5,14 @@ import java.util.Map;
 
 /**
  * Implementation of the full Damerau–Levenshtein distance algorithm.
- *
+ * <p>
  * This algorithm calculates the minimum number of operations required
  * to transform one string into another. Supported operations are:
  * insertion, deletion, substitution, and transposition of adjacent characters.
- *
+ * <p>
  * Unlike the restricted version (OSA), this implementation allows multiple
  * edits on the same substring, computing the true edit distance.
- *
+ * <p>
  * Time Complexity: O(n * m * max(n, m))
  * Space Complexity: O(n * m)
  */
@@ -60,7 +60,7 @@ public final class DamerauLevenshteinDistance {
     /**
      * Builds a character map containing all unique characters from both strings.
      * Each character is initialized with a position value of 0.
-     *
+     * <p>
      * This map is used to track the last occurrence position of each character
      * during the distance computation, which is essential for handling transpositions.
      *
@@ -81,11 +81,11 @@ public final class DamerauLevenshteinDistance {
 
     /**
      * Initializes the dynamic programming table for the algorithm.
-     *
+     * <p>
      * The table has dimensions (n+2) x (m+2) where n and m are the lengths
      * of the input strings. The extra rows and columns are used to handle
      * the transposition operation correctly.
-     *
+     * <p>
      * The first row and column are initialized with the maximum possible distance,
      * while the second row and column represent the base case of transforming
      * from an empty string.
@@ -116,11 +116,11 @@ public final class DamerauLevenshteinDistance {
     /**
      * Fills the dynamic programming table by computing the minimum edit distance
      * for each substring pair.
-     *
+     * <p>
      * This method implements the core algorithm logic, iterating through both strings
      * and computing the minimum cost of transforming substrings. It considers all
      * four operations: insertion, deletion, substitution, and transposition.
-     *
+     * <p>
      * The character position map is updated as we progress through the first string
      * to enable efficient transposition cost calculation.
      *
@@ -156,13 +156,13 @@ public final class DamerauLevenshteinDistance {
 
     /**
      * Computes the minimum cost among all possible operations at the current position.
-     *
+     * <p>
      * This method evaluates four possible operations:
      * 1. Substitution: replace character at position i with character at position j
      * 2. Insertion: insert character from s2 at position j
      * 3. Deletion: delete character from s1 at position i
      * 4. Transposition: swap characters that have been seen before
-     *
+     * <p>
      * The transposition cost accounts for the gap between the current position
      * and the last position where matching characters were found.
      *

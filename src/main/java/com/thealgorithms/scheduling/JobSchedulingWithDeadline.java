@@ -6,7 +6,7 @@ import java.util.Comparator;
 /**
  * A class that implements a job scheduling algorithm to maximize profit
  * while adhering to job deadlines and arrival times.
- *
+ * <p>
  * This class provides functionality to schedule jobs based on their profit,
  * arrival time, and deadlines to ensure that the maximum number of jobs is completed
  * within the given timeframe. It sorts the jobs in decreasing order of profit
@@ -18,15 +18,15 @@ public final class JobSchedulingWithDeadline {
 
     /**
      * Represents a job with an ID, arrival time, deadline, and profit.
-     *
+     * <p>
      * Each job has a unique identifier, an arrival time (when it becomes available for scheduling),
      * a deadline by which it must be completed, and a profit associated with completing the job.
      */
     static class Job {
-        int jobId;
-        int arrivalTime;
-        int deadline;
-        int profit;
+        final int jobId;
+        final int arrivalTime;
+        final int deadline;
+        final int profit;
 
         /**
          * Constructs a Job instance with the specified job ID, arrival time, deadline, and profit.
@@ -46,7 +46,7 @@ public final class JobSchedulingWithDeadline {
 
     /**
      * Schedules jobs to maximize profit while respecting their deadlines and arrival times.
-     *
+     * <p>
      * This method sorts the jobs in descending order of profit and attempts
      * to allocate them to time slots that are before or on their deadlines,
      * provided they have arrived. The function returns an array where the first element

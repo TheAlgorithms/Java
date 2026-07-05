@@ -17,7 +17,7 @@ package com.thealgorithms.searches;
  * This search algorithm requires the input array to be sorted.
  * </p>
  *
- * @author Podshivalov Nikita (https://github.com/nikitap492)
+ * @author Podshivalov Nikita (<a href="https://github.com/nikitap492">...</a>)
  */
 class InterpolationSearch {
 

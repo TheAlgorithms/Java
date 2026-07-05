@@ -6,7 +6,7 @@ import java.util.Objects;
 import org.junit.jupiter.api.Test;
 
 /**
- * @author Aitor Fidalgo (https://github.com/aitorfi)
+ * @author Aitor Fidalgo (<a href="https://github.com/aitorfi">...</a>)
  * @see BubbleSort
  */
 public class BubbleSortTest {
@@ -129,8 +129,8 @@ public class BubbleSortTest {
      * Custom Comparable class for testing.
      **/
     static class Person implements Comparable<Person> {
-        String name;
-        int age;
+        final String name;
+        final int age;
 
         Person(String name, int age) {
             this.name = name;

@@ -10,11 +10,11 @@ import java.util.Set;
  * Node class represents a graph node. Each node is associated with a color
  * (initially 1) and contains a set of edges representing its adjacent nodes.
  *
- * @author Bama Charan Chhandogi (https://github.com/BamaCharanChhandogi)
+ * @author Bama Charan Chhandogi (<a href="https://github.com/BamaCharanChhandogi">...</a>)
  */
 class Node {
     int color = 1; // Initial color for each node
-    Set<Integer> edges = new HashSet<Integer>(); // Set of edges representing adjacent nodes
+    final Set<Integer> edges = new HashSet<Integer>(); // Set of edges representing adjacent nodes
 }
 
 /**
@@ -60,7 +60,7 @@ public final class MColoring {
             q.add(sv);
 
             // Perform BFS to process all nodes and their adjacent nodes
-            while (q.size() != 0) {
+            while (!q.isEmpty()) {
                 int top = q.peek(); // Get the current node from the queue
                 q.remove();
 

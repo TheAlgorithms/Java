@@ -11,8 +11,8 @@ import java.util.List;
 public class WaveletTree {
 
     private class Node {
-        int low;
-        int high;
+        final int low;
+        final int high;
         Node left;
         Node right;
         List<Integer> leftCount; // Prefix sums of elements going to the left child
@@ -223,9 +223,8 @@ public class WaveletTree {
         int elementsToLeft = countLeftInR - countLeftInLMinus1;
 
         if (k <= elementsToLeft) {
-            int newL = countLeftInLMinus1;
             int newR = countLeftInR - 1;
-            return kthSmallest(node.left, newL, newR, k);
+            return kthSmallest(node.left, countLeftInLMinus1, newR, k);
         } else {
             int newL = left - countLeftInLMinus1;
             int newR = right - countLeftInR;

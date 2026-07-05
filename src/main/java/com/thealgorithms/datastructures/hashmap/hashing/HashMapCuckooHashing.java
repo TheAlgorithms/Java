@@ -7,7 +7,7 @@ import java.util.Objects;
  * Cuckoo hashing is a type of open-addressing hash table that resolves collisions
  * by relocating existing keys. It utilizes two hash functions to minimize collisions
  * and automatically resizes the table when the load factor exceeds 0.7.
- *
+ * <p>
  * For more information on cuckoo hashing, refer to
  * <a href="https://en.wikipedia.org/wiki/Cuckoo_hashing">this Wikipedia page</a>.
  */

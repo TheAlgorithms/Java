@@ -16,7 +16,7 @@ public class Node<T> {
     /**
      * The data element associated with the node.
      */
-    public T data;
+    public final T data;
 
     public Node(final T data) {
         this.data = data;

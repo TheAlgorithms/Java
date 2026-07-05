@@ -10,11 +10,11 @@ import java.util.Set;
  * An implementation of Dial's Algorithm for the single-source shortest path problem.
  * This algorithm is an optimization of Dijkstra's algorithm and is particularly
  * efficient for graphs with small, non-negative integer edge weights.
- *
+ * <p>
  * It uses a bucket queue (implemented here as a List of HashSets) to store vertices,
  * where each bucket corresponds to a specific distance from the source. This is more
  * efficient than a standard priority queue when the range of edge weights is small.
- *
+ * <p>
  * Time Complexity: O(E + W * V), where E is the number of edges, V is the number
  * of vertices, and W is the maximum weight of any edge.
  *

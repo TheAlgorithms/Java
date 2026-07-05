@@ -3,7 +3,7 @@ package com.thealgorithms.maths;
 /**
  * Is a common mathematics concept to find the smallest value number
  * that can be divide using either number without having the remainder.
- * https://maticschool.blogspot.com/2013/11/find-least-common-multiple-lcm.html
+ * <a href="https://maticschool.blogspot.com/2013/11/find-least-common-multiple-lcm.html">...</a>
  * @author LauKinHoong
  */
 public final class LeastCommonMultiple {
@@ -30,12 +30,14 @@ public final class LeastCommonMultiple {
             num3 = num2;
         }
 
-        while (num1 != 0) {
-            if (high % num1 == 0 && high % num2 == 0) {
-                cmv = high;
-                break;
+        if (num1 != 0) {
+            while (true) {
+                if (high % num1 == 0 && high % num2 == 0) {
+                    cmv = high;
+                    break;
+                }
+                high += num3;
             }
-            high += num3;
         }
         return cmv;
     }

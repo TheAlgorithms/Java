@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 
 /**
  * Test cases for RotateSinglyLinkedLists.
- * Author: Bama Charan Chhandogi (https://github.com/BamaCharanChhandogi)
+ * Author: Bama Charan Chhandogi (<a href="https://github.com/BamaCharanChhandogi">...</a>)
  */
 public class RotateSinglyLinkedListsTest {
 

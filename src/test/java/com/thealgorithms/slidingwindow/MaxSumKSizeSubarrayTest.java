@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 /**
  * Unit tests for the MaxSumKSizeSubarray class.
  *
- * @author Your Name (https://github.com/Chiefpatwal)
+ * @author Your Name (<a href="https://github.com/Chiefpatwal">...</a>)
  */
 class MaxSumKSizeSubarrayTest {
 

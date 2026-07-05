@@ -17,7 +17,7 @@ public class NodeStack<Item> {
      * Node class representing each element in the stack.
      */
     private class Node {
-        Item data;
+        final Item data;
         Node previous;
 
         Node(Item data) {

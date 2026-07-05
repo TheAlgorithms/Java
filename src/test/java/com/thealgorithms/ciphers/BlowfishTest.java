@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 
 class BlowfishTest {
 
-    Blowfish blowfish = new Blowfish();
+    final Blowfish blowfish = new Blowfish();
 
     @Test
     void testEncrypt() {

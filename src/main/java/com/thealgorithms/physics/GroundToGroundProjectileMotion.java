@@ -2,7 +2,7 @@ package com.thealgorithms.physics;
 
 /**
  * Ground to ground projectile motion calculator
- *
+ * <p>
  * Ground to ground projectile motion is when a projectile's trajectory
  * starts at the ground, reaches the apex, then falls back on the ground.
  *

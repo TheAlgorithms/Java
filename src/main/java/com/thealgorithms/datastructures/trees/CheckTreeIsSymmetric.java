@@ -11,7 +11,7 @@ import com.thealgorithms.datastructures.trees.BinaryTree.Node;
  *                2                           2
  *         /                \             /             \
  *      3                    4         4                3
- *
+ * <p>
  * Below is not symmetric because values is different in last level
  *                               1
  *                   /                         \

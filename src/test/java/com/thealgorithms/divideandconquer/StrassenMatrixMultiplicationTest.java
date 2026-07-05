@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 
 class StrassenMatrixMultiplicationTest {
 
-    StrassenMatrixMultiplication smm = new StrassenMatrixMultiplication();
+    final StrassenMatrixMultiplication smm = new StrassenMatrixMultiplication();
 
     // Strassen Matrix Multiplication can only be allplied to matrices of size 2^n
     // and has to be a Square Matrix

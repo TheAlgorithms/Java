@@ -5,7 +5,7 @@ package com.thealgorithms.bitmanipulation;
  * A power of two is a number that can be expressed as 2^n where n is a non-negative integer.
  * This class provides a method to determine if a given integer is a power of two using bit manipulation.
  *
- * @author Bama Charan Chhandogi (https://github.com/BamaCharanChhandogi)
+ * @author Bama Charan Chhandogi (<a href="https://github.com/BamaCharanChhandogi">...</a>)
  */
 public final class IsPowerTwo {
     private IsPowerTwo() {
@@ -13,7 +13,7 @@ public final class IsPowerTwo {
 
     /**
      * Checks if the given integer is a power of two.
-     *
+     * <p>
      * A number is considered a power of two if it is greater than zero and
      * has exactly one '1' bit in its binary representation. This method
      * uses the property that for any power of two (n), the expression

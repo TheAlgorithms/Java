@@ -10,7 +10,7 @@ package com.thealgorithms.slidingwindow;
  * Average performance O(n)
  * Worst-case space complexity O(1)
  *
- * @author https://github.com/Chiefpatwal
+ * @author <a href="https://github.com/Chiefpatwal">...</a>
  */
 public final class LongestSubarrayWithSumLessOrEqualToK {
 

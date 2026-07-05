@@ -149,8 +149,8 @@ class InsertionSortTest {
      * Custom Comparable class for testing.
      **/
     static class Person implements Comparable<Person> {
-        String name;
-        int age;
+        final String name;
+        final int age;
 
         Person(String name, int age) {
             this.name = name;

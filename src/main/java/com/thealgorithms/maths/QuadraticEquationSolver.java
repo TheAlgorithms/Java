@@ -4,8 +4,8 @@ package com.thealgorithms.maths;
  * This class represents a complex number which has real and imaginary part
  */
 class ComplexNumber {
-    Double real;
-    Double imaginary;
+    final Double real;
+    final Double imaginary;
 
     ComplexNumber(double real, double imaginary) {
         this.real = real;

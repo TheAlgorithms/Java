@@ -14,8 +14,8 @@ import com.thealgorithms.lineclipping.utils.Point;
  *  * if any, and returns the clipped line that lies inside the window.
  *  *
  *  * Reference:
- *  * https://en.wikipedia.org/wiki/Liang%E2%80%93Barsky_algorithm
- *
+ *  * <a href="https://en.wikipedia.org/wiki/Liang%E2%80%93Barsky_algorithm">...</a>
+ * <p>
  * Clipping window boundaries are defined as (xMin, yMin) and (xMax, yMax).
  * The algorithm computes the clipped line segment if it's partially or
  * fully inside the clipping window.
@@ -23,10 +23,10 @@ import com.thealgorithms.lineclipping.utils.Point;
 public class LiangBarsky {
 
     // Define the clipping window
-    double xMin;
-    double xMax;
-    double yMin;
-    double yMax;
+    final double xMin;
+    final double xMax;
+    final double yMin;
+    final double yMax;
 
     public LiangBarsky(double xMin, double yMin, double xMax, double yMax) {
         this.xMin = xMin;

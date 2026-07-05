@@ -15,7 +15,7 @@ import java.util.Set;
  * All existing edge weights must be non-negative. Zero-weight edges are allowed.</p>
  *
  * <p>References:
- * - Wikipedia: Yen's algorithm (https://en.wikipedia.org/wiki/Yen%27s_algorithm)
+ * - Wikipedia: Yen's algorithm (<a href="https://en.wikipedia.org/wiki/Yen%27s_algorithm">...</a>)
  * - Dijkstra's algorithm for the base shortest path computation.</p>
  */
 public final class YensKShortestPaths {

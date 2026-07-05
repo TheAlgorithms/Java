@@ -25,7 +25,7 @@ import java.util.List;
  *
  * @see <a href="https://en.wikipedia.org/wiki/Kaprekar_number">Kaprekar Number
  *      - Wikipedia</a>
- * @author TheAlgorithms (https://github.com/TheAlgorithms)
+ * @author TheAlgorithms (<a href="https://github.com/TheAlgorithms">...</a>)
  */
 public final class KaprekarNumbers {
     private KaprekarNumbers() {

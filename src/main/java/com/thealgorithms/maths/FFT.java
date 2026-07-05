@@ -21,7 +21,7 @@ public final class FFT {
      *
      * <p>
      * More info:
-     * https://introcs.cs.princeton.edu/java/32class/Complex.java.html
+     * <a href="https://introcs.cs.princeton.edu/java/32class/Complex.java.html">...</a>
      */
     static class Complex {
 
@@ -183,14 +183,13 @@ public final class FFT {
      *
      * <p>
      * More info:
-     * https://www.algorithm-archive.org/contents/cooley_tukey/cooley_tukey.html
-     * https://www.geeksforgeeks.org/iterative-fast-fourier-transformation-polynomial-multiplication/
-     * https://en.wikipedia.org/wiki/Cooley%E2%80%93Tukey_FFT_algorithm
-     * https://cp-algorithms.com/algebra/fft.html
+     * <a href="https://www.algorithm-archive.org/contents/cooley_tukey/cooley_tukey.html">...</a>
+     * <a href="https://www.geeksforgeeks.org/iterative-fast-fourier-transformation-polynomial-multiplication/">...</a>
+     * <a href="https://en.wikipedia.org/wiki/Cooley%E2%80%93Tukey_FFT_algorithm">...</a>
+     * <a href="https://cp-algorithms.com/algebra/fft.html">...</a>
      *  @param x The discrete signal which is then converted to the FFT or the
      * IFFT of signal x.
      * @param inverse True if you want to find the inverse FFT.
-     * @return
      */
     public static ArrayList<Complex> fft(ArrayList<Complex> x, boolean inverse) {
         /* Pad the signal with zeros if necessary */
@@ -260,8 +259,8 @@ public final class FFT {
      * 10110000 in binary
      *
      * <p>
-     * More info: https://cp-algorithms.com/algebra/fft.html
-     * https://www.geeksforgeeks.org/write-an-efficient-c-program-to-reverse-bits-of-a-number/
+     * More info: <a href="https://cp-algorithms.com/algebra/fft.html">...</a>
+     * <a href="https://www.geeksforgeeks.org/write-an-efficient-c-program-to-reverse-bits-of-a-number/">...</a>
      *
      * @param num The integer you want to reverse its bits.
      * @param log2n The number of bits you want to reverse.

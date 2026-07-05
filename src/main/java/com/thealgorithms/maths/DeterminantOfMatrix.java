@@ -18,8 +18,8 @@ public final class DeterminantOfMatrix {
     static int determinant(int[][] a, int n) {
         int det = 0;
         int sign = 1;
-        int p = 0;
-        int q = 0;
+        int p;
+        int q;
         if (n == 1) {
             det = a[0][0];
         } else {

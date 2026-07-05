@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 
 /**
  * Tests for {@link IndexedPriorityQueue}.
- *
+ * <p>
  * Notes:
  * - We mainly use a Node class with a mutable "prio" field to test changeKey/decreaseKey/increaseKey.
  * - The queue is a min-heap, so smaller "prio" means higher priority.
@@ -37,7 +37,7 @@ public class IndexedPriorityQueueTest {
     /** Same as Node but overrides equals/hashCode to simulate "duplicate-equals" scenario. */
     static class NodeWithEquals {
         final String id;
-        int prio;
+        final int prio;
 
         NodeWithEquals(String id, int prio) {
             this.id = id;

@@ -1,11 +1,10 @@
 package com.thealgorithms.stacks;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
-
 import java.util.Stack;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 public class SortStackTest {
 
@@ -251,7 +250,7 @@ public class SortStackTest {
         SortStack.sortStack(stack);
 
         // Verify it's the same object reference
-        assertTrue(stack == originalReference);
+        assertSame(stack, originalReference);
         assertEquals(3, stack.size());
         assertEquals(3, (int) stack.pop());
         assertEquals(2, (int) stack.pop());

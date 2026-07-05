@@ -20,7 +20,7 @@ public final class CreateAndDetectLoop {
      * data and a reference to the next node.
      */
     static final class Node {
-        int data;
+        final int data;
         Node next;
 
         Node(int data) {

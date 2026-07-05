@@ -8,9 +8,9 @@ import java.util.List;
  * HLD is used to efficiently handle path queries on trees, such as maximum,
  * sum, or updates. It decomposes the tree into heavy and light chains,
  * enabling queries in O(log N) time.
- * Wikipedia Reference: https://en.wikipedia.org/wiki/Heavy-light_decomposition
+ * Wikipedia Reference: <a href="https://en.wikipedia.org/wiki/Heavy-light_decomposition">...</a>
  * Author: Nithin U.
- * Github: https://github.com/NithinU2802
+ * Github: <a href="https://github.com/NithinU2802">...</a>
  */
 
 public class HeavyLightDecomposition {

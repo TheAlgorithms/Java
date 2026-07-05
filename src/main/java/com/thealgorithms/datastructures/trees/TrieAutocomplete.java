@@ -10,7 +10,7 @@ class TrieAutocomplete {
     // Trie node
     static class TrieNode {
 
-        TrieNode[] children = new TrieNode[ALPHABET_SIZE];
+        final TrieNode[] children = new TrieNode[ALPHABET_SIZE];
 
         // isWordEnd is true if the node represents
         // end of a word
@@ -137,8 +137,7 @@ class TrieAutocomplete {
         // If there are nodes below the last
         // matching character.
         if (!isLast) {
-            String prefix = query;
-            suggestionsRec(pCrawl, prefix);
+            suggestionsRec(pCrawl, query);
             return 1;
         }
 

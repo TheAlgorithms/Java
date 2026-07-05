@@ -7,7 +7,7 @@ import java.util.PriorityQueue;
  * A generic abstract class to compute the median of a dynamically growing stream of numbers.
  *
  * @param <T> the number type, must extend Number and be Comparable
- *
+ * <p>
  * Usage:
  * Extend this class and implement {@code calculateAverage(T a, T b)} to define how averaging is done.
  */

@@ -12,7 +12,7 @@ import java.util.List;
  * </p>
  * <p>
  * Further information can be found here:
- * https://runestone.academy/ns/books/published/cppds/LinearLinked/ImplementinganOrderedList.html
+ * <a href="https://runestone.academy/ns/books/published/cppds/LinearLinked/ImplementinganOrderedList.html">...</a>
  * </p>
  *
  * <b>Usage Example:</b>

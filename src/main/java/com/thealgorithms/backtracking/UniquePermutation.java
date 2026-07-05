@@ -6,11 +6,11 @@ import java.util.List;
 
 /**
  * Generates all UNIQUE permutations of a string, even when duplicate characters exist.
- *
+ * <p>
  * Example:
  *   Input: "AAB"
  *   Output: ["AAB", "ABA", "BAA"]
- *
+ * <p>
  * Time Complexity: O(n! * n)
  */
 public final class UniquePermutation {

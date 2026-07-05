@@ -14,7 +14,7 @@ import java.util.List;
  *      {' ', ' ', ' '}
  *  }
  *  words = List.of("cat", "dog")
- *
+ * <p>
  * Output:
  *  {
  *      {'c', 'a', 't'},

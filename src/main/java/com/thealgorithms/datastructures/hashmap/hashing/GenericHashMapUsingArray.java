@@ -187,7 +187,7 @@ public class GenericHashMapUsingArray<K, V> {
      * A private class representing a key-value pair (node) in the hash map.
      */
     public class Node {
-        K key;
+        final K key;
         V value;
 
         /**

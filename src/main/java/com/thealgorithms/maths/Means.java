@@ -1,8 +1,5 @@
 package com.thealgorithms.maths;
 
-//import java.util.stream.StreamSupport;
-//import org.apache.commons.collections4.IterableUtils;
-
 /**
  * Utility class for computing various types of statistical means.
  * <p>

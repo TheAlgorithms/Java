@@ -1,7 +1,7 @@
 package com.thealgorithms.dynamicprogramming;
 
 /**
- * @author Afrizal Fikri (https://github.com/icalF)
+ * @author Afrizal Fikri (<a href="https://github.com/icalF">...</a>)
  */
 public final class LongestIncreasingSubsequence {
     private LongestIncreasingSubsequence() {
@@ -53,7 +53,7 @@ public final class LongestIncreasingSubsequence {
     }
 
     /**
-     * @author Alon Firestein (https://github.com/alonfirestein)
+     * @author Alon Firestein (<a href="https://github.com/alonfirestein">...</a>)
      */
     // A function for finding the length of the LIS algorithm in O(nlogn) complexity.
     public static int findLISLen(int[] a) {

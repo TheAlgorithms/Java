@@ -3,11 +3,11 @@ package com.thealgorithms.bitmanipulation;
 /**
  * A utility class to swap every pair of adjacent bits in a given integer.
  * This operation shifts the even-positioned bits to odd positions and vice versa.
- *
+ * <p>
  * Example:
  * - Input: 2 (binary: `10`) → Output: 1 (binary: `01`)
  * - Input: 43 (binary: `101011`) → Output: 23 (binary: `010111`)
- *
+ * <p>
  * **Explanation of the Algorithm:**
  * 1. Mask even-positioned bits: Using `0xAAAAAAAA` (binary: `101010...`),
  *    which selects bits in even positions.
@@ -17,13 +17,13 @@ package com.thealgorithms.bitmanipulation;
  *    - Right-shift even-positioned bits by 1 to move them to odd positions.
  *    - Left-shift odd-positioned bits by 1 to move them to even positions.
  * 4. Combine both shifted results using bitwise OR (`|`) to produce the final result.
- *
+ * <p>
  * Use Case: This algorithm can be useful in applications involving low-level bit manipulation,
  * such as encoding, data compression, or cryptographic transformations.
- *
+ * <p>
  * Time Complexity: O(1) (constant time, since operations are bitwise).
- *
- * Author: Lakshyajeet Singh Goyal (https://github.com/DarkMatter-999)
+ * <p>
+ * Author: Laksh<a href="yajeet">Singh Goyal (https://githu</a>b.com/DarkMatter-999)
  */
 public final class SwapAdjacentBits {
     private SwapAdjacentBits() {

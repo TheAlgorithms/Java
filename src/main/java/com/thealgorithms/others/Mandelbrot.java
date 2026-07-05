@@ -19,8 +19,8 @@ import javax.imageio.ImageIO;
  * the Mandelbrot set exhibit an elaborate and infinitely complicated boundary
  * that reveals progressively ever-finer recursive detail at increasing
  * magnifications, making the boundary of the Mandelbrot set a fractal curve.
- * (description adapted from https://en.wikipedia.org/wiki/Mandelbrot_set ) (see
- * also https://en.wikipedia.org/wiki/Plotting_algorithms_for_the_Mandelbrot_set
+ * (description adapted from <a href="https://en.wikipedia.org/wiki/Mandelbrot_set">...</a> ) (see
+ * also <a href="https://en.wikipedia.org/wiki/Plotting_algorithms_for_the_Mandelbrot_set">...</a>
  * )
  */
 public final class Mandelbrot {
@@ -50,7 +50,7 @@ public final class Mandelbrot {
         try {
             ImageIO.write(coloredImage, "png", new File("Mandelbrot.png"));
         } catch (IOException e) {
-            e.printStackTrace();
+            throw new RuntimeException("Failed to save image", e);
         }
     }
 
@@ -140,20 +140,14 @@ public final class Mandelbrot {
             int q = (int) (val * (1 - f * saturation));
             int t = (int) (val * (1 - (1 - f) * saturation));
 
-            switch (hi) {
-            case 0:
-                return new Color(v, t, p);
-            case 1:
-                return new Color(q, v, p);
-            case 2:
-                return new Color(p, v, t);
-            case 3:
-                return new Color(p, q, v);
-            case 4:
-                return new Color(t, p, v);
-            default:
-                return new Color(v, p, q);
-            }
+            return switch (hi) {
+                case 0 -> new Color(v, t, p);
+                case 1 -> new Color(q, v, p);
+                case 2 -> new Color(p, v, t);
+                case 3 -> new Color(p, q, v);
+                case 4 -> new Color(t, p, v);
+                default -> new Color(v, p, q);
+            };
         }
     }
 
@@ -163,7 +157,7 @@ public final class Mandelbrot {
      * of the Mandelbrot set do not diverge so their distance is 1.
      *
      * @param figureX The x-coordinate within the figure.
-     * @param figureX The y-coordinate within the figure.
+     * @param figureY The y-coordinate within the figure.
      * @param maxStep Maximum number of steps to check for divergent behavior.
      * @return The relative distance as the ratio of steps taken to maxStep.
      */

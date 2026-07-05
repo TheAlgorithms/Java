@@ -2,7 +2,7 @@ package com.thealgorithms.sorts;
 
 /**
  * Dark Sort algorithm implementation.
- *
+ * <p>
  * Dark Sort uses a temporary array to count occurrences of elements and
  * reconstructs the sorted array based on the counts.
  */

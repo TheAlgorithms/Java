@@ -10,7 +10,7 @@ import org.junit.jupiter.api.Test;
 
 /**
  * Unit tests for {@link HierholzerEulerianPath}.
- *
+ * <p>
  * This test suite validates Hierholzer's Algorithm implementation
  * for finding Eulerian Paths and Circuits in directed graphs.
  *

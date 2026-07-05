@@ -4,7 +4,7 @@ package com.thealgorithms.dynamicprogramming;
  * Implementation of the Longest Increasing Subsequence (LIS) problem using
  * an O(n log n) dynamic programming solution enhanced with binary search.
  *
- * @author Vusal Huseynov (https://github.com/huseynovvusal)
+ * @author Vusal Huseynov (<a href="https://github.com/huseynovvusal">...</a>)
  */
 public final class LongestIncreasingSubsequenceNLogN {
     private LongestIncreasingSubsequenceNLogN() {

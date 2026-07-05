@@ -4,8 +4,8 @@ import com.thealgorithms.matrix.utils.MatrixUtil;
 import java.math.BigDecimal;
 
 /**
- * @author Anirudh Buvanesh (https://github.com/anirudhb11) For more information
- * see https://www.geeksforgeeks.org/matrix-exponentiation/
+ * @author Anirudh Buvanesh (<a href="https://github.com/anirudhb11">...</a>) For more information
+ * see <a href="https://www.geeksforgeeks.org/matrix-exponentiation/">...</a>
  *
  */
 public final class Fibonacci {

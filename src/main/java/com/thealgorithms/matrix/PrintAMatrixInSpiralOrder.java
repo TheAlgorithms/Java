@@ -12,7 +12,7 @@ import java.util.List;
  * clockwise.
  * </p>
  *
- * @author Sadiul Hakim (https://github.com/sadiul-hakim)
+ * @author Sadiul Hakim (<a href="https://github.com/sadiul-hakim">...</a>)
  */
 public class PrintAMatrixInSpiralOrder {
 

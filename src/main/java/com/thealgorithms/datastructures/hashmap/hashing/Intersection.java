@@ -40,7 +40,7 @@ public final class Intersection {
     /**
      * Computes the intersection of two integer arrays, preserving element frequency.
      * For example, given [1,2,2,3] and [2,2,4], the result will be [2,2].
-     *
+     * <p>
      * Steps:
      * 1. Count the occurrences of each element in the first array using a map.
      * 2. Iterate over the second array and collect common elements.

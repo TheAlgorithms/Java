@@ -104,10 +104,10 @@ public class MLFQScheduler {
  * algorithm.
  */
 class Process {
-    int pid;
-    int burstTime;
+    final int pid;
+    final int burstTime;
     int remainingTime;
-    int arrivalTime;
+    final int arrivalTime;
     int priority;
 
     /**

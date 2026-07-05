@@ -11,7 +11,7 @@ import java.util.Random;
  * It doesn't consider priority, deadlines, or burst times, making it
  * inefficient but useful in scenarios where fairness or unpredictability
  * is required (e.g., load balancing in distributed systems).
- *
+ * <p>
  * Use Case: Distributed systems where randomness helps avoid task starvation.
  *
  * @author Hardvan

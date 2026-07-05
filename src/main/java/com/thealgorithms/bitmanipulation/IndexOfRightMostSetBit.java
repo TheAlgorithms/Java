@@ -6,8 +6,8 @@ package com.thealgorithms.bitmanipulation;
  * Specifically, it includes a method to find the index of the rightmost set bit
  * in an integer.
  * This class is not meant to be instantiated.
- *
- * Author: Bama Charan Chhandogi (https://github.com/BamaCharanChhandogi)
+ * <p>
+ * Author: Bama Charan Chhando<a href="gi">(https://github.com/BamaCharanChhan</a>dogi)
  */
 public final class IndexOfRightMostSetBit {
 

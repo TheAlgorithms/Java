@@ -4,7 +4,7 @@ package com.thealgorithms.dynamicprogramming;
  * This class implements Kadane's Algorithm to find the maximum subarray sum
  * within a given array of integers. The algorithm efficiently computes the maximum
  * sum of a contiguous subarray in linear time.
- *
+ * <p>
  * Author: <a href="https://github.com/siddhant2002">Siddhant Swarup Mallick</a>
  */
 public final class KadaneAlgorithm {

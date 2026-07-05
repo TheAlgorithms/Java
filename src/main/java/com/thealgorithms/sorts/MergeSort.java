@@ -14,12 +14,12 @@ class MergeSort implements SortAlgorithm {
 
     /**
      * Generic merge sort algorithm.
-     *
+     * <p>
      * Time Complexity:
      * - Best case: O(n log n)
      * - Average case: O(n log n)
      * - Worst case: O(n log n)
-     *
+     * <p>
      * Space Complexity: O(n) – requires auxiliary array for merging.
      *
      * @see SortAlgorithm

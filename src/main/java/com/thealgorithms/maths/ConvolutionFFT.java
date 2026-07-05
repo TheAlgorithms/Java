@@ -38,8 +38,8 @@ public final class ConvolutionFFT {
      * for faster calculations of the two DFTs and the final IDFT.
      *
      * <p>
-     * More info: https://en.wikipedia.org/wiki/Convolution_theorem
-     * https://ccrma.stanford.edu/~jos/ReviewFourier/FFT_Convolution.html
+     * More info: <a href="https://en.wikipedia.org/wiki/Convolution_theorem">...</a>
+     * <a href="https://ccrma.stanford.edu/~jos/ReviewFourier/FFT_Convolution.html">...</a>
      *
      * @param a The first signal.
      * @param b The other signal.

@@ -98,7 +98,7 @@ public final class HorspoolSearch {
         shiftValues = calcShiftValues(pattern); // build the bad symbol table
         comparisons = 0; // reset comparisons
 
-        if (pattern.length() == 0) { // return failure, if pattern empty
+        if (pattern.isEmpty()) { // return failure, if pattern empty
             return -1;
         }
 

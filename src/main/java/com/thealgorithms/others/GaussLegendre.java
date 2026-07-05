@@ -2,7 +2,7 @@ package com.thealgorithms.others;
 
 /**
  * Gauss Legendre Algorithm ref
- * https://en.wikipedia.org/wiki/Gauss–Legendre_algorithm
+ * <a href="https://en.wikipedia.org/wiki/Gauss">...</a>–Legendre_algorithm
  *
  * @author AKS1996
  */

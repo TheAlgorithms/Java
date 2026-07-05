@@ -17,7 +17,7 @@ public final class KthElementFinder {
     /**
      * Finds the Kth largest element in the given array.
      * Uses a min-heap of size K to track the largest K elements.
-     *
+     * <p>
      * Time Complexity: O(n * log(k)), where n is the size of the input array.
      * Space Complexity: O(k), as we maintain a heap of size K.
      *
@@ -33,13 +33,13 @@ public final class KthElementFinder {
                 minHeap.poll();
             }
         }
-        return minHeap.peek();
+        return minHeap.element();
     }
 
     /**
      * Finds the Kth smallest element in the given array.
      * Uses a max-heap of size K to track the smallest K elements.
-     *
+     * <p>
      * Time Complexity: O(n * log(k)), where n is the size of the input array.
      * Space Complexity: O(k), as we maintain a heap of size K.
      *
@@ -55,6 +55,6 @@ public final class KthElementFinder {
                 maxHeap.poll();
             }
         }
-        return maxHeap.peek();
+        return maxHeap.element();
     }
 }

@@ -10,8 +10,8 @@ import java.util.List;
  * @author <a href="https://github.com/sailok">Sailok Chinta</a>
  */
 class Point {
-    public double x;
-    public double y;
+    public final double x;
+    public final double y;
 
     Point(double x, double y) {
         this.x = x;
@@ -26,8 +26,8 @@ class Point {
  * @author <a href="https://github.com/sailok">Sailok Chinta</a>
  */
 class BoundingBox {
-    public Point center;
-    public double halfWidth;
+    public final Point center;
+    public final double halfWidth;
 
     BoundingBox(Point center, double halfWidth) {
         this.center = center;
@@ -59,7 +59,7 @@ class BoundingBox {
 /**
  * QuadTree is a tree data structure that is used to store spatial information
  * in an efficient way.
- *
+ * <p>
  * This implementation is specific to Point QuadTrees
  *
  * @see <a href="https://en.wikipedia.org/wiki/Quadtree">Quad Tree</a>
@@ -128,11 +128,7 @@ public class QuadTree {
             return true;
         }
 
-        if (southEast.insert(point)) {
-            return true;
-        }
-
-        return false;
+        return southEast.insert(point);
     }
 
     /**

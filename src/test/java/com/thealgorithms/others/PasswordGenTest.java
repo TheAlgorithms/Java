@@ -1,10 +1,8 @@
 package com.thealgorithms.others;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
-import static org.junit.jupiter.api.Assertions.assertTrue;
-
 import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 public class PasswordGenTest {
 
@@ -30,7 +28,7 @@ public class PasswordGenTest {
     @Test
     public void generatePasswordNonEmptyTest() {
         String tempPassword = PasswordGen.generatePassword(8, 16);
-        assertTrue(tempPassword.length() != 0);
+        assertFalse(tempPassword.isEmpty());
     }
 
     @Test

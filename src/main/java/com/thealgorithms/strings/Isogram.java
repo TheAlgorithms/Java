@@ -7,7 +7,7 @@ import java.util.Set;
  * An isogram (also called heterogram or nonpattern word) is a word in which no
  * letter of the word occurs more than once. Each character appears exactly
  * once.
- *
+ * <p>
  * For example, the word "uncopyrightable" is the longest common English isogram
  * with 15 unique letters. Other examples include "dermatoglyphics" (15
  * letters),
@@ -17,13 +17,13 @@ import java.util.Set;
  * appear multiple times ('l' appears twice in "hello", while 'r', 'm', 'g'
  * repeat
  * in "programming").
- *
+ * <p>
  * Isograms are particularly valuable in creating substitution ciphers and are
  * studied in recreational linguistics. A perfect pangram, which uses all 26
  * letters
  * of the alphabet exactly once, is a special type of isogram.
- *
- * Reference from https://en.wikipedia.org/wiki/Heterogram_(literature)#Isograms
+ * <p>
+ * Ref<a href="erence">from https://en.wikipedia.org/wiki/Heterogram_(literatu</a>re)#Isograms
  */
 public final class Isogram {
     /**
@@ -34,7 +34,7 @@ public final class Isogram {
 
     /**
      * Checks if a string is an isogram using boolean array approach.
-     *
+     * <p>
      * Time Complexity: O(n)
      * Space Complexity: O(1)
      *

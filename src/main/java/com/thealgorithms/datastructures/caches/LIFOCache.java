@@ -54,8 +54,8 @@ public final class LIFOCache<K, V> {
      * @param <V> the type of the value being cached
      */
     private static class CacheEntry<V> {
-        V value;
-        long expiryTime;
+        final V value;
+        final long expiryTime;
 
         /**
          * Constructs a new {@code CacheEntry} with the specified value and time-to-live (TTL).

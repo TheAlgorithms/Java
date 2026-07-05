@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 
 class VigenereTest {
 
-    Vigenere vigenere = new Vigenere();
+    final Vigenere vigenere = new Vigenere();
 
     @Test
     void testVigenereEncryptDecrypt() {

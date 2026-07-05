@@ -4,8 +4,8 @@ package com.thealgorithms.graph;
  * An implementation of the Stoer-Wagner algorithm to find the global minimum cut of an undirected, weighted graph.
  * A minimum cut is a partition of the graph's vertices into two disjoint sets with the minimum possible edge weight
  * sum connecting the two sets.
- *
- * Wikipedia: https://en.wikipedia.org/wiki/Stoer%E2%80%93Wagner_algorithm
+ * <p>
+ * Wikiped<a href="ia:">https://en.wikipedia.org/wiki/Stoer%E2%80%93Wagner_algor</a>ithm
  * Time Complexity: O(V^3) where V is the number of vertices.
  */
 public class StoerWagner {

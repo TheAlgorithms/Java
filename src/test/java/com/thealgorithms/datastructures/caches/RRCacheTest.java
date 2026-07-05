@@ -210,7 +210,7 @@ class RRCacheTest {
     void testDefaultStrategyIsNoEviction() {
         RRCache<String, String> newCache = new RRCache.Builder<String, String>(5).defaultTTL(1000).build();
 
-        Assertions.assertTrue(newCache.getEvictionStrategy() instanceof RRCache.PeriodicEvictionStrategy<String, String>, "Default strategy should be NoEvictionStrategy");
+        Assertions.assertInstanceOf(RRCache.PeriodicEvictionStrategy<String, String>.class, newCache.getEvictionStrategy(), "Default strategy should be NoEvictionStrategy");
     }
 
     @Test

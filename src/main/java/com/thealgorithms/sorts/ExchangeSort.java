@@ -14,7 +14,7 @@ package com.thealgorithms.sorts;
  * </p>
  *
  * <p>
- * Reference: https://en.wikipedia.org/wiki/Sorting_algorithm#Exchange_sort
+ * Reference: <a href="https://en.wikipedia.org/wiki/Sorting_algorithm#Exchange_sort">...</a>
  * </p>
  *
  * @author 555vedant (Vedant Kasar)

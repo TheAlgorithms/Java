@@ -2,16 +2,16 @@ package com.thealgorithms.bitmanipulation;
 
 /**
  * Implementation to count number of bits to be flipped to convert A to B
- *
+ * <p>
  * Problem: Given two numbers A and B, count the number of bits needed to be
  * flipped to convert A to B.
- *
+ * <p>
  * Example:
  * A = 10 (01010 in binary)
  * B = 20 (10100 in binary)
  * XOR = 30 (11110 in binary) - positions where bits differ
  * Answer: 4 bits need to be flipped
- *
+ * <p>
  * Time Complexity: O(log n) - where n is the number of set bits
  * Space Complexity: O(1)
  *
@@ -25,7 +25,7 @@ public final class CountBitsFlip {
 
     /**
      * Counts the number of bits that need to be flipped to convert a to b
-     *
+     * <p>
      * Algorithm:
      * 1. XOR a and b to get positions where bits differ
      * 2. Count the number of set bits in the XOR result

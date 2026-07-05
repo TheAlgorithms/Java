@@ -5,12 +5,12 @@ import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import org.junit.jupiter.api.Test;
 
 /**
- * @author Tabbygray (https://github.com/Tabbygray)
+ * @author Tabbygray (<a href="https://github.com/Tabbygray">...</a>)
  * @see TreeSort
  */
 
 public class TreeSortTest {
-    private TreeSort treeSort = new TreeSort();
+    private final TreeSort treeSort = new TreeSort();
 
     @Test
     public void treeSortEmptyArray() {

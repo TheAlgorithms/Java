@@ -8,7 +8,7 @@ package com.thealgorithms.maths;
  * then 1 + 5 = 6, so the generic root is 6.
  * <p>
  * Reference:
- * https://technotip.com/6774/c-program-to-find-generic-root-of-a-number/
+ * <a href="https://technotip.com/6774/c-program-to-find-generic-root-of-a-number/">...</a>
  */
 public final class GenericRoot {
 

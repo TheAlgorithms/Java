@@ -3,7 +3,7 @@ package com.thealgorithms.bitmanipulation;
 /**
  * This class provides a method to detect if two integers
  * differ by exactly one bit flip.
- *
+ * <p>
  * Example:
  * 1 (0001) and 2 (0010) differ by exactly one bit flip.
  * 7 (0111) and 3 (0011) differ by exactly one bit flip.

@@ -3,12 +3,12 @@ package com.thealgorithms.sorts;
 public class SelectionSort implements SortAlgorithm {
     /**
      * Generic Selection Sort algorithm.
-     *
+     * <p>
      * Time Complexity:
      * - Best case: O(n^2)
      * - Average case: O(n^2)
      * - Worst case: O(n^2)
-     *
+     * <p>
      * Space Complexity: O(1) – in-place sorting.
      *
      * @see SortAlgorithm

@@ -1,7 +1,7 @@
 package com.thealgorithms.maths;
 
 /**
- * https://en.wikipedia.org/wiki/Perfect_square
+ * <a href="https://en.wikipedia.org/wiki/Perfect_square">...</a>
  */
 public final class PerfectSquare {
     private PerfectSquare() {

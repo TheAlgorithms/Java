@@ -9,11 +9,11 @@ import java.util.ArrayList;
 /// For more information: [...](https://en.wikipedia.org/wiki/B-tree)
 public class BTree {
     static class BTreeNode {
-        int[] keys;
-        int t; // Minimum degree (defines range for number of keys)
-        BTreeNode[] children;
+        final int[] keys;
+        final int t; // Minimum degree (defines range for number of keys)
+        final BTreeNode[] children;
         int n; // Current number of keys
-        boolean leaf;
+        final boolean leaf;
 
         BTreeNode(int t, boolean leaf) {
             this.t = t;

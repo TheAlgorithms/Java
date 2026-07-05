@@ -8,7 +8,7 @@ package com.thealgorithms.maths;
  *
  * <p>
  * For more details, see
- * https://en.wikipedia.org/wiki/Extended_Euclidean_algorithm
+ * <a href="https://en.wikipedia.org/wiki/Extended_Euclidean_algorithm">...</a>
  */
 public final class ExtendedEuclideanAlgorithm {
 
@@ -40,9 +40,8 @@ public final class ExtendedEuclideanAlgorithm {
         long y1 = result[2];
 
         // Update coefficients using the results from the recursive call
-        long x = y1;
         long y = x1 - a / b * y1;
 
-        return new long[] {gcd, x, y};
+        return new long[] {gcd, y1, y};
     }
 }

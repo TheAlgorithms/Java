@@ -3,7 +3,7 @@ package com.thealgorithms.dynamicprogramming;
 /**
  * Smith–Waterman algorithm for local sequence alignment.
  * Finds the highest scoring local alignment between substrings of two sequences.
- *
+ * <p>
  * Time Complexity: O(n * m)
  * Space Complexity: O(n * m)
  */

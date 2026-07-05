@@ -6,11 +6,11 @@ import java.util.Random;
 
 /**
  * Reservoir Sampling Algorithm
- *
+ * <p>
  * Use Case:
  * - Efficient for selecting k random items from a stream of unknown size
  * - Used in streaming systems, big data, and memory-limited environments
- *
+ * <p>
  * Time Complexity: O(n)
  * Space Complexity: O(k)
  *

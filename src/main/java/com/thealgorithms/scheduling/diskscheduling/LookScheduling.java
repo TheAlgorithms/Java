@@ -5,7 +5,7 @@ import java.util.Collections;
 import java.util.List;
 
 /**
- * https://en.wikipedia.org/wiki/LOOK_algorithm
+ * <a href="https://en.wikipedia.org/wiki/LOOK_algorithm">...</a>
  * Look Scheduling algorithm implementation.
  * The Look algorithm moves the disk arm to the closest request in the current direction,
  * and once it processes all requests in that direction, it reverses the direction.

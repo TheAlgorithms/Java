@@ -8,24 +8,21 @@ import java.util.Arrays;
 public class LinkListSort {
 
     public static boolean isSorted(int[] p, int option) {
-        int[] a = p;
         // Array is taken as input from test class
-        int[] b = p;
         // array similar to a
-        int ch = option;
         // Choice is choosed as any number from 1 to 3 (So the linked list will be
         // sorted by Merge sort technique/Insertion sort technique/Heap sort technique)
-        switch (ch) {
+        switch (option) {
         case 1:
             Task nm = new Task();
             Node start = null;
             Node prev = null;
             Node fresh;
             Node ptr;
-            for (int i = 0; i < a.length; i++) {
+            for (int i = 0; i < p.length; i++) {
                 // New nodes are created and values are added
                 fresh = new Node(); // Node class is called
-                fresh.val = a[i]; // Node val is stored
+                fresh.val = p[i]; // Node val is stored
                 if (start == null) {
                     start = fresh;
                 } else {
@@ -37,13 +34,13 @@ public class LinkListSort {
             // method is being called
             int i = 0;
             for (ptr = start; ptr != null; ptr = ptr.next) {
-                a[i++] = ptr.val;
+                p[i++] = ptr.val;
                 // storing the sorted values in the array
             }
-            Arrays.sort(b);
+            Arrays.sort(p);
             // array b is sorted and it will return true when checked with sorted list
             LinkListSort uu = new LinkListSort();
-            return uu.compare(a, b);
+            return uu.compare(p, p);
             // The given array and the expected array is checked if both are same then true
             // is displayed else false is displayed
         case 2:
@@ -51,10 +48,10 @@ public class LinkListSort {
             Node prev1 = null;
             Node fresh1;
             Node ptr1;
-            for (int i1 = 0; i1 < a.length; i1++) {
+            for (int i1 = 0; i1 < p.length; i1++) {
                 // New nodes are created and values are added
                 fresh1 = new Node(); // New node is created
-                fresh1.val = a[i1]; // Value is stored in the value part of the node
+                fresh1.val = p[i1]; // Value is stored in the value part of the node
                 if (start1 == null) {
                     start1 = fresh1;
                 } else {
@@ -67,12 +64,12 @@ public class LinkListSort {
             // method is being called
             int i1 = 0;
             for (ptr1 = start1; ptr1 != null; ptr1 = ptr1.next) {
-                a[i1++] = ptr1.val;
+                p[i1++] = ptr1.val;
                 // storing the sorted values in the array
             }
             LinkListSort uu1 = new LinkListSort();
             // array b is not sorted and it will return false when checked with sorted list
-            return uu1.compare(a, b);
+            return uu1.compare(p, p);
             // The given array and the expected array is checked if both are same then true
             // is displayed else false is displayed
         case 3:
@@ -81,10 +78,10 @@ public class LinkListSort {
             Node prev2 = null;
             Node fresh2;
             Node ptr2;
-            for (int i2 = 0; i2 < a.length; i2++) {
+            for (int i2 = 0; i2 < p.length; i2++) {
                 // New nodes are created and values are added
                 fresh2 = new Node(); // Node class is created
-                fresh2.val = a[i2]; // Value is stored in the value part of the Node
+                fresh2.val = p[i2]; // Value is stored in the value part of the Node
                 if (start2 == null) {
                     start2 = fresh2;
                 } else {
@@ -96,13 +93,13 @@ public class LinkListSort {
             // method is being called
             int i3 = 0;
             for (ptr2 = start2; ptr2 != null; ptr2 = ptr2.next) {
-                a[i3++] = ptr2.val;
+                p[i3++] = ptr2.val;
                 // storing the sorted values in the array
             }
-            Arrays.sort(b);
+            Arrays.sort(p);
             // array b is sorted and it will return true when checked with sorted list
             LinkListSort uu2 = new LinkListSort();
-            return uu2.compare(a, b);
+            return uu2.compare(p, p);
             // The given array and the expected array is checked if both are same then true
             // is displayed else false is displayed
         default:

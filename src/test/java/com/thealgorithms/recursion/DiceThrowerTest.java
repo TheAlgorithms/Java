@@ -1,13 +1,11 @@
 package com.thealgorithms.recursion;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
-import static org.junit.jupiter.api.Assertions.assertTrue;
-
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 import java.util.List;
 import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * Test class for DiceThrower
@@ -76,7 +74,7 @@ class DiceThrowerTest {
     void testTargetSeven() {
         List<String> result = DiceThrower.getDiceCombinations(7);
         // Should include combinations like 61, 52, 43, 331, 322, 2221, etc.
-        assertTrue(result.size() > 0);
+        assertFalse(result.isEmpty());
         assertTrue(result.contains("61"));
         assertTrue(result.contains("16"));
         assertTrue(result.contains("52"));
@@ -86,7 +84,7 @@ class DiceThrowerTest {
     @Test
     void testLargerTarget() {
         List<String> result = DiceThrower.getDiceCombinations(10);
-        assertTrue(result.size() > 0);
+        assertFalse(result.isEmpty());
         // All results should sum to 10
         for (String combination : result) {
             int sum = 0;
@@ -212,7 +210,7 @@ class DiceThrowerTest {
     @Test
     void testTargetGreaterThanSix() {
         List<String> result = DiceThrower.getDiceCombinations(8);
-        assertTrue(result.size() > 0);
+        assertFalse(result.isEmpty());
 
         // Verify some expected combinations
         assertTrue(result.contains("62"));

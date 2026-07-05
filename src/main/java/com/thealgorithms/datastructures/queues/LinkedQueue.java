@@ -9,7 +9,7 @@ public class LinkedQueue<T> implements Iterable<T> {
      * Node class representing each element in the queue.
      */
     private static class Node<T> {
-        T data;
+        final T data;
         Node<T> next;
 
         Node(T data) {

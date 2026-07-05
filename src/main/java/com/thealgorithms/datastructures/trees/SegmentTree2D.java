@@ -4,7 +4,7 @@ package com.thealgorithms.datastructures.trees;
  * 2D Segment Tree (Tree of Trees) implementation.
  * This data structure supports point updates and submatrix sum queries
  * in a 2D grid. It achieves this by nesting 1D Segment Trees within a 1D Segment Tree.
- *
+ * <p>
  * Time Complexity:
  * - Build/Initialization: O(N * M)
  * - Point Update: O(log N * log M)

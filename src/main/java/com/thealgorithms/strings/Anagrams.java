@@ -8,7 +8,7 @@ import java.util.HashMap;
  * typically using all the original letters exactly once.
  * For example, the word anagram itself can be rearranged into nag a ram,
  * also the word binary into brainy and the word adobe into abode.
- * Reference from https://en.wikipedia.org/wiki/Anagram
+ * Reference from <a href="https://en.wikipedia.org/wiki/Anagram">...</a>
  */
 public final class Anagrams {
     private Anagrams() {

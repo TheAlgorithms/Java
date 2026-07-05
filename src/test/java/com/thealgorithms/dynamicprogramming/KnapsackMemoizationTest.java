@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 
 public class KnapsackMemoizationTest {
 
-    KnapsackMemoization knapsackMemoization = new KnapsackMemoization();
+    final KnapsackMemoization knapsackMemoization = new KnapsackMemoization();
 
     @Test
     void test1() {

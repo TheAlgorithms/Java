@@ -4,10 +4,10 @@ package com.thealgorithms.maths;
  * In number theory, an abundant number or excessive number is a positive integer for which
  * the sum of its proper divisors is greater than the number.
  * Equivalently, it is a number for which the sum of proper divisors (or aliquot sum) is greater than n.
- *
+ * <p>
  * The integer 12 is the first abundant number. Its proper divisors are 1, 2, 3, 4 and 6 for a total of 16.
- *
- * Wiki: https://en.wikipedia.org/wiki/Abundant_number
+ * <p>
+ <a href="*">Wiki: https://en.wikipedia.org/wiki/Abundan</a>t_number
  */
 public final class AbundantNumber {
 

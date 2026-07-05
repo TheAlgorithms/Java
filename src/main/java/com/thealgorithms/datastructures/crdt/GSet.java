@@ -9,9 +9,9 @@ import java.util.Set;
  * it cannot be removed. The merge operation of two G-Sets is their union.
  * This implementation supports adding elements, looking up elements, comparing with other G-Sets,
  * and merging with another G-Set to create a new G-Set containing all unique elements from both sets.
- * (https://en.wikipedia.org/wiki/Conflict-free_replicated_data_type)
+ * (<a href="https://en.wikipedia.org/wiki/Conflict-free_replicated_data_type">...</a>)
  *
- * @author itakurah (Niklas Hoefflin) (https://github.com/itakurah)
+ * @author itakurah (Niklas Hoefflin) (<a href="https://github.com/itakurah">...</a>)
  */
 
 public class GSet<T> {

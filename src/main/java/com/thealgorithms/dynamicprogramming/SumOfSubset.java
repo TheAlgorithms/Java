@@ -3,11 +3,11 @@ package com.thealgorithms.dynamicprogramming;
 /**
  * A utility class that contains the Sum of Subset problem solution using
  * recursion.
- *
+ * <p>
  * The Sum of Subset problem determines whether a subset of elements from a
  * given array sums up to a specific target value.
- *
- * Wikipedia: https://en.wikipedia.org/wiki/Subset_sum_problem
+ * <p>
+ * Wik<a href="ipedia:">https://en.wikipedia.org/wiki/Subset_sum</a>_problem
  */
 public final class SumOfSubset {
 
@@ -22,7 +22,7 @@ public final class SumOfSubset {
      * @param num The index of the current element being considered.
      * @param key The target sum we are trying to achieve.
      * @return true if a subset of `arr` adds up to `key`, false otherwise.
-     *
+     * <p>
      *         This is a recursive solution that checks for two possibilities at
      *         each step:
      *         1. Include the current element in the subset and check if the

@@ -4,11 +4,11 @@ package com.thealgorithms.dynamicprogramming;
  * The {@code KnapsackZeroOne} provides Recursive solution for the 0/1 Knapsack
  * problem. Solves by exploring all combinations of items using recursion. No
  * memoization or dynamic programming optimizations are applied.
- *
+ * <p>
  * Time Complexity: O(2^n) — explores all subsets.
  * Space Complexity: O(n) — due to recursive call stack.
- *
- * Problem Reference: https://en.wikipedia.org/wiki/Knapsack_problem
+ * <p>
+ * Problem Ref<a href="erence:">https://en.wikipedia.org/wiki/Knapsack</a>_problem
  */
 public final class KnapsackZeroOne {
 

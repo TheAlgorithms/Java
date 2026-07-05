@@ -54,7 +54,7 @@ public final class ReverseStack {
      * Inserts the specified element at the bottom of the stack.
      *
      * <p>This method is a helper for {@link #reverseStack(Stack)}.
-     *
+     * <p>
      * Steps:
      * 1. If the stack is empty, push the element and return.
      * 2. Remove the top element from the stack.

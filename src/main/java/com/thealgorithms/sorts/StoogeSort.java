@@ -1,7 +1,7 @@
 package com.thealgorithms.sorts;
 
 /**
- * @author Amir Hassan (https://github.com/ahsNT)
+ * @author Amir Hassan (<a href="https://github.com/ahsNT">...</a>)
  * @see SortAlgorithm
  */
 public class StoogeSort implements SortAlgorithm {

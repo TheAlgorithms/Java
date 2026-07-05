@@ -17,7 +17,7 @@ import java.util.Set;
  */
 class AdjacencyList<E extends Comparable<E>> {
 
-    Map<E, ArrayList<E>> adj;
+    final Map<E, ArrayList<E>> adj;
 
     /**
      * Constructor to initialize the adjacency list.
@@ -71,7 +71,7 @@ class AdjacencyList<E extends Comparable<E>> {
  */
 class TopologicalSort<E extends Comparable<E>> {
 
-    AdjacencyList<E> graph;
+    final AdjacencyList<E> graph;
     Map<E, Integer> inDegree;
 
     /**

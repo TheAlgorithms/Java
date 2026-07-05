@@ -1,9 +1,9 @@
 package com.thealgorithms.strings;
 
 /**
- * References : https://en.wikipedia.org/wiki/Run-length_encoding
+ * References : <a href="https://en.wikipedia.org/wiki/Run-length_encoding">...</a>
  * String compression algorithm deals with encoding the string, that is, shortening the size of the string
- * @author Swarga-codes (https://github.com/Swarga-codes)
+ * @author Swarga-codes (<a href="https://github.com/Swarga-codes">...</a>)
  */
 public final class StringCompression {
     private StringCompression() {

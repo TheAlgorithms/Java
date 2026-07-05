@@ -77,7 +77,7 @@ public class AVLTree {
         }
 
         // Find the node to be deleted
-        Node node = root;
+        Node node;
         Node child = root;
         while (child != null) {
             node = child;

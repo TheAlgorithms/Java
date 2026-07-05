@@ -263,7 +263,6 @@ public class SinglyLinkedList implements Iterable<Integer> {
                 }
                 // skip all duplicates
                 pred.next = newHead.next;
-                newHead = null;
                 // otherwise, move predecessor
             }
             // move forward

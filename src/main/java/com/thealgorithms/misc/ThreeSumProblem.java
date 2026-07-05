@@ -35,8 +35,8 @@ public class ThreeSumProblem {
     public List<List<Integer>> twoPointer(int[] nums, int target) {
         Arrays.sort(nums);
         List<List<Integer>> arr = new ArrayList<List<Integer>>();
-        int start = 0;
-        int end = 0;
+        int start;
+        int end;
         int i = 0;
         while (i < nums.length - 1) {
             start = i + 1;

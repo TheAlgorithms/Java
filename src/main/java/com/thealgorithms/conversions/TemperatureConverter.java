@@ -12,7 +12,7 @@ package com.thealgorithms.conversions;
  *
  * <p>This class is final and cannot be instantiated.
  *
- * @author krishna-medapati (https://github.com/krishna-medapati)
+ * @author krishna-medapati (<a href="https://github.com/krishna-medapati">...</a>)
  * @see <a href="https://en.wikipedia.org/wiki/Conversion_of_scales_of_temperature">Wikipedia: Temperature Conversion</a>
  */
 public final class TemperatureConverter {

@@ -25,7 +25,7 @@ public final class ThreadedBinaryTree {
     private Node root;
 
     private static final class Node {
-        int value;
+        final int value;
         Node left;
         Node right;
         boolean leftIsThread;
@@ -58,7 +58,7 @@ public final class ThreadedBinaryTree {
         }
 
         Node current = root;
-        Node parent = null;
+        Node parent;
 
         while (true) {
             parent = current;

@@ -60,7 +60,7 @@ public final class IntegerToEnglish {
 
         int hundredsDigit = number / 100;
         if (hundredsDigit > 0) {
-            if (result.length() > 0) {
+            if (!result.isEmpty()) {
                 result.insert(0, " ");
             }
             result.insert(0, String.format("%s Hundred", BASE_NUMBERS_MAP.get(hundredsDigit)));
@@ -93,7 +93,7 @@ public final class IntegerToEnglish {
                     if (index > 0) {
                         subResult += " " + THOUSAND_POWER_MAP.get(index);
                     }
-                    if (result.length() > 0) {
+                    if (!result.isEmpty()) {
                         result.insert(0, " ");
                     }
                     result.insert(0, subResult);

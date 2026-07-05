@@ -7,7 +7,7 @@ import java.util.stream.IntStream;
  * all proper divisors of n, that is, all divisors of n other than n itself. For
  * example, the proper divisors of 15 (that is, the positive divisors of 15 that
  * are not equal to 15) are 1, 3 and 5, so the aliquot sum of 15 is 9 i.e. (1 +
- * 3 + 5). Wikipedia: https://en.wikipedia.org/wiki/Aliquot_sum
+ * 3 + 5). Wikipedia: <a href="https://en.wikipedia.org/wiki/Aliquot_sum">...</a>
  */
 public final class AliquotSum {
     private AliquotSum() {

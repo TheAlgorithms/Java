@@ -8,7 +8,7 @@ import java.util.List;
  * The {@code DDALine} class implements the Digital Differential Analyzer (DDA)
  * line drawing algorithm. It computes points along a line between two given
  * endpoints using floating-point arithmetic.
- *
+ * <p>
  * The algorithm is straightforward but less efficient compared to
  * Bresenham’s line algorithm, since it relies on floating-point operations.
  /**

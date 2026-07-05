@@ -5,7 +5,7 @@ import java.util.Random;
 
 /**
  * Implementation to calculate an estimate of the number π (Pi).
- *
+ * <p>
  * We take a random point P with coordinates (x, y) such that 0 ≤ x ≤ 1 and 0 ≤ y ≤ 1.
  * If x² + y² ≤ 1, then the point is inside the quarter disk of radius 1,
  * else the point is outside. We know that the probability of the point being
@@ -25,8 +25,8 @@ public final class PiApproximation {
      * where 0 ≤ x ≤ 1 and 0 ≤ y ≤ 1.
      */
     static class Point {
-        double x;
-        double y;
+        final double x;
+        final double y;
 
         Point(double x, double y) {
             this.x = x;

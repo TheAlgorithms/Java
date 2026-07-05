@@ -6,7 +6,7 @@ import java.util.Arrays;
 
 /**
  * A utility class for converting between IPv6 and IPv4 addresses.
- *
+ * <p>
  * - Converts IPv4 to IPv6-mapped IPv6 address.
  * - Extracts IPv4 address from IPv6-mapped IPv6.
  * - Handles exceptions for invalid inputs.

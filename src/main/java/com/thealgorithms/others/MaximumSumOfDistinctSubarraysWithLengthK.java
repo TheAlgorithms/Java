@@ -6,14 +6,14 @@ import java.util.Map;
 /**
  * Algorithm to find the maximum sum of a subarray of size K with all distinct
  * elements.
- *
+ * <p>
  * This implementation uses a sliding window approach with a hash map to
  * efficiently
  * track element frequencies within the current window. The algorithm maintains
  * a window
  * of size K and slides it across the array, ensuring all elements in the window
  * are distinct.
- *
+ * <p>
  * Time Complexity: O(n) where n is the length of the input array
  * Space Complexity: O(k) for storing elements in the hash map
  *
@@ -21,7 +21,7 @@ import java.util.Map;
  *      Algorithm</a>
  * @see <a href="https://en.wikipedia.org/wiki/Sliding_window_protocol">Sliding
  *      Window</a>
- * @author Swarga-codes (https://github.com/Swarga-codes)
+ * @author Swarga<a href="-codes">(https://github.com/Swar</a>ga-codes)
  */
 public final class MaximumSumOfDistinctSubarraysWithLengthK {
     private MaximumSumOfDistinctSubarraysWithLengthK() {
@@ -30,7 +30,7 @@ public final class MaximumSumOfDistinctSubarraysWithLengthK {
     /**
      * Finds the maximum sum of a subarray of size K consisting of distinct
      * elements.
-     *
+     * <p>
      * The algorithm uses a sliding window technique with a frequency map to track
      * the count of each element in the current window. A window is valid only if
      * all K elements are distinct (frequency map size equals K).

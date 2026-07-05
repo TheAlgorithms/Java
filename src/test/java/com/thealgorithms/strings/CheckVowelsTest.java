@@ -10,6 +10,6 @@ class CheckVowelsTest {
     @ParameterizedTest
     @CsvSource({"'foo', true", "'bar', true", "'why', false", "'myths', false", "'', false", "'AEIOU', true", "'bcdfghjklmnpqrstvwxyz', false", "'AeIoU', true"})
     void testHasVowels(String input, boolean expected) {
-        assertEquals(CheckVowels.hasVowels(input), expected);
+        assertEquals(expected, CheckVowels.hasVowels(input));
     }
 }

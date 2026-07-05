@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 
 class BaconianCipherTest {
 
-    BaconianCipher baconianCipher = new BaconianCipher();
+    final BaconianCipher baconianCipher = new BaconianCipher();
 
     @Test
     void baconianCipherEncryptTest() {

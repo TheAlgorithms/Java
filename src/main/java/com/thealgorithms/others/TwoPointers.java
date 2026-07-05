@@ -5,7 +5,7 @@ package com.thealgorithms.others;
  * pairs in a sorted array.
  *
  * <p>
- * Link: https://www.geeksforgeeks.org/two-pointers-technique/
+ * Link: <a href="https://www.geeksforgeeks.org/two-pointers-technique/">...</a>
  */
 public final class TwoPointers {
 

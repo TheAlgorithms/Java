@@ -66,6 +66,6 @@ public class FibonacciJavaStreamsTest {
 
         // then
         Assertions.assertTrue(result.isPresent());
-        Assertions.assertEquals(result.get(), expected);
+        Assertions.assertEquals(expected, result.get());
     }
 }

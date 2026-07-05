@@ -6,7 +6,7 @@ import java.util.List;
 /**
  * Sieve of Eratosthenes Algorithm
  * An efficient algorithm to find all prime numbers up to a given limit.
- *
+ * <p>
  * Algorithm:
  * 1. Create a boolean array of size n+1, initially all true
  * 2. Mark 0 and 1 as not prime
@@ -14,7 +14,7 @@ import java.util.List;
  *    - If i is still marked as prime
  *    - Mark all multiples of i (starting from i²) as not prime
  * 4. Collect all numbers still marked as prime
- *
+ * <p>
  * Time Complexity: O(n log log n)
  * Space Complexity: O(n)
  *

@@ -7,12 +7,12 @@ import java.util.List;
  * A Max Heap implementation where each node's key is higher than or equal to its children's keys.
  * This data structure provides O(log n) time complexity for insertion and deletion operations,
  * and O(1) for retrieving the maximum element.
- *
+ * <p>
  * Properties:
  * 1. Complete Binary Tree
  * 2. Parent node's key ≥ Children nodes' keys
  * 3. Root contains the maximum element
- *
+ * <p>
  * Example usage:
  * <pre>
  * List<HeapElement> elements = Arrays.asList(

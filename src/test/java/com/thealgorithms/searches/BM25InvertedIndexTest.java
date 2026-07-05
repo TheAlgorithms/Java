@@ -10,7 +10,7 @@ import org.junit.jupiter.api.Test;
 
 /**
  * Test Cases for Inverted Index with BM25
- * @author Prayas Kumar (https://github.com/prayas7102)
+ * @author Prayas Kumar (<a href="https://github.com/prayas7102">...</a>)
  */
 
 class BM25InvertedIndexTest {

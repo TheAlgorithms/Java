@@ -29,7 +29,7 @@ public final class DistanceFormula {
     }
 
     public static double minkowskiDistance(double[] p1, double[] p2, int p) {
-        double d = 0;
+        double d;
         double distance = 0.0;
 
         if (p1.length != p2.length) {

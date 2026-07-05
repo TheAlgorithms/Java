@@ -14,7 +14,7 @@ package com.thealgorithms.maths;
  * m(A) (smallest eigenvalue) and M(A) (largest eigenvalue).
  *
  * <p>
- * Wikipedia: https://en.wikipedia.org/wiki/Chebyshev_iteration
+ * Wikipedia: <a href="https://en.wikipedia.org/wiki/Chebyshev_iteration">...</a>
  *
  * @author Mitrajit Ghorui(KeyKyrios)
  */
@@ -54,7 +54,7 @@ public final class ChebyshevIteration {
         double d = (maxEigenvalue + minEigenvalue) / 2.0;
         double c = (maxEigenvalue - minEigenvalue) / 2.0;
 
-        double alpha = 0.0;
+        double alpha;
         double alphaPrev = 0.0;
 
         for (int k = 0; k < maxIterations; k++) {

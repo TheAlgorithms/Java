@@ -13,7 +13,7 @@ import java.util.Stack;
  * that are added first are the first to be removed. New elements are added to
  * the back/rear of the queue.
  *
- * @author sahilb2 (https://www.github.com/sahilb2)
+ * @author sahilb2 (<a href="https://www.github.com/sahilb2">...</a>)
  */
 public class QueueUsingTwoStacks {
     private final Stack<Object> inStack;

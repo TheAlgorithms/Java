@@ -6,13 +6,13 @@ import java.util.Objects;
 import org.junit.jupiter.api.Test;
 
 /**
- * @author Rebecca Velez (https://github.com/rebeccavelez)
+ * @author Rebecca Velez (<a href="https://github.com/rebeccavelez">...</a>)
  * @see SlowSort
  */
 
 public class SlowSortTest {
 
-    private SlowSort slowSort = new SlowSort();
+    private final SlowSort slowSort = new SlowSort();
 
     @Test
     public void slowSortEmptyArray() {
@@ -114,8 +114,8 @@ public class SlowSortTest {
      * Custom Comparable class for testing.
      **/
     static class Person implements Comparable<Person> {
-        String name;
-        int age;
+        final String name;
+        final int age;
 
         Person(String name, int age) {
             this.name = name;

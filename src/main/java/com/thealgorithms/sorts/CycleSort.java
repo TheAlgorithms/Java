@@ -3,7 +3,7 @@ package com.thealgorithms.sorts;
 /**
  * This class implements the cycle sort algorithm.
  * Cycle sort is an in-place sorting algorithm, unstable, and efficient for scenarios with limited memory usage.
- * @author Podshivalov Nikita (https://github.com/nikitap492)
+ * @author Podshivalov Nikita (<a href="https://github.com/nikitap492">...</a>)
  */
 class CycleSort implements SortAlgorithm {
     /**

@@ -5,18 +5,18 @@ package com.thealgorithms.dynamicprogramming;
  * This method uses dynamic programming to build up a solution iteratively,
  * filling a 2-D array where each entry dp[i][w] represents the maximum value
  * achievable with the first i items and a knapsack capacity of w.
- *
+ * <p>
  * The tabulation approach is efficient because it avoids redundant calculations
  * by solving all subproblems in advance and storing their results, ensuring
  * each subproblem is solved only once. This is a key technique in dynamic programming,
  * making it possible to solve problems that would otherwise be infeasible due to
  * exponential time complexity in naive recursive solutions.
- *
+ * <p>
  * Time Complexity: O(n * W), where n is the number of items and W is the knapsack capacity.
  * Space Complexity: O(n * W) for the DP table.
- *
- * For more information, see:
- * https://en.wikipedia.org/wiki/Knapsack_problem#Dynamic_programming
+ * <p>
+ * For more informati<a href="on,">see:
+ * https://en.wikipedia.org/wiki/Knapsack_problem#Dynamic</a>_programming
  */
 public final class KnapsackZeroOneTabulation {
 

@@ -7,7 +7,7 @@ import java.util.PriorityQueue;
  * their priority based on real-time feedback, such as wait time and CPU usage.
  * Tasks that wait longer will automatically increase their priority,
  * allowing for better responsiveness and fairness in task handling.
- *
+ * <p>
  * Use Case: Real-time systems that require dynamic prioritization
  * of tasks to maintain system responsiveness and fairness.
  *
@@ -16,7 +16,7 @@ import java.util.PriorityQueue;
 public final class SelfAdjustingScheduling {
 
     private static class Task implements Comparable<Task> {
-        String name;
+        final String name;
         int waitTime;
         int priority;
 

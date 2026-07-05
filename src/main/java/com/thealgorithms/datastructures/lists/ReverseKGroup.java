@@ -28,7 +28,7 @@ package com.thealgorithms.datastructures.lists;
  * </ul>
  * </p>
  *
- * Author: Bama Charan Chhandogi (https://github.com/BamaCharanChhandogi)
+ * Author: Bama Charan Chhandogi (<a href="https://github.com/BamaCharanChhandogi">...</a>)
  */
 public class ReverseKGroup {
 

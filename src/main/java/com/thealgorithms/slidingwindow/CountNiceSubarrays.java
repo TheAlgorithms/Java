@@ -3,12 +3,12 @@ package com.thealgorithms.slidingwindow;
 /**
  * Counts the number of "nice subarrays".
  * A nice subarray is a contiguous subarray that contains exactly k odd numbers.
- *
+ * <p>
  * This implementation uses the sliding window technique.
- *
- * Reference:
- * https://leetcode.com/problems/count-number-of-nice-subarrays/
- *
+ * <p>
+ * Refere<a href="nce:
+ ">* https://leetcode.com/problems/count-number-of-nice-su</a>barrays/
+ * <p>
  * Time Complexity: O(n)
  * Space Complexity: O(n)
  */

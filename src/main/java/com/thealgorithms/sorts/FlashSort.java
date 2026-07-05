@@ -2,7 +2,7 @@ package com.thealgorithms.sorts;
 
 /**
  * Implementation of Flash Sort algorithm that implements the SortAlgorithm interface.
- *
+ * <p>
  * Sorts an array using the Flash Sort algorithm.
  * <p>
  * Flash Sort is a distribution sorting algorithm that partitions the data into

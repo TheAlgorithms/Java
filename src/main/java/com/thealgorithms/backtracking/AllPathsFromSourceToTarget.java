@@ -41,7 +41,7 @@ public class AllPathsFromSourceToTarget {
     private final int v;
 
     // To store the paths from source to destination
-    static List<List<Integer>> nm = new ArrayList<>();
+    static final List<List<Integer>> nm = new ArrayList<>();
     // adjacency list
     private ArrayList<Integer>[] adjList;
 

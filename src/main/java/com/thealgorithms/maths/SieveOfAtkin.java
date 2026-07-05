@@ -6,7 +6,7 @@ import java.util.List;
 /**
  * Implementation of the Sieve of Atkin, an optimized algorithm to generate
  * all prime numbers up to a given limit.
- *
+ * <p>
  * The Sieve of Atkin uses quadratic forms and modular arithmetic to identify
  * prime candidates, then eliminates multiples of squares. It is more efficient
  * than the Sieve of Eratosthenes for large limits.
@@ -54,7 +54,7 @@ public final class SieveOfAtkin {
 
     /**
      * Marks numbers in the sieve as prime candidates based on quadratic residues.
-     *
+     * <p>
      * This method iterates over all x and y up to sqrt(limit) and applies
      * the three quadratic forms used in the Sieve of Atkin. Numbers satisfying
      * the modulo conditions are toggled in the sieve array.
@@ -104,7 +104,7 @@ public final class SieveOfAtkin {
 
     /**
      * Toggles the sieve entry for a number if it satisfies the modulo condition and an additional boolean condition.
-     *
+     * <p>
      * This version is used for the quadratic form 3*x*x - y*y, which requires x > y.
      *
      * @param n the number to check
@@ -121,7 +121,7 @@ public final class SieveOfAtkin {
 
     /**
      * Eliminates numbers that are multiples of squares from the sieve.
-     *
+     * <p>
      * All numbers that are multiples of i*i (where i is marked as prime) are
      * marked non-prime to finalize the sieve. This ensures only actual primes remain.
      *

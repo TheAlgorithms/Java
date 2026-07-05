@@ -38,11 +38,7 @@ public final class LineIntersection {
         if (o3 == 0 && onSegment(q1, p1, q2)) {
             return true;
         }
-        if (o4 == 0 && onSegment(q1, p2, q2)) {
-            return true;
-        }
-
-        return false;
+        return o4 == 0 && onSegment(q1, p2, q2);
     }
 
     /**

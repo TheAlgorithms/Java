@@ -11,9 +11,9 @@ import java.util.Map;
  * This implementation supports incrementing, querying the total count,
  * comparing with other G-Counters, and merging with another G-Counter
  * to compute the element-wise maximum.
- * (https://en.wikipedia.org/wiki/Conflict-free_replicated_data_type)
+ * (<a href="https://en.wikipedia.org/wiki/Conflict-free_replicated_data_type">...</a>)
  *
- * @author itakurah (https://github.com/itakurah)
+ * @author itakurah (<a href="https://github.com/itakurah">...</a>)
  */
 
 class GCounter {

@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 
 /**
  * Test case for Median Of Running Array Problem.
- * @author Ansh Shah (https://github.com/govardhanshah456)
+ * @author Ansh Shah (<a href="https://github.com/govardhanshah456">...</a>)
  */
 
 public class MedianOfRunningArrayTest {

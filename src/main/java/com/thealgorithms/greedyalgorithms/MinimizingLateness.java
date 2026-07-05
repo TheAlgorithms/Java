@@ -7,11 +7,11 @@ public final class MinimizingLateness {
     }
 
     public static class Job {
-        String jobName;
+        final String jobName;
         int startTime = 0;
         int lateness = 0;
-        int processingTime;
-        int deadline;
+        final int processingTime;
+        final int deadline;
 
         public Job(String jobName, int processingTime, int deadline) {
             this.jobName = jobName;

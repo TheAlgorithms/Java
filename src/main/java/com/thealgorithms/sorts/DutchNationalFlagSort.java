@@ -7,7 +7,7 @@ package com.thealgorithms.sorts;
  * middle is given, this implementation will use a value from the given Array. This value is the one
  * positioned in the arrays' middle if the arrays' length is odd. If the arrays' length is even, the
  * value left to the middle will be used. More information and Pseudocode:
- * https://en.wikipedia.org/wiki/Dutch_national_flag_problem
+ * <a href="https://en.wikipedia.org/wiki/Dutch_national_flag_problem">...</a>
  */
 public class DutchNationalFlagSort implements SortAlgorithm {
 

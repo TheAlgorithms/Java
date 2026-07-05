@@ -5,16 +5,16 @@ import java.util.Map;
 
 /**
  * Class to determine if a pattern matches a string using backtracking.
- *
+ * <p>
  * Example:
  * Pattern: "abab"
  * Input String: "JavaPythonJavaPython"
  * Output: true
- *
+ * <p>
  * Pattern: "aaaa"
  * Input String: "JavaJavaJavaJava"
  * Output: true
- *
+ * <p>
  * Pattern: "aabb"
  * Input String: "JavaPythonPythonJava"
  * Output: false

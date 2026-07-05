@@ -37,21 +37,7 @@ public final class EdmondsKarp {
             throw new IllegalArgumentException("Capacity matrix must not be null or empty");
         }
 
-        final int n = capacity.length;
-        for (int row = 0; row < n; row++) {
-            if (capacity[row] == null || capacity[row].length != n) {
-                throw new IllegalArgumentException("Capacity matrix must be square");
-            }
-            for (int col = 0; col < n; col++) {
-                if (capacity[row][col] < 0) {
-                    throw new IllegalArgumentException("Capacities must be non-negative");
-                }
-            }
-        }
-
-        if (source < 0 || source >= n || sink < 0 || sink >= n) {
-            throw new IllegalArgumentException("Source and sink must be valid vertex indices");
-        }
+        final int n = getN(capacity, source, sink);
         if (source == sink) {
             return 0;
         }
@@ -81,6 +67,25 @@ public final class EdmondsKarp {
         }
 
         return maxFlow;
+    }
+
+    private static int getN(int[][] capacity, int source, int sink) {
+        final int n = capacity.length;
+        for (int[] ints : capacity) {
+            if (ints == null || ints.length != n) {
+                throw new IllegalArgumentException("Capacity matrix must be square");
+            }
+            for (int col = 0; col < n; col++) {
+                if (ints[col] < 0) {
+                    throw new IllegalArgumentException("Capacities must be non-negative");
+                }
+            }
+        }
+
+        if (source < 0 || source >= n || sink < 0 || sink >= n) {
+            throw new IllegalArgumentException("Source and sink must be valid vertex indices");
+        }
+        return n;
     }
 
     private static boolean bfs(int[][] residual, int source, int sink, int[] parent) {

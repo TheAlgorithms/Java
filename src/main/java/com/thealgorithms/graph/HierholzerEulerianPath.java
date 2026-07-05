@@ -7,16 +7,16 @@ import java.util.Deque;
 import java.util.List;
 
 /**
- * Implementation of Hierholzer's Algorithm for finding an Eulerian Path or Circuit
+ * Implementation of Hierholzer's Algorithm for finding a Eulerian Path or Circuit
  * in a directed graph.
  *
  * <p>
- * An <b>Eulerian Circuit</b> is a path that starts and ends at the same vertex
+ * A <b>Eulerian Circuit</b> is a path that starts and ends at the same vertex
  * and visits every edge exactly once.
  * </p>
  *
  * <p>
- * An <b>Eulerian Path</b> visits every edge exactly once but may start and end
+ * A <b>Eulerian Path</b> visits every edge exactly once but may start and end
  * at different vertices.
  * </p>
  *
@@ -97,7 +97,7 @@ public class HierholzerEulerianPath {
     }
 
     /**
-     * Finds an Eulerian Path or Circuit using Hierholzer’s Algorithm.
+     * Finds a Eulerian Path or Circuit using Hierholzer’s Algorithm.
      *
      * @return list of vertices representing the Eulerian Path/Circuit,
      *         or an empty list if none exists
@@ -225,7 +225,7 @@ public class HierholzerEulerianPath {
                 }
             }
 
-            if (preferredStart != -1 && path.get(0) != preferredStart) {
+            if (preferredStart != -1 && path.getFirst() != preferredStart) {
                 int idx = 0;
                 for (Integer node : path) { // replaced indexed loop
                     if (node == preferredStart) {
@@ -235,26 +235,30 @@ public class HierholzerEulerianPath {
                 }
 
                 if (idx > 0) {
-                    List<Integer> rotated = new ArrayList<>();
-                    int currentIndex = 0;
-                    for (Integer node : path) { // replaced indexed loop
-                        if (currentIndex >= idx) {
-                            rotated.add(node);
-                        }
-                        currentIndex++;
-                    }
-                    currentIndex = 0;
-                    for (Integer node : path) { // replaced indexed loop
-                        if (currentIndex < idx) {
-                            rotated.add(node);
-                        }
-                        currentIndex++;
-                    }
-                    path = rotated;
+                    path = getIntegerList(path, idx);
                 }
             }
         }
         return path;
+    }
+
+    private static List<Integer> getIntegerList(List<Integer> path, int idx) {
+        List<Integer> rotated = new ArrayList<>();
+        int currentIndex = 0;
+        for (Integer node : path) { // replaced indexed loop
+            if (currentIndex >= idx) {
+                rotated.add(node);
+            }
+            currentIndex++;
+        }
+        currentIndex = 0;
+        for (Integer node : path) { // replaced indexed loop
+            if (currentIndex < idx) {
+                rotated.add(node);
+            }
+            currentIndex++;
+        }
+        return rotated;
     }
 
     /**

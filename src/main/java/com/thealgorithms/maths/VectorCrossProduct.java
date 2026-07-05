@@ -18,21 +18,21 @@ package com.thealgorithms.maths;
  * it's value expressed as a number. Let the direction ratios of the first
  * vector, P be: a, b, c Let the direction ratios of the second vector, Q be: x,
  * y, z Therefore the calculation for the cross product can be arranged as:
- *
+ * <p>
  * ``` P x Q: 1	1	1 a	b	c x	y	z ```
- *
+ * <p>
  * The direction ratios (DR) are calculated as follows: 1st DR, J: (b * z) - (c
  * * y) 2nd DR, A: -((a * z) - (c * x)) 3rd DR, N: (a * y) - (b * x)
- *
+ * <p>
  * Therefore, the direction ratios of the cross product are: J, A, N The
  * following Java Program calculates the direction ratios of the cross products
  * of two vector. The program uses a function, cross() for doing so. The
  * direction ratios for the first and the second vector has to be passed one by
  * one separated by a space character.
- *
+ * <p>
  * Magnitude of a vector is the square root of the sum of the squares of the
  * direction ratios.
- *
+ * <p>
  *
  * For maintaining filename consistency, Vector class has been termed as
  * VectorCrossProduct

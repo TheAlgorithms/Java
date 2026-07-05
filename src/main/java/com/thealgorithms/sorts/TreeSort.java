@@ -11,11 +11,11 @@ import java.util.List;
  * <p>
  * Tree Sort: A sorting algorithm which constructs a Binary Search Tree using
  * the unsorted data and then outputs the data by inorder traversal of the tree.
- *
- * Reference: https://en.wikipedia.org/wiki/Tree_sort
+ * <p>
+ * Referen<a href="ce:">https://en.wikipedia.org/wiki/Tree_</a>sort
  * </p>
  *
- * @author Madhur Panwar (https://github.com/mdrpanwar)
+ * @author Madhur Panw<a href="ar">(https://github.com/mdrpa</a>nwar)
  */
 public class TreeSort implements SortAlgorithm {
 

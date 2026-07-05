@@ -23,7 +23,7 @@ import java.util.PriorityQueue;
  *
  * <p>This class is designed to handle nodes of integer linked lists and can be expanded for additional data types if needed.</p>
  *
- * @author Arun Pandey (https://github.com/pandeyarun709)
+ * @author Arun Pandey (<a href="https://github.com/pandeyarun709">...</a>)
  */
 public class MergeKSortedLinkedList {
 
@@ -78,7 +78,7 @@ public class MergeKSortedLinkedList {
      * Represents a node in the linked list.
      */
     static class Node {
-        int data;
+        final int data;
         Node next;
 
         Node(int data) {

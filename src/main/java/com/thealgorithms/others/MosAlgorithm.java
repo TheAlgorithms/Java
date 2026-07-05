@@ -5,12 +5,12 @@ import java.util.Comparator;
 
 /**
  * Mo's Algorithm (Square Root Decomposition) for offline range queries
- *
+ * <p>
  * Mo's Algorithm is used to answer range queries efficiently when:
  * 1. Queries can be processed offline (all queries known beforehand)
  * 2. We can efficiently add/remove elements from current range
  * 3. The problem has optimal substructure for range operations
- *
+ * <p>
  * Time Complexity: O((N + Q) * sqrt(N)) where N = array size, Q = number of queries
  * Space Complexity: O(N + Q)
  *

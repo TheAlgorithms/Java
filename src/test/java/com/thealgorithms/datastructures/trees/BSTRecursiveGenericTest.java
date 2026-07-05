@@ -11,9 +11,9 @@ import org.junit.jupiter.api.Test;
 /**
  * Unit tests for BSTRecursiveGeneric class.
  * Covers insertion, deletion, search, traversal, sorting, and display.
- *
+ * <p>
  * Author: Udaya Krishnan M
- * GitHub: https://github.com/UdayaKrishnanM/
+ * GitH<a href="ub:">https://github.com/UdayaKrishn</a>anM/
  */
 class BSTRecursiveGenericTest {
 

@@ -8,9 +8,9 @@ import java.util.Arrays;
 
 /**
  * A wiggle sort implementation based on John L.s' answer in
- * https://cs.stackexchange.com/questions/125372/how-to-wiggle-sort-an-array-in-linear-time-complexity
+ * <a href="https://cs.stackexchange.com/questions/125372/how-to-wiggle-sort-an-array-in-linear-time-complexity">...</a>
  * Also have a look at:
- * https://cs.stackexchange.com/questions/125372/how-to-wiggle-sort-an-array-in-linear-time-complexity?noredirect=1&lq=1
+ * <a href="https://cs.stackexchange.com/questions/125372/how-to-wiggle-sort-an-array-in-linear-time-complexity?noredirect=1&lq=1">...</a>
  * Not all arrays are wiggle-sortable. This algorithm will find some obviously not wiggle-sortable
  * arrays and throw an error, but there are some exceptions that won't be caught, for example [1, 2,
  * 2].

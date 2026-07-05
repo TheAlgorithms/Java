@@ -4,7 +4,7 @@ package com.thealgorithms.dynamicprogramming;
  * Given a string containing just the characters '(' and ')', find the length of
  * the longest valid (well-formed) parentheses substring.
  *
- * @author Libin Yang (https://github.com/yanglbme)
+ * @author Libin Yang (<a href="https://github.com/yanglbme">...</a>)
  * @since 2018/10/5
  */
 public final class LongestValidParentheses {

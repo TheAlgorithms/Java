@@ -8,7 +8,7 @@ import org.junit.jupiter.api.Test;
 
 /**
  * Test case for Two sum Problem.
- * @author Bama Charan Chhandogi (https://github.com/BamaCharanChhandogi)
+ * @author Bama Charan Chhandogi (<a href="https://github.com/BamaCharanChhandogi">...</a>)
  */
 
 public class TwoSumProblemTest {

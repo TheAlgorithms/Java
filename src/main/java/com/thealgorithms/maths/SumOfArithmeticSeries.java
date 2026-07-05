@@ -8,7 +8,7 @@ package com.thealgorithms.maths;
  * difference of 2.
  *
  * <p>
- * Wikipedia: https://en.wikipedia.org/wiki/Arithmetic_progression
+ * Wikipedia: <a href="https://en.wikipedia.org/wiki/Arithmetic_progression">...</a>
  */
 public final class SumOfArithmeticSeries {
     private SumOfArithmeticSeries() {

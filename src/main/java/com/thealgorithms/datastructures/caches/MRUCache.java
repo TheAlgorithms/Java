@@ -9,7 +9,7 @@ import java.util.Map;
  * In contrast to the Least Recently Used (LRU) strategy, the MRU caching policy
  * evicts the most recently accessed items first. This class provides methods to
  * store key-value pairs and manage cache eviction based on this policy.
- *
+ * <p>
  * For more information, refer to:
  * <a href="https://en.wikipedia.org/wiki/Cache_replacement_policies#Most_recently_used_(MRU)">MRU on Wikipedia</a>.
  *

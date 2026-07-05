@@ -12,7 +12,7 @@ import java.util.List;
  *
  * <p>References:
  * <ul>
- *   <li>https://cp-algorithms.com/graph/01_bfs.html</li>
+ *   <li><a href="https://cp-algorithms.com/graph/01_bfs.html">...</a></li>
  * </ul>
  */
 public final class ZeroOneBfs {

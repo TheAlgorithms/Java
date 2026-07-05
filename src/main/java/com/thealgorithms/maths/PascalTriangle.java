@@ -9,7 +9,7 @@ public final class PascalTriangle {
      *arises in probability theory, combinatorics, and algebra. In much of the Western world, it is
      *named after the French mathematician Blaise Pascal, although other mathematicians studied it
      *centuries before him in India, Persia, China, Germany, and Italy.
-     *
+     * <p>
      * The rows of Pascal's triangle are conventionally enumerated starting with row n=0 at the top
      *(the 0th row). The entries in each row are numbered from the left beginning with k=0 and are
      *usually staggered relative to the numbers in the adjacent rows. The triangle may be
@@ -20,7 +20,7 @@ public final class PascalTriangle {
      *1 and 3 in the third row are added to produce the number 4 in the fourth row. *
      *
      *<p>
-     *     link:-https://en.wikipedia.org/wiki/Pascal%27s_triangle
+     *     li<a href="nk:-https://en.wikipedia.org/wiki/Pascal%27s_tria">...</a>ngle
      *
      * <p>
      *     Example:-

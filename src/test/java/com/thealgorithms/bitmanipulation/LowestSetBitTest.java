@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 
 /**
  * Test case for Lowest Set Bit
- * @author Prayas Kumar (https://github.com/prayas7102)
+ * @author Prayas Kumar (<a href="https://github.com/prayas7102">...</a>)
  */
 
 public class LowestSetBitTest {

@@ -12,8 +12,8 @@ import java.util.function.BiFunction;
  * is calculated by evaluating the differential equation at the previous step,
  * multiplying the result with the step-size and adding it to the last y-value:
  * y_n+1 = y_n + stepSize * f(x_n, y_n). (description adapted from
- * https://en.wikipedia.org/wiki/Euler_method ) (see also:
- * https://www.geeksforgeeks.org/euler-method-solving-differential-equation/ )
+ * <a href="https://en.wikipedia.org/wiki/Euler_method">...</a> ) (see also:
+ * <a href="https://www.geeksforgeeks.org/euler-method-solving-differential-equation/">...</a> )
  */
 public final class EulerMethod {
     private EulerMethod() {

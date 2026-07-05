@@ -101,7 +101,7 @@ public class BinarySearch2dArrayTest {
         int target = 2;
 
         // Assert that the requirement, that the array only has one row, is fulfilled.
-        assertEquals(arr.length, 1);
+        assertEquals(1, arr.length);
         int[] ans = BinarySearch2dArray.binarySearch(arr, target);
         System.out.println(Arrays.toString(ans));
         assertEquals(0, ans[0]);

@@ -20,11 +20,11 @@ public final class NonPreemptivePriorityScheduling {
      * Represents a process with an ID, burst time, priority, arrival time, and start time.
      */
     static class Process implements Comparable<Process> {
-        int id;
-        int arrivalTime;
+        final int id;
+        final int arrivalTime;
         int startTime;
-        int burstTime;
-        int priority;
+        final int burstTime;
+        final int priority;
 
         /**
          * Constructs a Process instance with the specified parameters.

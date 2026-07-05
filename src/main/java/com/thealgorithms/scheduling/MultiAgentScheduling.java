@@ -9,7 +9,7 @@ import java.util.Map;
  * MultiAgentScheduling assigns tasks to different autonomous agents
  * who independently decide the execution order of their assigned tasks.
  * The focus is on collaboration between agents to optimize the overall schedule.
- *
+ * <p>
  * Use Case: Distributed scheduling in decentralized systems like IoT networks.
  *
  * @author Hardvan
@@ -17,8 +17,8 @@ import java.util.Map;
 public class MultiAgentScheduling {
 
     static class Agent {
-        String name;
-        List<String> tasks;
+        final String name;
+        final List<String> tasks;
 
         Agent(String name) {
             this.name = name;

@@ -156,8 +156,7 @@ class CircularBufferTest {
     void testRepeatedNullInsertionThrows() {
         CircularBuffer<Object> buffer = new CircularBuffer<>(5);
         for (int i = 0; i < 3; i++) {
-            int finalI = i;
-            org.junit.jupiter.api.Assertions.assertThrows(IllegalArgumentException.class, () -> buffer.put(null), "Iteration: " + finalI);
+            org.junit.jupiter.api.Assertions.assertThrows(IllegalArgumentException.class, () -> buffer.put(null), "Iteration: " + i);
         }
     }
     @Test

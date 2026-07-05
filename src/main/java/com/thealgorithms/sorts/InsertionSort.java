@@ -2,18 +2,18 @@ package com.thealgorithms.sorts;
 
 /**
  * Generic Insertion Sort algorithm.
- *
+ * <p>
  * Standard insertion sort iterates through the array and inserts each element into its
  * correct position in the sorted portion of the array.
- *
+ * <p>
  * Sentinel sort is a variation that first places the minimum element at index 0 to
  * avoid redundant comparisons in subsequent passes.
- *
+ * <p>
  * Time Complexity:
  * - Best case: O(n) – array is already sorted (sentinel sort can improve slightly)
  * - Average case: O(n^2)
  * - Worst case: O(n^2) – array is reverse sorted
- *
+ * <p>
  * Space Complexity: O(1) – in-place sorting
  *
  * @see SortAlgorithm

@@ -6,7 +6,7 @@ import java.util.Map;
 
 /**
  * Implementation of the Gale-Shapley Algorithm for Stable Matching.
- * Problem link: https://en.wikipedia.org/wiki/Stable_marriage_problem
+ * Problem link: <a href="https://en.wikipedia.org/wiki/Stable_marriage_problem">...</a>
  */
 public final class GaleShapley {
 

@@ -13,7 +13,7 @@ package com.thealgorithms.bitmanipulation;
  *
  * <p>Algorithm originally suggested by Jon von Neumann.
  *
- * @author Abhinay Verma (https://github.com/Monk-AbhinayVerma)
+ * @author Abhinay Verma (<a href="https://github.com/Monk-AbhinayVerma">...</a>)
  */
 public final class TwosComplement {
     private TwosComplement() {

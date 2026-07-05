@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * @author Varun Upadhyay (https://github.com/varunu28)
+ * @author Varun Upadhyay (<a href="https://github.com/varunu28">...</a>)
  */
 public final class Fibonacci {
     private Fibonacci() {
@@ -76,7 +76,7 @@ public final class Fibonacci {
      * <p>
      * Whereas , the above functions will take O(n) Space.
      * @throws IllegalArgumentException if n is negative
-     * @author Shoaib Rayeen (https://github.com/shoaibrayeen)
+     * @author Shoaib Rayeen (<a href="https://github.com/shoaibrayeen">...</a>)
      */
     public static int fibOptimized(int n) {
         if (n < 0) {

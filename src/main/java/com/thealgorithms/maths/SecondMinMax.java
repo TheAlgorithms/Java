@@ -8,7 +8,7 @@ public final class SecondMinMax {
      * Utility class for finding second maximum or minimum based on BiPredicate
      * @exception IllegalArgumentException => if input array is of length less than 2 also if all elements are same
      * @return the second minimum / maximum value from the input array
-     * @author Bharath Sanjeevi ( https://github.com/BharathSanjeeviT )
+     * @author Bharath Sanjeevi ( <a href="https://github.com/BharathSanjeeviT">...</a> )
      */
 
     private SecondMinMax() {
@@ -35,7 +35,7 @@ public final class SecondMinMax {
      * @param arr the input array
      * @exception IllegalArgumentException => if input array is of length less than 2 also if all elements are same
      * @return the second minimum / maximum value from the input array
-     * @author Bharath Sanjeevi ( https://github.com/BharathSanjeeviT )
+     * @author Bharath Sanjeevi ( <a href="https://github.com/BharathSanjeeviT">...</a> )
      */
 
     public static int findSecondMin(final int[] arr) {

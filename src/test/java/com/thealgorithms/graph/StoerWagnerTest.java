@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 
 /**
  * Unit tests for the StoerWagner global minimum cut algorithm.
- *
+ * <p>
  * These tests verify correctness of the implementation across
  * several graph configurations: simple, complete, disconnected,
  * and small edge cases.

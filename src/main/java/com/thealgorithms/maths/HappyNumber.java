@@ -38,7 +38,7 @@ public final class HappyNumber {
 
     /**
      * Calculates the sum of squares of the digits of a number.
-     *
+     * <p>
      * Example:
      * num = 82 → 8² + 2² = 64 + 4 = 68
      *

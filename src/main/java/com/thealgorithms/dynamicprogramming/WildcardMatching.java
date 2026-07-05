@@ -3,13 +3,12 @@ package com.thealgorithms.dynamicprogramming;
 /**
  *
  * Author: Janmesh Singh
- * Github: https://github.com/janmeshjs
-
+ * Github: <a href="https://github.com/janmeshjs">...</a>
  * Problem Statement: To determine if the pattern matches the text.
  * The pattern can include two special wildcard characters:
  *       ' ? ': Matches any single character.
  *       ' * ': Matches zero or more of any character sequence.
- *
+ * <p>
  * Use DP to return True if the pattern matches the entire text and False otherwise
  *
  */

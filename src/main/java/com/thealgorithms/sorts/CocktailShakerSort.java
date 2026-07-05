@@ -6,8 +6,8 @@ package com.thealgorithms.sorts;
  * through it back and forth, progressively moving the largest elements
  * to the end and the smallest elements to the beginning.
  *
- * @author Mateus Bizzo (https://github.com/MattBizzo)
- * @author Podshivalov Nikita (https://github.com/nikitap492)
+ * @author Mateus Bizzo (<a href="https://github.com/MattBizzo">...</a>)
+ * @author Podshivalov Nikita (<a href="https://github.com/nikitap492">...</a>)
  */
 class CocktailShakerSort implements SortAlgorithm {
 

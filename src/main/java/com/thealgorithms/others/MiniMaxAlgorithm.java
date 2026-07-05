@@ -27,7 +27,7 @@ import java.util.Random;
  * GeeksforGeeks - Minimax Algorithm</a>
  * </ul>
  *
- * @author aitofi (https://github.com/aitorfi)
+ * @author aitofi (<a href="https://github.com/aitorfi">...</a>)
  */
 public final class MiniMaxAlgorithm {
 
@@ -61,7 +61,7 @@ public final class MiniMaxAlgorithm {
      *                                  2
      */
     public MiniMaxAlgorithm(int[] scores) {
-        if (!isPowerOfTwo(scores.length)) {
+        if (isPowerOfTwo(scores.length)) {
             throw new IllegalArgumentException("The number of scores must be a power of 2.");
         }
         this.scores = Arrays.copyOf(scores, scores.length);
@@ -167,7 +167,7 @@ public final class MiniMaxAlgorithm {
      * @return True if n is a power of 2, false otherwise.
      */
     private boolean isPowerOfTwo(int n) {
-        return n > 0 && (n & (n - 1)) == 0;
+        return n <= 0 || (n & (n - 1)) != 0;
     }
 
     /**
@@ -178,7 +178,7 @@ public final class MiniMaxAlgorithm {
      *                                  2
      */
     public void setScores(int[] scores) {
-        if (!isPowerOfTwo(scores.length)) {
+        if (isPowerOfTwo(scores.length)) {
             throw new IllegalArgumentException("The number of scores must be a power of 2.");
         }
         this.scores = Arrays.copyOf(scores, scores.length);

@@ -30,8 +30,8 @@ import com.thealgorithms.devutils.searches.SearchAlgorithm;
  * array[2]=5 (5 &lt; 7, search right half) Step 4: left=3, right=3, mid=3, array[3]=7 (Found!
  * Return index 3)
  *
- * @author Varun Upadhyay (https://github.com/varunu28)
- * @author Podshivalov Nikita (https://github.com/nikitap492)
+ * @author Varun Upadhyay (<a href="https://github.com/varunu28">...</a>)
+ * @author Podshivalov Nikita (<a href="https://github.com/nikitap492">...</a>)
  * @see SearchAlgorithm
  * @see IterativeBinarySearch
  */

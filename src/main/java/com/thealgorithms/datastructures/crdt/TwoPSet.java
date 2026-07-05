@@ -10,9 +10,9 @@ import java.util.Set;
  * Once an element is removed and placed in the tombstone set, it cannot be re-added, adhering to "remove-wins" semantics.
  * This implementation supports querying the presence of elements, adding elements, removing elements,
  * comparing with other 2P-Sets, and merging two 2P-Sets while preserving the remove-wins semantics.
- * (https://en.wikipedia.org/wiki/Conflict-free_replicated_data_type)
+ * (<a href="https://en.wikipedia.org/wiki/Conflict-free_replicated_data_type">...</a>)
  *
- * @author itakurah (Niklas Hoefflin) (https://github.com/itakurah)
+ * @author itakurah (Niklas Hoefflin) (<a href="https://github.com/itakurah">...</a>)
  */
 
 public class TwoPSet<T> {

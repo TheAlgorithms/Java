@@ -15,20 +15,20 @@ public class Treap {
     public static class TreapNode {
         /**
          * TreapNode class defines the individual nodes in the Treap
-         *
+         * <p>
          * value -> holds the value of the node.
          * Binary Search Tree is built based on value.
-         *
+         * <p>
          * priority -> holds the priority of the node.
          * Heaps are maintained based on priority.
          * It is randomly assigned
-         *
+         * <p>
          * size -> holds the size of the subtree with current node as root
-         *
+         * <p>
          * left -> holds the left subtree
          * right -> holds the right subtree
          */
-        public int value;
+        public final int value;
         private final int priority;
         private int size;
         public TreapNode left;
@@ -65,7 +65,7 @@ public class Treap {
 
     /**
      * Constructors
-     *
+     * <p>
      * Treap() -> create an empty Treap
      * Treap(int[] nodeValues) -> add the elements given in the array to the Treap
      */

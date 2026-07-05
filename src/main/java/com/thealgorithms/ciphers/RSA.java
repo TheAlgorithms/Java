@@ -7,11 +7,11 @@ import java.security.SecureRandom;
  * RSA is an asymmetric cryptographic algorithm used for secure data encryption and decryption.
  * It relies on a pair of keys: a public key (used for encryption) and a private key
  * (used for decryption). The algorithm is based on the difficulty of factoring large prime numbers.
- *
+ * <p>
  * This implementation includes key generation, encryption, and decryption methods that can handle both
  * text-based messages and BigInteger inputs. For more details on RSA:
  * <a href="https://en.wikipedia.org/wiki/RSA_(cryptosystem)">RSA Cryptosystem - Wikipedia</a>.
- *
+ * <p>
  * Example Usage:
  * <pre>
  * RSA rsa = new RSA(1024);

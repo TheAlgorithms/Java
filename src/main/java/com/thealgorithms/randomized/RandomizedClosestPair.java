@@ -9,11 +9,11 @@ import java.util.Random;
 
 /**
  * Randomized Closest Pair of Points Algorithm
- *
+ * <p>
  * Use Case:
  * - Efficiently finds the closest pair of points in a 2D plane.
  * - Applicable in computational geometry, clustering, and graphics.
- *
+ * <p>
  * Time Complexity:
  * - Expected: O(n log n) using randomized divide and conquer
  *

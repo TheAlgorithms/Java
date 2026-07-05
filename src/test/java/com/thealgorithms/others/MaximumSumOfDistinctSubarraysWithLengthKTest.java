@@ -10,7 +10,7 @@ import org.junit.jupiter.params.provider.MethodSource;
 
 /**
  * Test class for {@link MaximumSumOfDistinctSubarraysWithLengthK}.
- *
+ * <p>
  * This class contains comprehensive test cases to verify the correctness of the
  * maximum subarray sum algorithm with distinct elements constraint.
  */
@@ -31,7 +31,7 @@ class MaximumSumOfDistinctSubarraysWithLengthKTest {
 
     /**
      * Provides test cases for the parameterized test.
-     *
+     * <p>
      * Test cases cover:
      * - Normal cases with distinct and duplicate elements
      * - Edge cases (empty array, k = 0, k > array length)

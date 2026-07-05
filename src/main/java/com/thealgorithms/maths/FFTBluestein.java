@@ -19,8 +19,8 @@ public final class FFTBluestein {
      *
      * <p>
      * More info:
-     * https://en.wikipedia.org/wiki/Chirp_Z-transform#Bluestein.27s_algorithm
-     * http://tka4.org/materials/lib/Articles-Books/Numerical%20Algorithms/Hartley_Trasform/Bluestein%27s%20FFT%20algorithm%20-%20Wikipedia,%20the%20free%20encyclopedia.htm
+     * <a href="https://en.wikipedia.org/wiki/Chirp_Z-transform#Bluestein.27s_algorithm">...</a>
+     * <a href="http://tka4.org/materials/lib/Articles-Books/Numerical%20Algorithms/Hartley_Trasform/Bluestein%27s%20FFT%20algorithm%20-%20Wikipedia,%20the%20free%20encyclopedia.htm">...</a>
      *
      * @param x The discrete signal which is then converted to the FFT or the
      * IFFT of signal x.

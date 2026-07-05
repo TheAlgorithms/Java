@@ -12,7 +12,7 @@ import java.util.HashSet;
  * Worst-case space complexity O(min(n, m)), where n is the length of the string
  * and m is the size of the character set.
  *
- * @author  (https://github.com/Chiefpatwal)
+ * @author  (<a href="https://github.com/Chiefpatwal">...</a>)
  */
 public final class LongestSubstringWithoutRepeatingCharacters {
 

@@ -7,7 +7,7 @@ import java.util.Set;
  * A Java implementation of Permutation Cipher.
  * It is a type of transposition cipher in which the plaintext is divided into blocks
  * and the characters within each block are rearranged according to a fixed permutation key.
- *
+ * <p>
  * For example, with key {3, 1, 2} and plaintext "HELLO", the text is divided into blocks
  * of 3 characters: "HEL" and "LO" (with padding). The characters are then rearranged
  * according to the key positions.

@@ -4,12 +4,12 @@ package com.thealgorithms.maths;
  * Utility class to check if three integers form a Pythagorean triple.
  * A Pythagorean triple consists of three positive integers a, b, and c,
  * such that a² + b² = c².
- *
+ * <p>
  * Common examples:
  * - (3, 4, 5)
  * - (5, 12, 13)
- *
- * Reference: https://en.wikipedia.org/wiki/Pythagorean_triple
+ * <p>
+ * Ref<a href="erence:">https://en.wikipedia.org/wiki/Pythagorea</a>n_triple
  */
 public final class PythagoreanTriple {
 

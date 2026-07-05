@@ -5,8 +5,8 @@ package com.thealgorithms.maths;
  * This sieve is similar to the sieve of Eratosthenes that generates the primes,
  * but it eliminates numbers based on their position in the remaining set,
  * instead of their value (or position in the initial set of natural numbers).
- *
- * Wiki: https://en.wikipedia.org/wiki/Lucky_number
+ * <p>
+ * Wi<a href="ki:">https://en.wikipedia.org/wiki/Lucky_nu</a>mber
  */
 public final class LuckyNumber {
 

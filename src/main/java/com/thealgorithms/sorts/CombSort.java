@@ -10,8 +10,8 @@ package com.thealgorithms.sorts;
  * <p>
  * Comb sort improves on bubble sort.
  *
- * @author Sandeep Roy (https://github.com/sandeeproy99)
- * @author Podshivalov Nikita (https://github.com/nikitap492)
+ * @author Sandeep Roy (<a href="https://github.com/sandeeproy99">...</a>)
+ * @author Podshivalov Nikita (<a href="https://github.com/nikitap492">...</a>)
  * @see BubbleSort
  * @see SortAlgorithm
  */

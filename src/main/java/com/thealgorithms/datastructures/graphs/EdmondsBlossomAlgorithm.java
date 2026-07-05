@@ -215,12 +215,12 @@ public final class EdmondsBlossomAlgorithm {
      * Auxiliary data class to encapsulate common parameters for the blossom operations.
      */
     static class BlossomAuxData {
-        Queue<Integer> queue; // Queue for BFS traversal
-        int[] parent; // Parent array to store the paths
-        int[] base; // Base array to track the base of each vertex
-        boolean[] inBlossom; // Flags to indicate if a vertex is in a blossom
-        int[] match; // Array to store matches for each vertex
-        boolean[] inQueue; // Flags to track vertices in the BFS queue
+        final Queue<Integer> queue; // Queue for BFS traversal
+        final int[] parent; // Parent array to store the paths
+        final int[] base; // Base array to track the base of each vertex
+        final boolean[] inBlossom; // Flags to indicate if a vertex is in a blossom
+        final int[] match; // Array to store matches for each vertex
+        final boolean[] inQueue; // Flags to track vertices in the BFS queue
 
         BlossomAuxData(Queue<Integer> queue, int[] parent, int[] base, boolean[] inBlossom, int[] match, boolean[] inQueue) {
             this.queue = queue;
@@ -236,10 +236,10 @@ public final class EdmondsBlossomAlgorithm {
      * BlossomData class with reduced parameters.
      */
     static class BlossomData {
-        BlossomAuxData auxData; // Use the auxiliary data class
-        int u; // One vertex in the edge
-        int v; // Another vertex in the edge
-        int lca; // Lowest Common Ancestor
+        final BlossomAuxData auxData; // Use the auxiliary data class
+        final int u; // One vertex in the edge
+        final int v; // Another vertex in the edge
+        final int lca; // Lowest Common Ancestor
 
         BlossomData(BlossomAuxData auxData, int u, int v, int lca) {
             this.auxData = auxData;

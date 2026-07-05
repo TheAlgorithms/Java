@@ -3,7 +3,7 @@ package com.thealgorithms.datastructures.lists;
 public class TortoiseHareAlgo<E> {
     static final class Node<E> {
         Node<E> next;
-        E value;
+        final E value;
 
         private Node(E value, Node<E> next) {
             this.value = value;
@@ -11,7 +11,7 @@ public class TortoiseHareAlgo<E> {
         }
     }
 
-    private Node<E> head = null;
+    private Node<E> head;
 
     public TortoiseHareAlgo() {
         head = null;

@@ -5,12 +5,12 @@ import java.util.Random;
 
 /**
  * The {@code EulerPseudoprime} class implements the Euler primality test.
- *
+ * <p>
  * It is based on Euler’s criterion:
  * For an odd prime number {@code n} and any integer {@code a} coprime to {@code n}:
  *   a^((n-1)/2) ≡ (a/n) (mod n)
  * where (a/n) is the Jacobi symbol.
- *
+ * <p>
  * This algorithm is a stronger probabilistic test than Fermat’s test.
  * It may still incorrectly identify a composite as “probably prime” (Euler pseudoprime),
  * but such cases are rare.

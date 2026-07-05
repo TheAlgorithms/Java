@@ -8,7 +8,7 @@ import java.util.Optional;
 /**
  * @author: caos321
  * @date: 31 October 2021 (Sunday)
- * @wiki: https://en.wikipedia.org/wiki/Depth-first_search
+ * @wiki: <a href="https://en.wikipedia.org/wiki/Depth-first_search">...</a>
  */
 public class DepthFirstSearch<T> {
 

@@ -4,8 +4,8 @@ package com.thealgorithms.dynamicprogramming;
  * This class refers to the Optimal Job Scheduling problem with the following constrains:
  *  - precedence relation between the processes
  *  - machine pair dependent transportation delays
- *
- * https://en.wikipedia.org/wiki/Optimal_job_scheduling
+ * <p><a href="
+ ">* https://en.wikipedia.org/wiki/Optimal_job_schedu</a>ling
  *
  * @author georgioct@csd.auth.gr
  */

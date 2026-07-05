@@ -52,12 +52,12 @@ public final class SameTreesCheck {
             BinaryTree.Node second = q2.poll();
             // check that some node can be null
             // if the check is true: both nodes are null or both nodes are not null
-            if (!equalNodes(first, second)) {
+            if (equalNodes(first, second)) {
                 return false;
             }
 
             if (first != null) {
-                if (!equalNodes(first.left, second.left)) {
+                if (equalNodes(first.left, second.left)) {
                     return false;
                 }
                 if (first.left != null) {
@@ -65,7 +65,7 @@ public final class SameTreesCheck {
                     q2.add(second.left);
                 }
 
-                if (!equalNodes(first.right, second.right)) {
+                if (equalNodes(first.right, second.right)) {
                     return false;
                 }
                 if (first.right != null) {
@@ -79,11 +79,11 @@ public final class SameTreesCheck {
 
     private static boolean equalNodes(BinaryTree.Node p, BinaryTree.Node q) {
         if (p == null && q == null) {
-            return true;
-        }
-        if (p == null || q == null) {
             return false;
         }
-        return p.data == q.data;
+        if (p == null || q == null) {
+            return true;
+        }
+        return p.data != q.data;
     }
 }

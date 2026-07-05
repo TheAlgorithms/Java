@@ -5,7 +5,7 @@ import com.thealgorithms.datastructures.graphs.UndirectedAdjacencyListGraph;
 /**
  * This class implements the algorithm for calculating the maximum weighted matching in a tree.
  * The tree is represented as an undirected graph with weighted edges.
- *
+ * <p>
  * Problem Description:
  *  Given an undirected tree G = (V, E) with edge weights γ: E → N and a root r ∈ V,
  *  the goal is to find a maximum weight matching M ⊆ E such that no two edges in M
@@ -16,8 +16,8 @@ import com.thealgorithms.datastructures.graphs.UndirectedAdjacencyListGraph;
  */
 public class TreeMatching {
 
-    private UndirectedAdjacencyListGraph graph;
-    private int[][] dp;
+    private final UndirectedAdjacencyListGraph graph;
+    private final int[][] dp;
 
     /**
      * Constructor that initializes the graph and the DP table.

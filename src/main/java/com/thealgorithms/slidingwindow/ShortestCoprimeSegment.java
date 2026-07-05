@@ -99,8 +99,8 @@ public final class ShortestCoprimeSegment {
      * DoubleStack serves as a collection of two stacks. One is a normal stack called 'stack', the other 'values' stores gcd-s up until some index.
      */
     private static class DoubleStack {
-        LinkedList<Long> stack;
-        LinkedList<Long> values;
+        final LinkedList<Long> stack;
+        final LinkedList<Long> values;
 
         DoubleStack() {
             values = new LinkedList<>();

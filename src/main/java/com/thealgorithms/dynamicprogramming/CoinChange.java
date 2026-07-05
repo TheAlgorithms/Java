@@ -1,7 +1,7 @@
 package com.thealgorithms.dynamicprogramming;
 
 /**
- * @author Varun Upadhyay (https://github.com/varunu28)
+ * @author Varun Upadhyay (<a href="https://github.com/varunu28">...</a>)
  */
 public final class CoinChange {
     private CoinChange() {

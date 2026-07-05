@@ -15,8 +15,6 @@ public class SimpleSubCipher {
     /**
      * Encrypt text by replacing each element with its opposite character.
      *
-     * @param message
-     * @param cipherSmall
      * @return Encrypted message
      */
     public String encode(String message, String cipherSmall) {
@@ -52,8 +50,6 @@ public class SimpleSubCipher {
      * Decrypt message by replacing each element with its opposite character in
      * cipher.
      *
-     * @param encryptedMessage
-     * @param cipherSmall
      * @return message
      */
     public String decode(String encryptedMessage, String cipherSmall) {

@@ -110,8 +110,8 @@ class LWWElementSet<T> {
  * @param <T> The type of the key associated with the element.
  */
 class Element<T> {
-    T key;
-    Instant timestamp;
+    final T key;
+    final Instant timestamp;
 
     /**
      * Constructs a new Element with the specified key and timestamp.

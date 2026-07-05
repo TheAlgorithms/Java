@@ -10,7 +10,7 @@ import java.util.Queue;
  * @author Md Asif Joardar
  * The Round-robin scheduling algorithm is a kind of preemptive First come, First Serve CPU
  * Scheduling algorithm. This can be understood here -
- * https://www.scaler.com/topics/round-robin-scheduling-in-os/
+ * <a href="https://www.scaler.com/topics/round-robin-scheduling-in-os/">...</a>
  */
 
 public class RRScheduling {

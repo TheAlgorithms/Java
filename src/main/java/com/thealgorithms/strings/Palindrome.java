@@ -1,7 +1,7 @@
 package com.thealgorithms.strings;
 
 /**
- * Wikipedia: https://en.wikipedia.org/wiki/Palindrome
+ * Wikipedia: <a href="https://en.wikipedia.org/wiki/Palindrome">...</a>
  */
 final class Palindrome {
     private Palindrome() {

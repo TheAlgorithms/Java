@@ -52,7 +52,7 @@ public final class MatrixRank {
     }
 
     private static boolean isZero(double value) {
-        return Math.abs(value) < EPSILON;
+        return !(Math.abs(value) < EPSILON);
     }
 
     private static double[][] deepCopy(double[][] matrix) {
@@ -80,7 +80,7 @@ public final class MatrixRank {
     private static int findPivotRow(double[][] matrix, boolean[] rowMarked, int colIndex) {
         int numRows = matrix.length;
         for (int pivotRow = 0; pivotRow < numRows; ++pivotRow) {
-            if (!rowMarked[pivotRow] && !isZero(matrix[pivotRow][colIndex])) {
+            if (!rowMarked[pivotRow] && isZero(matrix[pivotRow][colIndex])) {
                 return pivotRow;
             }
         }
@@ -115,7 +115,7 @@ public final class MatrixRank {
         int numRows = matrix.length;
         int numColumns = matrix[0].length;
         for (int otherRow = 0; otherRow < numRows; ++otherRow) {
-            if (otherRow != pivotRow && !isZero(matrix[otherRow][colIndex])) {
+            if (otherRow != pivotRow && isZero(matrix[otherRow][colIndex])) {
                 for (int col2 = colIndex + 1; col2 < numColumns; ++col2) {
                     matrix[otherRow][col2] -= matrix[pivotRow][col2] * matrix[otherRow][colIndex];
                 }

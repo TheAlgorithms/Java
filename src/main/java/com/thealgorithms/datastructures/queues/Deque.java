@@ -17,7 +17,7 @@ public class Deque<T> {
      * Node for the deque
      */
     private static class DequeNode<S> {
-        S val;
+        final S val;
         DequeNode<S> next = null;
         DequeNode<S> prev = null;
 
@@ -59,12 +59,11 @@ public class Deque<T> {
         DequeNode<T> newNode = new DequeNode<>(val);
         if (tail == null) {
             head = newNode;
-            tail = newNode;
         } else {
             newNode.prev = tail;
             tail.next = newNode;
-            tail = newNode;
         }
+        tail = newNode;
         size++;
     }
 
@@ -196,7 +195,7 @@ public class Deque<T> {
 
         int dequeSize = myDeque.size();
         for (int i = 0; i < dequeSize; i++) {
-            int removing = -1;
+            int removing;
             if (i / 39.0 < 0.5) {
                 removing = myDeque.pollFirst();
             } else {

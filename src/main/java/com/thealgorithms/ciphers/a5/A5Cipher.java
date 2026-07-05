@@ -5,7 +5,7 @@ import java.util.BitSet;
 /**
  * The A5Cipher class implements the A5/1 stream cipher, which is a widely used
  * encryption algorithm, particularly in mobile communications.
- *
+ * <p>
  * This implementation uses a key stream generator to produce a stream of bits
  * that are XORed with the plaintext bits to produce the ciphertext.
  *
@@ -32,7 +32,7 @@ public class A5Cipher {
 
     /**
      * Encrypts the given plaintext bits using the A5/1 cipher algorithm.
-     *
+     * <p>
      * This method generates a key stream and XORs it with the provided plaintext
      * bits to produce the ciphertext.
      *
@@ -52,7 +52,7 @@ public class A5Cipher {
 
     /**
      * Resets the internal counter of the key stream generator.
-     *
+     * <p>
      * This method can be called to re-initialize the state of the key stream
      * generator, allowing for new key streams to be generated for subsequent
      * encryptions.

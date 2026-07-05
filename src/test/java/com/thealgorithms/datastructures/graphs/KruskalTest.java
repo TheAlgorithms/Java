@@ -10,17 +10,16 @@ import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-@SuppressWarnings({"rawtypes", "unchecked"})
+@SuppressWarnings({"unchecked"})
 public class KruskalTest {
 
     private Kruskal kruskal;
-    private HashSet<Kruskal.Edge>[] graph;
 
     @BeforeEach
     public void setUp() {
         kruskal = new Kruskal();
         int n = 7;
-        graph = new HashSet[n];
+        HashSet<Kruskal.Edge>[] graph = new HashSet[n];
         for (int i = 0; i < n; i++) {
             graph[i] = new HashSet<>();
         }

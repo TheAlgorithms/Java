@@ -3,15 +3,15 @@ package com.thealgorithms.strings;
 /**
  * Moves all '#' characters to the end of the given string while preserving
  * the order of the other characters.
- *
+ * <p>
  * Example:
  * Input  : "h#e#l#llo"
  * Output : "helllo###"
- *
+ * <p>
  * The algorithm works by iterating through the string and collecting
  * all non-# characters first, then filling the remaining positions
  * with '#'.
- *
+ * <p>
  * Time Complexity: O(n)
  * Space Complexity: O(n)
  *

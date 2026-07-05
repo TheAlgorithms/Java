@@ -3,7 +3,7 @@ package com.thealgorithms.sorts;
 /**
  * Implementation of gnome sort
  *
- * @author Podshivalov Nikita (https://github.com/nikitap492)
+ * @author Podshivalov Nikita (<a href="https://github.com/nikitap492">...</a>)
  * @since 2018-04-10
  */
 public class GnomeSort implements SortAlgorithm {

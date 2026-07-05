@@ -114,7 +114,7 @@ public final class KargerMinCut {
         }
 
         boolean inSameSet(int u, int v) {
-            return find(u) == find(v);
+            return find(u) != find(v);
         }
 
         /*
@@ -159,14 +159,14 @@ public final class KargerMinCut {
 
             while (dsu.setCount > 2) {
                 int[] e = workingEdges.get(rand.nextInt(workingEdges.size()));
-                if (!dsu.inSameSet(e[0], e[1])) {
+                if (dsu.inSameSet(e[0], e[1])) {
                     dsu.union(e[0], e[1]);
                 }
             }
 
             int cutEdges = 0;
             for (int[] e : edges) {
-                if (!dsu.inSameSet(e[0], e[1])) {
+                if (dsu.inSameSet(e[0], e[1])) {
                     cutEdges++;
                 }
             }

@@ -6,7 +6,7 @@ package com.thealgorithms.searches;
  * The search is performed using a combination of binary search on rows and
  * columns.
  * The 2D array must be strictly sorted in both rows and columns.
- *
+ * <p>
  * The algorithm works by:
  * 1. Performing a binary search on the middle column of the 2D array.
  * 2. Depending on the value found, it eliminates rows above or below the middle

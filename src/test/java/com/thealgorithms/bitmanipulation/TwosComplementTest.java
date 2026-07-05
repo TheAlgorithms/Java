@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 
 /**
  * Test case for Highest Set Bit
- * @author Abhinay Verma(https://github.com/Monk-AbhinayVerma)
+ * @author Abhinay Verma(<a href="https://github.com/Monk-AbhinayVerma">...</a>)
  */
 public class TwosComplementTest {
 

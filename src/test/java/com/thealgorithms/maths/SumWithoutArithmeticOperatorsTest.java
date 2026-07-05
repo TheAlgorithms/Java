@@ -5,7 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.junit.jupiter.api.Test;
 
 public class SumWithoutArithmeticOperatorsTest {
-    SumWithoutArithmeticOperators obj = new SumWithoutArithmeticOperators();
+    final SumWithoutArithmeticOperators obj = new SumWithoutArithmeticOperators();
 
     @Test
     void addZerotoZero() {

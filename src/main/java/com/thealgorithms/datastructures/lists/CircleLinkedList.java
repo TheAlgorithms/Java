@@ -3,14 +3,11 @@ package com.thealgorithms.datastructures.lists;
 /**
  * This class is a circular singly linked list implementation. In a circular linked list,
  * the last node points back to the first node, creating a circular chain.
- *
  * <p>This implementation includes basic operations such as appending elements
  * to the end, removing elements from a specified position, and converting
  * the list to a string representation.
- *
  * @param <E> the type of elements held in this list
  */
-@SuppressWarnings("rawtypes")
 public class CircleLinkedList<E> {
 
     /**
@@ -21,7 +18,7 @@ public class CircleLinkedList<E> {
     static final class Node<E> {
 
         Node<E> next;
-        E value;
+        final E value;
 
         private Node(E value, Node<E> next) {
             this.value = value;
@@ -120,7 +117,6 @@ public class CircleLinkedList<E> {
         if (destroy == tail) {
             tail = before;
         }
-        destroy = null;
         size--;
         return saved;
     }

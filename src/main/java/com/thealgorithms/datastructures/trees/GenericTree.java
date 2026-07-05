@@ -19,7 +19,7 @@ public class GenericTree {
     private static final class Node {
 
         int data;
-        ArrayList<Node> child = new ArrayList<>();
+        final ArrayList<Node> child = new ArrayList<>();
     }
 
     private final Node root;

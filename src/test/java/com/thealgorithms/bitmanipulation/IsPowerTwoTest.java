@@ -10,7 +10,7 @@ import org.junit.jupiter.params.provider.MethodSource;
 
 /**
  * Test case for IsPowerTwo class
- * @author Bama Charan Chhandogi (https://github.com/BamaCharanChhandogi)
+ * @author Bama Charan Chhandogi (<a href="https://github.com/BamaCharanChhandogi">...</a>)
  */
 
 public class IsPowerTwoTest {

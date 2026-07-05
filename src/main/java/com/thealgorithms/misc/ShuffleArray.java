@@ -11,10 +11,10 @@ import java.util.Random;
  * Best-case performance O(n)
  * Average performance O(n)
  * Worst-case space complexity O(1)
- *
+ * <p>
  * This class provides a static method to shuffle an array in place.
  *
- * @author Rashi Dashore (https://github.com/rashi07dashore)
+ * @author Rashi Dasho<a href="re">(https://github.com/rashi07das</a>hore)
  */
 public final class ShuffleArray {
 

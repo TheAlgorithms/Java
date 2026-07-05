@@ -27,9 +27,9 @@ public class Kruskal {
      */
     static class Edge {
 
-        int from;
-        int to;
-        int weight;
+        final int from;
+        final int to;
+        final int weight;
 
         Edge(int from, int to, int weight) {
             this.from = from;

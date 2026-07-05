@@ -5,9 +5,9 @@ import java.util.Arrays;
 /**
  * Suffix Array implementation in Java.
  * Builds an array of indices that represent all suffixes of a string in sorted order.
- * Wikipedia Reference: https://en.wikipedia.org/wiki/Suffix_array
+ * Wikipedia Reference: <a href="https://en.wikipedia.org/wiki/Suffix_array">...</a>
  * Author: Nithin U.
- * Github: https://github.com/NithinU2802
+ * Github: <a href="https://github.com/NithinU2802">...</a>
  */
 
 public final class SuffixArray {

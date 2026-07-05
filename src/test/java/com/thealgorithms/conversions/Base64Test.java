@@ -10,9 +10,9 @@ import org.junit.jupiter.params.provider.CsvSource;
 
 /**
  * Test cases for Base64 encoding and decoding.
- *
+ * <p>
  * Author: Nithin U.
- * Github: https://github.com/NithinU2802
+ * Gith<a href="ub:">https://github.com/NithinU</a>2802
  */
 
 class Base64Test {

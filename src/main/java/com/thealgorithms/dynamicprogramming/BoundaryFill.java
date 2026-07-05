@@ -2,7 +2,7 @@ package com.thealgorithms.dynamicprogramming;
 
 /**
  * Java program for Boundary fill algorithm.
- * @author Akshay Dubey (https://github.com/itsAkshayDubey)
+ * @author Akshay Dubey (<a href="https://github.com/itsAkshayDubey">...</a>)
  */
 public final class BoundaryFill {
     private BoundaryFill() {

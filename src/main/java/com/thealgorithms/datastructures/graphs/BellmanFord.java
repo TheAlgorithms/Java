@@ -11,8 +11,8 @@ class BellmanFord /*
                    */
 {
 
-    int vertex;
-    int edge;
+    final int vertex;
+    final int edge;
     private final Edge[] edges;
     private int index = 0;
 
@@ -24,9 +24,9 @@ class BellmanFord /*
 
     class Edge {
 
-        int u;
-        int v;
-        int w;
+        final int u;
+        final int v;
+        final int w;
 
         /**
          * @param a Source Vertex

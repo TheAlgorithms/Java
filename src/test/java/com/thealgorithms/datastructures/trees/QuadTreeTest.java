@@ -5,9 +5,9 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 public class QuadTreeTest {
-    int quadTreeCapacity = 4;
-    BoundingBox boundingBox = new BoundingBox(new Point(0, 0), 500);
-    QuadTree quadTree = new QuadTree(boundingBox, quadTreeCapacity);
+    final int quadTreeCapacity = 4;
+    final BoundingBox boundingBox = new BoundingBox(new Point(0, 0), 500);
+    final QuadTree quadTree = new QuadTree(boundingBox, quadTreeCapacity);
 
     @Test
     public void testNullPointInsertIntoQuadTree() {

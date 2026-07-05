@@ -13,12 +13,12 @@ public final class ElasticCollision2D {
     }
 
     public static class Body {
-        public double x;
-        public double y;
+        public final double x;
+        public final double y;
         public double vx;
         public double vy;
-        public double mass;
-        public double radius;
+        public final double mass;
+        public final double radius;
 
         public Body(double x, double y, double vx, double vy, double mass, double radius) {
             this.x = x;

@@ -15,7 +15,7 @@ class WorstFitCPUTest {
     int[] sizeOfProcesses;
     ArrayList<Integer> memAllocation = new ArrayList<>();
     ArrayList<Integer> testMemAllocation;
-    MemoryManagementAlgorithms worstFit = new WorstFitCPU();
+    final MemoryManagementAlgorithms worstFit = new WorstFitCPU();
 
     @Test
     void testFitForUseOfOneBlock() {

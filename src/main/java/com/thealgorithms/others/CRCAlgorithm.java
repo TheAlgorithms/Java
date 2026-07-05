@@ -26,7 +26,7 @@ public class CRCAlgorithm {
 
     private ArrayList<Integer> message;
 
-    private ArrayList<Integer> p;
+    private final ArrayList<Integer> p;
 
     private final Random randomGenerator;
 

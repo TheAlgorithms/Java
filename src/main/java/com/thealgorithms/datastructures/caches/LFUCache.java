@@ -21,7 +21,7 @@ import java.util.Map;
  * @param <K> The type of keys maintained by this cache.
  * @param <V> The type of mapped values.
  *
- * @author Akshay Dubey (https://github.com/itsAkshayDubey)
+ * @author Akshay Dubey (<a href="https://github.com/itsAkshayDubey">...</a>)
  */
 public class LFUCache<K, V> {
 
@@ -138,14 +138,13 @@ public class LFUCache<K, V> {
                         node.next = temp;
                         temp.previous = node;
                         this.head = node;
-                        break;
                     } else {
                         node.next = temp;
                         node.previous = temp.previous;
                         temp.previous.next = node;
                         temp.previous = node;
-                        break;
                     }
+                    break;
                 } else {
                     temp = temp.next;
                     if (temp == null) {

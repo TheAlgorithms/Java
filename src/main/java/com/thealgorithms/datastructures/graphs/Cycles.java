@@ -8,7 +8,7 @@ class Cycle {
     private final int nodes;
     private final int[][] adjacencyMatrix;
     private final boolean[] visited;
-    ArrayList<ArrayList<Integer>> cycles = new ArrayList<ArrayList<Integer>>();
+    final ArrayList<ArrayList<Integer>> cycles = new ArrayList<ArrayList<Integer>>();
 
     Cycle() {
         Scanner in = new Scanner(System.in);
@@ -62,7 +62,7 @@ class Cycle {
             }
         }
 
-        if (temp.size() > 0) {
+        if (!temp.isEmpty()) {
             temp.remove(temp.size() - 1);
         }
         visited[curr] = false;

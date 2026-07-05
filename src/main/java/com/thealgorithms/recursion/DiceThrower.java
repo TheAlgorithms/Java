@@ -5,10 +5,10 @@ import java.util.List;
 
 /**
  * DiceThrower - Generates all possible dice roll combinations that sum to a target
- *
+ * <p>
  * This algorithm uses recursive backtracking to find all combinations of dice rolls
  * (faces 1-6) that sum to a given target value.
- *
+ * <p>
  * Example: If target = 4, possible combinations include:
  * - "1111" (1+1+1+1 = 4)
  * - "13" (1+3 = 4)

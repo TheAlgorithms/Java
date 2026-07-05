@@ -4,7 +4,7 @@ package com.thealgorithms.dynamicprogramming;
  * The Needleman–Wunsch algorithm performs global sequence alignment between two strings.
  * It computes the optimal alignment score using dynamic programming,
  * given a scoring scheme for matches, mismatches, and gaps.
- *
+ * <p>
  * Time Complexity: O(n * m)
  * Space Complexity: O(n * m)
  */

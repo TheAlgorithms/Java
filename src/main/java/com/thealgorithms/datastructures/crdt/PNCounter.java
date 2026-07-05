@@ -11,9 +11,9 @@ import java.util.Map;
  * This implementation supports incrementing, decrementing, querying the total count,
  * comparing with other PN-Counters, and merging with another PN-Counter
  * to compute the element-wise maximum for both increment and decrement counters.
- * (https://en.wikipedia.org/wiki/Conflict-free_replicated_data_type)
+ * (<a href="https://en.wikipedia.org/wiki/Conflict-free_replicated_data_type">...</a>)
  *
- * @author itakurah (Niklas Hoefflin) (https://github.com/itakurah)
+ * @author itakurah (Niklas Hoefflin) (<a href="https://github.com/itakurah">...</a>)
  */
 
 class PNCounter {

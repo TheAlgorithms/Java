@@ -6,7 +6,7 @@ public class SearchInARowAndColWiseSortedMatrix {
      *
      * @param matrix matrix to be searched
      * @param value  Key being searched for
-     * @author Sadiul Hakim : https://github.com/sadiul-hakim
+     * @author Sadiul Hakim : <a href="https://github.com/sadiul-hakim">...</a>
      */
     public int[] search(int[][] matrix, int value) {
         int n = matrix.length;

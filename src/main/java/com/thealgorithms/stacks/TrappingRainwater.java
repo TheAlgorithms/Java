@@ -3,15 +3,15 @@ package com.thealgorithms.stacks;
  * Trapping Rainwater Problem
  * Given an array of non-negative integers representing the height of bars,
  * compute how much water it can trap after raining.
- *
+ * <p>
  * Example:
  * Input: [4,2,0,3,2,5]
  * Output: 9
- *
+ * <p>
  * Time Complexity: O(n)
  * Space Complexity: O(1)
- *
- * Reference: https://en.wikipedia.org/wiki/Trapping_rain_water
+ * <p>
+ *<a href=" Reference: https://en.wikipedia.org/wiki/Trappin">...</a>g_rain_water
  */
 public final class TrappingRainwater {
 

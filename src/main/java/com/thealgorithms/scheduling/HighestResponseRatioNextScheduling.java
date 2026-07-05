@@ -30,9 +30,9 @@ public final class HighestResponseRatioNextScheduling {
      * Represents a process in the scheduling algorithm.
      */
     private static class Process {
-        String name;
-        int arrivalTime;
-        int burstTime;
+        final String name;
+        final int arrivalTime;
+        final int burstTime;
         int turnAroundTime;
         boolean finished;
 

@@ -12,7 +12,7 @@ import org.junit.jupiter.api.Test;
 
 /**
  * Unit tests for the EdmondsBlossomAlgorithm class.
- *
+ * <p>
  * These tests ensure that the Edmonds' Blossom Algorithm implementation
  * works as expected for various graph structures, returning the correct
  * maximum matching.

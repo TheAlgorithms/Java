@@ -9,22 +9,22 @@ import java.util.HexFormat;
  * using a given key. This cipher works by applying the XOR bitwise operation between
  * the bytes of the input text and the corresponding bytes of the key (repeating the key
  * if necessary).
- *
+ * <p>
  * Usage:
  * - Encryption: Converts plaintext into a hexadecimal-encoded ciphertext.
  * - Decryption: Converts the hexadecimal ciphertext back into plaintext.
- *
+ * <p>
  * Characteristics:
  * - Symmetric: The same key is used for both encryption and decryption.
  * - Simple but vulnerable: XOR encryption is insecure for real-world cryptography,
  *   especially when the same key is reused.
- *
+ * <p>
  * Example:
  * Plaintext: "Hello!"
  * Key: "key"
  * Encrypted: "27090c03120b"
  * Decrypted: "Hello!"
- *
+ * <p>
  * Reference: <a href="https://en.wikipedia.org/wiki/XOR_cipher">XOR Cipher - Wikipedia</a>
  *
  * @author <a href="https://github.com/lcsjunior">lcsjunior</a>

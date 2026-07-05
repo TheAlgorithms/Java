@@ -4,13 +4,13 @@ package com.thealgorithms.maths;
  * @author <a href="https://github.com/skmodi649">Suraj Kumar Modi</a>
  * You are given a number n. You need to find the digital root of n.
  * DigitalRoot of a number is the recursive sum of its digits until we get a single digit number.
- *
+ * <p>
  * Test Case 1:
  * Input:
  * n = 1
  * Output:  1
  * Explanation: Digital root of 1 is 1
- *
+ * <p>
  * Test Case 2:
  * Input:
  * n = 99999

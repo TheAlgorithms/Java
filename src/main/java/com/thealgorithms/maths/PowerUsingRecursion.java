@@ -2,7 +2,7 @@ package com.thealgorithms.maths;
 
 /**
  * calculate Power using Recursion
- * @author Bama Charan Chhandogi (https://github.com/BamaCharanChhandogi)
+ * @author Bama Charan Chhandogi (<a href="https://github.com/BamaCharanChhandogi">...</a>)
  */
 
 public final class PowerUsingRecursion {

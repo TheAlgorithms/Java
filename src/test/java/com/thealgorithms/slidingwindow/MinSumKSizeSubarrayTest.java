@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 /**
  * Unit tests for the MinSumKSizeSubarray class.
  *
- * @author Rashi Dashore (https://github.com/rashi07dashore)
+ * @author Rashi Dashore (<a href="https://github.com/rashi07dashore">...</a>)
  */
 class MinSumKSizeSubarrayTest {
 

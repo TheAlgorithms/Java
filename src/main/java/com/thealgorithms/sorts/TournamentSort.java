@@ -4,16 +4,16 @@ import java.util.Arrays;
 
 /**
  * Tournament Sort algorithm implementation.
- *
+ * <p>
  * Tournament sort builds a winner tree (a complete binary tree storing the index
  * of the smallest element in each subtree). It then repeatedly extracts the
  * winner (minimum) and updates the path from the removed leaf to the root.
- *
+ * <p>
  * Time Complexity:
  * - Best case: O(n log n)
  * - Average case: O(n log n)
  * - Worst case: O(n log n)
- *
+ * <p>
  * Space Complexity: O(n) – additional winner-tree storage
  *
  * @see <a href="https://en.wikipedia.org/wiki/Tournament_sort">Tournament Sort Algorithm</a>

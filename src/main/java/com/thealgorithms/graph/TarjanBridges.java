@@ -80,7 +80,7 @@ public final class TarjanBridges {
         private final List<int[]> bridges;
         private final int[] discoveryTime;
         private final int[] lowLink;
-        boolean[] visited;
+        final boolean[] visited;
         private int timer;
 
         BridgeFinder(int vertexCount, List<List<Integer>> adjacencyList, List<int[]> bridges) {

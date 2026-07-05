@@ -8,8 +8,8 @@ package com.thealgorithms.matrix;
  * matrix multiplication.
  *
  * <p>For more details:
- * https://www.geeksforgeeks.org/java/java-program-to-multiply-two-matrices-of-any-size/
- * https://en.wikipedia.org/wiki/Matrix_multiplication
+ * <a href="https://www.geeksforgeeks.org/java/java-program-to-multiply-two-matrices-of-any-size/">...</a>
+ * <a href="https://en.wikipedia.org/wiki/Matrix_multiplication">...</a>
  *
  * <p>Time Complexity: O(n^3) – where n is the dimension of the matrices
  * (assuming square matrices for simplicity).

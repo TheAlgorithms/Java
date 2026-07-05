@@ -9,7 +9,7 @@ public final class Gaussian {
 
     public static ArrayList<Double> gaussian(int matSize, List<Double> matrix) {
         int i;
-        int j = 0;
+        int j;
 
         double[][] mat = new double[matSize + 1][matSize + 1];
         double[][] x = new double[matSize][matSize + 1];
@@ -21,14 +21,15 @@ public final class Gaussian {
             }
         }
 
-        mat = gaussianElimination(matSize, i, mat);
+        mat = gaussianElimination(matSize, mat);
         return valueOfGaussian(matSize, x, mat);
     }
 
     // Perform Gaussian elimination
-    public static double[][] gaussianElimination(int matSize, int i, double[][] mat) {
-        int step = 0;
+    public static double[][] gaussianElimination(int matSize, double[][] mat) {
+        int step;
         for (step = 0; step < matSize - 1; step++) {
+            int i;
             for (i = step; i < matSize - 1; i++) {
                 double a = (mat[i + 1][step] / mat[step][step]);
 

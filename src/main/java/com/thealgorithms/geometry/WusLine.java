@@ -8,16 +8,16 @@ import java.util.List;
  * The {@code WusLine} class implements Xiaolin Wu's line drawing algorithm,
  * which produces anti-aliased lines by varying pixel brightness
  * according to the line's proximity to pixel centers.
- *
+ * <p>
  * This implementation returns the pixel coordinates along with
  * their associated intensity values (in range [0.0, 1.0]), allowing
  * rendering systems to blend accordingly.
- *
+ * <p>
  * The algorithm works by:
  * - Computing a line's intersection with pixel boundaries
  * - Assigning intensity values based on distance from pixel centers
  * - Drawing pairs of pixels perpendicular to the line's direction
- *
+ * <p>
  * Reference: Xiaolin Wu, "An Efficient Antialiasing Technique",
  * Computer Graphics (SIGGRAPH '91 Proceedings).
  *
@@ -30,7 +30,7 @@ public final class WusLine {
 
     /**
      * Represents a pixel and its intensity for anti-aliased rendering.
-     *
+     * <p>
      * The intensity value determines how bright the pixel should be drawn,
      * with 1.0 being fully opaque and 0.0 being fully transparent.
      */
@@ -73,7 +73,7 @@ public final class WusLine {
 
     /**
      * Draws an anti-aliased line using Wu's algorithm.
-     *
+     * <p>
      * The algorithm produces smooth lines by drawing pairs of pixels at each
      * x-coordinate (or y-coordinate for steep lines), with intensities based on
      * the line's distance from pixel centers.

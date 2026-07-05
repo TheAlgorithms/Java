@@ -14,7 +14,7 @@ public final class TwoSumProblem {
      * @param values An array of integers.
      * @param target The target is the sum that we are trying to find using two numbers from the given array.
      * @return A pair or indexes such that sum of values at these indexes equals to the target
-     * @author Bama Charan Chhandogi (https://github.com/BamaCharanChhandogi)
+     * @author Bama Charan Chhandogi (<a href="https://github.com/BamaCharanChhandogi">...</a>)
      */
 
     public static Optional<Pair<Integer, Integer>> twoSum(final int[] values, final int target) {

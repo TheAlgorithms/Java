@@ -1,12 +1,12 @@
 package com.thealgorithms.datastructures.lists;
 /**
  * Implements an algorithm to flatten a multilevel linked list.
- *
+ * <p>
  * In this specific problem structure, each node has a `next` pointer (to the
  * next node at the same level) and a `child` pointer (which points to the head
  * of another sorted linked list). The goal is to merge all these lists into a
  * single, vertically sorted linked list using the `child` pointer.
- *
+ * <p>
  * The approach is a recursive one that leverages a merge utility, similar to
  * the merge step in Merge Sort. It recursively flattens the list starting from
  * the rightmost node and merges each node's child list with the already
@@ -25,7 +25,7 @@ public final class FlattenMultilevelLinkedList {
      * reference to the head of a child list.
      */
     static class Node {
-        int data;
+        final int data;
         Node next;
         Node child;
 

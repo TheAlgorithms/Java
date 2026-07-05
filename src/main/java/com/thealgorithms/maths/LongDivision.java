@@ -29,6 +29,23 @@ public final class LongDivision {
             return 0;
         }
 
+        StringBuilder answer = getStringBuilder(newDividend1, newDivisor1);
+
+        if ((dividend < 0 && divisor > 0) || (dividend > 0 && divisor < 0)) {
+            try {
+                return Integer.parseInt(answer.toString()) * (-1);
+            } catch (NumberFormatException e) {
+                return -2147483648;
+            }
+        }
+        try {
+            return Integer.parseInt(answer.toString());
+        } catch (NumberFormatException e) {
+            return 2147483647;
+        }
+    }
+
+    private static StringBuilder getStringBuilder(long newDividend1, long newDivisor1) {
         StringBuilder answer = new StringBuilder();
 
         String dividendString = "" + newDividend1;
@@ -37,7 +54,7 @@ public final class LongDivision {
         String remainder = "";
 
         for (int i = 0; i < dividendString.length(); i++) {
-            String partV1 = remainder + "" + dividendString.substring(lastIndex, i + 1);
+            String partV1 = remainder + dividendString.substring(lastIndex, i + 1);
             long part1 = Long.parseLong(partV1);
             if (part1 > newDivisor1) {
                 int quotient = 0;
@@ -55,7 +72,7 @@ public final class LongDivision {
                 answer.append(quotient);
             } else if (part1 == 0) {
                 answer.append(0);
-            } else if (part1 < newDivisor1) {
+            } else {
                 answer.append(0);
             }
             if (!(part1 == 0)) {
@@ -66,18 +83,6 @@ public final class LongDivision {
 
             lastIndex++;
         }
-
-        if ((dividend < 0 && divisor > 0) || (dividend > 0 && divisor < 0)) {
-            try {
-                return Integer.parseInt(answer.toString()) * (-1);
-            } catch (NumberFormatException e) {
-                return -2147483648;
-            }
-        }
-        try {
-            return Integer.parseInt(answer.toString());
-        } catch (NumberFormatException e) {
-            return 2147483647;
-        }
+        return answer;
     }
 }

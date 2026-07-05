@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 
 public class BinaryAdditionTest {
 
-    BinaryAddition binaryAddition = new BinaryAddition();
+    final BinaryAddition binaryAddition = new BinaryAddition();
 
     @Test
     public void testEqualLengthNoCarry() {

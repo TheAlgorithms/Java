@@ -1,5 +1,6 @@
 package com.thealgorithms.datastructures.heaps;
 
+import java.util.NoSuchElementException;
 import java.util.PriorityQueue;
 
 /**
@@ -7,16 +8,17 @@ import java.util.PriorityQueue;
  * two heaps: a max-heap and a min-heap. The max-heap stores the smaller half
  * of the numbers, and the min-heap stores the larger half.
  * This data structure ensures that retrieving the median is efficient.
- *
+ * <p>
  * Time Complexity:
  * - Adding a number: O(log n) due to heap insertion.
  * - Finding the median: O(1).
- *
+ * <p>
  * Space Complexity: O(n), where n is the total number of elements added.
  *
  * @author Hardvan
  */
 public final class MedianFinder {
+
     MedianFinder() {
     }
 
@@ -29,8 +31,10 @@ public final class MedianFinder {
      *
      * @param num the number to be added to the data stream
      */
-    public void addNum(int num) {
-        if (maxHeap.isEmpty() || num <= maxHeap.peek()) {
+    public void addNum(final int num) {
+        // element() throws NoSuchElementException instead of returning null,
+        // so the null-peek warning is eliminated entirely.
+        if (maxHeap.isEmpty() || num <= maxHeap.element()) {
             maxHeap.offer(num);
         } else {
             minHeap.offer(num);
@@ -49,11 +53,15 @@ public final class MedianFinder {
      * median is the middle element from the max-heap.
      *
      * @return the median of the numbers in the data stream
+     * @throws NoSuchElementException if no numbers have been added yet
      */
     public double findMedian() {
-        if (maxHeap.size() == minHeap.size()) {
-            return (maxHeap.peek() + minHeap.peek()) / 2.0;
+        if (maxHeap.isEmpty()) {
+            throw new NoSuchElementException("Median is undefined for an empty data stream");
         }
-        return maxHeap.peek();
+        if (maxHeap.size() == minHeap.size()) {
+            return (maxHeap.element() + minHeap.element()) / 2.0;
+        }
+        return maxHeap.element();
     }
 }

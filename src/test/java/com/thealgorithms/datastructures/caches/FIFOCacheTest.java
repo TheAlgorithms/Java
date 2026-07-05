@@ -210,7 +210,7 @@ class FIFOCacheTest {
     void testDefaultStrategyIsImmediateEvictionStrategy() {
         FIFOCache<String, String> newCache = new FIFOCache.Builder<String, String>(5).defaultTTL(1000).build();
 
-        Assertions.assertTrue(newCache.getEvictionStrategy() instanceof FIFOCache.ImmediateEvictionStrategy<String, String>, "Default strategy should be ImmediateEvictionStrategyStrategy");
+        Assertions.assertInstanceOf(FIFOCache.ImmediateEvictionStrategy<String, String>.class, newCache.getEvictionStrategy(), "Default strategy should be ImmediateEvictionStrategyStrategy");
     }
 
     @Test

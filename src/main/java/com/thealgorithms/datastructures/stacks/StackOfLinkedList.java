@@ -17,7 +17,7 @@ final class StackOfLinkedList {
 
 // A node class for the linked list
 class Node {
-    public int data;
+    public final int data;
     public Node next;
 
     Node(int data) {
@@ -78,7 +78,7 @@ class LinkedListStack {
         Node destroy = head;
         head = head.next;
         int retValue = destroy.data;
-        destroy = null; // Help garbage collection
+        // Help garbage collection
         size--;
         return retValue;
     }

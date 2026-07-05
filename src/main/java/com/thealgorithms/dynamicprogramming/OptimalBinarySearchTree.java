@@ -13,7 +13,7 @@ import java.util.Comparator;
  * and 10 as its left child. The total cost is 50 * 1 + 34 * 2 = 118.
  *
  * <p>Reference:
- * https://en.wikipedia.org/wiki/Optimal_binary_search_tree
+ * <a href="https://en.wikipedia.org/wiki/Optimal_binary_search_tree">...</a>
  */
 public final class OptimalBinarySearchTree {
     private OptimalBinarySearchTree() {

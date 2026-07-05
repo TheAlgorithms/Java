@@ -12,11 +12,11 @@ public final class MyAtoi {
      * The conversion discards any leading whitespace characters until the first non-whitespace character is found.
      * Then, it takes an optional initial plus or minus sign followed by as many numerical digits as possible and interprets them as a numerical value.
      * The string can contain additional characters after those that form the integral number, which are ignored and have no effect on the behavior of this function.
-     *
+     * <p>
      * If the number is out of the range of a 32-bit signed integer:
      * - Returns {@code Integer.MAX_VALUE} if the value exceeds {@code Integer.MAX_VALUE}.
      * - Returns {@code Integer.MIN_VALUE} if the value is less than {@code Integer.MIN_VALUE}.
-     *
+     * <p>
      * If no valid conversion could be performed, a zero is returned.
      *
      * @param s the string to convert

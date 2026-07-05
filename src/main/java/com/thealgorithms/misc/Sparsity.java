@@ -4,10 +4,10 @@ package com.thealgorithms.misc;
  * Utility class for calculating the sparsity of a matrix.
  * A matrix is considered sparse if a large proportion of its elements are zero.
  * Typically, if more than 2/3 of the elements are zero, the matrix is considered sparse.
- *
+ * <p>
  * Sparsity is defined as:
  * sparsity = (number of zero elements) / (total number of elements)
- *
+ * <p>
  * This can lead to significant computational optimizations.
  */
 public final class Sparsity {

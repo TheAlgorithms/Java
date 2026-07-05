@@ -11,9 +11,9 @@ public final class JobSequencing {
 
     // Define a Job class that implements Comparable for sorting by profit in descending order
     static class Job implements Comparable<Job> {
-        char id;
-        int deadline;
-        int profit;
+        final char id;
+        final int deadline;
+        final int profit;
 
         // Compare jobs by profit in descending order
         @Override

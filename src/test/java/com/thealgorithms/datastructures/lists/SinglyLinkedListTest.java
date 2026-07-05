@@ -14,7 +14,6 @@ public class SinglyLinkedListTest {
 
     /**
      * Initialize a list with natural order values with pre-defined length
-     * @param length
      * @return linked list with pre-defined number of nodes
      */
     private SinglyLinkedList createSampleList(int length) {
@@ -112,11 +111,10 @@ public class SinglyLinkedListTest {
 
         // Reversing the LinkedList using reverseList() method and storing the head of the reversed
         // linkedlist in a head node The reversed linkedlist will be 4->3->2->1->null
-        SinglyLinkedListNode head = list.reverseListIter(list.getHead());
 
         // Recording the Nodes after reversing the LinkedList
-        SinglyLinkedListNode firstNode = head; // 4
-        SinglyLinkedListNode secondNode = firstNode.next; // 3
+        // 4
+        SinglyLinkedListNode secondNode = list.reverseListIter(list.getHead()).next; // 3
         SinglyLinkedListNode thirdNode = secondNode.next; // 2
         SinglyLinkedListNode fourthNode = thirdNode.next; // 1
 
@@ -125,7 +123,7 @@ public class SinglyLinkedListTest {
         assertEquals(1, fourthNode.value);
         assertEquals(2, thirdNode.value);
         assertEquals(3, secondNode.value);
-        assertEquals(4, firstNode.value);
+        assertEquals(4, list.reverseListIter(list.getHead()).value);
     }
 
     // Test to check whether implemented reverseList() method handles NullPointer Exception for
@@ -151,10 +149,9 @@ public class SinglyLinkedListTest {
 
         // Reversing the LinkedList using reverseList() method and storing the head of the reversed
         // linkedlist in a head node
-        SinglyLinkedListNode head = list.reverseListIter(list.getHead());
 
         // Storing the head in a temp variable, so that we cannot loose the track of head
-        SinglyLinkedListNode temp = head;
+        SinglyLinkedListNode temp = list.reverseListIter(list.getHead());
 
         int i = 20; // This is for the comparison of values of nodes of the reversed linkedlist
         // Checking whether the reverseList() method performed its task

@@ -3,7 +3,7 @@ package com.thealgorithms.matrix;
 /**
  * This class provides methods to compute the inverse of a square matrix
  * using Gaussian elimination. For more details, refer to:
- * https://en.wikipedia.org/wiki/Invertible_matrix
+ * <a href="https://en.wikipedia.org/wiki/Invertible_matrix">...</a>
  */
 public final class InverseOfMatrix {
     private InverseOfMatrix() {

@@ -6,10 +6,10 @@ import java.util.PriorityQueue;
 /**
  * This class provides a method to merge multiple sorted arrays into a single sorted array.
  * It utilizes a min-heap to efficiently retrieve the smallest elements from each array.
- *
+ * <p>
  * Time Complexity: O(n * log k), where n is the total number of elements across all arrays
  * and k is the number of arrays.
- *
+ * <p>
  * Space Complexity: O(k) for the heap, where k is the number of arrays.
  *
  * @author Hardvan

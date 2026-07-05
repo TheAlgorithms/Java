@@ -34,9 +34,9 @@ public class TreeRandomNode {
     }
 
     // Using an arraylist to store the inorder traversal of the given binary tree
-    static ArrayList<Integer> list = new ArrayList<>();
+    static final ArrayList<Integer> list = new ArrayList<>();
     // root of Tree
-    Node root;
+    final Node root;
 
     TreeRandomNode() {
         root = null;

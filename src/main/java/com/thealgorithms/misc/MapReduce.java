@@ -13,8 +13,8 @@ import java.util.stream.Collectors;
  * It consists of two main phases:
  * - Map: the input data is split into smaller chunks and processed in parallel.
  * - Reduce: the results from the Map phase are aggregated to produce the final output.
- *
- * See also: https://en.wikipedia.org/wiki/MapReduce
+ * <p>
+ * See al<a href="so:">https://en.wikipedia.org/wiki/MapRe</a>duce
  */
 public final class MapReduce {
 

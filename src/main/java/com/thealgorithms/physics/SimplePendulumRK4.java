@@ -41,10 +41,8 @@ public final class SimplePendulumRK4 {
      */
     private double[] derivatives(double[] state) {
         double theta = state[0];
-        double omega = state[1];
-        double dtheta = omega;
         double domega = -(g / length) * Math.sin(theta);
-        return new double[] {dtheta, domega};
+        return new double[] {state[1], domega};
     }
 
     /**

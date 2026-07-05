@@ -15,7 +15,7 @@ class BestFitCPUTest {
     int[] sizeOfProcesses;
     ArrayList<Integer> memAllocation = new ArrayList<>();
     ArrayList<Integer> testMemAllocation;
-    MemoryManagementAlgorithms bestFit = new BestFitCPU();
+    final MemoryManagementAlgorithms bestFit = new BestFitCPU();
 
     @Test
     void testFitForUseOfOneBlock() {

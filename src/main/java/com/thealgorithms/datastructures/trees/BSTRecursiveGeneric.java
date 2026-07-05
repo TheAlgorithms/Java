@@ -8,7 +8,6 @@ import java.util.List;
  *
  * <p>
  * A recursive implementation of generic type BST.
- *
  * Reference: <a href="https://en.wikipedia.org/wiki/Binary_search_tree">Wiki links for BST</a>
  * </p>
  *
@@ -58,8 +57,7 @@ public class BSTRecursiveGeneric<T extends Comparable<T>> {
     public static void main(String[] args) {
         System.out.println("Testing for integer data...");
         // Integer
-        BSTRecursiveGeneric<Integer> integerTree = new BSTRecursiveGeneric<Integer>();
-
+        BSTRecursiveGeneric<Integer> integerTree = new BSTRecursiveGeneric<>();
         integerTree.add(5);
         integerTree.add(10);
         integerTree.add(-9);
@@ -94,7 +92,20 @@ public class BSTRecursiveGeneric<T extends Comparable<T>> {
         System.out.println();
         System.out.println("Testing for string data...");
         // String
-        BSTRecursiveGeneric<String> stringTree = new BSTRecursiveGeneric<String>();
+        BSTRecursiveGeneric<String> stringTree = getStringBSTRecursiveGeneric();
+        System.out.println("Pretty Display of current tree is:");
+        stringTree.prettyDisplay();
+        /*
+     Will print in following order
+     banana hills India pineapple
+         */
+        stringTree.inorder();
+        System.out.println("Pretty Display of current tree is:");
+        stringTree.prettyDisplay();
+    }
+
+    private static BSTRecursiveGeneric<String> getStringBSTRecursiveGeneric() {
+        BSTRecursiveGeneric<String> stringTree = new BSTRecursiveGeneric<>();
 
         stringTree.add("banana");
         stringTree.add("apple");
@@ -110,19 +121,11 @@ public class BSTRecursiveGeneric<T extends Comparable<T>> {
         stringTree.remove("boy");
         assert !stringTree.find("boy")
             : "Since boy was not present so deleting would do no change";
-        stringTree.add("india");
+        stringTree.add("India");
         stringTree.add("hills");
         assert stringTree.find("hills")
             : "hills was inserted but not found";
-        System.out.println("Pretty Display of current tree is:");
-        stringTree.prettyDisplay();
-        /*
-     Will print in following order
-     banana hills india pineapple
-         */
-        stringTree.inorder();
-        System.out.println("Pretty Display of current tree is:");
-        stringTree.prettyDisplay();
+        return stringTree;
     }
 
     /**
@@ -184,7 +187,6 @@ public class BSTRecursiveGeneric<T extends Comparable<T>> {
 
     /**
      * Recursively print Preorder traversal of the BST
-     *
      * @param node the root node
      */
     private void preOrder(Node<T> node) {
@@ -241,7 +243,7 @@ public class BSTRecursiveGeneric<T extends Comparable<T>> {
      * elements to argument list.
      *
      * @param node the root node
-     * @param sortedList the list to add the srted elements into
+     * @param sortedList the list to add the sorted elements into
      */
     private void inOrderSort(Node<T> node, List<T> sortedList) {
         if (node == null) {

@@ -3,17 +3,17 @@ package com.thealgorithms.searches;
 /**
  * Boyer-Moore string search algorithm.
  * Efficient algorithm for substring search.
- * https://en.wikipedia.org/wiki/Boyer%E2%80%93Moore_string-search_algorithm
+ * <a href="https://en.wikipedia.org/wiki/Boyer%E2%80%93Moore_string-search_algorithm">...</a>
  */
 public class BoyerMoore {
 
-    private final int radix; // Radix (number of possible characters)
     private final int[] right; // Bad character rule table
     private final String pattern;
 
     public BoyerMoore(String pat) {
         this.pattern = pat;
-        this.radix = 256;
+        // Radix (number of possible characters)
+        int radix = 256;
         this.right = new int[radix];
 
         for (int c = 0; c < radix; c++) {

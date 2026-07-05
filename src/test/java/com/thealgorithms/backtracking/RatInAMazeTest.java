@@ -1,11 +1,9 @@
 package com.thealgorithms.backtracking;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
-import static org.junit.jupiter.api.Assertions.assertTrue;
-
 import java.util.List;
 import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 class RatInAMazeTest {
 
@@ -14,7 +12,7 @@ class RatInAMazeTest {
         int[][] maze = {{1, 0, 0, 0}, {1, 1, 0, 1}, {0, 1, 0, 0}, {0, 1, 1, 1}};
 
         List<String> paths = RatInAMaze.findPaths(maze);
-        assertTrue(paths.size() >= 1);
+        assertFalse(paths.isEmpty());
         for (String path : paths) {
             assertTrue(path.chars().allMatch(c -> "DLRU".indexOf(c) >= 0));
         }
@@ -91,7 +89,7 @@ class RatInAMazeTest {
     void testLargerMazeWithPath() {
         int[][] maze = {{1, 1, 1, 1}, {0, 1, 0, 1}, {0, 1, 0, 1}, {0, 1, 1, 1}};
         List<String> paths = RatInAMaze.findPaths(maze);
-        assertTrue(paths.size() >= 1);
+        assertFalse(paths.isEmpty());
         for (String path : paths) {
             assertTrue(path.chars().allMatch(c -> "DLRU".indexOf(c) >= 0), "Path contains invalid characters: " + path);
         }

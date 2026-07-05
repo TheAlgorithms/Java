@@ -5,11 +5,11 @@ import com.thealgorithms.maths.Prime.PrimeCheck;
 /**
  * In number theory, a smith number  is a composite number for which, in a given number base,
  *  the sum of its digits is equal to the sum of the digits in its prime factorization in the same base.
- *
+ * <p>
  * For example, in base 10, 378 = 21 X 33 X 71 is a Smith number since 3 + 7 + 8 = 2 X 1 + 3 X 3 + 7 X 1,
  * and 22 = 21 X 111 is a Smith number, because 2 + 2 = 2 X 1 + (1 + 1) X 1.
- *
- * Wiki: https://en.wikipedia.org/wiki/Smith_number
+ * <p>
+ <a href="*">Wiki: https://en.wikipedia.org/wiki/Smit</a>h_number
  */
 public final class SmithNumber {
 

@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 
 class CaesarTest {
 
-    Caesar caesar = new Caesar();
+    final Caesar caesar = new Caesar();
 
     @Test
     void caesarEncryptTest() {

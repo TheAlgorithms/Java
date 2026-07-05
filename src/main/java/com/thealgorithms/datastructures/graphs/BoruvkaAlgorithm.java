@@ -5,9 +5,9 @@ import java.util.List;
 
 /**
  * Boruvka's algorithm to find Minimum Spanning Tree
- * (https://en.wikipedia.org/wiki/Bor%C5%AFvka%27s_algorithm)
+ * (<a href="https://en.wikipedia.org/wiki/Bor%C5%AFvka%27s_algorithm">...</a>)
  *
- * @author itakurah (https://github.com/itakurah)
+ * @author itakurah (<a href="https://github.com/itakurah">...</a>)
  */
 
 final class BoruvkaAlgorithm {
@@ -76,8 +76,8 @@ final class BoruvkaAlgorithm {
      * Represents the state of Union-Find components and the result list
      */
     private static class BoruvkaState {
-        List<Edge> result;
-        Component[] components;
+        final List<Edge> result;
+        final Component[] components;
         final Graph graph;
 
         BoruvkaState(final Graph graph) {

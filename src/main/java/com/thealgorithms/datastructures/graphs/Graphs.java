@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 class AdjacencyListGraph<E extends Comparable<E>> {
 
-    ArrayList<Vertex> vertices;
+    final ArrayList<Vertex> vertices;
 
     AdjacencyListGraph() {
         vertices = new ArrayList<>();
@@ -12,8 +12,8 @@ class AdjacencyListGraph<E extends Comparable<E>> {
 
     private class Vertex {
 
-        E data;
-        ArrayList<Vertex> adjacentVertices;
+        final E data;
+        final ArrayList<Vertex> adjacentVertices;
 
         Vertex(E data) {
             adjacentVertices = new ArrayList<>();

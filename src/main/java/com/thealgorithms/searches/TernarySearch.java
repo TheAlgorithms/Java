@@ -13,7 +13,7 @@ import com.thealgorithms.devutils.searches.SearchAlgorithm;
  * Worst-case performance Θ(log3(N)) Best-case performance O(1) Average
  * performance Θ(log3(N)) Worst-case space complexity O(1)
  *
- * @author Podshivalov Nikita (https://github.com/nikitap492)
+ * @author Podshivalov Nikita (<a href="https://github.com/nikitap492">...</a>)
  * @see SearchAlgorithm
  * @see IterativeBinarySearch
  */

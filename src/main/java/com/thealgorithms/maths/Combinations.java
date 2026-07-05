@@ -40,8 +40,6 @@ public final class Combinations {
      * Using this base value and above formula we can compute the next term
      * nC(k+1)
      *
-     * @param n
-     * @param k
      * @return nCk
      */
     public static long combinationsOptimized(int n, int k) {

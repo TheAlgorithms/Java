@@ -8,8 +8,8 @@ import java.util.HashMap;
  * Each node also has a boolean value to indicate if it is the end of a word.
  */
 class TrieNode {
-    char value;
-    HashMap<Character, TrieNode> child;
+    final char value;
+    final HashMap<Character, TrieNode> child;
     boolean end;
 
     /**
