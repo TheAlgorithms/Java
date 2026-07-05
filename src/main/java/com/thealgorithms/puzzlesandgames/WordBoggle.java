@@ -11,115 +11,138 @@ public final class WordBoggle {
 
     private WordBoggle() {
     }
+
     /**
-     * O(nm * 8^s + ws) time where n = width of boggle board, m = height of
+     * O(nm * 8^s + ws) time, where n = width of boggle board, m = height of
      * boggle board, s = length of longest word in string array, w = length of
      * string array, 8 is due to 8 explorable neighbours O(nm + ws) space.
      */
     public static List<String> boggleBoard(char[][] board, String[] words) {
         Trie trie = new Trie();
         for (String word : words) {
-            trie.add(word);
+            trie.insert(word);
         }
-        Set<String> finalWords = new HashSet<>();
-        boolean[][] visited = new boolean[board.length][board.length];
-        for (int i = 0; i < board.length; i++) {
-            for (int j = 0; j < board[i].length; j++) {
-                explore(i, j, board, trie.root, visited, finalWords);
+
+        Set<String> foundWords = new HashSet<>();
+        // Bug fix: columns are board[0].length, not board.length (board need not be square).
+        boolean[][] visited = new boolean[board.length][board[0].length];
+
+        for (int row = 0; row < board.length; row++) {
+            for (int col = 0; col < board[row].length; col++) {
+                explore(row, col, board, trie.getRoot(), visited, foundWords);
             }
         }
-        return new ArrayList<>(finalWords);
+
+        return new ArrayList<>(foundWords);
     }
 
-    public static void explore(int i, int j, char[][] board, TrieNode trieNode, boolean[][] visited, Set<String> finalWords) {
-        if (visited[i][j]) {
+    // Private: this is an implementation detail of boggleBoard, not part of the public API.
+    private static void explore(int row, int col, char[][] board, TrieNode node, boolean[][] visited, Set<String> foundWords) {
+        if (visited[row][col]) {
             return;
         }
 
-        char letter = board[i][j];
-        if (!trieNode.children.containsKey(letter)) {
+        char letter = board[row][col];
+        TrieNode nextNode = node.getChild(letter);
+        if (nextNode == null) {
             return;
         }
-        visited[i][j] = true;
-        trieNode = trieNode.children.get(letter);
-        if (trieNode.children.containsKey('*')) {
-            finalWords.add(trieNode.word);
+
+        visited[row][col] = true;
+
+        if (nextNode.isEndOfWord()) {
+            foundWords.add(nextNode.getWord());
         }
 
-        List<Integer[]> neighbors = getNeighbors(i, j, board);
-        for (Integer[] neighbor : neighbors) {
-            explore(neighbor[0], neighbor[1], board, trieNode, visited, finalWords);
+        for (Position neighbor : getNeighbors(row, col, board)) {
+            explore(neighbor.row(), neighbor.col(), board, nextNode, visited, foundWords);
         }
 
-        visited[i][j] = false;
+        visited[row][col] = false;
     }
 
-    public static List<Integer[]> getNeighbors(int i, int j, char[][] board) {
-        List<Integer[]> neighbors = new ArrayList<>();
-        if (i > 0 && j > 0) {
-            neighbors.add(new Integer[] {i - 1, j - 1});
-        }
+    // Private: neighbor geometry is an internal concern of the search, not a public utility.
+    private static List<Position> getNeighbors(int row, int col, char[][] board) {
+        List<Position> neighbors = new ArrayList<>();
+        int rows = board.length;
+        int cols = board[0].length;
 
-        if (i > 0 && j < board[0].length - 1) {
-            neighbors.add(new Integer[] {i - 1, j + 1});
-        }
-
-        if (i < board.length - 1 && j < board[0].length - 1) {
-            neighbors.add(new Integer[] {i + 1, j + 1});
-        }
-
-        if (i < board.length - 1 && j > 0) {
-            neighbors.add(new Integer[] {i + 1, j - 1});
-        }
-
-        if (i > 0) {
-            neighbors.add(new Integer[] {i - 1, j});
-        }
-
-        if (i < board.length - 1) {
-            neighbors.add(new Integer[] {i + 1, j});
-        }
-
-        if (j > 0) {
-            neighbors.add(new Integer[] {i, j - 1});
-        }
-
-        if (j < board[0].length - 1) {
-            neighbors.add(new Integer[] {i, j + 1});
+        for (int deltaRow = -1; deltaRow <= 1; deltaRow++) {
+            for (int deltaCol = -1; deltaCol <= 1; deltaCol++) {
+                if (deltaRow == 0 && deltaCol == 0) {
+                    continue;
+                }
+                int newRow = row + deltaRow;
+                int newCol = col + deltaCol;
+                if (newRow >= 0 && newRow < rows && newCol >= 0 && newCol < cols) {
+                    neighbors.add(new Position(newRow, newCol));
+                }
+            }
         }
 
         return neighbors;
     }
+
+    // Named coordinate pair instead of Integer[]: self-documenting, no autoboxing ambiguity.
+    private record Position(int row, int col) {
+    }
 }
 
-// Trie used to optimize string search
-class TrieNode {
+/**
+ * A trie node. All state is private; callers interact only through the methods below,
+ * so the "end of word" marker is an explicit flag rather than a magic sentinel key.
+ */
+final class TrieNode {
 
-    Map<Character, TrieNode> children = new HashMap<>();
-    String word = "";
-}
+    private final Map<Character, TrieNode> children = new HashMap<>();
+    private boolean endOfWord;
+    private String word = "";
 
-class Trie {
-
-    TrieNode root;
-    char endSymbol;
-
-    Trie() {
-        this.root = new TrieNode();
-        this.endSymbol = '*';
+    TrieNode getChild(char letter) {
+        return children.get(letter);
     }
 
-    public void add(String str) {
-        TrieNode node = this.root;
-        for (int i = 0; i < str.length(); i++) {
-            char letter = str.charAt(i);
-            if (!node.children.containsKey(letter)) {
-                TrieNode newNode = new TrieNode();
-                node.children.put(letter, newNode);
+    void addChild(char letter, TrieNode node) {
+        children.put(letter, node);
+    }
+
+    boolean isEndOfWord() {
+        return endOfWord;
+    }
+
+    void markEndOfWord(String word) {
+        this.endOfWord = true;
+        this.word = word;
+    }
+
+    String getWord() {
+        return word;
+    }
+}
+
+/**
+ * Trie used to optimize string search. Owns its root and construction logic
+ * so callers (WordBoggle) never need to know how nodes are wired together.
+ */
+final class Trie {
+
+    private final TrieNode root = new TrieNode();
+
+    TrieNode getRoot() {
+        return root;
+    }
+
+    void insert(String word) {
+        TrieNode node = root;
+        for (int i = 0; i < word.length(); i++) {
+            char letter = word.charAt(i);
+            TrieNode child = node.getChild(letter);
+            if (child == null) {
+                child = new TrieNode();
+                node.addChild(letter, child);
             }
-            node = node.children.get(letter);
+            node = child;
         }
-        node.children.put(this.endSymbol, null);
-        node.word = str;
+        node.markEndOfWord(word);
     }
 }
