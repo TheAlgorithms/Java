@@ -138,51 +138,28 @@ class KMeansTest {
 
     @Test
     void testFirstPointNull() {
-        double[][] points = {
-            null
-        };
+        double[][] points = {null};
 
-        double[][] centroids = {
-            {1.0, 1.0}
-        };
+        double[][] centroids = {{1.0, 1.0}};
 
-        assertThrows(
-                IllegalArgumentException.class,
-                () -> KMeans.cluster(points, centroids, 100, 0.0001)
-        );
+        assertThrows(IllegalArgumentException.class, () -> KMeans.cluster(points, centroids, 100, 0.0001));
     }
 
     @Test
     void testNullPointInDataset() {
-        double[][] points = {
-            {1.0, 1.0},
-            null
-        };
+        double[][] points = {{1.0, 1.0}, null};
 
-        double[][] centroids = {
-            {1.0, 1.0}
-        };
+        double[][] centroids = {{1.0, 1.0}};
 
-        assertThrows(
-                IllegalArgumentException.class,
-                () -> KMeans.cluster(points, centroids, 100, 0.0001)
-        );
+        assertThrows(IllegalArgumentException.class, () -> KMeans.cluster(points, centroids, 100, 0.0001));
     }
 
     @Test
     void testNullCentroidRow() {
-        double[][] points = {
-            {1.0, 1.0}
-        };
+        double[][] points = {{1.0, 1.0}};
 
-        double[][] centroids = {
-            null
-        };
+        double[][] centroids = {null};
 
-        assertThrows(
-                IllegalArgumentException.class,
-                () -> KMeans.cluster(points, centroids, 100, 0.0001)
-        );
+        assertThrows(IllegalArgumentException.class, () -> KMeans.cluster(points, centroids, 100, 0.0001));
     }
-
 }
