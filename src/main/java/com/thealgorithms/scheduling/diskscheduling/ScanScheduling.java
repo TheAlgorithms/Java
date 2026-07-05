@@ -19,9 +19,9 @@ import java.util.List;
  * disk requests, as it reduces the overall movement of the disk arm compared to
  */
 public class ScanScheduling {
-    private int headPosition;
-    private int diskSize;
-    private boolean movingUp;
+    private final int headPosition;
+    private final int diskSize;
+    private final boolean movingUp;
 
     public ScanScheduling(int headPosition, boolean movingUp, int diskSize) {
         this.headPosition = headPosition;

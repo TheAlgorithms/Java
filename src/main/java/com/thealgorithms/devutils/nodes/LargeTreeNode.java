@@ -39,7 +39,7 @@ public class LargeTreeNode<E> extends TreeNode<E> {
      *
      * @param data Value to which data will be initialized.
      * @param parentNode Value to which the nodes' parent reference will be set.
-     * @see TreeNode#TreeNode(Object, Node)
+     * @see TreeNode#TreeNode(Object, TreeNode)
      */
     public LargeTreeNode(E data, LargeTreeNode<E> parentNode) {
         super(data, parentNode);
@@ -51,7 +51,7 @@ public class LargeTreeNode<E> extends TreeNode<E> {
      * @param data Value to which data will be initialized.
      * @param parentNode Value to which the nodes' parent reference will be set.
      * @param childNodes {@link Collection} of child Nodes.
-     * @see TreeNode#TreeNode(Object, Node)
+     * @see TreeNode#TreeNode(Object, TreeNode)
      */
     public LargeTreeNode(E data, LargeTreeNode<E> parentNode, Collection<LargeTreeNode<E>> childNodes) {
         super(data, parentNode);

@@ -5,7 +5,7 @@ import java.util.Comparator;
 import java.util.IdentityHashMap;
 import java.util.Objects;
 import java.util.function.Consumer;
-
+import java.util.HashMap;
 /**
  * An addressable (indexed) min-priority queue with O(log n) updates.
  *

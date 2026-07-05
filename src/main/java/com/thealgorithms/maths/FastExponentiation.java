@@ -14,8 +14,8 @@ package com.thealgorithms.maths;
  * </p>
  *
  * <p><strong>Time complexity:</strong> O(log(exp)) — much faster than naive exponentiation (O(exp)).</p>
- *
- * For more information, please visit {@link https://en.wikipedia.org/wiki/Exponentiation_by_squaring}
+ /**
+ * For more information, please visit <a href="https://en.wikipedia.org/wiki/Exponentiation_by_squaring">Exponentiation by Squaring</a>
  */
 public final class FastExponentiation {
 

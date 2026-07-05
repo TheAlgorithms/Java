@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 
 public class BogoSortTest {
 
-    private BogoSort bogoSort = new BogoSort();
+    private final BogoSort bogoSort = new BogoSort();
 
     @Test
     public void bogoSortEmptyArray() {

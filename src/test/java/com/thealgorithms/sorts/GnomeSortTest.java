@@ -9,7 +9,7 @@ import org.junit.jupiter.api.Test;
 
 public class GnomeSortTest {
 
-    private GnomeSort gnomeSort = new GnomeSort();
+    private final GnomeSort gnomeSort = new GnomeSort();
 
     @Test
     @DisplayName("GnomeSort empty Array")

@@ -35,85 +35,125 @@ public final class Dinic {
      *     indices invalid
      */
     public static int maxFlow(int[][] capacity, int source, int sink) {
-        if (capacity == null || capacity.length == 0) {
-            throw new IllegalArgumentException("Capacity matrix must not be null or empty");
-        }
-        final int n = capacity.length;
-        for (int i = 0; i < n; i++) {
-            if (capacity[i] == null || capacity[i].length != n) {
-                throw new IllegalArgumentException("Capacity matrix must be square");
-            }
-            for (int j = 0; j < n; j++) {
-                if (capacity[i][j] < 0) {
-                    throw new IllegalArgumentException("Capacities must be non-negative");
-                }
-            }
-        }
-        if (source < 0 || sink < 0 || source >= n || sink >= n) {
-            throw new IllegalArgumentException("Source and sink must be valid vertex indices");
-        }
+        validateInput(capacity, source, sink);
+
         if (source == sink) {
             return 0;
         }
 
-        // residual capacities
+        int[][] residual = buildResidualGraph(capacity);
+        return computeMaxFlow(residual, source, sink);
+    }
+
+    private static void validateInput(int[][] capacity, int source, int sink) {
+        validateCapacityMatrix(capacity);
+        validateSourceAndSink(capacity.length, source, sink);
+    }
+
+    private static void validateCapacityMatrix(int[][] capacity) {
+        if (capacity == null || capacity.length == 0) {
+            throw new IllegalArgumentException("Capacity matrix must not be null or empty");
+        }
+
+        int n = capacity.length;
+        for (int[] ints : capacity) {
+            if (ints == null || ints.length != n) {
+                throw new IllegalArgumentException("Capacity matrix must be square");
+            }
+            validateNonNegativeRow(ints);
+        }
+    }
+
+    private static void validateNonNegativeRow(int[] row) {
+        for (int value : row) {
+            if (value < 0) {
+                throw new IllegalArgumentException("Capacities must be non-negative");
+            }
+        }
+    }
+
+    private static void validateSourceAndSink(int vertexCount, int source, int sink) {
+        if (source < 0 || sink < 0 || source >= vertexCount || sink >= vertexCount) {
+            throw new IllegalArgumentException("Source and sink must be valid vertex indices");
+        }
+    }
+
+    private static int[][] buildResidualGraph(int[][] capacity) {
+        int n = capacity.length;
         int[][] residual = new int[n][n];
         for (int i = 0; i < n; i++) {
             residual[i] = Arrays.copyOf(capacity[i], n);
         }
+        return residual;
+    }
 
+    private static int computeMaxFlow(int[][] residual, int source, int sink) {
+        int n = residual.length;
         int[] level = new int[n];
         int flow = 0;
+
         while (bfsBuildLevelGraph(residual, source, sink, level)) {
-            int[] next = new int[n]; // current-edge optimization
-            int pushed;
-            do {
-                pushed = dfsBlocking(residual, level, next, source, sink, Integer.MAX_VALUE);
-                flow += pushed;
-            } while (pushed > 0);
+            int[] next = new int[n];
+            flow += sendBlockingFlow(residual, level, next, source, sink);
         }
+
         return flow;
+    }
+
+    private static int sendBlockingFlow(int[][] residual, int[] level, int[] next, int source, int sink) {
+        int totalPushed = 0;
+        int pushed;
+
+        do {
+            pushed = dfsBlocking(residual, level, next, source, sink, Integer.MAX_VALUE);
+            totalPushed += pushed;
+        } while (pushed > 0);
+
+        return totalPushed;
     }
 
     private static boolean bfsBuildLevelGraph(int[][] residual, int source, int sink, int[] level) {
         Arrays.fill(level, -1);
         level[source] = 0;
-        Queue<Integer> q = new ArrayDeque<>();
-        q.add(source);
-        while (!q.isEmpty()) {
-            int u = q.poll();
+
+        Queue<Integer> queue = new ArrayDeque<>();
+        queue.add(source);
+
+        while (!queue.isEmpty()) {
+            int u = queue.poll();
             for (int v = 0; v < residual.length; v++) {
                 if (residual[u][v] > 0 && level[v] == -1) {
                     level[v] = level[u] + 1;
                     if (v == sink) {
                         return true;
                     }
-                    q.add(v);
+                    queue.add(v);
                 }
             }
         }
+
         return level[sink] != -1;
     }
 
-    private static int dfsBlocking(int[][] residual, int[] level, int[] next, int u, int sink, int f) {
+    private static int dfsBlocking(int[][] residual, int[] level, int[] next, int u, int sink, int flow) {
         if (u == sink) {
-            return f;
+            return flow;
         }
-        final int n = residual.length;
+
+        int n = residual.length;
         for (int v = next[u]; v < n; v++, next[u] = v) {
-            if (residual[u][v] <= 0) {
+            if (residual[u][v] <= 0 || level[v] != level[u] + 1) {
                 continue;
             }
-            if (level[v] != level[u] + 1) {
-                continue;
-            }
-            int pushed = dfsBlocking(residual, level, next, v, sink, Math.min(f, residual[u][v]));
+
+            int pushed = dfsBlocking(residual, level, next, v, sink, Math.min(flow, residual[u][v]));
             if (pushed > 0) {
                 residual[u][v] -= pushed;
                 residual[v][u] += pushed;
                 return pushed;
             }
         }
+
         return 0;
     }
 }

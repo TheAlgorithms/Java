@@ -20,7 +20,7 @@ public class ConstrainedShortestPath {
      */
     public static class Graph {
 
-        private List<List<Edge>> adjacencyList;
+        private final List<List<Edge>> adjacencyList;
 
         public Graph(int numNodes) {
             adjacencyList = new ArrayList<>();
@@ -61,8 +61,8 @@ public class ConstrainedShortestPath {
         }
     }
 
-    private Graph graph;
-    private int maxResource;
+    private final Graph graph;
+    private final int maxResource;
 
     /**
      * Constructs a CSPSolver with the given graph and maximum resource constraint.

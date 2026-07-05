@@ -17,7 +17,7 @@ import java.util.LinkedList;
  * @see com.thealgorithms.maths.PalindromeNumber
  */
 public class PalindromeWithStack {
-    private LinkedList<Character> stack;
+    private final LinkedList<Character> stack;
 
     /**
      * Constructs an empty stack that stores characters.

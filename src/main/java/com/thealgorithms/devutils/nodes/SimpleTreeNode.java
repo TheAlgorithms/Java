@@ -41,7 +41,7 @@ public class SimpleTreeNode<E> extends TreeNode<E> {
      *
      * @param data Value to which data will be initialized.
      * @param parentNode Value to which the nodes' parent reference will be set.
-     * @see TreeNode#TreeNode(Object, Node)
+     * @see TreeNode
      */
     public SimpleTreeNode(E data, SimpleTreeNode<E> parentNode) {
         super(data, parentNode);

@@ -37,7 +37,7 @@ public final class CentroidDecomposition {
         private final int[] parent;
         private final int[] subtreeSize;
         private final boolean[] removed;
-        private int root;
+        private final int root;
 
         /**
          * Constructs a centroid tree from an adjacency list.

@@ -1,8 +1,12 @@
 package com.thealgorithms.datastructures.graphs;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 import java.util.stream.IntStream;
 
 /**
@@ -22,7 +26,6 @@ import java.util.stream.IntStream;
  * For more information, see <a href="https://en.wikipedia.org/wiki/Graph_coloring">Graph Coloring</a>.
  * </p>
  */
-@SuppressWarnings({"rawtypes", "unchecked"})
 public final class WelshPowell {
     private static final int BLANK_COLOR = -1; // Constant representing an uncolored state
 
@@ -33,7 +36,7 @@ public final class WelshPowell {
      * Represents a graph using an adjacency list.
      */
     static final class Graph {
-        private final HashSet<Integer>[] adjacencyLists;
+        private final List<Set<Integer>> adjacencyLists;
 
         /**
          * Initializes a graph with a specified number of vertices.
@@ -46,25 +49,27 @@ public final class WelshPowell {
                 throw new IllegalArgumentException("Number of vertices cannot be negative");
             }
 
-            adjacencyLists = new HashSet[vertices];
-            Arrays.setAll(adjacencyLists, i -> new HashSet<>());
+            adjacencyLists = new ArrayList<>(vertices);
+            for (int i = 0; i < vertices; i++) {
+                adjacencyLists.add(new HashSet<>());
+            }
         }
 
         /**
          * Adds an edge between two vertices in the graph.
          *
-         * @param nodeA one end of the edge
-         * @param nodeB the other end of the edge
+         * @param vertexA one end of the edge
+         * @param vertexB the other end of the edge
          * @throws IllegalArgumentException if the vertices are out of bounds or if a self-loop is attempted
          */
-        private void addEdge(int nodeA, int nodeB) {
-            validateVertex(nodeA);
-            validateVertex(nodeB);
-            if (nodeA == nodeB) {
+        private void addEdge(int vertexA, int vertexB) {
+            validateVertex(vertexA);
+            validateVertex(vertexB);
+            if (vertexA == vertexB) {
                 throw new IllegalArgumentException("Self-loops are not allowed");
             }
-            adjacencyLists[nodeA].add(nodeB);
-            adjacencyLists[nodeB].add(nodeA);
+            adjacencyLists.get(vertexA).add(vertexB);
+            adjacencyLists.get(vertexB).add(vertexA);
         }
 
         /**
@@ -80,13 +85,14 @@ public final class WelshPowell {
         }
 
         /**
-         * Returns the adjacency list for a specific vertex.
+         * Returns the adjacency list for a specific vertex. The returned set is a read-only
+         * view: callers cannot mutate the graph's internal structure through it.
          *
          * @param vertex the index of the vertex
          * @return the set of adjacent vertices
          */
-        HashSet<Integer> getAdjacencyList(int vertex) {
-            return adjacencyLists[vertex];
+        Set<Integer> getAdjacencyList(int vertex) {
+            return Collections.unmodifiableSet(adjacencyLists.get(vertex));
         }
 
         /**
@@ -95,7 +101,7 @@ public final class WelshPowell {
          * @return the number of vertices
          */
         int getNumVertices() {
-            return adjacencyLists.length;
+            return adjacencyLists.size();
         }
     }
 
@@ -125,88 +131,96 @@ public final class WelshPowell {
      * @return an array of integers where each index represents a vertex and the value represents the color assigned
      */
     public static int[] findColoring(Graph graph) {
-        int[] colors = initializeColors(graph.getNumVertices());
-        Integer[] sortedVertices = getSortedNodes(graph);
-        for (int vertex : sortedVertices) {
-            if (isBlank(colors[vertex])) {
-                boolean[] usedColors = computeUsedColors(graph, vertex, colors);
-                final var newColor = firstUnusedColor(usedColors);
-                colors[vertex] = newColor;
-                Arrays.stream(sortedVertices).forEach(otherVertex -> {
-                    if (isBlank(colors[otherVertex]) && !isAdjacentToColored(graph, otherVertex, colors)) {
-                        colors[otherVertex] = newColor;
-                    }
-                });
-            }
+        return new Coloring(graph).run();
+    }
+
+    /**
+     * Bundles the graph being colored together with its in-progress color assignment.
+     * These two values were previously passed as a pair to nearly every helper method
+     * (a data clump); packaging them here lets each step read as an instance method
+     * with implicit access to shared state, instead of threading both through every call.
+     */
+    private static final class Coloring {
+        private final Graph graph;
+        private final int[] colors;
+
+        private Coloring(Graph graph) {
+            this.graph = graph;
+            this.colors = new int[graph.getNumVertices()];
+            Arrays.fill(colors, BLANK_COLOR);
         }
-        return colors;
-    }
 
-    /**
-     * Helper method to check if a color is unassigned
-     *
-     * @param color the color to check
-     * @return {@code true} if the color is unassigned, {@code false} otherwise
-     */
-    private static boolean isBlank(int color) {
-        return color == BLANK_COLOR;
-    }
+        private int[] run() {
+            Integer[] sortedVertices = getSortedVertices();
+            for (int vertex : sortedVertices) {
+                if (isBlank(colors[vertex])) {
+                    boolean[] usedColors = computeUsedColors(vertex);
+                    int newColor = firstUnusedColor(usedColors);
+                    colors[vertex] = newColor;
+                    for (int otherVertex : sortedVertices) {
+                        if (isBlank(colors[otherVertex]) && !isAdjacentToColored(otherVertex)) {
+                            colors[otherVertex] = newColor;
+                        }
+                    }
+                }
+            }
+            return colors;
+        }
 
-    /**
-     * Checks if a vertex has adjacent colored vertices
-     *
-     * @param graph the input graph
-     * @param vertex the vertex to check
-     * @param colors the array of colors assigned to the vertices
-     * @return {@code true} if the vertex has adjacent colored vertices, {@code false} otherwise
-     */
-    private static boolean isAdjacentToColored(Graph graph, int vertex, int[] colors) {
-        return graph.getAdjacencyList(vertex).stream().anyMatch(otherVertex -> !isBlank(colors[otherVertex]));
-    }
+        /**
+         * Helper method to check if a color is unassigned
+         *
+         * @param color the color to check
+         * @return {@code true} if the color is unassigned, {@code false} otherwise
+         */
+        private boolean isBlank(int color) {
+            return color == BLANK_COLOR;
+        }
 
-    /**
-     * Initializes the colors array with blank color
-     *
-     * @param numberOfVertices the number of vertices in the graph
-     * @return an array of integers representing the colors assigned to the vertices
-     */
-    private static int[] initializeColors(int numberOfVertices) {
-        int[] colors = new int[numberOfVertices];
-        Arrays.fill(colors, BLANK_COLOR);
-        return colors;
-    }
+        /**
+         * Checks if a vertex has adjacent colored vertices
+         *
+         * @param vertex the vertex to check
+         * @return {@code true} if the vertex has adjacent colored vertices, {@code false} otherwise
+         */
+        private boolean isAdjacentToColored(int vertex) {
+            return graph.getAdjacencyList(vertex).stream().anyMatch(neighbor -> !isBlank(colors[neighbor]));
+        }
 
-    /**
-     * Sorts the vertices by their degree in descending order
-     *
-     * @param graph the input graph
-     * @return an array of integers representing the vertices sorted by degree
-     */
-    private static Integer[] getSortedNodes(final Graph graph) {
-        return IntStream.range(0, graph.getNumVertices()).boxed().sorted(Comparator.comparingInt(v -> - graph.getAdjacencyList(v).size())).toArray(Integer[] ::new);
-    }
+        /**
+         * Sorts the vertices by their degree in descending order
+         *
+         * @return an array of integers representing the vertices sorted by degree
+         */
+        private Integer[] getSortedVertices() {
+            return IntStream.range(0, graph.getNumVertices())
+                    .boxed()
+                    .sorted(Comparator.<Integer>comparingInt(v -> graph.getAdjacencyList(v).size()).reversed())
+                    .toArray(Integer[] ::new);
+        }
 
-    /**
-     * Computes the colors already used by the adjacent vertices
-     *
-     * @param graph the input graph
-     * @param vertex the vertex to check
-     * @param colors the array of colors assigned to the vertices
-     * @return an array of booleans representing the colors used by the adjacent vertices
-     */
-    private static boolean[] computeUsedColors(final Graph graph, final int vertex, final int[] colors) {
-        boolean[] usedColors = new boolean[graph.getNumVertices()];
-        graph.getAdjacencyList(vertex).stream().map(neighbor -> colors[neighbor]).filter(color -> !isBlank(color)).forEach(color -> usedColors[color] = true);
-        return usedColors;
-    }
+        /**
+         * Computes the colors already used by the adjacent vertices
+         *
+         * @param vertex the vertex to check
+         * @return an array of booleans representing the colors used by the adjacent vertices
+         */
+        private boolean[] computeUsedColors(int vertex) {
+            boolean[] usedColors = new boolean[graph.getNumVertices()];
+            graph.getAdjacencyList(vertex).stream().map(neighbor -> colors[neighbor]).filter(color -> !isBlank(color)).forEach(color -> usedColors[color] = true);
+            return usedColors;
+        }
 
-    /**
-     * Finds the first unused color
-     *
-     * @param usedColors the array of colors used by the adjacent vertices
-     * @return the first unused color
-     */
-    private static int firstUnusedColor(boolean[] usedColors) {
-        return IntStream.range(0, usedColors.length).filter(color -> !usedColors[color]).findFirst().getAsInt();
+        /**
+         * Finds the first unused color.
+         *
+         * @param usedColors the array of colors used by the adjacent vertices
+         * @return the first unused color
+         */
+        private int firstUnusedColor(boolean[] usedColors) {
+            // Always present: a vertex has at most (numVertices - 1) neighbors, so at least
+            // one color in a numVertices-sized palette is guaranteed to remain unused.
+            return IntStream.range(0, usedColors.length).filter(color -> !usedColors[color]).findFirst().getAsInt();
+        }
     }
 }

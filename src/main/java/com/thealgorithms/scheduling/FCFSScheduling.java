@@ -9,7 +9,7 @@ import java.util.List;
  */
 public class FCFSScheduling {
 
-    private List<ProcessDetails> processes;
+    private final List<ProcessDetails> processes;
 
     FCFSScheduling(final List<ProcessDetails> processes) {
         this.processes = processes;

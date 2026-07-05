@@ -29,7 +29,7 @@ public class Treap {
          * right -> holds the right subtree
          */
         public int value;
-        private int priority;
+        private final int priority;
         private int size;
         public TreapNode left;
         public TreapNode right;
@@ -61,7 +61,7 @@ public class Treap {
      * random -> to generate random priority for the nodes in the Treap
      */
     private TreapNode root;
-    private Random random = new Random();
+    private final Random random = new Random();
 
     /**
      * Constructors

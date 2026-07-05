@@ -20,9 +20,9 @@ import javax.imageio.ImageIO;
  * three segments of equal length. 2. draw an equilateral triangle that has the
  * middle segment from step 1 as its base and points outward. 3. remove the line
  * segment that is the base of the triangle from step 2. (description adapted
- * from https://en.wikipedia.org/wiki/Koch_snowflake ) (for a more detailed
+ * from <a href="https://en.wikipedia.org/wiki/Koch_snowflake">...</a> ) (for a more detailed
  * explanation and an implementation in the Processing language, see
- * https://natureofcode.com/book/chapter-8-fractals/
+ * <a href="https://natureofcode.com/book/chapter-8-fractals/">...</a>
  * #84-the-koch-curve-and-the-arraylist-technique ).
  */
 public final class KochSnowflake {
@@ -67,7 +67,7 @@ public final class KochSnowflake {
         try {
             ImageIO.write(image, "png", new File("KochSnowflake.png"));
         } catch (IOException e) {
-            e.printStackTrace();
+            throw new RuntimeException("Failed to save image", e);
         }
     }
 
@@ -120,7 +120,7 @@ public final class KochSnowflake {
      * Loops through each pair of adjacent vectors. Each line between two
      * adjacent vectors is divided into 4 segments by adding 3 additional
      * vectors in-between the original two vectors. The vector in the middle is
-     * constructed through a 60 degree rotation so it is bent outwards.
+     * constructed through a 60-degree rotation so it is bent outwards.
      *
      * @param vectors The vectors composing the shape to which the algorithm is
      * applied.
@@ -138,7 +138,7 @@ public final class KochSnowflake {
             newVectors.add(startVector.add(differenceVector.multiply(2)));
         }
 
-        newVectors.add(vectors.get(vectors.size() - 1));
+        newVectors.add(vectors.getLast());
         return newVectors;
     }
 
@@ -179,8 +179,8 @@ public final class KochSnowflake {
      */
     private static class Vector2 {
 
-        double x;
-        double y;
+        final double x;
+        final double y;
 
         Vector2(double x, double y) {
             this.x = x;
@@ -229,7 +229,7 @@ public final class KochSnowflake {
         }
 
         /**
-         * Vector rotation (see https://en.wikipedia.org/wiki/Rotation_matrix)
+         * Vector rotation (see <a href="https://en.wikipedia.org/wiki/Rotation_matrix">...</a>)
          *
          * @param angleInDegrees The angle by which to rotate the vector.
          * @return The rotated vector.

@@ -21,6 +21,12 @@ public final class Area {
      * String of IllegalArgumentException for base
      */
     private static final String POSITIVE_BASE = "Base must be greater than 0";
+    private static final String POSITIVE_SIDE_LENGTH = "Side length must be greater than 0";
+    private static final String POSITIVE_LENGTH = "Length must be greater than 0";
+    private static final String POSITIVE_WIDTH = "Width must be greater than 0";
+    private static final String POSITIVE_SLANT_HEIGHT = "Slant height must be greater than 0";
+    private static final String POSITIVE_BASE_1 = "First base must be greater than 0";
+    private static final String POSITIVE_BASE_2 = "Second base must be greater than 0";
 
     /**
      * Calculate the surface area of a cube.
@@ -30,7 +36,7 @@ public final class Area {
      */
     public static double surfaceAreaCube(final double sideLength) {
         if (sideLength <= 0) {
-            throw new IllegalArgumentException("Side length must be greater than 0");
+            throw new IllegalArgumentException(POSITIVE_SIDE_LENGTH);
         }
         return 6 * sideLength * sideLength;
     }
@@ -43,15 +49,15 @@ public final class Area {
      * @param height height of the cuboid
      * @return surface area of given cuboid
      */
-    public static double surfaceAreaCuboid(final double length, double width, double height) {
+    public static double surfaceAreaCuboid(final double length, final double width,final double height) {
         if (length <= 0) {
-            throw new IllegalArgumentException("Length must be greater than 0");
+            throw new IllegalArgumentException(POSITIVE_LENGTH);
         }
         if (width <= 0) {
-            throw new IllegalArgumentException("Width must be greater than 0");
+            throw new IllegalArgumentException(POSITIVE_WIDTH);
         }
         if (height <= 0) {
-            throw new IllegalArgumentException("Height must be greater than 0");
+            throw new IllegalArgumentException(POSITIVE_HEIGHT);
         }
         return 2 * (length * width + length * height + width * height);
     }
@@ -78,10 +84,10 @@ public final class Area {
      */
     public static double surfaceAreaPyramid(final double sideLength, final double slantHeight) {
         if (sideLength <= 0) {
-            throw new IllegalArgumentException("");
+            throw new IllegalArgumentException(POSITIVE_SIDE_LENGTH);
         }
         if (slantHeight <= 0) {
-            throw new IllegalArgumentException("slant height must be greater than 0");
+            throw new IllegalArgumentException(POSITIVE_SLANT_HEIGHT);
         }
         double baseArea = sideLength * sideLength;
         double lateralSurfaceArea = 2 * sideLength * slantHeight;
@@ -93,14 +99,14 @@ public final class Area {
      *
      * @param length length of a rectangle
      * @param width  width of a rectangle
-     * @return area of given rectangle
+     * @return surface area of given rectangle
      */
     public static double surfaceAreaRectangle(final double length, final double width) {
         if (length <= 0) {
-            throw new IllegalArgumentException("Length must be greater than 0");
+            throw new IllegalArgumentException(POSITIVE_LENGTH);
         }
         if (width <= 0) {
-            throw new IllegalArgumentException("Width must be greater than 0");
+            throw new IllegalArgumentException(POSITIVE_WIDTH);
         }
         return length * width;
     }
@@ -108,9 +114,9 @@ public final class Area {
     /**
      * Calculate surface area of a cylinder.
      *
-     * @param radius radius of the floor
+     * @param radius radius of the base circle
      * @param height height of the cylinder.
-     * @return volume of given cylinder
+     * @return surface area of given cylinder
      */
     public static double surfaceAreaCylinder(final double radius, final double height) {
         if (radius <= 0) {
@@ -126,11 +132,11 @@ public final class Area {
      * Calculate the area of a square.
      *
      * @param sideLength side length of square
-     * @return area of given square
+     * @return surface area of given square
      */
     public static double surfaceAreaSquare(final double sideLength) {
         if (sideLength <= 0) {
-            throw new IllegalArgumentException("Side Length must be greater than 0");
+            throw new IllegalArgumentException(POSITIVE_SIDE_LENGTH);
         }
         return sideLength * sideLength;
     }
@@ -138,9 +144,9 @@ public final class Area {
     /**
      * Calculate the area of a triangle.
      *
-     * @param base   base of triangle
+     * @param baseLength base of triangle
      * @param height height of triangle
-     * @return area of given triangle
+     * @return surface area of given triangle
      */
     public static double surfaceAreaTriangle(final double baseLength, final double height) {
         if (baseLength <= 0) {
@@ -155,9 +161,9 @@ public final class Area {
     /**
      * Calculate the area of a parallelogram.
      *
-     * @param base   base of a parallelogram
+     * @param baseLength   base of a parallelogram
      * @param height height of a parallelogram
-     * @return area of given parallelogram
+     * @return surface area of given parallelogram
      */
     public static double surfaceAreaParallelogram(final double baseLength, final double height) {
         if (baseLength <= 0) {
@@ -172,17 +178,17 @@ public final class Area {
     /**
      * Calculate the area of a trapezium.
      *
-     * @param base1  upper base of trapezium
-     * @param base2  bottom base of trapezium
+     * @param baseLength1  upper base of trapezium
+     * @param baseLength2  bottom base of trapezium
      * @param height height of trapezium
-     * @return area of given trapezium
+     * @return surface area of given trapezium
      */
     public static double surfaceAreaTrapezium(final double baseLength1, final double baseLength2, final double height) {
         if (baseLength1 <= 0) {
-            throw new IllegalArgumentException(POSITIVE_BASE + 1);
+            throw new IllegalArgumentException(POSITIVE_BASE_1 );
         }
         if (baseLength2 <= 0) {
-            throw new IllegalArgumentException(POSITIVE_BASE + 2);
+            throw new IllegalArgumentException(POSITIVE_BASE_2 );
         }
         if (height <= 0) {
             throw new IllegalArgumentException(POSITIVE_HEIGHT);
@@ -194,10 +200,10 @@ public final class Area {
      * Calculate the area of a circle.
      *
      * @param radius radius of circle
-     * @return area of given circle
+     * @return surface area of given circle
      */
     public static double surfaceAreaCircle(final double radius) {
-        if (radius <= 0) {
+        if (radius <= 0.0) {
             throw new IllegalArgumentException(POSITIVE_RADIUS);
         }
         return Math.PI * radius * radius;
@@ -210,7 +216,7 @@ public final class Area {
      * @return surface area of given hemisphere
      */
     public static double surfaceAreaHemisphere(final double radius) {
-        if (radius <= 0) {
+        if (radius <= 0.0) {
             throw new IllegalArgumentException(POSITIVE_RADIUS);
         }
         return 3 * Math.PI * radius * radius;
@@ -224,10 +230,10 @@ public final class Area {
      * @return surface area of given cone.
      */
     public static double surfaceAreaCone(final double radius, final double height) {
-        if (radius <= 0) {
+        if (radius <= 0.0) {
             throw new IllegalArgumentException(POSITIVE_RADIUS);
         }
-        if (height <= 0) {
+        if (height <= 0.0) {
             throw new IllegalArgumentException(POSITIVE_HEIGHT);
         }
         return Math.PI * radius * (radius + Math.pow(height * height + radius * radius, 0.5));

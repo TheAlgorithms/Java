@@ -32,7 +32,7 @@ public class ColumnarTranspositionCipherTest {
         String encryptedText = ColumnarTranspositionCipher.encrypt(plaintext, keyword);
         String decryptedText = ColumnarTranspositionCipher.decrypt();
 
-        assertEquals(plaintext.replaceAll(" ", ""), decryptedText.replaceAll(" ", ""), "The decrypted text should match the original plaintext, ignoring spaces.");
+        assertEquals(plaintext.replace(" ", ""), decryptedText.replace(" ", ""), "The decrypted text should match the original plaintext, ignoring spaces.");
         assertEquals(encryptedText, ColumnarTranspositionCipher.encrypt(plaintext, keyword), "The encrypted text should be the same when encrypted again.");
     }
 
@@ -41,7 +41,7 @@ public class ColumnarTranspositionCipherTest {
         String longText = "This is a significantly longer piece of text to test the encryption and decryption capabilities of the Columnar Transposition Cipher. It should handle long strings gracefully.";
         String encryptedText = ColumnarTranspositionCipher.encrypt(longText, keyword);
         String decryptedText = ColumnarTranspositionCipher.decrypt();
-        assertEquals(longText.replaceAll(" ", ""), decryptedText.replaceAll(" ", ""), "The decrypted text should match the original long plaintext, ignoring spaces.");
+        assertEquals(longText.replace(" ", ""), decryptedText.replace(" ", ""), "The decrypted text should match the original long plaintext, ignoring spaces.");
         assertEquals(encryptedText, ColumnarTranspositionCipher.encrypt(longText, keyword), "The encrypted text should be the same when encrypted again.");
     }
 }

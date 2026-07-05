@@ -11,8 +11,8 @@ import java.util.List;
  *
  * The algorithm is straightforward but less efficient compared to
  * Bresenham’s line algorithm, since it relies on floating-point operations.
- *
- * For more information, please visit {@link https://en.wikipedia.org/wiki/Digital_differential_analyzer_(graphics_algorithm)}
+ /**
+ * For more information, please visit <a href="https://en.wikipedia.org/wiki/Digital_differential_analyzer_(graphics_algorithm)">Digital Differential Analyzer Algorithm</a>
  */
 public final class DDALine {
 

@@ -2,16 +2,11 @@ package com.thealgorithms.datastructures.trees;
 
 import java.util.ArrayList;
 
-/**
- * Implementation of a B-Tree, a self-balancing tree data structure that maintains sorted data
- * and allows searches, sequential access, insertions, and deletions in logarithmic time.
- *
- * B-Trees are generalizations of binary search trees in that a node can have more than two children.
- * They're widely used in databases and file systems.
- *
- * For more information: https://en.wikipedia.org/wiki/B-tree
- */
-
+/// Implementation of a B-Tree, a self-balancing tree data structure that maintains sorted data
+/// and allows searches, sequential access, insertions, and deletions in logarithmic time.
+/// B-Trees are generalizations of binary search trees in that a node can have more than two children.
+/// They're widely used in databases and file systems.
+/// For more information: [...](https://en.wikipedia.org/wiki/B-tree)
 public class BTree {
     static class BTreeNode {
         int[] keys;
@@ -245,14 +240,10 @@ public class BTree {
 
             child.keys[t - 1] = keys[idx];
 
-            for (int i = 0; i < sibling.n; ++i) {
-                child.keys[i + t] = sibling.keys[i];
-            }
+            if (sibling.n >= 0) System.arraycopy(sibling.keys, 0, child.keys, 0 + t, sibling.n);
 
             if (!child.leaf) {
-                for (int i = 0; i <= sibling.n; ++i) {
-                    child.children[i + t] = sibling.children[i];
-                }
+                if (sibling.n + 1 >= 0) System.arraycopy(sibling.children, 0, child.children, 0 + t, sibling.n + 1);
             }
 
             for (int i = idx + 1; i < n; ++i) {

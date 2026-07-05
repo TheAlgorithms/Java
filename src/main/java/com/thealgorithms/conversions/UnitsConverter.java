@@ -4,144 +4,161 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.NoSuchElementException;
+import java.util.Objects;
 import java.util.Set;
-import org.apache.commons.lang3.tuple.Pair;
 
 /**
- * A class that handles unit conversions using affine transformations.
- *
- * <p>The {@code UnitsConverter} allows converting values between different units using
- * pre-defined affine conversion formulas. Each conversion is represented by an
- * {@link AffineConverter} that defines the scaling and offset for the conversion.
- *
- * <p>For each unit, both direct conversions (e.g., Celsius to Fahrenheit) and inverse
- * conversions (e.g., Fahrenheit to Celsius) are generated automatically. It also computes
- * transitive conversions (e.g., Celsius to Kelvin via Fahrenheit if both conversions exist).
- *
- * <p>Key features include:
- * <ul>
- *   <li>Automatic handling of inverse conversions (e.g., Fahrenheit to Celsius).</li>
- *   <li>Compositional conversions, meaning if conversions between A -> B and B -> C exist,
- *       it can automatically generate A -> C conversion.</li>
- *   <li>Supports multiple unit systems as long as conversions are provided in pairs.</li>
- * </ul>
- *
- * <h2>Example Usage</h2>
- * <pre>
- * Map&lt;Pair&lt;String, String&gt;, AffineConverter&gt; basicConversions = Map.ofEntries(
- *     entry(Pair.of("Celsius", "Fahrenheit"), new AffineConverter(9.0 / 5.0, 32.0)),
- *     entry(Pair.of("Kelvin", "Celsius"), new AffineConverter(1.0, -273.15))
- * );
- *
- * UnitsConverter converter = new UnitsConverter(basicConversions);
- * double result = converter.convert("Celsius", "Fahrenheit", 100.0);
- * // Output: 212.0 (Celsius to Fahrenheit conversion of 100°C)
- * </pre>
- *
- * <h2>Exception Handling</h2>
- * <ul>
- *   <li>If the input unit and output unit are the same, an {@link IllegalArgumentException} is thrown.</li>
- *   <li>If a conversion between the requested units does not exist, a {@link NoSuchElementException} is thrown.</li>
- * </ul>
+ * Represents a directed conversion between two units using an affine transformation.
  */
-public final class UnitsConverter {
-    private final Map<Pair<String, String>, AffineConverter> conversions;
+record UnitPair(String from, String to) {
+    UnitPair {
+        Objects.requireNonNull(from);
+        Objects.requireNonNull(to);
+    }
+
+    @Override
+    public String toString() {
+        return from + " → " + to;
+    }
+}
+
+/**
+ * Abstraction for a conversion graph that can compute transitive closures.
+ */
+interface ConversionGraph {
+    double convert(String from, String to, double value);
+    Set<String> availableUnits();
+    boolean hasConversion(String from, String to);
+}
+
+/**
+ * Main public API — thin facade following SRP.
+ */
+public final class UnitsConverter implements ConversionGraph {
+
+    private final ConversionGraph graph;
+
+    /**
+     * Creates a new UnitsConverter with automatic inverse and transitive conversions.
+     *
+     * @param basicConversions initial direct conversions
+     */
+    public UnitsConverter(Map<UnitPair, AffineConverter> basicConversions) {
+        this.graph = new AffineConversionGraph(basicConversions);
+    }
+
+    @Override
+    public double convert(String from, String to, double value) {
+        if (from.equals(to)) {
+            throw new IllegalArgumentException("Input and output units must be different.");
+        }
+        return graph.convert(from, to, value);
+    }
+
+    @Override
+    public Set<String> availableUnits() {
+        return graph.availableUnits();
+    }
+
+    @Override
+    public boolean hasConversion(String from, String to) {
+        return graph.hasConversion(from, to);
+    }
+}
+
+/**
+ * Internal implementation handling the conversion graph and transitive closure.
+ * Follows SRP and DIP.
+ */
+final class AffineConversionGraph implements ConversionGraph {
+
+    private final Map<UnitPair, AffineConverter> conversions;
     private final Set<String> units;
 
-    private static void putIfNeeded(Map<Pair<String, String>, AffineConverter> conversions, final String inputUnit, final String outputUnit, final AffineConverter converter) {
-        if (!inputUnit.equals(outputUnit)) {
-            final var key = Pair.of(inputUnit, outputUnit);
-            conversions.putIfAbsent(key, converter);
-        }
+    AffineConversionGraph(Map<UnitPair, AffineConverter> basicConversions) {
+        Map<UnitPair, AffineConverter> initial = basicConversions != null
+                ? new HashMap<>(basicConversions)
+                : Map.of();
+
+        this.conversions = computeFullClosure(initial);
+        this.units = extractUnits(this.conversions);
     }
 
-    private static Map<Pair<String, String>, AffineConverter> addInversions(final Map<Pair<String, String>, AffineConverter> knownConversions) {
-        Map<Pair<String, String>, AffineConverter> res = new HashMap<Pair<String, String>, AffineConverter>();
-        for (final var curConversion : knownConversions.entrySet()) {
-            final var inputUnit = curConversion.getKey().getKey();
-            final var outputUnit = curConversion.getKey().getValue();
-            putIfNeeded(res, inputUnit, outputUnit, curConversion.getValue());
-            putIfNeeded(res, outputUnit, inputUnit, curConversion.getValue().invert());
-        }
-        return res;
+    private Map<UnitPair, AffineConverter> computeFullClosure(Map<UnitPair, AffineConverter> basic) {
+        Map<UnitPair, AffineConverter> current = addInversions(basic);
+
+        boolean changed;
+        do {
+            Map<UnitPair, AffineConverter> next = addCompositions(current);
+            changed = next.size() > current.size();
+            current = next;
+        } while (changed);
+
+        return Map.copyOf(current); // immutable
     }
 
-    private static Map<Pair<String, String>, AffineConverter> addCompositions(final Map<Pair<String, String>, AffineConverter> knownConversions) {
-        Map<Pair<String, String>, AffineConverter> res = new HashMap<Pair<String, String>, AffineConverter>();
-        for (final var first : knownConversions.entrySet()) {
-            final var firstKey = first.getKey();
-            putIfNeeded(res, firstKey.getKey(), firstKey.getValue(), first.getValue());
-            for (final var second : knownConversions.entrySet()) {
-                final var secondKey = second.getKey();
-                if (firstKey.getValue().equals(secondKey.getKey())) {
-                    final var newConversion = second.getValue().compose(first.getValue());
-                    putIfNeeded(res, firstKey.getKey(), secondKey.getValue(), newConversion);
+    private Map<UnitPair, AffineConverter> addInversions(Map<UnitPair, AffineConverter> known) {
+        Map<UnitPair, AffineConverter> result = new HashMap<>(known.size() * 2);
+
+        for (var entry : known.entrySet()) {
+            UnitPair pair = entry.getKey();
+            AffineConverter conv = entry.getValue();
+
+            putIfDifferent(result, pair.from(), pair.to(), conv);
+            putIfDifferent(result, pair.to(), pair.from(), conv.invert());
+        }
+        return result;
+    }
+
+    private Map<UnitPair, AffineConverter> addCompositions(Map<UnitPair, AffineConverter> known) {
+        Map<UnitPair, AffineConverter> result = new HashMap<>(known);
+
+        for (var first : known.entrySet()) {
+            UnitPair firstPair = first.getKey();
+            AffineConverter firstConv = first.getValue();
+
+            for (var second : known.entrySet()) {
+                UnitPair secondPair = second.getKey();
+                if (firstPair.to().equals(secondPair.from())) {
+                    AffineConverter composed = second.getValue().compose(firstConv);
+                    putIfDifferent(result, firstPair.from(), secondPair.to(), composed);
                 }
             }
         }
-        return res;
+        return result;
     }
 
-    private static Map<Pair<String, String>, AffineConverter> addAll(final Map<Pair<String, String>, AffineConverter> knownConversions) {
-        final var res = addInversions(knownConversions);
-        return addCompositions(res);
-    }
-
-    private static Map<Pair<String, String>, AffineConverter> computeAllConversions(final Map<Pair<String, String>, AffineConverter> basicConversions) {
-        var tmp = basicConversions;
-        var res = addAll(tmp);
-        while (res.size() != tmp.size()) {
-            tmp = res;
-            res = addAll(tmp);
+    private void putIfDifferent(Map<UnitPair, AffineConverter> map, String from, String to, AffineConverter conv) {
+        if (!from.equals(to)) {
+            map.putIfAbsent(new UnitPair(from, to), conv);
         }
-        return res;
     }
 
-    private static Set<String> extractUnits(final Map<Pair<String, String>, AffineConverter> conversions) {
-        Set<String> res = new HashSet<>();
-        for (final var conversion : conversions.entrySet()) {
-            res.add(conversion.getKey().getKey());
+    private Set<String> extractUnits(Map<UnitPair, AffineConverter> convs) {
+        Set<String> unitsSet = new HashSet<>();
+        for (UnitPair pair : convs.keySet()) {
+            unitsSet.add(pair.from());
         }
-        return res;
+        return Set.copyOf(unitsSet);
     }
 
-    /**
-     * Constructor for {@code UnitsConverter}.
-     *
-     * <p>Accepts a map of basic conversions and automatically generates inverse and
-     * transitive conversions.
-     *
-     * @param basicConversions the initial set of unit conversions to add.
-     */
-    public UnitsConverter(final Map<Pair<String, String>, AffineConverter> basicConversions) {
-        conversions = computeAllConversions(basicConversions);
-        units = extractUnits(conversions);
-    }
-
-    /**
-     * Converts a value from one unit to another.
-     *
-     * @param inputUnit the unit of the input value.
-     * @param outputUnit the unit to convert the value into.
-     * @param value the value to convert.
-     * @return the converted value in the target unit.
-     * @throws IllegalArgumentException if inputUnit equals outputUnit.
-     * @throws NoSuchElementException if no conversion exists between the units.
-     */
-    public double convert(final String inputUnit, final String outputUnit, final double value) {
-        if (inputUnit.equals(outputUnit)) {
-            throw new IllegalArgumentException("inputUnit must be different from outputUnit.");
+    @Override
+    public double convert(String from, String to, double value) {
+        UnitPair key = new UnitPair(from, to);
+        AffineConverter converter = conversions.get(key);
+        if (converter == null) {
+            throw new NoSuchElementException("No converter found for: " + key);
         }
-        final var conversionKey = Pair.of(inputUnit, outputUnit);
-        return conversions.computeIfAbsent(conversionKey, k -> { throw new NoSuchElementException("No converter for: " + k); }).convert(value);
+        return converter.convert(value);
     }
 
-    /**
-     * Retrieves the set of all units supported by this converter.
-     *
-     * @return a set of available units.
-     */
+    @Override
     public Set<String> availableUnits() {
         return units;
+    }
+
+    @Override
+    public boolean hasConversion(String from, String to) {
+        return conversions.containsKey(new UnitPair(from, to));
     }
 }

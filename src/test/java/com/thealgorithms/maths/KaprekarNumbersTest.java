@@ -138,7 +138,7 @@ class KaprekarNumbersTest {
     @Test
     void testKaprekarNumbersInSingleElementRange() {
         List<Long> result = KaprekarNumbers.kaprekarNumberInRange(9, 9);
-        List<Long> expected = Arrays.asList(9L);
+        List<Long> expected = List.of(9L);
         assertEquals(expected, result);
     }
 

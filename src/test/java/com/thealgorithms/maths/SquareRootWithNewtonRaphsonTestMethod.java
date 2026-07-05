@@ -6,17 +6,17 @@ import org.junit.jupiter.api.Test;
 public class SquareRootWithNewtonRaphsonTestMethod {
 
     @Test
-    void testfor1() {
+    void test_for_one() {
         Assertions.assertEquals(1, SquareRootWithNewtonRaphsonMethod.squareRoot(1));
     }
 
     @Test
-    void testfor2() {
+    void test_for_two() {
         Assertions.assertEquals(1.414213562373095, SquareRootWithNewtonRaphsonMethod.squareRoot(2));
     }
 
     @Test
-    void testfor625() {
+    void test_for_six_hundred_twenty_five() {
         Assertions.assertEquals(25.0, SquareRootWithNewtonRaphsonMethod.squareRoot(625));
     }
 }

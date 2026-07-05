@@ -1,7 +1,7 @@
 package com.thealgorithms.maths;
 
-import java.util.stream.StreamSupport;
-import org.apache.commons.collections4.IterableUtils;
+//import java.util.stream.StreamSupport;
+//import org.apache.commons.collections4.IterableUtils;
 
 /**
  * Utility class for computing various types of statistical means.
@@ -47,10 +47,15 @@ public final class Means {
      *      Mean</a>
      */
     public static Double arithmetic(final Iterable<Double> numbers) {
-        checkIfNotEmpty(numbers);
-        double sum = StreamSupport.stream(numbers.spliterator(), false).reduce(0d, (x, y) -> x + y);
-        int size = IterableUtils.size(numbers);
-        return sum / size;
+        checkNotNull(numbers);
+        double sum = 0.0;
+        int count = 0;
+        for (Double num : numbers) {
+            sum += num;
+            count++;
+        }
+        checkNotEmpty(count);
+        return sum / count;
     }
 
     /**
@@ -74,10 +79,18 @@ public final class Means {
      *      Mean</a>
      */
     public static Double geometric(final Iterable<Double> numbers) {
-        checkIfNotEmpty(numbers);
-        double product = StreamSupport.stream(numbers.spliterator(), false).reduce(1d, (x, y) -> x * y);
-        int size = IterableUtils.size(numbers);
-        return Math.pow(product, 1.0 / size);
+        checkNotNull(numbers);
+        double product = 1.0;
+        int count = 0;
+        for (Double num : numbers) {
+            if (num < 0) {
+                throw new IllegalArgumentException("Geometric mean requires non-negative numbers");
+            }
+            product *= num;
+            count++;
+        }
+        checkNotEmpty(count);
+        return Math.pow(product, 1.0 / count);
     }
 
     /**
@@ -101,10 +114,18 @@ public final class Means {
      * @see <a href="https://en.wikipedia.org/wiki/Harmonic_mean">Harmonic Mean</a>
      */
     public static Double harmonic(final Iterable<Double> numbers) {
-        checkIfNotEmpty(numbers);
-        double sumOfReciprocals = StreamSupport.stream(numbers.spliterator(), false).reduce(0d, (x, y) -> x + 1d / y);
-        int size = IterableUtils.size(numbers);
-        return size / sumOfReciprocals;
+        checkNotNull(numbers);
+        double sumOfReciprocals = 0.0;
+        int count = 0;
+        for (Double num : numbers) {
+            if (num == 0.0) {
+                throw new IllegalArgumentException("Harmonic mean cannot contain zero values");
+            }
+            sumOfReciprocals += 1.0 / num;
+            count++;
+        }
+        checkNotEmpty(count);
+        return count / sumOfReciprocals;
     }
 
     /**
@@ -123,10 +144,15 @@ public final class Means {
      *      Mean</a>
      */
     public static Double quadratic(final Iterable<Double> numbers) {
-        checkIfNotEmpty(numbers);
-        double sumOfSquares = StreamSupport.stream(numbers.spliterator(), false).reduce(0d, (x, y) -> x + y * y);
-        int size = IterableUtils.size(numbers);
-        return Math.pow(sumOfSquares / size, 0.5);
+        checkNotNull(numbers);
+        double sumOfSquares = 0.0;
+        int count = 0;
+        for (Double num : numbers) {
+            sumOfSquares += num * num;
+            count++;
+        }
+        checkNotEmpty(count);
+        return Math.sqrt(sumOfSquares / count);
     }
 
     /**
@@ -135,9 +161,15 @@ public final class Means {
      * @param numbers the input numbers to validate
      * @throws IllegalArgumentException if the input is empty
      */
-    private static void checkIfNotEmpty(final Iterable<Double> numbers) {
-        if (!numbers.iterator().hasNext()) {
-            throw new IllegalArgumentException("Empty list given for Mean computation.");
+    private static void checkNotNull(final Iterable<Double> numbers) {
+        if (numbers == null) {
+            throw new IllegalArgumentException("Input iterable must not be null");
+        }
+    }
+
+    private static void checkNotEmpty(final int count) {
+        if (count == 0) {
+            throw new IllegalArgumentException("Input iterable must not be empty");
         }
     }
 }

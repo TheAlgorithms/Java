@@ -16,8 +16,8 @@ import java.util.List;
  * Space Complexity: O(V^2)
  *
  * Where V is the number of vertices and E is the number of edges in the graph.
- *
- * For more information, please visit {@link https://en.wikipedia.org/wiki/Johnson%27s_algorithm}
+ /**
+ * For more information, please visit <a href="https://en.wikipedia.org/wiki/Johnson%27s_algorithm">Johnson's Algorithm</a>
  */
 public final class JohnsonsAlgorithm {
 

@@ -37,7 +37,7 @@ class MeansTest {
 
     @Test
     void testArithmeticMeanSingleNumber() {
-        List<Double> numbers = Arrays.asList(2.5);
+        List<Double> numbers = List.of(2.5);
         assertEquals(2.5, Means.arithmetic(numbers), EPSILON);
     }
 
@@ -88,7 +88,7 @@ class MeansTest {
 
     @Test
     void testGeometricMeanSingleNumber() {
-        Set<Double> numbers = new LinkedHashSet<>(Arrays.asList(2.5));
+        Set<Double> numbers = new LinkedHashSet<>(List.of(2.5));
         assertEquals(2.5, Means.geometric(numbers), EPSILON);
     }
 
@@ -135,7 +135,7 @@ class MeansTest {
 
     @Test
     void testHarmonicMeanSingleNumber() {
-        LinkedHashSet<Double> numbers = new LinkedHashSet<>(Arrays.asList(2.5));
+        LinkedHashSet<Double> numbers = new LinkedHashSet<>(List.of(2.5));
         assertEquals(2.5, Means.harmonic(numbers), EPSILON);
     }
 
@@ -155,7 +155,7 @@ class MeansTest {
     @Test
     void testHarmonicMeanThreeNumbers() {
         List<Double> numbers = Arrays.asList(1.0, 2.0, 4.0);
-        double expected = 3.0 / (1.0 / 1.0 + 1.0 / 2.0 + 1.0 / 4.0);
+        double expected = 3.0 / (1.0 + 1.0 / 2.0 + 1.0 / 4.0);
         assertEquals(expected, Means.harmonic(numbers), EPSILON);
     }
 
@@ -183,7 +183,7 @@ class MeansTest {
 
     @Test
     void testQuadraticMeanSingleNumber() {
-        LinkedHashSet<Double> numbers = new LinkedHashSet<>(Arrays.asList(2.5));
+        LinkedHashSet<Double> numbers = new LinkedHashSet<>(List.of(2.5));
         assertEquals(2.5, Means.quadratic(numbers), EPSILON);
     }
 

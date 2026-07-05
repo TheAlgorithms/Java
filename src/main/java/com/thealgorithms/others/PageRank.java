@@ -30,8 +30,8 @@ public final class PageRank {
     private static final double DEFAULT_DAMPING_FACTOR = 0.85;
     private static final int DEFAULT_ITERATIONS = 2;
 
-    private int[][] adjacencyMatrix;
-    private double[] pageRankValues;
+    private final int[][] adjacencyMatrix;
+    private final double[] pageRankValues;
     private int nodeCount;
 
     /**

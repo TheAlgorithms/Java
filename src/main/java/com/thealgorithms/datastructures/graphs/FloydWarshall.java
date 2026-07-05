@@ -16,8 +16,8 @@ package com.thealgorithms.datastructures.graphs;
  */
 public class FloydWarshall {
 
-    private int[][] distanceMatrix;
-    private int numberofvertices;
+    private final int[][] distanceMatrix;
+    private final int numberofvertices;
     public static final int INFINITY = 999;
 
     /**

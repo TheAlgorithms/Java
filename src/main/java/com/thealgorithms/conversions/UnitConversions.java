@@ -3,49 +3,75 @@ package com.thealgorithms.conversions;
 import static java.util.Map.entry;
 
 import java.util.Map;
-import org.apache.commons.lang3.tuple.Pair;
 
 /**
  * A utility class to perform unit conversions between different measurement systems.
- *
- * <p>Currently, the class supports temperature conversions between several scales:
- * Celsius, Fahrenheit, Kelvin, Réaumur, Delisle, and Rankine.
- *
- * <h2>Example Usage</h2>
- * <pre>
- *   double result = UnitConversions.TEMPERATURE.convert("Celsius", "Fahrenheit", 100.0);
- *   // Output: 212.0 (Celsius to Fahrenheit conversion of 100°C)
- * </pre>
- *
- * <p>This class makes use of an {@link UnitsConverter} that handles the conversion logic
- * based on predefined affine transformations. These transformations include scaling factors
- * and offsets for temperature conversions.
- *
- * <h2>Temperature Scales Supported</h2>
- * <ul>
- *   <li>Celsius</li>
- *   <li>Fahrenheit</li>
- *   <li>Kelvin</li>
- *   <li>Réaumur</li>
- *   <li>Delisle</li>
- *   <li>Rankine</li>
- * </ul>
  */
 public final class UnitConversions {
-    private UnitConversions() {
-    }
 
     /**
-     * A preconfigured instance of {@link UnitsConverter} for temperature conversions.
-     * The converter handles conversions between the following temperature units:
-     * <ul>
-     *   <li>Kelvin to Celsius</li>
-     *   <li>Celsius to Fahrenheit</li>
-     *   <li>Réaumur to Celsius</li>
-     *   <li>Delisle to Celsius</li>
-     *   <li>Rankine to Kelvin</li>
-     * </ul>
+     * Enum managing supported temperature scales to eliminate magic strings
+     * and enforce structural type safety internally.
      */
-    public static final UnitsConverter TEMPERATURE = new UnitsConverter(Map.ofEntries(entry(Pair.of("Kelvin", "Celsius"), new AffineConverter(1.0, -273.15)), entry(Pair.of("Celsius", "Fahrenheit"), new AffineConverter(9.0 / 5.0, 32.0)),
-        entry(Pair.of("Réaumur", "Celsius"), new AffineConverter(5.0 / 4.0, 0.0)), entry(Pair.of("Delisle", "Celsius"), new AffineConverter(-2.0 / 3.0, 100.0)), entry(Pair.of("Rankine", "Kelvin"), new AffineConverter(5.0 / 9.0, 0.0))));
+    private enum TemperatureScale {
+        CELSIUS("Celsius"),
+        FAHRENHEIT("Fahrenheit"),
+        KELVIN("Kelvin"),
+        REAUMUR("Réaumur"),
+        DELISLE("Delisle"),
+        RANKINE("Rankine");
+
+        private final String unitName;
+
+        TemperatureScale(String unitName) {
+            this.unitName = unitName;
+        }
+
+        public String getName() {
+            return unitName;
+        }
+    }
+
+    // Mathematical Constants for Conversions (Eliminating Magic Numbers)
+    private static final double ABSOLUTE_ZERO_CELSIUS = -273.15;
+
+    private static final double CELSIUS_TO_FAHRENHEIT_SCALE = 9.0 / 5.0;
+    private static final double CELSIUS_TO_FAHRENHEIT_OFFSET = 32.0;
+
+    private static final double REAUMUR_TO_CELSIUS_SCALE = 5.0 / 4.0;
+
+    private static final double DELISLE_TO_CELSIUS_SCALE = -2.0 / 3.0;
+    private static final double DELISLE_TO_CELSIUS_OFFSET = 100.0;
+
+    private static final double RANKINE_TO_KELVIN_SCALE = 5.0 / 9.0;
+
+    /**
+     * Preconfigured instance of UnitsConverter for temperature conversions.
+     */
+    public static final UnitsConverter TEMPERATURE = new UnitsConverter(Map.ofEntries(
+            entry(
+                    new UnitPair(TemperatureScale.KELVIN.getName(), TemperatureScale.CELSIUS.getName()),
+                    new AffineConverter(1.0, ABSOLUTE_ZERO_CELSIUS)
+            ),
+            entry(
+                    new UnitPair(TemperatureScale.CELSIUS.getName(), TemperatureScale.FAHRENHEIT.getName()),
+                    new AffineConverter(CELSIUS_TO_FAHRENHEIT_SCALE, CELSIUS_TO_FAHRENHEIT_OFFSET)
+            ),
+            entry(
+                    new UnitPair(TemperatureScale.REAUMUR.getName(), TemperatureScale.CELSIUS.getName()),
+                    new AffineConverter(REAUMUR_TO_CELSIUS_SCALE, 0.0)
+            ),
+            entry(
+                    new UnitPair(TemperatureScale.DELISLE.getName(), TemperatureScale.CELSIUS.getName()),
+                    new AffineConverter(DELISLE_TO_CELSIUS_SCALE, DELISLE_TO_CELSIUS_OFFSET)
+            ),
+            entry(
+                    new UnitPair(TemperatureScale.RANKINE.getName(), TemperatureScale.KELVIN.getName()),
+                    new AffineConverter(RANKINE_TO_KELVIN_SCALE, 0.0)
+            )
+    ));
+
+    private UnitConversions() {
+        // Prevent instantiation
+    }
 }

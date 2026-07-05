@@ -224,14 +224,15 @@ public class GenericTree {
     private void removeleaves(Node node) {
         ArrayList<Integer> arr = new ArrayList<>();
         for (int i = 0; i < node.child.size(); i++) {
-            if (node.child.get(i).child.size() == 0) {
+            if (node.child.get(i).child.isEmpty()) {
                 arr.add(i);
             } else {
                 removeleaves(node.child.get(i));
             }
         }
         for (int i = arr.size() - 1; i >= 0; i--) {
-            node.child.remove(arr.get(i) + 0);
+            int indexToRemove = arr.get(i); // Automatically unboxes Integer to int
+            node.child.remove(indexToRemove); // Safely calls remove(int index)
         }
     }
 }

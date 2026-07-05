@@ -10,9 +10,9 @@ public final class RandomizedMatrixMultiplicationVerification {
 
     /**
      * Verifies whether A × B == C using Freivalds' algorithm.
-     * @param A Left matrix
-     * @param B Right matrix
-     * @param C Product matrix to verify
+     * @param a Left matrix
+     * @param b Right matrix
+     * @param c Product matrix to verify
      * @param iterations Number of randomized checks
      * @return true if likely A×B == C; false if definitely not
      */

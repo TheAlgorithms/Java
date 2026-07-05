@@ -24,7 +24,7 @@ public class UniquePermutationTest {
 
     @Test
     void testEmptyString() {
-        List<String> expected = Arrays.asList("");
+        List<String> expected = List.of("");
         List<String> result = UniquePermutation.generateUniquePermutations("");
         assertEquals(expected, result);
     }

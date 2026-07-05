@@ -11,7 +11,7 @@ import org.junit.jupiter.api.Test;
  */
 public class BubbleSortTest {
 
-    private BubbleSort bubbleSort = new BubbleSort();
+    private final BubbleSort bubbleSort = new BubbleSort();
 
     @Test
     public void bubbleSortEmptyArray() {

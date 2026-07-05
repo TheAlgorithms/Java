@@ -61,8 +61,8 @@ class BestFitCPU extends MemoryManagementAlgorithms {
      * Method to find the index of the memory block that is going to fit the
      * given process based on the best fit algorithm.
      *
-     * @param blocks: the array with the available memory blocks.
-     * @param process: the size of the process.
+     * @param blockSizes: the array with the available memory blocks.
+     * @param processSize: the size of the process.
      * @return the index of the block that fits, or -255 if no such block
      * exists.
      */
@@ -119,8 +119,8 @@ class WorstFitCPU extends MemoryManagementAlgorithms {
      * Method to find the index of the memory block that is going to fit the
      * given process based on the worst fit algorithm.
      *
-     * @param blocks: the array with the available memory blocks.
-     * @param process: the size of the process.
+     * @param blockSizes: the array with the available memory blocks.
+     * @param processSize: the size of the process.
      * @return the index of the block that fits, or -255 if no such block
      * exists.
      */
@@ -177,8 +177,8 @@ class FirstFitCPU extends MemoryManagementAlgorithms {
      * Method to find the index of the memory block that is going to fit the
      * given process based on the first fit algorithm.
      *
-     * @param blocks: the array with the available memory blocks.
-     * @param process: the size of the process.
+     * @param blockSizes: the array with the available memory blocks.
+     * @param processSize: the size of the process.
      * @return the index of the block that fits, or -255 if no such block
      * exists.
      */
@@ -233,8 +233,8 @@ class NextFit extends MemoryManagementAlgorithms {
      * if the search is interrupted in between, the new search is carried out from the last
      * location.
      *
-     * @param blocks: the array with the available memory blocks.
-     * @param process: the size of the process.
+     * @param blockSizes: the array with the available memory blocks.
+     * @param processSize: the size of the process.
      * @return the index of the block that fits, or -255 if no such block
      * exists.
      */

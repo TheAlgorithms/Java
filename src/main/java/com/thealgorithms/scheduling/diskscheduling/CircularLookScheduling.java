@@ -17,7 +17,7 @@ import java.util.List;
  */
 public class CircularLookScheduling {
     private int currentPosition;
-    private boolean movingUp;
+    private final boolean movingUp;
     private final int maxCylinder;
 
     public CircularLookScheduling(int startPosition, boolean movingUp, int maxCylinder) {

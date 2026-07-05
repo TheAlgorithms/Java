@@ -13,7 +13,7 @@ class BellmanFord /*
 
     int vertex;
     int edge;
-    private Edge[] edges;
+    private final Edge[] edges;
     private int index = 0;
 
     BellmanFord(int v, int e) {
@@ -29,8 +29,8 @@ class BellmanFord /*
         int w;
 
         /**
-         * @param u Source Vertex
-         * @param v End vertex
+         * @param a Source Vertex
+         * @param b End vertex
          * @param c Weight
          */
         Edge(int a, int b, int c) {
@@ -41,7 +41,7 @@ class BellmanFord /*
     }
 
     /**
-     * @param p[] Parent array which shows updates in edges
+     * @param p Parent array which shows updates in edges
      * @param i   Current vertex under consideration
      */
     void printPath(int[] p, int i) {
@@ -124,7 +124,7 @@ class BellmanFord /*
     /**
      * @param source Starting vertex
      * @param end    Ending vertex
-     * @param Edge   Array of edges
+     * @param arr   Array of edges
      */
     public void show(int source, int end,
         Edge[] arr) { // be created by using addEdge() method and passed by calling getEdgeArray()

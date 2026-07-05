@@ -12,7 +12,7 @@ public class NonPreemptivePrioritySchedulingTest {
             new NonPreemptivePriorityScheduling.Process(2, 0, 5, 1), new NonPreemptivePriorityScheduling.Process(3, 0, 8, 3)};
         NonPreemptivePriorityScheduling.Process[] executionOrder = NonPreemptivePriorityScheduling.scheduleProcesses(processes);
 
-        double expectedAvgWaitingTime = (0 + 5 + 15) / 3.0; // Waiting times: 0 for P2, 5 for P1, 15 for P3
+        double expectedAvgWaitingTime = ( 5 + 15) / 3.0; // Waiting times: 0 for P2, 5 for P1, 15 for P3
         double actualAvgWaitingTime = NonPreemptivePriorityScheduling.calculateAverageWaitingTime(processes, executionOrder);
 
         assertEquals(expectedAvgWaitingTime, actualAvgWaitingTime, 0.01, "Average waiting time should be calculated correctly.");

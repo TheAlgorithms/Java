@@ -6,11 +6,7 @@ import org.junit.jupiter.api.Test;
 
 /**
  * Finds the minimum window substring in {@code s} that contains all characters of {@code t}.
- *
- * @param s The input string to search within
- * @param t The string with required characters
- * @return The minimum window substring, or empty string if not found
- * @author  (https://github.com/Chiefpatwal)
+ * @author  (<a href="https://github.com/Chiefpatwal">...</a>)
  */
 public class MinimumWindowSubstringTest {
 
