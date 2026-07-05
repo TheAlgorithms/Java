@@ -5,21 +5,21 @@ import java.util.List;
 
 /**
  * This file contains an implementation of BANKER'S ALGORITHM Wikipedia:
- * https://en.wikipedia.org/wiki/Banker%27s_algorithm
- *
+ * <a href="https://en.wikipedia.org/wiki/Banker%27s_algorithm">...</a>
+ * <p>
  * The algorithm for finding out whether or not a system is in a safe state can
  * be described as follows: 1. Let Work and Finish be vectors of length ‘m’ and
  * ‘n’ respectively. Initialize: Work= Available Finish [i]=false; for
  * i=1,2,……,n 2. Find an i such that both a) Finish [i]=false b) Need_i<=work
- *
+ * <p>
  * if no such i exists goto step (4) 3. Work=Work + Allocation_i Finish[i]= true
  * goto step(2) 4. If Finish[i]=true for all i, then the system is in safe
  * state.
- *
+ * <p>
  * Time Complexity: O(n*n*m) Space Complexity: O(n*m) where n = number of
  * processes and m = number of resources.
  *
- * @author AMRITESH ANAND (https://github.com/amritesh19)
+ * @author AMRI<a href="TESH">ANAND (https://github.co</a>m/amritesh19)
  */
 public final class BankersAlgorithm {
     private BankersAlgorithm() {
