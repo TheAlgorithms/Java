@@ -63,11 +63,7 @@ public final class KMeans {
      * @return cluster assignment for each point
      * @throws IllegalArgumentException if the input is invalid
      */
-    public static int[] cluster(
-            double[][] points,
-            double[][] initialCentroids,
-            int maxIterations,
-            double tolerance) {
+    public static int[] cluster(double[][] points, double[][] initialCentroids, int maxIterations, double tolerance) {
 
         if (points == null || initialCentroids == null) {
             throw new IllegalArgumentException("Input arrays cannot be null.");
