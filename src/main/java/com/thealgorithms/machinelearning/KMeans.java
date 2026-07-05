@@ -2,13 +2,26 @@ package com.thealgorithms.machinelearning;
 
 /**
  * Implements the K-Means clustering algorithm using Lloyd's algorithm.
+ *
+ * <p>
+ * K-Means partitions observations into k clusters by iteratively assigning each
+ * point to its nearest centroid and recomputing centroid positions until
+ * convergence or the maximum number of iterations is reached.
  */
 public final class KMeans {
 
     private KMeans() {
+
         // Utility class
     }
 
+    /**
+     * Computes the squared Euclidean distance between two points.
+     *
+     * @param point1 first point
+     * @param point2 second point
+     * @return squared Euclidean distance
+     */
     private static double squaredDistance(double[] point1, double[] point2) {
         double sum = 0.0;
         for (int i = 0; i < point1.length; i++) {
@@ -18,6 +31,13 @@ public final class KMeans {
         return sum;
     }
 
+    /**
+     * Finds the nearest centroid for the given point.
+     *
+     * @param point point to classify
+     * @param centroids current centroids
+     * @return index of the nearest centroid
+     */
     private static int nearestCentroid(double[] point, double[][] centroids) {
         int nearest = 0;
         double minimumDistance = squaredDistance(point, centroids[0]);
@@ -41,6 +61,7 @@ public final class KMeans {
      * @param maxIterations maximum number of iterations
      * @param tolerance convergence tolerance
      * @return cluster assignment for each point
+     * @throws IllegalArgumentException if the input is invalid
      */
     public static int[] cluster(
             double[][] points,
@@ -72,18 +93,31 @@ public final class KMeans {
             throw new IllegalArgumentException("Tolerance cannot be negative.");
         }
 
+        if (points[0] == null) {
+            throw new IllegalArgumentException("Points cannot contain null rows.");
+        }
+
         int dimensions = points[0].length;
+
         if (dimensions == 0) {
             throw new IllegalArgumentException("Points must have at least one dimension.");
         }
 
         for (double[] point : points) {
+            if (point == null) {
+                throw new IllegalArgumentException("Points cannot contain null rows.");
+            }
+
             if (point.length != dimensions) {
                 throw new IllegalArgumentException("All points must have the same dimension.");
             }
         }
 
         for (double[] centroid : initialCentroids) {
+            if (centroid == null) {
+                throw new IllegalArgumentException("Centroids cannot contain null rows.");
+            }
+
             if (centroid.length != dimensions) {
                 throw new IllegalArgumentException("Centroid dimensions must match point dimensions.");
             }
