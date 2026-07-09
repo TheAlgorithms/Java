@@ -6,9 +6,23 @@ import java.util.Optional;
 import java.util.stream.Stream;
 
 /**
- * @author: caos321
- * @date: 14 October 2021 (Thursday)
+ * Calculates Fibonacci numbers using a functional programming paradigm with Java Streams.
+ * <p>
+ * This specific implementation uses {@link java.util.stream.Stream#iterate} and reductions to generate terms.
+ * <p>
+ * For alternative approaches to compute or verify Fibonacci numbers, see:
+ * <ul>
+ * <li>{@link com.thealgorithms.maths.FibonacciLoop} - Standard Iterative (Loop) approach</li>
+ * <li>{@link com.thealgorithms.recursion.FibonacciSeries} - Naive Recursive approach</li>
+ * <li>{@link com.thealgorithms.dynamicprogramming.Fibonacci} - Dynamic Programming approaches (Memoization, Bottom-Up, Optimized)</li>
+ * <li>{@link com.thealgorithms.maths.FibonacciNumberGoldenRation} - Closed-form expression using Binet's formula</li>
+ * <li>{@link com.thealgorithms.maths.FibonacciNumberCheck} - Utility to check if a given number is a Fibonacci number</li>
+ * <li>{@link com.thealgorithms.matrix.matrixexponentiation.Fibonacci} - O(log n) Matrix Exponentiation approach</li>
+ * </ul>
+ * * @author caos321
+ * @date 14 October 2021 (Thursday)
  */
+
 public final class FibonacciJavaStreams {
     private FibonacciJavaStreams() {
     }
