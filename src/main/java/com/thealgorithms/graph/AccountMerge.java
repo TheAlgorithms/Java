@@ -10,13 +10,25 @@ import java.util.Map;
 /**
  * Merges account records using Disjoint Set Union (Union-Find) on shared emails.
  *
- * <p>Input format: each account is a list where the first element is the user name and the
- * remaining elements are emails.
+ * <p>Each account is expected to be a list where the first element is the user name and the
+ * remaining elements are email addresses. Accounts that share at least one email are merged into a
+ * single record.
  */
 public final class AccountMerge {
     private AccountMerge() {
+        // Utility class; do not instantiate.
     }
 
+    /**
+     * Merges accounts that share one or more email addresses.
+     *
+     * <p>The returned list is sorted by account owner name, then by the first email address when
+     * multiple merged groups have the same owner name. Within each merged account, emails are
+     * returned in lexicographic order.
+     *
+     * @param accounts a list of accounts where each entry contains a user name followed by emails
+     * @return merged accounts, or an empty list when {@code accounts} is null or empty
+     */
     public static List<List<String>> mergeAccounts(List<List<String>> accounts) {
         if (accounts == null || accounts.isEmpty()) {
             return List.of();
@@ -73,6 +85,9 @@ public final class AccountMerge {
         return merged;
     }
 
+    /**
+     * Lightweight union-find structure with path compression and union by rank.
+     */
     private static final class UnionFind {
         private final int[] parent;
         private final int[] rank;
