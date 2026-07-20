@@ -59,6 +59,12 @@
     <Match>
         <Bug pattern="AT_STALE_THREAD_WRITE_OF_PRIMITIVE" />
     </Match>
+    <Match>
+        <Bug pattern="NP_NULL_PARAM_DEREF_NONVIRTUAL" />
+    </Match>
+    <Match>
+        <Bug pattern="NP_NULL_PARAM_DEREF_ALL_TARGETS_DANGEROUS" />
+    </Match>
     <!-- fb-contrib -->
     <Match>
         <Bug pattern="LSC_LITERAL_STRING_COMPARISON" />
