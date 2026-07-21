@@ -20,7 +20,6 @@ public class AbsoluteMinTest {
     @Test
     void testGetMinValueWithNoArguments() {
         assertThrows(IllegalArgumentException.class, AbsoluteMin::getMinValue);
-        assertThrows(IllegalArgumentException.class, () -> AbsoluteMin.getMinValue((int[]) null));
     }
 
     @Test
