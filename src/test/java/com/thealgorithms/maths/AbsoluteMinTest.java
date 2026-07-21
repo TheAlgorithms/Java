@@ -11,12 +11,16 @@ public class AbsoluteMinTest {
     void testGetMinValue() {
         assertEquals(0, AbsoluteMin.getMinValue(4, 0, 16));
         assertEquals(-2, AbsoluteMin.getMinValue(3, -10, -2));
+        assertEquals(-2, AbsoluteMin.getMinValue(-3, -10, -2));
+        assertEquals(2, AbsoluteMin.getMinValue(-3, -10, 2));
+        assertEquals(2, AbsoluteMin.getMinValue(-5, 2));
+        assertEquals(2, AbsoluteMin.getMinValue(2, -5));
     }
 
     @Test
     void testGetMinValueWithNoArguments() {
-        Exception exception = assertThrows(IllegalArgumentException.class, AbsoluteMin::getMinValue);
-        assertEquals("Numbers array cannot be empty", exception.getMessage());
+        assertThrows(IllegalArgumentException.class, AbsoluteMin::getMinValue);
+        assertThrows(IllegalArgumentException.class, () -> AbsoluteMin.getMinValue((int[]) null));
     }
 
     @Test
