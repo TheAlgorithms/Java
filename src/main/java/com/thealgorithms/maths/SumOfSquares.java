@@ -18,8 +18,13 @@ public final class SumOfSquares {
      *
      * @param n the target number
      * @return minimum number of squares needed
+     * @throws IllegalArgumentException if {@code n} is negative
      */
     public static int minSquares(int n) {
+        if (n < 0) {
+            throw new IllegalArgumentException("Input must be non-negative");
+        }
+
         if (isPerfectSquare(n)) {
             return 1;
         }
