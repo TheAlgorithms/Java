@@ -27,4 +27,13 @@ public class AbsoluteMinTest {
         assertEquals(-5, AbsoluteMin.getMinValue(-5, 5));
         assertEquals(-5, AbsoluteMin.getMinValue(5, -5));
     }
+
+    @Test
+    void testIntegerMinValueOverflow() {
+        assertEquals(1, AbsoluteMin.getMinValue(Integer.MIN_VALUE, 1));
+        assertEquals(-1, AbsoluteMin.getMinValue(Integer.MIN_VALUE, -1));
+        assertEquals(0, AbsoluteMin.getMinValue(Integer.MIN_VALUE, 0));
+        assertEquals(Integer.MIN_VALUE, AbsoluteMin.getMinValue(Integer.MIN_VALUE));
+        assertEquals(Integer.MAX_VALUE, AbsoluteMin.getMinValue(Integer.MIN_VALUE, Integer.MAX_VALUE));
+    }
 }

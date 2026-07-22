@@ -15,12 +15,13 @@ public final class AbsoluteMin {
             throw new IllegalArgumentException("Numbers array cannot be empty or null");
         }
 
-        int absMin = numbers[0];
+        long absMin = numbers[0];
         for (int i = 1; i < numbers.length; i++) {
-            if (Math.abs(numbers[i]) < Math.abs(absMin) || (Math.abs(numbers[i]) == Math.abs(absMin) && numbers[i] < absMin)) {
-                absMin = numbers[i];
+            long current = numbers[i];
+            if (Math.abs(current) < Math.abs(absMin) || (Math.abs(current) == Math.abs(absMin) && current < absMin)) {
+                absMin = current;
             }
         }
-        return absMin;
+        return (int) absMin;
     }
 }
