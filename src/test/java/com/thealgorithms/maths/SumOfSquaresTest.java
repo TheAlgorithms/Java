@@ -64,11 +64,11 @@ class SumOfSquaresTest {
     @Test
     void testEdgeCases() {
         // Test edge case
-    
+        assertEquals(1, SumOfSquares.minSquares(0)); // 0^2
+    }
+
     @Test
     void testNegativeInput() {
         assertThrows(IllegalArgumentException.class, () -> SumOfSquares.minSquares(-1));
-    }
-    assertEquals(1, SumOfSquares.minSquares(0)); // 0^2
     }
 }
