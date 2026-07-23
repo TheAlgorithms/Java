@@ -1,7 +1,5 @@
 package com.thealgorithms.maths;
 
-import java.util.Arrays;
-
 public final class AbsoluteMin {
     private AbsoluteMin() {
     }
@@ -17,10 +15,15 @@ public final class AbsoluteMin {
             throw new IllegalArgumentException("Numbers array cannot be empty");
         }
 
-        var absMinWrapper = new Object() { int value = numbers[0]; };
-
-        Arrays.stream(numbers).skip(1).filter(number -> Math.abs(number) <= Math.abs(absMinWrapper.value)).forEach(number -> absMinWrapper.value = Math.min(absMinWrapper.value, number));
-
-        return absMinWrapper.value;
+        int minValue = numbers[0];
+        for (int number : numbers) {
+            long absoluteNumber = Math.abs((long) number);
+            long absoluteMinValue = Math.abs((long) minValue);
+            if (absoluteNumber < absoluteMinValue || (absoluteNumber == absoluteMinValue && number < minValue)) {
+                // For equal absolute values, consistently choose the numerically smaller value.
+                minValue = number;
+            }
+        }
+        return minValue;
     }
 }
