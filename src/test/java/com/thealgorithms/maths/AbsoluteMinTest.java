@@ -9,8 +9,11 @@ public class AbsoluteMinTest {
 
     @Test
     void testGetMinValue() {
+        assertEquals(2, AbsoluteMin.getMinValue(-5, 2));
         assertEquals(0, AbsoluteMin.getMinValue(4, 0, 16));
         assertEquals(-2, AbsoluteMin.getMinValue(3, -10, -2));
+        assertEquals(-2, AbsoluteMin.getMinValue(-5, -2));
+        assertEquals(2, AbsoluteMin.getMinValue(5, 2));
     }
 
     @Test
@@ -21,6 +24,7 @@ public class AbsoluteMinTest {
 
     @Test
     void testGetMinValueWithSameAbsoluteValues() {
+        assertEquals(-3, AbsoluteMin.getMinValue(-3, 3));
         assertEquals(-5, AbsoluteMin.getMinValue(-5, 5));
         assertEquals(-5, AbsoluteMin.getMinValue(5, -5));
     }
