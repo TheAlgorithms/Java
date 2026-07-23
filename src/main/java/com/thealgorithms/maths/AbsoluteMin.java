@@ -19,8 +19,7 @@ public final class AbsoluteMin {
         for (int number : numbers) {
             long absoluteNumber = Math.abs((long) number);
             long absoluteMinValue = Math.abs((long) minValue);
-            if (absoluteNumber < absoluteMinValue
-                || (absoluteNumber == absoluteMinValue && number < minValue)) {
+            if (absoluteNumber < absoluteMinValue || (absoluteNumber == absoluteMinValue && number < minValue)) {
                 // For equal absolute values, consistently choose the numerically smaller value.
                 minValue = number;
             }
