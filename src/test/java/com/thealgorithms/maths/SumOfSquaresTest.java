@@ -1,6 +1,7 @@
 package com.thealgorithms.maths;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import org.junit.jupiter.api.Test;
 
@@ -64,5 +65,10 @@ class SumOfSquaresTest {
     void testEdgeCases() {
         // Test edge case
         assertEquals(1, SumOfSquares.minSquares(0)); // 0^2
+    }
+
+    @Test
+    void testNegativeInput() {
+        assertThrows(IllegalArgumentException.class, () -> SumOfSquares.minSquares(-1));
     }
 }
