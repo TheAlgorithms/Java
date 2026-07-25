@@ -6,6 +6,12 @@ import java.util.Queue;
 /**
  * Multi-source Breadth-First Search (BFS) implementation for the Rotting Oranges problem.
  *
+ * <p>Algorithm explanation:
+ * https://en.wikipedia.org/wiki/Breadth-first_search
+ *
+ * <p>Problem reference:
+ * https://leetcode.com/problems/rotting-oranges/
+ *
  * <p>Given a grid where:
  * <ul>
  *     <li>0 represents an empty cell</li>
