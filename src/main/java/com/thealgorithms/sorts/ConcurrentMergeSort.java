@@ -1,7 +1,6 @@
 package com.thealgorithms.sorts;
 
-import java.util.concurrent.ExecutionException;
-import java.util.concurrent.Future;
+import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
@@ -83,18 +82,13 @@ public final class ConcurrentMergeSort {
         int mid = left + (right - left) / 2;
 
         // Submit the left half for concurrent execution
-        Future<?> leftTask = executor.submit(() -> concurrentMergeSort(array, temp, left, mid, executor, depth - 1));
+        CompletableFuture<Void> leftTask = CompletableFuture.runAsync(() -> concurrentMergeSort(array, temp, left, mid, executor, depth - 1), executor);
 
         // Process the right half in the current thread to optimize resource usage
         concurrentMergeSort(array, temp, mid + 1, right, executor, depth - 1);
 
-        try {
-            // Wait for the concurrently executed left half to complete
-            leftTask.get();
-        } catch (InterruptedException | ExecutionException e) {
-            Thread.currentThread().interrupt();
-            throw new IllegalStateException("Concurrent execution interrupted or failed", e);
-        }
+        // Wait for the concurrently executed left half to complete
+        leftTask.join();
 
         merge(array, temp, left, mid, right);
     }
