@@ -10,11 +10,7 @@ public class RottingOrangesTest {
     void testAllOrangesRotInSingleMinute() {
         RottingOranges rottingOranges = new RottingOranges();
 
-        int[][] grid = {
-                {2, 1, 1},
-                {1, 1, 0},
-                {0, 1, 1}
-        };
+        int[][] grid = {{2, 1, 1}, {1, 1, 0}, {0, 1, 1}};
 
         assertEquals(4, rottingOranges.run(grid));
     }
@@ -23,11 +19,7 @@ public class RottingOrangesTest {
     void testImpossibleToRotAllOranges() {
         RottingOranges rottingOranges = new RottingOranges();
 
-        int[][] grid = {
-                {2, 1, 1},
-                {0, 1, 1},
-                {1, 0, 1}
-        };
+        int[][] grid = {{2, 1, 1}, {0, 1, 1}, {1, 0, 1}};
 
         assertEquals(-1, rottingOranges.run(grid));
     }
@@ -36,10 +28,7 @@ public class RottingOrangesTest {
     void testNoFreshOranges() {
         RottingOranges rottingOranges = new RottingOranges();
 
-        int[][] grid = {
-                {2, 2},
-                {2, 2}
-        };
+        int[][] grid = {{2, 2}, {2, 2}};
 
         assertEquals(0, rottingOranges.run(grid));
     }
@@ -48,10 +37,7 @@ public class RottingOrangesTest {
     void testNoRottenOranges() {
         RottingOranges rottingOranges = new RottingOranges();
 
-        int[][] grid = {
-                {1, 1},
-                {1, 1}
-        };
+        int[][] grid = {{1, 1}, {1, 1}};
 
         assertEquals(-1, rottingOranges.run(grid));
     }
@@ -69,9 +55,7 @@ public class RottingOrangesTest {
     void testSingleRottenOrange() {
         RottingOranges rottingOranges = new RottingOranges();
 
-        int[][] grid = {
-                {2}
-        };
+        int[][] grid = {{2}};
 
         assertEquals(0, rottingOranges.run(grid));
     }
@@ -80,9 +64,7 @@ public class RottingOrangesTest {
     void testSingleFreshOrange() {
         RottingOranges rottingOranges = new RottingOranges();
 
-        int[][] grid = {
-                {1}
-        };
+        int[][] grid = {{1}};
 
         assertEquals(-1, rottingOranges.run(grid));
     }
@@ -91,9 +73,7 @@ public class RottingOrangesTest {
     void testSingleFreshOrangeNextToRottenOrange() {
         RottingOranges rottingOranges = new RottingOranges();
 
-        int[][] grid = {
-                {2, 1}
-        };
+        int[][] grid = {{2, 1}};
 
         assertEquals(1, rottingOranges.run(grid));
     }
@@ -102,11 +82,7 @@ public class RottingOrangesTest {
     void testMultipleRottenSources() {
         RottingOranges rottingOranges = new RottingOranges();
 
-        int[][] grid = {
-                {2, 1, 0, 2},
-                {1, 1, 1, 1},
-                {0, 1, 1, 1}
-        };
+        int[][] grid = {{2, 1, 0, 2}, {1, 1, 1, 1}, {0, 1, 1, 1}};
 
         assertEquals(3, rottingOranges.run(grid));
     }
@@ -115,11 +91,7 @@ public class RottingOrangesTest {
     void testFreshOrangeBlockedByEmptyCells() {
         RottingOranges rottingOranges = new RottingOranges();
 
-        int[][] grid = {
-                {2, 0, 1},
-                {0, 0, 0},
-                {1, 0, 1}
-        };
+        int[][] grid = {{2, 0, 1}, {0, 0, 0}, {1, 0, 1}};
 
         assertEquals(-1, rottingOranges.run(grid));
     }
@@ -128,9 +100,7 @@ public class RottingOrangesTest {
     void testLinearSpread() {
         RottingOranges rottingOranges = new RottingOranges();
 
-        int[][] grid = {
-                {2, 1, 1, 1, 1}
-        };
+        int[][] grid = {{2, 1, 1, 1, 1}};
 
         assertEquals(4, rottingOranges.run(grid));
     }
@@ -139,12 +109,7 @@ public class RottingOrangesTest {
     void testVerticalSpread() {
         RottingOranges rottingOranges = new RottingOranges();
 
-        int[][] grid = {
-                {2},
-                {1},
-                {1},
-                {1}
-        };
+        int[][] grid = {{2}, {1}, {1}, {1}};
 
         assertEquals(3, rottingOranges.run(grid));
     }
@@ -153,10 +118,7 @@ public class RottingOrangesTest {
     void testGridWithOnlyEmptyCells() {
         RottingOranges rottingOranges = new RottingOranges();
 
-        int[][] grid = {
-                {0, 0},
-                {0, 0}
-        };
+        int[][] grid = {{0, 0}, {0, 0}};
 
         assertEquals(0, rottingOranges.run(grid));
     }
@@ -165,11 +127,7 @@ public class RottingOrangesTest {
     void testComplexGrid() {
         RottingOranges rottingOranges = new RottingOranges();
 
-        int[][] grid = {
-                {2, 1, 1},
-                {1, 1, 1},
-                {1, 1, 1}
-        };
+        int[][] grid = {{2, 1, 1}, {1, 1, 1}, {1, 1, 1}};
 
         assertEquals(4, rottingOranges.run(grid));
     }
