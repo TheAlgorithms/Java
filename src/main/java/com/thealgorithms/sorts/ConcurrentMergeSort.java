@@ -24,6 +24,9 @@ import java.util.concurrent.TimeUnit;
  */
 public class ConcurrentMergeSort {
 
+    private ConcurrentMergeSort() {
+    }
+
     /**
      * Fallback threshold where the algorithm switches to standard sequential
      * Merge Sort to prevent thread-creation overhead from ruining performance.
@@ -75,10 +78,6 @@ public class ConcurrentMergeSort {
      * @param depth    the remaining depth for allowing concurrent execution
      */
     private static void concurrentMergeSort(int[] array, int[] temp, int left, int right, ThreadPoolExecutor executor, int depth) {
-        if (left >= right) {
-            return;
-        }
-
         int length = right - left + 1;
 
         // Switch to sequential sort if the array is small or we have reached the maximum concurrent depth

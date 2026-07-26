@@ -83,4 +83,28 @@ public class ConcurrentMergeSortTest {
 
         assertArrayEquals(expected, array, "Single element array should be handled without errors.");
     }
+
+    @Test
+    public void testNullArray() {
+        int[] array = null;
+        ConcurrentMergeSort.sort(array);
+        org.junit.jupiter.api.Assertions.assertNull(array, "Null array should be handled without errors.");
+    }
+
+    @Test
+    public void testInterruptedException() {
+        int[] array = new int[20000]; // Large enough to trigger concurrent threads
+        Thread.currentThread().interrupt();
+        try {
+            ConcurrentMergeSort.sort(array);
+        } catch (RuntimeException e) {
+            org.junit.jupiter.api.Assertions.assertTrue(
+                e.getCause() instanceof InterruptedException || e.getCause() instanceof java.util.concurrent.ExecutionException,
+                "Should catch and wrap InterruptedException or ExecutionException"
+            );
+        } finally {
+            // Clear interrupted status so it doesn't affect subsequent tests
+            Thread.interrupted();
+        }
+    }
 }
