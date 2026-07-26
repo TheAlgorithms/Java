@@ -97,7 +97,7 @@ public class ConcurrentMergeSortTest {
         Thread.currentThread().interrupt();
         try {
             ConcurrentMergeSort.sort(array);
-        } catch (RuntimeException e) {
+        } catch (IllegalStateException e) {
             org.junit.jupiter.api.Assertions.assertTrue(e.getCause() instanceof InterruptedException || e.getCause() instanceof java.util.concurrent.ExecutionException, "Should catch and wrap InterruptedException or ExecutionException");
         } finally {
             // Clear interrupted status so it doesn't affect subsequent tests

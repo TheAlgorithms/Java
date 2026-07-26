@@ -93,7 +93,7 @@ public final class ConcurrentMergeSort {
             leftTask.get();
         } catch (InterruptedException | ExecutionException e) {
             Thread.currentThread().interrupt();
-            throw new RuntimeException("Concurrent execution interrupted or failed", e);
+            throw new IllegalStateException("Concurrent execution interrupted or failed", e);
         }
 
         merge(array, temp, left, mid, right);
