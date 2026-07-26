@@ -22,7 +22,7 @@ import java.util.concurrent.TimeUnit;
  *   <li>Space Complexity: $O(N)$</li>
  * </ul>
  */
-public class ConcurrentMergeSort {
+public final class ConcurrentMergeSort {
 
     private ConcurrentMergeSort() {
     }
