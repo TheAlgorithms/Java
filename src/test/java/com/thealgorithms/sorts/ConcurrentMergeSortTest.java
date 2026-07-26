@@ -90,5 +90,4 @@ public class ConcurrentMergeSortTest {
         ConcurrentMergeSort.sort(array);
         org.junit.jupiter.api.Assertions.assertNull(array, "Null array should be handled without errors.");
     }
-
 }
