@@ -99,11 +99,7 @@ public class RottingOranges {
                 int newRow = current.row + DEL_ROW[i];
                 int newCol = current.col + DEL_COL[i];
 
-                if (newRow >= 0
-                        && newRow < rows
-                        && newCol >= 0
-                        && newCol < cols
-                        && copy[newRow][newCol] == 1) {
+                if (newRow >= 0 && newRow < rows && newCol >= 0 && newCol < cols && copy[newRow][newCol] == 1) {
 
                     copy[newRow][newCol] = 2;
                     rottedFresh++;
