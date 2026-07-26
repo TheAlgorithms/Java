@@ -44,19 +44,13 @@ public class ConcurrentMergeSort {
         }
 
         int availableProcessors = Runtime.getRuntime().availableProcessors();
-        
+
         // Calculate a safe maximum depth to prevent creating more tasks than the pool can handle.
         // This effectively prevents thread starvation deadlock in fixed-size thread pools,
         // by forcing leaf tasks to run sequentially and eventually complete.
         int maxDepth = (int) (Math.log(availableProcessors) / Math.log(2)) + 1;
 
-        ThreadPoolExecutor executor = new ThreadPoolExecutor(
-                availableProcessors,
-                availableProcessors,
-                0L,
-                TimeUnit.MILLISECONDS,
-                new LinkedBlockingQueue<Runnable>()
-        );
+        ThreadPoolExecutor executor = new ThreadPoolExecutor(availableProcessors, availableProcessors, 0L, TimeUnit.MILLISECONDS, new LinkedBlockingQueue<Runnable>());
 
         try {
             int[] tempArray = new int[array.length];
