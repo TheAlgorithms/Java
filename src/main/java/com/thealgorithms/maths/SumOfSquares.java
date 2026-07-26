@@ -5,7 +5,6 @@ package com.thealgorithms.maths;
  * Find minimum number of perfect squares that sum to given number
  *
  * @see <a href="https://en.wikipedia.org/wiki/Lagrange%27s_four-square_theorem">Lagrange's Four Square Theorem</a>
- * @author BEASTSHRIRAM
  */
 public final class SumOfSquares {
 
@@ -16,10 +15,15 @@ public final class SumOfSquares {
     /**
      * Find minimum number of perfect squares that sum to n
      *
-     * @param n the target number
+     * @param n the target number (must be non-negative)
      * @return minimum number of squares needed
+     * @throws IllegalArgumentException if n is negative
      */
     public static int minSquares(int n) {
+        if (n < 0) {
+            throw new IllegalArgumentException("Input must be non-negative");
+        }
+
         if (isPerfectSquare(n)) {
             return 1;
         }
@@ -51,3 +55,4 @@ public final class SumOfSquares {
         return root * root == n;
     }
 }
+
