@@ -55,4 +55,3 @@ public final class SumOfSquares {
         return root * root == n;
     }
 }
-
