@@ -113,4 +113,29 @@ class MultinomialNaiveBayesClassifierTest {
         MultinomialNaiveBayesClassifier classifier = new MultinomialNaiveBayesClassifier();
         assertThrows(IllegalArgumentException.class, () -> classifier.fit(features, labels));
     }
+
+    @Test
+    void refittingReplacesPreviousModelState() {
+        MultinomialNaiveBayesClassifier classifier = new MultinomialNaiveBayesClassifier();
+
+        double[][] firstFeatures = {
+            {5, 0, 0},
+            {0, 5, 0},
+            {0, 0, 5},
+        };
+        int[] firstLabels = {0, 1, 2};
+        classifier.fit(firstFeatures, firstLabels);
+
+        double[][] secondFeatures = {
+            {5, 0},
+            {0, 5},
+        };
+        int[] secondLabels = {0, 1};
+        classifier.fit(secondFeatures, secondLabels);
+
+        // Class 2 existed in the first fit but not the second — it must not
+        // survive into predictions after refitting.
+        int prediction = classifier.predict(new double[] {2.5, 2.5});
+        assertTrue(prediction == 0 || prediction == 1);
+    }
 }

@@ -57,6 +57,8 @@ public final class MultinomialNaiveBayesClassifier {
         if (features.length == 0 || features.length != labels.length) {
             throw new IllegalArgumentException("features and labels must be non-empty and of equal length");
         }
+        logPriors.clear();
+        logLikelihoods.clear();
         numFeatures = features[0].length;
 
         Map<Integer, Integer> classCounts = new HashMap<>();
