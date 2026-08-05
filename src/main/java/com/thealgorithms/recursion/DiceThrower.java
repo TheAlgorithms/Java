@@ -1,7 +1,7 @@
 package com.thealgorithms.recursion;
 
 import java.util.ArrayList;
-import java.util.List;
+import java.util.List
 
 /**
  * DiceThrower - Generates all possible dice roll combinations that sum to a target
