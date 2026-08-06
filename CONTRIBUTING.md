@@ -1,5 +1,7 @@
 ## How to contribute?
 
+Looking for contributors: This repository and related organizations are seeking contributors for project setup, documentation, CI, tests, and small features. See issue #7546 for the full invitation and list of organizations: https://github.com/TheAlgorithms/Java/issues/7546
+
 NOTE: *We DO NOT add leetcode problems. They are just applications of basic principles that can be found in other algorithms included in the repository.*
 
 ### Did you find a bug?

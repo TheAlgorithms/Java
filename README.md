@@ -16,5 +16,7 @@ These implementations are intended for learning purposes. As such, they may be l
 ## Contribution Guidelines
 Please read our [Contribution Guidelines](CONTRIBUTING.md) before you contribute to this project.
 
+Looking for contributors? See issue #7546 — [Contributors Wanted for New Open-Source Projects](https://github.com/TheAlgorithms/Java/issues/7546) for details and ways to get involved.
+
 ## Algorithms
 Our [directory](DIRECTORY.md) has the full list of applications.
