@@ -1,0 +1,46 @@
+name: "Good first issue"
+about: "A small, self-contained task suitable for new contributors. Follow the steps and submit a small PR."
+title: "Good first issue: [short description]"
+labels: ["good first issue", "help wanted"]
+assignees: []
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you for helping! This template describes a small task that is suitable for a new contributor.
+  - type: input
+    id: description
+    attributes:
+      label: "What needs to be done?"
+      description: "Provide a concise description of the change required and why."
+      placeholder: "Add examples to README for X; implement unit tests for Y; fix typo in Z."
+      required: true
+  - type: input
+    id: acceptance_criteria
+    attributes:
+      label: "Acceptance criteria"
+      description: "List the checks that will show the task is complete (tests, example run, docs updated)."
+      placeholder: "1) README has code example; 2) Tests pass on CI"
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: "Suggested steps"
+      description: "Optional step-by-step guidance for contributors."
+      placeholder: "1) Fork repo; 2) Create branch; 3) Make changes; 4) Run tests; 5) Open PR."
+      required: false
+  - type: dropdown
+    id: difficulty
+    attributes:
+      label: "Difficulty"
+      options:
+        - "low"
+        - "medium"
+        - "high"
+      description: "Estimate the difficulty for this task."
+      required: true
+  - type: input
+    id: related_issues
+    attributes:
+      label: "Related issues or references"
+      required: false
