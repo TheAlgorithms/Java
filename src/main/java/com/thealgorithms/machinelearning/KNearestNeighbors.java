@@ -9,15 +9,17 @@ import java.util.Map;
 /**
  * K-Nearest Neighbors (KNN) classifier.
  *
- * <p>K-Nearest Neighbors is a supervised machine learning algorithm that
+ * <p>
+ * K-Nearest Neighbors is a supervised machine learning algorithm that
  * classifies a sample based on the majority class among its {@code k}
  * nearest training samples using the Euclidean distance metric.
  *
- * <p>The classifier stores the training dataset during the fitting phase and
+ * <p>
+ * The classifier stores the training dataset during the fitting phase and
  * predicts class labels for new samples without building an explicit model.
  *
  * @see <a href="https://en.wikipedia.org/wiki/K-nearest_neighbors_algorithm">
- * K-Nearest Neighbors</a>
+ *      K-Nearest Neighbors</a>
  */
 public final class KNearestNeighbors {
     private final int k;
@@ -38,7 +40,8 @@ public final class KNearestNeighbors {
     }
 
     /**
-     * Represents a neighboring training sample and its distance from the test sample.
+     * Represents a neighboring training sample and its distance from the test
+     * sample.
      */
     private static final class Neighbor {
 
@@ -59,11 +62,12 @@ public final class KNearestNeighbors {
     /**
      * Fits the classifier using the provided training dataset.
      *
-     * <p>The training feature vectors and their corresponding class labels are
+     * <p>
+     * The training feature vectors and their corresponding class labels are
      * stored for use during prediction.
      *
      * @param features the training feature vectors
-     * @param labels the corresponding class labels
+     * @param labels   the corresponding class labels
      */
     public void fit(double[][] features, int[] labels) {
 
@@ -106,7 +110,7 @@ public final class KNearestNeighbors {
     /**
      * Computes the Euclidean distance between two feature vectors.
      *
-     * @param first the first feature vector
+     * @param first  the first feature vector
      * @param second the second feature vector
      * @return the Euclidean distance between the two vectors
      */
@@ -124,7 +128,8 @@ public final class KNearestNeighbors {
     /**
      * Predicts the class label for a single sample.
      *
-     * <p>The prediction is made by finding the {@code k} nearest neighbors
+     * <p>
+     * The prediction is made by finding the {@code k} nearest neighbors
      * among the training samples and selecting the class with the highest
      * number of votes. In the event of a tie, the smaller class label is
      * returned.
@@ -137,7 +142,7 @@ public final class KNearestNeighbors {
             throw new IllegalStateException("Classifier has not been fitted.");
         }
 
-        if(testPoint == null) {
+        if (testPoint == null) {
             throw new IllegalArgumentException("Sample cannot be null.");
         }
 
@@ -151,19 +156,18 @@ public final class KNearestNeighbors {
             double distance = euclideanDistance(trainingFeatures[i], testPoint);
             neighbors.add(new Neighbor(distance, trainingLabels[i]));
         }
-    
 
         neighbors.sort(Comparator.comparingDouble(neighbor -> neighbor.distance));
 
-        Map<Integer, Integer> votes = new HashMap<>(); 
+        Map<Integer, Integer> votes = new HashMap<>();
 
         if (k > trainingFeatures.length) {
             throw new IllegalArgumentException("k cannot be greater than the number of training samples.");
         }
 
-        for (int i = 0; i < k; i++) { 
-            int label = neighbors.get(i).label; 
-            votes.merge(label, 1, Integer::sum); 
+        for (int i = 0; i < k; i++) {
+            int label = neighbors.get(i).label;
+            votes.merge(label, 1, Integer::sum);
         }
 
         int predictedLabel = -1;
@@ -181,7 +185,6 @@ public final class KNearestNeighbors {
 
         return predictedLabel;
     }
-
 
     /**
      * Predicts class labels for multiple samples.
