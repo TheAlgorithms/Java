@@ -138,7 +138,11 @@ public final class KNearestNeighbors {
      * @return the predicted class label
      */
     public int predict(double[] testPoint) {
-        if (trainingFeatures == null || trainingLabels == null) {
+        if (trainingFeatures == null) {
+            throw new IllegalStateException("Classifier has not been fitted.");
+        }
+
+        if (trainingLabels == null) {
             throw new IllegalStateException("Classifier has not been fitted.");
         }
 
