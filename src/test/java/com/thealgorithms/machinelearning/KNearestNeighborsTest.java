@@ -11,10 +11,10 @@ class KNearestNeighborsTest {
     @Test
     void predictsCorrectClassOnSeparableDataset() {
         double[][] features = {
-                {0, 0},
-                {1, 1},
-                {8, 8},
-                {9, 9},
+            {0, 0},
+            {1, 1},
+            {8, 8},
+            {9, 9},
         };
 
         int[] labels = {0, 0, 1, 1};
@@ -29,10 +29,10 @@ class KNearestNeighborsTest {
     @Test
     void predictsBatchClassesOnSeparableDataset() {
         double[][] features = {
-                {0, 0},
-                {1, 1},
-                {8, 8},
-                {9, 9},
+            {0, 0},
+            {1, 1},
+            {8, 8},
+            {9, 9},
         };
 
         int[] labels = {0, 0, 1, 1};
@@ -55,10 +55,10 @@ class KNearestNeighborsTest {
     @Test
     void throwsExceptionWhenKIsGreaterThanNumberOfTrainingSamples() {
         double[][] features = {
-                {0, 0},
-                {1, 1},
-                {8, 8},
-                {9, 9},
+            {0, 0},
+            {1, 1},
+            {8, 8},
+            {9, 9},
         };
 
         int[] labels = {0, 0, 1, 1};
@@ -93,23 +93,21 @@ class KNearestNeighborsTest {
     void emptyLabelsArrayThrowsIllegalArgumentException() {
         KNearestNeighbors knn = new KNearestNeighbors(1);
 
-        assertThrows(IllegalArgumentException.class,
-                () -> knn.fit(new double[][] {{1, 1}, {2, 2}}, new int[] {}));
+        assertThrows(IllegalArgumentException.class, () -> knn.fit(new double[][] {{1, 1}, {2, 2}}, new int[] {}));
     }
 
     @Test
     void mismatchedFeatureAndLabelLengthsThrowsIllegalArgumentException() {
         KNearestNeighbors knn = new KNearestNeighbors(3);
 
-        assertThrows(IllegalArgumentException.class,
-                () -> knn.fit(new double[][] {{0, 0}, {1, 1}, {8, 8}, {9, 9}}, new int[] {0, 0, 1}));
+        assertThrows(IllegalArgumentException.class, () -> knn.fit(new double[][] {{0, 0}, {1, 1}, {8, 8}, {9, 9}}, new int[] {0, 0, 1}));
     }
 
     @Test
     void firstFeatureVectorNullThrowsIllegalArgumentException() {
         KNearestNeighbors knn = new KNearestNeighbors(1);
 
-        assertThrows(IllegalArgumentException.class,() -> knn.fit(new double[][] {null, {1, 1}}, new int[] {0, 1}));
+        assertThrows(IllegalArgumentException.class, () -> knn.fit(new double[][] {null, {1, 1}}, new int[] {0, 1}));
     }
 
     @Test
@@ -123,16 +121,14 @@ class KNearestNeighborsTest {
     void nullFeatureSampleThrowsIllegalArgumentException() {
         KNearestNeighbors knn = new KNearestNeighbors(2);
 
-        assertThrows(IllegalArgumentException.class,
-                () -> knn.fit(new double[][] {{0, 0}, null, {8, 8}}, new int[] {0, 0, 1}));
+        assertThrows(IllegalArgumentException.class, () -> knn.fit(new double[][] {{0, 0}, null, {8, 8}}, new int[] {0, 0, 1}));
     }
 
     @Test
     void mismatchedDimensionThrowsIllegalArgumentException() {
         KNearestNeighbors knn = new KNearestNeighbors(2);
 
-        assertThrows(IllegalArgumentException.class,
-                () -> knn.fit(new double[][] {{0, 0}, {1, 1, 2}, {8, 8}}, new int[] {0, 0, 1}));
+        assertThrows(IllegalArgumentException.class, () -> knn.fit(new double[][] {{0, 0}, {1, 1, 2}, {8, 8}}, new int[] {0, 0, 1}));
     }
 
     @Test
@@ -145,10 +141,10 @@ class KNearestNeighborsTest {
     @Test
     void nullTestPointThrowsIllegalArgumentException() {
         double[][] features = {
-                {0, 0},
-                {1, 1},
-                {8, 8},
-                {9, 9},
+            {0, 0},
+            {1, 1},
+            {8, 8},
+            {9, 9},
         };
 
         int[] labels = {0, 0, 1, 1};
@@ -163,10 +159,10 @@ class KNearestNeighborsTest {
     @Test
     void mismatchedTestPointLengthThrowsIllegalArgumentException() {
         double[][] features = {
-                {0, 0},
-                {1, 1},
-                {8, 8},
-                {9, 9},
+            {0, 0},
+            {1, 1},
+            {8, 8},
+            {9, 9},
         };
 
         int[] labels = {0, 0, 1, 1};
@@ -179,12 +175,7 @@ class KNearestNeighborsTest {
 
     @Test
     void tieBreakReturnsSmallerLabel() {
-        double[][] features = {
-                {0, 0},
-                {0, 2},
-                {2, 0},
-                {2, 2}
-        };
+        double[][] features = {{0, 0}, {0, 2}, {2, 0}, {2, 2}};
 
         int[] labels = {0, 1, 0, 1};
 
@@ -196,12 +187,7 @@ class KNearestNeighborsTest {
 
     @Test
     void tieBreakKeepsCurrentWinnerWhenLabelIsGreater() {
-        double[][] features = {
-            {0, 0},
-            {0, 2},
-            {2, 0},
-            {2, 2}
-        };
+        double[][] features = {{0, 0}, {0, 2}, {2, 0}, {2, 2}};
 
         int[] labels = {1, 0, 1, 0};
 
@@ -214,10 +200,10 @@ class KNearestNeighborsTest {
     @Test
     void nullBatchSampleThrowsIllegalArgumentException() {
         double[][] features = {
-                {0, 0},
-                {1, 1},
-                {8, 8},
-                {9, 9},
+            {0, 0},
+            {1, 1},
+            {8, 8},
+            {9, 9},
         };
 
         int[] labels = {0, 0, 1, 1};
@@ -231,10 +217,10 @@ class KNearestNeighborsTest {
     @Test
     void invalidBatchSampleThrowsIllegalArgumentException() {
         double[][] features = {
-                {0, 0},
-                {1, 1},
-                {8, 8},
-                {9, 9},
+            {0, 0},
+            {1, 1},
+            {8, 8},
+            {9, 9},
         };
 
         int[] labels = {0, 0, 1, 1};
@@ -242,8 +228,6 @@ class KNearestNeighborsTest {
         KNearestNeighbors knn = new KNearestNeighbors(3);
         knn.fit(features, labels);
 
-        assertThrows(IllegalArgumentException.class,
-                () -> knn.predict(new double[][] {{1.5, 1.5}, {8.5, 8.5, 8.5}}));
+        assertThrows(IllegalArgumentException.class, () -> knn.predict(new double[][] {{1.5, 1.5}, {8.5, 8.5, 8.5}}));
     }
-
 }
