@@ -134,11 +134,7 @@ class ClusteringTest {
     void kMediansIsMoreRobustToOutliersThanKMeans() {
         // One tight group plus a single extreme outlier attached to it.
         double[][] points = {
-                {1.0, 1.0},
-                {1.1, 0.9},
-                {0.9, 1.1},
-                {1.0, 1.0},
-                {100.0, 100.0}, // outlier
+                {1.0, 1.0}, {1.1, 0.9}, {0.9, 1.1}, {1.0, 1.0}, {100.0, 100.0}, // outlier
         };
         double[][] initialCenter = {{1.0, 1.0}};
 

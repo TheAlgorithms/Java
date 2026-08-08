@@ -363,7 +363,6 @@ public final class Clustering {
             this.converged = converged;
         }
 
-        /** Returns the final cluster centers, one row per cluster. */
         public double[][] getCenters() {
             double[][] copy = new double[centers.length][];
             for (int i = 0; i < centers.length; i++) {
@@ -372,12 +371,10 @@ public final class Clustering {
             return copy;
         }
 
-        /** Returns the cluster index assigned to each input point, in input order. */
         public int[] getLabels() {
             return Arrays.copyOf(labels, labels.length);
         }
 
-        /** Returns the number of iterations actually performed. */
         public int getIterations() {
             return iterations;
         }
@@ -388,4 +385,3 @@ public final class Clustering {
         }
     }
 }
-
