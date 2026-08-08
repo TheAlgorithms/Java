@@ -6,11 +6,57 @@ import java.util.List;
 import java.util.Objects;
 import java.util.Random;
 
+/**
+ * Centroid-based partitional clustering algorithms.
+ *
+ * <p>This class currently provides two Lloyd-style iterative clustering algorithms that share
+ * the same assign/update/converge loop and differ only in their distance metric and how a
+ * cluster's center is recomputed:
+ *
+ * <ul>
+ *   <li><b>K-Means</b> — minimizes squared Euclidean distance; each center is the
+ *       coordinate-wise <i>mean</i> of its cluster. Fast and simple, but sensitive to
+ *       outliers.</li>
+ *   <li><b>K-Medians</b> — minimizes Manhattan (L1) distance; each center is the
+ *       coordinate-wise <i>median</i> of its cluster. More robust to outliers than K-Means,
+ *       at the cost of an O(n log n) sort per dimension during each update step.</li>
+ * </ul>
+ *
+ * <p>Both algorithms:
+ * <ol>
+ *   <li>Start from a set of {@code k} centers (supplied explicitly, or sampled from the
+ *       dataset using a seeded {@link Random} for reproducibility).</li>
+ *   <li><b>Assignment step:</b> assign every point to its nearest center.</li>
+ *   <li><b>Update step:</b> recompute each center from the points assigned to it.</li>
+ *   <li>Repeat steps 2-3 until no point changes cluster, every center moves less than a given
+ *       tolerance, or a maximum number of iterations is reached.</li>
+ * </ol>
+ *
+ * <p><b>Time complexity:</b> O(n * k * d * iterations) for K-Means;
+ * O(n * k * d * iterations + k * d * n log n) for K-Medians (due to the per-dimension sort
+ * used to compute the median).
+ *
+ * <p><b>Limitations (both algorithms):</b>
+ * <ul>
+ *   <li>Sensitive to the initial choice of centers; poor initialization can converge to a
+ *       suboptimal local minimum (see k-means++ for a smarter seeding strategy).</li>
+ *   <li>The number of clusters {@code k} must be chosen in advance.</li>
+ *   <li>Assume clusters are roughly convex and similarly sized/dense.</li>
+ * </ul>
+ *
+ * @see <a href="https://en.wikipedia.org/wiki/K-means_clustering">K-means clustering (Wikipedia)</a>
+ * @see <a href="https://en.wikipedia.org/wiki/K-medians_clustering">K-medians clustering (Wikipedia)</a>
+ */
 public final class Clustering {
 
     private Clustering() {
-
+        // Utility class: only static entry points are exposed.
     }
+
+    // ------------------------------------------------------------------
+    // Public API — K-Means
+    // ------------------------------------------------------------------
+
     /**
      * Runs K-Means using explicit, caller-supplied initial centroids. Deterministic — the
      * recommended entry point for reproducible results and tests.
@@ -22,17 +68,32 @@ public final class Clustering {
      * @param tolerance        convergence tolerance on center movement; must be non-negative
      * @return the clustering result
      */
-
     public static ClusteringResult kMeans(double[][] points, double[][] initialCentroids, int maxIterations, double tolerance) {
         validateParameters(maxIterations, tolerance);
-        double[][] centroids = validateAndCopyCentroids(points, initialCentroids);
-        return run(points, centroids, maxIterations, tolerance, Clustering::squaredEuclideanDistance, Clustering::mean);
+        double[][] centers = validateAndCopyCenters(points, initialCentroids);
+        return run(points, centers, maxIterations, tolerance, Clustering::squaredEuclideanDistance, Clustering::mean);
     }
+
+    /**
+     * Runs K-Means, sampling {@code k} distinct points from the dataset (via a seeded
+     * {@link Random}) as initial centroids. Reproducible across runs given the same seed.
+     *
+     * @param points        the dataset to cluster; non-empty, at least {@code k} points
+     * @param k             the number of clusters; must be positive and &le; number of points
+     * @param seed          seed used to pick initial centroids
+     * @param maxIterations maximum number of iterations; must be positive
+     * @param tolerance     convergence tolerance on center movement; must be non-negative
+     * @return the clustering result
+     */
     public static ClusteringResult kMeans(double[][] points, int k, long seed, int maxIterations, double tolerance) {
         validateParameters(maxIterations, tolerance);
-        double[][] centroids = randomInitialCentroids(points, k, seed);
-        return run(points, centroids, maxIterations, tolerance, Clustering::squaredEuclideanDistance, Clustering::mean);
+        double[][] centers = randomInitialCenters(points, k, seed);
+        return run(points, centers, maxIterations, tolerance, Clustering::squaredEuclideanDistance, Clustering::mean);
     }
+
+    // ------------------------------------------------------------------
+    // Public API — K-Medians
+    // ------------------------------------------------------------------
 
     /**
      * Runs K-Medians using explicit, caller-supplied initial centers. Deterministic — the
@@ -45,10 +106,9 @@ public final class Clustering {
      * @param tolerance     convergence tolerance on center movement; must be non-negative
      * @return the clustering result
      */
-
     public static ClusteringResult kMedians(double[][] points, double[][] initialCenters, int maxIterations, double tolerance) {
         validateParameters(maxIterations, tolerance);
-        double[][] centers = validateAndCopyCentroids(points, initialCenters);
+        double[][] centers = validateAndCopyCenters(points, initialCenters);
         return run(points, centers, maxIterations, tolerance, Clustering::manhattanDistance, Clustering::median);
     }
 
@@ -63,13 +123,15 @@ public final class Clustering {
      * @param tolerance     convergence tolerance on center movement; must be non-negative
      * @return the clustering result
      */
-
     public static ClusteringResult kMedians(double[][] points, int k, long seed, int maxIterations, double tolerance) {
         validateParameters(maxIterations, tolerance);
-        double[][] centers = randomInitialCentroids(points, k, seed);
+        double[][] centers = randomInitialCenters(points, k, seed);
         return run(points, centers, maxIterations, tolerance, Clustering::manhattanDistance, Clustering::median);
     }
 
+    // ------------------------------------------------------------------
+    // Shared iterative core
+    // ------------------------------------------------------------------
 
     @FunctionalInterface
     private interface DistanceFunction {
@@ -152,6 +214,10 @@ public final class Clustering {
         return max;
     }
 
+    // ------------------------------------------------------------------
+    // Distance functions
+    // ------------------------------------------------------------------
+
     private static double squaredEuclideanDistance(double[] a, double[] b) {
         double sum = 0.0;
         for (int d = 0; d < a.length; d++) {
@@ -172,6 +238,10 @@ public final class Clustering {
         }
         return sum;
     }
+
+    // ------------------------------------------------------------------
+    // Center functions
+    // ------------------------------------------------------------------
 
     private static double[] mean(List<double[]> clusterPoints, int dimension) {
         double[] result = new double[dimension];
@@ -204,6 +274,10 @@ public final class Clustering {
         return result;
     }
 
+    // ------------------------------------------------------------------
+    // Validation & initialization helpers
+    // ------------------------------------------------------------------
+
     private static void validateParameters(int maxIterations, double tolerance) {
         if (maxIterations <= 0) {
             throw new IllegalArgumentException("maxIterations must be positive, got " + maxIterations);
@@ -234,7 +308,7 @@ public final class Clustering {
         }
     }
 
-    private static double[][] validateAndCopyCentroids(double[][] points, double[][] initialCenters) {
+    private static double[][] validateAndCopyCenters(double[][] points, double[][] initialCenters) {
         Objects.requireNonNull(initialCenters, "initial centers must not be null");
         validatePoints(points, initialCenters.length);
         int dimension = points[0].length;
@@ -248,7 +322,7 @@ public final class Clustering {
         return centers;
     }
 
-    private static double[][] randomInitialCentroids(double[][] points, int k, long seed) {
+    private static double[][] randomInitialCenters(double[][] points, int k, long seed) {
         validatePoints(points, k);
         int[] indices = new int[points.length];
         for (int i = 0; i < indices.length; i++) {
@@ -268,6 +342,14 @@ public final class Clustering {
         return centers;
     }
 
+    // ------------------------------------------------------------------
+    // Result holder
+    // ------------------------------------------------------------------
+
+    /**
+     * The outcome of a clustering run: final centers, per-point cluster labels, and metadata
+     * about how the run terminated.
+     */
     public static final class ClusteringResult {
         private final double[][] centers;
         private final int[] labels;
@@ -281,6 +363,7 @@ public final class Clustering {
             this.converged = converged;
         }
 
+        /** Returns the final cluster centers, one row per cluster. */
         public double[][] getCenters() {
             double[][] copy = new double[centers.length][];
             for (int i = 0; i < centers.length; i++) {
@@ -289,16 +372,20 @@ public final class Clustering {
             return copy;
         }
 
+        /** Returns the cluster index assigned to each input point, in input order. */
         public int[] getLabels() {
             return Arrays.copyOf(labels, labels.length);
         }
 
+        /** Returns the number of iterations actually performed. */
         public int getIterations() {
             return iterations;
         }
 
+        /** Returns whether the algorithm converged before hitting {@code maxIterations}. */
         public boolean hasConverged() {
             return converged;
         }
     }
 }
+

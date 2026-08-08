@@ -9,9 +9,11 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import com.thealgorithms.machinelearning.Clustering.ClusteringResult;
 import org.junit.jupiter.api.Test;
 
-class ClustringTest {
+class ClusteringTest {
 
-    // K-mean
+    // ------------------------------------------------------------------
+    // K-Means
+    // ------------------------------------------------------------------
 
     @Test
     void kMeansClustersTwoWellSeparatedGroups() {
@@ -79,7 +81,31 @@ class ClustringTest {
         }
     }
 
+    @Test
+    void emptyClusterKeepsItsPreviousCenterUnchanged() {
+
+        double[][] points = {
+                {0.0, 0.0},
+                {0.1, 0.1},
+                {0.2, 0.0},
+                {10.0, 10.0},
+                {10.1, 10.1},
+                {10.2, 10.0},
+        };
+        double[][] initialCenters = {{0.0, 0.0}, {10.0, 10.0}, {10.0, 10.0}};
+
+        ClusteringResult result = Clustering.kMeans(points, initialCenters, 1, 1e-9);
+
+        assertEquals(1, result.getIterations());
+        assertArrayEquals(new double[] {10.0, 10.0}, result.getCenters()[2], 1e-9);
+        for (int label : result.getLabels()) {
+            assertNotEquals(2, label);
+        }
+    }
+
+    // ------------------------------------------------------------------
     // K-Medians
+    // ------------------------------------------------------------------
 
     @Test
     void kMediansClustersTwoWellSeparatedGroups() {
