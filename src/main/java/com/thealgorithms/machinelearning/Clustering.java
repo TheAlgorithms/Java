@@ -2,6 +2,7 @@ package com.thealgorithms.machinelearning;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collection;
 import java.util.List;
 import java.util.Objects;
 import java.util.Random;
@@ -54,7 +55,7 @@ public final class Clustering {
     }
 
     // ------------------------------------------------------------------
-    // Public API — K-Means
+    //  K-Means
     // ------------------------------------------------------------------
 
     /**
@@ -92,7 +93,7 @@ public final class Clustering {
     }
 
     // ------------------------------------------------------------------
-    // Public API — K-Medians
+    //  K-Medians
     // ------------------------------------------------------------------
 
     /**
@@ -243,7 +244,7 @@ public final class Clustering {
     // Center functions
     // ------------------------------------------------------------------
 
-    private static double[] mean(List<double[]> clusterPoints, int dimension) {
+    private static double[] mean(Collection<double[]> clusterPoints, int dimension) {
         double[] result = new double[dimension];
         for (double[] p : clusterPoints) {
             for (int d = 0; d < dimension; d++) {
