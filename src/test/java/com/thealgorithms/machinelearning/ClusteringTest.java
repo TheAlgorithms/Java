@@ -1,9 +1,13 @@
 package com.thealgorithms.machinelearning;
 
-import com.thealgorithms.machinelearning.Clustering.ClusteringResult;
-import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.assertArrayEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import static org.junit.jupiter.api.Assertions.*;
+import com.thealgorithms.machinelearning.Clustering.ClusteringResult;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
 class ClusteringTest {
 
@@ -30,7 +34,7 @@ class ClusteringTest {
         assertEquals(labels[0], labels[2]);
         assertEquals(labels[3], labels[4]);
         assertEquals(labels[3], labels[5]);
-        assertNotEquals(labels[0], labels[3]);
+        Assertions.assertNotEquals(labels[0], labels[3]);
         assertTrue(result.hasConverged());
     }
 
@@ -95,7 +99,7 @@ class ClusteringTest {
         assertEquals(1, result.getIterations());
         assertArrayEquals(new double[] {10.0, 10.0}, result.getCenters()[2], 1e-9);
         for (int label : result.getLabels()) {
-            assertNotEquals(2, label);
+            Assertions.assertNotEquals(2, label);
         }
     }
 
@@ -122,7 +126,7 @@ class ClusteringTest {
         assertEquals(labels[0], labels[2]);
         assertEquals(labels[3], labels[4]);
         assertEquals(labels[3], labels[5]);
-        assertNotEquals(labels[0], labels[3]);
+        Assertions.assertNotEquals(labels[0], labels[3]);
         assertTrue(result.hasConverged());
     }
 
