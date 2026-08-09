@@ -81,4 +81,46 @@ class ExponentialSearchTest {
         int expectedIndex = 9999;
         assertEquals(expectedIndex, exponentialSearch.find(array, key), "The index of the last element should be 9999.");
     }
+
+    /**
+     * An element sitting exactly on the doubling boundary used to be reported as missing, because
+     * the binary search was handed {@code range} as its exclusive upper bound instead of
+     * {@code range + 1}.
+     */
+    @Test
+    void testExponentialSearchElementOnRangeBoundary() {
+        ExponentialSearch exponentialSearch = new ExponentialSearch();
+        Integer[] array = {-25, -9, 8, 21};
+        assertEquals(2, exponentialSearch.find(array, 8), "The index of the found element should be 2.");
+    }
+
+    /**
+     * Every element must be found regardless of the array length.
+     */
+    @Test
+    void testExponentialSearchFindsEveryElement() {
+        ExponentialSearch exponentialSearch = new ExponentialSearch();
+        for (int length = 1; length <= 50; length++) {
+            Integer[] array = new Integer[length];
+            for (int i = 0; i < length; i++) {
+                array[i] = i * 2;
+            }
+            for (int i = 0; i < length; i++) {
+                assertEquals(i, exponentialSearch.find(array, i * 2), "Element at index " + i + " should be found for length " + length + ".");
+            }
+        }
+    }
+
+    /**
+     * A missing key has to yield -1 rather than the negative insertion point that
+     * {@link java.util.Arrays#binarySearch} returns.
+     */
+    @Test
+    void testExponentialSearchNotFoundReturnsMinusOne() {
+        ExponentialSearch exponentialSearch = new ExponentialSearch();
+        Integer[] array = {1, 3, 5, 7, 9, 11};
+        assertEquals(-1, exponentialSearch.find(array, 4), "A key inside the range but absent should give -1.");
+        assertEquals(-1, exponentialSearch.find(array, 0), "A key below the minimum should give -1.");
+        assertEquals(-1, exponentialSearch.find(array, 12), "A key above the maximum should give -1.");
+    }
 }
