@@ -2,8 +2,6 @@ package com.thealgorithms.datastructures.lists;
 
 import java.util.Objects;
 
-
-
 /**
  * Node structure for the generic linked list.
  *
@@ -13,12 +11,11 @@ class LinkedList<E> {
     E value;
     LinkedList<E> next;
 
-    public LinkedList(E value) {
+    LinkedList(E value) {
         this.value = value;
         this.next = null;
     }
 }
-
 
 /**
  * A Self-Organizing Linked List implementation using the Move-To-Front (MTF) strategy.
@@ -27,14 +24,13 @@ class LinkedList<E> {
  *
  * @param <E> the type of elements held in this list
  */
-
-public class SelfOrganizingLinkedList<E>{
+public class SelfOrganizingLinkedList<E> {
     private LinkedList<E> head;
     private int size;
 
-    public SelfOrganizingLinkedList(){
-        this.size=0;
-        this.head=null;
+    public SelfOrganizingLinkedList() {
+        this.size = 0;
+        this.head = null;
     }
 
     /**
@@ -42,9 +38,8 @@ public class SelfOrganizingLinkedList<E>{
      *
      * @param value the item to insert
      */
-
-    public void insert(E value){
-        LinkedList<E> newNode=new LinkedList<>(value);
+    public void insert(E value) {
+        LinkedList<E> newNode = new LinkedList<>(value);
         if (head == null) {
             head = newNode;
         } else {
@@ -55,7 +50,6 @@ public class SelfOrganizingLinkedList<E>{
             temp.next = newNode;
         }
         size++;
-
     }
 
     /**
@@ -70,7 +64,6 @@ public class SelfOrganizingLinkedList<E>{
             return false;
         }
 
-        
         if (Objects.equals(head.value, key)) {
             return true;
         }
@@ -78,18 +71,15 @@ public class SelfOrganizingLinkedList<E>{
         LinkedList<E> prev = null;
         LinkedList<E> curr = head;
 
-        
         while (curr != null && !Objects.equals(curr.value, key)) {
             prev = curr;
             curr = curr.next;
         }
 
-        
         if (curr == null) {
             return false;
         }
 
-        
         prev.next = curr.next;
         curr.next = head;
         head = curr;
@@ -124,4 +114,3 @@ public class SelfOrganizingLinkedList<E>{
         return head == null;
     }
 }
-
