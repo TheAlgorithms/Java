@@ -114,4 +114,3 @@ public class SelfOrganizingLinkedList<E> {
         return head == null;
     }
 }
-
