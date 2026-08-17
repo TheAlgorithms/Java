@@ -68,8 +68,8 @@ public class SelfOrganizingLinkedList<E> {
             return true;
         }
 
-        LinkedList<E> prev = null;
-        LinkedList<E> curr = head;
+        LinkedList<E> prev = head;
+        LinkedList<E> curr = head.next;
 
         while (curr != null && !Objects.equals(curr.value, key)) {
             prev = curr;
