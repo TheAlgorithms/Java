@@ -33,11 +33,7 @@ public class SelfOrganizingLinkedList<E> {
         this.head = null;
     }
 
-    /**
-     * Inserts a new value at the end of the list.
-     *
-     * @param value the item to insert
-     */
+    /** Inserts a new value at the end of the list. */
     public void insert(E value) {
         LinkedList<E> newNode = new LinkedList<>(value);
         if (head == null) {
@@ -63,7 +59,6 @@ public class SelfOrganizingLinkedList<E> {
         if (head == null) {
             return false;
         }
-
         if (Objects.equals(head.value, key)) {
             return true;
         }
@@ -83,35 +78,22 @@ public class SelfOrganizingLinkedList<E> {
         prev.next = curr.next;
         curr.next = head;
         head = curr;
-
         return true;
     }
 
-    /**
-     * Gets the current head of the list.
-     *
-     * @return value at head, or null if list is empty
-     */
+    /** Gets the current head of the list. */
     public E getHeadValue() {
         return head != null ? head.value : null;
     }
 
-    /**
-     * Returns the size of the list.
-     *
-     * @return number of elements
-     */
+    /** Returns the size of the list. */
     public int getSize() {
         return size;
     }
-    /**
-     * Returns true if the list contains no elements.
-     *
-     * @return true if empty
-     */
+
+    /** Returns true if the list contains no elements. */
     public boolean isEmpty() {
         return head == null;
     }
 }
-
 
