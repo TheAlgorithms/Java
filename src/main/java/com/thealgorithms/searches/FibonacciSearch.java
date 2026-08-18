@@ -69,7 +69,7 @@ public class FibonacciSearch implements SearchAlgorithm {
             }
         }
 
-        if (fibMinus1 == 1 && array[offset + 1] == key) {
+        if (fibMinus1 == 1 && offset + 1 < n && array[offset + 1].compareTo(key) == 0) {
             return offset + 1;
         }
 

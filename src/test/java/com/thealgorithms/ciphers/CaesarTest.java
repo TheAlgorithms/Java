@@ -33,6 +33,29 @@ class CaesarTest {
     }
 
     @Test
+    void caesarEncryptWithNegativeShiftTest() {
+        // a shift of -1 must wrap 'A' backwards to 'Z', like a shift of +25 would
+        assertEquals("Z", caesar.encode("A", -1));
+        assertEquals("z", caesar.encode("a", -1));
+        assertEquals("EBIIL", caesar.encode("HELLO", -3));
+    }
+
+    @Test
+    void caesarDecryptWithNegativeShiftTest() {
+        assertEquals("A", caesar.decode("Z", -1));
+        assertEquals("HELLO", caesar.decode("EBIIL", -3));
+    }
+
+    @Test
+    void caesarNegativeShiftRoundTripTest() {
+        // encode followed by decode with the same shift must return the original text
+        for (int shift : new int[] {-1, -5, -25, -26, -27, -52}) {
+            String message = "The quick brown Fox";
+            assertEquals(message, caesar.decode(caesar.encode(message, shift), shift));
+        }
+    }
+
+    @Test
     void caesarBruteForce() {
         // given
         String encryptedText = "Jshwduy ymnx yjcy";
