@@ -3,21 +3,6 @@ package com.thealgorithms.datastructures.lists;
 import java.util.Objects;
 
 /**
- * Node structure for the generic linked list.
- *
- * @param <E> the type of element held in this node
- */
-class LinkedList<E> {
-    E value;
-    LinkedList<E> next;
-
-    LinkedList(E value) {
-        this.value = value;
-        this.next = null;
-    }
-}
-
-/**
  * A Self-Organizing Linked List implementation using the Move-To-Front (MTF) strategy.
  * When an element is searched, it is automatically moved to the head of the list
  * to optimize subsequent lookups.
@@ -25,7 +10,23 @@ class LinkedList<E> {
  * @param <E> the type of elements held in this list
  */
 public class SelfOrganizingLinkedList<E> {
-    private LinkedList<E> head;
+
+    /**
+     * Node structure for the self-organizing linked list.
+     *
+     * @param <E> the type of element held in this node
+     */
+    private static class Node<E> {
+        E value;
+        Node<E> next;
+
+        Node(E value) {
+            this.value = value;
+            this.next = null;
+        }
+    }
+
+    private Node<E> head;
     private int size;
 
     public SelfOrganizingLinkedList() {
@@ -33,13 +34,17 @@ public class SelfOrganizingLinkedList<E> {
         this.head = null;
     }
 
-    /** Inserts a new value at the end of the list. */
+    /**
+     * Inserts a new value at the end of the list.
+     *
+     * @param value the element to add
+     */
     public void insert(E value) {
-        LinkedList<E> newNode = new LinkedList<>(value);
+        Node<E> newNode = new Node<>(value);
         if (head == null) {
             head = newNode;
         } else {
-            LinkedList<E> temp = head;
+            Node<E> temp = head;
             while (temp.next != null) {
                 temp = temp.next;
             }
@@ -59,12 +64,13 @@ public class SelfOrganizingLinkedList<E> {
         if (head == null) {
             return false;
         }
+        // If the key is already at the head, no pointers need to be rewired
         if (Objects.equals(head.value, key)) {
             return true;
         }
 
-        LinkedList<E> prev = head;
-        LinkedList<E> curr = head.next;
+        Node<E> prev = head;
+        Node<E> curr = head.next;
 
         while (curr != null && !Objects.equals(curr.value, key)) {
             prev = curr;
@@ -75,13 +81,14 @@ public class SelfOrganizingLinkedList<E> {
             return false;
         }
 
+        // Unlink curr from its current position and move it to head
         prev.next = curr.next;
         curr.next = head;
         head = curr;
         return true;
     }
 
-    /** Gets the current head of the list. */
+    /** Gets the current head value of the list. */
     public E getHeadValue() {
         return head != null ? head.value : null;
     }
@@ -93,6 +100,6 @@ public class SelfOrganizingLinkedList<E> {
 
     /** Returns true if the list contains no elements. */
     public boolean isEmpty() {
-        return head == null;
+        return size == 0;
     }
 }
