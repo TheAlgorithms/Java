@@ -91,8 +91,8 @@ public class SelfOrganizingLinkedListTest {
         // Search tail element '30'
         assertTrue(list.search(30)); // Order becomes [30, 10, 20]
 
-        assertEquals(30, list.getHeadValue()); 
-        assertEquals(3, list.getSize()); 
+        assertEquals(30, list.getHeadValue());
+        assertEquals(3, list.getSize());
 
         // Verify remaining chain order [10, 20]
         assertTrue(list.search(20)); // [20, 30, 10]
