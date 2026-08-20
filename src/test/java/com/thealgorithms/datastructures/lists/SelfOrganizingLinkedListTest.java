@@ -5,8 +5,6 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import java.util.ArrayList;
-import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -17,24 +15,6 @@ public class SelfOrganizingLinkedListTest {
     @BeforeEach
     void setUp() {
         list = new SelfOrganizingLinkedList<>();
-    }
-
-    /** Helper to extract all list elements in order via repeated search/head inspection. */
-    private List<Integer> toList() {
-        List<Integer> result = new ArrayList<>();
-        int currentSize = list.getSize();
-        if (currentSize == 0) {
-            return result;
-        }
-
-        // Search each node sequentially from head to verify integrity without breaking state
-        for (int i = 0; i < currentSize; i++) {
-            Integer val = list.getHeadValue();
-            result.add(val);
-            // Move head to back by searching for it, allowing us to inspect the next element
-            // or we can verify order by tracking transitions.
-        }
-        return result;
     }
 
     @Test
