@@ -31,25 +31,26 @@ public final class MobiusFunction {
             throw new IllegalArgumentException("Number must be greater than zero.");
         }
 
-        if (number == 1) {
-            // return 1 if number passed is less or is 1
-            return 1;
-        }
-
         int primeFactorCount = 0;
+        int remaining = number;
 
-        for (int i = 1; i <= number; i++) {
-            // find prime factors of number
-            if (number % i == 0 && PrimeCheck.isPrime(i)) {
-                // check if number is divisible by square of prime factor
-                if (number % (i * i) == 0) {
-                    // if number is divisible by square of prime factor
+        /* Divide out every prime factor in turn. Trial division only has to run up to the square
+        root of the remaining value, and the multiplication is widened to long so that the bound
+        does not overflow for numbers close to Integer.MAX_VALUE. */
+        for (int factor = 2; (long) factor * factor <= remaining; factor++) {
+            if (remaining % factor == 0) {
+                remaining /= factor;
+                if (remaining % factor == 0) {
+                    // number is divisible by the square of this prime factor
                     return 0;
                 }
-                /*increment primeFactorCount by 1
-                                if number is not divisible by square of found prime factor*/
                 primeFactorCount++;
             }
+        }
+
+        /* Whatever is left is either 1 or a single prime factor larger than the square root. */
+        if (remaining > 1) {
+            primeFactorCount++;
         }
 
         return (primeFactorCount % 2 == 0) ? 1 : -1;
