@@ -89,13 +89,13 @@ public class SelfOrganizingLinkedListTest {
         list.insert(30);
 
         // Search tail element '30'
-        assertTrue(list.search(30));// Order becomes [30, 10, 20]
+        assertTrue(list.search(30)); // Order becomes [30, 10, 20]
 
-        assertEquals(30, list.getHeadValue());
-        assertEquals(3, list.getSize());
+        assertEquals(30, list.getHeadValue()); 
+        assertEquals(3, list.getSize()); 
 
         // Verify remaining chain order [10, 20]
-        assertTrue(list.search(20));// [20, 30, 10]
+        assertTrue(list.search(20)); // [20, 30, 10]
         assertEquals(20, list.getHeadValue());
 
         assertTrue(list.search(10)); // [10, 20, 30]
@@ -118,7 +118,7 @@ public class SelfOrganizingLinkedListTest {
     void testDuplicateValuesMovesFirstMatchedToFront() {
         list.insert(10);
         list.insert(20);
-        list.insert(10);// Duplicate '10' at tail
+        list.insert(10); // Duplicate '10' at tail
         list.insert(30);
 
         // Initial list state: [10, 20, 10, 30]
