@@ -1,5 +1,7 @@
 package com.thealgorithms.backtracking;
 
+import java.util.logging.Logger;
+
 /**
  * Sudoku Solver using Backtracking Algorithm
  * Solves a 9x9 Sudoku puzzle by filling empty cells with valid digits (1-9)
@@ -8,6 +10,7 @@ package com.thealgorithms.backtracking;
  */
 public final class SudokuSolver {
 
+    private static final Logger LOGGER = Logger.getLogger(SudokuSolver.class.getName());
     private static final int GRID_SIZE = 9;
     private static final int SUBGRID_SIZE = 3;
     private static final int EMPTY_CELL = 0;
@@ -141,17 +144,19 @@ public final class SudokuSolver {
      * @param board the Sudoku board
      */
     public static void printBoard(int[][] board) {
+        StringBuilder sb = new StringBuilder();
         for (int row = 0; row < GRID_SIZE; row++) {
             if (row % SUBGRID_SIZE == 0 && row != 0) {
-                System.out.println("-----------");
+                sb.append("-----------\n");
             }
             for (int col = 0; col < GRID_SIZE; col++) {
                 if (col % SUBGRID_SIZE == 0 && col != 0) {
-                    System.out.print("|");
+                    sb.append("|");
                 }
-                System.out.print(board[row][col]);
+                sb.append(board[row][col]);
             }
-            System.out.println();
+            sb.append("\n");
         }
+        LOGGER.info(sb.toString());
     }
 }
