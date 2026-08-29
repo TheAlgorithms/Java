@@ -171,9 +171,7 @@ public class Trie {
          * No fixed 10-20 word limitation.
          */
 
-        String[] words = {
-                "hello", "hell", "hel", "help", "helps", "helping", "helicopter", "car", "career", "dog"
-        };
+        String[] words = {"hello", "hell", "hel", "help", "helps", "helping", "helicopter", "car", "career", "dog"};
 
         // Dynamically insert all words
         for (String word : words) {
