@@ -90,19 +90,13 @@ public class Trie {
 
         StringBuilder currentWord = new StringBuilder(prefix);
 
-        collectSuggestions(
-                node,
-                currentWord,
-                result);
+        collectSuggestions(node, currentWord, result);
 
         return result;
     }
 
     // Recursive autocomplete
-    private void collectSuggestions(
-            TrieNode node,
-            StringBuilder currentWord,
-            List<String> result) {
+    private void collectSuggestions(TrieNode node, StringBuilder currentWord, List<String> result) {
 
         // Current word is complete
         if (node.isWordEnd) {
@@ -115,18 +109,13 @@ public class Trie {
             if (node.children[i] != null) {
 
                 // Add character
-                currentWord.append(
-                        (char) ('a' + i));
+                currentWord.append((char) ('a' + i));
 
                 // Go to next node
-                collectSuggestions(
-                        node.children[i],
-                        currentWord,
-                        result);
+                collectSuggestions(node.children[i], currentWord, result);
 
                 // Backtrack
-                currentWord.deleteCharAt(
-                        currentWord.length() - 1);
+                currentWord.deleteCharAt(currentWord.length() - 1);
             }
         }
     }
@@ -156,8 +145,7 @@ public class Trie {
     private String normalize(String text) {
 
         if (text == null || text.isBlank()) {
-            throw new IllegalArgumentException(
-                    "Word cannot be empty");
+            throw new IllegalArgumentException("Word cannot be empty");
         }
 
         text = text.toLowerCase().trim();
@@ -165,8 +153,7 @@ public class Trie {
         for (char c : text.toCharArray()) {
 
             if (c < 'a' || c > 'z') {
-                throw new IllegalArgumentException(
-                        "Only a-z characters are allowed");
+                throw new IllegalArgumentException("Only a-z characters are allowed");
             }
         }
 
@@ -184,22 +171,8 @@ public class Trie {
          * No fixed 10-20 word limitation.
          */
 
-        String[] words = {
-                "hello",
-                "hell",
-                "hel",
-                "help",
-                "helps",
-                "helping",
-                "helicopter",
-                "hero",
-                "her",
-                "cat",
-                "car",
-                "care",
-                "career",
-                "dog"
-        };
+        String[] words = { "hello", "hell", "hel", "help", "helps", "helping", "helicopter", "hero", "her", "cat",
+                "car", "care", "career", "dog" };
 
         // Dynamically insert all words
         for (String word : words) {
@@ -208,21 +181,17 @@ public class Trie {
 
         // Search
         System.out.println(
-                "Search 'hello': "
-                        + trie.search("hello"));
+                "Search 'hello': " + trie.search("hello"));
 
         System.out.println(
-                "Search 'xyz': "
-                        + trie.search("xyz"));
+                "Search 'xyz': " + trie.search("xyz"));
 
         // Prefix
         System.out.println(
-                "Starts with 'hel': "
-                        + trie.startsWith("hel"));
+                "Starts with 'hel': " + trie.startsWith("hel"));
 
         // Autocomplete
-        System.out.println(
-                "\nSuggestions for 'hel':");
+        System.out.println("\nSuggestions for 'hel':");
 
         List<String> suggestions = trie.suggestions("hel");
 
