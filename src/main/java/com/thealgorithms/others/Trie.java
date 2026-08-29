@@ -171,8 +171,7 @@ public class Trie {
          * No fixed 10-20 word limitation.
          */
 
-        String[] words = { "hello", "hell", "hel", "help", "helps", "helping", "helicopter", "hero", "her", "cat",
-                "car", "care", "career", "dog" };
+        String[] words = { "hello", "hell", "hel", "help", "helps", "helping", "helicopter", "car", "career", "dog" };
 
         // Dynamically insert all words
         for (String word : words) {
@@ -180,15 +179,12 @@ public class Trie {
         }
 
         // Search
-        System.out.println(
-                "Search 'hello': " + trie.search("hello"));
+        System.out.println("Search 'hello': " + trie.search("hello"));
 
-        System.out.println(
-                "Search 'xyz': " + trie.search("xyz"));
+        System.out.println("Search 'xyz': " + trie.search("xyz"));
 
         // Prefix
-        System.out.println(
-                "Starts with 'hel': " + trie.startsWith("hel"));
+        System.out.println("Starts with 'hel': " + trie.startsWith("hel"));
 
         // Autocomplete
         System.out.println("\nSuggestions for 'hel':");
