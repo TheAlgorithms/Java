@@ -119,8 +119,15 @@ public final class Base64 {
 
         // Validate padding: '=' can only appear at the end (last 1 or 2 chars)
         int firstPadding = input.indexOf('=');
-        if (firstPadding != -1 && firstPadding < input.length() - 2) {
-            throw new IllegalArgumentException("Padding '=' can only appear at the end (last 1 or 2 characters)");
+        if (firstPadding != -1) {
+            if (firstPadding < input.length() - 2) {
+                throw new IllegalArgumentException("Padding '=' can only appear at the end (last 1 or 2 characters)");
+            }
+            for (int i = firstPadding; i < input.length(); i++) {
+                if (input.charAt(i) != '=') {
+                    throw new IllegalArgumentException("A padding '=' must not be followed by a non-padding character");
+                }
+            }
         }
 
         List<Byte> result = new ArrayList<>();

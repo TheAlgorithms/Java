@@ -8,6 +8,13 @@ import java.util.LinkedList;
  * which we will pop one-by-one to create the string in reverse.
  *
  * Reference: https://www.geeksforgeeks.org/check-whether-the-given-string-is-palindrome-using-stack/
+ *
+ * @see com.thealgorithms.strings.Palindrome
+ * @see com.thealgorithms.bitmanipulation.BinaryPalindromeCheck
+ * @see com.thealgorithms.maths.LowestBasePalindrome
+ * @see com.thealgorithms.datastructures.lists.PalindromeSinglyLinkedList
+ * @see com.thealgorithms.maths.PalindromePrime
+ * @see com.thealgorithms.maths.PalindromeNumber
  */
 public class PalindromeWithStack {
     private LinkedList<Character> stack;
