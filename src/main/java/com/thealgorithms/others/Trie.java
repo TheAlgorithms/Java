@@ -160,39 +160,4 @@ public class Trie {
         return text;
     }
 
-    // ---------------- MAIN ----------------
-
-    public static void main(String[] args) {
-
-        Trie trie = new Trie();
-
-        /*
-         * Add as many words as you want.
-         * No fixed 10-20 word limitation.
-         */
-
-        String[] words = {"hello", "hell", "hel", "help", "helps", "helping", "helicopter", "car", "career", "dog"};
-
-        // Dynamically insert all words
-        for (String word : words) {
-            trie.insert(word);
-        }
-
-        // Search
-        System.out.println("Search 'hello': " + trie.search("hello"));
-
-        System.out.println("Search 'xyz': " + trie.search("xyz"));
-
-        // Prefix
-        System.out.println("Starts with 'hel': " + trie.startsWith("hel"));
-
-        // Autocomplete
-        System.out.println("\nSuggestions for 'hel':");
-
-        List<String> suggestions = trie.suggestions("hel");
-
-        for (String word : suggestions) {
-            System.out.println(word);
-        }
-    }
 }
