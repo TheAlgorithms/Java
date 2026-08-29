@@ -1,4 +1,4 @@
-package com.thealgorithms.tree;
+package com.thealgorithms.datastructures.trees;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;

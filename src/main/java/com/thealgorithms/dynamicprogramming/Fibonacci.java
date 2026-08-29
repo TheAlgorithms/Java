@@ -1,10 +1,22 @@
 package com.thealgorithms.dynamicprogramming;
-
 import java.util.HashMap;
 import java.util.Map;
-
 /**
- * @author Varun Upadhyay (https://github.com/varunu28)
+ * Collection of Dynamic Programming techniques to solve for the n-th Fibonacci number.
+ * <p>
+ * This file showcases Top-Down Memoization ({@code fibMemo}), Bottom-Up Tabulation ({@code fibBotUp}),
+ * and Space-Optimized Iteration ({@code fibOptimized}).
+ * <p>
+ * For alternative structural paradigms, mathematical formulas, or verification steps, see:
+ * <ul>
+ * <li>{@link com.thealgorithms.maths.FibonacciLoop} - Standard Iterative (Loop) approach</li>
+ * <li>{@link com.thealgorithms.recursion.FibonacciSeries} - Naive Recursive approach</li>
+ * <li>{@link com.thealgorithms.maths.FibonacciJavaStreams} - Functional approach using Java Streams</li>
+ * <li>{@link com.thealgorithms.maths.FibonacciNumberGoldenRation} - Closed-form expression using Binet's formula</li>
+ * <li>{@link com.thealgorithms.maths.FibonacciNumberCheck} - Utility to check if a given number is a Fibonacci number</li>
+ * <li>{@link com.thealgorithms.matrix.matrixexponentiation.Fibonacci} - O(log n) Matrix Exponentiation approach</li>
+ * </ul>
+ * * @author Varun Upadhyay (https://github.com/varunu28)
  */
 public final class Fibonacci {
     private Fibonacci() {

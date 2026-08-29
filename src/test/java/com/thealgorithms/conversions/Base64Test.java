@@ -127,6 +127,9 @@ class Base64Test {
         assertThrows(IllegalArgumentException.class, () -> Base64.decode("Q=QQ"));
         assertThrows(IllegalArgumentException.class, () -> Base64.decode("Q=Q="));
         assertThrows(IllegalArgumentException.class, () -> Base64.decode("=QQQ"));
+        assertThrows(IllegalArgumentException.class, () -> Base64.decode("QQ=Q"));
+        assertThrows(IllegalArgumentException.class, () -> Base64.decode("AB=C"));
+        assertThrows(IllegalArgumentException.class, () -> Base64.decode("AB=A"));
     }
 
     @Test

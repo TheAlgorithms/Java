@@ -1,6 +1,7 @@
 package com.thealgorithms.datastructures.graphs;
 
 import java.util.Arrays;
+import java.util.PriorityQueue;
 
 /**
  * Dijkstra's algorithm for finding the shortest path from a single source vertex to all other vertices in a graph.
@@ -16,6 +17,21 @@ public class DijkstraAlgorithm {
      */
     public DijkstraAlgorithm(int vertexCount) {
         this.vertexCount = vertexCount;
+    }
+
+    private static class Node implements Comparable<Node> {
+        int id;
+        int distance;
+
+        Node(int id, int distance) {
+            this.id = id;
+            this.distance = distance;
+        }
+
+        @Override
+        public int compareTo(Node other) {
+            return Integer.compare(this.distance, other.distance);
+        }
     }
 
     /**
@@ -36,45 +52,31 @@ public class DijkstraAlgorithm {
 
         int[] distances = new int[vertexCount];
         boolean[] processed = new boolean[vertexCount];
+        PriorityQueue<Node> unprocessed = new PriorityQueue<>();
 
         Arrays.fill(distances, Integer.MAX_VALUE);
-        Arrays.fill(processed, false);
         distances[source] = 0;
+        unprocessed.add(new Node(source, 0));
 
-        for (int count = 0; count < vertexCount - 1; count++) {
-            int u = getMinDistanceVertex(distances, processed);
+        while (!unprocessed.isEmpty()) {
+            Node current = unprocessed.poll();
+            int u = current.id;
+
+            if (processed[u]) {
+                continue;
+            }
             processed[u] = true;
 
             for (int v = 0; v < vertexCount; v++) {
                 if (!processed[v] && graph[u][v] != 0 && distances[u] != Integer.MAX_VALUE && distances[u] + graph[u][v] < distances[v]) {
                     distances[v] = distances[u] + graph[u][v];
+                    unprocessed.add(new Node(v, distances[v]));
                 }
             }
         }
 
         printDistances(distances);
         return distances;
-    }
-
-    /**
-     * Finds the vertex with the minimum distance value from the set of vertices that have not yet been processed.
-     *
-     * @param distances The array of current shortest distances from the source vertex.
-     * @param processed The array indicating whether each vertex has been processed.
-     * @return The index of the vertex with the minimum distance value.
-     */
-    private int getMinDistanceVertex(int[] distances, boolean[] processed) {
-        int min = Integer.MAX_VALUE;
-        int minIndex = -1;
-
-        for (int v = 0; v < vertexCount; v++) {
-            if (!processed[v] && distances[v] <= min) {
-                min = distances[v];
-                minIndex = v;
-            }
-        }
-
-        return minIndex;
     }
 
     /**

@@ -1,4 +1,4 @@
-package com.thealgorithms.misc;
+package com.thealgorithms.datastructures.lists;
 
 import java.util.Stack;
 
@@ -9,6 +9,13 @@ import java.util.Stack;
  *
  * See more:
  * https://www.geeksforgeeks.org/function-to-check-if-a-singly-linked-list-is-palindrome/
+ *
+ * @see com.thealgorithms.strings.Palindrome
+ * @see com.thealgorithms.stacks.PalindromeWithStack
+ * @see com.thealgorithms.bitmanipulation.BinaryPalindromeCheck
+ * @see com.thealgorithms.maths.LowestBasePalindrome
+ * @see com.thealgorithms.maths.PalindromePrime
+ * @see com.thealgorithms.maths.PalindromeNumber
  */
 @SuppressWarnings("rawtypes")
 public final class PalindromeSinglyLinkedList {
