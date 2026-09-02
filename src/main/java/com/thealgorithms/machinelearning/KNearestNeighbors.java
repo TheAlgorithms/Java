@@ -23,6 +23,9 @@ import java.util.Map;
  */
 public final class KNearestNeighbors {
     private final int k;
+    private double[][] trainingFeatures;
+    private int[] trainingLabels;
+    private int numFeatures;
 
     /**
      * Constructs a K-Nearest Neighbors classifier with the specified number
@@ -43,21 +46,8 @@ public final class KNearestNeighbors {
      * Represents a neighboring training sample and its distance from the test
      * sample.
      */
-    private static final class Neighbor {
-
-        private final double distance;
-
-        private final int label;
-
-        Neighbor(double distance, int label) {
-            this.distance = distance;
-            this.label = label;
-        }
+    private record Neighbor(double distance, int label) {
     }
-
-    private double[][] trainingFeatures;
-    private int[] trainingLabels;
-    private int numFeatures;
 
     /**
      * Fits the classifier using the provided training dataset.
@@ -83,6 +73,10 @@ public final class KNearestNeighbors {
             throw new IllegalArgumentException("Features and labels must have the same length.");
         }
 
+        if (k > features.length) {
+            throw new IllegalArgumentException("k cannot be greater than the number of training samples.");
+        }
+
         if (features[0] == null) {
             throw new IllegalArgumentException("Feature vectors cannot be null.");
         }
@@ -103,8 +97,12 @@ public final class KNearestNeighbors {
             }
         }
 
-        this.trainingFeatures = features;
-        this.trainingLabels = labels;
+        this.trainingFeatures = new double[features.length][];
+
+        for (int i = 0; i < features.length; i++) {
+            this.trainingFeatures[i] = features[i].clone();
+        }
+        this.trainingLabels = labels.clone();
     }
 
     /**
@@ -138,11 +136,7 @@ public final class KNearestNeighbors {
      * @return the predicted class label
      */
     public int predict(double[] testPoint) {
-        if (trainingFeatures == null) {
-            throw new IllegalStateException("Classifier has not been fitted.");
-        }
-
-        if (trainingLabels == null) {
+        if (trainingFeatures == null || trainingLabels == null) {
             throw new IllegalStateException("Classifier has not been fitted.");
         }
 
@@ -161,16 +155,12 @@ public final class KNearestNeighbors {
             neighbors.add(new Neighbor(distance, trainingLabels[i]));
         }
 
-        neighbors.sort(Comparator.comparingDouble(neighbor -> neighbor.distance));
+        neighbors.sort(Comparator.comparingDouble(Neighbor::distance));
 
         Map<Integer, Integer> votes = new HashMap<>();
 
-        if (k > trainingFeatures.length) {
-            throw new IllegalArgumentException("k cannot be greater than the number of training samples.");
-        }
-
         for (int i = 0; i < k; i++) {
-            int label = neighbors.get(i).label;
+            int label = neighbors.get(i).label();
             votes.merge(label, 1, Integer::sum);
         }
 
