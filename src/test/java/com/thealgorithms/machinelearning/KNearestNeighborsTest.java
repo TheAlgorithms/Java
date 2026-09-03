@@ -244,5 +244,4 @@ class KNearestNeighborsTest {
 
         assertEquals(0, knn.predict(new double[] {0, 0}));
     }
-
 }
