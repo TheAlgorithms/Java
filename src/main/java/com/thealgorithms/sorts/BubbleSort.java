@@ -22,19 +22,26 @@ class BubbleSort implements SortAlgorithm {
      * @return the sorted array.
      */
     @Override
-    public <T extends Comparable<T>> T[] sort(T[] array) {
-        for (int i = 1, size = array.length; i < size; ++i) {
-            boolean swapped = false;
-            for (int j = 0; j < size - i; ++j) {
-                if (SortUtils.greater(array[j], array[j + 1])) {
-                    SortUtils.swap(array, j, j + 1);
-                    swapped = true;
-                }
-            }
-            if (!swapped) {
-                break;
+public <T extends Comparable<T>> T[] sort(T[] array) {
+    for (int i = 1, size = array.length; i < size; ++i) {
+        boolean swapped = false;
+
+        for (int j = 0; j < size - i; ++j) {
+            if (SortUtils.greater(array[j], array[j + 1])) {
+
+                // Swap using a temporary variable
+                T temp = array[j];
+                array[j] = array[j + 1];
+                array[j + 1] = temp;
+
+                swapped = true;
             }
         }
-        return array;
+
+        if (!swapped) {
+            break;
+        }
     }
+
+    return array;
 }
