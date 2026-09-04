@@ -95,16 +95,21 @@ class AhoCorasickTest {
     }
 
     /**
-     * Test searching for patterns with multiple occurrences in the input text.
-     * The expected sizes are 1 and 1, and the expected positions are 2 and 3
-     * for the patterns "AT" and "T" respectively.
-     */
+    * Test searching for patterns with multiple occurrences in the input text.
+    * The expected positions are 2 and 4 for "AT", and 3 and 5 for "T".
+    */
     @Test
     void testMultipleOccurrencesOfPattern() {
-        // Define patterns with multiple occurrences in the text
+        final var searchText = "GCATATCG";
         final var searchPatterns = new String[] {"AT", "T"};
-        final var expected = Map.of("AT", new ArrayList<>(List.of(2)), "T", new ArrayList<>(List.of(3)));
-        assertEquals(expected, AhoCorasick.search(text, searchPatterns));
+
+        final var expected =
+            Map.of(
+                "AT", new ArrayList<>(List.of(2, 4)),
+                "T", new ArrayList<>(List.of(3, 5))
+            );
+
+        assertEquals(expected, AhoCorasick.search(searchText, searchPatterns));
     }
 
     /**
