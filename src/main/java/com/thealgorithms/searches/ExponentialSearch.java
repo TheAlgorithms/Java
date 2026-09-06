@@ -46,6 +46,9 @@ class ExponentialSearch implements SearchAlgorithm {
             range = range * 2;
         }
 
-        return Arrays.binarySearch(array, range / 2, Math.min(range, array.length), key);
+        // The candidate block is the inclusive index range [range / 2, range], so the
+        // exclusive upper bound handed to binarySearch has to be range + 1.
+        final int index = Arrays.binarySearch(array, range / 2, Math.min(range + 1, array.length), key);
+        return index >= 0 ? index : -1;
     }
 }

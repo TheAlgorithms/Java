@@ -21,6 +21,9 @@ public class BitonicSort implements SortAlgorithm {
      */
     @Override
     public <T extends Comparable<T>> T[] sort(T[] array) {
+        if (array == null) {
+            throw new IllegalArgumentException("The input array cannot be null");
+        }
         if (array.length == 0) {
             return array;
         }

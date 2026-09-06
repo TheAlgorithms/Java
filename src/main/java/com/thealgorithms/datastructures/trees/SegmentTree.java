@@ -8,13 +8,18 @@ public class SegmentTree {
 
     /* Constructor which takes the size of the array and the array as a parameter*/
     public SegmentTree(int n, int[] arr) {
+        if (arr == null) {
+            throw new IllegalArgumentException("Input array must not be null");
+        }
+        if (n <= 0 || n > arr.length) {
+            throw new IllegalArgumentException("Size must be in the range [1, " + arr.length + "], but was " + n);
+        }
         this.n = n;
         int x = (int) (Math.ceil(Math.log(n) / Math.log(2)));
         int segSize = 2 * (int) Math.pow(2, x) - 1;
 
         this.segTree = new int[segSize];
         this.arr = arr;
-        this.n = n;
         constructTree(arr, 0, n - 1, 0);
     }
 
@@ -47,7 +52,8 @@ public class SegmentTree {
 
     /* A function to update the value at a particular index*/
     public void update(int index, int value) {
-        if (index < 0 || index > n) {
+        // Valid positions are 0..n-1; index == n is out of bounds and must not reach arr[index].
+        if (index < 0 || index >= n) {
             return;
         }
 
@@ -73,7 +79,8 @@ public class SegmentTree {
 
     /* A function to query the sum of the subarray [start...end]*/
     public int getSum(int start, int end) {
-        if (start < 0 || end > n || start > end) {
+        // The last queryable position is n-1, so end == n is an out of range query.
+        if (start < 0 || end >= n || start > end) {
             return 0;
         }
         return getSumTree(0, n - 1, start, end, 0);
