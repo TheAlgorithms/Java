@@ -9,6 +9,8 @@ import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 import java.util.function.BiConsumer;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  * A thread-safe generic cache implementation using the First-In-First-Out eviction policy.
@@ -34,6 +36,8 @@ import java.util.function.BiConsumer;
  * @author Kevin Babu (<a href="https://www.github.com/KevinMwita7">GitHub</a>)
  */
 public final class FIFOCache<K, V> {
+
+    private static final Logger LOGGER = Logger.getLogger(FIFOCache.class.getName());
 
     private final int capacity;
     private final long defaultTTL;
@@ -256,7 +260,7 @@ public final class FIFOCache<K, V> {
             try {
                 evictionListener.accept(key, value);
             } catch (Exception e) {
-                System.err.println("Eviction listener failed: " + e.getMessage());
+                LOGGER.log(Level.WARNING, "Eviction listener failed", e);
             }
         }
     }

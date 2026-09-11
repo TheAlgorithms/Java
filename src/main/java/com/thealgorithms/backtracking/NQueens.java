@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.logging.Logger;
 
 /**
  * Problem statement: Given a N x N chess board. Return all arrangements in
@@ -41,6 +42,8 @@ import java.util.Set;
  */
 public final class NQueens {
 
+    private static final Logger LOGGER = Logger.getLogger(NQueens.class.getName());
+
     // Store occupied rows for constant time safety check
     private static final Set<Integer> OCROWS = new HashSet<>();
 
@@ -63,13 +66,13 @@ public final class NQueens {
         List<List<String>> arrangements = new ArrayList<>();
         getSolution(queens, arrangements, new int[queens], 0);
         if (arrangements.isEmpty()) {
-            System.out.println(" no way to place " + queens + " queens on board of size " + queens + "x" + queens);
+            LOGGER.info(" no way to place " + queens + " queens on board of size " + queens + "x" + queens);
         } else {
-            System.out.println("Arrangement for placing " + queens + " queens");
+            LOGGER.info("Arrangement for placing " + queens + " queens");
         }
         for (List<String> arrangement : arrangements) {
-            arrangement.forEach(System.out::println);
-            System.out.println();
+            arrangement.forEach(row -> LOGGER.info(row));
+            LOGGER.info("");
         }
     }
 
