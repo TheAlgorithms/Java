@@ -34,6 +34,6 @@ public class AbsoluteValueTest {
 
     @Test
     void testMinIntEdgeCase() {
-        assertEquals(Integer.MIN_VALUE, AbsoluteValue.getAbsValue(Integer.MIN_VALUE));
+        assertEquals(2147483648L, AbsoluteValue.getAbsValue(Integer.MIN_VALUE));
     }
 }
