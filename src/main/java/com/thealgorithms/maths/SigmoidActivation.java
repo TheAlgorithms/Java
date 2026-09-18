@@ -22,9 +22,13 @@ public class SigmoidActivation {
         }
         // Saving from unnecessary and heavy calculations.
         // lim x->-inf sigmoid(x) will return number very close to 0
-        if (x < -745) return 0.0;
+        if (x < -745) {
+            return 0.0;
+        }
         // lim x->inf sigmoid(x) will return number very close to 1
-        if (x > 745) return 1.0;
+        if (x > 745) {
+            return 1.0;
+        }
         // sigmoid function's formula
         return 1.0 / (1 + Math.exp((-1) * x));
     }
