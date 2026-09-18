@@ -17,21 +17,25 @@ public class SigmoidActivation {
      */
     public static double activate(double x) {
         // If the number x is NaN then, returning NaN to saving from unexpected output.
-        if(Double.isNaN(x)) return Double.NaN;
+        if (Double.isNaN(x)) {
+            return Double.NaN;
+        }
         // Saving from unnecessary and heavy calculations.
         // lim x->-inf sigmoid(x) will return number very close to 0
-        if(x < -745) return 0.0;
+        if (x < -745) return 0.0;
         // lim x->inf sigmoid(x) will return number very close to 1
-        if(x > 745) return 1.0;
+        if (x > 745) return 1.0;
         // sigmoid function's formula
-        return 1.0 / ( 1 + Math.exp((-1) * x));
+        return 1.0 / (1 + Math.exp((-1) * x));
     }
 
     public static double[][] activate(double[][] x) {
         // apply calculation to every value in batch.
         double[][] activatedNumbers = new double[x.length][x[0].length];
-        for(int i = 0; i < x.length; i++) {
-            for (int j = 0; j < x[0].length; j++) activatedNumbers[i][j] = activate(x[i][j]);
+        for (int i = 0; i < x.length; i++) {
+            for (int j = 0; j < x[0].length; j++) {
+                activatedNumbers[i][j] = activate(x[i][j]);
+            }
         }
         return activatedNumbers;
     }
@@ -50,10 +54,11 @@ public class SigmoidActivation {
     public static double[][] grad(double[][] y) {
         // apply calculation to every value in batch.
         double[][] grads = new double[y.length][y[0].length];
-        for(int i = 0; i < y.length; i++) {
-            for (int j = 0; j < y[0].length; j++) grads[i][j] = grad(y[i][j]);
+        for (int i = 0; i < y.length; i++) {
+            for (int j = 0; j < y[0].length; j++) {
+                grads[i][j] = grad(y[i][j]);
+            }
         }
         return grads;
     }
-
 }
