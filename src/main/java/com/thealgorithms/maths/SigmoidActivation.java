@@ -39,9 +39,10 @@ public final class SigmoidActivation {
 
     public static double[][] activate(double[][] x) {
         // apply calculation to every value in batch.
-        double[][] activatedNumbers = new double[x.length][x[0].length];
+        double[][] activatedNumbers = new double[x.length][];
         for (int i = 0; i < x.length; i++) {
-            for (int j = 0; j < x[0].length; j++) {
+            activatedNumbers[i] = new double[x[i].length];
+            for (int j = 0; j < x[i].length; j++) {
                 activatedNumbers[i][j] = activate(x[i][j]);
             }
         }
