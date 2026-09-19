@@ -10,6 +10,9 @@ package com.thealgorithms.maths;
  */
 
 public class SigmoidActivation {
+
+    private SigmoidActivation() { }
+
     /**
      * @summary Maps any real-valued number into a value between 0 and 1
      * @param x In machine learning, x could be a weighted sum of inputs in a neural network neuron or a raw score in logistic regression.
