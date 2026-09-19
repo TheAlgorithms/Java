@@ -9,9 +9,10 @@ package com.thealgorithms.maths;
  * @author <a href="https://github.com/crapxxi">Alikhan Turugeldiyev</a>
  */
 
-public class SigmoidActivation {
+public final class SigmoidActivation {
 
-    private SigmoidActivation() { }
+    private SigmoidActivation() {
+    }
 
     /**
      * @summary Maps any real-valued number into a value between 0 and 1
