@@ -62,9 +62,10 @@ public final class SigmoidActivation {
 
     public static double[][] grad(double[][] y) {
         // apply calculation to every value in batch.
-        double[][] grads = new double[y.length][y[0].length];
+        double[][] grads = new double[y.length][];
         for (int i = 0; i < y.length; i++) {
-            for (int j = 0; j < y[0].length; j++) {
+            grads[i] = new double[y[i].length];
+            for (int j = 0; j < y[i].length; j++) {
                 grads[i][j] = grad(y[i][j]);
             }
         }
