@@ -29,20 +29,20 @@ public final class LongestCommonSubstring {
             return "";
         }
 
-        int[][] dp = new int[a.length() + 1][b.length() + 1];
+        int[] dp = new int[b.length() + 1];
         int maxLength = 0;
         int endIndex = 0;
 
         for (int i = 1; i <= a.length(); i++) {
-            for (int j = 1; j <= b.length(); j++) {
+            for (int j = b.length(); j >= 1; j--) {
                 if (a.charAt(i - 1) == b.charAt(j - 1)) {
-                    dp[i][j] = dp[i - 1][j - 1] + 1;
-                    if (dp[i][j] > maxLength) {
-                        maxLength = dp[i][j];
+                    dp[j] = dp[j - 1] + 1;
+                    if (dp[j] > maxLength) {
+                        maxLength = dp[j];
                         endIndex = i;
                     }
                 } else {
-                    dp[i][j] = 0;
+                    dp[j] = 0;
                 }
             }
         }
