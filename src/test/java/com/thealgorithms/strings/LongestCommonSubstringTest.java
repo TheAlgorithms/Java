@@ -97,9 +97,7 @@ public class LongestCommonSubstringTest {
             sb2.append('B');
         }
 
-        assertTimeoutPreemptively(Duration.ofSeconds(2), () -> {
-            assertEquals("", LongestCommonSubstring.longestCommonSubstring(sb1.toString(), sb2.toString()));
-        });
+        assertTimeoutPreemptively(Duration.ofSeconds(2), () -> { assertEquals("", LongestCommonSubstring.longestCommonSubstring(sb1.toString(), sb2.toString())); });
     }
 
     @Test
