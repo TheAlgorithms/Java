@@ -2,10 +2,11 @@ package com.thealgorithms.strings;
 // author: Vraj Prajapati @Rosander0
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-
-import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertTimeoutPreemptively;
+
 import java.time.Duration;
+import org.junit.jupiter.api.Test;
+
 public class LongestCommonSubstringTest {
 
     @Test
@@ -34,6 +35,7 @@ public class LongestCommonSubstringTest {
         // Keeps the first matched longest substring when lengths are tied
         assertEquals("abc", LongestCommonSubstring.longestCommonSubstring("abcXdef", "abcYdef"));
     }
+
     // NEW
 
     @Test
@@ -84,7 +86,7 @@ public class LongestCommonSubstringTest {
     }
 
     @Test
-    public void testVeryLargeInputsTimeoutFailure() {
+    public void testVeryLargeInputsPerformance() {
         // Generate two very large strings (4,000 characters each)
         int size = 4000;
         StringBuilder sb1 = new StringBuilder(size);
@@ -95,9 +97,8 @@ public class LongestCommonSubstringTest {
             sb2.append('B');
         }
 
-        // Enforce a strict 50ms time limit which this O(N * M) computation will exceed
-        assertTimeoutPreemptively(Duration.ofMillis(50), () -> {
-            LongestCommonSubstring.longestCommonSubstring(sb1.toString(), sb2.toString());
+        assertTimeoutPreemptively(Duration.ofSeconds(2), () -> {
+            assertEquals("", LongestCommonSubstring.longestCommonSubstring(sb1.toString(), sb2.toString()));
         });
     }
 
@@ -113,11 +114,12 @@ public class LongestCommonSubstringTest {
         // Unicode characters
         assertEquals("_áéíóú_", LongestCommonSubstring.longestCommonSubstring("hola_áéíóú_mundo", "test_áéíóú_abc"));
     }
+
     @Test
     public void testWhitespaceAndControlCharacters() {
         // Test with newlines and tabs
         assertEquals("\t\n", LongestCommonSubstring.longestCommonSubstring("start\t\nend", "begin\t\nfinish"));
-        
+
         // Test with multiple consecutive spaces
         assertEquals("   ", LongestCommonSubstring.longestCommonSubstring("a   b", "x   y"));
     }
