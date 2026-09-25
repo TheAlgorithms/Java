@@ -2,10 +2,10 @@ package com.thealgorithms.machinelearning;
 
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 class PerceptronTest {
@@ -21,6 +21,17 @@ class PerceptronTest {
         assertArrayEquals(labels, perceptron.predict(features));
         assertTrue(perceptron.hasConverged());
         assertTrue(perceptron.getEpochsRun() <= 20);
+    }
+
+    @Test
+    void learnsExpectedWeightsAndBias() {
+        Perceptron perceptron = new Perceptron(1.0, 20);
+        perceptron.fit(new double[][] {{0}, {1}}, new int[] {0, 1});
+
+        assertArrayEquals(new double[] {1.0}, perceptron.getWeights());
+        assertEquals(-1.0, perceptron.getBias());
+        assertTrue(perceptron.hasConverged());
+        assertEquals(3, perceptron.getEpochsRun());
     }
 
     @Test
@@ -65,7 +76,7 @@ class PerceptronTest {
         Perceptron perceptron = new Perceptron(1.0, 8);
         perceptron.fit(features, labels);
 
-        assertFalse(perceptron.hasConverged());
+        Assertions.assertFalse(perceptron.hasConverged());
         assertEquals(8, perceptron.getEpochsRun());
     }
 
@@ -119,8 +130,10 @@ class PerceptronTest {
         assertThrows(IllegalArgumentException.class, () -> perceptron.fit(new double[][] {{0}}, null));
         assertThrows(IllegalArgumentException.class, () -> perceptron.fit(new double[][] {}, new int[] {}));
         assertThrows(IllegalArgumentException.class, () -> perceptron.fit(new double[][] {{0}}, new int[] {}));
+        assertThrows(IllegalArgumentException.class, () -> perceptron.fit(new double[][] {{0}, {1}}, new int[] {0}));
         assertThrows(IllegalArgumentException.class, () -> perceptron.fit(new double[][] {{0}, {1, 2}}, new int[] {0, 1}));
         assertThrows(IllegalArgumentException.class, () -> perceptron.fit(new double[][] {null}, new int[] {0}));
+        assertThrows(IllegalArgumentException.class, () -> perceptron.fit(new double[][] {{0}, null}, new int[] {0, 1}));
         assertThrows(IllegalArgumentException.class, () -> perceptron.fit(new double[][] {{}}, new int[] {0}));
         assertThrows(IllegalArgumentException.class, () -> perceptron.fit(new double[][] {{0}}, new int[] {2}));
         assertThrows(IllegalArgumentException.class, () -> perceptron.fit(new double[][] {{Double.NaN}}, new int[] {0}));
@@ -137,5 +150,14 @@ class PerceptronTest {
         assertThrows(IllegalArgumentException.class, () -> perceptron.predict(new double[] {0, Double.NaN}));
         assertThrows(IllegalArgumentException.class, () -> perceptron.predict((double[][]) null));
         assertThrows(IllegalArgumentException.class, () -> perceptron.predict(new double[][] {{0, 0}, null}));
+    }
+
+    @Test
+    void divergingTrainingIsRejectedAndLeavesClassifierUnfitted() {
+        Perceptron perceptron = new Perceptron(1.0e300, 5);
+
+        assertThrows(ArithmeticException.class, () -> perceptron.fit(new double[][] {{1.0e300}, {1.0e300}}, new int[] {0, 1}));
+        assertThrows(IllegalStateException.class, perceptron::getWeights);
+        assertThrows(IllegalStateException.class, perceptron::getBias);
     }
 }
