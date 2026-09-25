@@ -176,7 +176,7 @@ class Task {
         }
         return c;
         // This Method is used to count number of elements/nodes present in the linklist
-        // It will return a integer type value denoting the number of nodes present
+        // It will return an integer type value denoting the number of nodes present
     }
 
     void task(int[] n, int i, int j) {
@@ -252,7 +252,7 @@ class Task1 {
         }
         return c;
         // This Method is used to count number of elements/nodes present in the linklist
-        // It will return a integer type value denoting the number of nodes present
+        // It will return an integer type value denoting the number of nodes present
     }
     // The method task and task1 is used to sort the linklist using insertion sort
 }
@@ -288,7 +288,7 @@ class Task2 {
         }
         return c;
         // This Method is used to count number of elements/nodes present in the linklist
-        // It will return a integer type value denoting the number of nodes present
+        // It will return an integer type value denoting the number of nodes present
     }
 
     void task(int[] n) {

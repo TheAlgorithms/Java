@@ -22,11 +22,11 @@ for example :
 # working
 
     if string size is smaller than numRows or numRows is smaller than 2
-    than we can return string because it will make no changes to string.
+    then we can return string because it will make no changes to string.
     If not than
     we initiate three variable depth which is equalvalent to numRows ,
     height which starts with 1 and start with starting index of string.
-    than we generate spaces to skip using formula 2 + (( n - 1 ) * 2 )
+    then we generate spaces to skip using formula 2 + (( n - 1 ) * 2 )
     for both height and depth
     with each iteration we decrement depth and increase height and start 
     by one also we keep concatenating character on to new string with first
