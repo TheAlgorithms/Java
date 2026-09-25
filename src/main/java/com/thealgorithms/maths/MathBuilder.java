@@ -481,8 +481,8 @@ public final class MathBuilder {
         }
 
         public Builder format(String format) {
-            DecimalFormat formater = new DecimalFormat(format);
-            String num = formater.format(number);
+            DecimalFormat formatter = new DecimalFormat(format);
+            String num = formatter.format(number);
             number = Double.parseDouble(num);
             return this;
         }
@@ -490,8 +490,8 @@ public final class MathBuilder {
         public Builder format(int decimalPlace) {
             String pattern = "."
                 + "#".repeat(decimalPlace);
-            DecimalFormat formater = new DecimalFormat(pattern);
-            String num = formater.format(number);
+            DecimalFormat formatter = new DecimalFormat(pattern);
+            String num = formatter.format(number);
             number = Double.parseDouble(num);
             return this;
         }

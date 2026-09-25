@@ -108,7 +108,7 @@ public class BufferedReader {
 
     /**
      * Removes the already read bytes from the buffer
-     * in-order to make space for new bytes to be filled up.
+     * in order to make space for new bytes to be filled up.
      * <p>
      * This may also do the job to read first time data (the whole buffer is empty)
      */

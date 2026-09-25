@@ -60,7 +60,7 @@ public final class Damm {
     }
 
     /**
-     * Calculate check digit for initial digits and add it tho the last
+     * Calculate check digit for initial digits and add it to the last
      * position.
      *
      * @param initialDigits initial value
