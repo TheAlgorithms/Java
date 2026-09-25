@@ -95,7 +95,7 @@ public final class LamportSignature {
                 byte[] revealedSecret = Arrays.copyOfRange(signature, bit * SECRET_BYTES, (bit + 1) * SECRET_BYTES);
                 byte[] expectedHash = publicKey[bit][value];
                 byte[] actualHash = sha256(revealedSecret);
-                if (!Arrays.equals(actualHash, expectedHash)) {
+                if (!MessageDigest.isEqual(actualHash, expectedHash)) {
                     return false;
                 }
             }

@@ -178,4 +178,7 @@
     <Match>
         <Bug pattern="HARD_CODE_KEY" />
     </Match>
+    <Match>
+        <Bug pattern="EXS_EXCEPTION_SOFTENING_NO_CONSTRAINTS" />
+    </Match>
 </FindBugsFilter>

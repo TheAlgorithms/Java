@@ -6,6 +6,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.nio.charset.StandardCharsets;
+import java.util.Arrays;
 import org.junit.jupiter.api.Test;
 
 class LamportSignatureTest {
@@ -86,5 +87,15 @@ class LamportSignatureTest {
                 assertArrayEquals(hash, publicKey[bit][value]);
             }
         }
+    }
+
+    @Test
+    void testSha256SliceHelperMatchesRangeHash() {
+        byte[] message = "hello lamport".getBytes(StandardCharsets.UTF_8);
+
+        byte[] expected = LamportSignature.sha256(Arrays.copyOfRange(message, 2, 12));
+        byte[] actual = LamportSignature.sha256(message, 2, 10);
+
+        assertArrayEquals(expected, actual);
     }
 }
