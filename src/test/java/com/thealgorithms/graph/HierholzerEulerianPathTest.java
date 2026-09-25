@@ -153,7 +153,7 @@ class HierholzerEulerianPathTest {
         HierholzerEulerianPath solver = new HierholzerEulerianPath(graph);
         List<Integer> result = solver.findEulerianPath();
 
-        // Hava a Eulerian Path but not a Eulerian Circuit
+        // Has an Eulerian Path but not an Eulerian Circuit
         assertEquals(result, Arrays.asList(0, 1, 2, 0, 1));
     }
 

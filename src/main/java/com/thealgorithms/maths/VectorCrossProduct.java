@@ -15,7 +15,7 @@ package com.thealgorithms.maths;
  * matrix consisting of the first row with unit vectors of magnitude 1, the
  * second row with the direction ratios of the first vector and the third row
  * with the direction ratios of the second vector. The magnitude of a vector is
- * it's value expressed as a number. Let the direction ratios of the first
+ * its value expressed as a number. Let the direction ratios of the first
  * vector, P be: a, b, c Let the direction ratios of the second vector, Q be: x,
  * y, z Therefore the calculation for the cross product can be arranged as:
  *
