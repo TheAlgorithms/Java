@@ -13,7 +13,9 @@ package com.thealgorithms.machinelearning;
  * greater than or equal to zero, and {@code 0} otherwise. For a
  * misclassified sample, the update is {@code weight += learningRate * error *
  * feature} and {@code bias += learningRate * error}, where {@code error} is
- * the true label minus the prediction.
+ * the true label minus the prediction. Samples are visited one at a time, so
+ * each prediction uses the parameters produced by the preceding updates of
+ * the same epoch.
  *
  * @see <a href="https://en.wikipedia.org/wiki/Perceptron">Perceptron</a>
  */
@@ -22,7 +24,6 @@ public final class Perceptron {
     private final int maxEpochs;
     private double[] weights;
     private double bias;
-    private int numFeatures;
     private int epochsRun;
     private boolean converged;
 
@@ -48,18 +49,23 @@ public final class Perceptron {
      * Fits the classifier using binary training labels.
      *
      * <p>Fitting resets the weights and bias to zero before training. The
-     * method records whether an entire epoch completed without an update.
+     * method records whether an entire epoch completed without an update. A
+     * large {@code learningRate} combined with large feature values can push
+     * the parameters past the range of {@code double}; the classifier then
+     * returns to its unfitted state instead of reporting predictions derived
+     * from non-finite parameters.
      *
      * @param features training feature vectors
      * @param labels corresponding binary labels, each either {@code 0} or
      *                {@code 1}
      * @throws IllegalArgumentException if the training data is invalid
+     * @throws ArithmeticException if training diverges and the learned
+     *                             parameters stop being finite
      */
     public void fit(double[][] features, int[] labels) {
         validateTrainingData(features, labels);
 
-        numFeatures = features[0].length;
-        weights = new double[numFeatures];
+        weights = new double[features[0].length];
         bias = 0.0;
         epochsRun = 0;
         converged = false;
@@ -68,7 +74,7 @@ public final class Perceptron {
             boolean updated = false;
 
             for (int sampleIndex = 0; sampleIndex < features.length; sampleIndex++) {
-                int prediction = predict(features[sampleIndex]);
+                int prediction = rawPredict(features[sampleIndex]);
                 int error = labels[sampleIndex] - prediction;
 
                 if (error != 0) {
@@ -83,6 +89,8 @@ public final class Perceptron {
                 break;
             }
         }
+
+        ensureParametersAreFinite();
     }
 
     /**
@@ -96,12 +104,7 @@ public final class Perceptron {
     public int predict(double[] sample) {
         ensureFitted();
         validateSample(sample);
-
-        double weightedSum = bias;
-        for (int featureIndex = 0; featureIndex < numFeatures; featureIndex++) {
-            weightedSum += weights[featureIndex] * sample[featureIndex];
-        }
-        return weightedSum >= 0.0 ? 1 : 0;
+        return rawPredict(sample);
     }
 
     /**
@@ -170,11 +173,26 @@ public final class Perceptron {
         return epochsRun;
     }
 
+    private int rawPredict(double[] sample) {
+        double weightedSum = bias;
+        for (int featureIndex = 0; featureIndex < weights.length; featureIndex++) {
+            weightedSum += weights[featureIndex] * sample[featureIndex];
+        }
+        return weightedSum >= 0.0 ? 1 : 0;
+    }
+
     private void update(double[] sample, int error) {
-        for (int featureIndex = 0; featureIndex < numFeatures; featureIndex++) {
+        for (int featureIndex = 0; featureIndex < weights.length; featureIndex++) {
             weights[featureIndex] += learningRate * error * sample[featureIndex];
         }
         bias += learningRate * error;
+    }
+
+    private void ensureParametersAreFinite() {
+        if (!Double.isFinite(bias) || !isFinite(weights)) {
+            weights = null;
+            throw new ArithmeticException("training diverged; try a smaller learningRate or scaled features");
+        }
     }
 
     private void ensureFitted() {
@@ -200,7 +218,10 @@ public final class Perceptron {
         int featureCount = features[0].length;
         for (int sampleIndex = 0; sampleIndex < features.length; sampleIndex++) {
             double[] sample = features[sampleIndex];
-            if (sample == null || sample.length != featureCount) {
+            if (sample == null) {
+                throw new IllegalArgumentException("feature vectors cannot be null or empty");
+            }
+            if (sample.length != featureCount) {
                 throw new IllegalArgumentException("all feature vectors must have the same dimension");
             }
             validateFiniteValues(sample);
@@ -211,17 +232,24 @@ public final class Perceptron {
     }
 
     private void validateSample(double[] sample) {
-        if (sample == null || sample.length != numFeatures) {
+        if (sample == null || sample.length != weights.length) {
             throw new IllegalArgumentException("sample must match the training feature dimension");
         }
         validateFiniteValues(sample);
     }
 
     private static void validateFiniteValues(double[] values) {
+        if (!isFinite(values)) {
+            throw new IllegalArgumentException("feature values must be finite");
+        }
+    }
+
+    private static boolean isFinite(double[] values) {
         for (double value : values) {
             if (!Double.isFinite(value)) {
-                throw new IllegalArgumentException("feature values must be finite");
+                return false;
             }
         }
+        return true;
     }
 }
