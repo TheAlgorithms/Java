@@ -28,8 +28,8 @@ for example :
     height which starts with 1 and start with starting index of string.
     than we generate spaces to skip using formula 2 + (( n - 1 ) * 2 )
     for both height and depth
-    with each iteration we decrement depth and increate height and start 
-    by one also we keep contantating character on to new string with first
+    with each iteration we decrement depth and increase height and start 
+    by one also we keep concatenating character on to new string with first
     depth spaces and later height spaces that we generated using formula
     if not zero
 

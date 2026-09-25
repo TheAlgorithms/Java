@@ -13,7 +13,7 @@ public class LinkListSort {
         int[] b = p;
         // array similar to a
         int ch = option;
-        // Choice is choosed as any number from 1 to 3 (So the linked list will be
+        // Choice is chosen as any number from 1 to 3 (So the linked list will be
         // sorted by Merge sort technique/Insertion sort technique/Heap sort technique)
         switch (ch) {
         case 1:
