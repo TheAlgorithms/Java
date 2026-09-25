@@ -135,7 +135,7 @@ public final class LamportSignature {
             MessageDigest digest = MessageDigest.getInstance("SHA-256");
             return digest.digest(input);
         } catch (NoSuchAlgorithmException e) {
-            throw new IllegalStateException("SHA-256 is not available on this platform", e);
+            throw new AssertionError("SHA-256 is required by the Java SE specification", e);
         }
     }
 
