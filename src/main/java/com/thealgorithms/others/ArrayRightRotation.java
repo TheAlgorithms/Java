@@ -34,7 +34,7 @@ public final class ArrayRightRotation {
     }
 
     /**
-     * Performs reversing of a array
+     * Performs reversing of an array
      * @param arr the array to be reversed
      * @param start starting position
      * @param end ending position

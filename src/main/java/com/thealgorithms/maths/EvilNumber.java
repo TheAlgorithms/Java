@@ -26,7 +26,7 @@ public final class EvilNumber {
      * Check either {@code number} is an Evil number or Odious number
      *
      * @param number the number
-     * @return {@code true} if {@code number} is an Evil number, otherwise false (in case of of Odious number)
+     * @return {@code true} if {@code number} is an Evil number, otherwise false (in case of Odious number)
      */
     public static boolean isEvilNumber(int number) {
         if (number < 0) {

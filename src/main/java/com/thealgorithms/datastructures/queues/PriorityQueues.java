@@ -85,7 +85,7 @@ class PriorityQueue {
     private void sink(int pos) {
         // Check if node's position is that of parent node
         while (2 * pos <= nItems) {
-            int current = 2 * pos; // Jump to the positon of child node
+            int current = 2 * pos; // Jump to the position of child node
             // Compare both the children for the greater one
             if (current < nItems && queueArray[current] < queueArray[current + 1]) {
                 current++;
