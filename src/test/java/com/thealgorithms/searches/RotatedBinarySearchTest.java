@@ -50,4 +50,50 @@ class RotatedBinarySearchTest {
         assertTrue(index >= 0 && index < array.length);
         assertEquals(3, array[index]);
     }
+
+    @Test
+    void shouldReturnMinusOneForNullArray() {
+        RotatedBinarySearch search = new RotatedBinarySearch();
+        assertEquals(-1, search.find(null, 1));
+    }
+
+    @Test
+    void shouldReturnMinusOneForEmptyArray() {
+        RotatedBinarySearch search = new RotatedBinarySearch();
+        assertEquals(-1, search.find(new Integer[0], 1));
+    }
+
+    @Test
+    void shouldFindElementInSingleElementArray() {
+        RotatedBinarySearch search = new RotatedBinarySearch();
+        assertEquals(0, search.find(new Integer[] {7}, 7));
+    }
+
+    @Test
+    void shouldReturnMinusOneWhenSingleElementArrayDoesNotContainKey() {
+        RotatedBinarySearch search = new RotatedBinarySearch();
+        assertEquals(-1, search.find(new Integer[] {7}, 8));
+    }
+
+    @Test
+    void shouldFindElementAtRotationPivot() {
+        RotatedBinarySearch search = new RotatedBinarySearch();
+        Integer[] array = {4, 5, 6, 7, 0, 1, 2};
+        assertEquals(4, search.find(array, 0));
+    }
+
+    @Test
+    void shouldFindElementsAtBothEnds() {
+        RotatedBinarySearch search = new RotatedBinarySearch();
+        Integer[] array = {4, 5, 6, 7, 0, 1, 2};
+        assertEquals(0, search.find(array, 4));
+        assertEquals(6, search.find(array, 2));
+    }
+
+    @Test
+    void shouldReturnMinusOneForMissingKeyInAllDuplicatesArray() {
+        RotatedBinarySearch search = new RotatedBinarySearch();
+        Integer[] array = {2, 2, 2, 2, 2, 2, 2, 2};
+        assertEquals(-1, search.find(array, 3));
+    }
 }
