@@ -406,12 +406,14 @@ public class KDTree {
             } else if (root.left != null) {
                 Node min = findMin(root.left, root.getAxis());
                 root.point = min.point;
-                root.left = delete(root.left, min);
+                root.right = delete(root.left, min);
+                root.left = null;
             } else {
                 return null;
             }
+            return root;
         }
-        if (root.getAxisCoordinate() < node.point.getCoordinate(root.getAxis())) {
+        if (node.point.getCoordinate(root.getAxis()) < root.getAxisCoordinate()) {
             root.left = delete(root.left, node);
         } else {
             root.right = delete(root.right, node);
