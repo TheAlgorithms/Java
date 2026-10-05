@@ -83,6 +83,16 @@ public final class HorsSignature {
     }
 
     /**
+     * Returns the number of secrets revealed per signature. Like {@code t}, it is part of the public
+     * key and is needed for verification.
+     *
+     * @return the parameter {@code k}
+     */
+    public int getK() {
+        return k;
+    }
+
+    /**
      * Signs a message. Every signature reveals {@code k} secrets, so a key pair should only sign a
      * few messages.
      *
@@ -103,28 +113,33 @@ public final class HorsSignature {
     }
 
     /**
-     * Verifies a signature against a public key. {@code t} is taken from the public key length and
-     * {@code k} from the signature length.
+     * Verifies a signature against a public key. {@code t} is taken from the public key length.
+     * {@code k} is part of the public key and must be supplied by the verifier: taking it from the
+     * signature would let an attacker submit a shorter signature that reveals fewer secrets.
      *
      * @param message the signed message
      * @param signature the signature to check
      * @param publicKey the public key of the signer
+     * @param k the number of secrets per signature used by the signer (see {@link #getK()})
      * @return true if the signature is valid for the message and public key, false otherwise
      * @throws IllegalArgumentException if an argument is null, the public key length is not a
-     *     supported {@code t}, a value is not 32 bytes long, or the signature is empty or uses more
-     *     than 256 digest bits
+     *     supported {@code t}, {@code k} is not supported for this {@code t}, a value is not 32
+     *     bytes long, or the signature does not contain exactly {@code k} values
      */
-    public static boolean verify(byte[] message, byte[][] signature, byte[][] publicKey) {
+    public static boolean verify(byte[] message, byte[][] signature, byte[][] publicKey, int k) {
         if (message == null) {
             throw new IllegalArgumentException("message must not be null");
         }
         validateValues(publicKey, "publicKey");
         validateValues(signature, "signature");
         int tau = tauOf(publicKey.length);
-        validateK(signature.length, tau);
+        validateK(k, tau);
+        if (signature.length != k) {
+            throw new IllegalArgumentException("signature must contain exactly " + k + " values, got " + signature.length);
+        }
 
-        int[] indices = messageIndices(hash(message), signature.length, tau);
-        for (int j = 0; j < signature.length; j++) {
+        int[] indices = messageIndices(hash(message), k, tau);
+        for (int j = 0; j < k; j++) {
             if (!MessageDigest.isEqual(hash(signature[j]), publicKey[indices[j]])) {
                 return false;
             }

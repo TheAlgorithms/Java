@@ -23,7 +23,7 @@ class HorsSignatureTest {
 
         byte[][] signature = keyPair.sign(MESSAGE);
 
-        assertTrue(HorsSignature.verify(MESSAGE, signature, keyPair.getPublicKey()));
+        assertTrue(HorsSignature.verify(MESSAGE, signature, keyPair.getPublicKey(), keyPair.getK()));
     }
 
     @Test
@@ -35,7 +35,7 @@ class HorsSignatureTest {
             byte[] message = ("message " + i).getBytes(StandardCharsets.UTF_8);
             byte[][] signature = keyPair.sign(message);
 
-            assertTrue(HorsSignature.verify(message, signature, publicKey));
+            assertTrue(HorsSignature.verify(message, signature, publicKey, keyPair.getK()));
         }
     }
 
@@ -54,7 +54,7 @@ class HorsSignatureTest {
 
         tampered[0] ^= 0x01;
 
-        assertFalse(HorsSignature.verify(tampered, signature, keyPair.getPublicKey()));
+        assertFalse(HorsSignature.verify(tampered, signature, keyPair.getPublicKey(), keyPair.getK()));
     }
 
     @Test
@@ -64,7 +64,7 @@ class HorsSignatureTest {
 
         signature[3][0] ^= 0x01;
 
-        assertFalse(HorsSignature.verify(MESSAGE, signature, keyPair.getPublicKey()));
+        assertFalse(HorsSignature.verify(MESSAGE, signature, keyPair.getPublicKey(), keyPair.getK()));
     }
 
     @Test
@@ -74,7 +74,7 @@ class HorsSignatureTest {
 
         byte[][] signature = keyPair1.sign(MESSAGE);
 
-        assertFalse(HorsSignature.verify(MESSAGE, signature, keyPair2.getPublicKey()));
+        assertFalse(HorsSignature.verify(MESSAGE, signature, keyPair2.getPublicKey(), keyPair1.getK()));
     }
 
     @Test
@@ -135,8 +135,8 @@ class HorsSignatureTest {
 
         byte[][] signature = keyPair.sign(MESSAGE);
 
-        assertArrayEquals(new int[] {k, t}, new int[] {signature.length, keyPair.getPublicKey().length});
-        assertTrue(HorsSignature.verify(MESSAGE, signature, keyPair.getPublicKey()));
+        assertArrayEquals(new int[] {k, k, t}, new int[] {signature.length, keyPair.getK(), keyPair.getPublicKey().length});
+        assertTrue(HorsSignature.verify(MESSAGE, signature, keyPair.getPublicKey(), k));
     }
 
     @ParameterizedTest
@@ -157,16 +157,27 @@ class HorsSignatureTest {
         byte[][] tooManyValues = new byte[65][32];
 
         assertThrows(IllegalArgumentException.class, () -> keyPair.sign(null));
-        assertThrows(IllegalArgumentException.class, () -> HorsSignature.verify(null, signature, publicKey));
-        assertThrows(IllegalArgumentException.class, () -> HorsSignature.verify(MESSAGE, null, publicKey));
-        assertThrows(IllegalArgumentException.class, () -> HorsSignature.verify(MESSAGE, nullValue, publicKey));
-        assertThrows(IllegalArgumentException.class, () -> HorsSignature.verify(MESSAGE, shortValue, publicKey));
-        assertThrows(IllegalArgumentException.class, () -> HorsSignature.verify(MESSAGE, new byte[0][], publicKey));
-        assertThrows(IllegalArgumentException.class, () -> HorsSignature.verify(MESSAGE, tooManyValues, publicKey));
-        assertThrows(IllegalArgumentException.class, () -> HorsSignature.verify(MESSAGE, signature, null));
-        assertThrows(IllegalArgumentException.class, () -> HorsSignature.verify(MESSAGE, signature, new byte[15][32]));
-        assertThrows(IllegalArgumentException.class, () -> HorsSignature.verify(MESSAGE, signature, nullValue));
+        assertThrows(IllegalArgumentException.class, () -> HorsSignature.verify(null, signature, publicKey, 4));
+        assertThrows(IllegalArgumentException.class, () -> HorsSignature.verify(MESSAGE, null, publicKey, 4));
+        assertThrows(IllegalArgumentException.class, () -> HorsSignature.verify(MESSAGE, nullValue, publicKey, 4));
+        assertThrows(IllegalArgumentException.class, () -> HorsSignature.verify(MESSAGE, shortValue, publicKey, 4));
+        assertThrows(IllegalArgumentException.class, () -> HorsSignature.verify(MESSAGE, new byte[0][], publicKey, 4));
+        assertThrows(IllegalArgumentException.class, () -> HorsSignature.verify(MESSAGE, tooManyValues, publicKey, 4));
+        assertThrows(IllegalArgumentException.class, () -> HorsSignature.verify(MESSAGE, signature, null, 4));
+        assertThrows(IllegalArgumentException.class, () -> HorsSignature.verify(MESSAGE, signature, new byte[15][32], 4));
+        assertThrows(IllegalArgumentException.class, () -> HorsSignature.verify(MESSAGE, signature, nullValue, 4));
+        assertThrows(IllegalArgumentException.class, () -> HorsSignature.verify(MESSAGE, signature, publicKey, 3));
+        assertThrows(IllegalArgumentException.class, () -> HorsSignature.verify(MESSAGE, signature, publicKey, 0));
+        assertThrows(IllegalArgumentException.class, () -> HorsSignature.verify(MESSAGE, tooManyValues, publicKey, 65));
         assertThrows(IllegalArgumentException.class, () -> HorsSignature.messageIndices(new byte[1], 2, 8));
+    }
+
+    @Test
+    void testTruncatedSignatureIsRejected() {
+        HorsSignature keyPair = new HorsSignature();
+        byte[][] truncated = Arrays.copyOf(keyPair.sign(MESSAGE), 1);
+
+        assertThrows(IllegalArgumentException.class, () -> HorsSignature.verify(MESSAGE, truncated, keyPair.getPublicKey(), keyPair.getK()));
     }
 
     @Test
@@ -181,7 +192,7 @@ class HorsSignatureTest {
 
         assertArrayEquals(expectedPublicKey, keyPair.getPublicKey());
         assertArrayEquals(expectedSignature, keyPair.sign(MESSAGE));
-        assertTrue(HorsSignature.verify(MESSAGE, expectedSignature, keyPair.getPublicKey()));
+        assertTrue(HorsSignature.verify(MESSAGE, expectedSignature, keyPair.getPublicKey(), keyPair.getK()));
     }
 
     private static byte[] sha256(byte[] data) throws NoSuchAlgorithmException {
