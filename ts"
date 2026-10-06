@@ -1,0 +1,179 @@
+[1mdiff --git a/src/main/java/com/thealgorithms/datastructures/trees/FenwickTree.java b/src/main/java/com/thealgorithms/datastructures/trees/FenwickTree.java[m
+[1mindex 5378a01..be8a92e 100644[m
+[1m--- a/src/main/java/com/thealgorithms/datastructures/trees/FenwickTree.java[m
+[1m+++ b/src/main/java/com/thealgorithms/datastructures/trees/FenwickTree.java[m
+[36m@@ -1,29 +1,33 @@[m
+ package com.thealgorithms.datastructures.trees;[m
+ [m
+[32m+[m[32m/** Fenwick Tree for point updates and prefix-sum queries in O(log n). */[m
+ public class FenwickTree {[m
+ [m
+[31m-    private int n;[m
+[31m-    private int[] fenTree;[m
+[32m+[m[32m    private final int n;[m
+[32m+[m[32m    private final int[] fenTree;[m
+ [m
+[31m-    /* Constructor which takes the size of the array as a parameter */[m
+[32m+[m[32m    /** Creates a Fenwick tree with n elements, all initialized to zero. */[m
+     public FenwickTree(int n) {[m
+[32m+[m[32m        if (n < 0) {[m
+[32m+[m[32m            throw new IllegalArgumentException("Size must be non-negative");[m
+[32m+[m[32m        }[m
+         this.n = n;[m
+         this.fenTree = new int[n + 1];[m
+     }[m
+ [m
+[31m-    /* A function which will add the element val at index i*/[m
+[32m+[m[32m    /** Adds val to the element at index i. */[m
+     public void update(int i, int val) {[m
+[31m-        // As index starts from 0, increment the index by 1[m
+[31m-        i += 1;[m
+[32m+[m[32m        checkIndex(i);[m
+[32m+[m[32m        i += 1; // Convert to the internal 1-based index[m
+         while (i <= n) {[m
+             fenTree[i] += val;[m
+             i += i & (-i);[m
+         }[m
+     }[m
+ [m
+[31m-    /* A function which will return the cumulative sum from index 1 to index i*/[m
+[32m+[m[32m    /** Returns the sum of elements from index 0 to i. */[m
+     public int query(int i) {[m
+[31m-        // As index starts from 0, increment the index by 1[m
+[32m+[m[32m        checkIndex(i);[m
+         i += 1;[m
+         int cumSum = 0;[m
+         while (i > 0) {[m
+[36m@@ -32,4 +36,11 @@[m [mpublic class FenwickTree {[m
+         }[m
+         return cumSum;[m
+     }[m
+[32m+[m
+[32m+[m[32m    // Check that the index is within the valid range.[m
+[32m+[m[32m    private void checkIndex(int i) {[m
+[32m+[m[32m        if (i < 0 || i >= n) {[m
+[32m+[m[32m            throw new IndexOutOfBoundsException("Index " + i + " out of bounds for size " + n);[m
+[32m+[m[32m        }[m
+[32m+[m[32m    }[m
+ }[m
+[1mdiff --git a/src/test/java/com/thealgorithms/datastructures/trees/FenwickTree.java b/src/test/java/com/thealgorithms/datastructures/trees/FenwickTree.java[m
+[1mnew file mode 100644[m
+[1mindex 0000000..47ef568[m
+[1m--- /dev/null[m
+[1m+++ b/src/test/java/com/thealgorithms/datastructures/trees/FenwickTree.java[m
+[36m@@ -0,0 +1,115 @@[m
+[32m+[m[32mpackage com.thealgorithms.datastructures.trees;[m
+[32m+[m
+[32m+[m[32mimport static org.junit.jupiter.api.Assertions.assertEquals;[m
+[32m+[m[32mimport static org.junit.jupiter.api.Assertions.assertThrows;[m
+[32m+[m
+[32m+[m[32mimport java.util.Random;[m
+[32m+[m[32mimport org.junit.jupiter.api.Test;[m
+[32m+[m
+[32m+[m[32mclass FenwickTreeTest {[m
+[32m+[m
+[32m+[m[32m    @Test[m
+[32m+[m[32m    void queryOnFreshTreeReturnsZero() {[m
+[32m+[m[32m        FenwickTree tree = new FenwickTree(5);[m
+[32m+[m[32m        for (int i = 0; i < 5; i++) {[m
+[32m+[m[32m            assertEquals(0, tree.query(i));[m
+[32m+[m[32m        }[m
+[32m+[m[32m    }[m
+[32m+[m
+[32m+[m[32m    @Test[m
+[32m+[m[32m    void singleElementTree() {[m
+[32m+[m[32m        FenwickTree tree = new FenwickTree(1);[m
+[32m+[m[32m        tree.update(0, 7);[m
+[32m+[m[32m        assertEquals(7, tree.query(0));[m
+[32m+[m[32m    }[m
+[32m+[m
+[32m+[m[32m    @Test[m
+[32m+[m[32m    void prefixSumsAfterUpdates() {[m
+[32m+[m[32m        FenwickTree tree = new FenwickTree(5);[m
+[32m+[m[32m        int[] values = {3, 2, -1, 6, 5};[m
+[32m+[m[32m        for (int i = 0; i < values.length; i++) {[m
+[32m+[m[32m            tree.update(i, values[i]);[m
+[32m+[m[32m        }[m
+[32m+[m[32m        assertEquals(3, tree.query(0));[m
+[32m+[m[32m        assertEquals(5, tree.query(1));[m
+[32m+[m[32m        assertEquals(4, tree.query(2));[m
+[32m+[m[32m        assertEquals(10, tree.query(3));[m
+[32m+[m[32m        assertEquals(15, tree.query(4));[m
+[32m+[m[32m    }[m
+[32m+[m
+[32m+[m[32m    @Test[m
+[32m+[m[32m    void repeatedUpdatesOnSameIndexAccumulate() {[m
+[32m+[m[32m        FenwickTree tree = new FenwickTree(4);[m
+[32m+[m[32m        tree.update(2, 5);[m
+[32m+[m[32m        tree.update(2, 3);[m
+[32m+[m[32m        tree.update(2, -2);[m
+[32m+[m[32m        assertEquals(0, tree.query(1));[m
+[32m+[m[32m        assertEquals(6, tree.query(2));[m
+[32m+[m[32m        assertEquals(6, tree.query(3));[m
+[32m+[m[32m    }[m
+[32m+[m
+[32m+[m[32m    @Test[m
+[32m+[m[32m    void negativeValues() {[m
+[32m+[m[32m        FenwickTree tree = new FenwickTree(3);[m
+[32m+[m[32m        tree.update(0, -4);[m
+[32m+[m[32m        tree.update(1, -6);[m
+[32m+[m[32m        tree.update(2, 10);[m
+[32m+[m[32m        assertEquals(-4, tree.query(0));[m
+[32m+[m[32m        assertEquals(-10, tree.query(1));[m
+[32m+[m[32m        assertEquals(0, tree.query(2));[m
+[32m+[m[32m    }[m
+[32m+[m
+[32m+[m[32m    @Test[m
+[32m+[m[32m    void nonPowerOfTwoSize() {[m
+[32m+[m[32m        int size = 13;[m
+[32m+[m[32m        FenwickTree tree = new FenwickTree(size);[m
+[32m+[m[32m        for (int i = 0; i < size; i++) {[m
+[32m+[m[32m            tree.update(i, 1);[m
+[32m+[m[32m        }[m
+[32m+[m[32m        for (int i = 0; i < size; i++) {[m
+[32m+[m[32m            assertEquals(i + 1, tree.query(i));[m
+[32m+[m[32m        }[m
+[32m+[m[32m    }[m
+[32m+[m
+[32m+[m[32m    @Test[m
+[32m+[m[32m    void matchesNaivePrefixSumOnRandomData() {[m
+[32m+[m[32m        Random random = new Random(42);[m
+[32m+[m[32m        int size = 100;[m
+[32m+[m[32m        FenwickTree tree = new FenwickTree(size);[m
+[32m+[m[32m        int[] naive = new int[size];[m
+[32m+[m
+[32m+[m[32m        for (int step = 0; step < 500; step++) {[m
+[32m+[m[32m            int index = random.nextInt(size);[m
+[32m+[m[32m            int delta = random.nextInt(21) - 10;[m
+[32m+[m[32m            tree.update(index, delta);[m
+[32m+[m[32m            naive[index] += delta;[m
+[32m+[m[32m        }[m
+[32m+[m
+[32m+[m[32m        int running = 0;[m
+[32m+[m[32m        for (int i = 0; i < size; i++) {[m
+[32m+[m[32m            running += naive[i];[m
+[32m+[m[32m            assertEquals(running, tree.query(i), "Mismatch at index " + i);[m
+[32m+[m[32m        }[m
+[32m+[m[32m    }[m
+[32m+[m
+[32m+[m[32m    @Test[m
+[32m+[m[32m    void zeroSizeTreeRejectsAnyIndex() {[m
+[32m+[m[32m        FenwickTree tree = new FenwickTree(0);[m
+[32m+[m[32m        assertThrows(IndexOutOfBoundsException.class, () -> tree.update(0, 1));[m
+[32m+[m[32m        assertThrows(IndexOutOfBoundsException.class, () -> tree.query(0));[m
+[32m+[m[32m    }[m
+[32m+[m
+[32m+[m[32m    @Test[m
+[32m+[m[32m    void negativeSizeThrows() {[m
+[32m+[m[32m        assertThrows(IllegalArgumentException.class, () -> new FenwickTree(-1));[m
+[32m+[m[32m    }[m
+[32m+[m
+[32m+[m[32m    @Test[m
+[32m+[m[32m    void outOfBoundsIndicesThrow() {[m
+[32m+[m[32m        FenwickTree tree = new FenwickTree(5);[m
+[32m+[m[32m        assertThrows(IndexOutOfBoundsException.class, () -> tree.update(-1, 1));[m
+[32m+[m[32m        assertThrows(IndexOutOfBoundsException.class, () -> tree.update(5, 1));[m
+[32m+[m[32m        assertThrows(IndexOutOfBoundsException.class, () -> tree.query(-1));[m
+[32m+[m[32m        assertThrows(IndexOutOfBoundsException.class, () -> tree.query(5));[m
+[32m+[m[32m    }[m
+[32m+[m[32m}[m

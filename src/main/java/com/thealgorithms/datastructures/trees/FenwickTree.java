@@ -1,6 +1,10 @@
 package com.thealgorithms.datastructures.trees;
 
-/** Fenwick Tree for point updates and prefix-sum queries in O(log n). */
+/**
+ * Fenwick Tree for point updates and prefix-sum queries in O(log n).
+ *
+ * @see <a href="https://cp-algorithms.com/data_structures/fenwick.html">Fenwick Tree</a>
+ */
 public class FenwickTree {
 
     private final int n;
