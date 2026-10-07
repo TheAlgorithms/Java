@@ -35,7 +35,7 @@ public class SegmentTree {
         return this.segTree[index];
     }
 
-    /* A function which will update the value at a index i. This will be called by the
+    /* A function which will update the value at an index i. This will be called by the
     update function internally*/
     private void updateTree(int start, int end, int index, int diff, int segIndex) {
         if (index < start || index > end) {
