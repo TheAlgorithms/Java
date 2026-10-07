@@ -75,6 +75,6 @@ public class ArrayRotationTest {
 
         ArrayRotation.rotateRight(values, -2);
 
-        assertArrayEquals(new int[] {4, 3, 5, 1, 2}, values);
+        assertArrayEquals(new int[] {3, 4, 5, 1, 2}, values);
     }
 }
