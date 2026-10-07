@@ -31,7 +31,7 @@ public final class ArrayRotation {
             return;
         }
 
-        k = k % n;
+        k = ((k % n) + n) % n;
 
         reverse(nums, 0, n - 1);
         reverse(nums, 0, k - 1);
