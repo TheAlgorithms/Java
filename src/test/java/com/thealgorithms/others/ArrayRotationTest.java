@@ -77,4 +77,4 @@ public class ArrayRotationTest {
 
         assertArrayEquals(new int[] {4, 3, 5, 1, 2}, values);
     }
- }
+}
