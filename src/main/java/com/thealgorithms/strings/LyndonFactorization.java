@@ -2,7 +2,6 @@ package com.thealgorithms.strings;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 /**
  * Factorizes a string into its Lyndon words using Duval's algorithm.
@@ -25,10 +24,12 @@ public final class LyndonFactorization {
      *
      * @param text input string to factorize
      * @return Lyndon factors in non-increasing lexicographic order
-     * @throws NullPointerException if {@code text} is null
+     * @throws IllegalArgumentException if {@code text} is null
      */
     public static List<String> factorize(String text) {
-        Objects.requireNonNull(text, "text must not be null");
+        if (text == null) {
+            throw new IllegalArgumentException("text must not be null");
+        }
 
         List<String> factors = new ArrayList<>();
         int n = text.length();
