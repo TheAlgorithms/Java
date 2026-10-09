@@ -12,7 +12,13 @@ import com.thealgorithms.devutils.searches.SearchAlgorithm;
  * <p>
  * This is a modified binary search. When the array contains no duplicates, the
  * time complexity is {@code O(log n)}. With duplicates, the algorithm still
- * works but may degrade to {@code O(n)} in the worst case.
+ * works but may degrade to {@code O(n)} in the worst case. The algorithm uses
+ * {@code O(1)} additional space and returns {@code -1} for null or empty input,
+ * or when the key is not present.
+ *
+ * @param array sorted array rotated at an unknown pivot
+ * @param key value to search for
+ * @return an index containing {@code key}, or {@code -1} if it is not present
  *
  * @see <a href="https://en.wikipedia.org/wiki/Search_in_rotated_sorted_array">Search in rotated sorted array</a>
  * @see SearchAlgorithm
@@ -21,6 +27,10 @@ public final class RotatedBinarySearch implements SearchAlgorithm {
 
     @Override
     public <T extends Comparable<T>> int find(T[] array, T key) {
+        if (array == null || array.length == 0 || key == null) {
+            return -1;
+        }
+
         int left = 0;
         int right = array.length - 1;
 
