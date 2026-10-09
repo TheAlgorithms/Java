@@ -30,6 +30,6 @@ class LyndonFactorizationTest {
 
     @Test
     void rejectsNullInput() {
-        assertThrows(NullPointerException.class, () -> LyndonFactorization.factorize(null));
+        assertThrows(IllegalArgumentException.class, () -> LyndonFactorization.factorize(null));
     }
 }
