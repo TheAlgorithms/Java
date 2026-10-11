@@ -37,14 +37,13 @@ public final class BoothsAlgorithm {
             return 0;
         }
 
-        String doubled = input + input;
         int first = 0;
         int second = 1;
         int offset = 0;
 
         while (first < length && second < length && offset < length) {
-            char firstChar = doubled.charAt(first + offset);
-            char secondChar = doubled.charAt(second + offset);
+            char firstChar = input.charAt((first + offset) % length);
+            char secondChar = input.charAt((second + offset) % length);
 
             if (firstChar == secondChar) {
                 offset++;
