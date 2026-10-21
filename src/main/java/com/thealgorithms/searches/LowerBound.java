@@ -30,6 +30,9 @@ class LowerBound implements SearchAlgorithm {
      */
     @Override
     public <T extends Comparable<T>> int find(T[] array, T key) {
+        if (array == null || array.length == 0 || key == null) {
+            return 0;
+        }
         return search(array, key, 0, array.length - 1);
     }
 
