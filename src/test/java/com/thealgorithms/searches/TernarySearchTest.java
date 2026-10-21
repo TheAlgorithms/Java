@@ -1,6 +1,7 @@
 package com.thealgorithms.searches;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.Test;
 
@@ -77,5 +78,66 @@ class TernarySearchTest {
         int index = search.find(arr, 5);
 
         assertEquals(-1, index, "Should return -1 for an empty array");
+    }
+
+    @Test
+    void testNullArrayReturnsMinusOne() {
+        TernarySearch search = new TernarySearch();
+        assertEquals(-1, search.find(null, 5));
+    }
+
+    @Test
+    void testNullKeyReturnsMinusOne() {
+        Integer[] arr = {1, 2, 3, 4, 5};
+        TernarySearch search = new TernarySearch();
+        assertEquals(-1, search.find(arr, null));
+    }
+
+    @Test
+    void testSingleElementPresent() {
+        Integer[] arr = {42};
+        TernarySearch search = new TernarySearch();
+        assertEquals(0, search.find(arr, 42));
+    }
+
+    @Test
+    void testSingleElementAbsent() {
+        Integer[] arr = {42};
+        TernarySearch search = new TernarySearch();
+        assertEquals(-1, search.find(arr, 24));
+    }
+
+    @Test
+    void testTwoElements() {
+        Integer[] arr = {10, 20};
+        TernarySearch search = new TernarySearch();
+        assertEquals(0, search.find(arr, 10));
+        assertEquals(1, search.find(arr, 20));
+        assertEquals(-1, search.find(arr, 15));
+    }
+
+    @Test
+    void testMiddlePartitionSearch() {
+        Integer[] arr = {1, 3, 5, 7, 9, 11, 13, 15, 17, 19};
+        TernarySearch search = new TernarySearch();
+        assertEquals(3, search.find(arr, 7));
+        assertEquals(4, search.find(arr, 9));
+        assertEquals(5, search.find(arr, 11));
+    }
+
+    @Test
+    void testDuplicateElements() {
+        Integer[] arr = {1, 2, 2, 2, 3};
+        TernarySearch search = new TernarySearch();
+        int index = search.find(arr, 2);
+        assertTrue(index >= 1 && index <= 3, "Index should be one of the occurrences of 2");
+    }
+
+    @Test
+    void testGenericStrings() {
+        String[] words = {"apple", "banana", "cherry", "date", "elderberry"};
+        TernarySearch search = new TernarySearch();
+        assertEquals(2, search.find(words, "cherry"));
+        assertEquals(-1, search.find(words, "fig"));
     }
 }
