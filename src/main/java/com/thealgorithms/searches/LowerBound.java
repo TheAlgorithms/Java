@@ -51,10 +51,8 @@ class LowerBound implements SearchAlgorithm {
         int median = (left + right) >>> 1;
         int comp = key.compareTo(array[median]);
 
-        if (comp == 0) {
-            return median;
-        } else if (comp < 0) {
-            // median position can be a possible solution
+        if (comp <= 0) {
+            // key is less than or equal to array[median], median position can be a possible solution
             return search(array, key, left, median);
         } else {
             // key we are looking is greater, so we must look on the right of median position
