@@ -96,4 +96,10 @@ class UpperBoundTest {
         index = upperBound.find(singleElementArray, 15);
         assertEquals(0, index, "Upper bound for 15 in a single element array should be 0.");
     }
+
+    @Test
+    void testUpperBoundNullArrayAndKey() {
+        assertEquals(0, upperBound.find(null, 5), "Upper bound for a null array should be 0.");
+        assertEquals(0, upperBound.find(new Integer[] {1, 2, 3}, null), "Upper bound for a null key should be 0.");
+    }
 }
