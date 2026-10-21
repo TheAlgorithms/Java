@@ -58,6 +58,15 @@ class UpperBoundTest {
     }
 
     @Test
+    void testUpperBoundDuplicates() {
+        Integer[] arrayWithDuplicates = {1, 2, 2, 2, 3};
+        assertEquals(4, upperBound.find(arrayWithDuplicates, 2), "Upper bound for 2 in {1, 2, 2, 2, 3} should be at index 4");
+
+        Integer[] allSame = {2, 2, 2, 2, 2};
+        assertEquals(4, upperBound.find(allSame, 2), "Upper bound for 2 in all-same array should be at last index 4");
+    }
+
+    @Test
     void testUpperBoundLowerThanMin() {
         int key = 0; // Test with a key lower than the minimum element
         int index = upperBound.find(sortedArray, key);
