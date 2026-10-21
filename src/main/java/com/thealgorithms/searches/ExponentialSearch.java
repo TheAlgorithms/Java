@@ -19,7 +19,7 @@ import java.util.Arrays;
  * Note: This algorithm requires that the input array be sorted.
  * </p>
  */
-class ExponentialSearch implements SearchAlgorithm {
+public final class ExponentialSearch implements SearchAlgorithm {
 
     /**
      * Finds the index of the specified key in a sorted array using exponential search.
@@ -31,13 +31,13 @@ class ExponentialSearch implements SearchAlgorithm {
      */
     @Override
     public <T extends Comparable<T>> int find(T[] array, T key) {
-        if (array.length == 0) {
+        if (array == null || array.length == 0 || key == null) {
             return -1;
         }
-        if (array[0].equals(key)) {
+        if (key.compareTo(array[0]) == 0) {
             return 0;
         }
-        if (array[array.length - 1].equals(key)) {
+        if (key.compareTo(array[array.length - 1]) == 0) {
             return array.length - 1;
         }
 
