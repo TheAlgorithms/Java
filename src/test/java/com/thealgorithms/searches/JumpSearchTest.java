@@ -139,4 +139,40 @@ class JumpSearchTest {
             }
         }
     }
+
+    @Test
+    void testJumpSearchNullArray() {
+        JumpSearch jumpSearch = new JumpSearch();
+        assertEquals(-1, jumpSearch.find(null, 5), "Searching in a null array should return -1.");
+    }
+
+    @Test
+    void testJumpSearchNullKey() {
+        JumpSearch jumpSearch = new JumpSearch();
+        Integer[] array = {1, 2, 3};
+        assertEquals(-1, jumpSearch.find(array, null), "Searching for a null key should return -1.");
+    }
+
+    @Test
+    void testJumpSearchSingleElementAbsent() {
+        JumpSearch jumpSearch = new JumpSearch();
+        Integer[] array = {10};
+        assertEquals(-1, jumpSearch.find(array, 5), "Searching for an absent key in single element array should return -1.");
+    }
+
+    @Test
+    void testJumpSearchStringArray() {
+        JumpSearch jumpSearch = new JumpSearch();
+        String[] array = {"apple", "banana", "cherry", "date", "elderberry"};
+        assertEquals(2, jumpSearch.find(array, "cherry"), "The index of 'cherry' should be 2.");
+        assertEquals(-1, jumpSearch.find(array, "fig"), "Key 'fig' should not be found.");
+    }
+
+    @Test
+    void testJumpSearchDuplicates() {
+        JumpSearch jumpSearch = new JumpSearch();
+        Integer[] array = {1, 2, 2, 2, 3, 4, 5};
+        int index = jumpSearch.find(array, 2);
+        assertEquals(2, array[index], "The element at the returned index should equal the target key.");
+    }
 }
