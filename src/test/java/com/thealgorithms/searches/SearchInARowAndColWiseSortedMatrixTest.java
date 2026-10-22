@@ -77,34 +77,21 @@ class SearchInARowAndColWiseSortedMatrixTest {
 
     @Test
     void testSearchInRectangularMatrixMoreColsThanRowsFound() {
-        int[][] matrix = {
-            {1, 3, 5, 7, 9},
-            {2, 4, 6, 8, 10}
-        };
+        int[][] matrix = {{1, 3, 5, 7, 9}, {2, 4, 6, 8, 10}};
         int[] expected = {0, 4}; // Value 9 is at row 0, col 4
         assertArrayEquals(expected, searcher.search(matrix, 9), "Value 9 should be found at row 0, col 4");
     }
 
     @Test
     void testSearchInRectangularMatrixMoreRowsThanColsFound() {
-        int[][] matrix = {
-            {1, 5},
-            {2, 6},
-            {3, 7},
-            {4, 8}
-        };
+        int[][] matrix = {{1, 5}, {2, 6}, {3, 7}, {4, 8}};
         int[] expected = {2, 0}; // Value 3 is at row 2, col 0
         assertArrayEquals(expected, searcher.search(matrix, 3), "Value 3 should be found at row 2, col 0");
     }
 
     @Test
     void testSearchInRectangularMatrixNotFound() {
-        int[][] matrix = {
-            {1, 3, 5},
-            {2, 4, 6},
-            {7, 8, 9},
-            {10, 11, 12}
-        };
+        int[][] matrix = {{1, 3, 5}, {2, 4, 6}, {7, 8, 9}, {10, 11, 12}};
         int[] expected = {-1, -1};
         assertArrayEquals(expected, searcher.search(matrix, 15), "Value 15 should not be found");
     }
