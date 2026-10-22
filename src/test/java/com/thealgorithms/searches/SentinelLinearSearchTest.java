@@ -222,4 +222,25 @@ class SentinelLinearSearchTest {
         Integer key = 3; // Key equals last element
         assertEquals(2, sentinelLinearSearch.find(array, key), "Should find the first occurrence at index 2, not the last.");
     }
+
+    @Test
+    void testSentinelLinearSearchWithNullElementsPresent() {
+        SentinelLinearSearch sentinelLinearSearch = new SentinelLinearSearch();
+        Integer[] array = {1, null, 3, 4};
+        assertEquals(2, sentinelLinearSearch.find(array, 3), "Should correctly find element located after a null element.");
+    }
+
+    @Test
+    void testSentinelLinearSearchWithNullElementsAbsent() {
+        SentinelLinearSearch sentinelLinearSearch = new SentinelLinearSearch();
+        Integer[] array = {1, null, 3, 4};
+        assertEquals(-1, sentinelLinearSearch.find(array, 5), "Should return -1 when key is absent even if null elements exist.");
+    }
+
+    @Test
+    void testSentinelLinearSearchMultipleNullElements() {
+        SentinelLinearSearch sentinelLinearSearch = new SentinelLinearSearch();
+        String[] array = {null, null, "target", null};
+        assertEquals(2, sentinelLinearSearch.find(array, "target"), "Should correctly find target after multiple null elements.");
+    }
 }
