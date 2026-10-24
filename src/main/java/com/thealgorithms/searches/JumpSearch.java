@@ -56,7 +56,7 @@ import com.thealgorithms.devutils.searches.SearchAlgorithm;
  * @see BinarySearch
  * @see LinearSearch
  */
-public class JumpSearch implements SearchAlgorithm {
+public final class JumpSearch implements SearchAlgorithm {
 
     /**
      * Jump Search algorithm implementation.
@@ -67,6 +67,10 @@ public class JumpSearch implements SearchAlgorithm {
      */
     @Override
     public <T extends Comparable<T>> int find(T[] array, T key) {
+        if (array == null || array.length == 0 || key == null) {
+            return -1;
+        }
+
         int length = array.length;
         int blockSize = (int) Math.sqrt(length);
 
@@ -78,7 +82,7 @@ public class JumpSearch implements SearchAlgorithm {
 
         // Perform linear search within the identified block
         for (int i = limit - blockSize; i <= limit && i < length; i++) {
-            if (array[i].equals(key)) {
+            if (array[i] != null && key.compareTo(array[i]) == 0) {
                 return i;
             }
         }
