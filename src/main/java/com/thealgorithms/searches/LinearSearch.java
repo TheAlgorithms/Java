@@ -54,7 +54,8 @@ public class LinearSearch implements SearchAlgorithm {
      *
      * @param array List to be searched (can be unsorted)
      * @param value Key being searched for
-     * @return Location of the key, -1 if array is null or empty, or key not found
+     * @return the index of the matching element, or -1 if the array is null or empty,
+     *         the value is null, or no matching element is found; null array elements are skipped
      */
     @Override
     public <T extends Comparable<T>> int find(T[] array, T value) {
