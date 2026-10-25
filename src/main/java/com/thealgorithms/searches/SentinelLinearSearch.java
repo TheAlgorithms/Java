@@ -33,7 +33,7 @@ import com.thealgorithms.devutils.searches.SearchAlgorithm;
  * @see LinearSearch
  * @see SearchAlgorithm
  */
-public class SentinelLinearSearch implements SearchAlgorithm {
+public final class SentinelLinearSearch implements SearchAlgorithm {
     /**
      * Performs sentinel linear search on the given array.
      *
@@ -65,8 +65,8 @@ public class SentinelLinearSearch implements SearchAlgorithm {
 
         int i = 0;
         // Search without bound checking since sentinel guarantees we'll find the key
-        // Null check for array element to prevent NPE when array contains null elements
-        while (array[i] != null && array[i].compareTo(key) != 0) {
+        // Null check for array element to skip nulls and prevent NPE when array contains null elements
+        while (array[i] == null || array[i].compareTo(key) != 0) {
             i++;
         }
 
