@@ -76,6 +76,11 @@ public final class Bridges {
             }
         }
 
+        bridges.sort((first, second) -> {
+            int comparison = Integer.compare(first[0], second[0]);
+            return comparison != 0 ? comparison : Integer.compare(first[1], second[1]);
+        });
+
         return bridges;
     }
 
