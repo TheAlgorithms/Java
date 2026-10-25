@@ -59,8 +59,8 @@ public final class Bridges {
                 throw new IllegalArgumentException("Edge contains an invalid vertex.");
             }
 
-            adjacencyList.get(u).add(new int[] {u, edgeId});
-            adjacencyList.get(v).add(new int[] {v, edgeId});
+            adjacencyList.get(u).add(new int[] {v, edgeId});
+            adjacencyList.get(v).add(new int[] {u, edgeId});
         }
 
         int[] discoveryTime = new int[vertexCount];
@@ -79,7 +79,14 @@ public final class Bridges {
         return bridges;
     }
 
-    private static void dfs(int vertex, int parentEdgeId, List<List<int[]>> adjacencyList, int[] discoveryTime, int[] low, int[] timer, List<int[]> bridges) {
+    private static void dfs(
+            int vertex,
+            int parentEdgeId,
+            List<List<int[]>> adjacencyList,
+            int[] discoveryTime,
+            int[] low,
+            int[] timer,
+            List<int[]> bridges) {
         discoveryTime[vertex] = timer[0];
         low[vertex] = timer[0]++;
 
@@ -94,12 +101,22 @@ public final class Bridges {
             if (discoveryTime[neighbor] != -1) {
                 low[vertex] = Math.min(low[vertex], discoveryTime[neighbor]);
             } else {
-                dfs(neighbor, edgeId, adjacencyList, discoveryTime, low, timer, bridges);
+                dfs(
+                        neighbor,
+                        edgeId,
+                        adjacencyList,
+                        discoveryTime,
+                        low,
+                        timer,
+                        bridges);
 
                 low[vertex] = Math.min(low[vertex], low[neighbor]);
 
                 if (low[neighbor] > discoveryTime[vertex]) {
-                    bridges.add(new int[] {Math.min(vertex, neighbor), Math.max(vertex, neighbor)});
+                    bridges.add(
+                            new int[] {
+                                Math.min(vertex, neighbor), Math.max(vertex, neighbor)
+                            });
                 }
             }
         }
