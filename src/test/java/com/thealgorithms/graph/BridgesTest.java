@@ -4,8 +4,6 @@ import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import org.junit.jupiter.api.Test;
 
@@ -70,33 +68,25 @@ class BridgesTest {
 
     @Test
     void testNegativeVertexCountThrowsException() {
-        assertThrows(
-                IllegalArgumentException.class,
-                () -> Bridges.findBridges(-1, new int[0][]));
+        assertThrows(IllegalArgumentException.class, () -> Bridges.findBridges(-1, new int[0][]));
     }
 
     @Test
     void testNullEdgesThrowsException() {
-        assertThrows(
-                IllegalArgumentException.class,
-                () -> Bridges.findBridges(2, null));
+        assertThrows(IllegalArgumentException.class, () -> Bridges.findBridges(2, null));
     }
 
     @Test
     void testMalformedEdgeThrowsException() {
         int[][] edges = {{0}};
 
-        assertThrows(
-                IllegalArgumentException.class,
-                () -> Bridges.findBridges(2, edges));
+        assertThrows(IllegalArgumentException.class, () -> Bridges.findBridges(2, edges));
     }
 
     @Test
     void testInvalidVertexThrowsException() {
         int[][] edges = {{0, 2}};
 
-        assertThrows(
-                IllegalArgumentException.class,
-                () -> Bridges.findBridges(2, edges));
+        assertThrows(IllegalArgumentException.class, () -> Bridges.findBridges(2, edges));
     }
 }
