@@ -1,4 +1,4 @@
-```java
+
 package com.thealgorithms.graph;
 
 import java.util.ArrayList;
@@ -134,4 +134,4 @@ public final class Bridges {
         }
     }
 }
-```
+
