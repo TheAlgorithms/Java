@@ -79,14 +79,7 @@ public final class Bridges {
         return bridges;
     }
 
-    private static void dfs(
-            int vertex,
-            int parentEdgeId,
-            List<List<int[]>> adjacencyList,
-            int[] discoveryTime,
-            int[] low,
-            int[] timer,
-            List<int[]> bridges) {
+    private static void dfs(int vertex, int parentEdgeId, List<List<int[]>> adjacencyList, int[] discoveryTime, int[] low, int[] timer, List<int[]> bridges) {
         discoveryTime[vertex] = timer[0];
         low[vertex] = timer[0]++;
 
@@ -101,22 +94,12 @@ public final class Bridges {
             if (discoveryTime[neighbor] != -1) {
                 low[vertex] = Math.min(low[vertex], discoveryTime[neighbor]);
             } else {
-                dfs(
-                        neighbor,
-                        edgeId,
-                        adjacencyList,
-                        discoveryTime,
-                        low,
-                        timer,
-                        bridges);
+                dfs(neighbor, edgeId, adjacencyList, discoveryTime, low, timer, bridges);
 
                 low[vertex] = Math.min(low[vertex], low[neighbor]);
 
                 if (low[neighbor] > discoveryTime[vertex]) {
-                    bridges.add(
-                            new int[] {
-                                Math.min(vertex, neighbor), Math.max(vertex, neighbor)
-                            });
+                    bridges.add(new int[] {Math.min(vertex, neighbor), Math.max(vertex, neighbor)});
                 }
             }
         }
