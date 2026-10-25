@@ -1,6 +1,7 @@
 package com.thealgorithms.searches;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.stream.IntStream;
 import org.junit.jupiter.api.Test;
@@ -59,6 +60,17 @@ class ExponentialSearchTest {
     }
 
     /**
+     * Test for exponential search with a single element not present.
+     */
+    @Test
+    void testExponentialSearchSingleElementNotFound() {
+        ExponentialSearch exponentialSearch = new ExponentialSearch();
+        Integer[] array = {1};
+        int key = 2; // Key not present
+        assertEquals(-1, exponentialSearch.find(array, key), "The element should not be found in the array.");
+    }
+
+    /**
      * Test for exponential search with an empty array.
      */
     @Test
@@ -68,6 +80,25 @@ class ExponentialSearchTest {
         int key = 1; // Key not present
         int expectedIndex = -1; // Key not found
         assertEquals(expectedIndex, exponentialSearch.find(array, key), "The element should not be found in an empty array.");
+    }
+
+    /**
+     * Test for exponential search with a null array.
+     */
+    @Test
+    void testExponentialSearchNullArray() {
+        ExponentialSearch exponentialSearch = new ExponentialSearch();
+        assertEquals(-1, exponentialSearch.find(null, 5), "Should return -1 for null array.");
+    }
+
+    /**
+     * Test for exponential search with a null key.
+     */
+    @Test
+    void testExponentialSearchNullKey() {
+        ExponentialSearch exponentialSearch = new ExponentialSearch();
+        Integer[] array = {1, 2, 3, 4, 5};
+        assertEquals(-1, exponentialSearch.find(array, null), "Should return -1 for null key.");
     }
 
     /**
@@ -122,5 +153,27 @@ class ExponentialSearchTest {
         assertEquals(-1, exponentialSearch.find(array, 4), "A key inside the range but absent should give -1.");
         assertEquals(-1, exponentialSearch.find(array, 0), "A key below the minimum should give -1.");
         assertEquals(-1, exponentialSearch.find(array, 12), "A key above the maximum should give -1.");
+    }
+
+    /**
+     * Test for duplicate elements in the array.
+     */
+    @Test
+    void testExponentialSearchDuplicates() {
+        ExponentialSearch exponentialSearch = new ExponentialSearch();
+        Integer[] array = {1, 2, 2, 2, 3};
+        int index = exponentialSearch.find(array, 2);
+        assertTrue(index >= 1 && index <= 3, "Index should be one of the occurrences of 2.");
+    }
+
+    /**
+     * Test for generic Comparable types such as Strings.
+     */
+    @Test
+    void testExponentialSearchStrings() {
+        ExponentialSearch exponentialSearch = new ExponentialSearch();
+        String[] words = {"apple", "banana", "cherry", "date", "elderberry"};
+        assertEquals(2, exponentialSearch.find(words, "cherry"), "Should find 'cherry' at index 2.");
+        assertEquals(-1, exponentialSearch.find(words, "fig"), "Should return -1 for absent word.");
     }
 }

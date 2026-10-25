@@ -94,6 +94,15 @@ class FibonacciSearchTest {
         assertThrows(IllegalArgumentException.class, () -> fibonacciSearch.find(array, key), "An empty array should throw an IllegalArgumentException.");
     }
 
+    /**
+     * Test for Fibonacci search with a null array.
+     */
+    @Test
+    void testFibonacciSearchNullArray() {
+        FibonacciSearch fibonacciSearch = new FibonacciSearch();
+        assertThrows(IllegalArgumentException.class, () -> fibonacciSearch.find(null, 5), "A null array should throw an IllegalArgumentException.");
+    }
+
     @Test
     void testFibonacciSearchUnsortedArray() {
         FibonacciSearch fibonacciSearch = new FibonacciSearch();
