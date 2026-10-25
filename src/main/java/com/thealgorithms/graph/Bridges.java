@@ -1,4 +1,3 @@
-
 package com.thealgorithms.graph;
 
 import java.util.ArrayList;
@@ -15,6 +14,8 @@ import java.util.List;
  *
  * <p>Time complexity: O(V + E), where V is the number of vertices
  * and E is the number of edges.
+ *
+ * <p>Reference: https://en.wikipedia.org/wiki/Bridge_(graph_theory)
  */
 public final class Bridges {
 
@@ -41,30 +42,25 @@ public final class Bridges {
             throw new IllegalArgumentException("Edges cannot be null.");
         }
 
-        List<List<Integer>> adjacencyList = new ArrayList<>(vertexCount);
-
+        List<List<int[]>> adjacencyList = new ArrayList<>(vertexCount);
         for (int i = 0; i < vertexCount; i++) {
             adjacencyList.add(new ArrayList<>());
         }
 
-        for (int[] edge : edges) {
+        for (int edgeId = 0; edgeId < edges.length; edgeId++) {
+            int[] edge = edges[edgeId];
             if (edge == null || edge.length != 2) {
-                throw new IllegalArgumentException(
-                    "Each edge must contain exactly two vertices."
-                );
+                throw new IllegalArgumentException("Each edge must contain exactly two vertices.");
             }
 
             int u = edge[0];
             int v = edge[1];
-
             if (u < 0 || u >= vertexCount || v < 0 || v >= vertexCount) {
-                throw new IllegalArgumentException(
-                    "Edge contains an invalid vertex."
-                );
+                throw new IllegalArgumentException("Edge contains an invalid vertex.");
             }
 
-            adjacencyList.get(u).add(v);
-            adjacencyList.get(v).add(u);
+            adjacencyList.get(u).add(new int[] {u, edgeId});
+            adjacencyList.get(v).add(new int[] {v, edgeId});
         }
 
         int[] discoveryTime = new int[vertexCount];
@@ -76,62 +72,36 @@ public final class Bridges {
 
         for (int vertex = 0; vertex < vertexCount; vertex++) {
             if (discoveryTime[vertex] == -1) {
-                dfs(
-                    vertex,
-                    -1,
-                    adjacencyList,
-                    discoveryTime,
-                    low,
-                    timer,
-                    bridges
-                );
+                dfs(vertex, -1, adjacencyList, discoveryTime, low, timer, bridges);
             }
         }
 
         return bridges;
     }
 
-    private static void dfs(
-        int vertex,
-        int parent,
-        List<List<Integer>> adjacencyList,
-        int[] discoveryTime,
-        int[] low,
-        int[] timer,
-        List<int[]> bridges
-    ) {
+    private static void dfs(int vertex, int parentEdgeId, List<List<int[]>> adjacencyList, int[] discoveryTime, int[] low, int[] timer, List<int[]> bridges) {
         discoveryTime[vertex] = timer[0];
-        low[vertex] = timer[0];
-        timer[0]++;
+        low[vertex] = timer[0]++;
 
-        for (int neighbor : adjacencyList.get(vertex)) {
-            if (neighbor == parent) {
+        for (int[] adjacent : adjacencyList.get(vertex)) {
+            int neighbor = adjacent[0];
+            int edgeId = adjacent[1];
+
+            if (edgeId == parentEdgeId) {
                 continue;
             }
 
             if (discoveryTime[neighbor] != -1) {
                 low[vertex] = Math.min(low[vertex], discoveryTime[neighbor]);
             } else {
-                dfs(
-                    neighbor,
-                    vertex,
-                    adjacencyList,
-                    discoveryTime,
-                    low,
-                    timer,
-                    bridges
-                );
+                dfs(neighbor, edgeId, adjacencyList, discoveryTime, low, timer, bridges);
 
                 low[vertex] = Math.min(low[vertex], low[neighbor]);
 
                 if (low[neighbor] > discoveryTime[vertex]) {
-                    bridges.add(new int[] {
-                        Math.min(vertex, neighbor),
-                        Math.max(vertex, neighbor)
-                    });
+                    bridges.add(new int[] {Math.min(vertex, neighbor), Math.max(vertex, neighbor)});
                 }
             }
         }
     }
 }
-
