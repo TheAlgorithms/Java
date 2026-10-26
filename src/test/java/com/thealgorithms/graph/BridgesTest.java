@@ -95,88 +95,61 @@ class BridgesTest {
 
     @Test
     void testNegativeVertexCountThrowsException() {
-        assertThrows(
-            IllegalArgumentException.class,
-            () -> Bridges.findBridges(-1, new int[0][])
-        );
+        assertThrows(IllegalArgumentException.class, () -> Bridges.findBridges(-1, new int[0][]));
     }
 
     @Test
     void testNullEdgesThrowsException() {
-        assertThrows(
-            IllegalArgumentException.class,
-            () -> Bridges.findBridges(2, null)
-        );
+        assertThrows(IllegalArgumentException.class, () -> Bridges.findBridges(2, null));
     }
 
     @Test
     void testMalformedEdgeThrowsException() {
         int[][] edges = {{0}};
 
-        assertThrows(
-            IllegalArgumentException.class,
-            () -> Bridges.findBridges(2, edges)
-        );
+        assertThrows(IllegalArgumentException.class, () -> Bridges.findBridges(2, edges));
     }
 
     @Test
     void testEdgeWithTooManyVerticesThrowsException() {
         int[][] edges = {{0, 1, 2}};
 
-        assertThrows(
-            IllegalArgumentException.class,
-            () -> Bridges.findBridges(3, edges)
-        );
+        assertThrows(IllegalArgumentException.class, () -> Bridges.findBridges(3, edges));
     }
 
     @Test
     void testNullEdgeThrowsException() {
         int[][] edges = {null};
 
-        assertThrows(
-            IllegalArgumentException.class,
-            () -> Bridges.findBridges(2, edges)
-        );
+        assertThrows(IllegalArgumentException.class, () -> Bridges.findBridges(2, edges));
     }
 
     @Test
     void testNegativeFirstVertexThrowsException() {
         int[][] edges = {{-1, 1}};
 
-        assertThrows(
-            IllegalArgumentException.class,
-            () -> Bridges.findBridges(2, edges)
-        );
+        assertThrows(IllegalArgumentException.class, () -> Bridges.findBridges(2, edges));
     }
 
     @Test
     void testNegativeSecondVertexThrowsException() {
         int[][] edges = {{0, -1}};
 
-        assertThrows(
-            IllegalArgumentException.class,
-            () -> Bridges.findBridges(2, edges)
-        );
+        assertThrows(IllegalArgumentException.class, () -> Bridges.findBridges(2, edges));
     }
 
     @Test
     void testFirstVertexOutOfRangeThrowsException() {
         int[][] edges = {{2, 1}};
 
-        assertThrows(
-            IllegalArgumentException.class,
-            () -> Bridges.findBridges(2, edges)
-        );
+        assertThrows(IllegalArgumentException.class, () -> Bridges.findBridges(2, edges));
     }
 
     @Test
     void testSecondVertexOutOfRangeThrowsException() {
         int[][] edges = {{0, 2}};
 
-        assertThrows(
-            IllegalArgumentException.class,
-            () -> Bridges.findBridges(2, edges)
-        );
+        assertThrows(IllegalArgumentException.class, () -> Bridges.findBridges(2, edges));
     }
 
     @Test
