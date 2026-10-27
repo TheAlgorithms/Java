@@ -9,8 +9,19 @@ import org.junit.jupiter.api.Test;
  * @see TreeSort
  */
 
-public class TreeSortTest {
+public class TreeSortTest extends SortingAlgorithmTest {
     private TreeSort treeSort = new TreeSort();
+
+    @Override
+    SortAlgorithm getSortAlgorithm() {
+        return new TreeSort();
+    }
+
+    @Test
+    public void treeSortKeepsDuplicates() {
+        Integer[] array = {-1, -1, 0};
+        assertArrayEquals(new Integer[] {-1, -1, 0}, treeSort.sort(array));
+    }
 
     @Test
     public void treeSortEmptyArray() {
