@@ -62,6 +62,13 @@ class HorspoolSearchTest {
     }
 
     @Test
+    void testFindFirstInsensitiveWhenCaseDiffersFromPattern() {
+        assertEquals(1, HorspoolSearch.findFirstInsensitive("AB", "xab"));
+        assertEquals(1, HorspoolSearch.findFirstInsensitive("ab", "xAB"));
+        assertEquals(2, HorspoolSearch.findFirstInsensitive("ba", "bbBA"));
+    }
+
+    @Test
     void testGetLastComparisons() {
         HorspoolSearch.findFirst("World", "Hello World");
         int lastSearchNumber = HorspoolSearch.getLastComparisons();
