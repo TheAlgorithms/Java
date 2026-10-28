@@ -41,7 +41,7 @@ final class PasswordGen {
             letters.add(c);
         }
 
-        // Inbuilt method to randomly shuffle a elements of a list
+        // Inbuilt method to randomly shuffle the elements of a list
         Collections.shuffle(letters);
         StringBuilder password = new StringBuilder();
 

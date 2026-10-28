@@ -54,7 +54,7 @@ public final class PollardRho {
     /**
      * This method returns a non-trivial factor of given integer number
      *
-     * @param number Integer is a integer value whose non-trivial factor is to be found
+     * @param number Integer is an integer value whose non-trivial factor is to be found
      * @return Integer non-trivial factor of number
      * @throws RuntimeException object if GCD of given number cannot be found
      */

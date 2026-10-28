@@ -62,7 +62,7 @@ public final class ReverseString {
     /**
      * Reverses the given string using a stack.
      * This method uses a stack to reverse the characters of the string.
-     * * @param str The input string to be reversed.
+     * @param str The input string to be reversed.
      * @return The reversed string.
      */
     public static String reverseStringUsingStack(String str) {

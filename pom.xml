@@ -12,7 +12,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>21</maven.compiler.source>
         <maven.compiler.target>21</maven.compiler.target>
-        <assertj.version>3.27.6</assertj.version>
+        <assertj.version>3.27.7</assertj.version>
     </properties>
 
     <dependencyManagement>
@@ -20,7 +20,7 @@
             <dependency>
                 <groupId>org.junit</groupId>
                 <artifactId>junit-bom</artifactId>
-                <version>6.0.0</version>
+                <version>6.1.3</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
@@ -42,18 +42,18 @@
         <dependency>
             <groupId>org.mockito</groupId>
             <artifactId>mockito-core</artifactId>
-            <version>5.20.0</version>
+            <version>5.24.0</version>
             <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-lang3</artifactId>
-            <version>3.19.0</version>
+            <version>3.21.0</version>
         </dependency>
         <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-collections4</artifactId>
-            <version>4.5.0</version>
+            <version>4.6.0</version>
         </dependency>
     </dependencies>
 
@@ -61,7 +61,7 @@
         <plugins>
             <plugin>
                 <artifactId>maven-surefire-plugin</artifactId>
-                <version>3.5.4</version>
+                <version>3.6.0</version>
                 <configuration>
                     <forkNode implementation="org.apache.maven.plugin.surefire.extensions.SurefireForkNodeFactory"/>
                 </configuration>
@@ -69,10 +69,9 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.14.1</version>
+                <version>3.16.0</version>
                 <configuration>
-                    <source>21</source>
-                    <target>21</target>
+                    <release>21</release>
                     <compilerArgs>
                         <arg>-Xlint:all</arg>
                         <arg>-Xlint:-auxiliaryclass</arg>
@@ -83,7 +82,7 @@
             <plugin>
                 <groupId>org.jacoco</groupId>
                 <artifactId>jacoco-maven-plugin</artifactId>
-                <version>0.8.13</version>
+                <version>0.8.15</version>
                 <executions>
                     <execution>
                         <goals>
@@ -113,14 +112,14 @@
                     <dependency>
                     <groupId>com.puppycrawl.tools</groupId>
                     <artifactId>checkstyle</artifactId>
-                    <version>11.1.0</version>
+                    <version>14.3.0</version>
                     </dependency>
                 </dependencies>
             </plugin>
             <plugin>
                 <groupId>com.github.spotbugs</groupId>
                 <artifactId>spotbugs-maven-plugin</artifactId>
-                <version>4.9.6.0</version>
+                <version>4.10.5.0</version>
                 <configuration>
                     <excludeFilterFile>spotbugs-exclude.xml</excludeFilterFile>
                     <includeTests>true</includeTests>
@@ -128,7 +127,7 @@
                         <plugin>
                             <groupId>com.mebigfatguy.fb-contrib</groupId>
                             <artifactId>fb-contrib</artifactId>
-                            <version>7.6.14</version>
+                            <version>7.7.4</version>
                         </plugin>
                         <plugin>
                             <groupId>com.h3xstream.findsecbugs</groupId>
@@ -141,7 +140,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-pmd-plugin</artifactId>
-                <version>3.27.0</version>
+                <version>3.28.0</version>
                 <configuration>
                     <rulesets>
                         <ruleset>/rulesets/java/maven-pmd-plugin-default.xml</ruleset>

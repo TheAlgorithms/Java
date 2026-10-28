@@ -24,7 +24,7 @@ public class WordLadderTest {
     public void testWordLadder() {
 
         List<String> wordList1 = Arrays.asList("hot", "dot", "dog", "lot", "log", "cog");
-        assertEquals(WordLadder.ladderLength("hit", "cog", wordList1), 5);
+        assertEquals(5, WordLadder.ladderLength("hit", "cog", wordList1));
     }
 
     /**
@@ -39,7 +39,7 @@ public class WordLadderTest {
     public void testWordLadder2() {
 
         List<String> wordList2 = Arrays.asList("hot", "dot", "dog", "lot", "log");
-        assertEquals(WordLadder.ladderLength("hit", "cog", wordList2), 0);
+        assertEquals(0, WordLadder.ladderLength("hit", "cog", wordList2));
     }
 
     /**
@@ -54,7 +54,7 @@ public class WordLadderTest {
     public void testWordLadder3() {
 
         List<String> wordList3 = emptyList();
-        assertEquals(WordLadder.ladderLength("hit", "cog", wordList3), 0);
+        assertEquals(0, WordLadder.ladderLength("hit", "cog", wordList3));
     }
 
     @ParameterizedTest

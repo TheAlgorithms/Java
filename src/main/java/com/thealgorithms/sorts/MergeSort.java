@@ -10,18 +10,23 @@ import static com.thealgorithms.sorts.SortUtils.less;
 @SuppressWarnings("rawtypes")
 class MergeSort implements SortAlgorithm {
 
-    private Comparable[] aux;
+    private Comparable[] tempArray;
 
     /**
-     * Generic merge sort algorithm implements.
+     * Generic merge sort algorithm.
      *
-     * @param unsorted the array which should be sorted.
-     * @param <T> Comparable class.
-     * @return sorted array.
+     * Time Complexity:
+     * - Best case: O(n log n)
+     * - Average case: O(n log n)
+     * - Worst case: O(n log n)
+     *
+     * Space Complexity: O(n) – requires auxiliary array for merging.
+     *
+     * @see SortAlgorithm
      */
     @Override
     public <T extends Comparable<T>> T[] sort(T[] unsorted) {
-        aux = new Comparable[unsorted.length];
+        tempArray = new Comparable[unsorted.length];
         doSort(unsorted, 0, unsorted.length - 1);
         return unsorted;
     }
@@ -53,17 +58,17 @@ class MergeSort implements SortAlgorithm {
     private <T extends Comparable<T>> void merge(T[] arr, int left, int mid, int right) {
         int i = left;
         int j = mid + 1;
-        System.arraycopy(arr, left, aux, left, right + 1 - left);
+        System.arraycopy(arr, left, tempArray, left, right + 1 - left);
 
         for (int k = left; k <= right; k++) {
             if (j > right) {
-                arr[k] = (T) aux[i++];
+                arr[k] = (T) tempArray[i++];
             } else if (i > mid) {
-                arr[k] = (T) aux[j++];
-            } else if (less(aux[j], aux[i])) {
-                arr[k] = (T) aux[j++];
+                arr[k] = (T) tempArray[j++];
+            } else if (less(tempArray[j], tempArray[i])) {
+                arr[k] = (T) tempArray[j++];
             } else {
-                arr[k] = (T) aux[i++];
+                arr[k] = (T) tempArray[i++];
             }
         }
     }

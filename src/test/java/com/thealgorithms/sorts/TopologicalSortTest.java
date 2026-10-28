@@ -58,7 +58,7 @@ class TopologicalSortTest {
         Exception exception = assertThrows(RuntimeException.class, () -> TopologicalSort.sort(graph));
         String expected = "This graph contains a cycle. No linear ordering is possible. "
             + "Back edge: 6 -> 2";
-        assertEquals(exception.getMessage(), expected);
+        assertEquals(expected, exception.getMessage());
     }
     @Test
     void testEmptyGraph() {

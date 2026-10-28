@@ -20,7 +20,7 @@ package com.thealgorithms.datastructures.lists;
  *      List lessThanPivot : 3 -> 1 -> 2 -> 4
  *      List greaterThanPivot : 5 -> 8 -> 10 -> 7 -> 9 -> 6
  *
- *      -> reccur for lessThanPivot and greaterThanPivot
+ *      -> recur for lessThanPivot and greaterThanPivot
  *
  *            lessThanPivot :
  *                current pivot : 3
@@ -32,7 +32,7 @@ package com.thealgorithms.datastructures.lists;
  *                 lessThanPivot : null
  *                 greaterThanPivot : 8 -> 10 -> 7 -> 9 -> 6
  *
- *        By following the above pattern, reccuring tree will form like below :
+ *        By following the above pattern, the recursion tree will form like below :
  *
  *        List-> 5 -> 3 -> 8 -> 1 -> 10 -> 2 -> 7 -> 4 -> 9 -> 6
  *
@@ -66,7 +66,7 @@ package com.thealgorithms.datastructures.lists;
  *                                       (N)   (N)   (N)   (N)
  *
  *
- *      -> After this the tree will reccur back (or backtrack)
+ *      -> After this the tree will recur back (or backtrack)
  *         and the returning list from left and right subtree will attach
  *         themselves around pivot.
  *         i.e. ,

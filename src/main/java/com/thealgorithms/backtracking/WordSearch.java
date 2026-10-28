@@ -35,22 +35,6 @@ package com.thealgorithms.backtracking;
  *  - Stack space for the recursive DFS function, where L is the maximum depth of recursion (length of the word).
  */
 public class WordSearch {
-    private final int[] dx = {0, 0, 1, -1};
-    private final int[] dy = {1, -1, 0, 0};
-    private boolean[][] visited;
-    private char[][] board;
-    private String word;
-
-    /**
-     * Checks if the given (x, y) coordinates are valid positions in the board.
-     *
-     * @param x The row index.
-     * @param y The column index.
-     * @return True if the coordinates are within the bounds of the board; false otherwise.
-     */
-    private boolean isValid(int x, int y) {
-        return x >= 0 && x < board.length && y >= 0 && y < board[0].length;
-    }
 
     /**
      * Performs Depth First Search (DFS) from the cell (x, y)
@@ -58,28 +42,27 @@ public class WordSearch {
      *
      * @param x       The current row index.
      * @param y       The current column index.
-     * @param nextIdx The index of the next character in the word to be matched.
+     * @param idx The index of the next character in the word to be matched.
      * @return True if a valid path is found to match the remaining characters of the word; false otherwise.
      */
-    private boolean doDFS(int x, int y, int nextIdx) {
-        visited[x][y] = true;
-        if (nextIdx == word.length()) {
+
+    private boolean dfs(char[][] board, int x, int y, String word, int idx) {
+        if (idx == word.length()) {
             return true;
         }
 
-        for (int i = 0; i < 4; ++i) {
-            int xi = x + dx[i];
-            int yi = y + dy[i];
-            if (isValid(xi, yi) && board[xi][yi] == word.charAt(nextIdx) && !visited[xi][yi]) {
-                boolean exists = doDFS(xi, yi, nextIdx + 1);
-                if (exists) {
-                    return true;
-                }
-            }
+        if (x < 0 || y < 0 || x >= board.length || y >= board[0].length || board[x][y] != word.charAt(idx)) {
+            return false;
         }
 
-        visited[x][y] = false; // Backtrack
-        return false;
+        char temp = board[x][y];
+        board[x][y] = '#';
+
+        boolean found = dfs(board, x + 1, y, word, idx + 1) || dfs(board, x - 1, y, word, idx + 1) || dfs(board, x, y + 1, word, idx + 1) || dfs(board, x, y - 1, word, idx + 1);
+
+        board[x][y] = temp;
+
+        return found;
     }
 
     /**
@@ -90,20 +73,21 @@ public class WordSearch {
      * @param word  The target word to search for in the board.
      * @return True if the word exists in the board; false otherwise.
      */
+
     public boolean exist(char[][] board, String word) {
-        this.board = board;
-        this.word = word;
-        for (int i = 0; i < board.length; ++i) {
-            for (int j = 0; j < board[0].length; ++j) {
-                if (board[i][j] == word.charAt(0)) {
-                    visited = new boolean[board.length][board[0].length];
-                    boolean exists = doDFS(i, j, 1);
-                    if (exists) {
-                        return true;
-                    }
+
+        int m = board.length;
+        int n = board[0].length;
+
+        // DFS search
+        for (int i = 0; i < m; i++) {
+            for (int j = 0; j < n; j++) {
+                if (board[i][j] == word.charAt(0) && dfs(board, i, j, word, 0)) {
+                    return true;
                 }
             }
         }
+
         return false;
     }
 }

@@ -17,15 +17,15 @@ class BufferedReaderTest {
         BufferedReader reader = new BufferedReader(input);
 
         // read the first letter
-        assertEquals(reader.read(), 'H');
+        assertEquals('H', reader.read());
         len--;
-        assertEquals(reader.available(), len);
+        assertEquals(len, reader.available());
 
         // position: H[e]llo!\nWorld!
         // reader.read() will be == 'e'
-        assertEquals(reader.peek(1), 'l');
-        assertEquals(reader.peek(2), 'l'); // second l
-        assertEquals(reader.peek(3), 'o');
+        assertEquals('l', reader.peek(1));
+        assertEquals('l', reader.peek(2)); // second l
+        assertEquals('o', reader.peek(3));
     }
 
     @Test
@@ -38,21 +38,21 @@ class BufferedReaderTest {
         BufferedReader reader = new BufferedReader(input);
 
         // read the first letter
-        assertEquals(reader.read(), 'H'); // first letter
+        assertEquals('H', reader.read()); // first letter
         len--;
 
-        assertEquals(reader.peek(1), 'l'); // third later (second letter after 'H')
-        assertEquals(reader.read(), 'e'); // second letter
+        assertEquals('l', reader.peek(1)); // third later (second letter after 'H')
+        assertEquals('e', reader.read()); // second letter
         len--;
-        assertEquals(reader.available(), len);
+        assertEquals(len, reader.available());
 
         // position: H[e]llo!\nWorld!
-        assertEquals(reader.peek(2), 'o'); // second l
-        assertEquals(reader.peek(3), '!');
-        assertEquals(reader.peek(4), '\n');
+        assertEquals('o', reader.peek(2)); // second l
+        assertEquals('!', reader.peek(3));
+        assertEquals('\n', reader.peek(4));
 
-        assertEquals(reader.read(), 'l'); // third letter
-        assertEquals(reader.peek(1), 'o'); // fourth letter
+        assertEquals('l', reader.read()); // third letter
+        assertEquals('o', reader.peek(1)); // fourth letter
 
         for (int i = 0; i < 6; i++) {
             reader.read();
@@ -74,23 +74,23 @@ class BufferedReaderTest {
         ByteArrayInputStream input = new ByteArrayInputStream(bytes);
         BufferedReader reader = new BufferedReader(input);
 
-        assertEquals(reader.peek(), 'H');
-        assertEquals(reader.read(), '!'); // read the first letter
+        assertEquals('H', reader.peek());
+        assertEquals('!', reader.read()); // read the first letter
         len--;
 
         // this only reads the next 5 bytes (Hello) because
         // the default buffer size = 5
-        assertEquals(new String(reader.readBlock()), "Hello");
+        assertEquals("Hello", new String(reader.readBlock()));
         len -= 5;
         assertEquals(reader.available(), len);
 
         // maybe kind of a practical demonstration / use case
         if (reader.read() == '\n') {
-            assertEquals(reader.read(), 'W');
-            assertEquals(reader.read(), 'o');
+            assertEquals('W', reader.read());
+            assertEquals('o', reader.read());
 
             // the rest of the blocks
-            assertEquals(new String(reader.readBlock()), "rld!");
+            assertEquals("rld!", new String(reader.readBlock()));
         } else {
             // should not reach
             throw new IOException("Something not right");

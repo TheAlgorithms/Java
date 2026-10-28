@@ -1,58 +1,42 @@
 package com.thealgorithms.dynamicprogramming;
 
 /**
- * Algorithm explanation
- * https://www.educative.io/edpresso/longest-palindromic-subsequence-algorithm
+ * Longest Palindromic Subsequence algorithm.
+ * A palindromic subsequence is a subsequence that reads the same forwards and backwards.
+ * This implementation finds the longest such subsequence by computing the LCS of the
+ * original string and its reverse.
+ *
+ * @see <a href="https://en.wikipedia.org/wiki/Longest_palindromic_subsequence">Wikipedia</a>
  */
 public final class LongestPalindromicSubsequence {
     private LongestPalindromicSubsequence() {
     }
 
-    public static void main(String[] args) {
-        String a = "BBABCBCAB";
-        String b = "BABCBAB";
-
-        String aLPS = lps(a);
-        String bLPS = lps(b);
-
-        System.out.println(a + " => " + aLPS);
-        System.out.println(b + " => " + bLPS);
-    }
-
-    public static String lps(String original) throws IllegalArgumentException {
-        StringBuilder reverse = new StringBuilder(original);
-        reverse = reverse.reverse();
-        return recursiveLPS(original, reverse.toString());
+    /**
+     * Returns the longest palindromic subsequence of the given string.
+     *
+     * @param original the input string
+     * @return the longest palindromic subsequence
+     * @throws IllegalArgumentException if the input string is null
+     */
+    public static String lps(String original) {
+        if (original == null) {
+            throw new IllegalArgumentException("Input string must not be null");
+        }
+        String reverse = new StringBuilder(original).reverse().toString();
+        return recursiveLPS(original, reverse);
     }
 
     private static String recursiveLPS(String original, String reverse) {
-        String bestResult = "";
-
-        // no more chars, then return empty
-        if (original.length() == 0 || reverse.length() == 0) {
-            bestResult = "";
-        } else {
-            // if the last chars match, then remove it from both strings and recur
-            if (original.charAt(original.length() - 1) == reverse.charAt(reverse.length() - 1)) {
-                String bestSubResult = recursiveLPS(original.substring(0, original.length() - 1), reverse.substring(0, reverse.length() - 1));
-
-                bestResult = reverse.charAt(reverse.length() - 1) + bestSubResult;
-            } else {
-                // otherwise (1) ignore the last character of reverse, and recur on original and
-                // updated reverse again (2) ignore the last character of original and recur on the
-                // updated original and reverse again then select the best result from these two
-                // subproblems.
-
-                String bestSubResult1 = recursiveLPS(original, reverse.substring(0, reverse.length() - 1));
-                String bestSubResult2 = recursiveLPS(original.substring(0, original.length() - 1), reverse);
-                if (bestSubResult1.length() > bestSubResult2.length()) {
-                    bestResult = bestSubResult1;
-                } else {
-                    bestResult = bestSubResult2;
-                }
-            }
+        if (original.isEmpty() || reverse.isEmpty()) {
+            return "";
         }
-
-        return bestResult;
+        if (original.charAt(original.length() - 1) == reverse.charAt(reverse.length() - 1)) {
+            String bestSubResult = recursiveLPS(original.substring(0, original.length() - 1), reverse.substring(0, reverse.length() - 1));
+            return reverse.charAt(reverse.length() - 1) + bestSubResult;
+        }
+        String sub1 = recursiveLPS(original, reverse.substring(0, reverse.length() - 1));
+        String sub2 = recursiveLPS(original.substring(0, original.length() - 1), reverse);
+        return sub1.length() >= sub2.length() ? sub1 : sub2;
     }
 }

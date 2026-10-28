@@ -1,6 +1,7 @@
 package com.thealgorithms.sorts;
 
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import java.util.Arrays;
 import org.junit.jupiter.api.Test;
@@ -69,5 +70,23 @@ public class WiggleSortTest {
         String[] result = {"a", "d", "b", "c"};
         wiggleSort.sort(values);
         assertArrayEquals(values, result);
+    }
+
+    @Test
+    void wiggleTestNonWiggleSortableOddArrayThrows() {
+        // [1, 2, 2] is not wiggle-sortable: the median 2 appears ceil(3 / 2) = 2 times
+        // but is not the smallest value, so sorting must fail instead of returning
+        // a wrongly ordered array
+        WiggleSort wiggleSort = new WiggleSort();
+        Integer[] values = {1, 2, 2};
+        assertThrows(IllegalArgumentException.class, () -> wiggleSort.sort(values));
+    }
+
+    @Test
+    void wiggleTestTooManyDuplicatesThrows() {
+        // more than half of the values are the same, which can never be wiggle-sorted
+        WiggleSort wiggleSort = new WiggleSort();
+        Integer[] values = {2, 2, 2, 1};
+        assertThrows(IllegalArgumentException.class, () -> wiggleSort.sort(values));
     }
 }

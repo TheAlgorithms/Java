@@ -23,28 +23,27 @@ public class RecursiveBinarySearch<T extends Comparable<T>> extends SearchAlgori
 
     // Recursive binary search function
     public int binsear(T[] arr, int left, int right, T target) {
-        if (right >= left) {
-            int mid = left + (right - left) / 2;
+        if (right < left) {
+            // Element is not present in the array
+            return -1;
+        }
+        final int mid = left + (right - left) / 2;
 
-            // Compare the element at the middle with the target
-            int comparison = arr[mid].compareTo(target);
+        // Compare the element at the middle with the target
+        final int comparison = arr[mid].compareTo(target);
 
-            // If the element is equal to the target, return its index
-            if (comparison == 0) {
-                return mid;
-            }
-
-            // If the element is greater than the target, search in the left subarray
-            if (comparison > 0) {
-                return binsear(arr, left, mid - 1, target);
-            }
-
-            // Otherwise, search in the right subarray
-            return binsear(arr, mid + 1, right, target);
+        // If the element is equal to the target, return its index
+        if (comparison == 0) {
+            return mid;
         }
 
-        // Element is not present in the array
-        return -1;
+        // If the element is greater than the target, search in the left subarray
+        if (comparison > 0) {
+            return binsear(arr, left, mid - 1, target);
+        }
+
+        // Otherwise, search in the right subarray
+        return binsear(arr, mid + 1, right, target);
     }
 
     public static void main(String[] args) {

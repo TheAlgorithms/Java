@@ -66,10 +66,6 @@ public final class ClosestPair {
         }
     }
 
-    public Location[] createLocation(int numberValues) {
-        return new Location[numberValues];
-    }
-
     public Location buildLocation(double x, double y) {
         return new Location(x, y);
     }
@@ -182,7 +178,7 @@ public final class ClosestPair {
 
         double minLeftArea; // Minimum length of left array
         double minRightArea; // Minimum length of right array
-        double minValue; // Minimum lengt
+        double minValue; // Minimum length
 
         minLeftArea = closestPair(leftArray, divideX); // recursive closestPair
         minRightArea = closestPair(rightArray, indexNum - divideX);

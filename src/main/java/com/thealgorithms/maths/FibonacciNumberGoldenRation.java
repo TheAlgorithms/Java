@@ -3,6 +3,18 @@ package com.thealgorithms.maths;
 /**
  * This class provides methods for calculating Fibonacci numbers using Binet's formula.
  * Binet's formula is based on the golden ratio and allows computing Fibonacci numbers efficiently.
+ * <p>
+ * This specific implementation provides a closed-form solution with an expected {@code O(1)} time complexity.
+ * <p>
+ * For alternative approaches to compute or verify Fibonacci numbers, see:
+ * <ul>
+ * <li>{@link com.thealgorithms.maths.FibonacciLoop} - Standard Iterative (Loop) approach</li>
+ * <li>{@link com.thealgorithms.recursion.FibonacciSeries} - Naive Recursive approach</li>
+ * <li>{@link com.thealgorithms.dynamicprogramming.Fibonacci} - Dynamic Programming approaches (Memoization, Bottom-Up, Optimized)</li>
+ * <li>{@link com.thealgorithms.maths.FibonacciJavaStreams} - Functional approach using Java Streams</li>
+ * <li>{@link com.thealgorithms.maths.FibonacciNumberCheck} - Utility to check if a given number is a Fibonacci number</li>
+ * <li>{@link com.thealgorithms.matrix.matrixexponentiation.Fibonacci} - O(log n) Matrix Exponentiation approach</li>
+ * </ul>
  *
  * @see <a href="https://en.wikipedia.org/wiki/Fibonacci_sequence#Binet's_formula">Binet's formula on Wikipedia</a>
  */

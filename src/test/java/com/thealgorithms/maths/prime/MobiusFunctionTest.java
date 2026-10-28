@@ -5,6 +5,8 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import com.thealgorithms.maths.Prime.MobiusFunction;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 
 class MobiusFunctionTest {
 
@@ -151,5 +153,16 @@ class MobiusFunctionTest {
             // then
             assertEquals(expectedValue, actualValue);
         }
+    }
+
+    /**
+     * Large inputs whose smallest square divisor test used to overflow, most notably
+     * {@code Integer.MAX_VALUE}, whose square wraps around to 1 and made every number look like it
+     * had a squared prime factor.
+     */
+    @ParameterizedTest
+    @CsvSource({"2147483647, -1", "2147483646, 0", "2147483645, -1", "2147483644, 0", "2147483629, -1", "2147395600, 0", "1073741824, 0", "1073741789, -1", "999999937, -1", "999999999, 0", "2146689000, 0"})
+    void testMobiusForLargeNumbers(int number, int expected) {
+        assertEquals(expected, MobiusFunction.mobius(number));
     }
 }

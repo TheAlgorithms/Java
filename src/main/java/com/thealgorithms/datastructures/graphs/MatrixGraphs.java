@@ -141,7 +141,7 @@ class AdjacencyMatrixGraph {
      *
      * @param from the parent vertex to check for adjacency
      * @param to the child vertex to check for adjacency
-     * @return whether or not the vertices are adjancent
+     * @return whether or not the vertices are adjacent
      */
     private boolean adjacencyOfEdgeDoesExist(int from, int to) {
         return (this.adjacency()[from][to] != AdjacencyMatrixGraph.EDGE_NONE);
@@ -162,7 +162,7 @@ class AdjacencyMatrixGraph {
      *
      * @param from the parent vertex to check for adjacency
      * @param to the child vertex to check for adjacency
-     * @return whether or not the vertices are adjancent
+     * @return whether or not the vertices are adjacent
      */
     public boolean edgeDoesExist(int from, int to) {
         if (this.vertexDoesExist(from) && this.vertexDoesExist(to)) {

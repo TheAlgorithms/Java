@@ -2738,7 +2738,7 @@ public final class AES {
 
     public static void main(String[] args) {
         try (Scanner input = new Scanner(System.in)) {
-            System.out.println("Enter (e) letter for encrpyt or (d) letter for decrypt :");
+            System.out.println("Enter (e) letter for encrypt or (d) letter for decrypt :");
             char choice = input.nextLine().charAt(0);
             String in;
             switch (choice) {

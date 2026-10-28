@@ -15,8 +15,7 @@ import com.thealgorithms.devutils.searches.SearchAlgorithm;
  * Note: This algorithm requires that the input array be sorted.
  * </p>
  */
-@SuppressWarnings({"rawtypes", "unchecked"})
-public class FibonacciSearch implements SearchAlgorithm {
+public final class FibonacciSearch implements SearchAlgorithm {
 
     /**
      * Finds the index of the specified key in a sorted array using Fibonacci search.
@@ -24,11 +23,14 @@ public class FibonacciSearch implements SearchAlgorithm {
      * @param array The sorted array to search.
      * @param key The element to search for.
      * @param <T> The type of the elements in the array, which must be comparable.
-     * @throws IllegalArgumentException if the input array is not sorted or empty, or if the key is null.
+     * @throws IllegalArgumentException if the input array is null, not sorted or empty, or if the key is null.
      * @return The index of the key if found, otherwise -1.
      */
     @Override
     public <T extends Comparable<T>> int find(T[] array, T key) {
+        if (array == null) {
+            throw new IllegalArgumentException("Input array must not be null.");
+        }
         if (array.length == 0) {
             throw new IllegalArgumentException("Input array must not be empty.");
         }
@@ -69,14 +71,14 @@ public class FibonacciSearch implements SearchAlgorithm {
             }
         }
 
-        if (fibMinus1 == 1 && array[offset + 1] == key) {
+        if (fibMinus1 == 1 && offset + 1 < n && array[offset + 1].compareTo(key) == 0) {
             return offset + 1;
         }
 
         return -1;
     }
 
-    private boolean isSorted(Comparable[] array) {
+    private <T extends Comparable<T>> boolean isSorted(T[] array) {
         for (int i = 1; i < array.length; i++) {
             if (array[i - 1].compareTo(array[i]) > 0) {
                 return false;

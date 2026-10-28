@@ -2,7 +2,9 @@ package com.thealgorithms.searches;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import java.util.concurrent.TimeUnit;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.Timeout;
 
 /**
  * Unit tests for the JumpSearch class.
@@ -90,5 +92,87 @@ class JumpSearchTest {
         }
         Integer key = 999; // Key not present
         assertEquals(-1, jumpSearch.find(array, key), "The element should not be found in the array.");
+    }
+
+    /**
+     * A key greater than every element used to make the jumping loop spin forever, because the
+     * cursor was clamped to the last index and therefore stopped advancing.
+     */
+    @Test
+    @Timeout(value = 5, unit = TimeUnit.SECONDS, threadMode = Timeout.ThreadMode.SEPARATE_THREAD)
+    void testJumpSearchKeyGreaterThanLastElement() {
+        JumpSearch jumpSearch = new JumpSearch();
+        Integer[] array = {1, 2, 3, 4};
+        assertEquals(-1, jumpSearch.find(array, 5), "A key above the maximum should not be found.");
+    }
+
+    /**
+     * The same regression across several lengths, since the jump size depends on the array length.
+     */
+    @Test
+    @Timeout(value = 5, unit = TimeUnit.SECONDS, threadMode = Timeout.ThreadMode.SEPARATE_THREAD)
+    void testJumpSearchKeyGreaterThanLastElementForEveryLength() {
+        JumpSearch jumpSearch = new JumpSearch();
+        for (int length = 1; length <= 50; length++) {
+            Integer[] array = new Integer[length];
+            for (int i = 0; i < length; i++) {
+                array[i] = i;
+            }
+            assertEquals(-1, jumpSearch.find(array, length), "A key above the maximum should not be found for length " + length + ".");
+        }
+    }
+
+    /**
+     * Every element must be found regardless of the array length, including the ones that sit
+     * exactly on a jump boundary.
+     */
+    @Test
+    void testJumpSearchFindsEveryElement() {
+        JumpSearch jumpSearch = new JumpSearch();
+        for (int length = 1; length <= 50; length++) {
+            Integer[] array = new Integer[length];
+            for (int i = 0; i < length; i++) {
+                array[i] = i * 2;
+            }
+            for (int i = 0; i < length; i++) {
+                assertEquals(i, jumpSearch.find(array, i * 2), "Element at index " + i + " should be found for length " + length + ".");
+            }
+        }
+    }
+
+    @Test
+    void testJumpSearchNullArray() {
+        JumpSearch jumpSearch = new JumpSearch();
+        assertEquals(-1, jumpSearch.find(null, 5), "Searching in a null array should return -1.");
+    }
+
+    @Test
+    void testJumpSearchNullKey() {
+        JumpSearch jumpSearch = new JumpSearch();
+        Integer[] array = {1, 2, 3};
+        assertEquals(-1, jumpSearch.find(array, null), "Searching for a null key should return -1.");
+    }
+
+    @Test
+    void testJumpSearchSingleElementAbsent() {
+        JumpSearch jumpSearch = new JumpSearch();
+        Integer[] array = {10};
+        assertEquals(-1, jumpSearch.find(array, 5), "Searching for an absent key in single element array should return -1.");
+    }
+
+    @Test
+    void testJumpSearchStringArray() {
+        JumpSearch jumpSearch = new JumpSearch();
+        String[] array = {"apple", "banana", "cherry", "date", "elderberry"};
+        assertEquals(2, jumpSearch.find(array, "cherry"), "The index of 'cherry' should be 2.");
+        assertEquals(-1, jumpSearch.find(array, "fig"), "Key 'fig' should not be found.");
+    }
+
+    @Test
+    void testJumpSearchDuplicates() {
+        JumpSearch jumpSearch = new JumpSearch();
+        Integer[] array = {1, 2, 2, 2, 3, 4, 5};
+        int index = jumpSearch.find(array, 2);
+        assertEquals(2, array[index], "The element at the returned index should equal the target key.");
     }
 }

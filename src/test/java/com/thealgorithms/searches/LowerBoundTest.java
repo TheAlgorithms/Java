@@ -56,4 +56,31 @@ class LowerBoundTest {
         assertEquals(4, lowerBound.find(array, 7), "Lower bound for 7 should be at index 4");
         assertEquals(0, lowerBound.find(array, 0), "Lower bound for 0 should be at index 0");
     }
+
+    /**
+     * Test finding the lower bound for an element with duplicate occurrences.
+     * Lower bound should point to the FIRST element not less than key.
+     */
+    @Test
+    void testLowerBoundDuplicates() {
+        LowerBound lowerBound = new LowerBound();
+        Integer[] arrayWithDuplicates = {1, 2, 2, 2, 3, 4, 5};
+
+        assertEquals(1, lowerBound.find(arrayWithDuplicates, 2), "Lower bound for 2 should be at index 1 (first occurrence)");
+
+        Integer[] allSame = {2, 2, 2, 2, 2};
+        assertEquals(0, lowerBound.find(allSame, 2), "Lower bound for 2 in all-same array should be at index 0");
+    }
+
+    /**
+     * Test edge cases: empty array, null array, and null key.
+     */
+    @Test
+    void testLowerBoundNullAndEmptyEdgeCases() {
+        LowerBound lowerBound = new LowerBound();
+        Integer[] emptyArray = {};
+        assertEquals(0, lowerBound.find(emptyArray, 5), "Lower bound for an empty array should be 0");
+        assertEquals(0, lowerBound.find(null, 5), "Lower bound for a null array should be 0");
+        assertEquals(0, lowerBound.find(new Integer[] {1, 2, 3}, null), "Lower bound for a null key should be 0");
+    }
 }

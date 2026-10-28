@@ -17,6 +17,11 @@ class AreaTest {
     }
 
     @Test
+    void testSurfaceAreaCuboid() {
+        assertEquals(214.0, Area.surfaceAreaCuboid(5, 6, 7));
+    }
+
+    @Test
     void testSurfaceAreaSphere() {
         assertEquals(12.566370614359172, Area.surfaceAreaSphere(1));
     }
@@ -70,6 +75,12 @@ class AreaTest {
     void testAllIllegalInput() {
         assertAll(()
                       -> assertThrows(IllegalArgumentException.class, () -> Area.surfaceAreaCube(0)),
+            ()
+                -> assertThrows(IllegalArgumentException.class, () -> Area.surfaceAreaCuboid(0, 1, 2)),
+            ()
+                -> assertThrows(IllegalArgumentException.class, () -> Area.surfaceAreaCuboid(1, 0, 2)),
+            ()
+                -> assertThrows(IllegalArgumentException.class, () -> Area.surfaceAreaCuboid(1, 2, 0)),
             ()
                 -> assertThrows(IllegalArgumentException.class, () -> Area.surfaceAreaSphere(0)),
             ()

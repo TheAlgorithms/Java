@@ -73,7 +73,7 @@ public final class VerticalOrderTraversal {
                 ArrayList<Integer> a = new ArrayList<>();
                 map.put(index.peek(), a);
             }
-            /*For a index, corresponding Node data is added
+            /*For an index, corresponding Node data is added
                          to the respective ArrayList present at that
                          index. */
             map.get(index.peek()).add(queue.peek().data);

@@ -15,7 +15,7 @@ public class PancakeSort implements SortAlgorithm {
         }
 
         for (int currentSize = 0; currentSize < array.length; currentSize++) {
-            int maxIndex = findMaxIndex(array, currentSize);
+            int maxIndex = findIndexOfMax(array, currentSize);
             SortUtils.flip(array, maxIndex, array.length - 1 - currentSize);
         }
 
@@ -30,7 +30,7 @@ public class PancakeSort implements SortAlgorithm {
      * @param <T>        the type of elements in the array
      * @return the index of the maximum element
      */
-    private <T extends Comparable<T>> int findMaxIndex(T[] array, int currentSize) {
+    private <T extends Comparable<T>> int findIndexOfMax(T[] array, int currentSize) {
         T max = array[0];
         int maxIndex = 0;
         for (int i = 0; i < array.length - currentSize; i++) {

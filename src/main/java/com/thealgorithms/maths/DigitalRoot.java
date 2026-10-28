@@ -55,7 +55,7 @@ final class DigitalRoot {
 
     // This function is used for finding the sum of the digits of number
     public static int single(int n) {
-        if (n <= 9) { // if n becomes less than 10 than return n
+        if (n <= 9) { // if n becomes less than 10 then return n
             return n;
         } else {
             return (n % 10) + single(n / 10); // n % 10 for extracting digits one by one

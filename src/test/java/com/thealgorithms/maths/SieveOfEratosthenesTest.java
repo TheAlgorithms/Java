@@ -1,46 +1,64 @@
 package com.thealgorithms.maths;
 
-import static org.junit.jupiter.api.Assertions.assertArrayEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
+import java.util.Arrays;
+import java.util.List;
 import org.junit.jupiter.api.Test;
 
+/**
+ * Test cases for Sieve of Eratosthenes algorithm
+ *
+ * @author Navadeep0007
+ */
 class SieveOfEratosthenesTest {
+
     @Test
-    public void testfFindPrimesTill1() {
-        assertArrayEquals(new int[] {}, SieveOfEratosthenes.findPrimesTill(1));
+    void testPrimesUpTo10() {
+        List<Integer> expected = Arrays.asList(2, 3, 5, 7);
+        assertEquals(expected, SieveOfEratosthenes.findPrimes(10));
     }
 
     @Test
-    public void testfFindPrimesTill2() {
-        assertArrayEquals(new int[] {2}, SieveOfEratosthenes.findPrimesTill(2));
+    void testPrimesUpTo30() {
+        List<Integer> expected = Arrays.asList(2, 3, 5, 7, 11, 13, 17, 19, 23, 29);
+        assertEquals(expected, SieveOfEratosthenes.findPrimes(30));
     }
 
     @Test
-    public void testfFindPrimesTill4() {
-        var primesTill4 = new int[] {2, 3};
-        assertArrayEquals(primesTill4, SieveOfEratosthenes.findPrimesTill(3));
-        assertArrayEquals(primesTill4, SieveOfEratosthenes.findPrimesTill(4));
+    void testPrimesUpTo2() {
+        List<Integer> expected = Arrays.asList(2);
+        assertEquals(expected, SieveOfEratosthenes.findPrimes(2));
     }
 
     @Test
-    public void testfFindPrimesTill40() {
-        var primesTill40 = new int[] {2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37};
-        assertArrayEquals(primesTill40, SieveOfEratosthenes.findPrimesTill(37));
-        assertArrayEquals(primesTill40, SieveOfEratosthenes.findPrimesTill(38));
-        assertArrayEquals(primesTill40, SieveOfEratosthenes.findPrimesTill(39));
-        assertArrayEquals(primesTill40, SieveOfEratosthenes.findPrimesTill(40));
+    void testPrimesUpTo1() {
+        assertTrue(SieveOfEratosthenes.findPrimes(1).isEmpty());
     }
 
     @Test
-    public void testfFindPrimesTill240() {
-        var primesTill240 = new int[] {2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89, 97, 101, 103, 107, 109, 113, 127, 131, 137, 139, 149, 151, 157, 163, 167, 173, 179, 181, 191, 193, 197, 199, 211, 223, 227, 229, 233, 239};
-        assertArrayEquals(primesTill240, SieveOfEratosthenes.findPrimesTill(239));
-        assertArrayEquals(primesTill240, SieveOfEratosthenes.findPrimesTill(240));
+    void testPrimesUpTo0() {
+        assertTrue(SieveOfEratosthenes.findPrimes(0).isEmpty());
     }
 
     @Test
-    public void testFindPrimesTillThrowsExceptionForNonPositiveInput() {
-        assertThrows(IllegalArgumentException.class, () -> SieveOfEratosthenes.findPrimesTill(0));
+    void testNegativeInput() {
+        assertThrows(IllegalArgumentException.class, () -> { SieveOfEratosthenes.findPrimes(-1); });
+    }
+
+    @Test
+    void testCountPrimes() {
+        assertEquals(4, SieveOfEratosthenes.countPrimes(10));
+        assertEquals(25, SieveOfEratosthenes.countPrimes(100));
+    }
+
+    @Test
+    void testLargeNumber() {
+        List<Integer> primes = SieveOfEratosthenes.findPrimes(1000);
+        assertEquals(168, primes.size()); // There are 168 primes up to 1000
+        assertEquals(2, primes.get(0)); // First prime
+        assertEquals(997, primes.get(primes.size() - 1)); // Last prime up to 1000
     }
 }

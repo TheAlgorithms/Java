@@ -25,6 +25,6 @@ public class PalindromeNumberTest {
     @Test
     public void testIfNegativeInputThenExceptionExpected() {
         IllegalArgumentException exception = Assertions.assertThrows(IllegalArgumentException.class, () -> PalindromeNumber.isPalindrome(-1));
-        Assertions.assertEquals(exception.getMessage(), "Input parameter must not be negative!");
+        Assertions.assertEquals("Input parameter must not be negative!", exception.getMessage());
     }
 }

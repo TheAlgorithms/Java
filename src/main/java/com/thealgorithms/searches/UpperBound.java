@@ -13,7 +13,7 @@ import com.thealgorithms.devutils.searches.SearchAlgorithm;
  * This is an extension of BinarySearch.
  *
  * <p>
- * Worst-case performance O(log n) Best-case performance O(1) Average
+ * Worst-case performance O(log n) Best-case performance O(log n) Average
  * performance O(log n) Worst-case space complexity O(1)
  *
  * @author Pratik Padalia (https://github.com/15pratik)
@@ -26,10 +26,13 @@ class UpperBound implements SearchAlgorithm {
      * @param array is an array where the UpperBound value is to be found
      * @param key is an element for which the UpperBound is to be found
      * @param <T> is any comparable type
-     * @return index of the UpperBound element
+     * @return index of the first element greater than key, last index if no such element exists, or 0 if array is null/empty or key is null
      */
     @Override
     public <T extends Comparable<T>> int find(T[] array, T key) {
+        if (array == null || array.length == 0 || key == null) {
+            return 0;
+        }
         return search(array, key, 0, array.length - 1);
     }
 

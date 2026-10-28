@@ -109,4 +109,10 @@ public class DutchNationalFlagSortTest {
         dutchNationalFlagSort.sort(strings, "e");
         assertArrayEquals(strings, stringsResult);
     }
+
+    @Test
+    void testEmptyArray() {
+        Integer[] integers = {};
+        assertArrayEquals(new Integer[] {}, new DutchNationalFlagSort().sort(integers));
+    }
 }

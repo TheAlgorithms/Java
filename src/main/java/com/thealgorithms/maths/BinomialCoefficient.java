@@ -1,8 +1,8 @@
 package com.thealgorithms.maths;
 
 /*
- * Java program for Binomial Cofficients
- * Binomial Cofficients: A binomial cofficient C(n,k) gives number ways
+ * Java program for Binomial Coefficients
+ * Binomial Coefficients: A binomial coefficient C(n,k) gives number ways
  * in which k objects can be chosen from n objects.
  * Wikipedia: https://en.wikipedia.org/wiki/Binomial_coefficient
  *

@@ -63,7 +63,8 @@ public class DynamicArray<E> implements Iterable<E> {
      *
      * @param index   the index at which the element is to be placed
      * @param element the element to be inserted at the specified index
-     * @throws IndexOutOfBoundsException if index is less than 0 or greater than or equal to the number of elements
+     * @throws IndexOutOfBoundsException if index is less than 0 or greater than or
+     *                                   equal to the number of elements
      */
     public void put(final int index, E element) {
         if (index < 0) {
@@ -82,7 +83,8 @@ public class DynamicArray<E> implements Iterable<E> {
      *
      * @param index the index of the element to retrieve
      * @return the element at the specified index
-     * @throws IndexOutOfBoundsException if index is less than 0 or greater than or equal to the current size
+     * @throws IndexOutOfBoundsException if index is less than 0 or greater than or
+     *                                   equal to the current size
      */
     @SuppressWarnings("unchecked")
     public E get(final int index) {
@@ -97,7 +99,8 @@ public class DynamicArray<E> implements Iterable<E> {
      *
      * @param index the index of the element to be removed
      * @return the element that was removed from the array
-     * @throws IndexOutOfBoundsException if index is less than 0 or greater than or equal to the current size
+     * @throws IndexOutOfBoundsException if index is less than 0 or greater than or
+     *                                   equal to the current size
      */
     public E remove(final int index) {
         if (index < 0 || index >= size) {
@@ -128,6 +131,21 @@ public class DynamicArray<E> implements Iterable<E> {
     }
 
     /**
+     * Checks whether the array contains the specified element.
+     *
+     * @param element the element to check for
+     * @return true if the array contains the specified element, false otherwise
+     */
+    public boolean contains(final E element) {
+        for (int i = 0; i < size; i++) {
+            if (Objects.equals(elements[i], element)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    /**
      * Returns a sequential stream with this collection as its source.
      *
      * @return a stream of the elements in the array
@@ -137,7 +155,8 @@ public class DynamicArray<E> implements Iterable<E> {
     }
 
     /**
-     * Ensures that the array has enough capacity to hold the specified number of elements.
+     * Ensures that the array has enough capacity to hold the specified number of
+     * elements.
      *
      * @param minCapacity the minimum capacity required
      */
@@ -150,7 +169,8 @@ public class DynamicArray<E> implements Iterable<E> {
 
     /**
      * Removes the element at the specified index without resizing the array.
-     * This method shifts any subsequent elements to the left and clears the last element.
+     * This method shifts any subsequent elements to the left and clears the last
+     * element.
      *
      * @param index the index of the element to remove
      */
@@ -163,7 +183,8 @@ public class DynamicArray<E> implements Iterable<E> {
     }
 
     /**
-     * Returns a string representation of the array, including only the elements that are currently stored.
+     * Returns a string representation of the array, including only the elements
+     * that are currently stored.
      *
      * @return a string containing the elements in the array
      */
@@ -227,7 +248,9 @@ public class DynamicArray<E> implements Iterable<E> {
         /**
          * Removes the last element returned by this iterator.
          *
-         * @throws IllegalStateException if the next method has not yet been called, or the remove method has already been called after the last call to the next method
+         * @throws IllegalStateException if the next method has not yet been called, or
+         *                               the remove method has already been called after
+         *                               the last call to the next method
          */
         @Override
         public void remove() {
@@ -242,7 +265,8 @@ public class DynamicArray<E> implements Iterable<E> {
         /**
          * Checks for concurrent modifications to the array during iteration.
          *
-         * @throws ConcurrentModificationException if the array has been modified structurally
+         * @throws ConcurrentModificationException if the array has been modified
+         *                                         structurally
          */
         private void checkForComodification() {
             if (modCount != expectedModCount) {
@@ -251,7 +275,8 @@ public class DynamicArray<E> implements Iterable<E> {
         }
 
         /**
-         * Performs the given action for each remaining element in the iterator until all elements have been processed.
+         * Performs the given action for each remaining element in the iterator until
+         * all elements have been processed.
          *
          * @param action the action to be performed for each element
          * @throws NullPointerException if the specified action is null

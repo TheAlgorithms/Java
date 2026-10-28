@@ -38,7 +38,7 @@ public final class AESEncryption {
         System.out.println("Original Text:" + plainText);
         System.out.println("AES Key (Hex Form):" + bytesToHex(secKey.getEncoded()));
         System.out.println("Encrypted Text (Hex Form):" + bytesToHex(cipherText));
-        System.out.println("Descrypted Text:" + decryptedText);
+        System.out.println("Decryption successful. Decrypted text matches original: " + decryptedText.equals(plainText));
     }
 
     /**

@@ -1,66 +1,82 @@
 package com.thealgorithms.maths;
 
-import java.util.Arrays;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
- * @brief utility class implementing <a href="https://en.wikipedia.org/wiki/Sieve_of_Eratosthenes">Sieve of Eratosthenes</a>
+ * Sieve of Eratosthenes Algorithm
+ * An efficient algorithm to find all prime numbers up to a given limit.
+ *
+ * Algorithm:
+ * 1. Create a boolean array of size n+1, initially all true
+ * 2. Mark 0 and 1 as not prime
+ * 3. For each number i from 2 to sqrt(n):
+ *    - If i is still marked as prime
+ *    - Mark all multiples of i (starting from i²) as not prime
+ * 4. Collect all numbers still marked as prime
+ *
+ * Time Complexity: O(n log log n)
+ * Space Complexity: O(n)
+ *
+ * @author Navadeep0007
+ * @see <a href="https://en.wikipedia.org/wiki/Sieve_of_Eratosthenes">Sieve of Eratosthenes</a>
  */
 public final class SieveOfEratosthenes {
+
     private SieveOfEratosthenes() {
+        // Utility class, prevent instantiation
     }
 
-    private static void checkInput(int n) {
-        if (n <= 0) {
-            throw new IllegalArgumentException("n must be positive.");
+    /**
+     * Finds all prime numbers up to n using the Sieve of Eratosthenes algorithm
+     *
+     * @param n the upper limit (inclusive)
+     * @return a list of all prime numbers from 2 to n
+     * @throws IllegalArgumentException if n is negative
+     */
+    public static List<Integer> findPrimes(int n) {
+        if (n < 0) {
+            throw new IllegalArgumentException("Input must be non-negative");
         }
-    }
 
-    private static Type[] sievePrimesTill(int n) {
-        checkInput(n);
-        Type[] isPrimeArray = new Type[n + 1];
-        Arrays.fill(isPrimeArray, Type.PRIME);
-        isPrimeArray[0] = Type.NOT_PRIME;
-        isPrimeArray[1] = Type.NOT_PRIME;
+        if (n < 2) {
+            return new ArrayList<>();
+        }
 
-        double cap = Math.sqrt(n);
-        for (int i = 2; i <= cap; i++) {
-            if (isPrimeArray[i] == Type.PRIME) {
-                for (int j = 2; i * j <= n; j++) {
-                    isPrimeArray[i * j] = Type.NOT_PRIME;
+        // Create boolean array, initially all true
+        boolean[] isPrime = new boolean[n + 1];
+        for (int i = 2; i <= n; i++) {
+            isPrime[i] = true;
+        }
+
+        // Sieve process
+        for (int i = 2; i * i <= n; i++) {
+            if (isPrime[i]) {
+                // Mark all multiples of i as not prime
+                for (int j = i * i; j <= n; j += i) {
+                    isPrime[j] = false;
                 }
             }
         }
-        return isPrimeArray;
-    }
 
-    private static int countPrimes(Type[] isPrimeArray) {
-        return (int) Arrays.stream(isPrimeArray).filter(element -> element == Type.PRIME).count();
-    }
-
-    private static int[] extractPrimes(Type[] isPrimeArray) {
-        int numberOfPrimes = countPrimes(isPrimeArray);
-        int[] primes = new int[numberOfPrimes];
-        int primeIndex = 0;
-        for (int curNumber = 0; curNumber < isPrimeArray.length; ++curNumber) {
-            if (isPrimeArray[curNumber] == Type.PRIME) {
-                primes[primeIndex++] = curNumber;
+        // Collect all prime numbers
+        List<Integer> primes = new ArrayList<>();
+        for (int i = 2; i <= n; i++) {
+            if (isPrime[i]) {
+                primes.add(i);
             }
         }
+
         return primes;
     }
 
     /**
-     * @brief finds all of the prime numbers up to the given upper (inclusive) limit
-     * @param n upper (inclusive) limit
-     * @exception IllegalArgumentException n is non-positive
-     * @return the array of all primes up to the given number (inclusive)
+     * Counts the number of prime numbers up to n
+     *
+     * @param n the upper limit (inclusive)
+     * @return count of prime numbers from 2 to n
      */
-    public static int[] findPrimesTill(int n) {
-        return extractPrimes(sievePrimesTill(n));
-    }
-
-    private enum Type {
-        PRIME,
-        NOT_PRIME,
+    public static int countPrimes(int n) {
+        return findPrimes(n).size();
     }
 }

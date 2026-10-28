@@ -13,7 +13,7 @@ public class LinkListSort {
         int[] b = p;
         // array similar to a
         int ch = option;
-        // Choice is choosed as any number from 1 to 3 (So the linked list will be
+        // Choice is chosen as any number from 1 to 3 (So the linked list will be
         // sorted by Merge sort technique/Insertion sort technique/Heap sort technique)
         switch (ch) {
         case 1:
@@ -106,7 +106,7 @@ public class LinkListSort {
             // The given array and the expected array is checked if both are same then true
             // is displayed else false is displayed
         default:
-            // default is used incase user puts a unauthorized value
+            // default is used in case user puts a unauthorized value
             System.out.println("Wrong choice");
         }
         // Switch case is used to call the classes as per the user requirement
@@ -176,7 +176,7 @@ class Task {
         }
         return c;
         // This Method is used to count number of elements/nodes present in the linklist
-        // It will return a integer type value denoting the number of nodes present
+        // It will return an integer type value denoting the number of nodes present
     }
 
     void task(int[] n, int i, int j) {
@@ -252,7 +252,7 @@ class Task1 {
         }
         return c;
         // This Method is used to count number of elements/nodes present in the linklist
-        // It will return a integer type value denoting the number of nodes present
+        // It will return an integer type value denoting the number of nodes present
     }
     // The method task and task1 is used to sort the linklist using insertion sort
 }
@@ -288,7 +288,7 @@ class Task2 {
         }
         return c;
         // This Method is used to count number of elements/nodes present in the linklist
-        // It will return a integer type value denoting the number of nodes present
+        // It will return an integer type value denoting the number of nodes present
     }
 
     void task(int[] n) {

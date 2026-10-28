@@ -160,7 +160,7 @@ class BellmanFord /*
                 break;
             }
         }
-        if (neg == 0) { // Go ahead and show results of computaion
+        if (neg == 0) { // Go ahead and show results of computation
             System.out.println("Distance is: " + dist[end]);
             System.out.println("Path followed:");
             System.out.print(source + " ");

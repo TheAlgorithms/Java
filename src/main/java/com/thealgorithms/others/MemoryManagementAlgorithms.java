@@ -16,7 +16,7 @@ public abstract class MemoryManagementAlgorithms {
      * blocks available.
      * @param sizeOfProcesses: an int array that contains the sizes of the
      * processes we need memory blocks for.
-     * @return the ArrayList filled with Integers repressenting the memory
+     * @return the ArrayList filled with Integers representing the memory
      * allocation that took place.
      */
     public abstract ArrayList<Integer> fitProcess(int[] sizeOfBlocks, int[] sizeOfProcesses);
@@ -91,7 +91,7 @@ class BestFitCPU extends MemoryManagementAlgorithms {
      * blocks available.
      * @param sizeOfProcesses: an int array that contains the sizes of the
      * processes we need memory blocks for.
-     * @return the ArrayList filled with Integers repressenting the memory
+     * @return the ArrayList filled with Integers representing the memory
      * allocation that took place.
      */
     public ArrayList<Integer> fitProcess(int[] sizeOfBlocks, int[] sizeOfProcesses) {
@@ -149,7 +149,7 @@ class WorstFitCPU extends MemoryManagementAlgorithms {
      * blocks available.
      * @param sizeOfProcesses: an int array that contains the sizes of the
      * processes we need memory blocks for.
-     * @return the ArrayList filled with Integers repressenting the memory
+     * @return the ArrayList filled with Integers representing the memory
      * allocation that took place.
      */
     public ArrayList<Integer> fitProcess(int[] sizeOfBlocks, int[] sizeOfProcesses) {
@@ -201,7 +201,7 @@ class FirstFitCPU extends MemoryManagementAlgorithms {
      * blocks available.
      * @param sizeOfProcesses: an int array that contains the sizes of the
      * processes we need memory blocks for.
-     * @return the ArrayList filled with Integers repressenting the memory
+     * @return the ArrayList filled with Integers representing the memory
      * allocation that took place.
      */
     public ArrayList<Integer> fitProcess(int[] sizeOfBlocks, int[] sizeOfProcesses) {
@@ -262,7 +262,7 @@ class NextFit extends MemoryManagementAlgorithms {
      * blocks available.
      * @param sizeOfProcesses: an int array that contains the sizes of the
      * processes we need memory blocks for.
-     * @return the ArrayList filled with Integers repressenting the memory
+     * @return the ArrayList filled with Integers representing the memory
      * allocation that took place.
      */
     public ArrayList<Integer> fitProcess(int[] sizeOfBlocks, int[] sizeOfProcesses) {

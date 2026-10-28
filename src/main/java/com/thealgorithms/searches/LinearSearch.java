@@ -1,37 +1,76 @@
+
 package com.thealgorithms.searches;
 
 import com.thealgorithms.devutils.searches.SearchAlgorithm;
 
 /**
- * Linear search is the easiest search algorithm It works with sorted and
- * unsorted arrays (an binary search works only with sorted array) This
- * algorithm just compares all elements of an array to find a value
+ * Linear Search is a simple searching algorithm that checks
+ * each element of the array sequentially until the target
+ * value is found or the array ends.
  *
- * <p>
- * Worst-case performance O(n) Best-case performance O(1) Average performance
- * O(n) Worst-case space complexity
+ * It works for both sorted and unsorted arrays.
  *
- * @author Varun Upadhyay (https://github.com/varunu28)
- * @author Podshivalov Nikita (https://github.com/nikitap492)
+ * <p>How it works step-by-step:
+ * <ol>
+ *   <li>Start from the first element of the array.</li>
+ *   <li>Compare the current element with the target value.</li>
+ *   <li>If they match, return the current index.</li>
+ *   <li>If they don't match, move to the next element.</li>
+ *   <li>Repeat until the element is found or the array ends.</li>
+ *   <li>If not found, return -1.</li>
+ * </ol>
+ *
+ * <p>Example:
+ * <pre>
+ *   Input array: [5, 3, 8, 1, 9]
+ *   Target: 8
+ *
+ *   Step 1: Compare 5 with 8 → no match, move on
+ *   Step 2: Compare 3 with 8 → no match, move on
+ *   Step 3: Compare 8 with 8 → match found at index 2!
+ *
+ *   Output: 2
+ *
+ *   If target = 7:
+ *   Output: -1 (not found)
+ * </pre>
+ * Time Complexity:
+ *  - Best case: O(1) - target is the first element
+ *  - Average case: O(n) - target is somewhere in the middle
+ *  - Worst case: O(n) - target is last or not present
+ *
+ * Space Complexity: O(1)
+ *
+ * @author Varun Upadhyay
+ * @author Podshivalov Nikita
  * @see BinarySearch
  * @see SearchAlgorithm
  */
 public class LinearSearch implements SearchAlgorithm {
 
     /**
-     * Generic Linear search method
+     * Generic Linear search method that searches for a value
+     * in the given array by checking each element one by one.
      *
-     * @param array List to be searched
+     * @param array List to be searched (can be unsorted)
      * @param value Key being searched for
-     * @return Location of the key
+     * @return the index of the matching element, or -1 if the array is null or empty,
+     *         the value is null, or no matching element is found; null array elements are skipped
      */
     @Override
     public <T extends Comparable<T>> int find(T[] array, T value) {
+
+        if (array == null || array.length == 0 || value == null) {
+            return -1;
+        }
+
         for (int i = 0; i < array.length; i++) {
-            if (array[i].compareTo(value) == 0) {
+            T currentElement = array[i];
+            if (currentElement != null && currentElement.compareTo(value) == 0) {
                 return i;
             }
         }
+
         return -1;
     }
 }

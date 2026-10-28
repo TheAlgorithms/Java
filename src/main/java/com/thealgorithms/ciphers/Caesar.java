@@ -9,8 +9,8 @@ package com.thealgorithms.ciphers;
  * @author khalil2535
  */
 public class Caesar {
-    private static char normalizeShift(final int shift) {
-        return (char) (shift % 26);
+    private static int normalizeShift(final int shift) {
+        return ((shift % 26) + 26) % 26;
     }
 
     /**
@@ -22,21 +22,18 @@ public class Caesar {
     public String encode(String message, int shift) {
         StringBuilder encoded = new StringBuilder();
 
-        final char shiftChar = normalizeShift(shift);
+        final int shiftChar = normalizeShift(shift);
 
         final int length = message.length();
         for (int i = 0; i < length; i++) {
-            //            int current = message.charAt(i); //using char to shift characters because
-            //            ascii
-            // is in-order latin alphabet
-            char current = message.charAt(i); // Java law : char + int = char
+            final char current = message.charAt(i);
 
             if (isCapitalLatinLetter(current)) {
-                current += shiftChar;
-                encoded.append((char) (current > 'Z' ? current - 26 : current)); // 26 = number of latin letters
+                final int shifted = current + shiftChar;
+                encoded.append((char) (shifted > 'Z' ? shifted - 26 : shifted)); // 26 = number of latin letters
             } else if (isSmallLatinLetter(current)) {
-                current += shiftChar;
-                encoded.append((char) (current > 'z' ? current - 26 : current)); // 26 = number of latin letters
+                final int shifted = current + shiftChar;
+                encoded.append((char) (shifted > 'z' ? shifted - 26 : shifted)); // 26 = number of latin letters
             } else {
                 encoded.append(current);
             }
@@ -53,17 +50,17 @@ public class Caesar {
     public String decode(String encryptedMessage, int shift) {
         StringBuilder decoded = new StringBuilder();
 
-        final char shiftChar = normalizeShift(shift);
+        final int shiftChar = normalizeShift(shift);
 
         final int length = encryptedMessage.length();
         for (int i = 0; i < length; i++) {
-            char current = encryptedMessage.charAt(i);
+            final char current = encryptedMessage.charAt(i);
             if (isCapitalLatinLetter(current)) {
-                current -= shiftChar;
-                decoded.append((char) (current < 'A' ? current + 26 : current)); // 26 = number of latin letters
+                final int shifted = current - shiftChar;
+                decoded.append((char) (shifted < 'A' ? shifted + 26 : shifted)); // 26 = number of latin letters
             } else if (isSmallLatinLetter(current)) {
-                current -= shiftChar;
-                decoded.append((char) (current < 'a' ? current + 26 : current)); // 26 = number of latin letters
+                final int shifted = current - shiftChar;
+                decoded.append((char) (shifted < 'a' ? shifted + 26 : shifted)); // 26 = number of latin letters
             } else {
                 decoded.append(current);
             }

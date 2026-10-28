@@ -1,13 +1,12 @@
 package com.thealgorithms.maths;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import org.junit.jupiter.api.Test;
 
 /**
  * Test class for SumOfSquares
- *
- * @author BEASTSHRIRAM
  */
 class SumOfSquaresTest {
 
@@ -64,5 +63,12 @@ class SumOfSquaresTest {
     void testEdgeCases() {
         // Test edge case
         assertEquals(1, SumOfSquares.minSquares(0)); // 0^2
+    }
+
+    @Test
+    void testNegativeInput() {
+        // Negative inputs should throw IllegalArgumentException
+        assertThrows(IllegalArgumentException.class, () -> SumOfSquares.minSquares(-1));
+        assertThrows(IllegalArgumentException.class, () -> SumOfSquares.minSquares(-10));
     }
 }

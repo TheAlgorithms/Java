@@ -11,16 +11,16 @@ package com.thealgorithms.devutils.nodes;
 public class SimpleTreeNode<E> extends TreeNode<E> {
 
     /**
-     * Refrence to the child Node on the left.
+     * Reference to the child Node on the left.
      */
     private SimpleTreeNode<E> leftNode;
     /**
-     * Refrence to the child Node on the right.
+     * Reference to the child Node on the right.
      */
     private SimpleTreeNode<E> rightNode;
 
     /**
-     * Empty contructor.
+     * Empty constructor.
      */
     public SimpleTreeNode() {
         super();

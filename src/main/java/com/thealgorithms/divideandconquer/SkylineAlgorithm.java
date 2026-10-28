@@ -161,7 +161,7 @@ public class SkylineAlgorithm {
          * function dominates the argument point.
          *
          * @param p1 the point that is compared
-         * @return true if the point wich calls the function dominates p1 false
+         * @return true if the point which calls the function dominates p1 false
          * otherwise.
          */
         public boolean dominates(Point p1) {

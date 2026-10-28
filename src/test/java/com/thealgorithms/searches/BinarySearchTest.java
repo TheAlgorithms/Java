@@ -105,4 +105,90 @@ class BinarySearchTest {
         int expectedIndex = 9999; // Index of the last element
         assertEquals(expectedIndex, binarySearch.find(array, key), "The index of the last element should be 9999.");
     }
+
+    /**
+     * Test for binary search with null array.
+     */
+    @Test
+    void testBinarySearchNullArray() {
+        BinarySearch binarySearch = new BinarySearch();
+        Integer[] array = null;
+        int key = 5; // Key to search
+        int expectedIndex = -1; // Key not found
+        assertEquals(expectedIndex, binarySearch.find(array, key), "The element should not be found in a null array.");
+    }
+
+    /**
+     * Test for binary search with duplicate elements.
+     */
+    @Test
+    void testBinarySearchWithDuplicates() {
+        BinarySearch binarySearch = new BinarySearch();
+        Integer[] array = {1, 2, 2, 2, 3};
+        int key = 2; // Element present multiple times
+
+        int result = binarySearch.find(array, key);
+        assertEquals(2, array[result], "The returned index should contain the searched element.");
+    }
+
+    /**
+     * Test for binary search where all elements are the same.
+     */
+    @Test
+    void testBinarySearchAllElementsSame() {
+        BinarySearch binarySearch = new BinarySearch();
+        Integer[] array = {5, 5, 5, 5, 5};
+        int key = 5; // All elements match
+
+        int result = binarySearch.find(array, key);
+        assertEquals(5, array[result], "The returned index should contain the searched element.");
+    }
+
+    /**
+     * Test for binary search with negative numbers.
+     */
+    @Test
+    void testBinarySearchNegativeNumbers() {
+        BinarySearch binarySearch = new BinarySearch();
+        Integer[] array = {-10, -5, 0, 5, 10};
+        int key = -5; // Element present
+        int expectedIndex = 1; // Index of the element
+        assertEquals(expectedIndex, binarySearch.find(array, key), "The index of the element should be 1.");
+    }
+
+    /**
+     * Test for binary search when key is smaller than all elements.
+     */
+    @Test
+    void testBinarySearchKeySmallerThanAll() {
+        BinarySearch binarySearch = new BinarySearch();
+        Integer[] array = {10, 20, 30};
+        int key = 5; // Smaller than all elements
+        int expectedIndex = -1; // Key not found
+        assertEquals(expectedIndex, binarySearch.find(array, key), "The element should not be found in the array.");
+    }
+
+    /**
+     * Test for binary search when key is larger than all elements.
+     */
+    @Test
+    void testBinarySearchKeyLargerThanAll() {
+        BinarySearch binarySearch = new BinarySearch();
+        Integer[] array = {10, 20, 30};
+        int key = 40; // Larger than all elements
+        int expectedIndex = -1; // Key not found
+        assertEquals(expectedIndex, binarySearch.find(array, key), "The element should not be found in the array.");
+    }
+
+    /**
+     * Test for binary search with String array.
+     */
+    @Test
+    void testBinarySearchStrings() {
+        BinarySearch binarySearch = new BinarySearch();
+        String[] array = {"apple", "banana", "cherry", "date"};
+        String key = "cherry"; // Element present
+        int expectedIndex = 2; // Index of the element
+        assertEquals(expectedIndex, binarySearch.find(array, key), "The index of the element should be 2.");
+    }
 }

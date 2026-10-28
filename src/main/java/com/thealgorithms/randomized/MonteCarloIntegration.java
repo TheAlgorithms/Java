@@ -64,13 +64,21 @@ public final class MonteCarloIntegration {
         if (!validate(fx, a, b, n)) {
             throw new IllegalArgumentException("Invalid input parameters");
         }
-        double totalArea = 0.0;
+        double total = 0.0;
         double interval = b - a;
-        for (int i = 0; i < n; i++) {
-            double x = a + generator.nextDouble() * interval;
-            totalArea += fx.apply(x);
+        int pairs = n / 2;
+        for (int i = 0; i < pairs; i++) {
+            double u = generator.nextDouble();
+            double x1 = a + u * interval;
+            double x2 = a + (1.0 - u) * interval;
+            total += fx.apply(x1);
+            total += fx.apply(x2);
         }
-        return interval * totalArea / n;
+        if ((n & 1) == 1) {
+            double x = a + generator.nextDouble() * interval;
+            total += fx.apply(x);
+        }
+        return interval * total / n;
     }
 
     private static boolean validate(Function<Double, Double> fx, double a, double b, int n) {

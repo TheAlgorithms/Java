@@ -10,6 +10,13 @@ class BubbleSort implements SortAlgorithm {
     /**
      * Implements generic bubble sort algorithm.
      *
+     * Time Complexity:
+     * - Best case: O(n) – array is already sorted.
+     * - Average case: O(n^2)
+     * - Worst case: O(n^2)
+     *
+     * Space Complexity: O(1) – in-place sorting.
+     *
      * @param array the array to be sorted.
      * @param <T> the type of elements in the array.
      * @return the sorted array.

@@ -1,32 +1,30 @@
 package com.thealgorithms.strings;
 
-import java.util.Scanner;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author Prateek Kumar Oraon (https://github.com/prateekKrOraon)
  *
- An implementation of Rabin-Karp string matching algorithm
- Program will simply end if there is no match
+ *         An implementation of Rabin-Karp string matching algorithm
+ *         Program will simply end if there is no match
  */
 public final class RabinKarp {
     private RabinKarp() {
     }
 
-    public static Scanner scanner = null;
-    public static final int ALPHABET_SIZE = 256;
+    private static final int ALPHABET_SIZE = 256;
 
-    public static void main(String[] args) {
-        scanner = new Scanner(System.in);
-        System.out.println("Enter String");
-        String text = scanner.nextLine();
-        System.out.println("Enter pattern");
-        String pattern = scanner.nextLine();
-
-        int q = 101;
-        searchPat(text, pattern, q);
+    public static List<Integer> search(String text, String pattern) {
+        return search(text, pattern, 101);
     }
 
-    private static void searchPat(String text, String pattern, int q) {
+    public static List<Integer> search(String text, String pattern, int q) {
+        List<Integer> occurrences = new ArrayList<>();
+        if (text == null || pattern == null || pattern.isEmpty()) {
+            return occurrences;
+        }
+
         int m = pattern.length();
         int n = text.length();
         int t = 0;
@@ -35,48 +33,42 @@ public final class RabinKarp {
         int j = 0;
         int i = 0;
 
-        h = (int) Math.pow(ALPHABET_SIZE, m - 1) % q;
+        if (m > n) {
+            return new ArrayList<>();
+        }
+
+        // h = pow(ALPHABET_SIZE, m-1) % q
+        for (i = 0; i < m - 1; i++) {
+            h = h * ALPHABET_SIZE % q;
+        }
 
         for (i = 0; i < m; i++) {
-            // hash value is calculated for each character and then added with the hash value of the
-            // next character for pattern as well as the text for length equal to the length of
-            // pattern
             p = (ALPHABET_SIZE * p + pattern.charAt(i)) % q;
             t = (ALPHABET_SIZE * t + text.charAt(i)) % q;
         }
 
         for (i = 0; i <= n - m; i++) {
-            // if the calculated hash value of the pattern and text matches then
-            // all the characters of the pattern is matched with the text of length equal to length
-            // of the pattern if all matches then pattern exist in string if not then the hash value
-            // of the first character of the text is subtracted and hash value of the next character
-            // after the end of the evaluated characters is added
             if (p == t) {
-                // if hash value matches then the individual characters are matched
                 for (j = 0; j < m; j++) {
-                    // if not matched then break out of the loop
                     if (text.charAt(i + j) != pattern.charAt(j)) {
                         break;
                     }
                 }
 
-                // if all characters are matched then pattern exist in the string
                 if (j == m) {
-                    System.out.println("Pattern found at index " + i);
+                    occurrences.add(i);
                 }
             }
 
-            // if i<n-m then hash value of the first character of the text is subtracted and hash
-            // value of the next character after the end of the evaluated characters is added to get
-            // the hash value of the next window of characters in the text
             if (i < n - m) {
-                t = (ALPHABET_SIZE * (t - text.charAt(i) * h) + text.charAt(i + m)) % q;
-
-                // if hash value becomes less than zero than q is added to make it positive
+                t = (t - text.charAt(i) * h % q);
                 if (t < 0) {
-                    t = (t + q);
+                    t += q;
                 }
+                t = t * ALPHABET_SIZE % q;
+                t = (t + text.charAt(i + m)) % q;
             }
         }
+        return occurrences;
     }
 }

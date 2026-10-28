@@ -13,6 +13,7 @@ import java.util.List;
  * </p>
  *
  * @author [Madhur Panwar](<a href="https://github.com/mdrpanwar">git-Madhur Panwar</a>)
+ * @author [Udaya Krishnan M](<a href="https://github.com/UdayaKrishnanM/">git-Udaya Krishnan M</a>) {added prettyDisplay() method}
  */
 public class BSTRecursiveGeneric<T extends Comparable<T>> {
 
@@ -29,6 +30,29 @@ public class BSTRecursiveGeneric<T extends Comparable<T>> {
     }
 
     /**
+     * Displays the tree is a structured format
+     */
+    public void prettyDisplay() {
+        prettyDisplay(root, 0);
+    }
+
+    private void prettyDisplay(Node<T> node, int level) {
+        if (node == null) {
+            return;
+        }
+        prettyDisplay(node.right, level + 1);
+        if (level != 0) {
+            for (int i = 0; i < level - 1; i++) {
+                System.out.print("|\t");
+            }
+            System.out.println("|---->" + node.data);
+        } else {
+            System.out.println(node.data);
+        }
+        prettyDisplay(node.left, level + 1);
+    }
+
+    /**
      * main function for testing
      */
     public static void main(String[] args) {
@@ -38,7 +62,12 @@ public class BSTRecursiveGeneric<T extends Comparable<T>> {
 
         integerTree.add(5);
         integerTree.add(10);
-        integerTree.add(9);
+        integerTree.add(-9);
+        integerTree.add(4);
+        integerTree.add(3);
+        integerTree.add(1);
+        System.out.println("Pretty Display of current tree is:");
+        integerTree.prettyDisplay();
         assert !integerTree.find(4)
             : "4 is not yet present in BST";
         assert integerTree.find(10)
@@ -54,16 +83,21 @@ public class BSTRecursiveGeneric<T extends Comparable<T>> {
         assert integerTree.find(70)
             : "70 was inserted but not found";
         /*
-     Will print in following order
-     5 10 20 70
+            Will print in following order
+            5 10 20 70
          */
+        System.out.println("Pretty Display of current tree is:");
+        integerTree.prettyDisplay();
         integerTree.inorder();
+        System.out.println("Pretty Display of current tree is:");
+        integerTree.prettyDisplay();
         System.out.println();
         System.out.println("Testing for string data...");
         // String
         BSTRecursiveGeneric<String> stringTree = new BSTRecursiveGeneric<String>();
 
         stringTree.add("banana");
+        stringTree.add("apple");
         stringTree.add("pineapple");
         stringTree.add("date");
         assert !stringTree.find("girl")
@@ -80,11 +114,15 @@ public class BSTRecursiveGeneric<T extends Comparable<T>> {
         stringTree.add("hills");
         assert stringTree.find("hills")
             : "hills was inserted but not found";
+        System.out.println("Pretty Display of current tree is:");
+        stringTree.prettyDisplay();
         /*
      Will print in following order
      banana hills india pineapple
          */
         stringTree.inorder();
+        System.out.println("Pretty Display of current tree is:");
+        stringTree.prettyDisplay();
     }
 
     /**

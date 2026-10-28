@@ -11,9 +11,9 @@ import java.util.Arrays;
  * https://cs.stackexchange.com/questions/125372/how-to-wiggle-sort-an-array-in-linear-time-complexity
  * Also have a look at:
  * https://cs.stackexchange.com/questions/125372/how-to-wiggle-sort-an-array-in-linear-time-complexity?noredirect=1&lq=1
- * Not all arrays are wiggle-sortable. This algorithm will find some obviously not wiggle-sortable
- * arrays and throw an error, but there are some exceptions that won't be caught, for example [1, 2,
- * 2].
+ * Not all arrays are wiggle-sortable. This algorithm detects non-wiggle-sortable inputs — for
+ * example [1, 2, 2], or arrays where more than half the values are equal — and throws an
+ * IllegalArgumentException instead of returning a wrongly ordered result.
  */
 public class WiggleSort implements SortAlgorithm {
 

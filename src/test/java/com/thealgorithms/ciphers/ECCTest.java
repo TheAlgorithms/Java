@@ -37,7 +37,7 @@ public class ECCTest {
         System.out.println("Base Point G: " + curve.getBasePoint());
 
         // Verify that the ciphertext is not empty
-        assertEquals(cipherText.length, 2); // Check if the ciphertext contains two points (R and S)
+        assertEquals(2, cipherText.length); // Check if the ciphertext contains two points (R and S)
 
         // Output the encrypted coordinate points
         System.out.println("Encrypted Points:");
