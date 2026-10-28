@@ -52,8 +52,43 @@ public class MazeRecursionTest {
     }
 
     @Test
+    public void testEachStartAndGoalCoordinateMustBeInsideMaze() {
+        int[][] maze = new int[2][2];
+
+        assertThrows(IllegalArgumentException.class, () -> MazeRecursion.solveMazeUsingFirstStrategy(maze, -1, 0, 1, 1));
+        assertThrows(IllegalArgumentException.class, () -> MazeRecursion.solveMazeUsingFirstStrategy(maze, 2, 0, 1, 1));
+        assertThrows(IllegalArgumentException.class, () -> MazeRecursion.solveMazeUsingFirstStrategy(maze, 0, -1, 1, 1));
+        assertThrows(IllegalArgumentException.class, () -> MazeRecursion.solveMazeUsingFirstStrategy(maze, 0, 2, 1, 1));
+        assertThrows(IllegalArgumentException.class, () -> MazeRecursion.solveMazeUsingFirstStrategy(maze, 0, 0, -1, 1));
+        assertThrows(IllegalArgumentException.class, () -> MazeRecursion.solveMazeUsingFirstStrategy(maze, 0, 0, 2, 1));
+        assertThrows(IllegalArgumentException.class, () -> MazeRecursion.solveMazeUsingFirstStrategy(maze, 0, 0, 1, -1));
+        assertThrows(IllegalArgumentException.class, () -> MazeRecursion.solveMazeUsingFirstStrategy(maze, 0, 0, 1, 2));
+    }
+
+    @Test
+    public void testMazeMustNotBeNullOrEmpty() {
+        assertThrows(IllegalArgumentException.class, () -> MazeRecursion.solveMazeUsingFirstStrategy(null));
+        assertThrows(IllegalArgumentException.class, () -> MazeRecursion.solveMazeUsingFirstStrategy(new int[0][0]));
+        assertThrows(IllegalArgumentException.class, () -> MazeRecursion.solveMazeUsingFirstStrategy(new int[][] {null}));
+        assertThrows(IllegalArgumentException.class, () -> MazeRecursion.solveMazeUsingFirstStrategy(new int[][] {new int[0]}));
+        assertThrows(IllegalArgumentException.class, () -> MazeRecursion.solveMazeUsingFirstStrategy(new int[][] {{0}, null}));
+    }
+
+    @Test
     public void testMazeMustBeRectangular() {
         assertThrows(IllegalArgumentException.class, () -> MazeRecursion.solveMazeUsingFirstStrategy(new int[][] {{0, 0}, {0}}, 0, 0, 1, 0));
+    }
+
+    @Test
+    public void testBlockedStartAndGoalHaveNoSolution() {
+        assertNull(MazeRecursion.solveMazeUsingFirstStrategy(new int[][] {{1, 0}, {0, 0}}, 0, 0, 1, 1));
+        assertNull(MazeRecursion.solveMazeUsingSecondStrategy(new int[][] {{0, 0}, {0, 1}}, 0, 0, 1, 1));
+    }
+
+    @Test
+    public void testOpenSingleCellMazeIsAlreadySolved() {
+        assertArrayEquals(new int[][] {{2}}, MazeRecursion.solveMazeUsingFirstStrategy(new int[][] {{0}}, 0, 0, 0, 0));
+        assertArrayEquals(new int[][] {{2}}, MazeRecursion.solveMazeUsingSecondStrategy(new int[][] {{0}}, 0, 0, 0, 0));
     }
 
     @Test
