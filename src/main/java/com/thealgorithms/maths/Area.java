@@ -1,8 +1,11 @@
 package com.thealgorithms.maths;
 
-/**
- * Find the area of various geometric shapes
- */
+public static double surfaceAreaPyramid(final double sideLength, final double slantHeight){
+	double baseArea = sideLength * sideLength;
+	double lateralSurfaceArea = 2 * sideLength * slantHeight;
+	return baseArea + lateralSurfaceArea;
+}
+
 public final class Area {
     private Area() {
     }
