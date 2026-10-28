@@ -24,8 +24,27 @@ public class MazeRecursionTest {
 
     @Test
     public void testLegacyMethodsReturnNullWhenFixedGoalIsOutsideMaze() {
+        assertNull(MazeRecursion.solveMazeUsingFirstStrategy(new int[1][1]));
+        assertNull(MazeRecursion.solveMazeUsingSecondStrategy(new int[1][1]));
         assertNull(MazeRecursion.solveMazeUsingFirstStrategy(new int[2][2]));
         assertNull(MazeRecursion.solveMazeUsingSecondStrategy(new int[2][2]));
+    }
+
+    @Test
+    public void testLegacyMethodsReturnNullWhenFixedGoalRowOrColumnIsOutsideMaze() {
+        assertNull(MazeRecursion.solveMazeUsingFirstStrategy(new int[7][5]));
+        assertNull(MazeRecursion.solveMazeUsingSecondStrategy(new int[6][6]));
+    }
+
+    @Test
+    public void testLegacyMethodsReturnNullWhenNoPathExists() {
+        int[][] firstStrategyMaze = new int[7][6];
+        int[][] secondStrategyMaze = new int[7][6];
+        firstStrategyMaze[1][1] = 1;
+        secondStrategyMaze[1][1] = 1;
+
+        assertNull(MazeRecursion.solveMazeUsingFirstStrategy(firstStrategyMaze));
+        assertNull(MazeRecursion.solveMazeUsingSecondStrategy(secondStrategyMaze));
     }
 
     @Test
