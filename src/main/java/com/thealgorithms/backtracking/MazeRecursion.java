@@ -62,9 +62,7 @@ public final class MazeRecursion {
      * @throws IllegalArgumentException if the maze is null, empty, not rectangular,
      *                                  or a coordinate is outside the maze
      */
-    public static int[][] solveMazeUsingFirstStrategy(
-        int[][] map, int startRow, int startColumn, int goalRow, int goalColumn
-    ) {
+    public static int[][] solveMazeUsingFirstStrategy(int[][] map, int startRow, int startColumn, int goalRow, int goalColumn) {
         validateCoordinates(map, startRow, startColumn, goalRow, goalColumn);
         return solve(map, startRow, startColumn, goalRow, goalColumn, FIRST_STRATEGY_DIRECTIONS) ? map : null;
     }
@@ -81,9 +79,7 @@ public final class MazeRecursion {
      * @throws IllegalArgumentException if the maze is null, empty, not rectangular,
      *                                  or a coordinate is outside the maze
      */
-    public static int[][] solveMazeUsingSecondStrategy(
-        int[][] map, int startRow, int startColumn, int goalRow, int goalColumn
-    ) {
+    public static int[][] solveMazeUsingSecondStrategy(int[][] map, int startRow, int startColumn, int goalRow, int goalColumn) {
         validateCoordinates(map, startRow, startColumn, goalRow, goalColumn);
         return solve(map, startRow, startColumn, goalRow, goalColumn, SECOND_STRATEGY_DIRECTIONS) ? map : null;
     }
@@ -124,14 +120,7 @@ public final class MazeRecursion {
 
     private static void validateCoordinates(int[][] map, int startRow, int startColumn, int goalRow, int goalColumn) {
         int columnCount = validateMaze(map);
-        if (startRow < 0
-            || startRow >= map.length
-            || startColumn < 0
-            || startColumn >= columnCount
-            || goalRow < 0
-            || goalRow >= map.length
-            || goalColumn < 0
-            || goalColumn >= columnCount) {
+        if (startRow < 0 || startRow >= map.length || startColumn < 0 || startColumn >= columnCount || goalRow < 0 || goalRow >= map.length || goalColumn < 0 || goalColumn >= columnCount) {
             throw new IllegalArgumentException("Start and goal coordinates must be inside the maze.");
         }
     }
