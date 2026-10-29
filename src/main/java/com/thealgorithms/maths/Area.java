@@ -233,7 +233,7 @@ public final class Area {
         return Math.PI * radius * (radius + Math.pow(height * height + radius * radius, 0.5));
     }
 
-     /**
+    /**
      * Calculate the surface area of a triangular prism with a right-triangle base.
      *
      * @param sideA first perpendicular side of the triangular base
@@ -241,8 +241,7 @@ public final class Area {
      * @param prismLength length of the prism
      * @return surface area of the given triangular prism
      */
-        public static double surfaceAreaTriangularPrism(
-            final double sideA, final double sideB, final double prismLength) {
+    public static double surfaceAreaTriangularPrism(final double sideA, final double sideB, final double prismLength) {
         if (sideA <= 0) {
             throw new IllegalArgumentException("Side A must be greater than 0");
         }
@@ -260,4 +259,3 @@ public final class Area {
         return totalTriangleArea + lateralSurfaceArea;
     }
 }
-
