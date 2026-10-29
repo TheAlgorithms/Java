@@ -78,7 +78,7 @@ public final class Area {
      */
     public static double surfaceAreaPyramid(final double sideLength, final double slantHeight) {
         if (sideLength <= 0) {
-            throw new IllegalArgumentException("");
+            throw new IllegalArgumentException("Side length must be greater than 0");
         }
         if (slantHeight <= 0) {
             throw new IllegalArgumentException("slant height must be greater than 0");
@@ -232,4 +232,32 @@ public final class Area {
         }
         return Math.PI * radius * (radius + Math.pow(height * height + radius * radius, 0.5));
     }
+
+     /**
+     * Calculate the surface area of a triangular prism with a right-triangle base.
+     *
+     * @param sideA first perpendicular side of the triangular base
+     * @param sideB second perpendicular side of the triangular base
+     * @param prismLength length of the prism
+     * @return surface area of the given triangular prism
+     */
+        public static double surfaceAreaTriangularPrism(
+            final double sideA, final double sideB, final double prismLength) {
+        if (sideA <= 0) {
+            throw new IllegalArgumentException("Side A must be greater than 0");
+        }
+        if (sideB <= 0) {
+            throw new IllegalArgumentException("Side B must be greater than 0");
+        }
+        if (prismLength <= 0) {
+            throw new IllegalArgumentException("Prism length must be greater than 0");
+        }
+
+        double hypotenuse = Math.sqrt(sideA * sideA + sideB * sideB);
+        double totalTriangleArea = sideA * sideB;
+        double lateralSurfaceArea = prismLength * (sideA + sideB + hypotenuse);
+
+        return triangleArea + lateralSurfaceArea;
+    }
 }
+
