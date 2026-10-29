@@ -4,122 +4,128 @@ package com.thealgorithms.backtracking;
  * This class contains methods to solve a maze using recursive backtracking.
  * The maze is represented as a 2D array where walls, paths, and visited/dead
  * ends are marked with different integers.
- *
- * The goal is to find a path from a starting position to the target position
- * (map[6][5]) while navigating through the maze.
  */
 public final class MazeRecursion {
+    private static final int[][] FIRST_STRATEGY_DIRECTIONS = {{1, 0}, {0, 1}, {-1, 0}, {0, -1}};
+    private static final int[][] SECOND_STRATEGY_DIRECTIONS = {{-1, 0}, {0, 1}, {1, 0}, {0, -1}};
 
     private MazeRecursion() {
     }
 
     /**
-     * This method solves the maze using the "down -> right -> up -> left"
-     * movement strategy.
+     * Solves the maze using the "down -> right -> up -> left" movement strategy,
+     * starting at (1, 1) and targeting (6, 5).
      *
-     * @param map The 2D array representing the maze (walls, paths, etc.)
-     * @return The solved maze with paths marked, or null if no solution exists.
+     * @param map the 2D array representing the maze (walls, paths, etc.)
+     * @return the solved maze with paths marked, or null if no solution exists or a fixed endpoint is outside the maze
+     * @throws IllegalArgumentException if the maze is null, empty, or not rectangular
      */
     public static int[][] solveMazeUsingFirstStrategy(int[][] map) {
-        if (setWay(map, 1, 1)) {
+        validateMaze(map);
+        if (!isInBounds(map, 1, 1) || !isInBounds(map, 6, 5)) {
+            return null;
+        }
+        if (map[6][5] == 2) {
             return map;
         }
-        return null;
+        return solve(map, 1, 1, 6, 5, FIRST_STRATEGY_DIRECTIONS) ? map : null;
     }
 
     /**
-     * This method solves the maze using the "up -> right -> down -> left"
-     * movement strategy.
+     * Solves the maze using the "up -> right -> down -> left" movement strategy,
+     * starting at (1, 1) and targeting (6, 5).
      *
-     * @param map The 2D array representing the maze (walls, paths, etc.)
-     * @return The solved maze with paths marked, or null if no solution exists.
+     * @param map the 2D array representing the maze (walls, paths, etc.)
+     * @return the solved maze with paths marked, or null if no solution exists or a fixed endpoint is outside the maze
+     * @throws IllegalArgumentException if the maze is null, empty, or not rectangular
      */
     public static int[][] solveMazeUsingSecondStrategy(int[][] map) {
-        if (setWay2(map, 1, 1)) {
+        validateMaze(map);
+        if (!isInBounds(map, 1, 1) || !isInBounds(map, 6, 5)) {
+            return null;
+        }
+        if (map[6][5] == 2) {
             return map;
         }
-        return null;
+        return solve(map, 1, 1, 6, 5, SECOND_STRATEGY_DIRECTIONS) ? map : null;
     }
 
     /**
-     * Attempts to find a path through the maze using a "down -> right -> up -> left"
-     * movement strategy. The path is marked with '2' for valid paths and '3' for dead ends.
+     * Solves the maze using the "down -> right -> up -> left" movement strategy.
      *
-     * @param map The 2D array representing the maze (walls, paths, etc.)
-     * @param i   The current x-coordinate of the ball (row index)
-     * @param j   The current y-coordinate of the ball (column index)
-     * @return True if a path is found to (6,5), otherwise false
+     * @param map the 2D array representing the maze (0 = open, non-zero = blocked)
+     * @param startRow the starting row
+     * @param startColumn the starting column
+     * @param goalRow the goal row
+     * @param goalColumn the goal column
+     * @return the solved maze with paths marked, or null if no solution exists
+     * @throws IllegalArgumentException if the maze is null, empty, not rectangular,
+     *                                  or a coordinate is outside the maze
      */
-    private static boolean setWay(int[][] map, int i, int j) {
-        if (map[6][5] == 2) {
-            return true;
-        }
-
-        // If the current position is unvisited (0), explore it
-        if (map[i][j] == 0) {
-            // Mark the current position as '2'
-            map[i][j] = 2;
-
-            // Move down
-            if (setWay(map, i + 1, j)) {
-                return true;
-            }
-            // Move right
-            else if (setWay(map, i, j + 1)) {
-                return true;
-            }
-            // Move up
-            else if (setWay(map, i - 1, j)) {
-                return true;
-            }
-            // Move left
-            else if (setWay(map, i, j - 1)) {
-                return true;
-            }
-
-            map[i][j] = 3; // Mark as dead end (3) if no direction worked
-            return false;
-        }
-        return false;
+    public static int[][] solveMazeUsingFirstStrategy(int[][] map, int startRow, int startColumn, int goalRow, int goalColumn) {
+        validateCoordinates(map, startRow, startColumn, goalRow, goalColumn);
+        return solve(map, startRow, startColumn, goalRow, goalColumn, FIRST_STRATEGY_DIRECTIONS) ? map : null;
     }
 
     /**
-     * Attempts to find a path through the maze using an alternative movement
-     * strategy "up -> right -> down -> left".
+     * Solves the maze using the "up -> right -> down -> left" movement strategy.
      *
-     * @param map The 2D array representing the maze (walls, paths, etc.)
-     * @param i   The current x-coordinate of the ball (row index)
-     * @param j   The current y-coordinate of the ball (column index)
-     * @return True if a path is found to (6,5), otherwise false
+     * @param map the 2D array representing the maze (0 = open, non-zero = blocked)
+     * @param startRow the starting row
+     * @param startColumn the starting column
+     * @param goalRow the goal row
+     * @param goalColumn the goal column
+     * @return the solved maze with paths marked, or null if no solution exists
+     * @throws IllegalArgumentException if the maze is null, empty, not rectangular,
+     *                                  or a coordinate is outside the maze
      */
-    private static boolean setWay2(int[][] map, int i, int j) {
-        if (map[6][5] == 2) {
+    public static int[][] solveMazeUsingSecondStrategy(int[][] map, int startRow, int startColumn, int goalRow, int goalColumn) {
+        validateCoordinates(map, startRow, startColumn, goalRow, goalColumn);
+        return solve(map, startRow, startColumn, goalRow, goalColumn, SECOND_STRATEGY_DIRECTIONS) ? map : null;
+    }
+
+    private static boolean solve(int[][] map, int row, int column, int goalRow, int goalColumn, int[][] directions) {
+        if (!isInBounds(map, row, column) || map[row][column] != 0) {
+            return false;
+        }
+
+        map[row][column] = 2;
+        if (row == goalRow && column == goalColumn) {
             return true;
         }
 
-        if (map[i][j] == 0) {
-            map[i][j] = 2;
-
-            // Move up
-            if (setWay2(map, i - 1, j)) {
+        for (int[] direction : directions) {
+            if (solve(map, row + direction[0], column + direction[1], goalRow, goalColumn, directions)) {
                 return true;
             }
-            // Move right
-            else if (setWay2(map, i, j + 1)) {
-                return true;
-            }
-            // Move down
-            else if (setWay2(map, i + 1, j)) {
-                return true;
-            }
-            // Move left
-            else if (setWay2(map, i, j - 1)) {
-                return true;
-            }
-
-            map[i][j] = 3; // Mark as dead end (3) if no direction worked
-            return false;
         }
+
+        map[row][column] = 3;
         return false;
+    }
+
+    private static int validateMaze(int[][] map) {
+        if (map == null || map.length == 0 || map[0] == null || map[0].length == 0) {
+            throw new IllegalArgumentException("Maze must not be null or empty.");
+        }
+
+        int columnCount = map[0].length;
+        for (int[] row : map) {
+            if (row == null || row.length != columnCount) {
+                throw new IllegalArgumentException("Maze must be a non-empty rectangular matrix.");
+            }
+        }
+        return columnCount;
+    }
+
+    private static void validateCoordinates(int[][] map, int startRow, int startColumn, int goalRow, int goalColumn) {
+        int columnCount = validateMaze(map);
+        if (startRow < 0 || startRow >= map.length || startColumn < 0 || startColumn >= columnCount || goalRow < 0 || goalRow >= map.length || goalColumn < 0 || goalColumn >= columnCount) {
+            throw new IllegalArgumentException("Start and goal coordinates must be inside the maze.");
+        }
+    }
+
+    private static boolean isInBounds(int[][] map, int row, int column) {
+        return row >= 0 && row < map.length && column >= 0 && column < map[row].length;
     }
 }
