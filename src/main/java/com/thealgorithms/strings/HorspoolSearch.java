@@ -95,7 +95,7 @@ public final class HorspoolSearch {
      * @return index of first occurrence of the pattern in the text
      */
     private static int firstOccurrence(String pattern, String text, boolean caseSensitive) {
-        shiftValues = calcShiftValues(pattern); // build the bad symbol table
+        shiftValues = calcShiftValues(pattern, caseSensitive); // build the bad symbol table
         comparisons = 0; // reset comparisons
 
         if (pattern.length() == 0) { // return failure, if pattern empty
@@ -113,7 +113,7 @@ public final class HorspoolSearch {
                 char patternChar = pattern.charAt(i);
                 char textChar = text.charAt((textIndex + i) - (pattern.length() - 1));
                 if (!charEquals(patternChar, textChar, caseSensitive)) { // bad character, shift pattern
-                    textIndex += getShiftValue(text.charAt(textIndex));
+                    textIndex += getShiftValue(text.charAt(textIndex), caseSensitive);
                     break;
                 }
                 i--;
@@ -153,14 +153,15 @@ public final class HorspoolSearch {
      * in the table, then it is not a rightmost occurrence, so it continues.
      *
      * @param pattern basis for the bad symbol table
+     * @param caseSensitive whether to build the table with case-sensitive keys
      * @return the bad symbol table
      */
-    private static HashMap<Character, Integer> calcShiftValues(String pattern) {
+    private static HashMap<Character, Integer> calcShiftValues(String pattern, boolean caseSensitive) {
         patternLength = pattern.length();
         HashMap<Character, Integer> table = new HashMap<>();
 
         for (int i = pattern.length() - 2; i >= 0; i--) { // length - 2 is the index of the second to last character
-            char c = pattern.charAt(i);
+            char c = caseSensitive ? pattern.charAt(i) : Character.toLowerCase(pattern.charAt(i));
             int finalI = i;
             table.computeIfAbsent(c, k -> pattern.length() - 1 - finalI);
         }
@@ -173,11 +174,14 @@ public final class HorspoolSearch {
      * appropriate shift value for a given character
      *
      * @param c character
+     * @param caseSensitive whether the table was built with case-sensitive keys
      * @return shift value that corresponds to the character argument
      */
-    private static Integer getShiftValue(char c) {
-        if (shiftValues.get(c) != null) {
-            return shiftValues.get(c);
+    private static Integer getShiftValue(char c, boolean caseSensitive) {
+        // the table holds lower-case keys for case-insensitive searches
+        char key = caseSensitive ? c : Character.toLowerCase(c);
+        if (shiftValues.get(key) != null) {
+            return shiftValues.get(key);
         } else {
             return patternLength;
         }

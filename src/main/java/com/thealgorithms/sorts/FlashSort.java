@@ -76,7 +76,8 @@ public class FlashSort implements SortAlgorithm {
             return; // All elements are the same
         }
 
-        final int m = (int) (classificationRatio * arr.length);
+        // At least one class, otherwise small arrays index into an empty classification table
+        final int m = Math.max(1, (int) (classificationRatio * arr.length));
 
         final int[] classificationArray = new int[m];
 
