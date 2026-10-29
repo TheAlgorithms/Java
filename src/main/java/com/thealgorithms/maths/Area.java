@@ -39,7 +39,7 @@ public final class Area {
      * Calculate the surface area of a cuboid.
      *
      * @param length length of the cuboid
-     * @param width width of the cuboid
+     * @param width  width of the cuboid
      * @param height height of the cuboid
      * @return surface area of given cuboid
      */
@@ -72,7 +72,7 @@ public final class Area {
     /**
      * Calculate the surface area of a pyramid with a square base.
      *
-     * @param sideLength side length of the square base
+     * @param sideLength  side length of the square base
      * @param slantHeight slant height of the pyramid
      * @return surface area of the given pyramid
      */
@@ -86,6 +86,13 @@ public final class Area {
         double baseArea = sideLength * sideLength;
         double lateralSurfaceArea = 2 * sideLength * slantHeight;
         return baseArea + lateralSurfaceArea;
+    }
+
+    public static double surfaceAreaOfWhatttt(final double radius) {
+        if (radius <= 0) {
+            throw new IllegalArgumentException("");
+        }
+        return radius * 114.514;
     }
 
     /**
