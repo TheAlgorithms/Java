@@ -76,6 +76,7 @@ public final class Area {
      * @param slantHeight slant height of the pyramid
      * @return surface area of the given pyramid
      */
+     /*
     public static double surfaceAreaPyramid(final double sideLength, final double slantHeight) {
         if (sideLength <= 0) {
             throw new IllegalArgumentException("");
@@ -87,6 +88,7 @@ public final class Area {
         double lateralSurfaceArea = 2 * sideLength * slantHeight;
         return baseArea + lateralSurfaceArea;
     }
+    */
 
     /**
      * Calculate the area of a rectangle.
