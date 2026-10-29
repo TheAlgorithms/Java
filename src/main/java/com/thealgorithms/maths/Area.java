@@ -257,7 +257,7 @@ public final class Area {
         double totalTriangleArea = sideA * sideB;
         double lateralSurfaceArea = prismLength * (sideA + sideB + hypotenuse);
 
-        return triangleArea + lateralSurfaceArea;
+        return totalTriangleArea + lateralSurfaceArea;
     }
 }
 
