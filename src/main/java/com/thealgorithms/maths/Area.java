@@ -112,6 +112,17 @@ public final class Area {
      * @param height height of the cylinder.
      * @return volume of given cylinder
      */
+    public static double surfaceAreaPyramid(final double sideLength, final double slantHeight) {
+if (sideLength <= 0) {
+throw new IllegalArgumentException("Must be a positive sideLength");
+}
+if (slantHeight <= 0) {
+throw new IllegalArgumentException("Must be a positive slantHeight");
+}
+double baseArea = sideLength * sideLength;
+double lateralSurfaceArea = 2 * sideLength * slantHeight;
+return baseArea + lateralSurfaceArea;
+}
     public static double surfaceAreaCylinder(final double radius, final double height) {
         if (radius <= 0) {
             throw new IllegalArgumentException(POSITIVE_RADIUS);
