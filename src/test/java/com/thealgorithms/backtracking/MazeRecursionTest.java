@@ -1,6 +1,7 @@
 package com.thealgorithms.backtracking;
 
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
+import static org.junit.jupiter.api.Assertions.assertNull;
 
 import org.junit.jupiter.api.Test;
 
@@ -63,5 +64,60 @@ public class MazeRecursionTest {
         // Assert the results
         assertArrayEquals(expectedMap1, solvedMap1);
         assertArrayEquals(expectedMap2, solvedMap2);
+    }
+
+    @Test
+    public void testSolveMazeWithSmallMaze() {
+        int[][] map = new int[][] {
+            {1, 1, 1, 1, 1},
+            {1, 0, 0, 0, 1},
+            {1, 0, 1, 0, 1},
+            {1, 0, 0, 0, 1},
+            {1, 1, 1, 1, 1},
+        };
+        int[][] map2 = new int[5][5];
+        for (int i = 0; i < map.length; i++) {
+            System.arraycopy(map[i], 0, map2[i], 0, map[i].length);
+        }
+
+        int[][] solvedMap1 = MazeRecursion.solveMazeUsingFirstStrategy(map);
+        int[][] solvedMap2 = MazeRecursion.solveMazeUsingSecondStrategy(map2);
+
+        int[][] expectedMap1 = new int[][] {
+            {1, 1, 1, 1, 1},
+            {1, 2, 0, 0, 1},
+            {1, 2, 1, 0, 1},
+            {1, 2, 2, 2, 1},
+            {1, 1, 1, 1, 1},
+        };
+        int[][] expectedMap2 = new int[][] {
+            {1, 1, 1, 1, 1},
+            {1, 2, 2, 2, 1},
+            {1, 0, 1, 2, 1},
+            {1, 0, 0, 2, 1},
+            {1, 1, 1, 1, 1},
+        };
+
+        assertArrayEquals(expectedMap1, solvedMap1);
+        assertArrayEquals(expectedMap2, solvedMap2);
+    }
+
+    @Test
+    public void testSolveMazeWithNoSolution() {
+        // The target cell is walled off, so no path exists
+        int[][] map = new int[][] {
+            {1, 1, 1, 1, 1},
+            {1, 0, 1, 0, 1},
+            {1, 0, 1, 0, 1},
+            {1, 0, 1, 0, 1},
+            {1, 1, 1, 1, 1},
+        };
+        int[][] map2 = new int[5][5];
+        for (int i = 0; i < map.length; i++) {
+            System.arraycopy(map[i], 0, map2[i], 0, map[i].length);
+        }
+
+        assertNull(MazeRecursion.solveMazeUsingFirstStrategy(map));
+        assertNull(MazeRecursion.solveMazeUsingSecondStrategy(map2));
     }
 }
