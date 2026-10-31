@@ -6,7 +6,8 @@ package com.thealgorithms.backtracking;
  * ends are marked with different integers.
  *
  * The goal is to find a path from a starting position to the target position
- * (map[6][5]) while navigating through the maze.
+ * (the second-to-last row and column of the map) while navigating through
+ * the maze.
  */
 public final class MazeRecursion {
 
@@ -21,6 +22,9 @@ public final class MazeRecursion {
      * @return The solved maze with paths marked, or null if no solution exists.
      */
     public static int[][] solveMazeUsingFirstStrategy(int[][] map) {
+        if (map == null || map.length < 3 || map[0].length < 3) {
+            return null;
+        }
         if (setWay(map, 1, 1)) {
             return map;
         }
@@ -35,6 +39,9 @@ public final class MazeRecursion {
      * @return The solved maze with paths marked, or null if no solution exists.
      */
     public static int[][] solveMazeUsingSecondStrategy(int[][] map) {
+        if (map == null || map.length < 3 || map[0].length < 3) {
+            return null;
+        }
         if (setWay2(map, 1, 1)) {
             return map;
         }
@@ -48,10 +55,10 @@ public final class MazeRecursion {
      * @param map The 2D array representing the maze (walls, paths, etc.)
      * @param i   The current x-coordinate of the ball (row index)
      * @param j   The current y-coordinate of the ball (column index)
-     * @return True if a path is found to (6,5), otherwise false
+     * @return True if a path is found to the target position, otherwise false
      */
     private static boolean setWay(int[][] map, int i, int j) {
-        if (map[6][5] == 2) {
+        if (map[map.length - 2][map[0].length - 2] == 2) {
             return true;
         }
 
@@ -85,15 +92,16 @@ public final class MazeRecursion {
 
     /**
      * Attempts to find a path through the maze using an alternative movement
-     * strategy "up -> right -> down -> left".
+     * strategy "up -> right -> down -> left". The path is marked with '2' for
+     * valid paths and '3' for dead ends.
      *
      * @param map The 2D array representing the maze (walls, paths, etc.)
      * @param i   The current x-coordinate of the ball (row index)
      * @param j   The current y-coordinate of the ball (column index)
-     * @return True if a path is found to (6,5), otherwise false
+     * @return True if a path is found to the target position, otherwise false
      */
     private static boolean setWay2(int[][] map, int i, int j) {
-        if (map[6][5] == 2) {
+        if (map[map.length - 2][map[0].length - 2] == 2) {
             return true;
         }
 
