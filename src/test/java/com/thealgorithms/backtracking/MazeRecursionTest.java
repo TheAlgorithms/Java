@@ -1,14 +1,78 @@
 package com.thealgorithms.backtracking;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertNull;
 
 import org.junit.jupiter.api.Test;
-
 /**
  * @author onglipwei
  * @create 2022-08-03 5:17 AM
  */
 public class MazeRecursionTest {
+
+
+    @Test
+    public void testNullMaze() {
+        int[][] result = MazeRecursion.solveMazeUsingFirstStrategy(null);
+
+        assertNull(result);
+    }
+
+    @Test
+    public void testSmallMazeDoesNotThrowException() {
+        int[][] map = {
+                {0, 0},
+                {0, 0}
+        };
+
+        int[][] result = MazeRecursion.solveMazeUsingFirstStrategy(map);
+
+        assertArrayEquals(map, result);
+    }
+
+    @Test
+    public void testCustomStartAndDestination() {
+        int[][] map = {
+                {1, 1, 1, 1, 1},
+                {1, 0, 0, 0, 1},
+                {1, 0, 0, 0, 1},
+                {1, 1, 1, 1, 1}
+        };
+
+        int[][] result = MazeRecursion.solveMazeUsingFirstStrategy(
+                map, 1, 1, 2, 3
+        );
+
+        assertNotNull(result);
+        assertEquals(2, result[1][1]);
+        assertEquals(2, result[2][3]);
+    }
+
+    @Test
+    public void testInvalidCoordinates() {
+        int[][] map = {
+                {1, 1, 1},
+                {1, 0, 1},
+                {1, 1, 1}
+        };
+
+        int[][] result = MazeRecursion.solveMazeUsingFirstStrategy(
+                map, 10, 10, 1, 1
+        );
+
+        assertNull(result);
+    }
+
+    @Test
+    public void testEmptyMaze() {
+        int[][] map = new int[0][0];
+
+        int[][] result = MazeRecursion.solveMazeUsingFirstStrategy(map);
+
+        assertNull(result);
+    }
 
     @Test
     public void testSolveMazeUsingFirstAndSecondStrategy() {
@@ -64,4 +128,5 @@ public class MazeRecursionTest {
         assertArrayEquals(expectedMap1, solvedMap1);
         assertArrayEquals(expectedMap2, solvedMap2);
     }
+
 }
