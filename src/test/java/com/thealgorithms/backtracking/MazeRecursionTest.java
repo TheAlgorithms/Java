@@ -1,15 +1,12 @@
 package com.thealgorithms.backtracking;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
 
 import org.junit.jupiter.api.Test;
-/**
- * @author onglipwei
- * @create 2022-08-03 5:17 AM
- */
+
+
 public class MazeRecursionTest {
 
 
@@ -41,11 +38,12 @@ public class MazeRecursionTest {
                 {1, 1, 1, 1, 1}
         };
 
-        int[][] result = MazeRecursion.solveMazeUsingFirstStrategy(
-                map, 1, 1, 2, 3
-        );
+        int[][] result = MazeRecursion.solveMazeUsingFirstStrategy(map, 1, 1, 2, 3);
 
-        assertNotNull(result);
+        if (result == null) {
+            throw new AssertionError("Expected a solved maze, but got null");
+        }
+
         assertEquals(2, result[1][1]);
         assertEquals(2, result[2][3]);
     }
