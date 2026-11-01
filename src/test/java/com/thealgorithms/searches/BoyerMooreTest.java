@@ -52,4 +52,11 @@ public class BoyerMooreTest {
         int index = BoyerMoore.staticSearch(text, "CDE");
         assertEquals(2, index); // Primera ocurrencia de "CDE"
     }
+
+    @Test
+    public void testCharactersOutsideExtendedAscii() {
+        assertEquals(1, BoyerMoore.staticSearch("x中文", "中"));
+        assertEquals(-1, BoyerMoore.staticSearch("中文", "x"));
+        assertEquals(2, BoyerMoore.staticSearch("€ €uro", "€uro"));
+    }
 }

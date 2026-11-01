@@ -1,5 +1,8 @@
 package com.thealgorithms.searches;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * Boyer-Moore string search algorithm.
  * Efficient algorithm for substring search.
@@ -7,21 +10,16 @@ package com.thealgorithms.searches;
  */
 public class BoyerMoore {
 
-    private final int radix; // Radix (number of possible characters)
-    private final int[] right; // Bad character rule table
+    private final Map<Character, Integer> right; // Bad character rule table: last index of each pattern character
     private final String pattern;
 
     public BoyerMoore(String pat) {
         this.pattern = pat;
-        this.radix = 256;
-        this.right = new int[radix];
-
-        for (int c = 0; c < radix; c++) {
-            right[c] = -1;
-        }
+        // A map instead of a 256-entry array, so characters outside extended ASCII work too
+        this.right = new HashMap<>();
 
         for (int j = 0; j < pat.length(); j++) {
-            right[pat.charAt(j)] = j;
+            right.put(pat.charAt(j), j);
         }
     }
 
@@ -40,7 +38,7 @@ public class BoyerMoore {
                 char txtChar = text.charAt(i + j);
                 char patChar = pattern.charAt(j);
                 if (patChar != txtChar) {
-                    skip = Math.max(1, j - right[txtChar]);
+                    skip = Math.max(1, j - right.getOrDefault(txtChar, -1));
                     break;
                 }
             }
