@@ -1,5 +1,6 @@
 package com.thealgorithms.sorts;
 
+import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
@@ -57,6 +58,12 @@ public class FlashSortTest extends SortingAlgorithmTest {
         }
 
         return dynamicTests;
+    }
+
+    @Test
+    public void testArraysTooSmallForMoreThanOneClass() {
+        assertArrayEquals(new Integer[] {1, 2}, new FlashSort().sort(new Integer[] {2, 1}));
+        assertArrayEquals(new Integer[] {1, 2, 3, 4, 5}, new FlashSort(0.1).sort(new Integer[] {5, 3, 1, 4, 2}));
     }
 
     private List<DynamicTest> createDynamicTestsForRatio(double ratio) {

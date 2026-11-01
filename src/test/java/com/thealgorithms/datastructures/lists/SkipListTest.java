@@ -106,6 +106,20 @@ class SkipListTest {
         assertEquals(0, skipList.size());
     }
 
+    @Test
+    @DisplayName("Removing a missing element leaves the list unchanged")
+    void testRemoveMissing() {
+        skipList.remove("missing");
+        assertEquals(0, skipList.size());
+
+        skipList.add("a");
+        skipList.add("c");
+        skipList.remove("b");
+        assertEquals(2, skipList.size());
+        assertEquals("a", skipList.get(0));
+        assertEquals("c", skipList.get(1));
+    }
+
     private SkipList<String> createSkipList() {
         SkipList<String> s = new SkipList<>();
         String[] values = {"a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k"};
