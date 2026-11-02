@@ -1,5 +1,6 @@
 package com.thealgorithms.matrix.matrixexponentiation;
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
+
 import java.math.BigDecimal;
 import org.junit.jupiter.api.Test;
 class FibonacciTest {
