@@ -28,13 +28,13 @@ public final class BinarySearch2dArray {
      * @return An array containing the row and column indices of the target, or [-1,
      *         -1] if the target is not found.
      */
-    static int[] binarySearch(int[][] arr, int target) {
+    public static int[] binarySearch(int[][] arr, int target) {
         int rowCount = arr.length;
         int colCount = arr[0].length;
 
         // Edge case: If there's only one row, search that row directly.
         if (rowCount == 1) {
-            return binarySearch(arr, target, 0, 0, colCount);
+            return binarySearch(arr, target, 0, 0, colCount - 1);
         }
 
         // Set initial boundaries for binary search on rows.
@@ -68,6 +68,11 @@ public final class BinarySearch2dArray {
 
         if (arr[endRow][midCol] == target) {
             return new int[] {endRow, midCol};
+        }
+
+        // Edge case: If there is only one column, target cannot be outside midCol.
+        if (colCount == 1) {
+            return new int[] {-1, -1};
         }
 
         // If target is smaller than the element in the left of startRow, perform a
