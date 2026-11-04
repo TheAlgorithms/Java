@@ -121,6 +121,9 @@ public class SkipList<E extends Comparable<E>> {
                 current = next;
             }
         }
+        if (layer < 0) {
+            return; // not found, nothing to unlink
+        }
         for (int i = 0; i <= layer; i++) {
             current.previous(i).setNext(i, current.next(i));
             if (current.next(i) != null) {
