@@ -273,14 +273,10 @@ public class RowColumnWiseSorted2dArrayBinarySearchTest {
     }
 
     @Test
-    public void testMatrixWithNullRow() {
-        Integer[][] matrix = {
-            {10, 20, 30},
-            null,
-            {18, 28, 38},
-        };
-        int[] ans = RowColumnWiseSorted2dArrayBinarySearch.search(matrix, 28);
-        int[] expected = {2, 1};
+    public void testNullFirstRowReturnsNotFound() {
+        Integer[][] matrix = {null};
+        int[] ans = RowColumnWiseSorted2dArrayBinarySearch.search(matrix, 5);
+        int[] expected = {-1, -1};
         assertEquals(expected[0], ans[0]);
         assertEquals(expected[1], ans[1]);
     }

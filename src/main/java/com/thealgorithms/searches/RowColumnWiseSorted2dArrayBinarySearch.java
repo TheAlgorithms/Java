@@ -36,11 +36,6 @@ public final class RowColumnWiseSorted2dArrayBinarySearch implements MatrixSearc
         int colPointer = matrix[0].length - 1; // The pointer at end column
 
         while (rowPointer < matrix.length && colPointer >= 0) {
-            if (matrix[rowPointer] == null || colPointer >= matrix[rowPointer].length) {
-                rowPointer++;
-                continue;
-            }
-
             int comp = target.compareTo(matrix[rowPointer][colPointer]);
 
             if (comp == 0) {
