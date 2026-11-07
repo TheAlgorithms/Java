@@ -21,8 +21,16 @@ public final class CatalanNumber {
      * n > 50, BigInteger class should be used instead long
      *
      * @return catalanArray[n] the nth Catalan number
+     * @throws IllegalArgumentException if n is negative
      */
     static long findNthCatalan(int n) {
+        if (n < 0) {
+            throw new IllegalArgumentException("n must be non-negative");
+        }
+        if (n <= 1) {
+            return 1;
+        }
+
         // Array to store the results of subproblems i.e Catalan numbers from [1...n-1]
         long[] catalanArray = new long[n + 1];
 

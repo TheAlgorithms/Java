@@ -13,9 +13,14 @@ public final class RabinKarpAlgorithm {
         int index = -1; // -1 here represents not found
         int patternLength = pattern.length();
         int textLength = text.length();
-        int hashForPattern = 0;
-        int hashForText = 0;
-        int h = 1;
+        if (patternLength > textLength) {
+            return index;
+        }
+
+        // long, so hash * ALPHABET_SIZE cannot overflow for large primes such as 1_000_000_007
+        long hashForPattern = 0;
+        long hashForText = 0;
+        long h = 1;
 
         // The value of h would be "pow(d, patternLength-1)%primeNumber"
         for (int i = 0; i < patternLength - 1; i++) {
