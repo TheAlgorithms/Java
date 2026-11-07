@@ -20,7 +20,7 @@ import com.thealgorithms.devutils.searches.MatrixSearchAlgorithm;
  * doesn't exist in the array, an array
  * {-1, -1} will be returned.
  */
-public class RowColumnWiseSorted2dArrayBinarySearch implements MatrixSearchAlgorithm {
+public final class RowColumnWiseSorted2dArrayBinarySearch implements MatrixSearchAlgorithm {
 
     @Override
     public <T extends Comparable<T>> int[] find(T[][] matrix, T key) {
@@ -28,6 +28,10 @@ public class RowColumnWiseSorted2dArrayBinarySearch implements MatrixSearchAlgor
     }
 
     public static <T extends Comparable<T>> int[] search(T[][] matrix, T target) {
+        if (matrix == null || matrix.length == 0 || matrix[0] == null || matrix[0].length == 0 || target == null) {
+            return new int[] {-1, -1};
+        }
+
         int rowPointer = 0; // The pointer at 0th row
         int colPointer = matrix[0].length - 1; // The pointer at end column
 
