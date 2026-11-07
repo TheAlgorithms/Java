@@ -19,7 +19,22 @@ class CatalanNumbersTest {
      * [input number, expected Catalan number for that input]
      */
     static Stream<Object[]> catalanNumbersProvider() {
-        return Stream.of(new Object[] {0, 1}, new Object[] {1, 1}, new Object[] {2, 2}, new Object[] {3, 5}, new Object[] {4, 14}, new Object[] {5, 42}, new Object[] {6, 132}, new Object[] {7, 429}, new Object[] {8, 1430}, new Object[] {9, 4862}, new Object[] {10, 16796});
+        return Stream.of(
+            new Object[] {0, 1L},
+            new Object[] {1, 1L},
+            new Object[] {2, 2L},
+            new Object[] {3, 5L},
+            new Object[] {4, 14L},
+            new Object[] {5, 42L},
+            new Object[] {6, 132L},
+            new Object[] {7, 429L},
+            new Object[] {8, 1430L},
+            new Object[] {9, 4862L},
+            new Object[] {10, 16796L},
+            new Object[] {11, 58786L},
+            new Object[] {15, 9694845L},
+            new Object[] {35, 3116285494907301262L}
+        );
     }
 
     /**
@@ -28,7 +43,7 @@ class CatalanNumbersTest {
      */
     @ParameterizedTest
     @MethodSource("catalanNumbersProvider")
-    void testCatalanNumbers(int input, int expected) {
+    void testCatalanNumbers(int input, long expected) {
         assertEquals(expected, CatalanNumbers.catalan(input), () -> String.format("Catalan number for input %d should be %d", input, expected));
     }
 
@@ -39,5 +54,6 @@ class CatalanNumbersTest {
     void testIllegalInput() {
         assertThrows(IllegalArgumentException.class, () -> CatalanNumbers.catalan(-1));
         assertThrows(IllegalArgumentException.class, () -> CatalanNumbers.catalan(-5));
+        assertThrows(IllegalArgumentException.class, () -> CatalanNumbers.catalan(36));
     }
 }
