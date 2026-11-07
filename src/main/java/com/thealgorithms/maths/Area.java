@@ -232,4 +232,21 @@ public final class Area {
         }
         return Math.PI * radius * (radius + Math.pow(height * height + radius * radius, 0.5));
     }
+
+    /**
+     * Calculate the area of a rhombus.
+     *
+     * @param diagonal1 length of the first diagonal
+     * @param diagonal2 length of the second diagonal
+     * @return area of given rhombus
+     */
+    public static double surfaceAreaRhombus(final double diagonal1, final double diagonal2) {
+        if (diagonal1 <= 0) {
+            throw new IllegalArgumentException("Diagonal 1 must be greater than 0");
+        }
+        if (diagonal2 <= 0) {
+            throw new IllegalArgumentException("Diagonal 2 must be greater than 0");
+        }
+        return diagonal1 * diagonal2 / 2;
+    }
 }
