@@ -72,43 +72,46 @@ class AreaTest {
     }
 
     @Test
+    void testSurfaceAreaTriangularPrism() {
+        assertEquals(132.0, Area.surfaceAreaTriangularPrism(3, 4, 10), 1e-9);
+    }
+
+    @Test
     void testAllIllegalInput() {
-        assertAll(()
-                      -> assertThrows(IllegalArgumentException.class, () -> Area.surfaceAreaCube(0)),
-            ()
-                -> assertThrows(IllegalArgumentException.class, () -> Area.surfaceAreaCuboid(0, 1, 2)),
-            ()
-                -> assertThrows(IllegalArgumentException.class, () -> Area.surfaceAreaCuboid(1, 0, 2)),
-            ()
-                -> assertThrows(IllegalArgumentException.class, () -> Area.surfaceAreaCuboid(1, 2, 0)),
-            ()
-                -> assertThrows(IllegalArgumentException.class, () -> Area.surfaceAreaSphere(0)),
-            ()
-                -> assertThrows(IllegalArgumentException.class, () -> Area.surfaceAreaRectangle(0, 10)),
-            ()
-                -> assertThrows(IllegalArgumentException.class, () -> Area.surfaceAreaRectangle(10, 0)),
-            ()
-                -> assertThrows(IllegalArgumentException.class, () -> Area.surfaceAreaCylinder(0, 1)),
-            ()
-                -> assertThrows(IllegalArgumentException.class, () -> Area.surfaceAreaCylinder(1, 0)),
-            ()
-                -> assertThrows(IllegalArgumentException.class, () -> Area.surfaceAreaSquare(0)),
-            ()
-                -> assertThrows(IllegalArgumentException.class, () -> Area.surfaceAreaTriangle(0, 1)),
-            ()
-                -> assertThrows(IllegalArgumentException.class, () -> Area.surfaceAreaTriangle(1, 0)),
-            ()
-                -> assertThrows(IllegalArgumentException.class, () -> Area.surfaceAreaParallelogram(0, 1)),
-            ()
-                -> assertThrows(IllegalArgumentException.class, () -> Area.surfaceAreaParallelogram(1, 0)),
-            ()
-                -> assertThrows(IllegalArgumentException.class, () -> Area.surfaceAreaTrapezium(0, 1, 1)),
-            ()
-                -> assertThrows(IllegalArgumentException.class, () -> Area.surfaceAreaTrapezium(1, 0, 1)),
-            ()
-                -> assertThrows(IllegalArgumentException.class, () -> Area.surfaceAreaTrapezium(1, 1, 0)),
-            ()
-                -> assertThrows(IllegalArgumentException.class, () -> Area.surfaceAreaCircle(0)),
-            () -> assertThrows(IllegalArgumentException.class, () -> Area.surfaceAreaHemisphere(0)), () -> assertThrows(IllegalArgumentException.class, () -> Area.surfaceAreaCone(1, 0)), () -> assertThrows(IllegalArgumentException.class, () -> Area.surfaceAreaCone(0, 1)));
+        assertAll(
+            () -> assertThrows(IllegalArgumentException.class, () -> Area.surfaceAreaCube(0)),
+            () -> assertThrows(IllegalArgumentException.class, () -> Area.surfaceAreaCuboid(0, 1, 2)),
+            () -> assertThrows(IllegalArgumentException.class, () -> Area.surfaceAreaCuboid(1, 0, 2)),
+            () -> assertThrows(IllegalArgumentException.class, () -> Area.surfaceAreaCuboid(1, 2, 0)),
+            () -> assertThrows(IllegalArgumentException.class, () -> Area.surfaceAreaSphere(0)),
+            () -> assertThrows(IllegalArgumentException.class, () -> Area.surfaceAreaRectangle(0, 10)),
+            () -> assertThrows(IllegalArgumentException.class, () -> Area.surfaceAreaRectangle(10, 0)),
+            () -> assertThrows(IllegalArgumentException.class, () -> Area.surfaceAreaCylinder(0, 1)),
+            () -> assertThrows(IllegalArgumentException.class, () -> Area.surfaceAreaCylinder(1, 0)),
+            () -> assertThrows(IllegalArgumentException.class, () -> Area.surfaceAreaSquare(0)),
+            () -> assertThrows(IllegalArgumentException.class, () -> Area.surfaceAreaTriangle(0, 1)),
+            () -> assertThrows(IllegalArgumentException.class, () -> Area.surfaceAreaTriangle(1, 0)),
+            () -> assertThrows(IllegalArgumentException.class, () -> Area.surfaceAreaParallelogram(0, 1)),
+            () -> assertThrows(IllegalArgumentException.class, () -> Area.surfaceAreaParallelogram(1, 0)),
+            () -> assertThrows(IllegalArgumentException.class, () -> Area.surfaceAreaTrapezium(0, 1, 1)),
+            () -> assertThrows(IllegalArgumentException.class, () -> Area.surfaceAreaTrapezium(1, 0, 1)),
+            () -> assertThrows(IllegalArgumentException.class, () -> Area.surfaceAreaTrapezium(1, 1, 0)),
+            () -> assertThrows(IllegalArgumentException.class, () -> Area.surfaceAreaCircle(0)),
+            () -> assertThrows(IllegalArgumentException.class, () -> Area.surfaceAreaHemisphere(0)),
+            () -> assertThrows(IllegalArgumentException.class, () -> Area.surfaceAreaCone(1, 0)),
+            () -> assertThrows(IllegalArgumentException.class, () -> Area.surfaceAreaCone(0, 1)),
+            () -> assertThrows(IllegalArgumentException.class,
+                () -> Area.surfaceAreaTriangularPrism(0, 4, 10)),
+            () -> assertThrows(IllegalArgumentException.class,
+                () -> Area.surfaceAreaTriangularPrism(3, 0, 10)),
+            () -> assertThrows(IllegalArgumentException.class,
+                () -> Area.surfaceAreaTriangularPrism(3, 4, 0)),
+            () -> assertThrows(IllegalArgumentException.class,
+                () -> Area.surfaceAreaTriangularPrism(-3, 4, 10)),
+            () -> assertThrows(IllegalArgumentException.class,
+                () -> Area.surfaceAreaTriangularPrism(3, -4, 10)),
+            () -> assertThrows(IllegalArgumentException.class,
+                () -> Area.surfaceAreaTriangularPrism(3, 4, -10))
+        );
     }
 }
