@@ -54,7 +54,7 @@ public class RightSideViewOfBinaryTreeTest {
     */
     @Test
     public void testRightSkewedTree() {
-        final BinaryTree.Node root = TreeTestUtils.createTree(new Integer[] {1, null, 2, null, null, null, 3});
+        final BinaryTree.Node root = TreeTestUtils.createTree(new Integer[] {1, null, 2, null, 3});
         assertEquals(List.of(1, 2, 3), RightSideViewOfBinaryTree.rightSideView(root));
     }
 }
