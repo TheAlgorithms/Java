@@ -14,6 +14,7 @@ public final class HexToOct {
      *
      * @param hex The Hexadecimal number as a String.
      * @return The Decimal equivalent as an integer.
+     * @throws IllegalArgumentException if the string contains a character that is not a hexadecimal digit
      */
     public static int hexToDecimal(String hex) {
         String hexDigits = "0123456789ABCDEF";
@@ -23,6 +24,9 @@ public final class HexToOct {
         for (int i = 0; i < hex.length(); i++) {
             char hexChar = hex.charAt(i);
             int digitValue = hexDigits.indexOf(hexChar);
+            if (digitValue == -1) {
+                throw new IllegalArgumentException("Invalid hexadecimal digit: " + hexChar);
+            }
             decimalValue = 16 * decimalValue + digitValue;
         }
 
