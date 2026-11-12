@@ -14,9 +14,7 @@ public final class ChaCha20 {
 
     private static final int BLOCK_SIZE = 64;
     private static final long MAX_COUNTER = 0xFFFF_FFFFL;
-    private static final int[] CONSTANTS = {
-        0x61707865, 0x3320646e, 0x79622d32, 0x6b206574
-    };
+    private static final int[] CONSTANTS = {0x61707865, 0x3320646e, 0x79622d32, 0x6b206574};
 
     private ChaCha20() {
         // Utility class
@@ -133,9 +131,6 @@ public final class ChaCha20 {
     }
 
     private static int littleEndianInt(byte[] bytes, int offset) {
-        return (bytes[offset] & 0xFF)
-            | ((bytes[offset + 1] & 0xFF) << 8)
-            | ((bytes[offset + 2] & 0xFF) << 16)
-            | ((bytes[offset + 3] & 0xFF) << 24);
+        return (bytes[offset] & 0xFF) | ((bytes[offset + 1] & 0xFF) << 8) | ((bytes[offset + 2] & 0xFF) << 16) | ((bytes[offset + 3] & 0xFF) << 24);
     }
 }
