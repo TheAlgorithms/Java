@@ -179,8 +179,9 @@ public class MazeRecursionTest {
     }
 
     @Test
-    void testDefaultTargetOutsideSmallMazeThrowsIllegalArgument() {
-        assertThrows(IllegalArgumentException.class, () -> MazeRecursion.solveMazeUsingFirstStrategy(new int[][] {{0, 0}, {0, 0}}));
+    void testDefaultTargetOutsideSmallMazeReturnsNull() {
+        assertNull(MazeRecursion.solveMazeUsingFirstStrategy(new int[][] {{0, 0}, {0, 0}}));
+        assertNull(MazeRecursion.solveMazeUsingSecondStrategy(new int[][] {{0, 0}, {0, 0}}));
     }
 
     @Test
