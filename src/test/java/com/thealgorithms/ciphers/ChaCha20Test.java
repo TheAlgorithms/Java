@@ -59,6 +59,22 @@ class ChaCha20Test {
     }
 
     @Test
+void handlesPartialBlocksAroundBlockBoundary() {
+    for (int length : new int[] {1, 63, 65}) {
+        byte[] input = new byte[length];
+        for (int i = 0; i < input.length; i++) {
+            input[i] = (byte) (i + 1);
+        }
+
+        byte[] key = new byte[32];
+        byte[] nonce = new byte[12];
+        byte[] encrypted = ChaCha20.encrypt(input, key, nonce, 0);
+
+        assertArrayEquals(input, ChaCha20.decrypt(encrypted, key, nonce, 0));
+    }
+}
+
+    @Test
     void emptyInputReturnsEmptyOutput() {
         assertArrayEquals(new byte[0], ChaCha20.encrypt(new byte[0], new byte[32], new byte[12], 1));
     }
