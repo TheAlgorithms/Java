@@ -162,49 +162,50 @@ public class MazeRecursionTest {
         // Assert the results
         assertArrayEquals(expectedMap1, solvedMap1);
         assertArrayEquals(expectedMap2, solvedMap2);
+    }
 
-        @Test
-        void testSmallMazeWithCustomStartAndTarget() {
-            int[][] map = {{0, 0}, {0, 0}};
-            int[][] result = MazeRecursion.solveMazeUsingFirstStrategy(map, 0, 0, 1, 1);
-            assertArrayEquals(new int[][] {{2, 0}, {2, 2}}, result); // down -> right
-        }
+    @Test
+    void testSmallMazeWithCustomStartAndTarget() {
+        int[][] map = {{0, 0}, {0, 0}};
+        int[][] result = MazeRecursion.solveMazeUsingFirstStrategy(map, 0, 0, 1, 1);
+        assertArrayEquals(new int[][] {{2, 0}, {2, 2}}, result); // down -> right
+    }
 
-        @Test
-        void testSecondStrategyKeepsItsTraversalOrder() {
-            int[][] map = {{0, 0}, {0, 0}};
-            int[][] result = MazeRecursion.solveMazeUsingSecondStrategy(map, 0, 0, 1, 1);
-            assertArrayEquals(new int[][] {{2, 2}, {0, 2}}, result); // right -> down
-        }
+    @Test
+    void testSecondStrategyKeepsItsTraversalOrder() {
+        int[][] map = {{0, 0}, {0, 0}};
+        int[][] result = MazeRecursion.solveMazeUsingSecondStrategy(map, 0, 0, 1, 1);
+        assertArrayEquals(new int[][] {{2, 2}, {0, 2}}, result); // right -> down
+    }
 
-        @Test
-        void testDefaultTargetOutsideSmallMazeThrowsIllegalArgument() {
-            assertThrows(IllegalArgumentException.class, () -> MazeRecursion.solveMazeUsingFirstStrategy(new int[][] {{0, 0}, {0, 0}}));
-        }
+    @Test
+    void testDefaultTargetOutsideSmallMazeThrowsIllegalArgument() {
+        assertThrows(IllegalArgumentException.class, () -> MazeRecursion.solveMazeUsingFirstStrategy(new int[][] {{0, 0}, {0, 0}}));
+    }
 
-        @Test
-        void testNullAndEmptyMaze() {
-            assertThrows(IllegalArgumentException.class, () -> MazeRecursion.solveMazeUsingFirstStrategy(null));
-            assertThrows(IllegalArgumentException.class, () -> MazeRecursion.solveMazeUsingSecondStrategy(new int[][] {}));
-            assertThrows(IllegalArgumentException.class, () -> MazeRecursion.solveMazeUsingFirstStrategy(new int[][] {{}}));
-        }
+    @Test
+    void testNullAndEmptyMaze() {
+        assertThrows(IllegalArgumentException.class, () -> MazeRecursion.solveMazeUsingFirstStrategy(null));
+        assertThrows(IllegalArgumentException.class, () -> MazeRecursion.solveMazeUsingSecondStrategy(new int[][] {}));
+        assertThrows(IllegalArgumentException.class, () -> MazeRecursion.solveMazeUsingFirstStrategy(new int[][] {{}}));
+    }
 
-        @Test
-        void testJaggedMazeThrows() {
-            assertThrows(IllegalArgumentException.class, () -> MazeRecursion.solveMazeUsingFirstStrategy(new int[][] {{0, 0}, {0}}, 0, 0, 0, 1));
-            assertThrows(IllegalArgumentException.class, () -> MazeRecursion.solveMazeUsingSecondStrategy(new int[][] {{0}, {0, 0}}, 0, 0, 1, 1));
-        }
+    @Test
+    void testJaggedMazeThrows() {
+        assertThrows(IllegalArgumentException.class, () -> MazeRecursion.solveMazeUsingFirstStrategy(new int[][] {{0, 0}, {0}}, 0, 0, 0, 1));
+        assertThrows(IllegalArgumentException.class, () -> MazeRecursion.solveMazeUsingSecondStrategy(new int[][] {{0}, {0, 0}}, 0, 0, 1, 1));
+    }
 
-        @Test
-        void testStartOrTargetOutOfBoundsThrows() {
-            assertThrows(IllegalArgumentException.class, () -> MazeRecursion.solveMazeUsingFirstStrategy(new int[][] {{0, 0}, {0, 0}}, -1, 0, 1, 1));
-            assertThrows(IllegalArgumentException.class, () -> MazeRecursion.solveMazeUsingSecondStrategy(new int[][] {{0, 0}, {0, 0}}, 0, 0, 2, 2));
-        }
+    @Test
+    void testStartOrTargetOutOfBoundsThrows() {
+        assertThrows(IllegalArgumentException.class, () -> MazeRecursion.solveMazeUsingFirstStrategy(new int[][] {{0, 0}, {0, 0}}, -1, 0, 1, 1));
+        assertThrows(IllegalArgumentException.class, () -> MazeRecursion.solveMazeUsingSecondStrategy(new int[][] {{0, 0}, {0, 0}}, 0, 0, 2, 2));
+    }
 
-        @Test
-        void testUnsolvableMazeReturnsNull() {
-            int[][] map = {{0, 1}, {1, 0}};
-            assertNull(MazeRecursion.solveMazeUsingFirstStrategy(map, 0, 0, 1, 1));
-        }
+    @Test
+    void testUnsolvableMazeReturnsNull() {
+        int[][] map = {{0, 1}, {1, 0}};
+        assertNull(MazeRecursion.solveMazeUsingFirstStrategy(map, 0, 0, 1, 1));
+        assertNull(MazeRecursion.solveMazeUsingSecondStrategy(map, 0, 0, 1, 1));
     }
 }
