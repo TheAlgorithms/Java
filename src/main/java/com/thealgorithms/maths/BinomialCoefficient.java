@@ -21,9 +21,14 @@ public final class BinomialCoefficient {
      * @param numberOfObjects Number of objects to be chosen from total_objects
      * @return number of ways in which no_of_objects objects can be chosen from total_objects
      *     objects
+     * @throws IllegalArgumentException if totalObjects or numberOfObjects is negative
      */
 
     public static int binomialCoefficient(int totalObjects, int numberOfObjects) {
+        if (totalObjects < 0 || numberOfObjects < 0) {
+            throw new IllegalArgumentException("Arguments must be non-negative.");
+        }
+
         // Base Case
         if (numberOfObjects > totalObjects) {
             return 0;
