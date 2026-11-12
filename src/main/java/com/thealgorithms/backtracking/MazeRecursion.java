@@ -137,4 +137,4 @@ public final class MazeRecursion {
     private static boolean isInBounds(int[][] map, int row, int column) {
         return row >= 0 && row < map.length && column >= 0 && column < map[row].length;
     }
-}   
+}  
