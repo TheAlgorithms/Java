@@ -1,5 +1,6 @@
 package com.thealgorithms.searches;
 
+import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
@@ -84,7 +85,7 @@ public class BinarySearch2dArrayTest {
     // valid test case
     public void binarySearch2dArrayTestNotFound() {
         int[][] arr = {{1, 2, 3, 4}, {5, 6, 7, 8}, {9, 10, 11, 12}};
-        int target = 101;
+        int target = 100;
 
         int[] ans = BinarySearch2dArray.binarySearch(arr, target);
         System.out.println(Arrays.toString(ans));
@@ -93,7 +94,7 @@ public class BinarySearch2dArrayTest {
     }
 
     /**
-     * Test if the method works with input arrays consisting only of one row.
+     * Test if the method works with an array that only has one row.
      */
     @Test
     public void binarySearch2dArrayTestOneRow() {
@@ -153,5 +154,53 @@ public class BinarySearch2dArrayTest {
 
         // Assert that an empty array is not valid input for the method.
         assertThrows(ArrayIndexOutOfBoundsException.class, () -> BinarySearch2dArray.binarySearch(arr, target));
+    }
+
+    @Test
+    public void binarySearch2dArrayTestSingleRowTargetNotFoundGreater() {
+        int[][] arr = {{1, 2, 3, 4}};
+        int target = 10;
+        int[] ans = BinarySearch2dArray.binarySearch(arr, target);
+        assertArrayEquals(new int[] {-1, -1}, ans);
+    }
+
+    @Test
+    public void binarySearch2dArrayTestSingleRowTargetNotFoundSmaller() {
+        int[][] arr = {{1, 2, 3, 4}};
+        int target = 0;
+        int[] ans = BinarySearch2dArray.binarySearch(arr, target);
+        assertArrayEquals(new int[] {-1, -1}, ans);
+    }
+
+    @Test
+    public void binarySearch2dArrayTestSingleColumnPresent() {
+        int[][] arr = {{1}, {3}, {5}};
+        int target = 3;
+        int[] ans = BinarySearch2dArray.binarySearch(arr, target);
+        assertArrayEquals(new int[] {1, 0}, ans);
+    }
+
+    @Test
+    public void binarySearch2dArrayTestSingleColumnNotFound() {
+        int[][] arr = {{1}, {3}, {5}};
+        int target = 4;
+        int[] ans = BinarySearch2dArray.binarySearch(arr, target);
+        assertArrayEquals(new int[] {-1, -1}, ans);
+    }
+
+    @Test
+    public void binarySearch2dArrayTestSingleElementPresent() {
+        int[][] arr = {{42}};
+        int target = 42;
+        int[] ans = BinarySearch2dArray.binarySearch(arr, target);
+        assertArrayEquals(new int[] {0, 0}, ans);
+    }
+
+    @Test
+    public void binarySearch2dArrayTestSingleElementNotFound() {
+        int[][] arr = {{42}};
+        int target = 10;
+        int[] ans = BinarySearch2dArray.binarySearch(arr, target);
+        assertArrayEquals(new int[] {-1, -1}, ans);
     }
 }
