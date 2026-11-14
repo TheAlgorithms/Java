@@ -6,7 +6,19 @@ package com.thealgorithms.backtracking;
  * ends are marked with different integers.
  */
 public final class MazeRecursion {
+    private static final int OPEN = 0;
+    private static final int PATH = 2;
+    private static final int DEAD_END = 3;
+
+    private static final int DEFAULT_START_ROW = 1;
+    private static final int DEFAULT_START_COLUMN = 1;
+    private static final int DEFAULT_GOAL_ROW = 6;
+    private static final int DEFAULT_GOAL_COLUMN = 5;
+
+    // Each entry is {rowDelta, colDelta}
+    // down -> right -> up -> left
     private static final int[][] FIRST_STRATEGY_DIRECTIONS = {{1, 0}, {0, 1}, {-1, 0}, {0, -1}};
+    // up -> right -> down -> left
     private static final int[][] SECOND_STRATEGY_DIRECTIONS = {{-1, 0}, {0, 1}, {1, 0}, {0, -1}};
 
     private MazeRecursion() {
@@ -21,14 +33,7 @@ public final class MazeRecursion {
      * @throws IllegalArgumentException if the maze is null, empty, or not rectangular
      */
     public static int[][] solveMazeUsingFirstStrategy(int[][] map) {
-        validateMaze(map);
-        if (!isInBounds(map, 1, 1) || !isInBounds(map, 6, 5)) {
-            return null;
-        }
-        if (map[6][5] == 2) {
-            return map;
-        }
-        return solve(map, 1, 1, 6, 5, FIRST_STRATEGY_DIRECTIONS) ? map : null;
+        return solveWithDefaultEndpoints(map, FIRST_STRATEGY_DIRECTIONS);
     }
 
     /**
@@ -40,14 +45,7 @@ public final class MazeRecursion {
      * @throws IllegalArgumentException if the maze is null, empty, or not rectangular
      */
     public static int[][] solveMazeUsingSecondStrategy(int[][] map) {
-        validateMaze(map);
-        if (!isInBounds(map, 1, 1) || !isInBounds(map, 6, 5)) {
-            return null;
-        }
-        if (map[6][5] == 2) {
-            return map;
-        }
-        return solve(map, 1, 1, 6, 5, SECOND_STRATEGY_DIRECTIONS) ? map : null;
+        return solveWithDefaultEndpoints(map, SECOND_STRATEGY_DIRECTIONS);
     }
 
     /**
@@ -84,12 +82,23 @@ public final class MazeRecursion {
         return solve(map, startRow, startColumn, goalRow, goalColumn, SECOND_STRATEGY_DIRECTIONS) ? map : null;
     }
 
+    private static int[][] solveWithDefaultEndpoints(int[][] map, int[][] directions) {
+        validateMaze(map);
+        if (!isInBounds(map, DEFAULT_START_ROW, DEFAULT_START_COLUMN) || !isInBounds(map, DEFAULT_GOAL_ROW, DEFAULT_GOAL_COLUMN)) {
+            return null;
+        }
+        if (map[DEFAULT_GOAL_ROW][DEFAULT_GOAL_COLUMN] == PATH) {
+            return map;
+        }
+        return solve(map, DEFAULT_START_ROW, DEFAULT_START_COLUMN, DEFAULT_GOAL_ROW, DEFAULT_GOAL_COLUMN, directions) ? map : null;
+    }
+
     private static boolean solve(int[][] map, int row, int column, int goalRow, int goalColumn, int[][] directions) {
-        if (!isInBounds(map, row, column) || map[row][column] != 0) {
+        if (!isInBounds(map, row, column) || map[row][column] != OPEN) {
             return false;
         }
 
-        map[row][column] = 2;
+        map[row][column] = PATH;
         if (row == goalRow && column == goalColumn) {
             return true;
         }
@@ -100,7 +109,7 @@ public final class MazeRecursion {
             }
         }
 
-        map[row][column] = 3;
+        map[row][column] = DEAD_END;
         return false;
     }
 
