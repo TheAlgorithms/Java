@@ -19,24 +19,39 @@ public final class SaddlebackSearch {
     }
 
     /**
-     * This method performs Saddleback Search
+     * Searches for a key in a row-wise and column-wise sorted 2D array starting from the bottom-left corner.
+     *
+     * @param arr The sorted matrix.
+     * @param key The element to search for.
+     * @throws IllegalArgumentException if the array is null or empty.
+     * @return The index (row and column) of the element if found. Else returns {-1, -1}.
+     */
+    public static int[] find(int[][] arr, int key) {
+        if (arr == null || arr.length == 0) {
+            throw new IllegalArgumentException("Array is empty");
+        }
+        return find(arr, arr.length - 1, 0, key);
+    }
+
+    /**
+     * This method performs Saddleback Search starting from the specified row and column.
      *
      * @param arr The **Sorted** array in which we will search the element.
      * @param row the current row.
      * @param col the current column.
      * @param key the element that we want to search for.
-     * @throws IllegalArgumentException if the array is empty.
+     * @throws IllegalArgumentException if the array is null or empty.
      * @return The index(row and column) of the element if found. Else returns
      * -1 -1.
      */
-    static int[] find(int[][] arr, int row, int col, int key) {
-        if (arr.length == 0) {
+    public static int[] find(int[][] arr, int row, int col, int key) {
+        if (arr == null || arr.length == 0) {
             throw new IllegalArgumentException("Array is empty");
         }
 
         // array to store the answer row and column
         int[] ans = {-1, -1};
-        if (row < 0 || col >= arr[row].length) {
+        if (row < 0 || row >= arr.length || arr[row] == null || col < 0 || col >= arr[row].length) {
             return ans;
         }
         if (arr[row][col] == key) {
