@@ -18,10 +18,9 @@ public final class SmithNumber {
 
     private static int primeFactorDigitSum(int n) {
         int sum = 0;
-        int num = n;
 
         // Factorize the number using trial division
-        for (int i = 2; i * i <= num; i++) {
+        for (int i = 2; (long) i * i <= n; i++) {
             while (n % i == 0) { // while i divides n
                 sum += SumOfDigits.sumOfDigits(i); // add sum of digits of factor
                 n /= i; // divide n by the factor
@@ -43,7 +42,7 @@ public final class SmithNumber {
      * @return {@code true} if {@code number} is a Smith number, otherwise false
      */
     public static boolean isSmithNumber(int number) {
-        if (PrimeCheck.isPrime(number)) {
+        if (number <= 3 || PrimeCheck.isPrime(number)) {
             return false; // Smith numbers must be composite
         }
 
