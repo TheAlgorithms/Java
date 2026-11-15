@@ -1,21 +1,15 @@
 package com.thealgorithms.maths;
 
 /**
- * A simple Checksum implementation for data validation.
- * Calculates an 8-bit checksum of a given byte array.
+ * Checksum implementation for data validation.
+ * Should calculate an 8 bit checksum of a given byte array
  */
 public final class Checksum {
 
-    private Checksum() {
-        // Private constructor to prevent instantiation
+    private Checksum() { //priv constructor
     }
 
-    /**
-     * Calculates an 8-bit checksum for the specified input data.
-     *
-     * @param data the byte array to checksum
-     * @return the 8-bit checksum value as an integer
-     */
+//Calc an 8 bit checksum for the specified input data.
     public static int calculateChecksum(byte[] data) {
         if (data == null) {
             throw new IllegalArgumentException("Input data cannot be null");
