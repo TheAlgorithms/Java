@@ -14,17 +14,32 @@ public class DistanceFormulaTest {
 
     @Test
     void euclideanTest2() {
-        Assertions.assertEquals(7.0710678118654755, DistanceFormula.euclideanDistance(1, 3, 8, 0));
+        Assertions.assertEquals(7.615773105863909, DistanceFormula.euclideanDistance(1, 3, 8, 0));
     }
 
     @Test
     void euclideanTest3() {
-        Assertions.assertEquals(110.91911467371168, DistanceFormula.euclideanDistance(2.4, 9.1, 55.1, 100));
+        Assertions.assertEquals(105.07188015829927, DistanceFormula.euclideanDistance(2.4, 9.1, 55.1, 100));
     }
 
     @Test
     void euclideanTest4() {
-        Assertions.assertEquals(19022.067605809836, DistanceFormula.euclideanDistance(1000, 13, 20000, 84));
+        Assertions.assertEquals(19000.13265743163, DistanceFormula.euclideanDistance(1000, 13, 20000, 84));
+    }
+
+    @Test
+    void euclideanTestZeroDistance() {
+        Assertions.assertEquals(0.0, DistanceFormula.euclideanDistance(0, 0, 0, 0));
+    }
+
+    @Test
+    void euclideanTestPythagoreanTriple() {
+        Assertions.assertEquals(5.0, DistanceFormula.euclideanDistance(0, 0, 3, 4));
+    }
+
+    @Test
+    void euclideanTestNegativeCoordinates() {
+        Assertions.assertEquals(5.0, DistanceFormula.euclideanDistance(-1, -2, 2, 2));
     }
 
     @Test

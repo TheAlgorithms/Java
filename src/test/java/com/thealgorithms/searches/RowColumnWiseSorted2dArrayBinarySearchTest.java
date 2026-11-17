@@ -237,4 +237,56 @@ public class RowColumnWiseSorted2dArrayBinarySearchTest {
         assertEquals(expected[0], ans[0]);
         assertEquals(expected[1], ans[1]);
     }
+
+    @Test
+    public void testNullMatrixReturnsNotFound() {
+        int[] ans = RowColumnWiseSorted2dArrayBinarySearch.search(null, 5);
+        int[] expected = {-1, -1};
+        assertEquals(expected[0], ans[0]);
+        assertEquals(expected[1], ans[1]);
+    }
+
+    @Test
+    public void testEmptyMatrixReturnsNotFound() {
+        Integer[][] matrix = {};
+        int[] ans = RowColumnWiseSorted2dArrayBinarySearch.search(matrix, 5);
+        int[] expected = {-1, -1};
+        assertEquals(expected[0], ans[0]);
+        assertEquals(expected[1], ans[1]);
+    }
+
+    @Test
+    public void testEmptyFirstRowReturnsNotFound() {
+        Integer[][] matrix = {{}};
+        int[] ans = RowColumnWiseSorted2dArrayBinarySearch.search(matrix, 5);
+        int[] expected = {-1, -1};
+        assertEquals(expected[0], ans[0]);
+        assertEquals(expected[1], ans[1]);
+    }
+
+    @Test
+    public void testNullTargetReturnsNotFound() {
+        int[] ans = RowColumnWiseSorted2dArrayBinarySearch.search(WIDE_RECTANGULAR_MATRIX, null);
+        int[] expected = {-1, -1};
+        assertEquals(expected[0], ans[0]);
+        assertEquals(expected[1], ans[1]);
+    }
+
+    @Test
+    public void testNullFirstRowReturnsNotFound() {
+        Integer[][] matrix = {null};
+        int[] ans = RowColumnWiseSorted2dArrayBinarySearch.search(matrix, 5);
+        int[] expected = {-1, -1};
+        assertEquals(expected[0], ans[0]);
+        assertEquals(expected[1], ans[1]);
+    }
+
+    @Test
+    public void testFindMethodThroughInterface() {
+        RowColumnWiseSorted2dArrayBinarySearch searcher = new RowColumnWiseSorted2dArrayBinarySearch();
+        int[] ans = searcher.find(WIDE_RECTANGULAR_MATRIX, 35);
+        int[] expected = {1, 2};
+        assertEquals(expected[0], ans[0]);
+        assertEquals(expected[1], ans[1]);
+    }
 }

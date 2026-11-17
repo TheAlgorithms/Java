@@ -1,6 +1,7 @@
 package com.thealgorithms.conversions;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import org.junit.jupiter.api.Test;
 
@@ -29,5 +30,12 @@ public class HexToOctTest {
         assertEquals(20, HexToOct.hexToOctal("10"));
         assertEquals(0, HexToOct.hexToOctal("0"));
         assertEquals(7777, HexToOct.hexToOctal("FFF"));
+    }
+
+    @Test
+    public void testInvalidHexDigitThrows() {
+        assertThrows(IllegalArgumentException.class, () -> HexToOct.hexToDecimal("1G"));
+        assertThrows(IllegalArgumentException.class, () -> HexToOct.hexToDecimal("0x1A"));
+        assertThrows(IllegalArgumentException.class, () -> HexToOct.hexToOctal("Z"));
     }
 }
