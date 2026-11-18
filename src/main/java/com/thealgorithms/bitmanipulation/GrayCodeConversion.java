@@ -2,7 +2,7 @@ package com.thealgorithms.bitmanipulation;
 
 /**
  * Gray code is a binary numeral system where two successive values differ in only one bit.
- * This is a simple conversion between binary and Gray code.
+ * Each input and result is treated as a 32-bit pattern, including the sign bit.
  * Example:
  * 7 -> 0111 -> 0100 -> 4
  * 4 -> 0100 -> 0111 -> 7
@@ -24,7 +24,7 @@ public final class GrayCodeConversion {
      * @return The corresponding Gray code.
      */
     public static int binaryToGray(int num) {
-        return num ^ (num >> 1);
+        return num ^ (num >>> 1);
     }
 
     /**
@@ -35,8 +35,8 @@ public final class GrayCodeConversion {
      */
     public static int grayToBinary(int gray) {
         int binary = gray;
-        while (gray > 0) {
-            gray >>= 1;
+        while (gray != 0) {
+            gray >>>= 1;
             binary ^= gray;
         }
         return binary;

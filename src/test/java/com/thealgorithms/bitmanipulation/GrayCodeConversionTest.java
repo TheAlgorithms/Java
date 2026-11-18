@@ -21,6 +21,18 @@ public class GrayCodeConversionTest {
     }
 
     @Test
+    public void testBinaryToGrayWithHighBitSet() {
+        assertEquals(0x80000000, GrayCodeConversion.binaryToGray(0xFFFFFFFF));
+        assertEquals(0xC0000000, GrayCodeConversion.binaryToGray(0x80000000));
+    }
+
+    @Test
+    public void testGrayToBinaryWithHighBitSet() {
+        assertEquals(0xFFFFFFFF, GrayCodeConversion.grayToBinary(0x80000000));
+        assertEquals(0x80000000, GrayCodeConversion.grayToBinary(0xC0000000));
+    }
+
+    @Test
     public void testBinaryGrayCycle() {
         int binary = 9; // 1001 in binary
         int gray = GrayCodeConversion.binaryToGray(binary);
