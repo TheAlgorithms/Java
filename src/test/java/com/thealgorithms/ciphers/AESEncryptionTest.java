@@ -2,6 +2,7 @@ package com.thealgorithms.ciphers;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import javax.crypto.SecretKey;
@@ -58,5 +59,21 @@ public class AESEncryptionTest {
         byte[] bytes = new byte[] {0, 1, 15, 16, (byte) 255}; // Test with diverse byte values
         String hex = AESEncryption.bytesToHex(bytes);
         assertEquals("00010F10FF", hex, "Hex representation should match the expected value");
+    }
+
+    @Test
+    public void testMultipleEncryptionsAndDecryptions() throws Exception {
+        SecretKey key = AESEncryption.getSecretEncryptionKey();
+        byte[] cipher1 = AESEncryption.encryptText("First Message", key);
+        byte[] cipher2 = AESEncryption.encryptText("Second Message", key);
+
+        assertEquals("First Message", AESEncryption.decryptText(cipher1, key));
+        assertEquals("Second Message", AESEncryption.decryptText(cipher2, key));
+    }
+
+    @Test
+    public void testShortCiphertextThrowsException() throws Exception {
+        SecretKey key = AESEncryption.getSecretEncryptionKey();
+        assertThrows(IllegalArgumentException.class, () -> AESEncryption.decryptText(new byte[] {1, 2, 3}, key));
     }
 }
