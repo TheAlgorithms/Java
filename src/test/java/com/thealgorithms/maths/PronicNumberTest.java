@@ -7,14 +7,14 @@ import org.junit.jupiter.params.provider.ValueSource;
 public class PronicNumberTest {
 
     @ParameterizedTest
-    @ValueSource(ints = {0, 2, 6, 12, 20, 30, 42, 110, 272, 380, 420, 1260, 2550})
+    @ValueSource(ints = {0, 2, 6, 12, 20, 30, 42, 110, 272, 380, 420, 1260, 2550, 2147441940})
     void testForPronicNumber(final int number) {
         Assertions.assertTrue(PronicNumber.isPronic(number));
         Assertions.assertTrue(PronicNumber.isPronicNumber(number));
     }
 
     @ParameterizedTest
-    @ValueSource(ints = {1, 4, 21, 36, 150, 2500})
+    @ValueSource(ints = {-10, -2, -1, 1, 4, 21, 36, 150, 2500, 2147483647})
     void testForNonPronicNumber(final int number) {
         Assertions.assertFalse(PronicNumber.isPronic(number));
         Assertions.assertFalse(PronicNumber.isPronicNumber(number));
