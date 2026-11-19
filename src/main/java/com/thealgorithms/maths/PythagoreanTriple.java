@@ -34,9 +34,9 @@ public final class PythagoreanTriple {
         int[] sides = {a, b, c};
         java.util.Arrays.sort(sides);
 
-        int x = sides[0];
-        int y = sides[1];
-        int hypotenuse = sides[2];
+        long x = sides[0];
+        long y = sides[1];
+        long hypotenuse = sides[2];
 
         return x * x + y * y == hypotenuse * hypotenuse;
     }
