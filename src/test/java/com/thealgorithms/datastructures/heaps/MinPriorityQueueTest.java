@@ -55,13 +55,19 @@ public class MinPriorityQueueTest {
         queue.insert(1);
         queue.insert(3);
 
-        // Delete all elements to sort the queue
-        int[] sortedArray = new int[5];
-        for (int i = 0; i < 5; i++) {
-            sortedArray[i] = queue.delete();
-        }
+        int[] sortedArray = queue.heapSort();
 
         Assertions.assertArrayEquals(new int[] {1, 3, 5, 10, 15}, sortedArray, "The array should be sorted in ascending order.");
+        Assertions.assertTrue(queue.isEmpty(), "The queue should be empty after heap sort.");
+    }
+
+    @Test
+    void testHeapSortEmptyQueue() {
+        MinPriorityQueue queue = new MinPriorityQueue(5);
+        int[] sortedArray = queue.heapSort();
+
+        Assertions.assertEquals(0, sortedArray.length, "Sorting an empty queue should return an empty array.");
+        Assertions.assertTrue(queue.isEmpty(), "The queue should remain empty.");
     }
 
     @Test

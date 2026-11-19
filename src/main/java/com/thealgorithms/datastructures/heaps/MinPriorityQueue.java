@@ -100,12 +100,17 @@ public class MinPriorityQueue {
     }
 
     /**
-     * Sorts the elements in the queue using heap sort.
+     * Sorts and returns the elements in the queue in ascending order using heap sort.
+     *
+     * @return an array containing all elements sorted in ascending order
      */
-    public void heapSort() {
-        for (int i = 1; i <= this.size; i++) {
-            this.delete();
+    public int[] heapSort() {
+        int initialSize = this.size;
+        int[] sorted = new int[initialSize];
+        for (int i = 0; i < initialSize; i++) {
+            sorted[i] = this.delete();
         }
+        return sorted;
     }
 
     /**
