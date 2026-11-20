@@ -10,8 +10,10 @@ import org.junit.jupiter.params.provider.CsvSource;
 public class PythagoreanTripleTest {
 
     @ParameterizedTest
-    @CsvSource({"3, 4, 5, true", "6, 8, 10, true", "9, 12, 15, true", "12, 16, 20, true", "15, 20, 25, true", "18, 24, 30, true", "5, 20, 30, false", "6, 8, 100, false", "-2, -2, 2, false", "0, 0, 0, false", "5, 5, 5, false"})
-    void testIsPythagoreanTriple(int a, int b, int c, boolean expected) {
+    @CsvSource({"3, 4, 5, true", "6, 8, 10, true", "9, 12, 15, true", "12, 16, 20, true", "15, 20, 25, true", "18, 24, 30, true", "30000, 40000, 50000, true", "60000, 80000, 100000, true", "100000, 240000, 260000, true", "30000, 40000, 50001, false", "65536, 65536, 65536, false", "5, 20, 30, false",
+        "6, 8, 100, false", "-2, -2, 2, false", "0, 0, 0, false", "5, 5, 5, false"})
+    void
+    testIsPythagoreanTriple(int a, int b, int c, boolean expected) {
         assertEquals(expected, PythagoreanTriple.isPythagTriple(a, b, c));
     }
 
