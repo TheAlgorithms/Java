@@ -160,7 +160,7 @@ public final class Verhoeff {
 
     private static void checkInput(String input) {
         Objects.requireNonNull(input);
-        if (!input.matches("\\d+")) {
+        if (!input.matches("[0-9]+")) {
             throw new IllegalArgumentException("Input '" + input + "' contains not only digits");
         }
     }
