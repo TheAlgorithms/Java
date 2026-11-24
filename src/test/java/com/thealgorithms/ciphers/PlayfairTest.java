@@ -34,4 +34,30 @@ public class PlayfairTest {
 
         assertEquals(plaintext, decryptedText);
     }
+
+    @Test
+    public void testLowercaseKeyBehavesLikeUppercase() {
+        PlayfairCipher lowercase = new PlayfairCipher("monarchy");
+        PlayfairCipher uppercase = new PlayfairCipher("MONARCHY");
+
+        assertEquals(uppercase.encrypt("HELLO"), lowercase.encrypt("HELLO"));
+        assertEquals("CFSUPM", lowercase.encrypt("HELLO"));
+    }
+
+    @Test
+    public void testKeyContainingJStillCoversZ() {
+        PlayfairCipher playfairCipher = new PlayfairCipher("JUMP");
+
+        String decryptedText = playfairCipher.decrypt(playfairCipher.encrypt("ZOO"));
+
+        assertEquals("ZOXO", decryptedText);
+    }
+
+    @Test
+    public void testKeyWithNonLettersIsStripped() {
+        PlayfairCipher messy = new PlayfairCipher("Mon@rchy2026");
+        PlayfairCipher clean = new PlayfairCipher("MONRCHY");
+
+        assertEquals(clean.encrypt("HELLO"), messy.encrypt("HELLO"));
+    }
 }
