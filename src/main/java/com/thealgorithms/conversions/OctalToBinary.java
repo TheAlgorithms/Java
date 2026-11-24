@@ -37,7 +37,7 @@ public final class OctalToBinary {
      */
     public static long convertOctalToBinary(int octalNumber) {
         long binaryNumber = 0;
-        int digitPosition = 1;
+        long digitPosition = 1;
 
         while (octalNumber != 0) {
             int octalDigit = octalNumber % 10;
