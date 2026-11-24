@@ -68,12 +68,20 @@ public class HillCipher {
         return plainText.toString();
     }
 
-    // Validates that the determinant of the key matrix is not zero modulo 26
+    // Validates that the key matrix is invertible modulo 26, which requires the
+    // determinant to be coprime with 26. Checking only for a zero determinant is not
+    // enough: a determinant of 2 or 13 (or any other non-unit) passes that check but
+    // has no inverse, so encryption collapses distinct plaintexts onto the same
+    // ciphertext and decryption becomes impossible.
     private void validateDeterminant(int[][] keyMatrix, int n) {
-        int det = determinant(keyMatrix, n) % 26;
-        if (det == 0) {
-            throw new IllegalArgumentException("Invalid key matrix. Determinant is zero modulo 26.");
+        int det = Math.floorMod(determinant(keyMatrix, n), 26);
+        if (gcd(det, 26) != 1) {
+            throw new IllegalArgumentException("Invalid key matrix. Determinant must be coprime with 26 to be invertible modulo 26.");
         }
+    }
+
+    private int gcd(int a, int b) {
+        return b == 0 ? a : gcd(b, a % b);
     }
 
     // Computes the determinant of a matrix recursively
