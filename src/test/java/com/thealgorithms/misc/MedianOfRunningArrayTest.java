@@ -191,6 +191,42 @@ public class MedianOfRunningArrayTest {
     }
 
     @Test
+    public void testWithIntegerValuesNearMaxValue() {
+        var stream = new MedianOfRunningArrayInteger();
+        stream.insert(Integer.MAX_VALUE);
+        assertEquals(Integer.MAX_VALUE, stream.getMedian());
+        stream.insert(Integer.MAX_VALUE - 2);
+        assertEquals(Integer.MAX_VALUE - 1, stream.getMedian());
+        stream.insert(2000000000);
+        assertEquals(Integer.MAX_VALUE - 2, stream.getMedian());
+    }
+
+    @Test
+    public void testWithIntegerValuesNearMinValue() {
+        var stream = new MedianOfRunningArrayInteger();
+        stream.insert(Integer.MIN_VALUE);
+        stream.insert(Integer.MIN_VALUE + 2);
+        assertEquals(Integer.MIN_VALUE + 1, stream.getMedian());
+    }
+
+    @Test
+    public void testWithLongValuesNearMaxValue() {
+        var stream = new MedianOfRunningArrayLong();
+        stream.insert(Long.MAX_VALUE);
+        assertEquals(Long.MAX_VALUE, stream.getMedian());
+        stream.insert(Long.MAX_VALUE - 2);
+        assertEquals(Long.MAX_VALUE - 1, stream.getMedian());
+    }
+
+    @Test
+    public void testWithLongValuesNearMinValue() {
+        var stream = new MedianOfRunningArrayLong();
+        stream.insert(Long.MIN_VALUE);
+        stream.insert(Long.MIN_VALUE + 2);
+        assertEquals(Long.MIN_VALUE + 1, stream.getMedian());
+    }
+
+    @Test
     public void testWithDoubleValues() {
         var stream = new MedianOfRunningArrayDouble();
         stream.insert(12345.67891);
