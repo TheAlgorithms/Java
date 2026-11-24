@@ -6,7 +6,11 @@ public class PlayfairCipher {
     private String key;
 
     public PlayfairCipher(String key) {
-        this.key = key;
+        // Normalize the key the same way the plaintext is normalized in encrypt():
+        // uppercase, J folded into I, and non-letters removed. Without this a
+        // lowercase or mixed-case key, a key containing J, or a key with
+        // punctuation silently produces a wrong matrix.
+        this.key = key.toUpperCase().replace("J", "I").replaceAll("[^A-Z]", "");
         generateMatrix();
     }
 
