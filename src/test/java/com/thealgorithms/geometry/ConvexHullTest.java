@@ -135,4 +135,23 @@ public class ConvexHullTest {
         assertEquals(expectedCollinear, resultCollinear, "Should correctly handle collinear points on the hull edge");
         assertTrue(isCounterClockwise(resultCollinear), "The result of the collinear test should be in counter-clockwise order");
     }
+    @Test
+    void testConvexHullRecursiveExcludesInteriorPoints() {
+        // (1,8) is strictly inside the hull of the other four points.
+        List<Point> points = new ArrayList<>(List.of(new Point(1, 5), new Point(1, 8), new Point(2, 9), new Point(0, 10), new Point(4, 19)));
+        List<Point> expected = List.of(new Point(1, 5), new Point(2, 9), new Point(4, 19), new Point(0, 10));
+        assertEquals(expected, ConvexHull.convexHullRecursive(points));
+
+        // (7,2) and (8,3) are strictly inside the triangle (4,0), (11,3), (3,10).
+        List<Point> points2 = new ArrayList<>(List.of(new Point(4, 0), new Point(7, 2), new Point(8, 3), new Point(11, 3), new Point(3, 10)));
+        List<Point> expected2 = List.of(new Point(4, 0), new Point(11, 3), new Point(3, 10));
+        assertEquals(expected2, ConvexHull.convexHullRecursive(points2));
+    }
+
+    @Test
+    void testConvexHullRecursiveDuplicatePoints() {
+        List<Point> points = new ArrayList<>(List.of(new Point(5, 5), new Point(5, 5)));
+        List<Point> expected = List.of(new Point(5, 5));
+        assertEquals(expected, ConvexHull.convexHullRecursive(points));
+    }
 }
