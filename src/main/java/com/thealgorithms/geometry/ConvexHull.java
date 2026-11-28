@@ -5,6 +5,7 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
 import java.util.TreeSet;
@@ -69,6 +70,7 @@ public final class ConvexHull {
      * @return the convex hull points in counter-clockwise order
      */
     public static List<Point> convexHullRecursive(List<Point> points) {
+        points = new ArrayList<>(new LinkedHashSet<>(points));
         if (points.size() < 3) {
             List<Point> result = new ArrayList<>(points);
             Collections.sort(result);
@@ -105,11 +107,11 @@ public final class ConvexHull {
     private static void constructHull(Collection<Point> points, Point left, Point right, Set<Point> convexSet) {
         if (!points.isEmpty()) {
             Point extremePoint = null;
-            int extremePointDistance = Integer.MIN_VALUE;
+            long extremePointDistance = Long.MIN_VALUE;
             List<Point> candidatePoints = new ArrayList<>();
 
             for (Point p : points) {
-                int det = Point.orientation(left, right, p);
+                long det = (long) (right.x() - left.x()) * (p.y() - left.y()) - (long) (right.y() - left.y()) * (p.x() - left.x());
                 if (det > 0) {
                     candidatePoints.add(p);
                     if (det > extremePointDistance) {
