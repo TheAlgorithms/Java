@@ -80,10 +80,18 @@ public class ADFGVXCipher {
     public String decrypt(String ciphertext, String key) {
         String fractionatedText = reverseColumnarTransposition(ciphertext, key);
 
+        if (fractionatedText.length() % 2 != 0) {
+            throw new IllegalArgumentException("Invalid ciphertext: odd number of ADFGVX letters.");
+        }
+
         StringBuilder plaintext = new StringBuilder();
         for (int i = 0; i < fractionatedText.length(); i += 2) {
             String pair = fractionatedText.substring(i, i + 2);
-            plaintext.append(POLYBIUS_MAP.get(pair));
+            Character letter = POLYBIUS_MAP.get(pair);
+            if (letter == null) {
+                throw new IllegalArgumentException("Invalid ciphertext: unknown ADFGVX pair \"" + pair + "\".");
+            }
+            plaintext.append(letter);
         }
 
         return plaintext.toString();
@@ -110,11 +118,7 @@ public class ADFGVXCipher {
 
         // Read columns based on the alphabetical order of the key
         StringBuilder ciphertext = new StringBuilder();
-        char[] sortedKey = key.toCharArray();
-        Arrays.sort(sortedKey);
-
-        for (char keyChar : sortedKey) {
-            int column = key.indexOf(keyChar);
+        for (int column : columnsInKeyOrder(key)) {
             for (char[] row : table) {
                 if (row[column] != '_') {
                     ciphertext.append(row[column]);
@@ -126,6 +130,24 @@ public class ADFGVXCipher {
     }
 
     /**
+     * Returns the column indices in the order the key imposes: alphabetical by
+     * key letter, with repeated letters ordered by their first occurrence.
+     * Using key.indexOf for repeated letters would map both occurrences to the
+     * same column and make the transposition lossy.
+     */
+    private int[] columnsInKeyOrder(String key) {
+        Integer[] order = new Integer[key.length()];
+        for (int i = 0; i < order.length; i++) {
+            order[i] = i;
+        }
+        Arrays.sort(order, (a, b) -> {
+            int byLetter = Character.compare(key.charAt(a), key.charAt(b));
+            return byLetter != 0 ? byLetter : Integer.compare(a, b);
+        });
+        return Arrays.stream(order).mapToInt(Integer::intValue).toArray();
+    }
+
+    /**
      * Helper method: Reverses the columnar transposition during decryption
      *
      * @param ciphertext The transposed text to be reversed
@@ -133,31 +155,36 @@ public class ADFGVXCipher {
      * @return The reversed text
      */
     private String reverseColumnarTransposition(String ciphertext, String key) {
-        int numRows = (int) Math.ceil((double) ciphertext.length() / key.length());
-        char[][] table = new char[numRows][key.length()];
+        int numCols = key.length();
+        int fullRows = ciphertext.length() / numCols;
+        int remainder = ciphertext.length() % numCols;
+        // The last row of the encryption table is only partially filled: the
+        // first `remainder` columns hold one extra character. The previous
+        // implementation assumed every column had the same length, which
+        // misaligned the whole grid whenever the length was not a multiple of
+        // the key length.
+        int[] columnLength = new int[numCols];
+        for (int column = 0; column < numCols; column++) {
+            columnLength[column] = fullRows + (column < remainder ? 1 : 0);
+        }
 
-        char[] sortedKey = key.toCharArray();
-        Arrays.sort(sortedKey);
+        int numRows = fullRows + (remainder > 0 ? 1 : 0);
+        char[][] table = new char[numRows][numCols];
 
         int index = 0;
         // Populate the table column by column according to the sorted key
-        for (char keyChar : sortedKey) {
-            int column = key.indexOf(keyChar);
-            for (int row = 0; row < numRows; row++) {
-                if (index < ciphertext.length()) {
-                    table[row][column] = ciphertext.charAt(index++);
-                } else {
-                    table[row][column] = '_';
-                }
+        for (int column : columnsInKeyOrder(key)) {
+            for (int row = 0; row < columnLength[column]; row++) {
+                table[row][column] = ciphertext.charAt(index++);
             }
         }
 
         // Read the table row by row to reconstruct the fractionated text
         StringBuilder fractionatedText = new StringBuilder();
-        for (char[] row : table) {
-            for (char cell : row) {
-                if (cell != '_') {
-                    fractionatedText.append(cell);
+        for (int row = 0; row < numRows; row++) {
+            for (int column = 0; column < numCols; column++) {
+                if (row < columnLength[column]) {
+                    fractionatedText.append(table[row][column]);
                 }
             }
         }
