@@ -46,7 +46,16 @@ public class GrahamScan {
             }
         }
 
-        hull.push(points[firstNonCollinearIndex - 1]);
+        // Among the points collinear with points[0] on the first ray, only the farthest one
+        // can be a hull vertex. The polar-order tie-break does not guarantee it sorts last
+        // (horizontal ties sort by descending distance), so select it explicitly.
+        Point farthestCollinear = points[firstNonEqualIndex];
+        for (int i = firstNonEqualIndex + 1; i < firstNonCollinearIndex && i < points.length; i++) {
+            if (distanceSquared(points[0], points[i]) > distanceSquared(points[0], farthestCollinear)) {
+                farthestCollinear = points[i];
+            }
+        }
+        hull.push(farthestCollinear);
 
         // Process the remaining points and update the hull
         for (int i = firstNonCollinearIndex; i < points.length; i++) {
@@ -57,6 +66,12 @@ public class GrahamScan {
             hull.push(top);
             hull.push(points[i]);
         }
+    }
+
+    private static long distanceSquared(Point a, Point b) {
+        long dx = a.x() - b.x();
+        long dy = a.y() - b.y();
+        return dx * dx + dy * dy;
     }
 
     /**
