@@ -12,6 +12,22 @@ public record ADTFraction(int numerator, int denominator) {
         if (denominator == 0) {
             throw new IllegalArgumentException("Denominator cannot be 0");
         }
+        if (denominator < 0) {
+            numerator = -numerator;
+            denominator = -denominator;
+        }
+        long common = gcd(numerator, denominator);
+        numerator = (int) (numerator / common);
+        denominator = (int) (denominator / common);
+    }
+
+    private static long gcd(long a, long b) {
+        while (b != 0) {
+            long temp = b;
+            b = a % b;
+            a = temp;
+        }
+        return Math.abs(a);
     }
 
     /**
@@ -21,9 +37,10 @@ public record ADTFraction(int numerator, int denominator) {
      * @return A new {@code ADTFraction} containing the result of the operation
      */
     public ADTFraction plus(ADTFraction fraction) {
-        var numerator = this.denominator * fraction.numerator + this.numerator * fraction.denominator;
-        var denominator = this.denominator * fraction.denominator;
-        return new ADTFraction(numerator, denominator);
+        var numerator = (long) this.denominator * fraction.numerator + (long) this.numerator * fraction.denominator;
+        var denominator = (long) this.denominator * fraction.denominator;
+        long common = gcd(numerator, denominator);
+        return new ADTFraction((int) (numerator / common), (int) (denominator / common));
     }
 
     /**
@@ -43,9 +60,10 @@ public record ADTFraction(int numerator, int denominator) {
      * @return A new {@code ADTFraction} containing the result of the operation
      */
     public ADTFraction times(ADTFraction fraction) {
-        var numerator = this.numerator * fraction.numerator;
-        var denominator = this.denominator * fraction.denominator;
-        return new ADTFraction(numerator, denominator);
+        var numerator = (long) this.numerator * fraction.numerator;
+        var denominator = (long) this.denominator * fraction.denominator;
+        long common = gcd(numerator, denominator);
+        return new ADTFraction((int) (numerator / common), (int) (denominator / common));
     }
 
     /**
