@@ -1,5 +1,7 @@
 package com.thealgorithms.ciphers;
 
+import java.nio.ByteBuffer;
+import java.nio.charset.StandardCharsets;
 import java.security.InvalidAlgorithmParameterException;
 import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
@@ -18,11 +20,12 @@ import javax.crypto.spec.GCMParameterSpec;
  * underlying bytes.
  */
 public final class AESEncryption {
+    private static final int GCM_IV_LENGTH = 12;
+    private static final int GCM_TAG_LENGTH = 128;
+    private static final char[] HEX_ARRAY = "0123456789ABCDEF".toCharArray();
+
     private AESEncryption() {
     }
-
-    private static final char[] HEX_ARRAY = "0123456789ABCDEF".toCharArray();
-    private static Cipher aesCipher;
 
     /**
      * 1. Generate a plain text for encryption 2. Get a secret key (printed in
@@ -65,10 +68,15 @@ public final class AESEncryption {
      * @throws IllegalBlockSizeException (from Cipher)
      */
     public static byte[] encryptText(String plainText, SecretKey secKey) throws NoSuchAlgorithmException, NoSuchPaddingException, InvalidKeyException, IllegalBlockSizeException, BadPaddingException {
-        // AES defaults to AES/ECB/PKCS5Padding in Java 7
-        aesCipher = Cipher.getInstance("AES/GCM/NoPadding");
-        aesCipher.init(Cipher.ENCRYPT_MODE, secKey);
-        return aesCipher.doFinal(plainText.getBytes());
+        Cipher cipher = Cipher.getInstance("AES/GCM/NoPadding");
+        cipher.init(Cipher.ENCRYPT_MODE, secKey);
+        byte[] iv = cipher.getIV();
+        byte[] cipherBytes = cipher.doFinal(plainText.getBytes(StandardCharsets.UTF_8));
+
+        ByteBuffer buffer = ByteBuffer.allocate(iv.length + cipherBytes.length);
+        buffer.put(iv);
+        buffer.put(cipherBytes);
+        return buffer.array();
     }
 
     /**
@@ -77,12 +85,20 @@ public final class AESEncryption {
      * @return plainText
      */
     public static String decryptText(byte[] byteCipherText, SecretKey secKey) throws NoSuchAlgorithmException, NoSuchPaddingException, InvalidKeyException, IllegalBlockSizeException, BadPaddingException, InvalidAlgorithmParameterException {
-        // AES defaults to AES/ECB/PKCS5Padding in Java 7
+        if (byteCipherText.length < GCM_IV_LENGTH) {
+            throw new IllegalArgumentException("Ciphertext is too short");
+        }
+        ByteBuffer buffer = ByteBuffer.wrap(byteCipherText);
+        byte[] iv = new byte[GCM_IV_LENGTH];
+        buffer.get(iv);
+        byte[] cipherBytes = new byte[buffer.remaining()];
+        buffer.get(cipherBytes);
+
         Cipher decryptionCipher = Cipher.getInstance("AES/GCM/NoPadding");
-        GCMParameterSpec gcmParameterSpec = new GCMParameterSpec(128, aesCipher.getIV());
+        GCMParameterSpec gcmParameterSpec = new GCMParameterSpec(GCM_TAG_LENGTH, iv);
         decryptionCipher.init(Cipher.DECRYPT_MODE, secKey, gcmParameterSpec);
-        byte[] bytePlainText = decryptionCipher.doFinal(byteCipherText);
-        return new String(bytePlainText);
+        byte[] bytePlainText = decryptionCipher.doFinal(cipherBytes);
+        return new String(bytePlainText, StandardCharsets.UTF_8);
     }
 
     /**
